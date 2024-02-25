@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-voronoi-map
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Voronoi map</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Voronoi map
 
 The [Delaunay and Voronoi](https://observablehq.com/plot/marks/delaunay) marks derive topologies from point clouds. And they are compatible with [projections](https://observablehq.com/plot/features/projections)!
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 640,
   height: 640,
   inset: 2,
@@ -39,10 +36,12 @@ Plot.plot({
     Plot.sphere({strokeWidth: 2})
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const us = FileAttachment("us-counties-10m.json").json();
+const us = FileAttachment("../data/us-counties-10m.json").json();
 ```
 
 ```js echo
@@ -50,5 +49,5 @@ const nation = topojson.feature(us, us.objects.nation);
 ```
 
 ```js echo
-const capitals = FileAttachment("us-state-capitals.csv").csv({typed: true});
+const capitals = FileAttachment("../data/us-state-capitals.csv").csv({typed: true});
 ```
