@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-point-cloud-density
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Point cloud density</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Point cloud density
 
 The [density](https://observablehq.com/plot/marks/density) mark shows the estimated density of two-dimensional point clouds.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   inset: 10,
   marks: [
     Plot.density(faithful, {
@@ -34,8 +31,10 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const faithful = FileAttachment("faithful.tsv").tsv({typed: true});
+const faithful = FileAttachment("../data/faithful.tsv").tsv({typed: true});
 ```
