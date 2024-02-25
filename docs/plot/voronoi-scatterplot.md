@@ -19,7 +19,7 @@ Plot.plot({
       y: "culmen_length_mm",
       fill: "species",
       fillOpacity: 0.2,
-      stroke: "var(--vp-c-bg)"
+      stroke: "var(--theme-background)"
     }),
     Plot.frame(),
     Plot.dot(penguins, {
