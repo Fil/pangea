@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-symbol-channel
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Symbol channel</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Symbol channel
 
 When an ordinal _color_ scale is used redundantly with a [_symbol_](https://observablehq.com/plot/marks/dot.html) scale, the _symbol_ [legend](https://observablehq.com/plot/features/legend.html) will incorporate the color encoding. This is more accessible than using color alone, particularly for readers with color vision deficiency.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   grid: true,
   x: {label: "Body mass (g) →"},
   y: {label: "↑ Flipper length (mm)"},
@@ -25,4 +22,10 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const penguins = FileAttachment("../data/penguins.csv").csv({typed: true});
 ```
