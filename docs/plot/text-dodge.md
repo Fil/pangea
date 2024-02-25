@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-text-dodge
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Text dodge</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Text dodge
 
-The [text](https://observablehq.com/plot/marks/text) mark displays each company’s valuation at IPO; the layout is computed with the [dodge](https://observablehq.com/plot/transforms/dodge) transform. Data: see [The Facebook IPO](/@observablehq/plot-the-facebook-ipo).
+The [text](https://observablehq.com/plot/marks/text) mark displays each company’s valuation at IPO; the layout is computed with the [dodge](https://observablehq.com/plot/transforms/dodge) transform. Data: see [The Facebook IPO](https://observablehq.com/@observablehq/plot-the-facebook-ipo).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   insetRight: 10,
   height: 790,
   style: "overflow: visible;",
@@ -28,8 +25,10 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const ipos = FileAttachment("ipos.csv").csv({typed: true});
+const ipos = FileAttachment("../data/ipos.csv").csv({typed: true});
 ```
