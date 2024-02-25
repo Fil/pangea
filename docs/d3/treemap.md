@@ -103,6 +103,7 @@ leaf
   .join("tspan")
   .attr("x", 3)
   .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
+  .attr("fill", "currentColor")
   .attr("fill-opacity", (d, i, nodes) => (i === nodes.length - 1 ? 0.7 : null))
   .text((d) => d);
 
