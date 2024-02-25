@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/qq-plot
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Quantile-quantile plot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Quantile-quantile plot
 
 A [quantile-quantile plot](https://en.wikipedia.org/wiki/Q–Q_plot) compares two distributions. If the two are similar, the points will fall approximately along the diagonal; if not, the points will deviate from the diagonal, revealing differences. This example compares the strengths of two batches of ceramics: the first appears to be significantly stronger. Data: [NIST](https://www.itl.nist.gov/div898/handbook/eda/section4/eda42a1.htm)
 
 ```js echo
-qq({
+const chart = qq({
   x: jahanmi2.filter((d) => d.Bat === 2).map((d) => d.Y), // batch 2
   y: jahanmi2.filter((d) => d.Bat === 1).map((d) => d.Y), // batch 1
   stroke: "steelblue"
@@ -22,14 +19,17 @@ qq({
   x: {label: "Batch 2 →"},
   y: {label: "↑ Batch 1"}
 });
+
+display(chart);
 ```
 
 ```js echo
-const jahanmi2 = {
-  const text = await FileAttachment("JAHANMI2.DAT").text();
+let jahanmi2;
+{
+  const text = await FileAttachment("../data/JAHANMI2.DAT").text();
   const lines = text.split("\r\n").slice(48, -1);
-  const [header,, ...rows] = lines.map((l) => l.trim().split(/\s+/g));
-  return rows.map((r) => Object.fromEntries(header.map((h, i) => [h, +r[i]])));
+  const [header, , ...rows] = lines.map((l) => l.trim().split(/\s+/g));
+  jahanmi2 = rows.map((r) => Object.fromEntries(header.map((h, i) => [h, +r[i]])));
 }
 ```
 
@@ -37,17 +37,7 @@ const jahanmi2 = {
 
 ## Implementation
 
-To import into your notebook:
-
-```js
-import {qq} from "@observablehq/qq-plot";
-```
-
-```js
-md`
 Per NIST: “If the data sets are not of equal size, the quantiles are usually picked to correspond to the sorted values from the smaller data set and then the quantiles for the larger data set are interpolated.”
-`;
-```
 
 ```js echo
 function qq({x: X, y: Y, ...options} = {}) {
