@@ -1,11 +1,13 @@
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Contours & projection</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
+---
+index: true
+---
 
 # Contours & projection
 
 When [contours](https://observablehq.com/plot/marks/contour) are applied to samples with [projected](https://observablehq.com/plot/features/projections) coordinates, it is useful to [clip](https://observablehq.com/plot/features/marks#mark-options) the mark to the sphere.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   projection: "equal-earth",
   color: {
     scheme: "BuPu",
@@ -29,9 +31,13 @@ Plot.plot({
     }),
     Plot.sphere({stroke: "black"})
   ]
-})
+});
+
+display(chart);
 ```
 
 ```js echo
-vapor = FileAttachment("water-vapor.csv").csv({array: true}).then(rows => rows.flat().map((x) => (x === "99999.0" ? NaN : +x)))
+const vapor = FileAttachment("../data/water-vapor.csv")
+  .csv({array: true})
+  .then((rows) => rows.flat().map((x) => (x === "99999.0" ? NaN : +x)));
 ```
