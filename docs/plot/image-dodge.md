@@ -1,11 +1,14 @@
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Image beeswarm</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
+---
+source: https://observablehq.com/@observablehq/plot-image-dodge
+index: true
+---
 
 # Image beeswarm (dodge)
 
-The [image](https://observablehq.com/plot/marks/image) mark supports the *r* option, and can be used with the [dodge](https://observablehq.com/plot/transforms/dodge) transform. data: [YouGov](https://today.yougov.com/topics/politics/articles-reports/2021/07/27/most-and-least-popular-us-presidents-according-ame)
+The [image](https://observablehq.com/plot/marks/image) mark supports the _r_ option, and can be used with the [dodge](https://observablehq.com/plot/transforms/dodge) transform. data: [YouGov](https://today.yougov.com/topics/politics/articles-reports/2021/07/27/most-and-least-popular-us-presidents-according-ame)
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   inset: 20,
   height: 280,
   marks: [
@@ -20,9 +23,11 @@ Plot.plot({
       })
     )
   ]
-})
+});
+
+display(chart);
 ```
 
 ```js echo
-presidents = FileAttachment("us-president-favorability@2.csv").csv({typed: true})
+const presidents = FileAttachment("../data/us-president-favorability.csv").csv({typed: true});
 ```

@@ -1,4 +1,5 @@
 ---
+source: https://observablehq.com/@d3/tree/2
 index: true
 ---
 

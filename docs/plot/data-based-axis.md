@@ -1,4 +1,5 @@
 ---
+source: https://observablehq.com/@observablehq/plot-data-based-axis
 index: true
 ---
 

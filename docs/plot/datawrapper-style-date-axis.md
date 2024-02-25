@@ -1,4 +1,5 @@
 ---
+source: https://observablehq.com/@observablehq/plot-datawrapper-style-date-axis
 index: true
 ---
 

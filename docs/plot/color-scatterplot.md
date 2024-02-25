@@ -1,9 +1,22 @@
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Scatterplot with color</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
+---
+source: https://observablehq.com/@observablehq/color-scatterplot
+index: true
+---
 
 # Scatterplot with color
 
-Two quantitative dimensions encoded to the *x* and *y* dimensions (see [scales](https://observablehq.com/plot/features/scales)), and a categorical dimension encoded to *stroke* (color), drawn with the [dot](https://observablehq.com/plot/marks/dot) mark.
+Two quantitative dimensions encoded to the _x_ and _y_ dimensions (see [scales](https://observablehq.com/plot/features/scales)), and a categorical dimension encoded to _stroke_ (color), drawn with the [dot](https://observablehq.com/plot/marks/dot) mark.
 
 ```js echo
-Plot.dot(penguins, {x: "culmen_length_mm", y: "culmen_depth_mm", stroke: "species"}).plot()
+const chart = Plot.dot(penguins, {
+  x: "culmen_length_mm",
+  y: "culmen_depth_mm",
+  stroke: "species"
+}).plot();
+
+display(chart);
+```
+
+```js echo
+const penguins = FileAttachment("../data/penguins.csv").csv({typed: true});
 ```

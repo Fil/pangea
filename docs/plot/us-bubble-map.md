@@ -1,80 +1,73 @@
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: U.S. bubble map</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
+---
+source: https://observablehq.com/@observablehq/plot-us-bubble-map
+index: true
+---
 
 # U.S. bubble map
 
-Estimated population by county, 2016. See also the [spike map](/@observablehq/plot-spike?intent=fork) as an alternative presentation of this data. Data: [American Community Survey](https://api.census.gov/data/2016/acs/acs5/cprofile/examples.html)
+Estimated population by county, 2016. See also the [spike map](./spike) as an alternative presentation of this data. Data: [American Community Survey](https://api.census.gov/data/2016/acs/acs5/cprofile/examples.html)
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 975,
   projection: "identity",
-  r: { range: [0, 40] },
+  r: {range: [0, 40]},
   marks: [
-    Plot.geo(nation, { fill: "#ddd" }),
-    Plot.geo(statemesh, { stroke: "white" }),
-    Plot.dot(population, Plot.centroid({
-      r: "population",
-      fill: "brown",
-      fillOpacity: 0.5,
-      stroke: "#fff",
-      strokeOpacity: 0.5,
-      geometry: ({ state, county }) => countymap.get(`${state}${county}`),
-      channels: {
-        county: ({ state, county }) => countymap.get(`${state}${county}`)?.properties.name,
-        state: ({ state }) => statemap.get(state)?.properties.name
-      },
-      tip: true
-    })),
+    Plot.geo(nation, {fill: "var(--theme-foreground-faintest)"}),
+    Plot.geo(statemesh, {stroke: "var(--theme-background)"}),
+    Plot.dot(
+      population,
+      Plot.centroid({
+        r: "population",
+        fill: "brown",
+        fillOpacity: 0.5,
+        stroke: "white",
+        strokeOpacity: 0.5,
+        geometry: ({state, county}) => countymap.get(`${state}${county}`),
+        channels: {
+          county: ({state, county}) => countymap.get(`${state}${county}`)?.properties.name,
+          state: ({state}) => statemap.get(state)?.properties.name
+        },
+        tip: true
+      })
+    ),
 
     // Legend helper
     radiusLegend([2, 5, 10], {r: (d) => d * 1e6, title: (d) => `${d}M`})
   ]
-})
+});
+
+display(chart);
 ```
 
 This dataset comes from the U.S. Census API and contains three columns: the estimated population (as a string), the two-digit state FIPS code, and the three-digit county FIPS code.
 
 ```js echo
-population = FileAttachment("population.json").json()
-  .then((data) =>
-    data
-      .slice(1) // removes a header line
-      .map(([p, state, county]) => ({
-        state,
-        county,
-        population: +p
-      }))
-  )
+const population = FileAttachment("../data/population.csv").csv();
 ```
 
-The geometries used in this example are from the [TopoJSON U.S. Atlas](https://github.com/topojson/us-atlas), which are derived from the U.S. Census Bureau shapefiles. (There’s also the [TopoJSON World Atlas](https://github.com/topojson/world-atlas), which is derived from [Natural Earth](https://www.naturalearthdata.com).) The *counties* feature collection is all U.S. counties, using the five-digit FIPS identifier. The *statemap* lets us lookup the name of the state that contains a given county; a state’s two-digit identifier corresponds to the first two digits of its counties’ identifiers. Similarly, the *countymap* lets us lookup the name and geometry of each county.
+The geometries used in this example are from the [TopoJSON U.S. Atlas](https://github.com/topojson/us-atlas), which are derived from the U.S. Census Bureau shapefiles. (There’s also the [TopoJSON World Atlas](https://github.com/topojson/world-atlas), which is derived from [Natural Earth](https://www.naturalearthdata.com).) The _counties_ feature collection is all U.S. counties, using the five-digit FIPS identifier. The _statemap_ lets us lookup the name of the state that contains a given county; a state’s two-digit identifier corresponds to the first two digits of its counties’ identifiers. Similarly, the _countymap_ lets us lookup the name and geometry of each county.
 
 ```js echo
-us = FileAttachment("counties-albers-10m.json").json()
+const us = FileAttachment("../data/counties-albers-10m.json").json();
 ```
 
 ```js echo
-nation = topojson.feature(us, us.objects.nation)
+const nation = topojson.feature(us, us.objects.nation);
+const statemap = new Map(topojson.feature(us, us.objects.states).features.map((d) => [d.id, d]));
+const countymap = new Map(topojson.feature(us, us.objects.counties).features.map((d) => [d.id, d]));
 ```
 
-```js echo
-statemap = new Map(topojson.feature(us, us.objects.states).features.map(d => [d.id, d]))
-```
+The _statemesh_ is just the internal borders between states, _i.e._, everything but the coastlines and country borders. This avoids an additional stroke on the perimeter of the map, which would otherwise mask intricate features such as islands and inlets. (Try removing the last argument to topojson.mesh below to see the effect.)
 
 ```js echo
-countymap = new Map(topojson.feature(us, us.objects.counties).features.map(d => [d.id, d]))
-```
-
-The *statemesh* is just the internal borders between states, *i.e.*, everything but the coastlines and country borders. This avoids an additional stroke on the perimeter of the map, which would otherwise mask intricate features such as islands and inlets. (Try removing the last argument to topojson.mesh below to see the effect.)
-
-```js echo
-statemesh = topojson.mesh(us, us.objects.states, (a, b) => a !== b)
+const statemesh = topojson.mesh(us, us.objects.states, (a, b) => a !== b);
 ```
 
 Plot does not yet have an official radius legend (please vote up [#236](https://github.com/observablehq/plot/issues/236)!). In the meantime, here is a helper:
 
 ```js echo
-radiusLegend = (data, options) =>
+const radiusLegend = (data, options) =>
   Plot.dot(data, {
     ...options,
     frameAnchor: "bottom-right",
@@ -102,5 +95,5 @@ radiusLegend = (data, options) =>
         });
       return g;
     }
-  })
+  });
 ```

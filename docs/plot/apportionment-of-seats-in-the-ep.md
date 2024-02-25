@@ -1,4 +1,5 @@
 ---
+source: https://observablehq.com/@observablehq/apportionment-of-seats-in-the-ep
 index: true
 ---
 

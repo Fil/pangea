@@ -1,13 +1,16 @@
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Walmart density</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
+---
+source: https://observablehq.com/@observablehq/plot-walmart-density
+index: true
+---
 
 # Walmart density
 
 The [density](https://observablehq.com/plot/marks/density) mark supports projected data. For more accurate results, prefer an equal-area [projection](https://observablehq.com/plot/features/projections).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   projection: "albers",
-  color: {scheme: "YlGnBu"},
+  color: {scheme: dark ? "turbo" : "YlGnBu"},
   style: "overflow: visible;",
   marks: [
     Plot.density(walmarts, {x: "longitude", y: "latitude", bandwidth: 10, fill: "density"}),
@@ -15,21 +18,21 @@ Plot.plot({
     Plot.geo(nation),
     Plot.dot(walmarts, {x: "longitude", y: "latitude", r: 1, fill: "currentColor"})
   ]
-})
+});
+
+display(chart);
 ```
 
 ```js echo
-us = FileAttachment("us-counties-10m.json").json()
+const us = FileAttachment("../data/us-counties-10m.json").json();
+const walmarts = FileAttachment("../data/walmarts.tsv").tsv({typed: true});
 ```
 
 ```js echo
-nation = topojson.feature(us, us.objects.nation)
+const nation = topojson.feature(us, us.objects.nation);
+const statemesh = topojson.mesh(us, us.objects.states);
 ```
 
 ```js echo
-statemesh = topojson.mesh(us, us.objects.states)
-```
-
-```js echo
-walmarts = FileAttachment("walmarts.tsv").tsv({typed: true})
+import {dark} from "../components/dark.js";
 ```

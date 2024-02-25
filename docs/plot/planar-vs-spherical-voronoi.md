@@ -1,4 +1,8 @@
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Planar vs. Spherical Voronoi</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
+---
+source: https://observablehq.com/@visionscarto/planar-vs-spherical-voronoi
+index: true
+keywords: [geo, maps]
+---
 
 # Planar vs. Spherical Voronoi
 
@@ -8,13 +12,14 @@ For example, a “true” (spherical) diagram has polygons that cross the anteme
 
 For the sake of simplicity (and for faster loading times), Plot defaults to the planar algorithm. But if you want more accuracy, you can require [d3-geo-voronoi](https://github.com/Fil/d3-geo-voronoi), and let Plot.geo draw its outputs.
 
-
 The maps below compare the planar (on the left) and spherical (on the right) Voronoi diagrams associated with a dataset of the [world’s airports](https://observablehq.com/@d3/world-airports-voronoi).
 
 ## Orthographic
+
 ${show("orthographic")}
 
 ## Mercator
+
 ${show("mercator")}
 
 ## Equal Earth
@@ -30,7 +35,6 @@ distortion recedes.
 
 ${show("stereographic", true)}
 
-
 ## Focus
 
 Zooming in a bit closer, for example by focusing on the U.S. with Albers’ conic
@@ -38,33 +42,32 @@ projection, the distortion is almost invisible.
 
 ${show("albers", true)}
 
-
 Click on the button below to overlay the maps with blue and red colors.
 
 ```js
-viewof compose = Inputs.radio(["side by side", "blue and red"], {
-  value: "side by side"
-})
+const compose = view(
+  Inputs.radio(["side by side", "blue and red"], {
+    value: "side by side"
+  })
+);
 ```
 
 ---
 
-*supporting code*
+_supporting code_
 
 ```js echo
-show = (projection, frame) => compose === "side by side" ?
-  htl.html`<div style="display:flex; justify-content: space-between">
+const show = (projection, frame) =>
+  compose === "side by side"
+    ? htl.html`<div style="display:flex; justify-content: space-between">
     ${planar(projection, frame)}
     ${spherical(projection, frame)}
   `
-  :
-  htl.html`
-    ${mix(projection, frame)}
-  `
+    : html` ${mix(projection, frame)} `;
 ```
 
 ```js echo
-planar = (projection, frame) =>
+const planar = (projection, frame) =>
   Plot.plot({
     width: 0.49 * width,
     height: 0.49 * width * (projection === "equal-earth" ? 0.5 : 1),
@@ -75,15 +78,15 @@ planar = (projection, frame) =>
         strokeOpacity: 1,
         strokeWidth: 0.5
       }),
-      Plot.dot(points, { r: 1, fill: "black" }),
-      frame ? Plot.frame({ strokeWidth: 1.5 }) : Plot.sphere()
+      Plot.dot(points, {r: 1, fill: "currentColor"}),
+      frame ? Plot.frame({strokeWidth: 1.5}) : Plot.sphere()
     ],
     caption: "Planar"
-  })
+  });
 ```
 
 ```js echo
-spherical = (projection, frame) =>
+const spherical = (projection, frame) =>
   Plot.plot({
     width: 0.49 * width,
     height: 0.49 * width * (projection === "equal-earth" ? 0.5 : 1),
@@ -94,15 +97,15 @@ spherical = (projection, frame) =>
         strokeOpacity: 1,
         strokeWidth: 0.5
       }),
-      Plot.dot(points, { r: 1, fill: "black" }),
-      frame ? Plot.frame({ strokeWidth: 1.5 }) : Plot.sphere()
+      Plot.dot(points, {r: 1, fill: "currentColor"}),
+      frame ? Plot.frame({strokeWidth: 1.5}) : Plot.sphere()
     ],
     caption: "Spherical"
-  })
+  });
 ```
 
 ```js echo
-mix = (projection, frame) =>
+const mix = (projection, frame) =>
   Plot.plot({
     width: 0.49 * width,
     height: 0.49 * width * (projection === "equal-earth" ? 0.5 : 1),
@@ -120,17 +123,19 @@ mix = (projection, frame) =>
         strokeWidth: 0.5,
         stroke: "blue"
       }),
-      Plot.dot(points, { r: 1, fill: "black" }),
-      frame ? Plot.frame({ strokeWidth: 1.5 }) : Plot.sphere()
+      Plot.dot(points, {r: 1, fill: "currentColor"}),
+      frame ? Plot.frame({strokeWidth: 1.5}) : Plot.sphere()
     ],
-    caption: htl.html`<span><span style="color: red">Planar</span> — <span style="color: blue">Spherical</span>`
-  })
+    caption: html`<span><span style="color: red">Planar</span> — <span style="color: blue">Spherical</span></span>`
+  });
 ```
 
 ```js echo
-d3 = require("d3-geo-voronoi@2")
+import * as d3 from "npm:d3-geo-voronoi@2";
 ```
 
 ```js echo
-import {points} from "@d3/world-airports-voronoi"
+const points = FileAttachment("../data/airports.csv")
+  .csv({typed: true})
+  .then((p) => p.map(({longitude: lon, latitude: lat}) => [lon, lat]));
 ```

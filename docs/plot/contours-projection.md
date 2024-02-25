@@ -1,4 +1,5 @@
 ---
+source: https://observablehq.com/@observablehq/plot-contours-projection
 index: true
 ---
 
