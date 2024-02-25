@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-sorted-heatmap
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Sorted heatmap</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Sorted heatmap
 
 [Grouping](https://observablehq.com/plot/transforms/group) by _x_ (hour of day) and _y_ (location) produces a heatmap. Locations are [sorted](https://observablehq.com/plot/features/scales#sort-mark-option) by the maximum highway traffic (measured as vehicles per hour) they have during the day. Data: [Christopher Möller](https://gist.github.com/chrtze).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   marginLeft: 120,
   padding: 0,
   y: {label: null},
@@ -32,8 +29,10 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const traffic = FileAttachment("traffic.csv").csv({typed: true});
+const traffic = FileAttachment("../data/traffic.csv").csv({typed: true});
 ```

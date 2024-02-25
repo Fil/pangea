@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-voronoi-scatterplot
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Voronoi scatterplot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Voronoi scatterplot
 
 The [voronoi](https://observablehq.com/plot/marks/voronoi) mark computes the region closest to each point.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   color: {legend: true},
   marks: [
     Plot.voronoi(penguins, {
@@ -29,4 +26,10 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const penguins = FileAttachment("../data/penguins.csv").csv({typed: true});
 ```
