@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-static-annotations
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Static annotations</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Static annotations
 
 The [tip mark](https://observablehq.com/plot/marks/tip) can be used for static annotations, say to draw attention to elements of interest or to add context.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   y: {grid: true},
   marks: [
     Plot.lineY(aapl, {x: "Date", y: "Close"}),
@@ -29,4 +26,10 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
 ```
