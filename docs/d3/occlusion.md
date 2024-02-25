@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Occlusion</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Occlusion
@@ -5,19 +10,20 @@
 Hides the text nodes that are covered by another node. Add a data-priority attribute to sort by priority. (If you have very many labels, Benjamin Schmidt’s [version](https://observablehq.com/@bmschmidt/finding-text-occlusion-with-quadtrees) explores efficient optimization strategies with quadtrees or RBush.)
 
 Usage:
-~~~{js}
+
+```{js}
 import {occlusion} from "@fil/occlusion"
 svg.call(occlusion)
-~~~
+```
 
 Style with CSS:
-~~~~{css}
-.occluded { display:none }
-~~~~
 
+```{css}
+.occluded { display:none }
+```
 
 ```js echo
-svg = {
+const svg = {
   const width = 928;
   const height = 400;
 
@@ -74,9 +80,13 @@ svg = {
 
 ```js echo
 html`<style>
-  svg { cursor: pointer; }
-  svg text.occluded { opacity: 0.1 }
-</style>`
+  svg {
+    cursor: pointer;
+  }
+  svg text.occluded {
+    opacity: 0.1;
+  }
+</style>`;
 ```
 
 ```js echo
@@ -85,8 +95,8 @@ function occlusion(svg, against = "text") {
     .sort(svg.selectAll(against), (node) => +node.getAttribute("data-priority"))
     .reverse()
     .map((node) => {
-      const { x, y, width, height } = node.getBoundingClientRect();
-      return { node, x, y, width, height };
+      const {x, y, width, height} = node.getBoundingClientRect();
+      return {node, x, y, width, height};
     });
 
   const visible = [];
@@ -102,16 +112,11 @@ function occlusion(svg, against = "text") {
 ```js echo
 // This intersection function works for rect and text, but not so much for circles.
 function intersectRect(a, b) {
-  return !(
-    a.x + a.width < b.x ||
-    b.x + b.width < a.x ||
-    a.y + a.height < b.y ||
-    b.y + b.height < a.y
-  );
+  return !(a.x + a.width < b.x || b.x + b.width < a.x || a.y + a.height < b.y || b.y + b.height < a.y);
 }
 ```
 
 ```js echo
 // https://www.npmjs.com/package/random-words
-rwg = require("random-words@1.1.0").catch(() => window.words)
+rwg = require("random-words@1.1.0").catch(() => window.words);
 ```

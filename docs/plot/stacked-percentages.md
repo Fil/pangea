@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Stacked percentages</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Stacked percentages
@@ -12,5 +17,5 @@ Plot.plot({
     Plot.textX(alphabet, Plot.stackX({x: "frequency", text: "letter", inset: 0.5})),
     Plot.ruleX([0, 1])
   ]
-})
+});
 ```

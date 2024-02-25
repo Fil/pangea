@@ -1,15 +1,22 @@
-```js
-md`# The Wealth & Health of Nations
+---
+index: false
+status: draft
+---
 
-This is a recreation of a [Gapminder visualization](http://gapminder.org/world/) made famous by [Hans Rosling](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen). It shows per-capita income (*x*), life expectancy (*y*) and population (*area*) of 180 nations over the last 209 years, colored by region. Data prior to 1950 is sparse, so this chart uses [bisection](https://en.wikipedia.org/wiki/Binary_search_algorithm) and [linear interpolation](https://en.wikipedia.org/wiki/Linear_interpolation) to fill in missing data points.`
+```js
+md`
+# The Wealth & Health of Nations
+
+This is a recreation of a [Gapminder visualization](http://gapminder.org/world/) made famous by [Hans Rosling](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen). It shows per-capita income (_x_), life expectancy (_y_) and population (_area_) of 180 nations over the last 209 years, colored by region. Data prior to 1950 is sparse, so this chart uses [bisection](https://en.wikipedia.org/wiki/Binary_search_algorithm) and [linear interpolation](https://en.wikipedia.org/wiki/Linear_interpolation) to fill in missing data points.
+`;
 ```
 
 ```js
-viewof date = Scrubber(dates, {format: d => d.getUTCFullYear(), loop: false})
+const date = view(Scrubber(dates, {format: (d) => d.getUTCFullYear(), loop: false}));
 ```
 
 ```js
-legend = {
+const legend = {
   const id = DOM.uid().id;
   return html`<style>
 
@@ -32,7 +39,7 @@ legend = {
 ```
 
 ```js echo
-chart = {
+const chart = {
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height]);
 
@@ -71,80 +78,100 @@ chart = {
 ```
 
 ```js echo
-update = chart.update(currentData)
+const update = chart.update(currentData);
 ```
 
 ```js echo
-currentData = dataAt(date)
+const currentData = dataAt(date);
 ```
 
 ```js echo
-x = d3.scaleLog([200, 1e5], [margin.left, width - margin.right])
+const x = d3.scaleLog([200, 1e5], [margin.left, width - margin.right]);
 ```
 
 ```js echo
-y = d3.scaleLinear([14, 86], [height - margin.bottom, margin.top])
+const y = d3.scaleLinear([14, 86], [height - margin.bottom, margin.top]);
 ```
 
 ```js echo
-radius = d3.scaleSqrt([0, 5e8], [0, width / 24])
+const radius = d3.scaleSqrt([0, 5e8], [0, width / 24]);
 ```
 
 ```js echo
-color = d3.scaleOrdinal(data.map(d => d.region), d3.schemeCategory10).unknown("black")
+const color = d3
+  .scaleOrdinal(
+    data.map((d) => d.region),
+    d3.schemeCategory10
+  )
+  .unknown("black");
 ```
 
 ```js echo
-xAxis = g => g
+const xAxis = (g) =>
+  g
     .attr("transform", `translate(0,${height - margin.bottom})`)
     .call(d3.axisBottom(x).ticks(width / 80, ","))
-    .call(g => g.select(".domain").remove())
-    .call(g => g.append("text")
+    .call((g) => g.select(".domain").remove())
+    .call((g) =>
+      g
+        .append("text")
         .attr("x", width)
         .attr("y", margin.bottom - 4)
         .attr("fill", "currentColor")
         .attr("text-anchor", "end")
-        .text("Income per capita (dollars) →"))
+        .text("Income per capita (dollars) →")
+    );
 ```
 
 ```js echo
-yAxis = g => g
+const yAxis = (g) =>
+  g
     .attr("transform", `translate(${margin.left},0)`)
     .call(d3.axisLeft(y))
-    .call(g => g.select(".domain").remove())
-    .call(g => g.append("text")
+    .call((g) => g.select(".domain").remove())
+    .call((g) =>
+      g
+        .append("text")
         .attr("x", -margin.left)
         .attr("y", 10)
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
-        .text("↑ Life expectancy (years)"))
+        .text("↑ Life expectancy (years)")
+    );
 ```
 
 ```js echo
-grid = g => g
+const grid = (g) =>
+  g
     .attr("stroke", "currentColor")
     .attr("stroke-opacity", 0.1)
-    .call(g => g.append("g")
-      .selectAll("line")
-      .data(x.ticks())
-      .join("line")
-        .attr("x1", d => 0.5 + x(d))
-        .attr("x2", d => 0.5 + x(d))
+    .call((g) =>
+      g
+        .append("g")
+        .selectAll("line")
+        .data(x.ticks())
+        .join("line")
+        .attr("x1", (d) => 0.5 + x(d))
+        .attr("x2", (d) => 0.5 + x(d))
         .attr("y1", margin.top)
-        .attr("y2", height - margin.bottom))
-    .call(g => g.append("g")
-      .selectAll("line")
-      .data(y.ticks())
-      .join("line")
-        .attr("y1", d => 0.5 + y(d))
-        .attr("y2", d => 0.5 + y(d))
+        .attr("y2", height - margin.bottom)
+    )
+    .call((g) =>
+      g
+        .append("g")
+        .selectAll("line")
+        .data(y.ticks())
+        .join("line")
+        .attr("y1", (d) => 0.5 + y(d))
+        .attr("y2", (d) => 0.5 + y(d))
         .attr("x1", margin.left)
-        .attr("x2", width - margin.right));
+        .attr("x2", width - margin.right)
+    );
 ```
 
 ```js echo
 function dataAt(date) {
-  return data.map(d => ({
+  return data.map((d) => ({
     name: d.name,
     region: d.region,
     income: valueAt(d.income, date),
@@ -168,37 +195,37 @@ function valueAt(values, date) {
 ```
 
 ```js echo
-data = (await FileAttachment("nations.json").json())
-  .map(({name, region, income, population, lifeExpectancy}) => ({
+const data = (await FileAttachment("nations.json").json()).map(
+  ({name, region, income, population, lifeExpectancy}) => ({
     name,
     region,
     income: parseSeries(income),
     population: parseSeries(population),
     lifeExpectancy: parseSeries(lifeExpectancy)
-  }))
-```
-
-```js echo
-interval = d3.utcMonth // interval between animation frames
-```
-
-```js echo
-dates = interval.range(
-  d3.min(data, d => {
-    return d3.min([
-      d.income[0], 
-      d.population[0], 
-      d.lifeExpectancy[0]
-    ], ([date]) => date);
-  }),
-  d3.min(data, d => {
-    return d3.max([
-      d.income[d.income.length - 1], 
-      d.population[d.population.length - 1], 
-      d.lifeExpectancy[d.lifeExpectancy.length - 1]
-    ], ([date]) => date);
   })
-)
+);
+```
+
+```js echo
+const interval = d3.utcMonth; // interval between animation frames
+```
+
+```js echo
+const dates = interval.range(
+  d3.min(data, (d) => {
+    return d3.min([d.income[0], d.population[0], d.lifeExpectancy[0]], ([date]) => date);
+  }),
+  d3.min(data, (d) => {
+    return d3.max(
+      [
+        d.income[d.income.length - 1],
+        d.population[d.population.length - 1],
+        d.lifeExpectancy[d.lifeExpectancy.length - 1]
+      ],
+      ([date]) => date
+    );
+  })
+);
 ```
 
 ```js echo
@@ -208,21 +235,21 @@ function parseSeries(series) {
 ```
 
 ```js echo
-bisectDate = d3.bisector(([date]) => date).left
+const bisectDate = d3.bisector(([date]) => date).left;
 ```
 
 ```js echo
-margin = ({top: 20, right: 20, bottom: 35, left: 40})
+const margin = {top: 20, right: 20, bottom: 35, left: 40};
 ```
 
 ```js echo
-height = 560
+const height = 560;
 ```
 
 ```js echo
-d3 = require("d3@6.7.0/dist/d3.min.js")
+const d3 = require("d3@6.7.0/dist/d3.min.js");
 ```
 
 ```js echo
-import {Scrubber} from "@mbostock/scrubber"
+import {Scrubber} from "../components/scrubber.js";
 ```

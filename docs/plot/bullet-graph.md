@@ -1,10 +1,15 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Bullet graph</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Bullet graph
 
 ## California COVID-19 disparities
 
-Data: Ben Welsh (17 May, 2020), [“Tracking coronavirus in California”](https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/), _Los Angeles Times_ (see the [original notebook](https://observablehq.com/@datadesk/california-covid-19-disparities-bullet-graph)).  This version uses two [bar](https://observablehq.com/plot/marks/bar) marks, one for the background (proportion of the general population) and one for the data (proportion of Covid-19 cases). Compare to [Bullet graph II](/@fil/bullet-graph-2).
+Data: Ben Welsh (17 May, 2020), [“Tracking coronavirus in California”](https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/), _Los Angeles Times_ (see the [original notebook](https://observablehq.com/@datadesk/california-covid-19-disparities-bullet-graph)). This version uses two [bar](https://observablehq.com/plot/marks/bar) marks, one for the background (proportion of the general population) and one for the data (proportion of Covid-19 cases). Compare to [Bullet graph II](/@fil/bullet-graph-2).
 
 For more details on bullet graph designs, see [Wikipedia](https://en.wikipedia.org/wiki/Bullet_graph).
 
@@ -15,8 +20,7 @@ Plot.plot({
   facet: {
     data,
     x: "race",
-    label:
-      "Proportion of COVID-19 cases (color) vs. share of population (gray), by race and age"
+    label: "Proportion of COVID-19 cases (color) vs. share of population (gray), by race and age"
   },
   x: {
     axis: "top",
@@ -27,9 +31,9 @@ Plot.plot({
   },
   y: {
     label: null,
-    domain: ["80+", "65-79", "50-64", "35-49", "18-34", "0-17" ]
+    domain: ["80+", "65-79", "50-64", "35-49", "18-34", "0-17"]
   },
-  color: { scheme: "dark2" },
+  color: {scheme: "dark2"},
   marks: [
     Plot.barX(data, {
       x: "population_percent",
@@ -42,18 +46,18 @@ Plot.plot({
       x: "cases_percent",
       y: "age",
       fill: "race",
-      sort: { fx: "x", reverse: true },
+      sort: {fx: "x", reverse: true},
       insetTop: 6,
       insetBottom: 6
     })
   ]
-})
+});
 ```
 
 ```js
-Inputs.table(data)
+Inputs.table(data);
 ```
 
 ```js echo
-data = FileAttachment("covid.csv").csv({ typed: true })
+const data = FileAttachment("covid.csv").csv({typed: true});
 ```

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Radial area chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Radial area chart
@@ -5,7 +10,7 @@
 This chart shows the daily average temperature range and recorded extremes at San Francisco International Airport from 1999–2018. This form is useful for showing cycles, such as seasonal weather. Data: [National Climatic Data Center](https://www.ncdc.noaa.gov/cdo-web/datatools/findstation)
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = width;
   const margin = 10;
@@ -112,18 +117,18 @@ chart = {
 ```
 
 ```js echo
-data = d3
+const data = d3
   .groups(
-    await FileAttachment("sfo-temperature.csv").csv({typed: true}), 
-    ({DATE}) => new Date(Date.UTC(2000, DATE.getUTCMonth(), DATE.getUTCDate())), // group by day of year
+    await FileAttachment("sfo-temperature.csv").csv({typed: true}),
+    ({DATE}) => new Date(Date.UTC(2000, DATE.getUTCMonth(), DATE.getUTCDate())) // group by day of year
   )
   .sort(([a], [b]) => d3.ascending(a, b)) // sort chronologically
   .map(([date, v]) => ({
     date,
-    avg: d3.mean(v, d => d.TAVG || NaN),
-    min: d3.mean(v, d => d.TMIN || NaN),
-    max: d3.mean(v, d => d.TMAX || NaN),
-    minmin: d3.min(v, d => d.TMIN || NaN),
-    maxmax: d3.max(v, d => d.TMAX || NaN)
-  }))
+    avg: d3.mean(v, (d) => d.TAVG || NaN),
+    min: d3.mean(v, (d) => d.TMIN || NaN),
+    max: d3.mean(v, (d) => d.TMAX || NaN),
+    minmin: d3.min(v, (d) => d.TMIN || NaN),
+    maxmax: d3.max(v, (d) => d.TMAX || NaN)
+  }));
 ```

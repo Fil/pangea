@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Hexbin map</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Hexbin map
@@ -14,21 +19,21 @@ Plot.plot({
     Plot.geo(nation),
     Plot.dot(walmarts, Plot.hexbin({r: "count", fill: "min"}, {x: "longitude", y: "latitude", fill: "date"}))
   ]
-})
+});
 ```
 
 ```js echo
-nation = topojson.feature(us, us.objects.nation)
+const nation = topojson.feature(us, us.objects.nation);
 ```
 
 ```js echo
-statemesh = topojson.feature(us, us.objects.states)
+const statemesh = topojson.feature(us, us.objects.states);
 ```
 
 ```js echo
-us = FileAttachment("us-counties-10m.json").json()
+const us = FileAttachment("us-counties-10m.json").json();
 ```
 
 ```js echo
-walmarts = FileAttachment("walmarts.tsv").tsv({typed: true})
+const walmarts = FileAttachment("walmarts.tsv").tsv({typed: true});
 ```

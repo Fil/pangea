@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Streamgraph</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Streamgraph
@@ -5,11 +10,11 @@
 This stacked area chart shows unemployed persons by industry, 2000–2010. Compare to a [zero-baseline stacked area](/@d3/stacked-area-chart/2?intent=fork) and [normalized stacked area](/@d3/normalized-stacked-area-chart/2?intent=fork). Data: [BLS](https://www.bls.gov/)
 
 ```js
-key = Swatches(chart.scales.color, {columns: "180px"})
+const key = Swatches(chart.scales.color, {columns: "180px"});
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 500;
@@ -89,11 +94,11 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("unemployment.csv").csv({typed: true})
+const data = FileAttachment("unemployment.csv").csv({typed: true});
 ```
 
 ```js echo
-import {Swatches} from "@d3/color-legend"
+import {Swatches} from "@d3/color-legend";
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with an [area mark](https://observablehq.com/plot/marks/area). See the [Plot: Wiggle streamgraph](https://observablehq.com/@observablehq/plot-stack-offset?intent=fork) example notebook.
@@ -104,7 +109,12 @@ Plot.plot({
   y: {grid: true},
   color: {legend: true, columns: 6},
   marks: [
-    Plot.areaY(data, {x: "date", y: "unemployed", fill: "industry", offset: "wiggle"})
+    Plot.areaY(data, {
+      x: "date",
+      y: "unemployed",
+      fill: "industry",
+      offset: "wiggle"
+    })
   ]
-})
+});
 ```

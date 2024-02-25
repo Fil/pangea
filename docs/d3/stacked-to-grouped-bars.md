@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Stacked-to-grouped bars</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Stacked-to-grouped bars
@@ -20,7 +25,7 @@ viewof layout = {
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   const width = 928;
   const height = 500;
@@ -107,23 +112,23 @@ chart = {
 ```
 
 ```js echo
-update = chart.update(layout)
+const update = chart.update(layout);
 ```
 
 ```js echo
-xz = d3.range(m) // the x-values shared by all series
+const xz = d3.range(m); // the x-values shared by all series
 ```
 
 ```js echo
-yz = d3.range(n).map(() => bumps(m)) // the y-values of each of the n series
+const yz = d3.range(n).map(() => bumps(m)); // the y-values of each of the n series
 ```
 
 ```js echo
-n = 5 // number of series
+const n = 5; // number of series
 ```
 
 ```js echo
-m = 58 // number of values per series
+const m = 58; // number of values per series
 ```
 
 ```js echo

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Pie chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Pie chart
@@ -5,7 +10,7 @@
 This chart shows the estimated population by age in the United States as of 2015. The total estimated population is ${d3.sum(data, d => d.value).toLocaleString("en-US")}. Compare to a [donut chart](/@d3/donut-chart/2?intent=fork). Data: [U.S. Census](https://www.census.gov/data.html)
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = Math.min(width, 500);
@@ -74,5 +79,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("population-by-age.csv").csv({typed: true})
+const data = FileAttachment("population-by-age.csv").csv({typed: true});
 ```

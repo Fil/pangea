@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Seattle temperature amplitude</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Seattle temperature amplitude
@@ -6,8 +11,8 @@ Shows the difference between daily high and low against the low, and highlights 
 
 ```js echo
 Plot.plot({
-  x: { label: "Daily low temperature (°F) →", nice: true },
-  y: { label: "↑ Daily temperature variation (Δ°F)", zero: true },
+  x: {label: "Daily low temperature (°F) →", nice: true},
+  y: {label: "↑ Daily temperature variation (Δ°F)", zero: true},
   aspectRatio: 1,
   color: {
     type: "cyclical",
@@ -21,7 +26,7 @@ Plot.plot({
       x: "temp_min",
       y: delta
     }),
-    Plot.dot(temps, Plot.selectMaxY({ x: "temp_min", y: delta, r: 5 })),
+    Plot.dot(temps, Plot.selectMaxY({x: "temp_min", y: delta, r: 5})),
     Plot.text(
       temps,
       Plot.selectMaxY({
@@ -33,13 +38,13 @@ Plot.plot({
       })
     )
   ]
-})
+});
 ```
 
 ```js echo
-delta = (d) => d.temp_max - d.temp_min
+const delta = (d) => d.temp_max - d.temp_min;
 ```
 
 ```js echo
-temps = FileAttachment("seattle-weather.csv").csv({ typed: true })
+const temps = FileAttachment("seattle-weather.csv").csv({typed: true});
 ```

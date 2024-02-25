@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Stacked area chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Stacked area chart
@@ -13,12 +18,17 @@ Plot.plot({
     label: "↑ Unemployed (thousands)"
   },
   marks: [
-    Plot.areaY(unemployment, {x: "date", y: "unemployed", fill: "industry", title: "industry"}),
+    Plot.areaY(unemployment, {
+      x: "date",
+      y: "unemployed",
+      fill: "industry",
+      title: "industry"
+    }),
     Plot.ruleY([0])
   ]
-})
+});
 ```
 
 ```js echo
-unemployment = FileAttachment("unemployment.csv").csv({typed: true})
+const unemployment = FileAttachment("unemployment.csv").csv({typed: true});
 ```

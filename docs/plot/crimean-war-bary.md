@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Crimean war casualties by cause (with barY)</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Crimean war casualties by cause
@@ -12,15 +17,12 @@ Plot.plot({
     label: null
   },
   y: {grid: true},
-  marks: [
-    Plot.barY(crimea, {x: "date", y: "deaths", fill: "cause"}),
-    Plot.ruleY([0])
-  ]
-})
+  marks: [Plot.barY(crimea, {x: "date", y: "deaths", fill: "cause"}), Plot.ruleY([0])]
+});
 ```
 
 ```js echo
-crimea = {
+const crimea = {
   const data = await FileAttachment("crimean-war.csv").csv({ typed: true });
   return data.columns.slice(2)
     .flatMap((cause) => data.map(({ date, [cause]: deaths }) => ({ date, cause, deaths })));

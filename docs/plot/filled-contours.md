@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Filled contours</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Filled contours
@@ -19,9 +24,9 @@ Plot.plot({
       stroke: "black"
     })
   ]
-})
+});
 ```
 
 ```js echo
-volcano = FileAttachment("volcano.json").json()
+const volcano = FileAttachment("volcano.json").json();
 ```

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Line chart, multiple series</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Line chart, multiple series
@@ -5,15 +10,15 @@
 This [line chart](/@d3/line-chart/2?intent=fork) shows the unemployment rate of various U.S. metro divisions from 2000 through 2013. On hover, the closest data point to the pointer and its associated series is highlighted. Data: [Bureau of Labor Statistics](https://www.bls.gov/)
 
 ```js
-viewof voronoi = Inputs.toggle({label: "Show voronoi"})
+const voronoi = view(Inputs.toggle({label: "Show voronoi"}));
 ```
 
 ```js echo
-focus = Generators.input(chart) // or say viewof focus = chart…
+const focus = Generators.input(chart); // or say viewof focus = chart…
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -137,5 +142,7 @@ chart = {
 ```
 
 ```js echo
-unemployment = FileAttachment("bls-metro-unemployment.csv").csv({typed: true})
+const unemployment = FileAttachment("bls-metro-unemployment.csv").csv({
+  typed: true
+});
 ```

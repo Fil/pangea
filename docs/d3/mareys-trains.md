@@ -1,7 +1,12 @@
+---
+index: false
+status: draft
+---
+
 ```js
 md`# Marey’s Trains
 
-A recreation of [E.J. Marey](https://en.wikipedia.org/wiki/Étienne-Jules_Marey)’s graphical train schedule. Stations are positioned to scale so that slope encodes speed. This display also reveals when and where <b style="color:${colors.L}">limited service trains</b> are passed by <b style="color:${colors.B}">baby bullets</b>. This type of plot is sometimes called a stringline chart.`
+A recreation of [E.J. Marey](https://en.wikipedia.org/wiki/Étienne-Jules_Marey)’s graphical train schedule. Stations are positioned to scale so that slope encodes speed. This display also reveals when and where <b style="color:${colors.L}">limited service trains</b> are passed by <b style="color:${colors.B}">baby bullets</b>. This type of plot is sometimes called a stringline chart.`;
 ```
 
 ```js
@@ -47,7 +52,7 @@ viewof direction = {
 ```
 
 ```js echo
-chart = {
+const chart = {
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height]);
 
@@ -85,155 +90,164 @@ chart = {
 ```
 
 ```js echo
-colors = ({
+const colors = {
   N: "rgb(34, 34, 34)",
   L: "rgb(183, 116, 9)",
   B: "rgb(192, 62, 29)",
   W: "currentColor",
   S: "currentColor"
-})
+};
 ```
 
 ```js echo
-line = d3.line()
-    .x(d => x(d.station.distance))
-    .y(d => y(d.time))
+const line = d3
+  .line()
+  .x((d) => x(d.station.distance))
+  .y((d) => y(d.time));
 ```
 
 ```js echo
-x = d3.scaleLinear()
-    .domain(d3.extent(stations, d => d.distance))
-    .range([margin.left + 10, width - margin.right])
+const x = d3
+  .scaleLinear()
+  .domain(d3.extent(stations, (d) => d.distance))
+  .range([margin.left + 10, width - margin.right]);
 ```
 
 ```js echo
-y = d3.scaleUtc()
-    .domain([parseTime("4:30AM"), parseTime("1:30AM")])
-    .range([margin.top, height - margin.bottom])
+const y = d3
+  .scaleUtc()
+  .domain([parseTime("4:30AM"), parseTime("1:30AM")])
+  .range([margin.top, height - margin.bottom]);
 ```
 
 ```js echo
-xAxis = g => g
+const xAxis = (g) =>
+  g
     .style("font", "10px sans-serif")
-  .selectAll("g")
-  .data(stations)
-  .join("g")
-    .attr("transform", d => `translate(${x(d.distance)},0)`)
-    .call(g => g.append("line")
+    .selectAll("g")
+    .data(stations)
+    .join("g")
+    .attr("transform", (d) => `translate(${x(d.distance)},0)`)
+    .call((g) =>
+      g
+        .append("line")
         .attr("y1", margin.top - 6)
         .attr("y2", margin.top)
-        .attr("stroke", "currentColor"))
-    .call(g => g.append("line")
+        .attr("stroke", "currentColor")
+    )
+    .call((g) =>
+      g
+        .append("line")
         .attr("y1", height - margin.bottom + 6)
         .attr("y2", height - margin.bottom)
-        .attr("stroke", "currentColor"))
-    .call(g => g.append("line")
+        .attr("stroke", "currentColor")
+    )
+    .call((g) =>
+      g
+        .append("line")
         .attr("y1", margin.top)
         .attr("y2", height - margin.bottom)
         .attr("stroke-opacity", 0.2)
         .attr("stroke-dasharray", "1.5,2")
-        .attr("stroke", "currentColor"))
-    .call(g => g.append("text")
+        .attr("stroke", "currentColor")
+    )
+    .call((g) =>
+      g
+        .append("text")
         .attr("transform", `translate(0,${margin.top}) rotate(-90)`)
         .attr("x", 12)
         .attr("dy", "0.35em")
-        .text(d => d.name))
-    .call(g => g.append("text")
+        .text((d) => d.name)
+    )
+    .call((g) =>
+      g
+        .append("text")
         .attr("text-anchor", "end")
         .attr("transform", `translate(0,${height - margin.top}) rotate(-90)`)
         .attr("x", -12)
         .attr("dy", "0.35em")
-        .text(d => d.name))
+        .text((d) => d.name)
+    );
 ```
 
 ```js echo
-yAxis = g => g
+const yAxis = (g) =>
+  g
     .attr("transform", `translate(${margin.left},0)`)
-    .call(d3.axisLeft(y)
-        .ticks(d3.utcHour)
-        .tickFormat(d3.utcFormat("%-I %p")))
-    .call(g => g.select(".domain").remove())
-    .call(g => g.selectAll(".tick line").clone().lower()
-        .attr("stroke-opacity", 0.2)
-        .attr("x2", width))
+    .call(d3.axisLeft(y).ticks(d3.utcHour).tickFormat(d3.utcFormat("%-I %p")))
+    .call((g) => g.select(".domain").remove())
+    .call((g) => g.selectAll(".tick line").clone().lower().attr("stroke-opacity", 0.2).attr("x2", width));
 ```
 
 ```js echo
-tooltip = g => {
+const tooltip = (g) => {
   const formatTime = d3.utcFormat("%-I:%M %p");
 
-  const tooltip = g.append("g")
-      .style("font", "10px sans-serif");
+  const tooltip = g.append("g").style("font", "10px sans-serif");
 
-  const path = tooltip.append("path")
-      .attr("fill", "white");
+  const path = tooltip.append("path").attr("fill", "white");
 
   const text = tooltip.append("text");
 
-  const line1 = text.append("tspan")
-      .attr("x", 0)
-      .attr("y", 0)
-      .style("font-weight", "bold");
+  const line1 = text.append("tspan").attr("x", 0).attr("y", 0).style("font-weight", "bold");
 
-  const line2 = text.append("tspan")
-      .attr("x", 0)
-      .attr("y", "1.1em");
+  const line2 = text.append("tspan").attr("x", 0).attr("y", "1.1em");
 
-  const line3 = text.append("tspan")
-      .attr("x", 0)
-      .attr("y", "2.2em");
+  const line3 = text.append("tspan").attr("x", 0).attr("y", "2.2em");
 
   g.append("g")
-      .attr("fill", "none")
-      .attr("pointer-events", "all")
+    .attr("fill", "none")
+    .attr("pointer-events", "all")
     .selectAll("path")
     .data(stops)
     .join("path")
-      .attr("d", (d, i) => voronoi.renderCell(i))
-      .on("mouseout", () => tooltip.style("display", "none"))
-      .on("mouseover", (event, d) => {
-        tooltip.style("display", null);
-        line1.text(`${d.train.number}${d.train.direction}`);
-        line2.text(d.stop.station.name);
-        line3.text(formatTime(d.stop.time));
-        path.attr("stroke", colors[d.train.type]);
-        const box = text.node().getBBox();
-        path.attr("d", `
+    .attr("d", (d, i) => voronoi.renderCell(i))
+    .on("mouseout", () => tooltip.style("display", "none"))
+    .on("mouseover", (event, d) => {
+      tooltip.style("display", null);
+      line1.text(`${d.train.number}${d.train.direction}`);
+      line2.text(d.stop.station.name);
+      line3.text(formatTime(d.stop.time));
+      path.attr("stroke", colors[d.train.type]);
+      const box = text.node().getBBox();
+      path.attr(
+        "d",
+        `
           M${box.x - 10},${box.y - 10}
           H${box.width / 2 - 5}l5,-5l5,5
           H${box.width + 10}
           v${box.height + 20}
           h-${box.width + 20}
           z
-        `);
-        tooltip.attr("transform", `translate(${
-          x(d.stop.station.distance) - box.width / 2},${
-          y(d.stop.time) + 28
-        })`);
-      });
-}
+        `
+      );
+      tooltip.attr("transform", `translate(${x(d.stop.station.distance) - box.width / 2},${y(d.stop.time) + 28})`);
+    });
+};
 ```
 
 ```js echo
-voronoi = d3.Delaunay
-  .from(stops, d => x(d.stop.station.distance), d => y(d.stop.time))
-  .voronoi([0, 0, width, height])
+const voronoi = d3.Delaunay.from(
+  stops,
+  (d) => x(d.stop.station.distance),
+  (d) => y(d.stop.time)
+).voronoi([0, 0, width, height]);
 ```
 
 ```js echo
-data = alldata.filter(d => days(d) && direction(d))
+const data = alldata.filter((d) => days(d) && direction(d));
 ```
 
 ```js echo
-stations = alldata.stations
+const stations = alldata.stations;
 ```
 
 ```js echo
-stops = d3.merge(data.map(d => d.stops.map(s => ({train: d, stop: s}))))
+const stops = d3.merge(data.map((d) => d.stops.map((s) => ({train: d, stop: s}))));
 ```
 
 ```js echo
-alldata = {
+const alldata = {
   const data = d3.tsvParse(await FileAttachment("schedule.tsv").text());
 
   // Extract the stations from the "stop|*" columns.
@@ -259,7 +273,7 @@ alldata = {
 ```
 
 ```js echo
-parseTime = {
+const parseTime = {
   const parseTime = d3.utcParse("%I:%M%p");
   return string => {
     const date = parseTime(string);
@@ -270,9 +284,9 @@ parseTime = {
 ```
 
 ```js echo
-height = 2400
+const height = 2400;
 ```
 
 ```js echo
-margin = ({top: 120, right: 30, bottom: 120, left: 50})
+const margin = {top: 120, right: 30, bottom: 120, left: 50};
 ```

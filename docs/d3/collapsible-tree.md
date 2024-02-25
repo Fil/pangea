@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Collapsible tree</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Collapsible tree
@@ -5,7 +10,7 @@
 Click a black node to expand or collapse [the tree](/@d3/tidy-tree).
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the charts’ dimensions. The height is variable, depending on the layout.
   const width = 928;
@@ -89,10 +94,10 @@ chart = {
         .attr("x", d => d._children ? -6 : 6)
         .attr("text-anchor", d => d._children ? "end" : "start")
         .text(d => d.data.name)
+      .clone(true).lower()
         .attr("stroke-linejoin", "round")
         .attr("stroke-width", 3)
-        .attr("stroke", "white")
-      .attr("paint-order", "stroke");
+        .attr("stroke", "white");
 
     // Transition nodes to their new position.
     const nodeUpdate = node.merge(nodeEnter).transition(transition)
@@ -145,14 +150,14 @@ chart = {
     if (d.depth && d.data.name.length !== 7) d.children = null;
   });
 
-  update(null, root);
+ update(null, root);
 
   return svg.node();
 }
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```
 
 Alternatively, create a [tidy tree](https://observablehq.com/@observablehq/plot-tree-tidy-json?intent=fork) in a few lines of code with [Observable Plot](/plot/)’s tree mark.

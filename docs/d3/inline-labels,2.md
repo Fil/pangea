@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Inline labels</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Inline labels
 
-This [multi-line chart](/@d3/multi-line-chart) places a label at each data point to show the value in lieu of a *y*-axis. Inspired by [Ann K. Emery’s Excel tutorial](https://depictdatastudio.com/how-to-place-labels-directly-through-your-line-graph-in-microsoft-excel/).
+This [multi-line chart](/@d3/multi-line-chart) places a label at each data point to show the value in lieu of a _y_-axis. Inspired by [Ann K. Emery’s Excel tutorial](https://depictdatastudio.com/how-to-place-labels-directly-through-your-line-graph-in-microsoft-excel/).
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 500;
@@ -79,7 +84,7 @@ chart = {
 ```
 
 ```js echo
-fruit = {
+const fruit = {
   const data = await FileAttachment("fruit.csv").csv({typed: true});
   return data.flatMap(d => data.columns.slice(1).map(fruit => ({date: d.date, fruit, value: d[fruit]})));
 }
@@ -93,8 +98,26 @@ Plot.plot({
   y: {domain: [30, 200], axis: null},
   marks: [
     Plot.line(fruit, {x: "date", y: "value", stroke: "fruit"}),
-    Plot.text(fruit, {x: "date", y: "value", text: "value", fill: "currentColor", stroke: "white", strokeWidth: 8}),
-    Plot.text(fruit, Plot.selectLast({x: "date", y: "value", text: "fruit", z: "fruit", textAnchor: "start", dx: 12, fontWeight: "bold"})) 
+    Plot.text(fruit, {
+      x: "date",
+      y: "value",
+      text: "value",
+      fill: "currentColor",
+      stroke: "white",
+      strokeWidth: 8
+    }),
+    Plot.text(
+      fruit,
+      Plot.selectLast({
+        x: "date",
+        y: "value",
+        text: "fruit",
+        z: "fruit",
+        textAnchor: "start",
+        dx: 12,
+        fontWeight: "bold"
+      })
+    )
   ]
-})
+});
 ```

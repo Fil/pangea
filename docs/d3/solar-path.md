@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 # Solar path
 
 This chart shows how the Sun’s path varies throughout the year for the given location. The outer black circle represents the horizon; outside this circle, the Sun is below the horizon. The radiating lines represent [azimuth](https://en.wikipedia.org/wiki/Horizontal_coordinate_system); for example, 0° azimuth means that the Sun is due North.
@@ -36,7 +41,7 @@ viewof date = Scrubber(d3.utcDays(new Date(Date.UTC(2019, 0, 1)), new Date(Date.
 ```
 
 ```js
-chart = {
+const chart = {
   const width = 960 + 28;
   const height = width;
   const cx = width / 2;
@@ -150,13 +155,13 @@ chart = {
 ```
 
 ```js echo
-update = chart.update(date)
+const update = chart.update(date);
 ```
 
 ```js echo
-solar = (await require("solar-calculator@0.2"))(location)
+const solar = (await require("solar-calculator@0.2"))(location);
 ```
 
 ```js echo
-import {Scrubber} from "@mbostock/scrubber"
+import {Scrubber} from "../components/scrubber.js";
 ```

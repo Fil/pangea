@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Barcode chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Barcode chart
@@ -17,19 +22,16 @@ Plot.plot({
     label: "↑ Age (years)",
     labelAnchor: "top"
   },
-  marks: [
-    Plot.ruleX([0]),
-    Plot.tickX(stateage, Plot.normalizeX("sum", {z: "state", x: "population", y: "age"}))
-  ]
-})
+  marks: [Plot.ruleX([0]), Plot.tickX(stateage, Plot.normalizeX("sum", {z: "state", x: "population", y: "age"}))]
+});
 ```
 
 ```js echo
-wide = FileAttachment("us-population-state-age.csv").csv({ typed: true })
+const wide = FileAttachment("us-population-state-age.csv").csv({typed: true});
 ```
 
 ```js echo
-stateage = {
+const stateage = {
   const ages = wide.columns.slice(1);
   const values = wide.flatMap(({name, ...values}) => ages.map((age) => ({state: name, age, population: values[age]})));
   values.ages = ages;

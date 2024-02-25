@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Shockwave</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Shockwave
@@ -19,19 +24,22 @@ Plot.plot({
   marks: [
     Plot.geo(land),
     Plot.geo([0.5, 179.5].concat(d3.range(10, 171, 10)), {
-      geometry: d3.geoCircle().center([-175.38, -20.57]).radius((r) => r),
+      geometry: d3
+        .geoCircle()
+        .center([-175.38, -20.57])
+        .radius((r) => r),
       stroke: (r) => r,
       strokeWidth: 2
     }),
     Plot.sphere()
   ]
-})
+});
 ```
 
 ```js echo
-world = FileAttachment("countries-110m.json").json()
+const world = FileAttachment("countries-110m.json").json();
 ```
 
 ```js echo
-land = topojson.feature(world, world.objects.land)
+const land = topojson.feature(world, world.objects.land);
 ```

@@ -1,15 +1,20 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Temporal force-directed graph</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Temporal force-directed graph
 
-This notebook visualizes a temporal network which [changes over time](/@d3/modifying-a-force-directed-graph). Each node and link has a *start* and *end* specifying its existence. The data here represents face-to-face interactions at a two-day conference. Data: [SocioPatterns](/@d3/sfhh-conference-data)
+This notebook visualizes a temporal network which [changes over time](/@d3/modifying-a-force-directed-graph). Each node and link has a _start_ and _end_ specifying its existence. The data here represents face-to-face interactions at a two-day conference. Data: [SocioPatterns](/@d3/sfhh-conference-data)
 
 ```js
 viewof time = Scrubber(times, {
-  delay: 100, 
+  delay: 100,
   loop: true,
   format: date => date.toLocaleString("en", {
-    month: "long", 
+    month: "long",
     day: "numeric",
     hour: "numeric",
     minute: "numeric",
@@ -19,7 +24,7 @@ viewof time = Scrubber(times, {
 ```
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 680;
 
@@ -88,7 +93,7 @@ chart = {
 ```
 
 ```js echo
-update = {
+const update = {
   const nodes = data.nodes.filter(d => contains(d, time));
   const links = data.links.filter(d => contains(d, time));
   chart.update({nodes, links});
@@ -96,7 +101,7 @@ update = {
 ```
 
 ```js echo
-data = {
+const data = {
   const {nodes, links} = await FileAttachment("sfhh@4.json").json();
   for (const d of [...nodes, ...links]) {
     d.start = d3.isoParse(d.start);
@@ -107,43 +112,40 @@ data = {
 ```
 
 ```js echo
-times = d3.scaleTime()
-  .domain([d3.min(data.nodes, d => d.start), d3.max(data.nodes, d => d.end)])
+const times = d3
+  .scaleTime()
+  .domain([d3.min(data.nodes, (d) => d.start), d3.max(data.nodes, (d) => d.end)])
   .ticks(1000)
-  .filter(time => data.nodes.some(d => contains(d, time)))
+  .filter((time) => data.nodes.some((d) => contains(d, time)));
 ```
 
 ```js echo
-contains = ({start, end}, time) => start <= time && time < end
+const contains = ({start, end}, time) => start <= time && time < end;
 ```
 
 ```js echo
-drag = simulation => {
-  
+const drag = (simulation) => {
   function dragstarted(event, d) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
   }
-  
+
   function dragged(event, d) {
     d.fx = event.x;
     d.fy = event.y;
   }
-  
+
   function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
   }
-  
-  return d3.drag()
-      .on("start", dragstarted)
-      .on("drag", dragged)
-      .on("end", dragended);
-}
+
+  return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
+};
 ```
 
 ```js echo
-import {Scrubber} from "@mbostock/scrubber"
+import {Scrubber} from "../components/scrubber.js";
 ```

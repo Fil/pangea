@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Spilhaus shoreline map</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Spilhaus shoreline map
@@ -5,7 +10,7 @@
 Ref. [jasondavies.com/maps/spilhaus](https://jasondavies.com/maps/spilhaus/)
 
 ```js echo
-map = {
+const map = {
   const width = 928;
   const height = width;
 
@@ -39,7 +44,7 @@ map = {
   context.fillStyle = "#aaa";
   context.fill("evenodd");
   context.restore();
-  
+
   context.beginPath();
   path(d3.geoGraticule10());
   context.globalAlpha = 0.2;
@@ -51,9 +56,9 @@ map = {
 ```
 
 ```js echo
-world = FileAttachment("land-50m.json").json()
+const world = FileAttachment("land-50m.json").json();
 ```
 
 ```js echo
-d3 = require("d3-geo@1")
+const d3 = require("d3-geo@1");
 ```

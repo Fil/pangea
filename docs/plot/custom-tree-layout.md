@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Indented tree diagram</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Indented tree diagram
@@ -20,7 +25,7 @@ Plot.plot({
     curve: "step-before",
     textStroke: "none"
   })
-})
+});
 ```
 
 ```js echo

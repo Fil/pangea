@@ -1,6 +1,12 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Color Schemes</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Color Schemes
+
 ## Including Every ColorBrewer Scale
 
 Click any [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic) scheme below to copy it to the clipboard.
@@ -13,229 +19,245 @@ viewof n = Inputs.select(new Map([
 ```
 
 ```js
-sequential = md`## Sequential (Single-Hue)`
+const sequential = md`
+## Sequential (Single-Hue)
+`;
 ```
 
 ```js
-Blues = ramp("Blues")
+const Blues = ramp("Blues");
 ```
 
 ```js
-Greens = ramp("Greens")
+const Greens = ramp("Greens");
 ```
 
 ```js
-Greys = ramp("Greys")
+const Greys = ramp("Greys");
 ```
 
 ```js
-Oranges = ramp("Oranges")
+const Oranges = ramp("Oranges");
 ```
 
 ```js
-Purples = ramp("Purples")
+const Purples = ramp("Purples");
 ```
 
 ```js
-Reds = ramp("Reds")
+const Reds = ramp("Reds");
 ```
 
 ```js
-md`## Sequential (Multi-Hue)`
+md`
+## Sequential (Multi-Hue)
+`;
 ```
 
 ```js
-BuGn = ramp("BuGn")
+const BuGn = ramp("BuGn");
 ```
 
 ```js
-BuPu = ramp("BuPu")
+const BuPu = ramp("BuPu");
 ```
 
 ```js
-GnBu = ramp("GnBu")
+const GnBu = ramp("GnBu");
 ```
 
 ```js
-OrRd = ramp("OrRd")
+const OrRd = ramp("OrRd");
 ```
 
 ```js
-PuBuGn = ramp("PuBuGn")
+const PuBuGn = ramp("PuBuGn");
 ```
 
 ```js
-PuBu = ramp("PuBu")
+const PuBu = ramp("PuBu");
 ```
 
 ```js
-PuRd = ramp("PuRd")
+const PuRd = ramp("PuRd");
 ```
 
 ```js
-RdPu = ramp("RdPu")
+const RdPu = ramp("RdPu");
 ```
 
 ```js
-YlGnBu = ramp("YlGnBu")
+const YlGnBu = ramp("YlGnBu");
 ```
 
 ```js
-YlGn = ramp("YlGn")
+const YlGn = ramp("YlGn");
 ```
 
 ```js
-YlOrBr = ramp("YlOrBr")
+const YlOrBr = ramp("YlOrBr");
 ```
 
 ```js
-YlOrRd = ramp("YlOrRd")
+const YlOrRd = ramp("YlOrRd");
 ```
 
 ```js
-Cividis = ramp("Cividis")
+const Cividis = ramp("Cividis");
 ```
 
 ```js
-Viridis = ramp("Viridis")
+const Viridis = ramp("Viridis");
 ```
 
 ```js
-Inferno = ramp("Inferno")
+const Inferno = ramp("Inferno");
 ```
 
 ```js
-Magma = ramp("Magma")
+const Magma = ramp("Magma");
 ```
 
 ```js
-Plasma = ramp("Plasma")
+const Plasma = ramp("Plasma");
 ```
 
 ```js
-Warm = ramp("Warm")
+const Warm = ramp("Warm");
 ```
 
 ```js
-Cool = ramp("Cool")
+const Cool = ramp("Cool");
 ```
 
 ```js
-CubehelixDefault = ramp("CubehelixDefault")
+const CubehelixDefault = ramp("CubehelixDefault");
 ```
 
 ```js
-Turbo = ramp("Turbo")
+const Turbo = ramp("Turbo");
 ```
 
 ```js
-diverging = md`## Diverging`
+const diverging = md`
+## Diverging
+`;
 ```
 
 ```js
-BrBG = ramp("BrBG")
+const BrBG = ramp("BrBG");
 ```
 
 ```js
-PRGn = ramp("PRGn")
+const PRGn = ramp("PRGn");
 ```
 
 ```js
-PiYG = ramp("PiYG")
+const PiYG = ramp("PiYG");
 ```
 
 ```js
-PuOr = ramp("PuOr")
+const PuOr = ramp("PuOr");
 ```
 
 ```js
-RdBu = ramp("RdBu")
+const RdBu = ramp("RdBu");
 ```
 
 ```js
-RdGy = ramp("RdGy")
+const RdGy = ramp("RdGy");
 ```
 
 ```js
-RdYlBu = ramp("RdYlBu")
+const RdYlBu = ramp("RdYlBu");
 ```
 
 ```js
-RdYlGn = ramp("RdYlGn")
+const RdYlGn = ramp("RdYlGn");
 ```
 
 ```js
-Spectral = ramp("Spectral")
+const Spectral = ramp("Spectral");
 ```
 
 ```js
-cyclical = md`## Cyclical`
+const cyclical = md`
+## Cyclical
+`;
 ```
 
 ```js
-Rainbow = ramp("Rainbow")
+const Rainbow = ramp("Rainbow");
 ```
 
 ```js
-Sinebow = ramp("Sinebow")
+const Sinebow = ramp("Sinebow");
 ```
 
 ```js
-md`## Categorical`
+md`
+## Categorical
+`;
 ```
 
 ```js
-Category10 = swatches("Category10")
+const Category10 = swatches("Category10");
 ```
 
 ```js
-Accent = swatches("Accent")
+const Accent = swatches("Accent");
 ```
 
 ```js
-Dark2 = swatches("Dark2")
+const Dark2 = swatches("Dark2");
 ```
 
 ```js
-Paired = swatches("Paired")
+const Paired = swatches("Paired");
 ```
 
 ```js
-Pastel1 = swatches("Pastel1")
+const Pastel1 = swatches("Pastel1");
 ```
 
 ```js
-Pastel2 = swatches("Pastel2")
+const Pastel2 = swatches("Pastel2");
 ```
 
 ```js
-Set1 = swatches("Set1")
+const Set1 = swatches("Set1");
 ```
 
 ```js
-Set2 = swatches("Set2")
+const Set2 = swatches("Set2");
 ```
 
 ```js
-Set3 = swatches("Set3")
+const Set3 = swatches("Set3");
 ```
 
 ```js
-Tableau10 = swatches("Tableau10")
+const Tableau10 = swatches("Tableau10");
 ```
 
 ```js
-md`---
+md`
+---
 
-## Appendix`
+## Appendix
+`;
 ```
 
 ```js echo
 function swatches(name) {
   const colors = d3[`scheme${name}`];
   const n = colors.length;
-  const dark = d3.lab(colors[0]).l < 50;;
-  const canvas = svg`<svg viewBox="0 0 ${n} 1" style="display:block;width:${n * 33}px;height:33px;margin:0 -14px;cursor:pointer;">${colors.map((c, i) => svg`<rect x=${i} width=1 height=1 fill=${c}>`)}`;
+  const dark = d3.lab(colors[0]).l < 50;
+  const canvas = svg`<svg viewBox="0 0 ${n} 1" style="display:block;width:${
+    n * 33
+  }px;height:33px;margin:0 -14px;cursor:pointer;">${colors.map(
+    (c, i) => svg`<rect x=${i} width=1 height=1 fill=${c}>`
+  )}`;
   const label = document.createElement("DIV");
   label.textContent = name;
   label.style.position = "absolute";
@@ -244,7 +266,7 @@ function swatches(name) {
   canvas.onclick = () => {
     label.textContent = "Copied!";
     navigator.clipboard.writeText(JSON.stringify(colors));
-    setTimeout(() => label.textContent = name, 2000);
+    setTimeout(() => (label.textContent = name), 2000);
   };
   return html`${canvas}${label}`;
 }
@@ -267,7 +289,9 @@ function ramp(name) {
     }
   }
   if (n < 128) {
-    canvas = htl.svg`<svg viewBox="0 0 ${n} 1" style="display:block;shape-rendering:crispEdges;width:calc(100% + 28px);height:33px;margin:0 -14px;cursor:pointer;" preserveAspectRatio="none">${colors.map((c, i) => htl.svg`<rect x=${i} width=1 height=1 fill=${c}>`)}`;
+    canvas = htl.svg`<svg viewBox="0 0 ${n} 1" style="display:block;shape-rendering:crispEdges;width:calc(100% + 28px);height:33px;margin:0 -14px;cursor:pointer;" preserveAspectRatio="none">${colors.map(
+      (c, i) => htl.svg`<rect x=${i} width=1 height=1 fill=${c}>`
+    )}`;
   } else {
     canvas = document.createElement("canvas");
     canvas.width = n;
@@ -290,7 +314,7 @@ function ramp(name) {
   canvas.onclick = () => {
     label.textContent = "Copied!";
     navigator.clipboard.writeText(JSON.stringify(colors));
-    setTimeout(() => label.textContent = name, 2000);
+    setTimeout(() => (label.textContent = name), 2000);
   };
   return html`${canvas}${label}`;
 }

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Directed chord diagram</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Directed chord diagram
@@ -5,7 +10,7 @@
 This chord diagram, inspired by Bill Marsh’s [overview of the 2011 Euro crisis](http://archive.nytimes.com/www.nytimes.com/interactive/2011/10/23/sunday-review/an-overview-of-the-euro-crisis.html), visualizes debts between countries.
 
 ```js echo
-chart = {
+const chart = {
   const width = 1080;
   const height = width;
   const innerRadius = Math.min(width, height) * 0.5 - 20;
@@ -87,5 +92,5 @@ is owed ${formatValue(d3.sum(matrix, row => row[d.index]))}`);
 ```
 
 ```js echo
-data = FileAttachment("debt.csv").csv({typed: true})
+const data = FileAttachment("debt.csv").csv({typed: true});
 ```

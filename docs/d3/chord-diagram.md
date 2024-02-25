@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Chord diagram</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Chord diagram
@@ -5,7 +10,7 @@
 The outer arcs in this [chord diagram](https://d3js.org/d3-chord) show the proportion of survey respondents owning a particular brand of phone, while the inner chords show the brand of these individuals’ previous phone. Hence, this chart shows how the consumers shift between brands. Data via [Nadieh Bremer](https://www.visualcinnamon.com/2014/12/using-data-storytelling-with-chord.html).
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = width;
   const {names, colors} = data;
@@ -92,24 +97,27 @@ chart = {
 ```js echo
 function groupTicks(d, step) {
   const k = (d.endAngle - d.startAngle) / d.value;
-  return d3.range(0, d.value, step).map(value => {
+  return d3.range(0, d.value, step).map((value) => {
     return {value: value, angle: value * k + d.startAngle};
   });
 }
 ```
 
 ```js echo
-data = Object.assign([
-  [.096899, .008859, .000554, .004430, .025471, .024363, .005537, .025471],
-  [.001107, .018272, .000000, .004983, .011074, .010520, .002215, .004983],
-  [.000554, .002769, .002215, .002215, .003876, .008306, .000554, .003322],
-  [.000554, .001107, .000554, .012182, .011628, .006645, .004983, .010520],
-  [.002215, .004430, .000000, .002769, .104097, .012182, .004983, .028239],
-  [.011628, .026024, .000000, .013843, .087486, .168328, .017165, .055925],
-  [.000554, .004983, .000000, .003322, .004430, .008859, .017719, .004430],
-  [.002215, .007198, .000000, .003322, .016611, .014950, .001107, .054264]
-], {
-  names: ["Apple", "HTC", "Huawei", "LG", "Nokia", "Samsung", "Sony", "Other"],
-  colors: ["#c4c4c4", "#69b40f", "#ec1d25", "#c8125c", "#008fc8", "#10218b", "#134b24", "#737373"]
-})
+const data = Object.assign(
+  [
+    [0.096899, 0.008859, 0.000554, 0.00443, 0.025471, 0.024363, 0.005537, 0.025471],
+    [0.001107, 0.018272, 0.0, 0.004983, 0.011074, 0.01052, 0.002215, 0.004983],
+    [0.000554, 0.002769, 0.002215, 0.002215, 0.003876, 0.008306, 0.000554, 0.003322],
+    [0.000554, 0.001107, 0.000554, 0.012182, 0.011628, 0.006645, 0.004983, 0.01052],
+    [0.002215, 0.00443, 0.0, 0.002769, 0.104097, 0.012182, 0.004983, 0.028239],
+    [0.011628, 0.026024, 0.0, 0.013843, 0.087486, 0.168328, 0.017165, 0.055925],
+    [0.000554, 0.004983, 0.0, 0.003322, 0.00443, 0.008859, 0.017719, 0.00443],
+    [0.002215, 0.007198, 0.0, 0.003322, 0.016611, 0.01495, 0.001107, 0.054264]
+  ],
+  {
+    names: ["Apple", "HTC", "Huawei", "LG", "Nokia", "Samsung", "Sony", "Other"],
+    colors: ["#c4c4c4", "#69b40f", "#ec1d25", "#c8125c", "#008fc8", "#10218b", "#134b24", "#737373"]
+  }
+);
 ```

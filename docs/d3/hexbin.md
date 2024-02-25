@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Hexbin</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Hexbin
@@ -5,11 +10,11 @@
 A demonstration of [d3-hexbin](https://github.com/d3/d3-hexbin) with a color encoding; compare to [area](/@d3/hexbin-area).
 
 ```js
-viewof radius = Inputs.range([2, 20], {step: 1, value: 8, label: "radius"})
+const radius = view(Inputs.range([2, 20], {step: 1, value: 8, label: "radius"}));
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -40,7 +45,7 @@ chart = {
   // Create the color scale.
   const color = d3.scaleSequential(d3.interpolateBuPu)
     .domain([0, d3.max(bins, d => d.length) / 2]);
-  
+
   // Create the container SVG.
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height]);
@@ -87,11 +92,11 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("diamonds.csv").csv({typed: true})
+const data = FileAttachment("diamonds.csv").csv({typed: true});
 ```
 
 ```js echo
-d3 = require("d3@7", "d3-hexbin@0.2")
+const d3 = require("d3@7", "d3-hexbin@0.2");
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -101,8 +106,8 @@ Plot.plot({
   width: 928,
   height: 928,
   inset: 10,
-  x: { type: "log" },
-  y: { type: "log" },
+  x: {type: "log"},
+  y: {type: "log"},
   color: {scheme: "BuPu", range: [0, 2]},
   marks: [
     Plot.hexagon(
@@ -120,5 +125,5 @@ Plot.plot({
       )
     )
   ]
-})
+});
 ```

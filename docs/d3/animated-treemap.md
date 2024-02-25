@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Animated treemap</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Animated treemap
@@ -13,7 +18,7 @@ viewof index = Scrubber(d3.range(data.keys.length), {
 ```
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = width;
 
@@ -23,7 +28,7 @@ chart = {
 
   // To allow the transition to be interrupted and resumed, we parse
   // the displayed text (the state population) to get the current
-  // value at the start of each transition; parseNumber and 
+  // value at the start of each transition; parseNumber and
   // formatNumber must be symmetric.
   const parseNumber = string => +string.replace(/,/g, "");
   const formatNumber = d3.format(",d");
@@ -158,11 +163,11 @@ chart = {
 ```
 
 ```js echo
-update = chart.update(index, 2500) // trigger animation from the scrubber
+const update = chart.update(index, 2500); // trigger animation from the scrubber
 ```
 
 ```js echo
-data = {
+const data = {
   const keys = d3.range(1790, 2000, 10);
   const [regions, states] = await Promise.all([
     FileAttachment("census-regions.csv").csv(), // for grouping states hierarchically
@@ -181,5 +186,5 @@ data = {
 ```
 
 ```js echo
-import {Scrubber} from "@mbostock/scrubber"
+import {Scrubber} from "../components/scrubber.js";
 ```

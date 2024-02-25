@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Index chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Index chart
@@ -5,7 +10,9 @@
 This chart shows the weekly price of several technology stocks from 2013 to 2018 relative to each stock’s price on the highlighted date. Hover over the chart to change the date for comparison. Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```html
-<div style="display: flex; min-height: 33px; font: 12px sans-serif; align-items: center;">${value.toLocaleString("en", {timeZone: "UTC", month: "long", day: "numeric", year: "numeric"})}</div>
+<div style="display: flex; min-height: 33px; font: 12px sans-serif; align-items: center;">
+  ${value.toLocaleString("en", {timeZone: "UTC", month: "long", day: "numeric", year: "numeric"})}
+</div>
 ```
 
 ```js echo
@@ -69,7 +76,7 @@ viewof value = {
           .attr("stroke-opacity", d => d === 1 ? null : 0.2)
           .attr("x2", width - marginLeft - marginRight))
       .call(g => g.select(".domain").remove());
-  
+
   const rule = svg.append("g")
     .append("line")
       .attr("y1", height)
@@ -139,7 +146,7 @@ viewof value = {
   // Sets the date to the start of the x axis. This is redundant with the transition above;
   // uncomment if you want to remove the transition.
   // update(x.domain()[0]);
-  
+
   return svg.node();
 }
 ```
@@ -147,13 +154,25 @@ viewof value = {
 The cell below merges five CSV files, adding the symbol for each stock as the first column for each row.
 
 ```js echo
-stocks = (await Promise.all([
-  FileAttachment("AAPL.csv").csv({typed: true}).then((values) => ["AAPL", values]),
-  FileAttachment("AMZN.csv").csv({typed: true}).then((values) => ["AMZN", values]),
-  FileAttachment("GOOG.csv").csv({typed: true}).then((values) => ["GOOG", values]),
-  FileAttachment("IBM.csv").csv({typed: true}).then((values) => ["IBM", values]),
-  FileAttachment("MSFT.csv").csv({typed: true}).then((values) => ["MSFT", values]),
-])).flatMap(([Symbol, values]) => values.map(d => ({Symbol, ...d})))
+const stocks = (
+  await Promise.all([
+    FileAttachment("AAPL.csv")
+      .csv({typed: true})
+      .then((values) => ["AAPL", values]),
+    FileAttachment("AMZN.csv")
+      .csv({typed: true})
+      .then((values) => ["AMZN", values]),
+    FileAttachment("GOOG.csv")
+      .csv({typed: true})
+      .then((values) => ["GOOG", values]),
+    FileAttachment("IBM.csv")
+      .csv({typed: true})
+      .then((values) => ["IBM", values]),
+    FileAttachment("MSFT.csv")
+      .csv({typed: true})
+      .then((values) => ["MSFT", values])
+  ])
+).flatMap(([Symbol, values]) => values.map((d) => ({Symbol, ...d})));
 ```
 
 This representation can alternatively be produced using [Observable Plot](/plot/)’s concise API and built-in [normalize transform](/plot/transforms/normalize) (see an [interactive example](/@observablehq/plot-index-chart)):
@@ -164,11 +183,11 @@ Plot.plot({
     type: "log",
     grid: true,
     label: "Change in price (%)",
-    tickFormat: ((f) => (x) => f((x - 1) * 100))(d3.format("+d"))
+    tickFormat: (
+      (f) => (x) =>
+        f((x - 1) * 100)
+    )(d3.format("+d"))
   },
-  marks: [
-    Plot.ruleY([1]),
-    Plot.lineY(stocks, Plot.normalizeY({x: "Date", y: "Close", stroke: "Symbol"}))
-  ]
-})
+  marks: [Plot.ruleY([1]), Plot.lineY(stocks, Plot.normalizeY({x: "Date", y: "Close", stroke: "Symbol"}))]
+});
 ```

@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Styled axes</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Styled axes
 
-You can customize the appearance of axes using *post-selection*: after rendering the axis, re-select and modify its elements.
+You can customize the appearance of axes using _post-selection_: after rendering the axis, re-select and modify its elements.
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 500;
   const marginTop = 20;
@@ -23,7 +28,7 @@ chart = {
 
   // The format function for y-axis tick labels first converts the given
   // value to millions (dividing by 1e6 = 1,000,000), then converts to
-  // fixed-point notation with a single decimal digit. By testing 
+  // fixed-point notation with a single decimal digit. By testing
   // this.parentNode.nextSibling, the function can special-case the topmost
   // tick label to give the units; the remaining ticks have a preceding non-
   // breaking space (\xa0) so that the numbers align with the dollar sign.
@@ -38,9 +43,9 @@ chart = {
       .attr("viewBox", [0, 0, width, height])
       .attr("style", "max-width: 100%; height: auto;");
 
-  // The x-axis domain path is removed, since it will overlap with the y 
+  // The x-axis domain path is removed, since it will overlap with the y
   // = 0 tick line. The x axis is translated vertically to place it at the
-  // bottom of the chart area. We’re also using a fancy time format that 
+  // bottom of the chart area. We’re also using a fancy time format that
   // shows ticks for every three months, but only labels the years.
   svg.append("g")
       .attr("transform", `translate(0,${height - marginBottom})`)

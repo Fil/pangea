@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Non-contiguous cartogram</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Non-contiguous cartogram
@@ -17,11 +22,15 @@ viewof year = {
 ```
 
 ```js
-legend({color: chart.scales.color, title: "Adult obesity (self-reported)", tickFormat: "%"})
+legend({
+  color: chart.scales.color,
+  title: "Adult obesity (self-reported)",
+  tickFormat: "%"
+});
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions. In this case we use the bounding box of the projected
   // US-Atlas, see https://github.com/topojson/us-atlas
@@ -49,7 +58,7 @@ chart = {
       .attr("stroke", "#ccc")
       .attr("d", path);
 
-  
+
   function transform(d, year) {
     const [x, y] = path.centroid(d);
     return `
@@ -90,17 +99,22 @@ ${format(data.get(d.id)[1])} in 2018`);
 ```
 
 ```js echo
-chart.update(year)
+chart.update(year);
 ```
 
 ```js echo
-data = new Map((await FileAttachment("obesity-2008-2018.csv").csv()).map(({id, obesity2008, obesity2018}) => [id, [+obesity2008, +obesity2018]]))
+const data = new Map(
+  (await FileAttachment("obesity-2008-2018.csv").csv()).map(({id, obesity2008, obesity2018}) => [
+    id,
+    [+obesity2008, +obesity2018]
+  ])
+);
 ```
 
 ```js echo
-us = FileAttachment("states-albers-10m.json").json()
+const us = FileAttachment("states-albers-10m.json").json();
 ```
 
 ```js echo
-import {legend} from "@d3/color-legend"
+import {legend} from "@d3/color-legend";
 ```

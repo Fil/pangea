@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Inequality in American cities</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Inequality in American cities
@@ -5,7 +10,7 @@
 Based on a graphic by [Emily Badger and Kevin Quealy](https://www.nytimes.com/2019/12/02/upshot/wealth-poverty-divide-american-cities.html), this chart shows the change from 1980 to 2015 of the ratio of 90th-percentile wages to 10th-percentile wages, along with population, in 195 metro areas. I prefer the static display to [animation](/@mbostock/inequality-in-american-cities/2).
 
 ```js
-legend = {
+const legend = {
   const arrowId = DOM.uid("arrow");
   const gradientId = DOM.uid("gradient");
   return svg`<svg width="180" height="33" style="display: block; font: 10px sans-serif;">
@@ -27,7 +32,7 @@ legend = {
 ```
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 640;
   const marginTop = 24;
@@ -167,15 +172,15 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("metros.csv").csv({typed: true})
+const data = FileAttachment("metros.csv").csv({typed: true});
 ```
 
 ```js echo
-endColor = d3.schemeCategory10[3]
+const endColor = d3.schemeCategory10[3];
 ```
 
 ```js echo
-startColor = d3.schemeCategory10[1]
+const startColor = d3.schemeCategory10[1];
 ```
 
 ```js echo

@@ -1,8 +1,13 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Brushable scatterplot</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Brushable scatterplot
 
-This chart shows the inverse relationship between engine power (*y*-axis) and fuel efficiency (*x*-axis) in ${data.length} cars from 1970–1982. Brushing this scatterplot will show the selected data points.
+This chart shows the inverse relationship between engine power (_y_-axis) and fuel efficiency (_x_-axis) in ${data.length} cars from 1970–1982. Brushing this scatterplot will show the selected data points.
 
 ```js echo
 viewof selection = {
@@ -90,11 +95,11 @@ viewof selection = {
 ```
 
 ```js echo
-selection
+selection;
 ```
 
 ```js echo
-data = FileAttachment("cars-2.csv").csv({typed: true})
+const data = FileAttachment("cars-2.csv").csv({typed: true});
 ```
 
 Thanks to [John Alexis Guerra Gómez](/@john-guerra) for suggestions.

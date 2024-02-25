@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Moving average</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Moving average
@@ -5,11 +10,11 @@
 ${N}-day moving average of homicides per day. Data: [City of Chicago](https://data.cityofchicago.org/Public-Safety/Crimes-2001-to-present/ijzp-q8t2)
 
 ```js
-viewof N = Inputs.range([1, 365], {step: 1, label: "Days (N)", value: 100})
+const N = view(Inputs.range([1, 365], {step: 1, label: "Days (N)", value: 100}));
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 500;
@@ -48,7 +53,7 @@ chart = {
   svg.append("g")
       .attr("transform", `translate(0,${height - marginBottom})`)
       .call(d3.axisBottom(x).tickSizeOuter(0));
-  
+
   svg.append("g")
       .attr("transform", `translate(${marginLeft},0)`)
       .call(d3.axisLeft(y))
@@ -91,7 +96,7 @@ function movingAverage(values, N) {
 ```
 
 ```js echo
-dates = {
+const dates = {
   const parseDate = d3.timeParse("%m/%d/%Y %I:%M:%S %p");
   return FileAttachment("chicago-homicide-dates.csv").csv().then(data => data.map(({date}) => parseDate(date)))
 }
@@ -100,6 +105,8 @@ dates = {
 Or, create this chart with [Observable Plot](/plot/)’s concise API:
 
 ```js echo
-Plot.areaY(dates, Plot.windowY(N, Plot.binX({ y: "count" }, { x: Plot.identity, interval: "day", fill: "steelblue" })))
-  .plot({ y: { grid: true, label: null } })
+Plot.areaY(
+  dates,
+  Plot.windowY(N, Plot.binX({y: "count"}, {x: Plot.identity, interval: "day", fill: "steelblue"}))
+).plot({y: {grid: true, label: null}});
 ```

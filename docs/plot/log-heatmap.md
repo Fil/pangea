@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Log heatmap</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Log heatmap
@@ -25,5 +30,5 @@ Plot.plot({
     Plot.ruleY([0], {strokeOpacity: 0.2}),
     Plot.frame()
   ]
-})
+});
 ```

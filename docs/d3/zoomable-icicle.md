@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Zoomable icicle</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Zoomable icicle
@@ -5,7 +10,7 @@
 This variant of an [icicle diagram](/@d3/icicle/2?intent=fork) shows only three layers of the hierarchy at a time. Click a node to zoom in, or the left column to zoom out. Compare to a [sunburst](/@d3/zoomable-sunburst).
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 1200;
@@ -84,7 +89,7 @@ chart = {
     text.transition(t).attr("fill-opacity", d => +labelVisible(d.target));
     tspan.transition(t).attr("fill-opacity", d => labelVisible(d.target) * 0.7);
   }
-  
+
   function rectHeight(d) {
     return d.x1 - d.x0 - Math.min(1, (d.x1 - d.x0) / 2);
   }
@@ -92,11 +97,11 @@ chart = {
   function labelVisible(d) {
     return d.y1 <= width && d.y0 >= 0 && d.x1 - d.x0 > 16;
   }
-  
+
   return svg.node();
 }
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```

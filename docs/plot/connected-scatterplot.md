@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Connected scatterplot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Connected scatterplot
@@ -11,12 +16,23 @@ Plot.plot({
   x: {label: "Miles driven (per person-year) →"},
   y: {label: "↑ Cost of gasoline ($ per gallon)"},
   marks: [
-    Plot.line(driving, {x: "miles", y: "gas", curve: "catmull-rom", marker: true}),
-    Plot.text(driving, {filter: (d) => d.year % 5 === 0, x: "miles", y: "gas", text: (d) => `${d.year}`, dy: -8})
+    Plot.line(driving, {
+      x: "miles",
+      y: "gas",
+      curve: "catmull-rom",
+      marker: true
+    }),
+    Plot.text(driving, {
+      filter: (d) => d.year % 5 === 0,
+      x: "miles",
+      y: "gas",
+      text: (d) => `${d.year}`,
+      dy: -8
+    })
   ]
-})
+});
 ```
 
 ```js echo
-driving = FileAttachment("driving.csv").csv({typed: true})
+const driving = FileAttachment("driving.csv").csv({typed: true});
 ```

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Icelandic population by age, 1841–2019</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Icelandic population by age, 1841–2019
@@ -5,15 +10,26 @@
 <span style="text-decoration: underline #4e79a7 3px;">Blue</span> represents surplus male population and <span style="text-decoration: underline #e15759 3px;">red</span> surplus female population. Data: [Statistics Iceland](https://statice.is/about-statistics-iceland/) via [Borgar Þorsteinsson](https://blocks.roadtolarissa.com/borgar/b952bb581923c9993d68)
 
 ```js
-viewof year = Scrubber(Array.from(d3.group(data, d => d.year), ([key]) => key).sort(d3.ascending), {delay, loop: false})
+const year = view(
+  Scrubber(
+    Array.from(
+      d3.group(data, (d) => d.year),
+      ([key]) => key
+    ).sort(d3.ascending),
+    {delay, loop: false}
+  )
+);
 ```
 
 ```js
-legend = swatches({color: chart.scales.color, format: x => ({M: "Male", F: "Female"}[x])})
+const legend = swatches({
+  color: chart.scales.color,
+  format: (x) => ({M: "Male", F: "Female"}[x])
+});
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -22,7 +38,7 @@ chart = {
   const marginRight = 30;
   const marginBottom = 34;
   const marginLeft = 0;
-  
+
   const yearStep = 1;
   const yearMin = d3.min(data, d => d.year);
 
@@ -109,11 +125,11 @@ chart = {
 ```
 
 ```js echo
-chart.update(year)
+chart.update(year);
 ```
 
 ```js echo
-delay = 250 // controls both the speed of the scrubber and the transition’s duration
+const delay = 250; // controls both the speed of the scrubber and the transition’s duration
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create this bar chart with the [rect mark](https://observablehq.com/plot/marks/rect) and the [interval transform](https://observablehq.com/plot/transforms/interval). See [this variant](/@observablehq/plot-icelandic-population-by-age) for more details.
@@ -122,8 +138,15 @@ Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can 
 Plot.plot({
   width: 960,
   height: 500,
-  x: { reverse: true, line: true, transform: d => d - 0.45, tickSpacing: 30, label: "← Age", labelAnchor: "left" },
-  y: { label: "Population ↑", tickFormat: "s", axis: "right" },
+  x: {
+    reverse: true,
+    line: true,
+    transform: (d) => d - 0.45,
+    tickSpacing: 30,
+    label: "← Age",
+    labelAnchor: "left"
+  },
+  y: {label: "Population ↑", tickFormat: "s", axis: "right"},
   color: {
     legend: true,
     domain: ["M", "F"],
@@ -140,17 +163,17 @@ Plot.plot({
       mixBlendMode: "darken"
     })
   ]
-})
+});
 ```
 
 ```js echo
-data = FileAttachment("icelandic-population.csv").csv({typed: true})
+const data = FileAttachment("icelandic-population.csv").csv({typed: true});
 ```
 
 ```js echo
-import {Scrubber} from "@mbostock/scrubber"
+import {Scrubber} from "../components/scrubber.js";
 ```
 
 ```js echo
-import {swatches} from "@d3/color-legend"
+import {swatches} from "@d3/color-legend";
 ```

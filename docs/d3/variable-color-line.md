@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Variable-color line</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Variable-color line
 
-This line chart applies a gradient to color the line based on the *condition* field. For a related technique along the *y*-axis, see [gradient encoding](/@d3/gradient-encoding).
+This line chart applies a gradient to color the line based on the _condition_ field. For a related technique along the _y_-axis, see [gradient encoding](/@d3/gradient-encoding).
 
 ```js
-legend = {
+const legend = {
   const id = DOM.uid().id;
   return html`<style>
 
@@ -40,14 +45,14 @@ legend = {
 ```
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 500;
   const marginTop = 20;
   const marginRight = 20;
   const marginBottom = 30;
   const marginLeft = 40;
-  
+
   // Create the scales.
   const x = d3.scaleUtc()
       .domain(d3.extent(data, d => d.date))
@@ -134,18 +139,18 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("fcm.csv").csv({typed: true})
+const data = FileAttachment("fcm.csv").csv({typed: true});
 ```
 
 ```js echo
-conditions = new Map([
+const conditions = new Map([
   ["CLR", {label: "Clear", color: "deepskyblue"}],
   ["FEW", {label: "Few clouds", color: "lightskyblue"}],
   ["SCT", {label: "Scattered clouds", color: "lightblue"}],
   ["BKN", {label: "Broken clouds", color: "#aaaaaa"}],
   ["OVC", {label: "Overcast", color: "#666666"}],
   ["VV ", {label: "Indefinite ceiling (vertical visibility)", color: "#666666"}]
-])
+]);
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -163,7 +168,13 @@ Plot.plot({
   },
   y: {label: "Temperature (°F)"},
   marks: [
-    Plot.line(data, {x: "date", y: "temperature", z: null, stroke: "condition", curve: "step-before"})
+    Plot.line(data, {
+      x: "date",
+      y: "temperature",
+      z: null,
+      stroke: "condition",
+      curve: "step-before"
+    })
   ]
-})
+});
 ```

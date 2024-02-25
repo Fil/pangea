@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Stacked bar chart, normalized</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Stacked bar chart, normalized
@@ -5,11 +10,11 @@
 This [stacked bar chart](/@d3/stacked-horizontal-bar-chart/2) shows proportional population by age for each state using [d3.stackOffsetExpand](https://d3js.org/d3-shape/stack#stackOffsetExpand), allowing the comparison of demographic distributions. Data: [American Community Survey](/@mbostock/working-with-the-census-api)
 
 ```js
-key = legend({color: chart.scales.color, title: "Age (years)"})
+const key = legend({color: chart.scales.color, title: "Age (years)"});
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions (except for the height).
   const width = 928;
   const marginTop = 30;
@@ -86,30 +91,30 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   const data = await FileAttachment("us-population-state-age.csv").csv({typed: true});
   return data.columns.slice(1).flatMap((age) => data.map((d) => ({state: d.name, age, population: d[age]})));
 }
 ```
 
 ```js echo
-import {legend} from "@d3/color-legend"
+import {legend} from "@d3/color-legend";
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [bar mark](https://observablehq.com/plot/marks/bar). See the [Plot: Stacked Bar Chart, Horizontal](https://observablehq.com/@observablehq/plot-stacked-bar-chart-normalized?intent=fork) example notebook.
 
 ```js echo
 Plot.plot({
-  x: { axis: "top", percent: true },
-  color: { scheme: "spectral" },
+  x: {axis: "top", percent: true},
+  color: {scheme: "spectral"},
   marks: [
     Plot.barX(data, {
       offset: "normalize",
       y: "state",
       x: "population",
       fill: "age",
-      sort: { color: null, y: { value: "-x", reduce: "first" } }
+      sort: {color: null, y: {value: "-x", reduce: "first"}}
     })
   ]
-})
+});
 ```

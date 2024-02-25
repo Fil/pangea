@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">U.S. population by State, 1790–1990</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # U.S. population by State, 1790–1990
@@ -9,41 +14,41 @@ As a stacked normalized area chart. Data: [U.S. Census Bureau](https://www.censu
   const id = DOM.uid().id;
   const marginLeft = 40;
   const {color} = chart.scales;
-  
+
   return html`<style>
+      .${id} {
+        columns: 140px;
+        font: 10px sans-serif;
+        padding: 6px 0;
+        margin-left: ${marginLeft}px;
+      }
 
-.${id} {
-  columns: 140px;
-  font: 10px sans-serif;
-  padding: 6px 0;
-  margin-left: ${marginLeft}px;
-}
+      .${id}-item {
+        break-inside: avoid;
+        display: flex;
+        align-items: center;
+        padding-bottom: 1px;
+      }
 
-.${id}-item {
-  break-inside: avoid;
-  display: flex;
-  align-items: center;
-  padding-bottom: 1px;
-}
-
-.${id}-swatch {
-  width: 20px;
-  height: 20px;
-  margin: 0 5px 0 0;
-}
-
-</style>
-<div class="${id}">${color.domain().map(name => html`
-  <div class="${id}-item">
-    <div class="${id}-swatch" style="background:${color(name)};"></div>
-    ${document.createTextNode(name)}
-  </div>`)}
-</div>`;
+      .${id}-swatch {
+        width: 20px;
+        height: 20px;
+        margin: 0 5px 0 0;
+      }
+    </style>
+    <div class="${id}">
+      ${color.domain().map(
+        (name) => html` <div class="${id}-item">
+          <div class="${id}-swatch" style="background:${color(name)};"></div>
+          ${document.createTextNode(name)}
+        </div>`
+      )}
+    </div>`;
 }
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Declare the chart dimensions and margins.
   const width = 928;
@@ -52,7 +57,7 @@ chart = {
   const marginRight = 10;
   const marginBottom = 30;
   const marginLeft = 40;
-  
+
   // Declare the scales.
   const x = d3.scaleUtc()
       .domain(d3.extent(data, d => d.date))
@@ -60,7 +65,7 @@ chart = {
 
   const y = d3.scaleLinear()
       .range([height - marginBottom, marginTop]);
-  
+
   const color = d3.scaleOrdinal()
       .domain(regionRank)
       .range(d3.schemeCategory10)
@@ -139,7 +144,7 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   const years = d3.range(1790, 2000, 10);
   const states = d3.tsvParse(await FileAttachment("population.tsv").text(), (d, i) => i === 0 ? null : ({name: d[""], values: years.map(y => +d[y].replace(/,/g, "") || 0)}));
   states.sort((a, b) => d3.ascending(regionRank.indexOf(regionByState.get(a.name)), regionRank.indexOf(regionByState.get(b.name))) || d3.descending(d3.sum(a.values), d3.sum(b.values)));
@@ -148,14 +153,11 @@ data = {
 ```
 
 ```js echo
-series = d3.stack()
-    .keys(data.columns.slice(1))
-    .offset(d3.stackOffsetExpand)
-  (data)
+const series = d3.stack().keys(data.columns.slice(1)).offset(d3.stackOffsetExpand)(data);
 ```
 
 ```js echo
-regionRank = [
+const regionRank = [
   "New England",
   "Middle Atlantic",
   "South Atlantic",
@@ -165,11 +167,11 @@ regionRank = [
   "West North Central",
   "Mountain",
   "Pacific"
-]
+];
 ```
 
 ```js echo
-regionByState = {
+const regionByState = {
   const regions = await d3.csv("https://raw.githubusercontent.com/cphalpert/census-regions/7bdc6aa1cb0892361e90ce9ad54983041c2ad015/us%20census%20bureau%20regions%20and%20divisions.csv");
   return new Map(regions.map(d => [d.State, d.Division]));
 }

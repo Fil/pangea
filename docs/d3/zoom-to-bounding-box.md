@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Zoom to bounding box</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Zoom to bounding box
 
-Pan and zoom, or click to zoom into a particular state using [*zoom*.transform](https://d3js.org/d3-zoom#zoom_transform) transitions. The bounding box is computed using [*path*.bounds](https://d3js.org/d3-geo/path#path_bounds).
+Pan and zoom, or click to zoom into a particular state using [_zoom_.transform](https://d3js.org/d3-zoom#zoom_transform) transitions. The bounding box is computed using [_path_.bounds](https://d3js.org/d3-geo/path#path_bounds).
 
 ```js echo
-chart = {
+const chart = {
   const width = 975;
   const height = 610;
 
@@ -32,7 +37,7 @@ chart = {
     .join("path")
       .on("click", clicked)
       .attr("d", path);
-  
+
   states.append("title")
       .text(d => d.properties.name);
 
@@ -79,5 +84,5 @@ chart = {
 ```
 
 ```js echo
-us = FileAttachment("states-albers-10m.json").json()
+const us = FileAttachment("states-albers-10m.json").json();
 ```

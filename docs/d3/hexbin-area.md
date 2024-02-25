@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Hexbin (area)</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Hexbin (area)
@@ -5,15 +10,23 @@
 A demonstration of [d3-hexbin](https://github.com/d3/d3-hexbin) with an area encoding; compare to [color](/@d3/hexbin).
 
 ```js
-viewof shape = Inputs.select(new Map([["Hexagons", "path"], ["Circles", "circle"]]), {label: "shape"})
+const shape = view(
+  Inputs.select(
+    new Map([
+      ["Hexagons", "path"],
+      ["Circles", "circle"]
+    ]),
+    {label: "shape"}
+  )
+);
 ```
 
 ```js
-viewof radius = Inputs.range([2, 20], {step: 1, value: 8, label: "radius"})
+const radius = view(Inputs.range([2, 20], {step: 1, value: 8, label: "radius"}));
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -93,11 +106,11 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("diamonds.csv").csv({typed: true})
+const data = FileAttachment("diamonds.csv").csv({typed: true});
 ```
 
 ```js echo
-d3 = require("d3@7", "d3-hexbin@0.2")
+const d3 = require("d3@7", "d3-hexbin@0.2");
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -107,8 +120,8 @@ Plot.plot({
   width: 928,
   height: 928,
   inset: 10,
-  x: { type: "log" },
-  y: { type: "log" },
+  x: {type: "log"},
+  y: {type: "log"},
   marks: [
     Plot[shape === "path" ? "hexagon" : "circle"](
       data,
@@ -125,5 +138,5 @@ Plot.plot({
       )
     )
   ]
-})
+});
 ```

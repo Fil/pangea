@@ -1,13 +1,18 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Parallel sets</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Parallel sets
 
-[Parallel sets](https://kosara.net/publications/Bendix_InfoVis_2005.html) are like [parallel coordinates](/@d3/parallel-coordinates), but for categorical dimensions. The thickness of each curved line represents a quantity that is repeatedly subdivided by category. This example looks at the *Titanic* disaster of 1912.
+[Parallel sets](https://kosara.net/publications/Bendix_InfoVis_2005.html) are like [parallel coordinates](/@d3/parallel-coordinates), but for categorical dimensions. The thickness of each curved line represents a quantity that is repeatedly subdivided by category. This example looks at the _Titanic_ disaster of 1912.
 
 Data: [Robert J. MacG. Dawson](http://jse.amstat.org/v3n3/datasets.dawson.html)
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 720;
 
@@ -72,7 +77,7 @@ chart = {
 ```
 
 ```js echo
-graph = {
+const graph = {
   const keys = data.columns.slice(0, -1);
   let index = -1;
   const nodes = [];
@@ -117,9 +122,9 @@ graph = {
 ```
 
 ```js echo
-data = FileAttachment("titanic.csv").csv({typed: true})
+const data = FileAttachment("titanic.csv").csv({typed: true});
 ```
 
 ```js echo
-d3 = require("d3@7", "d3-sankey@0.12")
+const d3 = require("d3@7", "d3-sankey@0.12");
 ```

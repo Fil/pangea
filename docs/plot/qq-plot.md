@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Quantile-quantile plot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Quantile-quantile plot
@@ -15,11 +20,11 @@ qq({
   nice: true,
   x: {label: "Batch 2 →"},
   y: {label: "↑ Batch 1"}
-})
+});
 ```
 
 ```js echo
-jahanmi2 = {
+const jahanmi2 = {
   const text = await FileAttachment("JAHANMI2.DAT").text();
   const lines = text.split("\r\n").slice(48, -1);
   const [header,, ...rows] = lines.map((l) => l.trim().split(/\s+/g));
@@ -34,11 +39,13 @@ jahanmi2 = {
 To import into your notebook:
 
 ```js
-import {qq} from "@observablehq/qq-plot"
+import {qq} from "@observablehq/qq-plot";
 ```
 
 ```js
-md`Per NIST: “If the data sets are not of equal size, the quantiles are usually picked to correspond to the sorted values from the smaller data set and then the quantiles for the larger data set are interpolated.”`
+md`
+Per NIST: “If the data sets are not of equal size, the quantiles are usually picked to correspond to the sorted values from the smaller data set and then the quantiles for the larger data set are interpolated.”
+`;
 ```
 
 ```js echo
@@ -47,7 +54,7 @@ function qq({x: X, y: Y, ...options} = {}) {
 
   function q(qi, i, Q) {
     if (Q.length === n) return qi; // no interpolation required
-    const j = i / (n - 1) * (Q.length - 1);
+    const j = (i / (n - 1)) * (Q.length - 1);
     const j0 = Math.floor(j);
     const t = j - j0;
     return t ? Q[j0] * (1 - t) + Q[j0 + 1] * t : Q[j0];

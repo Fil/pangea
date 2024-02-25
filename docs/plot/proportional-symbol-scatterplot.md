@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Proportional symbol scatterplot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Proportional symbol scatterplot
@@ -18,7 +23,11 @@ Plot.plot({
   },
   marks: [
     Plot.ruleX([0]),
-    Plot.dot(aapl, {x: (d) => (d.Close - d.Open) / d.Open, y: "Volume", r: "Volume"})
+    Plot.dot(aapl, {
+      x: (d) => (d.Close - d.Open) / d.Open,
+      y: "Volume",
+      r: "Volume"
+    })
   ]
-})
+});
 ```

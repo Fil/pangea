@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Density contours</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Density contours
@@ -5,7 +10,7 @@
 This chart shows the relationship between idle and eruption times for [Old Faithful](https://en.wikipedia.org/wiki/Old_Faithful).
 
 ```js echo
-chart = {
+const chart = {
   // Specify the dimensions of the chart.
   const width = 928;
   const height = 600;
@@ -49,7 +54,7 @@ chart = {
         .attr("dy", null)
         .attr("font-weight", "bold")
         .text("Idle (min.)"));
-  
+
   svg.append("g")
     .attr("transform", `translate(${marginLeft},0)`)
     .call(d3.axisLeft(y).tickSizeOuter(0))
@@ -70,7 +75,7 @@ chart = {
     .join("path")
       .attr("stroke-width", (d, i) => i % 5 ? 0.25 : 1)
       .attr("d", d3.geoPath());
-  
+
   // Append dots.
   svg.append("g")
       .attr("stroke", "white")
@@ -80,17 +85,17 @@ chart = {
       .attr("cx", d => x(d.waiting))
       .attr("cy", d => y(d.eruptions))
       .attr("r", 2);
-  
+
   return svg.node();
 }
 ```
 
 ```js echo
-faithful = FileAttachment("faithful.tsv").tsv({typed: true})
+const faithful = FileAttachment("faithful.tsv").tsv({typed: true});
 ```
 
-Or you could use [Observable Plot](https://observablehq.com/plot)’s [density mark](/plot/marks/density).  See the complete [Plot density contours example](/@observablehq/plot-point-cloud-density?intent=fork).
+Or you could use [Observable Plot](https://observablehq.com/plot)’s [density mark](/plot/marks/density). See the complete [Plot density contours example](/@observablehq/plot-point-cloud-density?intent=fork).
 
 ```js echo
-Plot.density(faithful, {x: "waiting", y: "eruptions"}).plot({inset: 20})
+Plot.density(faithful, {x: "waiting", y: "eruptions"}).plot({inset: 20});
 ```

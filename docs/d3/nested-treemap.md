@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Nested treemap</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Nested treemap
@@ -5,7 +10,7 @@
 This treemap variant applies padding to label internal nodes, better revealing the hierarchical structure. It is, however, less compact than a [standard treemap](/@d3/treemap). Compare to [cascaded treemaps](/@d3/cascaded-treemap) and [circle packing](/@d3/circle-packing).
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 1060;
@@ -84,5 +89,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```

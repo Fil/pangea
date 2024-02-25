@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: arealineY custom mark</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # arealineY custom mark
@@ -17,5 +22,5 @@ function arealineY(data, {color, fillOpacity = 0.1, ...options} = {}) {
 You can use this composite mark like any built-in mark:
 
 ```js echo
-arealineY(aapl, {x: "Date", y: "Close", color: "steelblue"}).plot()
+arealineY(aapl, {x: "Date", y: "Close", color: "steelblue"}).plot();
 ```

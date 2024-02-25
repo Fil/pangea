@@ -1,15 +1,18 @@
-```js
-md`# Owls to the Max
+---
+index: false
+status: draft
+---
 
-Ref. [koalastothemax.com](http://koalastothemax.com)`
-```
+# Owls to the Max
+
+Ref. [koalastothemax.com](http://koalastothemax.com)
 
 ```js
-viewof replay = html`<button>Replay`
+const replay = view(html`<button>Replay</button>`);
 ```
 
 ```js echo
-graphic = {
+const graphic = {
   replay;
   const quads = new TinyQueue([new Quad(0, 0, width, width)], (a, b) => b.score - a.score);
   const context = DOM.context2d(width, width);
@@ -37,30 +40,29 @@ graphic = {
 ```
 
 ```js echo
-width = 1024
+const width = 1024;
 ```
 
 ```js echo
-area_power = 0.25
+const area_power = 0.25;
 ```
 
 ```js echo
 class Quad {
   constructor(x, y, w, h) {
     const [r, g, b, error] = colorFromHistogram(computeHistogram(x, y, w, h));
-    this.x = x, this.y = y, this.w = w, this.h = h;
+    (this.x = x), (this.y = y), (this.w = w), (this.h = h);
     this.color = `#${(0x1000000 + (r << 16) + (g << 8) + b).toString(16).substring(1)}`;
     this.score = error * Math.pow(w * h, area_power);
   }
   split() {
-    const dx = this.w / 2, x1 = this.x, x2 = this.x + dx;
-    const dy = this.h / 2, y1 = this.y, y2 = this.y + dy;
-    return [
-      new Quad(x1, y1, dx, dy),
-      new Quad(x2, y1, dx, dy),
-      new Quad(x1, y2, dx, dy),
-      new Quad(x2, y2, dx, dy)
-    ];
+    const dx = this.w / 2,
+      x1 = this.x,
+      x2 = this.x + dx;
+    const dy = this.h / 2,
+      y1 = this.y,
+      y2 = this.y + dy;
+    return [new Quad(x1, y1, dx, dy), new Quad(x2, y1, dx, dy), new Quad(x1, y2, dx, dy), new Quad(x2, y2, dx, dy)];
   }
 }
 ```
@@ -83,7 +85,7 @@ function computeHistogram(x, y, w, h) {
 function weightedAverage(histogram) {
   let total = 0;
   let value = 0;
-  for (let i = 0; i < 256; ++i) total += histogram[i], value += histogram[i] * i;
+  for (let i = 0; i < 256; ++i) (total += histogram[i]), (value += histogram[i] * i);
   value /= total;
   let error = 0;
   for (let i = 0; i < 256; ++i) error += (value - i) ** 2 * histogram[i];
@@ -96,27 +98,24 @@ function colorFromHistogram(histogram) {
   const [r, re] = weightedAverage(histogram.subarray(0, 256));
   const [g, ge] = weightedAverage(histogram.subarray(256, 512));
   const [b, be] = weightedAverage(histogram.subarray(512, 768));
-  return [
-    Math.round(r), 
-    Math.round(g), 
-    Math.round(b), 
-    re * 0.2989 + ge * 0.5870 + be * 0.1140
-  ];
+  return [Math.round(r), Math.round(g), Math.round(b), re * 0.2989 + ge * 0.587 + be * 0.114];
 }
 ```
 
 ```js echo
-imageContext = FileAttachment("owl.jpg").image().then(image => {
-  const context = DOM.context2d(width, width, 1);
-  context.drawImage(image, 0, 0, width, width);
-  return context;
-})
+const imageContext = FileAttachment("owl.jpg")
+  .image()
+  .then((image) => {
+    const context = DOM.context2d(width, width, 1);
+    context.drawImage(image, 0, 0, width, width);
+    return context;
+  });
 ```
 
 ```js echo
-TinyQueue = require("tinyqueue@2")
+const TinyQueue = require("tinyqueue@2");
 ```
 
 ```js echo
-d3 = require("d3-interpolate@1", "d3-ease@1")
+const d3 = require("d3-interpolate@1", "d3-ease@1");
 ```

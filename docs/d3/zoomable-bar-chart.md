@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Zoomable bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Zoomable bar chart
 
-This bar chart uses D3’s [zoom](https://d3js.org/d3-zoom) behavior on the *x*-axis. Double-click on the bar chart below or use the mouse wheel (or pinch) to zoom. This example is contrived—you don’t need zooming if you can easily display all the bars at once.
+This bar chart uses D3’s [zoom](https://d3js.org/d3-zoom) behavior on the _x_-axis. Double-click on the bar chart below or use the mouse wheel (or pinch) to zoom. This example is contrived—you don’t need zooming if you can easily display all the bars at once.
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -82,5 +87,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("alphabet.csv").csv({typed: true})
+const data = FileAttachment("alphabet.csv").csv({typed: true});
 ```

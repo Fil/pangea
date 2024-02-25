@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Barley Trellis</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Barley Trellis
@@ -25,9 +30,9 @@ Plot.plot({
       sort: {y: "x", fy: "x", reduce: "median", reverse: true}
     })
   ]
-})
+});
 ```
 
 ```js echo
-barley = FileAttachment("barley.csv").csv({typed: true})
+const barley = FileAttachment("barley.csv").csv({typed: true});
 ```

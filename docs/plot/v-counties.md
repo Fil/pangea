@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: V-Counties</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # V-Counties
@@ -30,21 +35,21 @@ Plot.plot({
       })
     )
   ]
-})
+});
 ```
 
 ```js echo
-us = FileAttachment("us-counties-10m.json").json()
+const us = FileAttachment("us-counties-10m.json").json();
 ```
 
 ```js echo
-counties = topojson.feature(us, us.objects.counties).features
+const counties = topojson.feature(us, us.objects.counties).features;
 ```
 
 ```js echo
-countymesh = topojson.mesh(us, us.objects.counties)
+const countymesh = topojson.mesh(us, us.objects.counties);
 ```
 
 ```js echo
-statemesh = topojson.mesh(us, us.objects.states)
+const statemesh = topojson.mesh(us, us.objects.states);
 ```

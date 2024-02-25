@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Bollinger bands</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Bollinger bands
@@ -5,15 +10,15 @@
 This time series [line chart](/@d3/line-chart/2) includes [Bollinger bands](https://en.wikipedia.org/wiki/Bollinger_Bands): simple, lagging [moving averages](https://en.wikipedia.org/wiki/Moving_average) for characterizing volatility. Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js
-viewof N = Inputs.range([2, 100], {value: 20, step: 1, label: "Periods (N)"})
+const N = view(Inputs.range([2, 100], {value: 20, step: 1, label: "Periods (N)"}));
 ```
 
 ```js
-viewof K = Inputs.range([0, 10], {value: 2, step: 0.1, label: "Deviations (K)"})
+const K = view(Inputs.range([0, 10], {value: 2, step: 0.1, label: "Deviations (K)"}));
 ```
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 600;
   const marginTop = 10;
@@ -35,7 +40,7 @@ chart = {
       .defined((y, i) => !isNaN(aapl[i].Date) && !isNaN(y))
       .x((d, i) => x(aapl[i].Date))
       .y(y);
-  
+
   const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)
@@ -83,18 +88,18 @@ function bollinger(values, N, K) {
   const bands = K.map(() => new Float64Array(values.length).fill(NaN));
   for (let n = Math.min(N - 1, values.length); i < n; ++i) {
     const value = values[i];
-    sum += value, sum2 += value ** 2;
+    (sum += value), (sum2 += value ** 2);
   }
   for (let n = values.length, m = bands.length; i < n; ++i) {
     const value = values[i];
-    sum += value, sum2 += value ** 2;
+    (sum += value), (sum2 += value ** 2);
     const mean = sum / N;
     const deviation = Math.sqrt((sum2 - sum ** 2 / N) / (N - 1));
     for (let j = 0; j < K.length; ++j) {
       bands[j][i] = mean + deviation * K[j];
     }
     const value0 = values[i - N + 1];
-    sum -= value0, sum2 -= value0 ** 2;
+    (sum -= value0), (sum2 -= value0 ** 2);
   }
   return bands;
 }
@@ -103,5 +108,5 @@ function bollinger(values, N, K) {
 With [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with the [bollinger](/plot/marks/bollinger) mark.
 
 ```js echo
-Plot.bollingerY(aapl, {x: "Date", y: "Close"}).plot()
+Plot.bollingerY(aapl, {x: "Date", y: "Close"}).plot();
 ```

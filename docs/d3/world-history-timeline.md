@@ -1,28 +1,34 @@
+---
+index: false
+status: draft
+---
+
 ```js
-md`# World History Timeline
+md`
+# World History Timeline
+
 Data adapted from [Essential Humanities](http://www.essential-humanities.net/history-overview/world-history-timeline/)
-
-`
+`;
 ```
 
 ```js
-viewof sorting = select({title: 'Sorted by', options:["region","time"], value:"time"})
+const sorting = view(select({title: "Sorted by", options: ["region", "time"], value: "time"}));
 ```
 
 ```js
-chart = {
+const chart = {
 
   let filteredData;
   if(sorting !== "time") {
     filteredData = [].concat.apply([], dataByRegion.map(d=>d.values));
-  } else { 
+  } else {
     filteredData = data.sort((a,b)=>  a.start-b.start);
   }
 
   filteredData.forEach(d=> d.color = d3.color(color(d.region)))
 
 
-  let parent = this; 
+  let parent = this;
   if (!parent) {
     parent = document.createElement("div");
     const svg = d3.select(DOM.svg(width, height));
@@ -106,44 +112,42 @@ chart = {
 ```
 
 ```js
-getTooltipContent = function(d) {
-return `<b>${d.civilization}</b>
+const getTooltipContent = function (d) {
+  return `<b>${d.civilization}</b>
 <br/>
 <b style="color:${d.color.darker()}">${d.region}</b>
 <br/>
 ${formatDate(d.start)} - ${formatDate(d.end)}
-`
-}
+`;
+};
 ```
 
 ```js
-height = 1000
+const height = 1000;
 ```
 
 ```js
-
-  y= d3.scaleBand()
-    .domain(d3.range(data.length))
-    .range([0,height - margin.bottom - margin.top])
-    .padding(0.2)
-
+const y = d3
+  .scaleBand()
+  .domain(d3.range(data.length))
+  .range([0, height - margin.bottom - margin.top])
+  .padding(0.2);
 ```
 
 ```js
-x = d3.scaleLinear()
-      .domain([d3.min(data, d => d.start), d3.max(data, d => d.end)])
-      .range([0, width - margin.left - margin.right])
-
+const x = d3
+  .scaleLinear()
+  .domain([d3.min(data, (d) => d.start), d3.max(data, (d) => d.end)])
+  .range([0, width - margin.left - margin.right]);
 ```
 
 ```js
-margin = ({top: 30, right: 30, bottom: 30, left: 30})
+const margin = {top: 30, right: 30, bottom: 30, left: 30};
 ```
 
 ```js
-createTooltip = function(el) {
-  el
-    .style("position", "absolute")
+const createTooltip = function (el) {
+  el.style("position", "absolute")
     .style("pointer-events", "none")
     .style("top", 0)
     .style("opacity", 0)
@@ -152,95 +156,101 @@ createTooltip = function(el) {
     .style("box-shadow", "0 0 10px rgba(0,0,0,.25)")
     .style("padding", "10px")
     .style("line-height", "1.3")
-    .style("font", "11px sans-serif")
-}
+    .style("font", "11px sans-serif");
+};
 ```
 
 ```js
-getRect = function(d){
+const getRect = function (d) {
   const el = d3.select(this);
   const sx = x(d.start);
   const w = x(d.end) - x(d.start);
-  const isLabelRight =(sx > width/2 ? sx+w < width : sx-w>0);
+  const isLabelRight = sx > width / 2 ? sx + w < width : sx - w > 0;
 
-  el.style("cursor", "pointer")
+  el.style("cursor", "pointer");
 
-  el
-    .append("rect")
-    .attr("x", sx)
-    .attr("height", y.bandwidth())
-    .attr("width", w)
-    .attr("fill", d.color);
+  el.append("rect").attr("x", sx).attr("height", y.bandwidth()).attr("width", w).attr("fill", d.color);
 
-  el
-    .append("text")
+  el.append("text")
     .text(d.civilization)
-    .attr("x",isLabelRight ? sx-5 : sx+w+5)
+    .attr("x", isLabelRight ? sx - 5 : sx + w + 5)
     .attr("y", 2.5)
     .attr("fill", "black")
     .style("text-anchor", isLabelRight ? "end" : "start")
     .style("dominant-baseline", "hanging");
-}
+};
 ```
 
 ```js
-dataByTimeline = d3.nest().key(d=>d.timeline).entries(data);
+const dataByTimeline = d3
+  .nest()
+  .key((d) => d.timeline)
+  .entries(data);
 ```
 
 ```js
-dataByRegion = d3.nest().key(d=>d.region).entries(data);
+const dataByRegion = d3
+  .nest()
+  .key((d) => d.region)
+  .entries(data);
 ```
 
 ```js
-axisBottom = d3.axisBottom(x)
-    .tickPadding(2)
-    .tickFormat(formatDate)
+const axisBottom = d3.axisBottom(x).tickPadding(2).tickFormat(formatDate);
 ```
 
 ```js
-axisTop = d3.axisTop(x)
-    .tickPadding(2)
-    .tickFormat(formatDate)
+const axisTop = d3.axisTop(x).tickPadding(2).tickFormat(formatDate);
 ```
 
 ```js
-formatDate = d=> d < 0 ? `${-d}BC` : `${d}AD`
+const formatDate = (d) => (d < 0 ? `${-d}BC` : `${d}AD`);
 ```
 
 ```js
-d3 = require("d3@5")
+const d3 = require("d3@5");
 ```
 
 ```js
-csv =d3.csvParse(await FileAttachment("civilization timelines - civilization timelines.csv").text())
+const csv = d3.csvParse(await FileAttachment("civilization timelines - civilization timelines.csv").text());
 ```
 
 ```js
-data = csv.map(d=>{
-return {
-  ...d,
-  start: +d.start,
-  end: +d.end
-}
-}).sort((a,b)=>  a.start-b.start);
+const data = csv
+  .map((d) => {
+    return {
+      ...d,
+      start: +d.start,
+      end: +d.end
+    };
+  })
+  .sort((a, b) => a.start - b.start);
 ```
 
 ```js
-regions = d3.nest().key(d=>d.region).entries(data).map(d=>d.key)
+const regions = d3
+  .nest()
+  .key((d) => d.region)
+  .entries(data)
+  .map((d) => d.key);
 ```
 
 ```js
-timelines = dataByTimeline.map(d=>d.key)
+const timelines = dataByTimeline.map((d) => d.key);
 ```
 
 ```js
-color = d3.scaleOrdinal(d3.schemeSet2).domain(regions)
+const color = d3.scaleOrdinal(d3.schemeSet2).domain(regions);
 ```
 
 ```js
-import {checkbox, select} from "@jashkenas/inputs"
+import {checkbox, select} from "@jashkenas/inputs";
 ```
 
 ```js
-html`CSS<style> svg{font: 11px sans-serif;}</style>`
+html`CSS<style>
+    svg {
+      font: 11px sans-serif;
+    }
+  </style>`;
 ```

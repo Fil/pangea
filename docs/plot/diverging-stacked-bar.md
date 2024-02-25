@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Diverging stacked bars</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Diverging stacked bars
@@ -9,24 +14,18 @@ negative answers flowing to the left, and the positive answers flowing to the ri
 Plot.plot({
   x: {tickFormat: Math.abs},
   color: {domain: likert.order, scheme: "RdBu", legend: true},
-  marks: [
-    Plot.barX(
-      survey,
-      Plot.groupZ({x: "count"}, {fy: "Question", fill: "Response", ...likert})
-    ),
-    Plot.ruleX([0])
-  ]
-})
+  marks: [Plot.barX(survey, Plot.groupZ({x: "count"}, {fy: "Question", fill: "Response", ...likert})), Plot.ruleX([0])]
+});
 ```
 
 ```js echo
-likert = Likert([
+const likert = Likert([
   ["Strongly Disagree", -1],
   ["Disagree", -1],
   ["Neutral", 0],
   ["Agree", 1],
   ["Strongly Agree", 1]
-])
+]);
 ```
 
 For a reference, see Naomi B. Robbins and Richard M. Heiberger, “Plotting Likert
@@ -42,86 +41,63 @@ that prompted this notebook. The write-up below details how we built the chart
 
 ### First try: stacking bars
 
-Using Plot.groupY and fill: "Response" allows us to create a bar for each type of response to each question. The length of each bar corresponds to the count of the corresponding answers (as the *fill* or *z* channel) to the question (as the *y* channel).
+Using Plot.groupY and fill: "Response" allows us to create a bar for each type of response to each question. The length of each bar corresponds to the count of the corresponding answers (as the _fill_ or _z_ channel) to the question (as the _y_ channel).
 
 ```js echo
 Plot.plot({
-  x: { tickFormat: Math.abs, label: "# of answers" },
-  y: { tickSize: 0 },
+  x: {tickFormat: Math.abs, label: "# of answers"},
+  y: {tickSize: 0},
   color: {
     legend: true,
-    domain: [
-      "Strongly Disagree",
-      "Disagree",
-      "Neutral",
-      "Agree",
-      "Strongly Agree"
-    ],
+    domain: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
     scheme: "RdBu"
   },
   marks: [
     Plot.barX(
       survey,
       Plot.groupY(
-        { x: "count" },
+        {x: "count"},
         {
           fill: "Response",
-          order: [
-            "Strongly Disagree",
-            "Disagree",
-            "Neutral",
-            "Agree",
-            "Strongly Agree"
-          ],
+          order: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
           y: "Question"
         }
       )
     )
   ]
-})
+});
 ```
 
 The next step is to make the red answers flow to the left, the blue answers to the right, and the gray centered.
 
 ### Second try: negative vs positive
+
 We introduce a function that returns the sign of a response: -1 for negatives, 0 for neutral, and 1 for positives. This allows us to send the red bars to the left, and the blue ones to the right:
 
 ```js echo
-sign = (label) => label.match(/neutral/i) ? 0 : label.match(/disagree/i) ? -1 : 1
+const sign = (label) => (label.match(/neutral/i) ? 0 : label.match(/disagree/i) ? -1 : 1);
 ```
 
 ```js echo
 Plot.plot({
   color: {
-    domain: [
-      "Strongly Disagree",
-      "Disagree",
-      "Neutral",
-      "Agree",
-      "Strongly Agree"
-    ],
+    domain: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
     scheme: "RdBu"
   },
   marks: [
     Plot.barX(
       survey,
       Plot.groupY(
-        { x: (d) => d.length * sign(d[0].Response) },
+        {x: (d) => d.length * sign(d[0].Response)},
         {
           fill: "Response",
-          order: [
-            "Strongly Disagree",
-            "Disagree",
-            "Neutral",
-            "Agree",
-            "Strongly Agree"
-          ],
+          order: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
           y: "Question"
         }
       )
     )
   ]
-})
+});
 ```
 
 However, this immediately raises two issues: first, the neutral value has
@@ -131,15 +107,15 @@ a bad ordering.
 
 ### Solution: a custom offset
 
-Since the standard strategy followed by Plot.stack ignores neutral values, we can define an offset function (a new feature introduced in Plot 0.4.3). The Likert function below takes as input the association between responses and their rating (positive, negative or neutral), and returns both an *order* and a custom *offset* to use in a stack transform.
+Since the standard strategy followed by Plot.stack ignores neutral values, we can define an offset function (a new feature introduced in Plot 0.4.3). The Likert function below takes as input the association between responses and their rating (positive, negative or neutral), and returns both an _order_ and a custom _offset_ to use in a stack transform.
 
 ```js
-viewof normalize = Inputs.toggle({ label: "normalize" })
+const normalize = view(Inputs.toggle({label: "normalize"}));
 ```
 
 ```js echo
 {
-  const { order, offset } = Likert([
+  const {order, offset} = Likert([
     ["Strongly Disagree", -1],
     ["Disagree", -1],
     ["Neutral", 0],
@@ -148,17 +124,15 @@ viewof normalize = Inputs.toggle({ label: "normalize" })
   ]);
 
   return Plot.plot({
-    x: normalize
-      ? { tickFormat: "%", label: "answers (%)" }
-      : { tickFormat: Math.abs, label: "# of answers" },
-    y: { tickSize: 0 },
-    facet: { data: survey, y: "Question" },
-    color: { domain: order, scheme: "RdBu" },
+    x: normalize ? {tickFormat: "%", label: "answers (%)"} : {tickFormat: Math.abs, label: "# of answers"},
+    y: {tickSize: 0},
+    facet: {data: survey, y: "Question"},
+    color: {domain: order, scheme: "RdBu"},
     marks: [
       Plot.barX(
         survey,
         Plot.groupZ(
-          { x: normalize ? "proportion-facet" : "count" },
+          {x: normalize ? "proportion-facet" : "count"},
           {
             fill: "Response",
             stroke: "#777",
@@ -172,7 +146,7 @@ viewof normalize = Inputs.toggle({ label: "normalize" })
         survey,
         Plot.stackX(
           Plot.groupZ(
-            { x: normalize ? "proportion-facet" : "count", text: "first" },
+            {x: normalize ? "proportion-facet" : "count", text: "first"},
             {
               text: (d) => d.Response.replace(/[^A-Z]/g, ""),
               z: "Response",
@@ -210,12 +184,13 @@ function Likert(responses) {
 ```
 
 ---
-*data*
+
+_data_
 
 ```js echo
-survey = FileAttachment("survey.json").json()
+const survey = FileAttachment("survey.json").json();
 ```
 
 ```js
-Inputs.table(survey, { columns: ["ID", "Question", "Response"], width: 370 })
+Inputs.table(survey, {columns: ["ID", "Question", "Response"], width: 370});
 ```

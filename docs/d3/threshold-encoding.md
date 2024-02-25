@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Threshold encoding</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Threshold encoding
 
-This variation of a [line chart](/@d3/line-chart) demonstrates how to use a gradient to change the color of a line based on a *y*-threshold. When the line is above the median value, it is <span style="border-bottom: solid red 2px">red</span>; when the line is below the median value, it is  <span style="border-bottom: solid black 2px">black</span>.
+This variation of a [line chart](/@d3/line-chart) demonstrates how to use a gradient to change the color of a line based on a _y_-threshold. When the line is above the median value, it is <span style="border-bottom: solid red 2px">red</span>; when the line is below the median value, it is <span style="border-bottom: solid black 2px">black</span>.
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 500;
   const marginTop = 20;
@@ -82,7 +87,7 @@ chart = {
 ```
 
 ```js echo
-temperatures = FileAttachment("temperature.csv").csv({typed: true})
+const temperatures = FileAttachment("temperature.csv").csv({typed: true});
 ```
 
 Or, with [Observable Plot](/plot/) and the [mixBlendMode](/plot/features/marks#mark-options) option:
@@ -92,11 +97,11 @@ Plot.plot({
   width,
   nice: true,
   marks: [
-    Plot.lineY(temperatures, { x: "date", y: "temperature", curve: "step" }),
+    Plot.lineY(temperatures, {x: "date", y: "temperature", curve: "step"}),
     Plot.rectY(
       temperatures,
       Plot.groupZ(
-        { y2: "median" },
+        {y2: "median"},
         {
           y1: 68, // higher than max.
           y2: "temperature",
@@ -106,5 +111,5 @@ Plot.plot({
       )
     )
   ]
-})
+});
 ```

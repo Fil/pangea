@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Linear regression</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Linear regression
@@ -9,9 +14,20 @@ Plot.plot({
   grid: true,
   color: {legend: true},
   marks: [
-    Plot.dot(penguins, {x: "culmen_length_mm", y: "culmen_depth_mm", fill: "species"}),
-    Plot.linearRegressionY(penguins, {x: "culmen_length_mm", y: "culmen_depth_mm", stroke: "species"}),
-    Plot.linearRegressionY(penguins, {x: "culmen_length_mm", y: "culmen_depth_mm"})
+    Plot.dot(penguins, {
+      x: "culmen_length_mm",
+      y: "culmen_depth_mm",
+      fill: "species"
+    }),
+    Plot.linearRegressionY(penguins, {
+      x: "culmen_length_mm",
+      y: "culmen_depth_mm",
+      stroke: "species"
+    }),
+    Plot.linearRegressionY(penguins, {
+      x: "culmen_length_mm",
+      y: "culmen_depth_mm"
+    })
   ]
-})
+});
 ```

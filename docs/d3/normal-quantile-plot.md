@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Normal quantile plot</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Normal quantile plot
@@ -5,7 +10,7 @@
 The [normal quantile plot](https://en.wikipedia.org/wiki/Normal_probability_plot) is a special case of the [Q–Q plot](/@d3/q-q-plot) that compares a given distribution to the standard normal distribution. If the plotted points fall along a straight line, the distribution is approximately normal.
 
 ```js echo
-chart = {
+const chart = {
   const width = 640;
   const height = width;
   const marginTop = 20;
@@ -22,7 +27,7 @@ chart = {
   const y = d3.scaleLinear()
       .domain(regression).nice()
       .range([height - marginBottom, marginTop]);
-  
+
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height])
       .style("max-width", `${width}px`);
@@ -79,27 +84,27 @@ chart = {
 ```
 
 ```js echo
-qy = Float64Array.from(data).sort()
+const qy = Float64Array.from(data).sort();
 ```
 
 ```js echo
-n = qy.length
+const n = qy.length;
 ```
 
 ```js echo
-z = i => qnorm((i + a) / (n + 1 - 2 * a))
+const z = (i) => qnorm((i + a) / (n + 1 - 2 * a));
 ```
 
 ```js echo
-a = n <= 10 ? 5 / 8 : 0.5
+const a = n <= 10 ? 5 / 8 : 0.5;
 ```
 
 ```js echo
-qnorm = p => Math.SQRT2 * erfinv(2 * p - 1)
+const qnorm = (p) => Math.SQRT2 * erfinv(2 * p - 1);
 ```
 
 ```js echo
-erfinv = {
+const erfinv = {
   const a = 8 * (Math.PI - 3) / (3 * Math.PI * (4 - Math.PI));
   return x => {
     const b = Math.log(1 - x * x);
@@ -110,15 +115,16 @@ erfinv = {
 ```
 
 ```js echo
-data = FileAttachment("JAHANMI2.DAT")
+const data = FileAttachment("JAHANMI2.DAT")
   .text()
   .then((text) =>
-    text.split("\r\n")
+    text
+      .split("\r\n")
       .slice(50, -1)
       .map((l) => +l.trim().split(/\s+/g)[4])
-  )
+  );
 ```
 
 ```js echo
-ss = require("simple-statistics@7")
+const ss = require("simple-statistics@7");
 ```

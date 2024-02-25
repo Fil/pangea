@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Warming stripes</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Warming stripes
@@ -16,15 +21,17 @@ Plot.plot({
       inset: 0 // no gaps
     })
   ]
-})
+});
 ```
 
 ```js echo
-hadcrut = (await FileAttachment("hadcrut-annual.txt").text())
-  .trim().split(/\n/g) // split into lines
-  .map(line => line.split(/\s+/g)) // split each line into fields 
-  .map(([year, anomaly]) => ({ // extract the year and median anomaly
-    year: new Date(Date.UTC(year, 0, 1)), 
+const hadcrut = (await FileAttachment("hadcrut-annual.txt").text())
+  .trim()
+  .split(/\n/g) // split into lines
+  .map((line) => line.split(/\s+/g)) // split each line into fields
+  .map(([year, anomaly]) => ({
+    // extract the year and median anomaly
+    year: new Date(Date.UTC(year, 0, 1)),
     anomaly: +anomaly
-  }))
+  }));
 ```

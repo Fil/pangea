@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Diverging stacked bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Diverging stacked bar chart
@@ -5,11 +10,11 @@
 This chart stacks negative categories to the left and positive categories to the right. Inspired by Robert Mann, the truthfulness of presidential candidates is assessed here by PolitiFact. For reasons to avoid this chart form, see [Rost & Aisch](https://blog.datawrapper.de/divergingbars/).
 
 ```js
-Swatches(chart.scales.color)
+Swatches(chart.scales.color);
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Assign a valence to each category.
   const signs = new Map([].concat(
@@ -110,7 +115,7 @@ ${formatValue(value.get(key))} ${key}`);
 ```
 
 ```js echo
-data = {
+const data = {
   const categories = {
     "pants-fire": "Pants on fire!",
     "false": "False",
@@ -139,7 +144,7 @@ data = {
 ```
 
 ```js echo
-import {Swatches} from "@d3/color-legend"
+import {Swatches} from "@d3/color-legend";
 ```
 
-See [Plot: Diverging stacked bars](https://observablehq.com/@observablehq/plot-diverging-stacked-bar?intent=fork) for a similar chart made with [Observable Plot](/plot/)’s concise API. 
+See [Plot: Diverging stacked bars](https://observablehq.com/@observablehq/plot-diverging-stacked-bar?intent=fork) for a similar chart made with [Observable Plot](/plot/)’s concise API.

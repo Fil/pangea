@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Chord diagram II</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Chord diagram II
@@ -5,7 +10,7 @@
 [Chord diagrams](https://d3js.org/d3-chord) show directed relationships among a group of entities. This example adapted from [Circos](http://mkweb.bcgsc.ca/circos/).
 
 ```js echo
-chart = {
+const chart = {
   const width = 640;
   const height = width;
   const outerRadius = Math.min(width, height) * 0.5 - 30;
@@ -83,20 +88,23 @@ chart = {
 ```js echo
 function groupTicks(d, step) {
   const k = (d.endAngle - d.startAngle) / d.value;
-  return d3.range(0, d.value, step).map(value => {
+  return d3.range(0, d.value, step).map((value) => {
     return {value: value, angle: value * k + d.startAngle};
   });
 }
 ```
 
 ```js echo
-data = Object.assign([
-  [11975,  5871, 8916, 2868],
-  [ 1951, 10048, 2060, 6171],
-  [ 8010, 16145, 8090, 8045],
-  [ 1013,   990,  940, 6907]
-], {
-  names: ["black", "blond", "brown", "red"],
-  colors: ["#000000", "#ffdd89", "#957244", "#f26223"]
-})
+const data = Object.assign(
+  [
+    [11975, 5871, 8916, 2868],
+    [1951, 10048, 2060, 6171],
+    [8010, 16145, 8090, 8045],
+    [1013, 990, 940, 6907]
+  ],
+  {
+    names: ["black", "blond", "brown", "red"],
+    colors: ["#000000", "#ffdd89", "#957244", "#f26223"]
+  }
+);
 ```

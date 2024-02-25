@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Job vacancies</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Job vacancies
@@ -7,7 +12,7 @@ This area chart uses an [interval](https://observablehq.com/plot/transforms/inte
 ```js echo
 Plot.plot({
   width,
-  y: { label: "↑ Job vacancies, seasonally adj. (thousands)", grid: true },
+  y: {label: "↑ Job vacancies, seasonally adj. (thousands)", grid: true},
   marks: [
     Plot.areaY(vacancies, {
       x: "month",
@@ -24,9 +29,9 @@ Plot.plot({
     }),
     Plot.ruleY([0])
   ]
-})
+});
 ```
 
 ```js echo
-vacancies = FileAttachment("vacancies.csv").csv({typed: true})
+const vacancies = FileAttachment("vacancies.csv").csv({typed: true});
 ```

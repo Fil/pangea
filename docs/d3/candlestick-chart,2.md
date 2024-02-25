@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Candlestick chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Candlestick chart
 
-This chart shows the daily low, high, open and close of Apple stock. Each “candle” represents a single trading day. A specialized *x*-axis is used to avoid gaps on the weekend when the markets are closed. Compare to a [line chart](/@d3/line-chart/2). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
+This chart shows the daily low, high, open and close of Apple stock. Each “candle” represents a single trading day. A specialized _x_-axis is used to avoid gaps on the weekend when the markets are closed. Compare to a [line chart](/@d3/line-chart/2). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js echo
-chart = {
+const chart = {
 
   // Declare the chart dimensions and margins.
   const width = 928;
@@ -89,7 +94,7 @@ High: ${formatValue(d.High)}`);
 ```
 
 ```js echo
-ticker = aapl.slice(-130)
+const ticker = aapl.slice(-130);
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with two [tick marks](https://observablehq.com/plot/marks/tick). See [Plot: Candlestick chart](https://observablehq.com/@observablehq/plot-candlestick-chart?intent=fork) for a detailed example.
@@ -116,5 +121,5 @@ Plot.plot({
       strokeLinecap: "round"
     })
   ]
-})
+});
 ```

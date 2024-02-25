@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Band chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Band chart
@@ -5,7 +10,7 @@
 This [area chart](/@d3/area-chart/2) with an upper and lower bound shows San Francisco daily high and low temperatures. Data: [National Climatic Data Center](http://www.ncdc.noaa.gov/)
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -64,13 +69,13 @@ chart = {
           .attr("fill", "currentColor")
           .attr("text-anchor", "start")
           .text("↑ Temperature (°F)"));
-  
+
   return svg.node();
 }
 ```
 
 ```js echo
-sftemp = FileAttachment("temp.csv").csv({typed: true})
+const sftemp = FileAttachment("temp.csv").csv({typed: true});
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -78,6 +83,14 @@ Or, using [Observable Plot](/plot/)’s concise API:
 ```js echo
 Plot.plot({
   y: {label: "Temperature (°F)", grid: true},
-  marks: [Plot.areaY(sftemp, {x: "date", y1: "low", y2: "high", fill: "steelblue", curve: "step"})]
-})
+  marks: [
+    Plot.areaY(sftemp, {
+      x: "date",
+      y1: "low",
+      y2: "high",
+      fill: "steelblue",
+      curve: "step"
+    })
+  ]
+});
 ```

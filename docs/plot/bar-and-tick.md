@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Bar and tick</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Bar and tick
@@ -13,5 +18,5 @@ Plot.plot({
     Plot.tickY(alphabet, {x: "letter", y: "frequency"}),
     Plot.ruleY([0])
   ]
-})
+});
 ```

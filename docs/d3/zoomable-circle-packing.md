@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Zoomable circle packing</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Zoomable circle packing
@@ -5,7 +10,7 @@
 Click to zoom in or out.
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -97,5 +102,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```

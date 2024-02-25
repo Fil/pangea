@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">World choropleth</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # World choropleth
@@ -5,7 +10,7 @@
 Health-adjusted life expectancy, 2016. Data: [WHO](https://www.who.int/gho/publications/world_health_statistics/2018/en/)
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -60,14 +65,17 @@ chart = {
 }
 ```
 
-The *hale* dataset regrettably doesn’t include ISO 3166-1 numeric identifiers; it only has country names. Country names are often recorded inconsistently, so here we use a *rename* map to patch a handful of country names to the values used by our GeoJSON which comes from [Natural Earth](https://naturalearthdata.com) by way of the [TopoJSON World Atlas](https://github.com/topojson/world-atlas). If your data has ISO 3166-1 numeric identifiers, then you should use those and drop the *featureId* option above.
+The _hale_ dataset regrettably doesn’t include ISO 3166-1 numeric identifiers; it only has country names. Country names are often recorded inconsistently, so here we use a _rename_ map to patch a handful of country names to the values used by our GeoJSON which comes from [Natural Earth](https://naturalearthdata.com) by way of the [TopoJSON World Atlas](https://github.com/topojson/world-atlas). If your data has ISO 3166-1 numeric identifiers, then you should use those and drop the _featureId_ option above.
 
 ```js echo
-hale = (await FileAttachment("hale.csv").csv()).map(d => ({name: rename.get(d.country) || d.country, hale: +d.hale}))
+const hale = (await FileAttachment("hale.csv").csv()).map((d) => ({
+  name: rename.get(d.country) || d.country,
+  hale: +d.hale
+}));
 ```
 
 ```js echo
-rename = new Map([
+const rename = new Map([
   ["Antigua and Barbuda", "Antigua and Barb."],
   ["Bolivia (Plurinational State of)", "Bolivia"],
   ["Bosnia and Herzegovina", "Bosnia and Herz."],
@@ -97,27 +105,27 @@ rename = new Map([
   ["United Republic of Tanzania", "Tanzania"],
   ["Venezuela (Bolivarian Republic of)", "Venezuela"],
   ["Viet Nam", "Vietnam"]
-])
+]);
 ```
 
-The world geometries are represented in TopoJSON, which we convert into GeoJSON using topojson.feature. (TopoJSON, like D3, is available by default in all Observable notebooks.) These geometries are represented in spherical coordinates (*i.e.*, latitude and longitude in degrees); therefore we’ll need the *projection* option above to convert to screen coordinates (*i.e.*, pixels).
+The world geometries are represented in TopoJSON, which we convert into GeoJSON using topojson.feature. (TopoJSON, like D3, is available by default in all Observable notebooks.) These geometries are represented in spherical coordinates (_i.e._, latitude and longitude in degrees); therefore we’ll need the _projection_ option above to convert to screen coordinates (_i.e._, pixels).
 
 ```js echo
-world = FileAttachment("countries-50m.json").json()
-```
-
-```js echo
-countries = topojson.feature(world, world.objects.countries)
-```
-
-The *countrymesh* is just the internal borders between countries, *i.e.*, everything but the coastlines. This avoids an additional stroke on the perimeter of the map, which would otherwise mask intricate features such as islands and inlets. (Try removing the last argument to topojson.mesh below to see the effect.)
-
-```js echo
-countrymesh = topojson.mesh(world, world.objects.countries, (a, b) => a !== b)
+const world = FileAttachment("countries-50m.json").json();
 ```
 
 ```js echo
-import {Legend} from "@d3/color-legend"
+const countries = topojson.feature(world, world.objects.countries);
+```
+
+The _countrymesh_ is just the internal borders between countries, _i.e._, everything but the coastlines. This avoids an additional stroke on the perimeter of the map, which would otherwise mask intricate features such as islands and inlets. (Try removing the last argument to topojson.mesh below to see the effect.)
+
+```js echo
+const countrymesh = topojson.mesh(world, world.objects.countries, (a, b) => a !== b);
+```
+
+```js echo
+import {Legend} from "@d3/color-legend";
 ```
 
 Alternatively, use [Observable Plot](https://observablehq.com/plot)’s concise API to create [maps](https://observablehq.com/@observablehq/plot-mapping) with the [geo mark](https://observablehq.com/plot/marks/geo).
@@ -127,13 +135,21 @@ Plot.plot({
   projection: "equal-earth",
   width: 928,
   height: 928 / 2,
-  color: {scheme: "YlGnBu", unknown: "#ccc", label: "Healthy life expectancy (years)", legend: true},
+  color: {
+    scheme: "YlGnBu",
+    unknown: "#ccc",
+    label: "Healthy life expectancy (years)",
+    legend: true
+  },
   marks: [
     Plot.sphere({fill: "white", stroke: "currentColor"}),
     Plot.geo(countries, {
-      fill: (map => d => map.get(d.properties.name))(new Map(hale.map(d => [d.name, d.hale]))),
+      fill: (
+        (map) => (d) =>
+          map.get(d.properties.name)
+      )(new Map(hale.map((d) => [d.name, d.hale])))
     }),
-    Plot.geo(countrymesh, {stroke: "white"}),
- ]
-})
+    Plot.geo(countrymesh, {stroke: "white"})
+  ]
+});
 ```

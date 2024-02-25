@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Sea ice extent, 1978–2017</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Sea ice extent, 1978–2017
@@ -5,15 +10,15 @@
 The average daily extent of sea ice in the northern hemisphere, measured in millions of square kilometers. Data: [NSIDC](http://nsidc.org/data/nsidc-0051), [Tom Shanley](http://bl.ocks.org/tomshanley/77f12d419e71e572f4250a52ef9bf1ad)
 
 ```js
-viewof replay = html`<button>Replay`
+const replay = view(html`<button>Replay</button>`);
 ```
 
 ```js
-legend({title: "Year", color: chart.scales.color, tickFormat: x => x})
+legend({title: "Year", color: chart.scales.color, tickFormat: (x) => x});
 ```
 
 ```js echo
-chart = {
+const chart = {
   replay;
 
   const width = 928;
@@ -118,11 +123,19 @@ function intrayear(date) {
 ```
 
 ```js echo
-data = Object.assign(await d3.csvParse(await FileAttachment("sea-ice-extent.csv").text(), ({date, extent}) => ({date: new Date(date), value: 1e6 * extent})).sort((a, b) => a.date - b.date), {y: "km²"})
+const data = Object.assign(
+  await d3
+    .csvParse(await FileAttachment("sea-ice-extent.csv").text(), ({date, extent}) => ({
+      date: new Date(date),
+      value: 1e6 * extent
+    }))
+    .sort((a, b) => a.date - b.date),
+  {y: "km²"}
+);
 ```
 
 ```js echo
-import {legend} from "@d3/color-legend"
+import {legend} from "@d3/color-legend";
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -131,7 +144,7 @@ Or, using [Observable Plot](/plot/)’s concise API:
 Plot.plot({
   x: {transform: intrayear, tickFormat: "%b", nice: true},
   y: {transform: (d) => d * 1e-6, label: "km² (millions)"},
-  color: {legend: true},
+  color: {legend: true},
   marks: [
     Plot.lineY(data, {
       x: "date",
@@ -141,5 +154,5 @@ Plot.plot({
       strokeWidth: 0.75
     })
   ]
-})
+});
 ```

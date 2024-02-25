@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Variable fill area</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Variable fill area
@@ -10,9 +15,6 @@ Plot.plot({
     type: "log",
     legend: true
   },
-  marks: [
-    Plot.areaY(aapl, {x: "Date", y: "Close", fill: "Volume", z: null}),
-    Plot.ruleY([0])
-  ]
-})
+  marks: [Plot.areaY(aapl, {x: "Date", y: "Close", fill: "Volume", z: null}), Plot.ruleY([0])]
+});
 ```

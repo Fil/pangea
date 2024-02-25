@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Zoomable sunburst</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Zoomable sunburst
@@ -5,7 +10,7 @@
 This variant of a [sunburst diagram](/@d3/sunburst/2?intent=fork) shows only two layers of the hierarchy at a time. Click a node to zoom in, or the center to zoom out. Compare to an [icicle](/@d3/zoomable-icicle).
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = width;
@@ -101,7 +106,7 @@ chart = {
         return +this.getAttribute("fill-opacity") || arcVisible(d.target);
       })
         .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
-        .attr("pointer-events", d => arcVisible(d.target) ? "auto" : "none") 
+        .attr("pointer-events", d => arcVisible(d.target) ? "auto" : "none")
 
         .attrTween("d", d => () => arc(d.current));
 
@@ -111,7 +116,7 @@ chart = {
         .attr("fill-opacity", d => +labelVisible(d.target))
         .attrTween("transform", d => () => labelTransform(d.current));
   }
-  
+
   function arcVisible(d) {
     return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;
   }
@@ -131,5 +136,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```

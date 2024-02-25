@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Scatterplot</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Scatterplot
 
-This chart shows the inverse relationship between engine power (*y*-axis) and fuel efficiency (*x*-axis) in 32 cars from the 1970s.
+This chart shows the inverse relationship between engine power (_y_-axis) and fuel efficiency (_x_-axis) in 32 cars from the 1970s.
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -102,7 +107,7 @@ chart = {
 ```
 
 ```js echo
-cars = FileAttachment("mtcars.csv").csv({typed: true})
+const cars = FileAttachment("mtcars.csv").csv({typed: true});
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -114,7 +119,13 @@ Plot.plot({
   x: {ticks: 10},
   marks: [
     Plot.dot(cars, {x: "mpg", y: "hp", stroke: "steelblue"}),
-    Plot.text(cars, {x: "mpg", y: "hp", text: "name", textAnchor: "start", dx: 6})
+    Plot.text(cars, {
+      x: "mpg",
+      y: "hp",
+      text: "name",
+      textAnchor: "start",
+      dx: 6
+    })
   ]
-})
+});
 ```

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Simpsons ratings</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Simpsons ratings
@@ -12,12 +17,23 @@ Plot.plot({
   y: {label: "Episode"},
   color: {type: "linear", scheme: "PiYG"},
   marks: [
-    Plot.cell(simpsons, {x: "season", y: "number_in_season", fill: "imdb_rating", inset: 0.5}),
-    Plot.text(simpsons, {x: "season", y: "number_in_season", text: (d) => d.imdb_rating?.toFixed(1), fill: "black", title: "title"})
+    Plot.cell(simpsons, {
+      x: "season",
+      y: "number_in_season",
+      fill: "imdb_rating",
+      inset: 0.5
+    }),
+    Plot.text(simpsons, {
+      x: "season",
+      y: "number_in_season",
+      text: (d) => d.imdb_rating?.toFixed(1),
+      fill: "black",
+      title: "title"
+    })
   ]
-})
+});
 ```
 
 ```js echo
-simpsons = FileAttachment("simpsons.csv").csv({typed: true})
+const simpsons = FileAttachment("simpsons.csv").csv({typed: true});
 ```

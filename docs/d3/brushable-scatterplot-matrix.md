@@ -1,15 +1,20 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Brushable scatterplot matrix</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Brushable scatterplot matrix
 
-The [scatterplot matrix](/@d3/splom/2) (SPLOM) shows pairwise correlations for multi-dimensional data; each cell is a scatterplot where *x* encodes the column’s dimension and *y* encodes the row’s dimension. This matrix shows Kristen Gorman’s data on penguins near Palmer Station in Antarctica. The implementation allows brushing to select data points in one cell, and highlight them across all other cells.
+The [scatterplot matrix](/@d3/splom/2) (SPLOM) shows pairwise correlations for multi-dimensional data; each cell is a scatterplot where _x_ encodes the column’s dimension and _y_ encodes the row’s dimension. This matrix shows Kristen Gorman’s data on penguins near Palmer Station in Antarctica. The implementation allows brushing to select data points in one cell, and highlight them across all other cells.
 
 ```js
-swatches({color: chart.scales.color})
+swatches({color: chart.scales.color});
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -50,7 +55,7 @@ chart = {
       .each(function(d) { return d3.select(this).call(axisy.scale(d)); })
       .call(g => g.select(".domain").remove())
       .call(g => g.selectAll(".tick line").attr("stroke", "#ddd"));
-  
+
   const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)
@@ -113,16 +118,20 @@ chart = {
 ```
 
 ```js echo
-selection = Generators.input(chart) // or use viewof selection = chart
+const selection = Generators.input(chart); // or use viewof selection = chart
 ```
 
 ```js echo
 function brush(cell, circle, svg, {padding, size, x, y, columns}) {
-  const brush = d3.brush()
-      .extent([[padding / 2, padding / 2], [size - padding / 2, size - padding / 2]])
-      .on("start", brushstarted)
-      .on("brush", brushed)
-      .on("end", brushended);
+  const brush = d3
+    .brush()
+    .extent([
+      [padding / 2, padding / 2],
+      [size - padding / 2, size - padding / 2]
+    ])
+    .on("start", brushstarted)
+    .on("brush", brushed)
+    .on("end", brushended);
 
   cell.call(brush);
 
@@ -140,17 +149,16 @@ function brush(cell, circle, svg, {padding, size, x, y, columns}) {
   function brushed({selection}, [i, j]) {
     let selected = [];
     if (selection) {
-      const [[x0, y0], [x1, y1]] = selection; 
-      circle.classed("hidden",
-        d => x0 > x[i](d[columns[i]])
-          || x1 < x[i](d[columns[i]])
-          || y0 > y[j](d[columns[j]])
-          || y1 < y[j](d[columns[j]]));
+      const [[x0, y0], [x1, y1]] = selection;
+      circle.classed(
+        "hidden",
+        (d) =>
+          x0 > x[i](d[columns[i]]) || x1 < x[i](d[columns[i]]) || y0 > y[j](d[columns[j]]) || y1 < y[j](d[columns[j]])
+      );
       selected = data.filter(
-        d => x0 < x[i](d[columns[i]])
-          && x1 > x[i](d[columns[i]])
-          && y0 < y[j](d[columns[j]])
-          && y1 > y[j](d[columns[j]]));
+        (d) =>
+          x0 < x[i](d[columns[i]]) && x1 > x[i](d[columns[i]]) && y0 < y[j](d[columns[j]]) && y1 > y[j](d[columns[j]])
+      );
     }
     svg.property("value", selected).dispatch("input");
   }
@@ -165,9 +173,9 @@ function brush(cell, circle, svg, {padding, size, x, y, columns}) {
 ```
 
 ```js echo
-data = FileAttachment("penguins.csv").csv({typed: true})
+const data = FileAttachment("penguins.csv").csv({typed: true});
 ```
 
 ```js echo
-import {swatches} from "@d3/color-legend"
+import {swatches} from "@d3/color-legend";
 ```

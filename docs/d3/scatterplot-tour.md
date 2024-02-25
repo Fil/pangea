@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Scatterplot tour</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Scatterplot tour
@@ -16,7 +21,7 @@ viewof transform = {
     form.dispatchEvent(new CustomEvent("input"));
   }, 2500);
   form.onchange = () => form.dispatchEvent(new CustomEvent("input")); // Safari
-  form.oninput = event => { 
+  form.oninput = event => {
     if (event.isTrusted) clearInterval(timeout), form.onchange = null;
     form.value = transforms[form.radio.value][1];
   };
@@ -27,7 +32,7 @@ viewof transform = {
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   const color = d3.scaleOrdinal()
       .domain(data.map(d => d[2]))
@@ -79,11 +84,11 @@ chart = {
 ```
 
 ```js echo
-chart.update(transform)
+chart.update(transform);
 ```
 
 ```js echo
-data = {
+const data = {
   const random = d3.randomNormal(0, 0.2);
   const sqrt3 = Math.sqrt(3);
   return [].concat(
@@ -95,32 +100,35 @@ data = {
 ```
 
 ```js echo
-transforms = [["Overview", d3.zoomIdentity]].concat(d3.groups(data, d => d[2]).map(([key, data]) => {
-  const [x0, x1] = d3.extent(data, d => d[0]).map(x);
-  const [y1, y0] = d3.extent(data, d => d[1]).map(y);
-  const k = 0.9 * Math.min(width / (x1 - x0), height / (y1 - y0));
-  const tx = (width - k * (x0 + x1)) / 2;
-  const ty = (height - k * (y0 + y1)) / 2;
-  return [`Cluster ${key}`, d3.zoomIdentity.translate(tx, ty).scale(k)];
-}))
+const transforms = [["Overview", d3.zoomIdentity]].concat(
+  d3
+    .groups(data, (d) => d[2])
+    .map(([key, data]) => {
+      const [x0, x1] = d3.extent(data, (d) => d[0]).map(x);
+      const [y1, y0] = d3.extent(data, (d) => d[1]).map(y);
+      const k = 0.9 * Math.min(width / (x1 - x0), height / (y1 - y0));
+      const tx = (width - k * (x0 + x1)) / 2;
+      const ty = (height - k * (y0 + y1)) / 2;
+      return [`Cluster ${key}`, d3.zoomIdentity.translate(tx, ty).scale(k)];
+    })
+);
 ```
 
 ```js echo
-x = d3.scaleLinear()
-    .domain([-4.5, 4.5])
-    .range([0, width])
+const x = d3.scaleLinear().domain([-4.5, 4.5]).range([0, width]);
 ```
 
 ```js echo
-y = d3.scaleLinear()
-    .domain([-4.5 * k, 4.5 * k])
-    .range([height, 0])
+const y = d3
+  .scaleLinear()
+  .domain([-4.5 * k, 4.5 * k])
+  .range([height, 0]);
 ```
 
 ```js echo
-k = height / width
+const k = height / width;
 ```
 
 ```js echo
-height = 600
+const height = 600;
 ```

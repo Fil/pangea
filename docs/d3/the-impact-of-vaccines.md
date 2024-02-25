@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">The impact of vaccines</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # The impact of vaccines
@@ -9,11 +14,11 @@ legend({
   color: chart.scales.color,
   title: "Measles cases per 100,000 people",
   width: 360
-})
+});
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Declare the chart dimensions and margins.
   const marginTop = 20;
   const marginRight = 1;
@@ -94,7 +99,7 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   const names = ["Alaska", "Ala.", "Ark.", "Ariz.", "Calif.", "Colo.", "Conn.", "D.C.", "Del.", "Fla.", "Ga.", "Hawaii", "Iowa", "Idaho", "Ill.", "Ind.", "Kan.", "Ky.", "La.", "Mass.", "Md.", "Maine", "Mich.", "Minn.", "Mo.", "Miss.", "Mont.", "N.C.", "N.D.", "Neb.", "N.H.", "N.J.", "N.M", "Nev.", "N.Y.", "Ohio", "Okla.", "Ore.", "Pa.", "R.I.", "S.C.", "S.D.", "Tenn.", "Texas", "Utah", "Va.", "Vt.", "Wash.", "Wis.", "W.Va.", "Wyo."];
   const data = await FileAttachment("vaccines.json").json();
   const values = [];
@@ -115,7 +120,7 @@ data = {
 ```
 
 ```js echo
-import {legend} from "@d3/color-legend"
+import {legend} from "@d3/color-legend";
 ```
 
 For a recreation of this chart with [Observable Plot](/plot/)’s concise API, see [this notebook](https://observablehq.com/@observablehq/plot-impact-of-vaccines).

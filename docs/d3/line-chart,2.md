@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Line chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Line chart
 
-This time-series line chart shows the daily close of Apple stock. Compare to a [log *y*-scale showing change](/@d3/change-line-chart), an [area chart](/@d3/area-chart/2), a [horizon chart](/@d3/horizon-chart-ii), a [candlestick chart](/@d3/candlestick-chart), and an [index chart](/@d3/index-chart). For multiple series, use a [multi-line chart](/@d3/multi-line-chart). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
+This time-series line chart shows the daily close of Apple stock. Compare to a [log _y_-scale showing change](/@d3/change-line-chart), an [area chart](/@d3/area-chart/2), a [horizon chart](/@d3/horizon-chart-ii), a [candlestick chart](/@d3/candlestick-chart), and an [index chart](/@d3/index-chart). For multiple series, use a [multi-line chart](/@d3/multi-line-chart). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js echo
-chart = {
+const chart = {
   // Declare the chart dimensions and margins.
   const width = 928;
   const height = 500;
@@ -64,17 +69,14 @@ chart = {
 ```
 
 ```js echo
-aapl = FileAttachment("aapl.csv").csv({typed: true})
+const aapl = FileAttachment("aapl.csv").csv({typed: true});
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a line chart with the [line mark](https://observablehq.com/plot/marks/line). Below, a [rule mark](https://observablehq.com/plot/marks/rule) denotes *y* = 0.
+Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a line chart with the [line mark](https://observablehq.com/plot/marks/line). Below, a [rule mark](https://observablehq.com/plot/marks/rule) denotes _y_ = 0.
 
 ```js echo
 Plot.plot({
   y: {grid: true, label: "Daily close ($)"},
-  marks: [
-    Plot.ruleY([0]),
-    Plot.lineY(aapl, {x: "date", y: "close", stroke: "steelblue"})
-  ]
-})
+  marks: [Plot.ruleY([0]), Plot.lineY(aapl, {x: "date", y: "close", stroke: "steelblue"})]
+});
 ```

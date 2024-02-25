@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Hertzsprung–Russell diagram</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Hertzsprung–Russell diagram
@@ -5,7 +10,7 @@
 An [HR diagram](https://en.wikipedia.org/wiki/Hertzsprung–Russell_diagram) plots the relationship between stars’ absolute magnitudes (brighter going up) and temperatures (warmer going left). For the large set of stars below, it effectively shows how [stars age over time](https://en.wikipedia.org/wiki/Stellar_evolution). Data: [Hipparcos](http://cdsarc.u-strasbg.fr/viz-bin/cat/I/311), [Gliese](http://cdsarc.u-strasbg.fr/viz-bin/cat/V/70A)
 
 ```js echo
-chart = {
+const chart = {
 
   // Declare the chart dimensions and margins.
   const width = 928;
@@ -103,11 +108,13 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("catalog.csv").csv({typed: true})
+const data = FileAttachment("catalog.csv").csv({typed: true});
 ```
 
 ```js
-md`See [this helper notebook](/d/e697f4807166cbd9) for the source data.`
+md`
+See [this helper notebook](/d/e697f4807166cbd9) for the source data.
+`;
 ```
 
 ```js echo
@@ -115,18 +122,28 @@ function bv2rgb(bv) {
   bv = Math.max(-0.4, Math.min(2, bv));
   let t;
   return `#${[
-    bv < 0 ? (t = (bv + 0.4) / 0.4, 0.61 + (0.11 * t) + (0.1 * t * t))
-      : bv < 0.4 ? (t = bv / 0.4, 0.83 + (0.17 * t))
-      : 1,
-    bv < 0 ? (t = (bv + 0.4) / 0.4, 0.70 + (0.07 * t) + (0.1 * t * t))
-      : bv < 0.4 ? (t = bv / 0.4, 0.87 + (0.11 * t))
-      : bv < 1.6 ? (t = (bv - 0.4) / 1.20, 0.98 - (0.16 * t))
-      : (t = (bv - 1.6) / 0.4, 0.82 - (0.5 * t * t)), 
-    bv < 0.4 ? 1
-      : bv < 1.5 ? (t = (bv - 0.4) / 1.1, 1 - (0.47 * t) + (0.1 * t * t))
-      : bv < 1.94 ? (t = (bv - 1.5) / 0.44, 0.63 - (0.6 * t * t))
+    bv < 0 ? ((t = (bv + 0.4) / 0.4), 0.61 + 0.11 * t + 0.1 * t * t) : bv < 0.4 ? ((t = bv / 0.4), 0.83 + 0.17 * t) : 1,
+    bv < 0
+      ? ((t = (bv + 0.4) / 0.4), 0.7 + 0.07 * t + 0.1 * t * t)
+      : bv < 0.4
+      ? ((t = bv / 0.4), 0.87 + 0.11 * t)
+      : bv < 1.6
+      ? ((t = (bv - 0.4) / 1.2), 0.98 - 0.16 * t)
+      : ((t = (bv - 1.6) / 0.4), 0.82 - 0.5 * t * t),
+    bv < 0.4
+      ? 1
+      : bv < 1.5
+      ? ((t = (bv - 0.4) / 1.1), 1 - 0.47 * t + 0.1 * t * t)
+      : bv < 1.94
+      ? ((t = (bv - 1.5) / 0.44), 0.63 - 0.6 * t * t)
       : 0
-  ].map(t => Math.round(t * 255).toString(16).padStart(2, "0")).join("")}`;
+  ]
+    .map((t) =>
+      Math.round(t * 255)
+        .toString(16)
+        .padStart(2, "0")
+    )
+    .join("")}`;
 }
 ```
 

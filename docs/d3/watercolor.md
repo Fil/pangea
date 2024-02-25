@@ -1,17 +1,21 @@
-```js
-md`# Watercolor
+---
+index: false
+status: draft
+---
 
-Some pseudo-watercolor effects with blurs, thresholds, and fractal noise.`
+```js
+md`
+# Watercolor
+
+Some pseudo-watercolor effects with blurs, thresholds, and fractal noise.
+`;
 ```
 
 ```js
 {
   const svg = DOM.svg(960, 600);
 
-  const defs = d3
-    .select(svg)
-    .attr("class", "watercolor")
-    .append("defs");
+  const defs = d3.select(svg).attr("class", "watercolor").append("defs");
 
   const splotch = DOM.uid("splotch");
 
@@ -58,10 +62,10 @@ Some pseudo-watercolor effects with blurs, thresholds, and fractal noise.`
   const paths = groups
     .append("path")
     .attr("d", path)
-    .attr("fill", d => d.properties.color)
-    .attr("stroke", d => d.properties.color)
+    .attr("fill", (d) => d.properties.color)
+    .attr("stroke", (d) => d.properties.color)
     .attr("stroke-width", strokeWidth)
-    .attr("filter", d => d.filterUid);
+    .attr("filter", (d) => d.filterUid);
 
   if (drawMesh) {
     const pencil = DOM.uid("pencil");
@@ -83,9 +87,9 @@ Some pseudo-watercolor effects with blurs, thresholds, and fractal noise.`
     .data(states)
     .enter()
     .append("filter")
-    .attr("id", d => d.filterUid.id)
+    .attr("id", (d) => d.filterUid.id)
     .html(
-      d =>
+      (d) =>
         `<feGaussianBlur
          in="SourceGraphic"
          stdDeviation="${blurScale(path.area(d))}"
@@ -109,7 +113,7 @@ Some pseudo-watercolor effects with blurs, thresholds, and fractal noise.`
 ```
 
 ```js
-viewof randomize = button("Randomize colors")
+const randomize = view(button("Randomize colors"));
 ```
 
 ```js
@@ -175,39 +179,43 @@ viewof noise = slider({
 ```
 
 ```js
-md`## See also
+md`
+## See also
+
 [Oil paint](https://observablehq.com/@veltman/scribble-paint)  
 [Pencil/watercolor map style](https://bl.ocks.org/veltman/2f2aa947772afa095a620dfe5e5486cb)  
 [Tyler Hobbs' generative watercolor](https://tylerxhobbs.com/essays/2017/a-generative-approach-to-simulating-watercolor-paints)
-`
+`;
 ```
 
 ```js
-md`## Appendix`
+md`
+## Appendix
+`;
 ```
 
 ```js
-simplification = 1.8
+const simplification = 1.8;
 ```
 
 ```js
-tension = 0.6
+const tension = 0.6;
 ```
 
 ```js
-blurScale = d3
+const blurScale = d3
   .scaleLinear()
   .domain([0, 2000])
   .range([deviation, deviation * 3.5])
-  .clamp(true)
+  .clamp(true);
 ```
 
 ```js
-spline = d3.line().curve(d3.curveCardinal.tension(tension))
+const spline = d3.line().curve(d3.curveCardinal.tension(tension));
 ```
 
 ```js
-palettes = ({
+const palettes = {
   "Wes Anderson": ["#ff4848", "#00cdb1", "#ffc638", "#ffa641", "#a0d8e7"],
   Blues: ["#0c96da", "#be98ad", "#77d7e3", "#f4cdcd", "#01ccd9", "#f4e2c6"],
   "rag-taj": ["#73d5c1", "#e29ba0", "#ba1e6b", "#ffbe45"],
@@ -216,11 +224,11 @@ palettes = ({
   "present-correct": ["#fe7646", "#ffbb51", "#7356ac", "#fe737a", "#a0ccbb"],
   verena: ["#936ead", "#3e78e1", "#f37265", "#f6bc25", "#16b069"],
   iiso_daily: ["#7f8cb6", "#f0d967", "#ef9640", "#1daeb1", "#e76c4a"]
-})
+};
 ```
 
 ```js
-states = {
+const states = {
   randomize;
   const states = topojson.feature(us, us.objects.states).features;
   const neighbors = topojson.neighbors(us.objects.states.geometries);
@@ -242,7 +250,7 @@ states = {
 ```
 
 ```js
-mesh = {
+const mesh = {
   return topojson
     .mesh(us, us.objects.states)
     .coordinates.map(line =>
@@ -254,23 +262,23 @@ mesh = {
 ```
 
 ```js
-us = await d3.json("https://unpkg.com/us-atlas@1/us/10m.json")
+const us = await d3.json("https://unpkg.com/us-atlas@1/us/10m.json");
 ```
 
 ```js
-simplify = require("simplify-js@1")
+const simplify = require("simplify-js@1");
 ```
 
 ```js
-d3 = require("d3@5")
+const d3 = require("d3@5");
 ```
 
 ```js
-topojson = require("topojson-client@3")
+const topojson = require("topojson-client@3");
 ```
 
 ```js
-import { checkbox, button, select, slider } from "@jashkenas/inputs"
+import {checkbox, button, select, slider} from "@jashkenas/inputs";
 ```
 
 ```js
@@ -289,5 +297,5 @@ html`<style>
     width: 100%;
     height: auto;
   }
-</style>`
+</style>`;
 ```

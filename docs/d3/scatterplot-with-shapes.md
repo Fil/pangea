@@ -1,13 +1,18 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Scatterplot with shapes</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Scatterplot with shapes
 
-This chart shows the relationship between sepal width (*y*-axis) and sepal length (*x*-axis) for three species of Iris.
+This chart shows the relationship between sepal width (_y_-axis) and sepal length (_x_-axis) for three species of Iris.
 
 ```js
-legend = {
+const legend = {
   const id = DOM.uid().id;
-  const {color, shape} = chart.scales; 
+  const {color, shape} = chart.scales;
   return html`<style>
 
 .${id} {
@@ -36,7 +41,7 @@ legend = {
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -126,12 +131,20 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("iris.csv").csv({typed: true})
+const data = FileAttachment("iris.csv").csv({typed: true});
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
 
 ```js echo
-Plot.dot(data, {x: "sepalLength", y: "sepalWidth", fill: "species", symbol: "species"})
-  .plot({nice: true, grid: true, symbol: {legend: true}})
+Plot.dot(data, {
+  x: "sepalLength",
+  y: "sepalWidth",
+  fill: "species",
+  symbol: "species"
+}).plot({
+  nice: true,
+  grid: true,
+  symbol: {legend: true}
+});
 ```

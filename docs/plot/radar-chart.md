@@ -1,8 +1,13 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Radar chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Radar chart
 
-We create a polar coordinate system with an azimuthal equidistant [projection](https://observablehq.com/plot/features/projections) centered on the North Pole. A point is encoded with its angle as longitude: *x* = *angle*; and its length as colatitude: *y* = 90&thinsp;&minus;&thinsp;*length*.
+We create a polar coordinate system with an azimuthal equidistant [projection](https://observablehq.com/plot/features/projections) centered on the North Pole. A point is encoded with its angle as longitude: _x_ = _angle_; and its length as colatitude: _y_ = 90&thinsp;&minus;&thinsp;_length_.
 
 Note that overlapping areas make it difficult to compare, say, more than three objects. Instead, we suggest [radar charts as small multiples](https://observablehq.com/@observablehq/plot-radar-chart-faceted).
 
@@ -17,7 +22,7 @@ Plot.plot({
     // Note: 0.625° corresponds to max. length (here, 0.5), plus enough room for the labels
     domain: d3.geoCircle().center([0, 90]).radius(0.625)()
   },
-  color: { legend: true },
+  color: {legend: true},
   marks: [
     // grey discs
     Plot.geo([0.5, 0.4, 0.3, 0.2, 0.1], {
@@ -62,8 +67,8 @@ Plot.plot({
 
     // areas
     Plot.area(points, {
-      x1: ({ key }) => longitude(key),
-      y1: ({ value }) => 90 - value,
+      x1: ({key}) => longitude(key),
+      y1: ({value}) => 90 - value,
       x2: 0,
       y2: 90,
       fill: "name",
@@ -73,8 +78,8 @@ Plot.plot({
 
     // points
     Plot.dot(points, {
-      x: ({ key }) => longitude(key),
-      y: ({ value }) => 90 - value,
+      x: ({key}) => longitude(key),
+      y: ({value}) => 90 - value,
       fill: "name",
       stroke: "white"
     }),
@@ -83,8 +88,8 @@ Plot.plot({
     Plot.text(
       points,
       Plot.pointer({
-        x: ({ key }) => longitude(key),
-        y: ({ value }) => 90 - value,
+        x: ({key}) => longitude(key),
+        y: ({value}) => 90 - value,
         text: (d) => `${(100 * d.value).toFixed(0)}%`,
         textAnchor: "start",
         dx: 4,
@@ -102,23 +107,26 @@ Plot.plot({
           g[aria-label=area] path:hover {fill-opacity: 0.3; transition: fill-opacity .2s;}
       `
   ]
-})
+});
 ```
 
 ```js echo
-phones = FileAttachment("phones.csv").csv({typed: true})
+const phones = FileAttachment("phones.csv").csv({typed: true});
 ```
 
 Flatten the data into as many points as there are dimensions:
 
 ```js echo
-points = phones.flatMap(({ name, ...values }) =>
-  Object.entries(values).map(([key, value]) => ({ name, key, value }))
-)
+const points = phones.flatMap(({name, ...values}) =>
+  Object.entries(values).map(([key, value]) => ({name, key, value}))
+);
 ```
 
 This intermediate point scale distributes the data axes onto longitudes, starting at 180 and winding back to one step before &minus;180. This task would be unnecessary if we had a native polar coordinate system, please vote up issue [#133](https://github.com/observablehq/plot/issues/133).
 
 ```js echo
-longitude = d3.scalePoint(new Set(Plot.valueof(points, "key")), [180, -180]).padding(0.5).align(1)
+const longitude = d3
+  .scalePoint(new Set(Plot.valueof(points, "key")), [180, -180])
+  .padding(0.5)
+  .align(1);
 ```

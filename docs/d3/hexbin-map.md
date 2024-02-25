@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Hexbin map</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Hexbin map
@@ -5,7 +10,7 @@
 This map shows approximately 3,000 locations of Walmart stores. The hexagon area represents the number of stores in the vicinity, while the color represents the median age of these stores. Older stores are red, and newer stores are blue.
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the map’s dimensions and projection.
   const width = 928;
@@ -37,9 +42,9 @@ chart = {
   svg.append("g")
       .attr("transform", "translate(580,20)")
       .append(() => legend({
-        color, 
-        title: "Median opening year", 
-        width: 260, 
+        color,
+        title: "Median opening year",
+        width: 260,
         tickValues: d3.utcYear.every(5).range(...color.domain()),
         tickFormat: d3.utcFormat("%Y")
       }));
@@ -70,7 +75,7 @@ chart = {
 ```
 
 ```js echo
-walmarts = {
+const walmarts = {
   const parseDate = d3.utcParse("%m/%d/%Y");
   return FileAttachment("walmart.tsv").tsv()
     .then(data => data.map((d) => ({
@@ -82,15 +87,17 @@ walmarts = {
 ```
 
 ```js echo
-stateMesh = FileAttachment("us-counties-10m.json").json().then(us => topojson.mesh(us, us.objects.states))
+const stateMesh = FileAttachment("us-counties-10m.json")
+  .json()
+  .then((us) => topojson.mesh(us, us.objects.states));
 ```
 
 ```js echo
-d3 = require("d3@7", "d3-hexbin@0.2")
+const d3 = require("d3@7", "d3-hexbin@0.2");
 ```
 
 ```js echo
-import {legend} from "@d3/color-legend"
+import {legend} from "@d3/color-legend";
 ```
 
 Using [Observable Plot](/plot/):
@@ -101,10 +108,20 @@ Plot.plot({
   color: {scheme: "Spectral"},
   marks: [
     Plot.geo(stateMesh, {strokeOpacity: 0.25}),
-    Plot.dot(walmarts, Plot.hexbin(
-      {fill: "median", r: "count"},
-      {x: "longitude", y: "latitude", binWidth: 14, fill: "date", stroke: "currentColor", strokeWidth: 0.5}
-    ))
+    Plot.dot(
+      walmarts,
+      Plot.hexbin(
+        {fill: "median", r: "count"},
+        {
+          x: "longitude",
+          y: "latitude",
+          binWidth: 14,
+          fill: "date",
+          stroke: "currentColor",
+          strokeWidth: 0.5
+        }
+      )
+    )
   ]
-})
+});
 ```

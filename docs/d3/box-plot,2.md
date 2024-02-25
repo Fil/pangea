@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Box plot</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Box plot
 
-A box-and-whisker plot shows summary statistics of a quantitative distribution. Here, the price distribution (*y*-axis) of a set of diamonds is plotted for a given range of carat values (*x*-axis).
+A box-and-whisker plot shows summary statistics of a quantitative distribution. Here, the price distribution (_y_-axis) of a set of diamonds is plotted for a given range of carat values (_x_-axis).
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the dimensions of the chart.
   const width = 928;
@@ -117,7 +122,7 @@ chart = {
 ```
 
 ```js echo
-diamonds = FileAttachment("diamonds.csv").csv({typed: true})
+const diamonds = FileAttachment("diamonds.csv").csv({typed: true});
 ```
 
 Box plots are a native mark in [Observable Plot](/plot/):
@@ -125,11 +130,20 @@ Box plots are a native mark in [Observable Plot](/plot/):
 ```js echo
 Plot.plot({
   marginLeft: 50,
-  y: {grid: true },
-  x: {interval: 0.2, tickFormat: (x) => (x).toFixed(1), label: "carats", align: 0},
+  y: {grid: true},
+  x: {
+    interval: 0.2,
+    tickFormat: (x) => x.toFixed(1),
+    label: "carats",
+    align: 0
+  },
   marks: [
     Plot.ruleY([0]),
-    Plot.boxY(diamonds, {x: (d) => Math.floor(d.carat * 5) / 5, y: "price", dx: 12})
+    Plot.boxY(diamonds, {
+      x: (d) => Math.floor(d.carat * 5) / 5,
+      y: "price",
+      dx: 12
+    })
   ]
-})
+});
 ```

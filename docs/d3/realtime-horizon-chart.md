@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Realtime horizon chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Realtime horizon chart
@@ -31,11 +36,11 @@ viewof scheme = Inputs.select(
 ```
 
 ```js
-viewof bands = Inputs.range([1, 9], {value: 7, step: 1, label: "Bands"})
+const bands = view(Inputs.range([1, 9], {value: 7, step: 1, label: "Bands"}));
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const marginTop = 30;
@@ -131,7 +136,7 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   const n = 20, m = 964;
   const data = new Array(n);
   for (let i = 0; i < n; ++i) {
@@ -145,7 +150,7 @@ data = {
 ```
 
 ```js echo
-update = {
+const update = {
   const period = 250, m = data[0].length;
   const tail = data.map(d => d.subarray(m - 1, m));
   while (true) {

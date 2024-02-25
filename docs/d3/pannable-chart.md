@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Pannable chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Pannable chart
@@ -5,7 +10,7 @@
 This scrollable [area chart](/@d3/area-chart) supports horizontal panning. Try scrolling left below to see earlier data.
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart dimensions and margins. The width is determined by Observable’s stdlib,
   // making it reactive when the window is resized. The total width of the chart is computed
@@ -35,11 +40,11 @@ chart = {
       .y1(d => y(d.close));
 
   // Create a div that holds two svg elements: one for the main chart and horizontal axis,
-  // which moves as the user scrolls the content; the other for the vertical axis (which 
+  // which moves as the user scrolls the content; the other for the vertical axis (which
   // doesn’t scroll).
   const parent = d3.create("div");
 
-  // Create the svg with the vertical axis. 
+  // Create the svg with the vertical axis.
   parent.append("svg")
       .attr("width", width)
       .attr("height", height)
@@ -56,7 +61,7 @@ chart = {
           .attr("font-weight", "bold")
           .text("$ Close"));
 
-  // Create a scrolling div containing the area shape and the horizontal axis. 
+  // Create a scrolling div containing the area shape and the horizontal axis.
   const body = parent.append("div")
       .style("overflow-x", "scroll")
       .style("-webkit-overflow-scrolling", "touch");
@@ -83,5 +88,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("aapl.csv").csv({typed: true})
+const data = FileAttachment("aapl.csv").csv({typed: true});
 ```

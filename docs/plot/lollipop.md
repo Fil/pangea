@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Lollipop</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Lollipop
@@ -10,7 +15,12 @@ Plot.plot({
   y: {percent: true},
   marks: [
     Plot.ruleX(alphabet, {x: "letter", y: "frequency", strokeWidth: 2}),
-    Plot.dot(alphabet, {x: "letter", y: "frequency", fill: "currentColor", r: 4})
+    Plot.dot(alphabet, {
+      x: "letter",
+      y: "frequency",
+      fill: "currentColor",
+      r: 4
+    })
   ]
-})
+});
 ```

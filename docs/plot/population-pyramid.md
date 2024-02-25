@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Population pyramid</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Population pyramid
@@ -30,20 +35,20 @@ Plot.plot({
     Plot.ruleX([0]),
     Plot.ruleY([0])
   ]
-})
+});
 ```
 
 ```js echo
-translations = ({
+const translations = {
   ledig: "single",
   verheiratet: "married",
   geschieden: "divorced",
   verwitwet: "widowed"
-})
+};
 ```
 
 ```js echo
-population = FileAttachment("population@1.csv").csv({typed: true})
+const population = FileAttachment("population@1.csv").csv({typed: true});
 ```
 
 ```js echo
@@ -52,7 +57,7 @@ Plot.plot({
     domain: ["ledig", "verheiratet", "geschieden", "verwitwet"],
     range: ["#69AEBE", "#F1757A", "#F2B678", "#989D9E"],
     legend: true,
-    tickFormat: d => translations[d]
+    tickFormat: (d) => translations[d]
   },
   height: 500,
   width: 400,
@@ -75,7 +80,11 @@ Plot.plot({
       label: "← men (thousands)",
       labelAnchor: "left"
     }),
-    Plot.axisX({ ticks: [0, 250, 500, 750], dx: 20, label: "women (thousands) →" }),
+    Plot.axisX({
+      ticks: [0, 250, 500, 750],
+      dx: 20,
+      label: "women (thousands) →"
+    }),
     Plot.axisY({
       frameAnchor: "middle",
       dx: 16,
@@ -86,7 +95,7 @@ Plot.plot({
       textStroke: "white",
       textStrokeWidth: 10
     }),
-    Plot.text(["↑ age"], { frameAnchor: "top", dy: -10 }),
+    Plot.text(["↑ age"], {frameAnchor: "top", dy: -10}),
     Plot.areaX(population, {
       y: "age",
       x: (d) => -d.population,
@@ -112,5 +121,5 @@ Plot.plot({
       dx: 20
     })
   ]
-})
+});
 ```

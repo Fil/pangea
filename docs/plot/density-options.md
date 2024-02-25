@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Density options</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Density options
@@ -20,12 +25,17 @@ viewof thresholds = Inputs.range([1, 40], {
 Plot.plot({
   inset: 20,
   marks: [
-    Plot.density(faithful, {x: "waiting", y: "eruptions", bandwidth, thresholds}),
+    Plot.density(faithful, {
+      x: "waiting",
+      y: "eruptions",
+      bandwidth,
+      thresholds
+    }),
     Plot.dot(faithful, {x: "waiting", y: "eruptions"})
   ]
-})
+});
 ```
 
 ```js echo
-faithful = FileAttachment("faithful.tsv").tsv({typed: true})
+const faithful = FileAttachment("faithful.tsv").tsv({typed: true});
 ```

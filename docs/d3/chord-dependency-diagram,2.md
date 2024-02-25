@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Chord dependency diagram</h1><a href="https://d3js.org/">D3</a> â€º <a href="/@d3/gallery">Gallery</a></div>
 
 # Chord dependency diagram
 
-This [chord diagram](/@d3/chord-diagram/2) shows dependencies among a software class hierarchy. Although it does not reveal class-level detail, as [hierarchical edge bundling](/@d3/hierarchical-edge-bundling/2) does, it conveys the total number of imports between and within packages. Note, for example, that the *util* package does not import anything besides itself.
+This [chord diagram](/@d3/chord-diagram/2) shows dependencies among a software class hierarchy. Although it does not reveal class-level detail, as [hierarchical edge bundling](/@d3/hierarchical-edge-bundling/2) does, it conveys the total number of imports between and within packages. Note, for example, that the _util_ package does not import anything besides itself.
 
 ```js echo
-chart = {
+const chart = {
   const width = 1080;
   const height = width;
   const innerRadius = Math.min(width, height) * 0.5 - 90;
@@ -81,5 +86,5 @@ ${d3.sum(chords, c => (c.target.index === d.index) * c.source.value)} incoming â
 ```
 
 ```js echo
-data = FileAttachment("flare-imports.csv").csv({typed: true})
+const data = FileAttachment("flare-imports.csv").csv({typed: true});
 ```

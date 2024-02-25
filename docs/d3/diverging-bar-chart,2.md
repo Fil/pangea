@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Diverging bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Diverging bar chart
@@ -5,18 +10,26 @@
 A diverging bar chart can show negative values as well as positive ones. Bars are positioned by their top-left corner and cannot have a negative width; thus if the value is positive, it determines the right edge, while if it’s negative, it determines the left. This chart shows estimated change in population from 2010 to 2019.
 
 ```js
-viewof metric = Inputs.radio(new Map([["Absolute", "absolute"], ["Relative", "relative"]]), {value: "absolute", label: "Change"})
+const metric = view(
+  Inputs.radio(
+    new Map([
+      ["Absolute", "absolute"],
+      ["Relative", "relative"]
+    ]),
+    {value: "absolute", label: "Change"}
+  )
+);
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   const data = d3.sort(states, d => d[2019] - d[2010])
     .map((d) => ({
       ...d,
       value: metric === "absolute" ? d[2019] - d[2010] : (d[2019] - d[2010]) / d[2010]
     }));
-  
+
   // Specify the chart’s dimensions.
   const barHeight = 25;
   const marginTop = 30;
@@ -89,7 +102,9 @@ chart = {
 ```
 
 ```js echo
-states = FileAttachment("state-population-2010-2019.tsv").tsv({ typed: true })
+const states = FileAttachment("state-population-2010-2019.tsv").tsv({
+  typed: true
+});
 ```
 
 Using [Observable Plot](/plot/)’s concise API, a [bar mark](/plot/marks/bar) and the [sort mark option](/plot/features/scales#sort-mark-option) create a similar chart; see the [complete example](/@observablehq/plot-state-population-change?intent=fork) for more.
@@ -106,7 +121,7 @@ Plot.plot({
       y: "State",
       x: (d) => d[2019] - d[2010],
       fill: (d) => d[2019] > d[2010],
-      sort: { y: "x" }
+      sort: {y: "x"}
     }),
     d3
       .groups(states, (d) => d[2019] > d[2010])
@@ -120,5 +135,5 @@ Plot.plot({
         })
       )
   ]
-})
+});
 ```

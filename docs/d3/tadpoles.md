@@ -1,11 +1,18 @@
-```js
-md`# Tadpoles
+---
+index: false
+status: draft
+---
 
-A recreation of the [Paper.js example](http://paperjs.org/examples/tadpoles/) (though lacking the playful flocking behavior!).`
+```js
+md`
+# Tadpoles
+
+A recreation of the [Paper.js example](http://paperjs.org/examples/tadpoles/) (though lacking the playful flocking behavior!).
+`;
 ```
 
 ```js echo
-chart = {
+const chart = {
   const height = 600;
   const context = DOM.context2d(width, height);
   context.lineJoin = "round";
@@ -21,7 +28,7 @@ chart = {
 
   while (true) {
     context.clearRect(0, 0, width, height);
-    
+
     for (const t of tadpoles) {
       let dx = t.vx;
       let dy = t.vy;
@@ -44,7 +51,7 @@ chart = {
         t.py[j] = (y += dy / speed * k1) + dx * k2;
         speed = Math.sqrt((dx = vx) * dx + (dy = vy) * dy);
       }
-      
+
       // Head
       context.save();
       context.translate(t.px[0], t.py[0]);
@@ -53,14 +60,14 @@ chart = {
       context.ellipse(0, 0, 6.5, 4, 0, 0, 2 * Math.PI);
       context.fill();
       context.restore();
-      
+
       // Body
       context.beginPath();
       context.moveTo(t.px[0], t.py[0]);
       for (let i = 1; i < 3; ++i) context.lineTo(t.px[i], t.py[i]);
       context.lineWidth = 4;
       context.stroke();
-      
+
       // Tail
       context.beginPath();
       context.moveTo(t.px[0], t.py[0]);
@@ -68,20 +75,20 @@ chart = {
       context.lineWidth = 2;
       context.stroke();
     }
-    
+
     yield context.canvas;
   }
 }
 ```
 
 ```js echo
-n = 100
+const n = 100;
 ```
 
 ```js echo
-m = 12
+const m = 12;
 ```
 
 ```js echo
-v = 2
+const v = 2;
 ```

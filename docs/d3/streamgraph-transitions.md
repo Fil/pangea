@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Streamgraph transitions</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Streamgraph transitions
@@ -21,7 +26,7 @@ viewof offset = {
 ```
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 500;
 
@@ -47,7 +52,7 @@ chart = {
     ]);
     return layers;
   }
-  
+
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height])
       .attr("width", width)
@@ -75,19 +80,19 @@ chart = {
 ```
 
 ```js echo
-n = 20 // number of layers 
+const n = 20; // number of layers
 ```
 
 ```js echo
-m = 200 // number of samples per layer
+const m = 200; // number of samples per layer
 ```
 
 ```js echo
-k = 10 // number of bumps per layer
+const k = 10; // number of bumps per layer
 ```
 
 ```js echo
-bumps = {
+const bumps = {
   // Inspired by Lee Byron’s test data generator.
   function bump(a, n) {
     const x = 1 / (0.1 + Math.random());

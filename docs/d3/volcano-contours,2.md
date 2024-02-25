@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Volcano contours</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Volcano contours
@@ -5,7 +10,7 @@
 Showing the topography of [Maungawhau](https://en.wikipedia.org/wiki/Maungawhau) with [d3-contour](https://d3js.org/d3-contour).
 
 ```js echo
-chart = {
+const chart = {
   const n = data.width;
   const m = data.height;
   const width = 928;
@@ -33,7 +38,7 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("volcano.json").json()
+const data = FileAttachment("volcano.json").json();
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a contour plot with the [contour mark](https://observablehq.com/plot/marks/contour), here using the **fill** channel to encode elevation as color.
@@ -52,5 +57,5 @@ Plot.plot({
       stroke: "black"
     })
   ]
-})
+});
 ```

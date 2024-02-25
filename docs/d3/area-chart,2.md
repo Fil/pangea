@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Area chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Area chart
@@ -5,7 +10,7 @@
 This time-series chart shows the daily close of Apple stock. Compare to a [line chart](/@d3/line-chart/2). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js echo
-chart = {
+const chart = {
   // Declare the chart dimensions and margins.
   const width = 928;
   const height = 500;
@@ -63,17 +68,14 @@ chart = {
 ```
 
 ```js echo
-aapl = FileAttachment("aapl.csv").csv({typed: true})
+const aapl = FileAttachment("aapl.csv").csv({typed: true});
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a area chart with the [area mark](https://observablehq.com/plot/marks/area). Below, a [rule mark](https://observablehq.com/plot/marks/rule) denotes *y* = 0. (The **y1** option is used instead of **y** because the *aapl* dataset includes a few duplicate rows.)
+Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a area chart with the [area mark](https://observablehq.com/plot/marks/area). Below, a [rule mark](https://observablehq.com/plot/marks/rule) denotes _y_ = 0. (The **y1** option is used instead of **y** because the _aapl_ dataset includes a few duplicate rows.)
 
 ```js echo
 Plot.plot({
   y: {grid: true, label: "Daily close ($)"},
-  marks: [
-    Plot.ruleY([0]),
-    Plot.areaY(aapl, {x: "date", y1: "close", fill: "steelblue"})
-  ]
-})
+  marks: [Plot.ruleY([0]), Plot.areaY(aapl, {x: "date", y1: "close", fill: "steelblue"})]
+});
 ```

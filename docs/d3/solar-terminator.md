@@ -1,11 +1,18 @@
-```js
-md`# Solar Terminator
+---
+index: false
+status: draft
+---
 
-It is currently night in the blue region.`
+```js
+md`
+# Solar Terminator
+
+It is currently night in the blue region.
+`;
 ```
 
 ```js echo
-map = {
+const map = {
   const context = DOM.context2d(width, height);
   const path = d3.geoPath(projection, context);
   context.beginPath(), path(graticule), context.strokeStyle = "#ccc", context.stroke();
@@ -17,7 +24,7 @@ map = {
 ```
 
 ```js echo
-height = {
+const height = {
   const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, sphere)).bounds(sphere);
   const dy = Math.ceil(y1 - y0), l = Math.min(Math.ceil(x1 - x0), dy);
   projection.scale(projection.scale() * (l - 1) / l).precision(0.2);
@@ -26,11 +33,11 @@ height = {
 ```
 
 ```js echo
-projection = d3.geoNaturalEarth1()
+const projection = d3.geoNaturalEarth1();
 ```
 
 ```js echo
-sun = {
+const sun = {
   const now = new Date;
   const day = new Date(+now).setUTCHours(0, 0, 0, 0);
   const t = solar.century(now);
@@ -40,40 +47,37 @@ sun = {
 ```
 
 ```js echo
-night = d3.geoCircle()
-    .radius(90)
-    .center(antipode(sun))
-  ()
+const night = d3.geoCircle().radius(90).center(antipode(sun))();
 ```
 
 ```js echo
-antipode = ([longitude, latitude]) => [longitude + 180, -latitude]
+const antipode = ([longitude, latitude]) => [longitude + 180, -latitude];
 ```
 
 ```js echo
-sphere = ({type: "Sphere"})
+const sphere = {type: "Sphere"};
 ```
 
 ```js echo
-graticule = d3.geoGraticule10()
+const graticule = d3.geoGraticule10();
 ```
 
 ```js echo
-land = topojson.feature(world, world.objects.land)
+const land = topojson.feature(world, world.objects.land);
 ```
 
 ```js echo
-world = fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json").then(response => response.json())
+const world = fetch("https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json").then((response) => response.json());
 ```
 
 ```js echo
-topojson = require("topojson-client@3")
+const topojson = require("topojson-client@3");
 ```
 
 ```js echo
-d3 = require("d3-geo@1")
+const d3 = require("d3-geo@1");
 ```
 
 ```js echo
-solar = require("solar-calculator@0.3/dist/solar-calculator.min.js")
+const solar = require("solar-calculator@0.3/dist/solar-calculator.min.js");
 ```

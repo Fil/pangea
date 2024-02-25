@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: New York Times-style axes</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # New York Times-style axes
@@ -24,5 +29,5 @@ Plot.plot({
     Plot.ruleY([0]),
     Plot.line(aapl, {x: "Date", y: "Close", markerEnd: "dot"})
   ]
-})
+});
 ```

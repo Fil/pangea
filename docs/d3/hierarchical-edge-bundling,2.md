@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Hierarchical edge bundling II</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Hierarchical edge bundling II
@@ -5,7 +10,7 @@
 This chart shows relationships among classes in a software hierarchy. Each directed edge, going from <b style="color: ${color(0.1)};">source</b> to <b style="color: ${color(0.9)};">target</b>, corresponds to an import.
 
 ```js echo
-chart = {
+const chart = {
   const width = 954;
   const radius = width / 2;
   const k = 6; // 2^k colors segments per curve
@@ -63,13 +68,13 @@ ${d.incoming.length} incoming`));
 ```
 
 ```js echo
-data = hierarchy(await FileAttachment("flare.json").json())
+const data = hierarchy(await FileAttachment("flare.json").json());
 ```
 
 ```js echo
 function hierarchy(data, delimiter = ".") {
   let root;
-  const map = new Map;
+  const map = new Map();
   data.forEach(function find(data) {
     const {name} = data;
     if (map.has(name)) return map.get(name);
@@ -89,8 +94,8 @@ function hierarchy(data, delimiter = ".") {
 
 ```js echo
 function bilink(root) {
-  const map = new Map(root.leaves().map(d => [id(d), d]));
-  for (const d of root.leaves()) d.incoming = [], d.outgoing = d.data.imports.map(i => [d, map.get(i)]);
+  const map = new Map(root.leaves().map((d) => [id(d), d]));
+  for (const d of root.leaves()) (d.incoming = []), (d.outgoing = d.data.imports.map((i) => [d, map.get(i)]));
   for (const d of root.leaves()) for (const o of d.outgoing) o[1].incoming.push(o);
   return root;
 }
@@ -113,10 +118,10 @@ class Path {
     this._m = [x, y];
   }
   lineTo(x, y) {
-    this._.push(new Line(this._m, this._m = [x, y]));
+    this._.push(new Line(this._m, (this._m = [x, y])));
   }
   bezierCurveTo(ax, ay, bx, by, x, y) {
-    this._.push(new BezierCurve(this._m, [ax, ay], [bx, by], this._m = [x, y]));
+    this._.push(new BezierCurve(this._m, [ax, ay], [bx, by], (this._m = [x, y])));
   }
   *split(k = 0) {
     const n = this._.length;
@@ -161,7 +166,7 @@ class Line {
 ```
 
 ```js echo
-BezierCurve = {
+const BezierCurve = {
   const l1 = [4 / 8, 4 / 8, 0 / 8, 0 / 8];
   const l2 = [2 / 8, 4 / 8, 2 / 8, 0 / 8];
   const l3 = [1 / 8, 3 / 8, 3 / 8, 1 / 8];
@@ -197,5 +202,5 @@ BezierCurve = {
 ```
 
 ```js echo
-color = t => d3.interpolateRdBu(1 - t)
+const color = (t) => d3.interpolateRdBu(1 - t);
 ```

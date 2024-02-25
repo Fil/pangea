@@ -1,16 +1,22 @@
-```js
-md`# Sequences Sunburst
+---
+index: false
+status: draft
+---
 
-This example shows how it is possible to use a [sunburst visualization](https://observablehq.com/@d3/sunburst)  with data that describes sequences of events. Hover over the segments to see the corresponding sequences.
+```js
+md`
+# Sequences Sunburst
+
+This example shows how it is possible to use a [sunburst visualization](https://observablehq.com/@d3/sunburst) with data that describes sequences of events. Hover over the segments to see the corresponding sequences.
 
 A good use case is to summarize navigation paths through a web site or app, as in the sample data file (which is attached to the \`csv\` cell). Where a funnel lets you understand a single pre-selected path, this allows you to see all possible paths. For example, you might want to compare visits that start directly on a product page (e.g. after landing there from a search engine) to visits where users arrive on the site's home page and navigate from there.
 
 See also: the non-radial counterpart to this, [Sequences Icicle](/@kerryrodden/sequences-icicle).
-`
+`;
 ```
 
 ```js
-breadcrumb = {
+const breadcrumb = {
   const svg = d3
     .create("svg")
     .attr("viewBox", `0 0 ${breadcrumbWidth * 10} ${breadcrumbHeight}`)
@@ -144,78 +150,78 @@ viewof sunburst = {
 md`
 Features:
 
-* works with data that is in a CSV format (you don't need to pre-generate a hierarchical JSON file, unless your data file is very large) - in Observable, you can just replace the file that's attached to the \`csv\` cell
-* interactive breadcrumb trail helps to emphasize the sequence, so that it is easy for a first-time user to understand what they are seeing
-* percentages are shown explicitly, to help overcome the distortion of the data that occurs when using a radial presentation
+- works with data that is in a CSV format (you don't need to pre-generate a hierarchical JSON file, unless your data file is very large) - in Observable, you can just replace the file that's attached to the \`csv\` cell
+- interactive breadcrumb trail helps to emphasize the sequence, so that it is easy for a first-time user to understand what they are seeing
+- percentages are shown explicitly, to help overcome the distortion of the data that occurs when using a radial presentation
 
 If you want to reuse this with your own data, here are some tips for generating the CSV file:
 
-* no header is required (but it's OK if one is present)
-* use a hyphen to separate the steps in the sequence
-* every sequence should have an "end" marker as the last element, *unless* it has been truncated because it is longer than the maximum sequence length (6, in the example). The purpose of the "end" marker is to distinguish a true end point (e.g. the user left the site) from an end point that has been forced by truncation.
-* each line should be a complete path from root to leaf - don't include counts for intermediate steps. For example, include "home-search-end" and "home-search-product-end" but not "home-search" - the latter is computed by the partition layout, by adding up the counts of all the sequences with that prefix.
-* to keep the number of permutations low, use a small number of unique step names, and a small maximum sequence length. Larger numbers of either of these will lead to a very large CSV that will be slow to process.
-* keep the step names short
-`
+- no header is required (but it's OK if one is present)
+- use a hyphen to separate the steps in the sequence
+- every sequence should have an "end" marker as the last element, _unless_ it has been truncated because it is longer than the maximum sequence length (6, in the example). The purpose of the "end" marker is to distinguish a true end point (e.g. the user left the site) from an end point that has been forced by truncation.
+- each line should be a complete path from root to leaf - don't include counts for intermediate steps. For example, include "home-search-end" and "home-search-product-end" but not "home-search" - the latter is computed by the partition layout, by adding up the counts of all the sequences with that prefix.
+- to keep the number of permutations low, use a small number of unique step names, and a small maximum sequence length. Larger numbers of either of these will lead to a very large CSV that will be slow to process.
+- keep the step names short
+`;
 ```
 
 ```js echo
-csv = d3.csvParseRows(await FileAttachment("visit-sequences@1.csv").text())
+const csv = d3.csvParseRows(await FileAttachment("visit-sequences@1.csv").text());
 ```
 
 ```js echo
-data = buildHierarchy(csv)
+const data = buildHierarchy(csv);
 ```
 
 ```js echo
-partition = data =>
+const partition = (data) =>
   d3.partition().size([2 * Math.PI, radius * radius])(
     d3
       .hierarchy(data)
-      .sum(d => d.value)
+      .sum((d) => d.value)
       .sort((a, b) => b.value - a.value)
-  )
+  );
 ```
 
 ```js echo
-color = d3
+const color = d3
   .scaleOrdinal()
   .domain(["home", "product", "search", "account", "other", "end"])
-  .range(["#5d85cf", "#7c6561", "#da7847", "#6fb971", "#9e70cf", "#bbbbbb"])
+  .range(["#5d85cf", "#7c6561", "#da7847", "#6fb971", "#9e70cf", "#bbbbbb"]);
 ```
 
 ```js echo
-width = 640
+const width = 640;
 ```
 
 ```js echo
-radius = width / 2
+const radius = width / 2;
 ```
 
 ```js echo
-arc = d3
+const arc = d3
   .arc()
-  .startAngle(d => d.x0)
-  .endAngle(d => d.x1)
+  .startAngle((d) => d.x0)
+  .endAngle((d) => d.x1)
   .padAngle(1 / radius)
   .padRadius(radius)
-  .innerRadius(d => Math.sqrt(d.y0))
-  .outerRadius(d => Math.sqrt(d.y1) - 1)
+  .innerRadius((d) => Math.sqrt(d.y0))
+  .outerRadius((d) => Math.sqrt(d.y1) - 1);
 ```
 
 ```js echo
-mousearc = d3
+const mousearc = d3
   .arc()
-  .startAngle(d => d.x0)
-  .endAngle(d => d.x1)
-  .innerRadius(d => Math.sqrt(d.y0))
-  .outerRadius(radius)
+  .startAngle((d) => d.x0)
+  .endAngle((d) => d.x1)
+  .innerRadius((d) => Math.sqrt(d.y0))
+  .outerRadius(radius);
 ```
 
 ```js echo
 function buildHierarchy(csv) {
   // Helper function that transforms the given CSV into a hierarchical format.
-  const root = { name: "root", children: [] };
+  const root = {name: "root", children: []};
   for (let i = 0; i < csv.length; i++) {
     const sequence = csv[i][0];
     const size = +csv[i][1];
@@ -241,13 +247,13 @@ function buildHierarchy(csv) {
         }
         // If we don't already have a child node for this branch, create it.
         if (!foundChild) {
-          childNode = { name: nodeName, children: [] };
+          childNode = {name: nodeName, children: []};
           children.push(childNode);
         }
         currentNode = childNode;
       } else {
         // Reached the end of the sequence; create a leaf node.
-        childNode = { name: nodeName, value: size };
+        childNode = {name: nodeName, value: size};
         children.push(childNode);
       }
     }
@@ -257,11 +263,11 @@ function buildHierarchy(csv) {
 ```
 
 ```js echo
-breadcrumbWidth = 75
+const breadcrumbWidth = 75;
 ```
 
 ```js echo
-breadcrumbHeight = 30
+const breadcrumbHeight = 30;
 ```
 
 ```js echo
@@ -283,19 +289,19 @@ function breadcrumbPoints(d, i) {
 ```
 
 ```js echo
-d3 = require("d3@6")
+const d3 = require("d3@6");
 ```
 
 This notebook reuses much of the `buildHierarchy` function from my original [Sequences sunburst](https://gist.github.com/kerryrodden/7090426) gist, which was published when I worked at Google, with the following [license](https://gist.github.com/kerryrodden/7090426#file-license):
 
 > Copyright 2013 Google Inc. All Rights Reserved.
-> 
+>
 > Licensed under the Apache License, Version 2.0 (the "License");
 > you may not use this file except in compliance with the License.
 > You may obtain a copy of the License at
-> 
->    http://www.apache.org/licenses/LICENSE-2.0
-> 
+>
+> http://www.apache.org/licenses/LICENSE-2.0
+>
 > Unless required by applicable law or agreed to in writing, software
 > distributed under the License is distributed on an "AS IS" BASIS,
 > WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Normalized stacked area chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Normalized stacked area chart
@@ -5,11 +10,11 @@
 This chart shows unemployed persons by industry, 2000–2010. Compare to a [streamgraph](/@d3/streamgraph/2?intent=fork) and [zero-baseline stacked area](/@d3/stacked-area-chart/2?intent=fork). Data: [BLS](https://www.bls.gov/)
 
 ```js
-key = Swatches(chart.scales.color, {columns: "180px"})
+const key = Swatches(chart.scales.color, {columns: "180px"});
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 500;
@@ -88,9 +93,9 @@ chart = {
 ```
 
 ```js echo
-unemployment = FileAttachment("unemployment.csv").csv({typed: true})
+const unemployment = FileAttachment("unemployment.csv").csv({typed: true});
 ```
 
 ```js echo
-import {Swatches} from "@d3/color-legend"
+import {Swatches} from "@d3/color-legend";
 ```

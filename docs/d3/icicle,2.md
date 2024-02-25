@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Icicle</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Icicle
@@ -5,7 +10,7 @@
 This space-filling visualization, the Cartesian equivalent to a [sunburst](/@d3/sunburst/2?intent=fork), shows the cumulative values of subtrees. It is commonly used to visualize software packages (the size of source code within nested packages) and file systems (the size of files within nested folders). See also the [zoomable version](/@d3/zoomable-icicle).
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 2400;
@@ -41,7 +46,7 @@ chart = {
   cell.append("title")
       .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
 
-  // Color the cell with respect to which child of root it belongs to. 
+  // Color the cell with respect to which child of root it belongs to.
   cell.append("rect")
       .attr("width", d => d.y1 - d.y0)
       .attr("height", d => d.x1 - d.x0)
@@ -69,5 +74,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```

@@ -1,15 +1,20 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Gradient encoding</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Gradient encoding
 
-This variation of a [line chart](/@d3/line-chart) uses a gradient to change the line color based on its *y*-value. For a related technique along the *x*-axis, see [variable-color line](/@d3/variable-color-line).
+This variation of a [line chart](/@d3/line-chart) uses a gradient to change the line color based on its _y_-value. For a related technique along the _x_-axis, see [variable-color line](/@d3/variable-color-line).
 
 ```js
-Legend(chart.scales.color, {title: "Temperature °F"})
+Legend(chart.scales.color, {title: "Temperature °F"});
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 500;
@@ -35,7 +40,7 @@ chart = {
     .defined(d => !isNaN(d.temperature))
     .x(d => x(d.date))
     .y(d => y(d.temperature));
-  
+
   // Create the SVG container.
   const svg = d3.create("svg")
       .attr("width", width)
@@ -84,15 +89,21 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("temperature.csv").csv({typed: true})
+const data = FileAttachment("temperature.csv").csv({typed: true});
 ```
 
 ```js echo
-import {Legend} from "@d3/color-legend"
+import {Legend} from "@d3/color-legend";
 ```
 
 Using [Observable Plot](/plot/)’s concise API, you can get a quick approximation of that chart (below). For a more elaborate solution with a gradient encoding, see [this notebook](https://observablehq.com/@observablehq/plot-gradient-encoding?intent=fork).
 
 ```js echo
-Plot.line(data, {x: "date", y: "temperature", z: null, stroke: "temperature", curve: "step-before"}).plot({nice: true})
+Plot.line(data, {
+  x: "date",
+  y: "temperature",
+  z: null,
+  stroke: "temperature",
+  curve: "step-before"
+}).plot({nice: true});
 ```

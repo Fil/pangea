@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Line chart, percent change</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Line chart, percent change
@@ -6,14 +11,24 @@ The variant of a [line chart](/@d3/line-chart) shows the change in price of Appl
   year: "numeric",
   month: "long",
   day: "numeric",
-})}`: "the"} price of $${basis.toFixed(2)}. The log *y*-scale allows [accurate comparison](/@mbostock/methods-of-comparison-compared). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
+})}`: "the"} price of $${basis.toFixed(2)}. The log _y_-scale allows [accurate comparison](/@mbostock/methods-of-comparison-compared). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js
-viewof basis = Inputs.range(d3.extent(aapl, d => d.Close), {label: "Basis", value: aapl[0].Close, step: 0.01, format: x => x.toFixed(2)})
+const basis = view(
+  Inputs.range(
+    d3.extent(aapl, (d) => d.Close),
+    {
+      label: "Basis",
+      value: aapl[0].Close,
+      step: 0.01,
+      format: (x) => x.toFixed(2)
+    }
+  )
+);
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the dimensions of the chart.
   const width = 928;
@@ -70,7 +85,7 @@ chart = {
       .attr("stroke-linejoin", "round")
       .attr("stroke-linecap", "round")
       .attr("d", line);
-  
+
   return svg.node();
 }
 ```
@@ -80,10 +95,22 @@ Using [Observable Plot](https://observablehq.com/plot/)’s concise API, you can
 ```js echo
 Plot.plot({
   marginLeft: 45,
-  y: {type: "log", tickFormat: d => `${d > 1 ? "+" : ""}${Math.round(100 * (d - 1))}%`, grid: true, ticks: 12},
+  y: {
+    type: "log",
+    tickFormat: (d) => `${d > 1 ? "+" : ""}${Math.round(100 * (d - 1))}%`,
+    grid: true,
+    ticks: 12
+  },
   marks: [
     Plot.ruleY([1]),
-    Plot.line(aapl, Plot.normalizeY(() => basis, {x: "Date", y: "Close", stroke: "steelblue"}))
+    Plot.line(
+      aapl,
+      Plot.normalizeY(() => basis, {
+        x: "Date",
+        y: "Close",
+        stroke: "steelblue"
+      })
+    )
   ]
-})
+});
 ```

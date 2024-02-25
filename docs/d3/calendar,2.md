@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Calendar</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Calendar
@@ -5,11 +10,15 @@
 This chart shows daily changes of the Dow Jones Industrial Average from ${dji.at(0).Date.getUTCFullYear()} to ${dji.at(-1).Date.getUTCFullYear()}. Days the index went up are green, and down are pink. Data: [Yahoo Finance](https://finance.yahoo.com/quote/%5EDJI/history/)
 
 ```js
-key = Legend(chart.scales.color, {title: "Daily change", tickFormat: "+%", marginLeft: 40})
+const key = Legend(chart.scales.color, {
+  title: "Daily change",
+  tickFormat: "+%",
+  marginLeft: 40
+});
 ```
 
 ```js echo
-chart = {
+const chart = {
   const width = 928; // width of the chart
   const cellSize = 17; // height of a day
   const height = cellSize * 7; // height of a week (5 days + padding)
@@ -22,7 +31,7 @@ chart = {
   const formatMonth = d3.utcFormat("%b");
 
   // Helpers to compute a day’s position in the week.
-  const timeWeek = d3.utcMonday; 
+  const timeWeek = d3.utcMonday;
   const countDay = i => (i + 6) % 7;
 
   // Compute the values used to color the cells: percent change is the difference between the day’s
@@ -114,11 +123,11 @@ ${formatClose(d.close)}`}`);
 ```
 
 ```js echo
-dji = FileAttachment("^DJI.csv").csv({typed: true})
+const dji = FileAttachment("^DJI.csv").csv({typed: true});
 ```
 
 ```js echo
-import {Legend} from "@d3/color-legend"
+import {Legend} from "@d3/color-legend";
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a [simple calendar](https://observablehq.com/@observablehq/plot-simplified-calendar?intent=fork) with the [cell mark](https://observablehq.com/plot/marks/cell) and yearly [facets](https://observablehq.com/plot/features/facets), as shown below. There is also a [fancy version](https://observablehq.com/@observablehq/plot-calendar?intent=fork).
@@ -129,16 +138,22 @@ Plot.plot({
   x: {axis: null},
   y: {tickFormat: Plot.formatWeekday("en", "narrow"), tickSize: 0},
   fy: {tickFormat: "", reverse: true},
-  color: {scheme: "PiYG", legend: true, label: "Daily change", tickFormat: "+%", domain: [-0.06, 0.06]},
+  color: {
+    scheme: "PiYG",
+    legend: true,
+    label: "Daily change",
+    tickFormat: "+%",
+    domain: [-0.06, 0.06]
+  },
   marks: [
     Plot.cell(dji, {
       x: (d) => d3.utcWeek.count(d3.utcYear(d.Date), d.Date),
       y: (d) => d.Date.getUTCDay(),
       fy: (d) => d.Date.getUTCFullYear(),
-      fill: (d, i) => i > 0 ? (d.Close - dji[i - 1].Close) / dji[i - 1].Close : NaN,
-      title: (d, i) => i > 0 ? ((d.Close - dji[i - 1].Close) / dji[i - 1].Close * 100).toFixed(1) : NaN,
+      fill: (d, i) => (i > 0 ? (d.Close - dji[i - 1].Close) / dji[i - 1].Close : NaN),
+      title: (d, i) => (i > 0 ? (((d.Close - dji[i - 1].Close) / dji[i - 1].Close) * 100).toFixed(1) : NaN),
       inset: 0.5
     })
   ]
-})
+});
 ```

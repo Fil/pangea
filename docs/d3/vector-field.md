@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Vector field</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Vector field
@@ -5,7 +10,7 @@
 This map shows the speed (size) and direction (orientation and color) of simulated wind. Based on a [Vega](https://vega.github.io/vega/examples/wind-vectors/) and [LitVis example](https://github.com/gicentre/litvis/blob/master/examples/windVectors.md).
 
 ```js echo
-map = {
+const map = {
   const projection = d3.geoEquirectangular();
 
   // Specify the dimensions.
@@ -50,15 +55,15 @@ map = {
 ```
 
 ```js echo
-data = FileAttachment("wind.csv").csv({typed: true})
+const data = FileAttachment("wind.csv").csv({typed: true});
 ```
 
 ```js echo
-land = topojson.feature(world, world.objects.land)
+const land = topojson.feature(world, world.objects.land);
 ```
 
 ```js echo
-world = d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json")
+const world = d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json");
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -72,17 +77,23 @@ Plot.plot({
     domain: {
       type: "MultiPoint",
       coordinates: [
-        [d3.min(data, (d) => d.longitude) - .3, d3.min(data, (d) => d.latitude) - .3],
-        [d3.max(data, (d) => d.longitude) + .3, d3.max(data, (d) => d.latitude) + .3]
+        [d3.min(data, (d) => d.longitude) - 0.3, d3.min(data, (d) => d.latitude) - 0.3],
+        [d3.max(data, (d) => d.longitude) + 0.3, d3.max(data, (d) => d.latitude) + 0.3]
       ]
     }
   },
   color: {scheme: "Rainbow", domain: [0, 360]},
   length: {type: "sqrt", range: [0, 12]},
   marks: [
-    Plot.vector(data, {x: "longitude", y: "latitude", stroke: "dir", rotate: d => 180 + d.dir, length: "speed"}),
+    Plot.vector(data, {
+      x: "longitude",
+      y: "latitude",
+      stroke: "dir",
+      rotate: (d) => 180 + d.dir,
+      length: "speed"
+    }),
     Plot.geo(land, {stroke: "white"})
   ],
   style: "background: black;"
-})
+});
 ```

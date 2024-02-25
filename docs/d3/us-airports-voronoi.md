@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">U.S. airports Voronoi</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # U.S. airports Voronoi
@@ -5,7 +10,7 @@
 This [Voronoi diagram](https://github.com/Fil/d3-geo-voronoi) shows the region that is closest to each airport.
 
 ```js echo
-chart = {
+const chart = {
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, 975, 610])
       .attr("width", 975)
@@ -48,7 +53,8 @@ ${p.city}, ${p.state}`;
 ```
 
 ```js echo
-data = FileAttachment("airports.csv").csv({ typed: true })
+const data = FileAttachment("airports.csv")
+  .csv({typed: true})
   .then((data) =>
     data.map((d) => ({
       type: "Feature",
@@ -58,17 +64,21 @@ data = FileAttachment("airports.csv").csv({ typed: true })
         coordinates: [+d.longitude, +d.latitude]
       }
     }))
-  )
+  );
 ```
 
 ```js echo
-projection = d3.geoAlbers().scale(1300).translate([487.5, 305])
+const projection = d3.geoAlbers().scale(1300).translate([487.5, 305]);
 ```
 
 ```js echo
-us = FileAttachment("states-albers-10m.json").json()
+const us = FileAttachment("states-albers-10m.json").json();
 ```
 
 ```js echo
-d3 = require.alias({"d3-array": "d3@7", "d3-delaunay": "d3@7", "d3-geo": "d3@7"})("d3@7", "d3-geo-voronoi@2")
+const d3 = require.alias({
+  "d3-array": "d3@7",
+  "d3-delaunay": "d3@7",
+  "d3-geo": "d3@7"
+})("d3@7", "d3-geo-voronoi@2");
 ```

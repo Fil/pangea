@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Cascaded treemap</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Cascaded treemap
@@ -5,7 +10,7 @@
 An alternative to [nested treemaps](/@d3/nested-treemap) as suggested by [Lü and Fogarty](https://homes.cs.washington.edu/~jfogarty/publications/gi2008.pdf).
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -106,5 +111,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```

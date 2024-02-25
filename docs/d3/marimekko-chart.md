@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Marimekko</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Marimekko
@@ -5,7 +10,7 @@
 This Marimekko chart is a two-level “slice-and-dice” [treemap](/@d3/treemap).
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -23,7 +28,7 @@ chart = {
       .round(true)
       .tile(d3.treemapSliceDice)
       .size([
-        width - marginLeft - marginRight, 
+        width - marginLeft - marginRight,
         height - marginTop - marginBottom
       ])
     (d3.hierarchy(d3.group(data, d => d.market, d => d.segment)).sum(d => d.value))
@@ -97,7 +102,7 @@ chart = {
 ```
 
 ```js echo
-sales = FileAttachment("sales.csv").csv({typed: true})
+const sales = FileAttachment("sales.csv").csv({typed: true});
 ```
 
 For the [Observable Plot](/plot/) version, see [the Plot: Marimekko](https://observablehq.com/@observablehq/plot-marimekko) notebook.

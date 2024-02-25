@@ -1,10 +1,15 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Seamless zoomable map tiles</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Seamless zoomable map tiles
 
 This notebook avoids the flickering in [Zoomable map tiles](/@d3/zoomable-map-tiles) by adding [low-resolution](/@d3/tile-zoomdelta) tiles under the main tiles. During zoom, these larger tiles may be visible while the new tiles load in lieu of the white background. This technique also mostly fixes the [subpixel gap issue](/d/32027f96a5d4aa89).
 
-The marginal cost of the low-resolution tiles is negligible for a zoom delta less than -2; for -1 it is about a quarter the cost of 0. The deltas are defined below; -100 forces the use of the *z*=0 “world” tile. Try editing to see the effect of different deltas.
+The marginal cost of the low-resolution tiles is negligible for a zoom delta less than -2; for -1 it is about a quarter the cost of 0. The deltas are defined below; -100 forces the use of the _z_=0 “world” tile. Try editing to see the effect of different deltas.
 
 ```js
 viewof showlayers = {
@@ -21,11 +26,11 @@ viewof showlayers = {
 ```
 
 ```js echo
-deltas = [-100, -4, -1, 0]
+const deltas = [-100, -4, -1, 0];
 ```
 
 ```js echo
-map = {
+const map = {
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height]);
 
@@ -78,13 +83,13 @@ mutable transform = d3.zoomIdentity.translate(width >> 1, height >> 1).scale(1 <
 
 ```js echo
 // Kartendaten: © [OpenStreetMap](https://openstreetmap.org/copyright)-Mitwirkende, SRTM | Kartendarstellung: © [OpenTopoMap](http://opentopomap.org/) (CC-BY-SA)
-url = (x, y, z) => `https://tile.opentopomap.org/${z}/${x}/${y}.png`
+url = (x, y, z) => `https://tile.opentopomap.org/${z}/${x}/${y}.png`;
 ```
 
 ```js echo
-d3 = require("d3@7", "d3-tile@1")
+const d3 = require("d3@7", "d3-tile@1");
 ```
 
 ```js echo
-height = 600 // note: observable sets a responsive *width*
+const height = 600; // note: observable sets a responsive *width*
 ```

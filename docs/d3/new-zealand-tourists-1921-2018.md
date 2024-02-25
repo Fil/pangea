@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">New Zealand tourists, 1921–2018</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # New Zealand tourists, 1921–2018
@@ -15,7 +20,7 @@ viewof yType = Inputs.radio(
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Declare the chart dimensions and margins.
   const width = 928;
   const height = 500;
@@ -62,7 +67,7 @@ chart = {
   const axisLinear = svg.append("g")
       .style("opacity", 1)
       .call(yAxis, yLinear);
-  
+
   const yTickPosition = (g, y) => g.selectAll(".tick")
     .attr("transform", d => `translate(0,${(isNaN(y(d)) ? yLinear(d) : y(d)) + 0.5})`);
 
@@ -70,12 +75,12 @@ chart = {
       .style("opacity", 0)
       .call(yAxis, yLog, ",")
       .call(yTickPosition, yLinear);
-  
+
   // Create the line generator.
   const line = y => d3.line()
     .x(d => x(d.date))
     .y(d => y(d.value));
-  
+
   // Create the x axis.
   svg.append("g")
       .attr("transform", `translate(0,${height - marginBottom})`)
@@ -104,11 +109,11 @@ chart = {
 ```
 
 ```js echo
-chart.update(yType) // Update the chart when the radio input changes.
+chart.update(yType); // Update the chart when the radio input changes.
 ```
 
 ```js echo
-data = FileAttachment("nz-tourists@1.csv").csv({typed: true})
+const data = FileAttachment("nz-tourists@1.csv").csv({typed: true});
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -118,5 +123,5 @@ Plot.plot({
   marginLeft: 55,
   y: {type: yType, zero: true, grid: true},
   marks: [Plot.lineY(data, {x: "date", y: "value", stroke: "steelblue"})]
-})
+});
 ```

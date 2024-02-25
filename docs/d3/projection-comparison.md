@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Projection comparison</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Projection comparison
@@ -19,7 +24,7 @@ viewof blue = projectionInput({
 ```
 
 ```js
-map = {
+const map = {
   const outline = ({type: "Sphere"});
   const graticule = d3.geoGraticule10();
   const land = topojson.feature(world, world.objects.land);
@@ -71,10 +76,10 @@ map = {
 
 ## Appendix
 
-Edit the *projections* array below, or *red* and *blue* above, to define a new projection.
+Edit the *projections* array below, or _red_ and _blue_ above, to define a new projection.
 
 ```js echo
-projections = [
+const projections = [
   {name: "Airy’s minimum error", value: d3.geoAiry},
   {name: "Aitoff", value: d3.geoAitoff},
   {name: "American polyconic", value: d3.geoPolyconic},
@@ -124,7 +129,10 @@ projections = [
   {name: "Ginzburg VIII", value: d3.geoGinzburg8},
   {name: "Ginzburg IX", value: d3.geoGinzburg9},
   {name: "Goode’s homolosine", value: d3.geoHomolosine},
-  {name: "Goode’s homolosine (interrupted)", value: d3.geoInterruptedHomolosine},
+  {
+    name: "Goode’s homolosine (interrupted)",
+    value: d3.geoInterruptedHomolosine
+  },
   {name: "gnomonic", value: d3.geoGnomonic},
   {name: "Gringorten square", value: d3.geoGringorten},
   {name: "Gringorten quincuncial", value: d3.geoGringortenQuincuncial},
@@ -143,8 +151,14 @@ projections = [
   {name: "Mercator", value: d3.geoMercator},
   {name: "Miller cylindrical", value: d3.geoMiller},
   {name: "Mollweide", value: d3.geoMollweide},
-  {name: "Mollweide (Goode’s interrupted)", value: d3.geoInterruptedMollweide},
-  {name: "Mollweide (interrupted hemispheres)", value: d3.geoInterruptedMollweideHemispheres},
+  {
+    name: "Mollweide (Goode’s interrupted)",
+    value: d3.geoInterruptedMollweide
+  },
+  {
+    name: "Mollweide (interrupted hemispheres)",
+    value: d3.geoInterruptedMollweideHemispheres
+  },
   {name: "Natural Earth", value: d3.geoNaturalEarth1},
   {name: "Natural Earth II", value: d3.geoNaturalEarth2},
   {name: "Nell–Hammer", value: d3.geoNellHammer},
@@ -157,7 +171,10 @@ projections = [
   {name: "sinusoidal", value: d3.geoSinusoidal},
   {name: "sinusoidal (interrupted)", value: d3.geoInterruptedSinusoidal},
   {name: "sinu-Mollweide", value: d3.geoSinuMollweide},
-  {name: "sinu-Mollweide (interrupted)", value: d3.geoInterruptedSinuMollweide},
+  {
+    name: "sinu-Mollweide (interrupted)",
+    value: d3.geoInterruptedSinuMollweide
+  },
   {name: "stereographic", value: d3.geoStereographic},
   {name: "Times", value: d3.geoTimes},
   {name: "Tobler hyperelliptical", value: d3.geoHyperelliptical},
@@ -172,28 +189,33 @@ projections = [
   {name: "Werner", value: () => d3.geoBonne().parallel(90)},
   {name: "Wiechel", value: d3.geoWiechel},
   {name: "Winkel tripel", value: d3.geoWinkel3}
-]
+];
 ```
 
 ```js echo
 function projectionInput({name = "", value} = {}) {
-  const form = html`<form><select name=i>${projections.map(p => {
-    return Object.assign(html`<option>`, {
-      textContent: p.name,
-      selected: p.name === value
-    });
-  })}</select> <i style="font-size:smaller;">${name}</i>`;
+  const form = html`<form>
+    <select name="i">
+      ${projections.map((p) => {
+        return Object.assign(html`<option></option>`, {
+          textContent: p.name,
+          selected: p.name === value
+        });
+      })}
+    </select>
+    <i style="font-size:smaller;">${name}</i>
+  </form>`;
   form.onchange = () => form.dispatchEvent(new CustomEvent("input"));
-  form.oninput = () => form.value = projections[form.i.selectedIndex].value();
+  form.oninput = () => (form.value = projections[form.i.selectedIndex].value());
   form.oninput();
   return form;
 }
 ```
 
 ```js echo
-world = FileAttachment("world.json").json()
+const world = FileAttachment("world.json").json();
 ```
 
 ```js echo
-d3 = require("d3-geo@3", "d3-geo-projection@4")
+const d3 = require("d3-geo@3", "d3-geo-projection@4");
 ```

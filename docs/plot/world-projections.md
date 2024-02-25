@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: World projections</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # World projections
@@ -30,18 +35,14 @@ viewof projection = Inputs.select(
 ```js echo
 Plot.plot({
   projection,
-  marks: [
-    Plot.graticule(),
-    Plot.geo(land, {fill: "currentColor"}),
-    Plot.sphere()
-  ]
-})
+  marks: [Plot.graticule(), Plot.geo(land, {fill: "currentColor"}), Plot.sphere()]
+});
 ```
 
 ```js echo
-world = FileAttachment("countries-110m.json").json()
+const world = FileAttachment("countries-110m.json").json();
 ```
 
 ```js echo
-land = topojson.feature(world, world.objects.land)
+const land = topojson.feature(world, world.objects.land);
 ```

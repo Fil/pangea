@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Pointer target position</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Pointer target position
@@ -12,7 +17,17 @@ Plot.plot({
     Plot.lineY(aapl, {x: "Date", y: "Close"}),
     Plot.ruleX(aapl, Plot.pointerX({x: "Date", py: "Close", stroke: "red"})),
     Plot.dot(aapl, Plot.pointerX({x: "Date", y: "Close", stroke: "red"})),
-    Plot.text(aapl, Plot.pointerX({px: "Date", py: "Close", dy: -17, frameAnchor: "top-left", fontVariant: "tabular-nums", text: (d) => [`Date ${Plot.formatIsoDate(d.Date)}`, `Close ${d.Close.toFixed(2)}`].join("   ")}))
+    Plot.text(
+      aapl,
+      Plot.pointerX({
+        px: "Date",
+        py: "Close",
+        dy: -17,
+        frameAnchor: "top-left",
+        fontVariant: "tabular-nums",
+        text: (d) => [`Date ${Plot.formatIsoDate(d.Date)}`, `Close ${d.Close.toFixed(2)}`].join("   ")
+      })
+    )
   ]
-})
+});
 ```

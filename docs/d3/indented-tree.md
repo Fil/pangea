@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Indented tree</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Indented tree
@@ -5,7 +10,7 @@
 A tabular layout for hierarchical data, indented trees allow one or more columns of values to be shown alongside indented names.
 
 ```js echo
-chart = {
+const chart = {
   const format = d3.format(",");
   const nodeSize = 17;
   const root = d3.hierarchy(data).eachBefore((i => d => d.index = i++)(0));
@@ -15,15 +20,15 @@ chart = {
 
   const columns = [
     {
-      label: "Size", 
-      value: d => d.value, 
-      format, 
+      label: "Size",
+      value: d => d.value,
+      format,
       x: 280
     },
     {
-      label: "Count", 
-      value: d => d.children ? 0 : 1, 
-      format: (value, d) => d.children ? format(value) : "-", 
+      label: "Count",
+      value: d => d.children ? 0 : 1,
+      format: (value, d) => d.children ? format(value) : "-",
       x: 340
     }
   ];
@@ -88,5 +93,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```

@@ -1,15 +1,20 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Scatterplot matrix</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Scatterplot matrix
 
-The scatterplot matrix (SPLOM) shows pairwise correlations for multi-dimensional data; each cell is a scatterplot where *x* encodes the column’s dimension and *y* encodes the row’s dimension. This matrix shows Kristen Gorman’s data on penguins near Palmer Station in Antarctica. See also the [brushable](/@d3/brushable-scatterplot-matrix) version.
+The scatterplot matrix (SPLOM) shows pairwise correlations for multi-dimensional data; each cell is a scatterplot where _x_ encodes the column’s dimension and _y_ encodes the row’s dimension. This matrix shows Kristen Gorman’s data on penguins near Palmer Station in Antarctica. See also the [brushable](/@d3/brushable-scatterplot-matrix) version.
 
 ```js
-swatches({color: chart.scales.color})
+swatches({color: chart.scales.color});
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -50,7 +55,7 @@ chart = {
       .each(function(d) { return d3.select(this).call(axisy.scale(d)); })
       .call(g => g.select(".domain").remove())
       .call(g => g.selectAll(".tick line").attr("stroke", "#ddd"));
-  
+
   const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)
@@ -109,9 +114,9 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("penguins.csv").csv({typed: true})
+const data = FileAttachment("penguins.csv").csv({typed: true});
 ```
 
 ```js echo
-import {swatches} from "@d3/color-legend"
+import {swatches} from "@d3/color-legend";
 ```

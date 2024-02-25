@@ -1,8 +1,13 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Sankey diagram</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Sankey diagram
 
-This [Sankey diagram](https://github.com/d3/d3-sankey) visualizes the flow of energy: *supplies* are on the left, and *demands* are on the right. Links show how varying amounts of energy are converted or transmitted before being consumed or lost. Data: [Department of Energy & Climate Change](http://www.decc.gov.uk/en/content/cms/tackling/2050/calculator_on/calculator_on.aspx) via [Tom Counsell](https://tamc.github.io/Sankey/)
+This [Sankey diagram](https://github.com/d3/d3-sankey) visualizes the flow of energy: _supplies_ are on the left, and _demands_ are on the right. Links show how varying amounts of energy are converted or transmitted before being consumed or lost. Data: [Department of Energy & Climate Change](http://www.decc.gov.uk/en/content/cms/tackling/2050/calculator_on/calculator_on.aspx) via [Tom Counsell](https://tamc.github.io/Sankey/)
 
 ```js
 viewof linkColor = Inputs.select(new Map([
@@ -24,7 +29,7 @@ viewof nodeAlign = Inputs.select(new Map([["left", "sankeyLeft"], ["right", "san
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the dimensions of the chart.
   const width = 928;
   const height = 600;
@@ -99,7 +104,7 @@ chart = {
       .attr("d", d3.sankeyLinkHorizontal())
       .attr("stroke", linkColor === "source-target" ? (d) => d.uid
           : linkColor === "source" ? (d) => color(d.source.category)
-          : linkColor === "target" ? (d) => color(d.target.category) 
+          : linkColor === "target" ? (d) => color(d.target.category)
           : linkColor)
       .attr("stroke-width", d => Math.max(1, d.width));
 
@@ -122,7 +127,7 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   const links = await FileAttachment("energy.csv").csv({typed: true});
   const nodes = Array.from(new Set(links.flatMap(l => [l.source, l.target])), name => ({name, category: name.replace(/ .*/, "")}));
   return {nodes, links};
@@ -131,5 +136,5 @@ data = {
 
 ```js echo
 // [d3-sankey](https://github.com/d3/d3-sankey) is not part of the D3 bundle
-d3 = require("d3@7", "d3-sankey@0.12")
+d3 = require("d3@7", "d3-sankey@0.12");
 ```

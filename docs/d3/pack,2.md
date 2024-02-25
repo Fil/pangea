@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Circle packing</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Circle packing
@@ -5,7 +10,7 @@
 The area of each leaf circle in a circle-packing diagram is proportional its value (here, file size). Although nested circles do not use space as efficiently as a [treemap](/@d3/treemap-stratify?intent=fork), the “wasted” space better reveals the hierarchical structure.
 
 ```js echo
-chart = {
+const chart = {
   // Specify the dimensions of the chart.
   const width = 928;
   const height = width;
@@ -77,5 +82,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("flare-2.json").json()
+const data = FileAttachment("flare-2.json").json();
 ```

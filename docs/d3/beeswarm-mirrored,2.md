@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Mirrored beeswarm</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Mirrored beeswarm
@@ -5,7 +10,7 @@
 A mirrored variation of the [beeswarm chart](/@d3/beeswarm/2?intent=fork).
 
 ```js echo
-chart = {
+const chart = {
 
   // Declare the chart dimensions and margins.
   const width = 928;
@@ -14,7 +19,7 @@ chart = {
   const marginLeft = 20;
   const marginBottom = 20;
 
-  // Dot size and padding. 
+  // Dot size and padding.
   const radius = 3;
   const padding = 1.5;
 
@@ -50,11 +55,12 @@ chart = {
 ```
 
 ```js echo
-dodge = (data, {radius, x}) => {
+const dodge = (data, {radius, x}) => {
   const radius2 = radius ** 2;
-  const circles = data.map(d => ({x: x(d), data: d})).sort((a, b) => a.x - b.x);
+  const circles = data.map((d) => ({x: x(d), data: d})).sort((a, b) => a.x - b.x);
   const epsilon = 1e-3;
-  let head = null, tail = null;
+  let head = null,
+    tail = null;
 
   // Returns true if circle ⟨x,y⟩ intersects with any circle in the queue.
   function intersects(x, y) {
@@ -70,12 +76,11 @@ dodge = (data, {radius, x}) => {
 
   // Place each circle sequentially.
   for (const b of circles) {
-
     // Remove circles from the queue that can’t intersect the new circle b.
     while (head && head.x < b.x - radius2) head = head.next;
 
     // Choose the minimum non-intersecting tangent.
-    if (intersects(b.x, b.y = 0)) {
+    if (intersects(b.x, (b.y = 0))) {
       let a = head;
       b.y = Infinity;
       do {
@@ -94,7 +99,7 @@ dodge = (data, {radius, x}) => {
   }
 
   return circles;
-}
+};
 ```
 
 The [dodge transform](/plot/transforms/dodge) is natively available in the [Observable Plot](/plot/) API, allowing you to create a similar chart with a few lines of code:
@@ -104,13 +109,16 @@ Plot.plot({
   height: 165,
   x: {line: true},
   marks: [
-    Plot.dotX(cars, Plot.dodgeY({
-      x: "weight (lb)",
-      sort: "weight (lb)",
-      title: "name",
-      fill: "currentColor",
-      anchor: "middle"
-    }))
+    Plot.dotX(
+      cars,
+      Plot.dodgeY({
+        x: "weight (lb)",
+        sort: "weight (lb)",
+        title: "name",
+        fill: "currentColor",
+        anchor: "middle"
+      })
+    )
   ]
-})
+});
 ```

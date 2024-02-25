@@ -1,11 +1,16 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Line chart, missing data</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Line chart, missing data
 
-This [line chart](/@d3/line-chart/2) uses [*line*.defined](https://d3js.org/d3-shape/line#line_defined) to show gaps for missing data. The defined function considers NaN and undefined to be missing. A second area shows linear interpolation for the gaps. Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
+This [line chart](/@d3/line-chart/2) uses [_line_.defined](https://d3js.org/d3-shape/line#line_defined) to show gaps for missing data. The defined function considers NaN and undefined to be missing. A second area shows linear interpolation for the gaps. Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js echo
-chart = {
+const chart = {
   // Declare the chart dimensions and margins.
   const width = 928;
   const height = 500;
@@ -72,22 +77,30 @@ chart = {
 ```
 
 ```js echo
-aapl = FileAttachment("aapl.csv").csv({typed: true})
+const aapl = FileAttachment("aapl.csv").csv({typed: true});
 ```
 
 ```js echo
-aaplMissing = aapl.map(d => ({...d, close: d.date.getUTCMonth() < 3 ? NaN : d.close})) // simulate gaps
+const aaplMissing = aapl.map((d) => ({
+  ...d,
+  close: d.date.getUTCMonth() < 3 ? NaN : d.close
+})); // simulate gaps
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a line chart with the [line mark](https://observablehq.com/plot/marks/line). Below, a [rule mark](https://observablehq.com/plot/marks/rule) denotes *y* = 0.
+Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a line chart with the [line mark](https://observablehq.com/plot/marks/line). Below, a [rule mark](https://observablehq.com/plot/marks/rule) denotes _y_ = 0.
 
 ```js echo
 Plot.plot({
   y: {grid: true, label: "Daily close ($)"},
   marks: [
     Plot.ruleY([0]),
-    Plot.lineY(aaplMissing, {filter: (d) => !isNaN(d.close), x: "date", y: "close", stroke: "#ccc"}),
+    Plot.lineY(aaplMissing, {
+      filter: (d) => !isNaN(d.close),
+      x: "date",
+      y: "close",
+      stroke: "#ccc"
+    }),
     Plot.lineY(aaplMissing, {x: "date", y: "close", stroke: "steelblue"})
   ]
-})
+});
 ```

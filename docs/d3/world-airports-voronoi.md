@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">World airports Voronoi</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # World airports Voronoi
@@ -6,7 +11,7 @@ Ref. [@fil/geo-delaunay](/@fil/geo-delaunay)
 <br>Ref. [jasondavies.com/maps/voronoi/airports](https://www.jasondavies.com/maps/voronoi/airports/)
 
 ```js echo
-chart = {
+const chart = {
   const context = DOM.context2d(width, height);
   const path = d3.geoPath(mutable projection, context).pointRadius(1.5);
 
@@ -36,7 +41,7 @@ chart = {
     context.fillStyle = "#f00";
     context.fill();
   }
-  
+
   function dragged() {
     mutable projection = mutable projection;
     render();
@@ -56,27 +61,30 @@ mutable projection = d3.geoOrthographic()
 ```
 
 ```js echo
-height = width
+const height = width;
 ```
 
 ```js echo
-sphere = ({type: "Sphere"})
+const sphere = {type: "Sphere"};
 ```
 
 ```js echo
-graticule = d3.geoGraticule10()
+const graticule = d3.geoGraticule10();
 ```
 
 ```js echo
-points = (await FileAttachment("airports.csv").csv({typed: true})).map(({longitude, latitude}) => [longitude, latitude])
+const points = (await FileAttachment("airports.csv").csv({typed: true})).map(({longitude, latitude}) => [
+  longitude,
+  latitude
+]);
 ```
 
 ```js echo
-mesh = d3.geoVoronoi(points).cellMesh()
+const mesh = d3.geoVoronoi(points).cellMesh();
 ```
 
 ```js echo
-d3 = require("d3@7", "d3-geo-voronoi@2")
+const d3 = require("d3@7", "d3-geo-voronoi@2");
 ```
 
 ```js echo

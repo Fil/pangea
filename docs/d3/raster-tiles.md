@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Raster tiles</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Raster tiles
@@ -21,39 +26,45 @@ viewof url = {
 ```
 
 ```js echo
-map = svg`<svg viewBox="0 0 ${width} ${height}">
-  ${tiles.map(([x, y, z], i, {translate: [tx, ty], scale: k}) => svg`
-    <image xlink:href="${url(x, y, z)}" x="${Math.round((x + tx) * k)}" y="${Math.round((y + ty) * k)}" width="${k}" height="${k}">
-  `)}
-</svg>`
+const map = svg`<svg viewBox="0 0 ${width} ${height}">
+  ${tiles.map(
+    ([x, y, z], i, {translate: [tx, ty], scale: k}) => svg`
+    <image xlink:href="${url(x, y, z)}" x="${Math.round((x + tx) * k)}" y="${Math.round(
+      (y + ty) * k
+    )}" width="${k}" height="${k}">
+  `
+  )}
+</svg>`;
 ```
 
 ```js echo
-tiles = tile()
+const tiles = tile();
 ```
 
 ```js echo
-tile = d3.tile()
-    .size([width, height])
-    .scale(projection.scale() * 2 * Math.PI)
-    .translate(projection([0, 0]))
+const tile = d3
+  .tile()
+  .size([width, height])
+  .scale(projection.scale() * 2 * Math.PI)
+  .translate(projection([0, 0]));
 ```
 
 ```js echo
-projection = d3.geoMercator()
-    .center([-122.4183, 37.7750])
-    .scale(Math.pow(2, 21) / (2 * Math.PI))
-    .translate([width / 2, height / 2])
+const projection = d3
+  .geoMercator()
+  .center([-122.4183, 37.775])
+  .scale(Math.pow(2, 21) / (2 * Math.PI))
+  .translate([width / 2, height / 2]);
 ```
 
 ```js echo
-path = d3.geoPath(projection)
+const path = d3.geoPath(projection);
 ```
 
 ```js echo
-height = 600
+const height = 600;
 ```
 
 ```js echo
-d3 = require("d3-geo@3", "d3-tile@1")
+const d3 = require("d3-geo@3", "d3-tile@1");
 ```

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Hierarchical edge bundling</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Hierarchical edge bundling
@@ -5,7 +10,7 @@
 This chart shows relationships among classes in a software hierarchy. Hover a class to reveal its imports (<b style="color: ${colorout};">outgoing</b> edges) and classes that import it (<b style="color: ${colorin};">incoming</b> edges).
 
 ```js echo
-chart = {
+const chart = {
   const width = 954;
   const radius = width / 2;
 
@@ -76,13 +81,13 @@ ${d.incoming.length} incoming`));
 ```
 
 ```js echo
-data = hierarchy(await FileAttachment("flare.json").json())
+const data = hierarchy(await FileAttachment("flare.json").json());
 ```
 
 ```js echo
 function hierarchy(data, delimiter = ".") {
   let root;
-  const map = new Map;
+  const map = new Map();
   data.forEach(function find(data) {
     const {name} = data;
     if (map.has(name)) return map.get(name);
@@ -102,8 +107,8 @@ function hierarchy(data, delimiter = ".") {
 
 ```js echo
 function bilink(root) {
-  const map = new Map(root.leaves().map(d => [id(d), d]));
-  for (const d of root.leaves()) d.incoming = [], d.outgoing = d.data.imports.map(i => [d, map.get(i)]);
+  const map = new Map(root.leaves().map((d) => [id(d), d]));
+  for (const d of root.leaves()) (d.incoming = []), (d.outgoing = d.data.imports.map((i) => [d, map.get(i)]));
   for (const d of root.leaves()) for (const o of d.outgoing) o[1].incoming.push(o);
   return root;
 }
@@ -116,13 +121,13 @@ function id(node) {
 ```
 
 ```js echo
-colorin = "#00f"
+const colorin = "#00f";
 ```
 
 ```js echo
-colorout = "#f00"
+const colorout = "#f00";
 ```
 
 ```js echo
-colornone = "#ccc"
+const colornone = "#ccc";
 ```

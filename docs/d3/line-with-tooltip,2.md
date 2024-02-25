@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Line chart with tooltip</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Line chart with tooltip
@@ -5,7 +10,7 @@
 This [line chart](/@d3/line-chart) shows the price of Apple stock with an interactive tip. Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js echo
-chart = {
+const chart = {
   // Declare the chart dimensions and margins.
   const width = 928;
   const height = 500;
@@ -73,7 +78,7 @@ chart = {
       currency: "USD"
     });
   }
-  
+
   function formatDate(date) {
     return date.toLocaleString("en", {
       month: "short",
@@ -82,7 +87,7 @@ chart = {
       timeZone: "UTC"
     });
   }
-  
+
   // Add the event listeners that show or hide the tooltip.
   const bisect = d3.bisector(d => d.Date).center;
   function pointermoved(event) {
@@ -129,5 +134,10 @@ chart = {
 Using [Observable Plot](/plot/)’s concise API, this chart typically needs a single line of code:
 
 ```js echo
-Plot.lineY(aapl, {x: "Date", y: "Close", stroke: "steelblue", tip: true}).plot({y: {grid: true}})
+Plot.lineY(aapl, {
+  x: "Date",
+  y: "Close",
+  stroke: "steelblue",
+  tip: true
+}).plot({y: {grid: true}});
 ```

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Epicyclic gearing</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Epicyclic gearing
@@ -5,11 +10,20 @@
 From [Wikipedia](https://en.wikipedia.org/wiki/Epicyclic_gearing): “one or more outer gears, or planet gears, revolving about a central, or sun gear… Epicyclic gearing systems also incorporate the use of an outer ring gear or annulus, which meshes with the planet gears.”
 
 ```js
-viewof frameRadius = Inputs.radio(new Map([["annulus", 0.5], ["planets", Infinity], ["sun", -0.1]]), {key: "planets", label: "Fixed gear"})
+const frameRadius = view(
+  Inputs.radio(
+    new Map([
+      ["annulus", 0.5],
+      ["planets", Infinity],
+      ["sun", -0.1]
+    ]),
+    {key: "planets", label: "Fixed gear"}
+  )
+);
 ```
 
 ```js echo
-graphic = {
+const graphic = {
   const x = Math.sin(2 * Math.PI / 3);
   const y = Math.cos(2 * Math.PI / 3);
 
@@ -44,7 +58,7 @@ graphic = {
 ```
 
 ```js echo
-update = {
+const update = {
   const speed = 0.08;
   let angle = 0;
   let frameAngle = 0;
@@ -64,19 +78,45 @@ function gear({teeth, radius, annulus, toothRadius, holeRadius}) {
   let r0 = r2 - toothRadius;
   let r1 = r2 + toothRadius;
   let r3 = holeRadius;
-  if (annulus) r3 = r0, r0 = r1, r1 = r3, r3 = r2 + toothRadius * 3;
+  if (annulus) (r3 = r0), (r0 = r1), (r1 = r3), (r3 = r2 + toothRadius * 3);
   const da = Math.PI / n;
   let a0 = -Math.PI / 2 + (annulus ? Math.PI / n : 0);
   const path = ["M", r0 * Math.cos(a0), ",", r0 * Math.sin(a0)];
   let i = -1;
   while (++i < n) {
     path.push(
-      "A", r0, ",", r0, " 0 0,1 ", r0 * Math.cos(a0 += da), ",", r0 * Math.sin(a0),
-      "L", r2 * Math.cos(a0), ",", r2 * Math.sin(a0),
-      "L", r1 * Math.cos(a0 += da / 3), ",", r1 * Math.sin(a0),
-      "A", r1, ",", r1, " 0 0,1 ", r1 * Math.cos(a0 += da / 3), ",", r1 * Math.sin(a0),
-      "L", r2 * Math.cos(a0 += da / 3), ",", r2 * Math.sin(a0),
-      "L", r0 * Math.cos(a0), ",", r0 * Math.sin(a0)
+      "A",
+      r0,
+      ",",
+      r0,
+      " 0 0,1 ",
+      r0 * Math.cos((a0 += da)),
+      ",",
+      r0 * Math.sin(a0),
+      "L",
+      r2 * Math.cos(a0),
+      ",",
+      r2 * Math.sin(a0),
+      "L",
+      r1 * Math.cos((a0 += da / 3)),
+      ",",
+      r1 * Math.sin(a0),
+      "A",
+      r1,
+      ",",
+      r1,
+      " 0 0,1 ",
+      r1 * Math.cos((a0 += da / 3)),
+      ",",
+      r1 * Math.sin(a0),
+      "L",
+      r2 * Math.cos((a0 += da / 3)),
+      ",",
+      r2 * Math.sin(a0),
+      "L",
+      r0 * Math.cos(a0),
+      ",",
+      r0 * Math.sin(a0)
     );
   }
   path.push("M0,", -r3, "A", r3, ",", r3, " 0 0,0 0,", r3, "A", r3, ",", r3, " 0 0,0 0,", -r3, "Z");

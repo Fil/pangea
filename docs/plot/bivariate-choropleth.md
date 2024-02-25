@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Bivariate choropleth</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Bivariate choropleth
@@ -5,7 +10,7 @@
 Diabetes and obesity prevalence by county, 2020. Colors: [Joshua Stevens](http://www.joshuastevens.net/cartography/make-a-bivariate-choropleth-map/). Data: [CDC](https://gis.cdc.gov/grasp/diabetes/diabetesatlas-surveillance.html). For details on the data and the method, read our [tutorial](https://observablehq.com/@observablehq/plot-bivariate-choropleth-explained). See also the [D3 version](/@d3/bivariate-choropleth).
 
 ```js echo
-chart = {
+const chart = {
   const legend = Plot.plot({
     color: {
       range: scheme,
@@ -82,34 +87,45 @@ chart = {
 ```
 
 ```js echo
-labels = ["low", "", "high"]
+const labels = ["low", "", "high"];
 ```
 
 ```js echo
-label = i => labels[i] ? ` (${labels[i]})` : "" 
+const label = (i) => (labels[i] ? ` (${labels[i]})` : "");
 ```
 
 ```js echo
-data = FileAttachment("cdc_diabetes_obesity_2020.csv").csv()
+const data = FileAttachment("cdc_diabetes_obesity_2020.csv")
+  .csv()
   .then((data) => {
     data.forEach((d) => {
       d.obesity = +d.obesity; // type as numeric
       d.diabetes = +d.diabetes;
     });
     return data;
-  })
+  });
 ```
 
 ```js echo
-diabetes_thresholds = d3.scaleQuantile(data.map(d => d.diabetes), [0, 1, 2]).quantiles()
+const diabetes_thresholds = d3
+  .scaleQuantile(
+    data.map((d) => d.diabetes),
+    [0, 1, 2]
+  )
+  .quantiles();
 ```
 
 ```js echo
-obesity_thresholds = d3.scaleQuantile(data.map(d => d.obesity), [0, 1, 2]).quantiles()
+const obesity_thresholds = d3
+  .scaleQuantile(
+    data.map((d) => d.obesity),
+    [0, 1, 2]
+  )
+  .quantiles();
 ```
 
 ```js echo
-bivariateClass = {
+const bivariateClass = {
   const d = diabetes_thresholds;
   const o = obesity_thresholds;
   return (value) => {
@@ -123,13 +139,13 @@ bivariateClass = {
 ```
 
 ```js echo
-scheme = ["#e8e8e8","#ace4e4","#5ac8c8","#dfb0d6","#a5add3","#5698b9","#be64ac","#8c62aa","#3b4994"]
+const scheme = ["#e8e8e8", "#ace4e4", "#5ac8c8", "#dfb0d6", "#a5add3", "#5698b9", "#be64ac", "#8c62aa", "#3b4994"];
 ```
 
 ```js echo
-us = FileAttachment("counties-albers-10m.json").json()
+const us = FileAttachment("counties-albers-10m.json").json();
 ```
 
 ```js echo
-states = new Map(us.objects.states.geometries.map(d => [d.id, d.properties]))
+const states = new Map(us.objects.states.geometries.map((d) => [d.id, d.properties]));
 ```

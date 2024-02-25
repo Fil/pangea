@@ -1,8 +1,13 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot:  Civilizations timeline</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Civilizations timeline
 
-A [bar](https://observablehq.com/plot/marks/bar) mark with explicit *x1* and *x2* channels, marking the start and end of civilizations.
+A [bar](https://observablehq.com/plot/marks/bar) mark with explicit _x1_ and _x2_ channels, marking the start and end of civilizations.
 
 ```js echo
 Plot.plot({
@@ -11,7 +16,7 @@ Plot.plot({
   x: {
     axis: "top",
     grid: true,
-    tickFormat: (x) => x < 0 ? `${-x} BC` : `${x} AD`
+    tickFormat: (x) => (x < 0 ? `${-x} BC` : `${x} AD`)
   },
   marks: [
     Plot.barX(civilizations, {
@@ -28,9 +33,9 @@ Plot.plot({
       dx: -3
     })
   ]
-})
+});
 ```
 
 ```js echo
-civilizations = FileAttachment("civilizations.csv").csv({typed: true})
+const civilizations = FileAttachment("civilizations.csv").csv({typed: true});
 ```

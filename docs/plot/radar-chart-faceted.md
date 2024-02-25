@@ -1,10 +1,15 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Radar chart, small multiples</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Radar chart, small multiples
 
-[Radar charts](/@observablehq/plot-radar-chart) are best saved for a single purpose: to spot a difference across multiple values among members of a domain. We recommend avoiding any other use of radar charts because they are easy to misinterpret. When using radar charts, show them side by side in small multiples (using [facets](https://observablehq.com/plot/features/facets)) instead of overlapping them in a single view. 
+[Radar charts](/@observablehq/plot-radar-chart) are best saved for a single purpose: to spot a difference across multiple values among members of a domain. We recommend avoiding any other use of radar charts because they are easy to misinterpret. When using radar charts, show them side by side in small multiples (using [facets](https://observablehq.com/plot/features/facets)) instead of overlapping them in a single view.
 
-This example shows 5 values from cars sold in the United States in 1979. 
+This example shows 5 values from cars sold in the United States in 1979.
 
 ```js echo
 Plot.plot({
@@ -23,10 +28,17 @@ Plot.plot({
     axis: null
   },
   marks: [
-
     // Facet name
-    Plot.text(points, Plot.selectFirst({text: "name", frameAnchor: "bottom", fontWeight: "400", fontSize: 14})),
-    
+    Plot.text(
+      points,
+      Plot.selectFirst({
+        text: "name",
+        frameAnchor: "bottom",
+        fontWeight: "400",
+        fontSize: 14
+      })
+    ),
+
     // grey discs
     Plot.geo([1.0, 0.8, 0.6, 0.4, 0.2], {
       geometry: (r) => d3.geoCircle().center([0, 90]).radius(r)(),
@@ -50,12 +62,13 @@ Plot.plot({
 
     // tick labels
     Plot.text([0.4, 0.6, 0.8], {
-      fx: 0, fy: 0,
+      fx: 0,
+      fy: 0,
       x: 180,
       y: (d) => 90 - d,
       dx: 2,
       textAnchor: "start",
-      text: (d) => ( d == 0.8 ? `${100 * d}th percentile` : `${100 * d}th`),
+      text: (d) => (d == 0.8 ? `${100 * d}th percentile` : `${100 * d}th`),
       fill: "currentColor",
       stroke: "white",
       fontSize: 12
@@ -63,7 +76,8 @@ Plot.plot({
 
     // axes labels
     Plot.text(longitude.domain(), {
-      fx: 0, fy: 0,
+      fx: 0,
+      fy: 0,
       x: longitude,
       y: 90 - 1.07,
       text: Plot.identity,
@@ -73,17 +87,19 @@ Plot.plot({
 
     // axes labels, initials
     Plot.text(longitude.domain(), {
-      fx: 0, fy: 0, facet: "exclude",
+      fx: 0,
+      fy: 0,
+      facet: "exclude",
       x: longitude,
       y: 90 - 1.09,
-      text: d => d[0],
+      text: (d) => d[0],
       lineWidth: 5
     }),
-    
+
     // areas
     Plot.area(points, {
-      x1: ({ key }) => longitude(key),
-      y1: ({ value }) => 90 - value,
+      x1: ({key}) => longitude(key),
+      y1: ({value}) => 90 - value,
       x2: 0,
       y2: 90,
       fill: "#4269D0",
@@ -94,8 +110,8 @@ Plot.plot({
 
     // points
     Plot.dot(points, {
-      x: ({ key }) => longitude(key),
-      y: ({ value }) => 90 - value,
+      x: ({key}) => longitude(key),
+      y: ({value}) => 90 - value,
       fill: "#4269D0",
       stroke: "white"
     }),
@@ -104,8 +120,8 @@ Plot.plot({
     Plot.text(
       points,
       Plot.pointer({
-        x: ({ key }) => longitude(key),
-        y: ({ value }) => 90 - value,
+        x: ({key}) => longitude(key),
+        y: ({value}) => 90 - value,
         text: (d) => `${d.raw}\n(${Math.round(100 * d.value)}%)`,
         textAnchor: "start",
         dx: 4,
@@ -116,17 +132,17 @@ Plot.plot({
       })
     )
   ]
-})
+});
 ```
 
 ```js echo
-cars = FileAttachment("cars.csv").csv({typed: true})
+const cars = FileAttachment("cars.csv").csv({typed: true});
 ```
 
 Normalize and flatten the data into as many points as there are dimensions:
 
 ```js echo
-points = {
+const points = {
   const points = d3.sort(cars, d => d.Price).flatMap(({ name, ...values }, i) =>
     Object.entries(values).map(([key, raw]) => ({
       name,
@@ -145,5 +161,8 @@ points = {
 ```
 
 ```js echo
-longitude = d3.scalePoint(new Set(Plot.valueof(points, "key")), [180, -180]).padding(0.5).align(1)
+const longitude = d3
+  .scalePoint(new Set(Plot.valueof(points, "key")), [180, -180])
+  .padding(0.5)
+  .align(1);
 ```

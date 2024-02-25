@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Arrow variation chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Arrow variation chart
@@ -41,9 +46,9 @@ Plot.plot({
       dy: -6
     })
   ]
-})
+});
 ```
 
 ```js echo
-metros = FileAttachment("metros.csv").csv({typed: true})
+const metros = FileAttachment("metros.csv").csv({typed: true});
 ```

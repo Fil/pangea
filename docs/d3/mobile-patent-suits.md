@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Mobile patent suits</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Mobile patent suits
@@ -5,11 +10,11 @@
 A view of patent-related lawsuits in the mobile communications industry, circa 2011. Data: [Thomson Reuters](http://blog.thomsonreuters.com/index.php/mobile-patent-suits-graphic-of-the-day/)
 
 ```js
-Swatches(chart.scales.color)
+Swatches(chart.scales.color);
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   const width = 928;
   const height = 600;
@@ -30,7 +35,7 @@ chart = {
       .attr("width", width)
       .attr("height", height)
       .attr("style", "max-width: 100%; height: auto; font: 12px sans-serif;");
-  
+
   // Per-type markers, as they don't inherit styles.
   svg.append("defs").selectAll("marker")
     .data(types)
@@ -90,7 +95,7 @@ chart = {
 ```
 
 ```js echo
-suits = FileAttachment("suits.csv").csv()
+const suits = FileAttachment("suits.csv").csv();
 ```
 
 ```js echo
@@ -104,32 +109,28 @@ function linkArc(d) {
 ```
 
 ```js echo
-drag = simulation => {
-  
+const drag = (simulation) => {
   function dragstarted(event, d) {
     if (!event.active) simulation.alphaTarget(0.3).restart();
     d.fx = d.x;
     d.fy = d.y;
   }
-  
+
   function dragged(event, d) {
     d.fx = event.x;
     d.fy = event.y;
   }
-  
+
   function dragended(event, d) {
     if (!event.active) simulation.alphaTarget(0);
     d.fx = null;
     d.fy = null;
   }
-  
-  return d3.drag()
-      .on("start", dragstarted)
-      .on("drag", dragged)
-      .on("end", dragended);
-}
+
+  return d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended);
+};
 ```
 
 ```js echo
-import {Swatches} from "@d3/color-legend"
+import {Swatches} from "@d3/color-legend";
 ```

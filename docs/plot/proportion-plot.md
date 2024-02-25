@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Proportion plot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Proportion plot
@@ -6,7 +11,7 @@ Pioneered by [Stephanie Evergreen](https://stephanieevergreen.com/proportion-plo
 
 ```js echo
 {
-  const stack = (options) => Plot.stackY({}, { x: "type", y: "value", z: "age", ...options });
+  const stack = (options) => Plot.stackY({}, {x: "type", y: "value", z: "age", ...options});
   return Plot.plot({
     x: {
       domain: columns,
@@ -80,17 +85,17 @@ viewof raw = Inputs.textarea({
 55-74’s,28,52
 Over 75’s,9,13`,
 })
-  
+
 ```
 
 ```js echo
-wide = d3.csvParse(raw, d3.autoType)
+const wide = d3.csvParse(raw, d3.autoType);
 ```
 
 ```js echo
-columns = wide.columns.slice(1);
+const columns = wide.columns.slice(1);
 ```
 
 ```js echo
-data = columns.flatMap((type) => wide.map((d) => ({ age: d.age, type, value: d[type] })))
+const data = columns.flatMap((type) => wide.map((d) => ({age: d.age, type, value: d[type]})));
 ```

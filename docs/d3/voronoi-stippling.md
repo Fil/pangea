@@ -1,13 +1,20 @@
+---
+index: false
+status: draft
+---
+
 ```js
-md`# Voronoi Stippling
+md`
+# Voronoi Stippling
 
 This notebook applies a weighted variant of [Lloyd’s algorithm](/@mbostock/lloyds-algorithm) to implement stippling. Points are initially positioned randomly using rejection sampling, then at each iteration, the Voronoi cell centroids are weighted by the lightness of the contained pixels.
 
-This technique is based on [*Weighted Voronoi Stippling*](https://www.cs.ubc.ca/labs/imager/tr/2002/secord2002b/secord.2002b.pdf) by [Adrian Secord](https://cs.nyu.edu/~ajsecord/stipples.html); see also posts by [Muhammad Firmansyah Kasim](https://mfkasim91.github.io/2016/12/06/stippling-pictures-with-lloyds-algorithm/), [Egor Larionov](https://elrnv.com/blog/weighted-lloyds-method-for-voronoi-tesselation/) and [Noah Veltman](https://bl.ocks.org/veltman/017a2093623e1bf3ae041dd3380578cb).`
+This technique is based on [_Weighted Voronoi Stippling_](https://www.cs.ubc.ca/labs/imager/tr/2002/secord2002b/secord.2002b.pdf) by [Adrian Secord](https://cs.nyu.edu/~ajsecord/stipples.html); see also posts by [Muhammad Firmansyah Kasim](https://mfkasim91.github.io/2016/12/06/stippling-pictures-with-lloyds-algorithm/), [Egor Larionov](https://elrnv.com/blog/weighted-lloyds-method-for-voronoi-tesselation/) and [Noah Veltman](https://bl.ocks.org/veltman/017a2093623e1bf3ae041dd3380578cb).
+`;
 ```
 
 ```js echo
-image = {
+const image = {
   const context = DOM.context2d(width, height);
   const worker = new Worker(script);
 
@@ -32,7 +39,7 @@ image = {
 ```
 
 ```js echo
-script = {
+const script = {
   const blob = new Blob([`
 importScripts("${await require.resolve("d3-delaunay@6")}");
 
@@ -93,7 +100,7 @@ onmessage = event => {
 ```
 
 ```js echo
-data = {
+const data = {
   const image = await FileAttachment("obama.png").image();
   const height = Math.round(width * image.height / image.width);
   const context = DOM.context2d(width, height, 1);
@@ -108,9 +115,9 @@ data = {
 ```
 
 ```js echo
-n = Math.round(width * height / 40)
+const n = Math.round((width * height) / 40);
 ```
 
 ```js echo
-height = data.height
+const height = data.height;
 ```

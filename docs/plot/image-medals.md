@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Image medals</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Image medals
@@ -12,16 +17,19 @@ Plot.plot({
     Plot.ruleY([0]),
     Plot.image(presidents, {
       x: "First Inauguration Date",
-      y: (d) => d["Very Favorable %"] + d["Somewhat Favorable %"] + d["Very Unfavorable %"] + d["Somewhat Unfavorable %"],
+      y: (d) =>
+        d["Very Favorable %"] + d["Somewhat Favorable %"] + d["Very Unfavorable %"] + d["Somewhat Unfavorable %"],
       src: "Portrait URL",
       r: 20,
       preserveAspectRatio: "xMidYMin slice",
       title: "Name"
     })
   ]
-})
+});
 ```
 
 ```js echo
-presidents = FileAttachment("us-president-favorability@1.csv").csv({typed: true})
+const presidents = FileAttachment("us-president-favorability@1.csv").csv({
+  typed: true
+});
 ```

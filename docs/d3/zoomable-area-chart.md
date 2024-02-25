@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Zoomable area chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Zoomable area chart
@@ -5,7 +10,7 @@
 This zoomable time series area chart shows the number of flights per day. The effect of the September 11, 2001 attacks on air travel is evident.
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -101,5 +106,5 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("flights.csv").csv({typed: true})
+const data = FileAttachment("flights.csv").csv({typed: true});
 ```

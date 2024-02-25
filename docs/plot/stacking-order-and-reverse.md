@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Stacking order and reverse</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Stacking order and reverse
@@ -19,7 +24,7 @@ viewof order = Inputs.select(
 ```
 
 ```js
-viewof reverse = Inputs.toggle({label: "reverse"})
+const reverse = view(Inputs.toggle({label: "reverse"}));
 ```
 
 ```js echo
@@ -29,20 +34,14 @@ Plot.plot({
     label: "↑ Annual revenue (billions, adj.)",
     transform: (d) => d / 1000 // convert millions to billions
   },
-  color: { legend: true },
+  color: {legend: true},
   marks: [
-    Plot.areaY(
-      riaa,
-      Plot.stackY(
-        { order, reverse },
-        { x: "year", y: "revenue", z: "format", fill: "group" }
-      )
-    ),
+    Plot.areaY(riaa, Plot.stackY({order, reverse}, {x: "year", y: "revenue", z: "format", fill: "group"})),
     Plot.ruleY([0])
   ]
-})
+});
 ```
 
 ```js echo
-riaa = FileAttachment("riaa-us-revenue.csv").csv({typed: true})
+const riaa = FileAttachment("riaa-us-revenue.csv").csv({typed: true});
 ```

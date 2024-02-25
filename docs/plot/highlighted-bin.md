@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Highlighted bin</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Highlighted bin
@@ -17,16 +22,16 @@ Plot.plot({
           y: "count",
           fill: test
         },
-        { x: "weight" }
+        {x: "weight"}
       )
     ),
     Plot.ruleY([0])
   ]
-})
+});
 ```
 
 In this example we highlight the bin that has a certain athlete.
 
 ```js echo
-test = (bin) => bin.some((d) => d.name === "Aaron Brown")
+const test = (bin) => bin.some((d) => d.name === "Aaron Brown");
 ```

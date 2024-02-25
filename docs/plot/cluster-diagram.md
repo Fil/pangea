@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Cluster diagram</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Cluster diagram
@@ -13,7 +18,12 @@ Plot.plot({
   width: 928,
   height: 2400,
   marks: [
-    Plot.cluster(flare, {path: "name", treeSort: "node:height", delimiter: ".", textStroke: "white"})
+    Plot.cluster(flare, {
+      path: "name",
+      treeSort: "node:height",
+      delimiter: ".",
+      textStroke: "white"
+    })
   ]
-})
+});
 ```

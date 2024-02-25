@@ -1,9 +1,16 @@
+---
+index: false
+status: draft
+---
+
 ```js
-md`# Stern–Brocot Tree`
+md`
+# Stern–Brocot Tree
+`;
 ```
 
 ```js
-chart = {
+const chart = {
   const root = tree(data);
 
   const svg = d3.select(DOM.svg(width, height))
@@ -57,17 +64,19 @@ ${tex.block`\begin{aligned}
 
 The first child is less than ${tex`q`} if ${tex`k`} is odd, and greater than ${tex`q`} if ${tex`k`} is even. For instance, the continued fraction representation of ${tex`\tfrac{13}{9}`} is ${tex`[1;2,4]`} and its two children are ${tex`[1;2,5] = \tfrac{16}{11}`} and ${tex`[1;2,3,2] = \tfrac{23}{16}`}.
 
-*Adapted from [Wikipedia](https://en.wikipedia.org/wiki/Stern–Brocot_tree).*`
+*Adapted from [Wikipedia](https://en.wikipedia.org/wiki/Stern–Brocot_tree).*`;
 ```
 
 ```js
-md`---
+md`
+---
 
-## Appendix`
+## Appendix
+`;
 ```
 
 ```js echo
-data = {
+const data = {
   const root = {value: [0, 1]};
   const queue = [root];
   let p, size = 0, n = 1 << 6;
@@ -84,31 +93,34 @@ data = {
 
 ```js echo
 function collapse(f) {
-  let n = 1, d = 0, i = f.length;
+  let n = 1,
+    d = 0,
+    i = f.length;
   while (--i >= 0) [n, d] = [f[i] * n + d, n];
   return [n, d];
 }
 ```
 
 ```js echo
-tree = data => d3.tree()
+const tree = (data) =>
+  d3
+    .tree()
     .size([width, height - margin * 2])
-    .separation(() => 1)
-  (d3.hierarchy(data))
+    .separation(() => 1)(d3.hierarchy(data));
 ```
 
 ```js echo
-width = 954
+const width = 954;
 ```
 
 ```js echo
-height = 600
+const height = 600;
 ```
 
 ```js echo
-margin = 20
+const margin = 20;
 ```
 
 ```js echo
-d3 = require("d3@5")
+const d3 = require("d3@5");
 ```

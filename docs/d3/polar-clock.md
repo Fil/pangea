@@ -1,9 +1,16 @@
+---
+index: false
+status: draft
+---
+
 ```js
-md`# Polar Clock`
+md`
+# Polar Clock
+`;
 ```
 
 ```js echo
-chart = {
+const chart = {
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height])
       .attr("text-anchor", "middle")
@@ -53,9 +60,9 @@ chart = {
       .attr("stroke-width", 3)
       .attr("cy", d => -d.radius)
       .style("transition", "transform 500ms ease");
-  
+
   yield update(Math.floor((Date.now() + 1) / 1000) * 1000);
-  
+
   while (true) {
     const then = Math.ceil((Date.now() + 1) / 1000) * 1000;
     yield Promises.when(then, then).then(update);
@@ -76,49 +83,80 @@ chart = {
 ```
 
 ```js echo
-fields = [
-  {radius: 0.2 * radius, interval: d3.timeYear,   subinterval: d3.timeMonth,  format: d3.timeFormat("%b")},
-  {radius: 0.3 * radius, interval: d3.timeMonth,  subinterval: d3.timeDay,    format: d3.timeFormat("%d")},
-  {radius: 0.4 * radius, interval: d3.timeWeek,   subinterval: d3.timeDay,    format: d3.timeFormat("%a")},
-  {radius: 0.6 * radius, interval: d3.timeDay,    subinterval: d3.timeHour,   format: d3.timeFormat("%H")},
-  {radius: 0.7 * radius, interval: d3.timeHour,   subinterval: d3.timeMinute, format: d3.timeFormat("%M")},
-  {radius: 0.8 * radius, interval: d3.timeMinute, subinterval: d3.timeSecond, format: d3.timeFormat("%S")}
-]
+const fields = [
+  {
+    radius: 0.2 * radius,
+    interval: d3.timeYear,
+    subinterval: d3.timeMonth,
+    format: d3.timeFormat("%b")
+  },
+  {
+    radius: 0.3 * radius,
+    interval: d3.timeMonth,
+    subinterval: d3.timeDay,
+    format: d3.timeFormat("%d")
+  },
+  {
+    radius: 0.4 * radius,
+    interval: d3.timeWeek,
+    subinterval: d3.timeDay,
+    format: d3.timeFormat("%a")
+  },
+  {
+    radius: 0.6 * radius,
+    interval: d3.timeDay,
+    subinterval: d3.timeHour,
+    format: d3.timeFormat("%H")
+  },
+  {
+    radius: 0.7 * radius,
+    interval: d3.timeHour,
+    subinterval: d3.timeMinute,
+    format: d3.timeFormat("%M")
+  },
+  {
+    radius: 0.8 * radius,
+    interval: d3.timeMinute,
+    subinterval: d3.timeSecond,
+    format: d3.timeFormat("%S")
+  }
+];
 ```
 
 ```js echo
-width = 954
+const width = 954;
 ```
 
 ```js echo
-height = width
+const height = width;
 ```
 
 ```js echo
-radius = width / 1.67
+const radius = width / 1.67;
 ```
 
 ```js echo
-armRadius = radius / 22
+const armRadius = radius / 22;
 ```
 
 ```js echo
-dotRadius = armRadius - 9
+const dotRadius = armRadius - 9;
 ```
 
 ```js echo
-color = d3.scaleSequential([0, 2 * Math.PI], d3.interpolateRainbow)
+const color = d3.scaleSequential([0, 2 * Math.PI], d3.interpolateRainbow);
 ```
 
 ```js echo
-arcArm = d3.arc()
-    .startAngle(d => armRadius / d.radius)
-    .endAngle(d => -Math.PI - armRadius / d.radius)
-    .innerRadius(d => d.radius - armRadius)
-    .outerRadius(d => d.radius + armRadius)
-    .cornerRadius(armRadius)
+const arcArm = d3
+  .arc()
+  .startAngle((d) => armRadius / d.radius)
+  .endAngle((d) => -Math.PI - armRadius / d.radius)
+  .innerRadius((d) => d.radius - armRadius)
+  .outerRadius((d) => d.radius + armRadius)
+  .cornerRadius(armRadius);
 ```
 
 ```js echo
-d3 = require("d3@6")
+const d3 = require("d3@6");
 ```

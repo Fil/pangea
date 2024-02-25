@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Dot histogram</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Dot histogram
@@ -7,8 +12,6 @@ A [dot](https://observablehq.com/plot/marks/dot) mark with a radius [encoding](h
 ```js echo
 Plot.plot({
   r: {range: [0, 14]},
-  marks: [
-    Plot.dot(olympians, Plot.binX({r: "count"}, {x: "weight"}))
-  ]
-})
+  marks: [Plot.dot(olympians, Plot.binX({r: "count"}, {x: "weight"}))]
+});
 ```

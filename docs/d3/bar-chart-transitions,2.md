@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Bar chart transitions</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Bar chart transitions
@@ -14,13 +19,13 @@ viewof order = {
     ]),
     { label: "Order" }
   );
-  
+
   return select;
 }
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 640;
@@ -29,7 +34,7 @@ chart = {
   const marginRight = 0;
   const marginBottom = 30;
   const marginLeft = 40;
-  
+
   // Declare the x (horizontal position) scale and the corresponding axis generator.
   const x = d3.scaleBand()
     .domain(data.map(d => d.letter))
@@ -64,14 +69,14 @@ chart = {
   const gx = svg.append("g")
       .attr("transform", `translate(0,${height - marginBottom})`)
       .call(xAxis);
-  
+
   const gy = svg.append("g")
       .attr("transform", `translate(${marginLeft},0)`)
       .call(d3.axisLeft(y).tickFormat((y) => (y * 100).toFixed()))
       .call(g => g.select(".domain").remove());
 
   // Return the chart, with an update function that takes as input a domain
-  // comparator and transitions the x axis and bar positions accordingly. 
+  // comparator and transitions the x axis and bar positions accordingly.
   return Object.assign(svg.node(), {
     update(order) {
       x.domain(data.sort(order).map(d => d.letter));
@@ -95,18 +100,19 @@ chart = {
 ```
 
 ```js echo
-update = chart.update(order)
+const update = chart.update(order);
 ```
 
 ```js echo
-data = FileAttachment("alphabet.csv").csv({typed: true})
+const data = FileAttachment("alphabet.csv").csv({typed: true});
 ```
 
 ---
-The *trigger* cell below uses a timeout to change the selected value in the *order* input above, triggering an animation on page load for demonstrative purposes. If the user interacts with the menu prior to the timeout, the timeout is cleared. You don’t need this cell to use the chart above.
+
+The _trigger_ cell below uses a timeout to change the selected value in the _order_ input above, triggering an animation on page load for demonstrative purposes. If the user interacts with the menu prior to the timeout, the timeout is cleared. You don’t need this cell to use the chart above.
 
 ```js echo
-trigger = {
+const trigger = {
   const input = viewof order.input;
   const interval = d3.interval(() => {
     input.selectedIndex = (input.selectedIndex + 1) % input.length;

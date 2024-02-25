@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Line with moving average</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Line with moving average
@@ -12,9 +17,9 @@ Plot.plot({
     Plot.dot(gistemp, {x: "Date", y: "Anomaly", stroke: "Anomaly"}),
     Plot.lineY(gistemp, Plot.windowY(12, {x: "Date", y: "Anomaly"}))
   ]
-})
+});
 ```
 
 ```js echo
-gistemp = FileAttachment("gistemp.csv").csv({typed: true})
+const gistemp = FileAttachment("gistemp.csv").csv({typed: true});
 ```

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Voronoi map</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Voronoi map
@@ -17,21 +22,32 @@ Plot.plot({
   },
   marks: [
     Plot.geo(nation, {fill: "currentColor", fillOpacity: 0.2}),
-    Plot.dot(capitals, {x: "longitude", y: "latitude", r: 2.5, fill: "currentColor"}),
-    Plot.voronoi(capitals, {x: "longitude", y: "latitude", clip: "sphere", title: "state", pointerEvents: "all"}),
+    Plot.dot(capitals, {
+      x: "longitude",
+      y: "latitude",
+      r: 2.5,
+      fill: "currentColor"
+    }),
+    Plot.voronoi(capitals, {
+      x: "longitude",
+      y: "latitude",
+      clip: "sphere",
+      title: "state",
+      pointerEvents: "all"
+    }),
     Plot.sphere({strokeWidth: 2})
   ]
-})
+});
 ```
 
 ```js echo
-us = FileAttachment("us-counties-10m.json").json()
+const us = FileAttachment("us-counties-10m.json").json();
 ```
 
 ```js echo
-nation = topojson.feature(us, us.objects.nation)
+const nation = topojson.feature(us, us.objects.nation);
 ```
 
 ```js echo
-capitals = FileAttachment("us-state-capitals.csv").csv({typed: true})
+const capitals = FileAttachment("us-state-capitals.csv").csv({typed: true});
 ```

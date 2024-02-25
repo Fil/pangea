@@ -1,9 +1,14 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Graticule labels (stereographic)</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Graticule labels (stereographic)
 
 ```js echo
-map = {
+const map = {
   const clipIn = DOM.uid();
   const clipOut = DOM.uid();
   return html`<svg width=${width} height=${height} viewBox="0 0 ${width} ${height}" style="display:block;">
@@ -25,52 +30,53 @@ map = {
 ```
 
 ```js echo
-formatLatitude = y => `${Math.abs(y)}°${y < 0 ? "S" : "N"}`
+const formatLatitude = (y) => `${Math.abs(y)}°${y < 0 ? "S" : "N"}`;
 ```
 
 ```js echo
-formatLongitude = x => `${Math.abs(x)}°${x < 0 ? "W" : "E"}`
+const formatLongitude = (x) => `${Math.abs(x)}°${x < 0 ? "W" : "E"}`;
 ```
 
 ```js echo
-path = d3.geoPath(projection)
+const path = d3.geoPath(projection);
 ```
 
 ```js echo
-longitude = -100
+const longitude = -100;
 ```
 
 ```js echo
-projection = d3.geoStereographic().rotate([-longitude, 0])
+const projection = d3.geoStereographic().rotate([-longitude, 0]);
 ```
 
 ```js echo
-offset = ([x, y], k) => {
+const offset = ([x, y], k) => {
   const [cx, cy] = projection.translate();
-  const dx = x - cx, dy = y - cy;
+  const dx = x - cx,
+    dy = y - cy;
   k /= Math.hypot(dx, dy);
   return [x + dx * k, y + dy * k];
-}
+};
 ```
 
 ```js echo
-marginTop = 30
+const marginTop = 30;
 ```
 
 ```js echo
-marginRight = 40
+const marginRight = 40;
 ```
 
 ```js echo
-marginBottom = 30
+const marginBottom = 30;
 ```
 
 ```js echo
-marginLeft = 40
+const marginLeft = 40;
 ```
 
 ```js echo
-height = {
+const height = {
   const [[x0, y0], [x1, y1]] = d3.geoPath(projection.fitWidth(width, outline)).bounds(outline);
   const dx = x1 - x0;
   const k = (dx - marginLeft - marginRight) / dx;
@@ -83,17 +89,17 @@ height = {
 ```
 
 ```js echo
-outline = d3.geoCircle().radius(90).center([longitude, 0])()
+const outline = d3.geoCircle().radius(90).center([longitude, 0])();
 ```
 
 ```js echo
-graticule = d3.geoGraticule10()
+const graticule = d3.geoGraticule10();
 ```
 
 ```js echo
-land = topojson.feature(world, world.objects.land)
+const land = topojson.feature(world, world.objects.land);
 ```
 
 ```js echo
-world = FileAttachment("land-50m.json").json()
+const world = FileAttachment("land-50m.json").json();
 ```

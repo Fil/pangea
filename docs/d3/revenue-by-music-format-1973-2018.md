@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Revenue by music format, 1973–2018</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Revenue by music format, 1973–2018
@@ -5,11 +10,15 @@
 Data: [RIAA](https://www.riaa.com/u-s-sales-database/)
 
 ```js
-legend = swatches({color: chart.scales.color, columns: "130px 4", marginLeft: 10})
+const legend = swatches({
+  color: chart.scales.color,
+  columns: "130px 4",
+  marginLeft: 10
+});
 ```
 
 ```js echo
-chart = {  
+const chart = {
 
   const width = 928;
   const height = 500;
@@ -39,8 +48,8 @@ chart = {
       .attr("style", "max-width: 100%; height: auto;");
 
   // Create the bars.
-  const formatRevenue = x => (+(x / 1e9).toFixed(2) >= 1) 
-    ? `${(x / 1e9).toFixed(2)}B` 
+  const formatRevenue = x => (+(x / 1e9).toFixed(2) >= 1)
+    ? `${(x / 1e9).toFixed(2)}B`
     : `${(x / 1e6).toFixed(0)}M`;
 
   svg.append("g")
@@ -82,18 +91,19 @@ ${formatRevenue(d.data.value)}`));
 ```
 
 ```js echo
-data = FileAttachment("music.csv").csv()
+const data = FileAttachment("music.csv")
+  .csv()
   .then((data) =>
-    data.map(({ Format, Year, ["Revenue (Inflation Adjusted)"]: Revenue }) => ({
+    data.map(({Format, Year, ["Revenue (Inflation Adjusted)"]: Revenue}) => ({
       name: Format,
       year: +Year,
       value: +Revenue
     }))
-  )
+  );
 ```
 
 ```js echo
-colors = new Map([
+const colors = new Map([
   ["LP/EP", "#2A5784"],
   ["Vinyl Single", "#43719F"],
   ["8 - Track", "#5B8DB8"],
@@ -117,20 +127,29 @@ colors = new Map([
   ["Other Ad-Supported Streaming", "#61AA57"],
   ["SoundExchange Distributions", "#7DC470"],
   ["Limited Tier Paid Subscription", "#B4E0A7"]
-])
+]);
 ```
 
 ```js echo
-series = d3.stack()
-    .keys(colors.keys())
-    .value((group, key) => group.get(key).value)
-    .order(d3.stackOrderReverse)
-  (d3.rollup(data, ([d]) => d, d => d.year, d => d.name).values())
-    .map(s => (s.forEach(d => d.data = d.data.get(s.key)), s))
+const series = d3
+  .stack()
+  .keys(colors.keys())
+  .value((group, key) => group.get(key).value)
+  .order(d3.stackOrderReverse)(
+    d3
+      .rollup(
+        data,
+        ([d]) => d,
+        (d) => d.year,
+        (d) => d.name
+      )
+      .values()
+  )
+  .map((s) => (s.forEach((d) => (d.data = d.data.get(s.key))), s));
 ```
 
 ```js echo
-import {swatches} from "@d3/color-legend"
+import {swatches} from "@d3/color-legend";
 ```
 
 For a similar chart using [Observable Plot](/plot)’s concise API, see [this notebook](https://observablehq.com/@observablehq/plot-stacking-order), that emphasizes the various ways data can be stacked.

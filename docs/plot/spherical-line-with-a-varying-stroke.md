@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Spherical line with a varying stroke</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Spherical line with a varying stroke
@@ -7,21 +12,18 @@ Set the **z** option to null for [line](https://observablehq.com/plot/marks/line
 ```js echo
 Plot.plot({
   projection: "equirectangular",
-  marks: [
-    Plot.geo(land),
-    Plot.line(beagle, {stroke: (d, i) => i, z: null})
-  ]
-})
+  marks: [Plot.geo(land), Plot.line(beagle, {stroke: (d, i) => i, z: null})]
+});
 ```
 
 ```js echo
-beagle = FileAttachment("beagle.csv").csv({array: true, typed: true})
+const beagle = FileAttachment("beagle.csv").csv({array: true, typed: true});
 ```
 
 ```js echo
-world = FileAttachment("countries-110m.json").json()
+const world = FileAttachment("countries-110m.json").json();
 ```
 
 ```js echo
-land = topojson.feature(world, world.objects.land)
+const land = topojson.feature(world, world.objects.land);
 ```

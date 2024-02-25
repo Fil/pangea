@@ -1,38 +1,53 @@
+---
+index: false
+status: draft
+---
+
 ```js
 md`# Phases of the Moon
 
-For the year ${year}, in the style of [Irwin Glusker](https://www.moma.org/explore/inside_out/2012/10/16/a-paean-to-the-phases-of-the-moon/).`
+For the year ${year}, in the style of [Irwin Glusker](https://www.moma.org/explore/inside_out/2012/10/16/a-paean-to-the-phases-of-the-moon/).`;
 ```
 
 ```js
-chart = html`<svg
-    viewBox="0 0 ${width} ${height}"
-    style="margin: 0 -14px; display: block; background: #111;">
+const chart = html`<svg viewBox="0 0 ${width} ${height}" style="margin: 0 -14px; display: block; background: #111;">
   <g style="font: 10px sans-serif; text-transform: uppercase;">
-    ${months.map(d => {
+    ${months.map((d) => {
       return svg`<g transform="translate(20,${monthScale(d)})">
-        <text fill="#fff" dy="0.32em">${d.toLocaleString(locale, {month: "long"})}</text>
+        <text fill="#fff" dy="0.32em">${d.toLocaleString(locale, {
+          month: "long"
+        })}</text>
       </g>`;
     })}
   </g>
   <g text-anchor="middle" style="font: 5px sans-serif;">
-    ${days.map(d => {
+    ${days.map((d) => {
       const noon = d3.timeHour.offset(d, 12);
       const illum = suncalc.getMoonIllumination(noon);
       const angle = 180 - illum.phase * 360;
       return svg`<g transform="translate(${dayScale(d)},${monthScale(d)})">
         <circle r="10" fill="#333"></circle>
         <text fill="#fff" y="-10" dy="-0.4em">${d.getDate()}</text>
-        <path fill="#fff" d="${projection.rotate([angle, 0]), path(hemisphere)}">
+        <path fill="#fff" d="${(projection.rotate([angle, 0]), path(hemisphere))}">
         <title>${d.toLocaleDateString()}</title>
       </g>`;
     })}
   </g>
-</svg>`
+</svg>`;
 ```
 
 ```js
-viewof year = html`<input type=number placeholder=year style="width:120px;" value=${+new URLSearchParams(new URL(document.baseURI).search).get("year") || new Date().getFullYear()} min=1900 max=2100 step=1>`
+const year = view(
+  html`<input
+    type="number"
+    placeholder="year"
+    style="width:120px;"
+    value=${+new URLSearchParams(new URL(document.baseURI).search).get("year") || new Date().getFullYear()}
+    min="1900"
+    max="2100"
+    step="1"
+  />`
+);
 ```
 
 ```js
@@ -51,32 +66,32 @@ viewof locale = {
   };
   form.onsubmit = event => event.preventDefault();
   form.value = Promise.resolve();
-  return form; 
+  return form;
 }
 ```
 
 ```js
-md`---
+md`
+---
 
-## Appendix`
+## Appendix
+`;
 ```
 
 ```js echo
-projection = d3.geoOrthographic()
-    .translate([0, 0])
-    .scale(10)
+const projection = d3.geoOrthographic().translate([0, 0]).scale(10);
 ```
 
 ```js echo
-path = d3.geoPath(projection)
+const path = d3.geoPath(projection);
 ```
 
 ```js echo
-hemisphere = d3.geoCircle()()
+const hemisphere = d3.geoCircle()();
 ```
 
 ```js echo
-dayScale = {
+const dayScale = {
   const scale = d3.scalePoint()
       .domain(d3.range(1, 40))
       .range([margin.left, width - margin.right])
@@ -90,7 +105,7 @@ dayScale = {
 ```
 
 ```js echo
-monthScale = {
+const monthScale = {
   const scale = d3.scalePoint()
       .domain(d3.range(12))
       .range([margin.top, height - margin.bottom])
@@ -100,7 +115,7 @@ monthScale = {
 ```
 
 ```js echo
-days = {
+const days = {
   const now = new Date(year, 0, 1);
   const start = d3.timeYear(now);
   return d3.timeDays(start, d3.timeYear.offset(start, 1));
@@ -108,7 +123,7 @@ days = {
 ```
 
 ```js echo
-months = {
+const months = {
   const now = new Date(year, 0, 1);
   const start = d3.timeYear(now);
   return d3.timeMonths(start, d3.timeYear.offset(start, 1));
@@ -116,21 +131,21 @@ months = {
 ```
 
 ```js echo
-width = 975
+const width = 975;
 ```
 
 ```js echo
-height = 480
+const height = 480;
 ```
 
 ```js echo
-margin = ({top: 0, right: 0, bottom: 0, left: 60})
+const margin = {top: 0, right: 0, bottom: 0, left: 60};
 ```
 
 ```js echo
-suncalc = require("suncalc@1")
+const suncalc = require("suncalc@1");
 ```
 
 ```js echo
-d3 = require("d3@6")
+const d3 = require("d3@6");
 ```

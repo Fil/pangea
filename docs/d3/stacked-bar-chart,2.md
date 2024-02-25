@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Stacked bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Stacked bar chart
@@ -5,11 +10,11 @@
 Population by age and state. Compare to [horizontal stacked bars](/@d3/stacked-horizontal-bar-chart/2), [normalized stacked bars](/@d3/stacked-normalized-horizontal-bar/2), [grouped bars](/@d3/grouped-bar-chart/2) and a [dot plot](/@d3/dot-plot). Data: [American Community Survey](/@mbostock/working-with-the-census-api)
 
 ```js
-key = legend({color: chart.scales.color, title: "Age (years)"})
+const key = legend({color: chart.scales.color, title: "Age (years)"});
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 500;
@@ -83,14 +88,14 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   const data = await FileAttachment("us-population-state-age.csv").csv({typed: true});
   return data.columns.slice(1).flatMap((age) => data.map((d) => ({state: d.name, age, population: d[age]})));
 }
 ```
 
 ```js echo
-import {legend} from "@d3/color-legend"
+import {legend} from "@d3/color-legend";
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [bar mark](https://observablehq.com/plot/marks/bar). See the [Plot: Stacked bar chart](https://observablehq.com/@observablehq/plot-stacked-bar-chart?intent=fork) example notebook.
@@ -99,6 +104,13 @@ Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can 
 Plot.plot({
   y: {transform: (d) => d / 1e6},
   color: {scheme: "spectral"},
-  marks: [Plot.barY(data, {x: "state", y: "population", fill: "age", sort: {color: null, x: "-y"}})]
-})
+  marks: [
+    Plot.barY(data, {
+      x: "state",
+      y: "population",
+      fill: "age",
+      sort: {color: null, x: "-y"}
+    })
+  ]
+});
 ```

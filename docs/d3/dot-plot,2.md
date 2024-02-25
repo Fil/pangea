@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Dot plot</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Dot plot
@@ -20,11 +25,11 @@ viewof order = {
 ```
 
 ```js
-Legend(chart.scales.color, {title: "Age (years)", tickSize: 0})
+Legend(chart.scales.color, {title: "Age (years)", tickSize: 0});
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Extract the categories: states and ages.
   const states = d3.group(data, d => d.state);
   const ages = new Set(data.map(d => d.age));
@@ -41,17 +46,17 @@ chart = {
   const x = d3.scaleLinear()
       .domain([0, d3.max(data, d => d.share)])
       .rangeRound([marginLeft, width - marginRight]);
-  
+
   const y = d3.scalePoint()
       .domain(d3.sort(states.keys()))
       .rangeRound([marginTop, height - marginBottom])
       .padding(1);
-  
+
   const color = d3.scaleOrdinal()
       .domain(ages)
       .range(d3.schemeSpectral[ages.size])
       .unknown("#ccc");
-  
+
   // Create the SVG container.
   const svg = d3.create("svg")
       .attr("width", width)
@@ -118,7 +123,7 @@ chart = {
 ```
 
 ```js echo
-update = {
+const update = {
   const states = data.filter(order === "state" ? (d) => d.age === "<10" : (d) => d.age === order);
   const index = d3.range(states.length).sort(
     order === "state"
@@ -130,7 +135,7 @@ update = {
 ```
 
 ```js echo
-data = {
+const data = {
   const data = await FileAttachment("us-population-state-age.csv").csv({typed: true});
   const ages = data.columns.slice(1);
   const total = new Map(data.map(d => [d.name, d3.sum(ages, age => d[age])]));
@@ -139,7 +144,7 @@ data = {
 ```
 
 ```js echo
-import {Legend} from "@d3/color-legend"
+import {Legend} from "@d3/color-legend";
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [dot mark](https://observablehq.com/plot/marks/dot). See the [Plot: Dot plot](https://observablehq.com/@observablehq/plot-dot-plot?intent=fork) example notebook.
@@ -153,8 +158,23 @@ Plot.plot({
   marks: [
     Plot.ruleX([0]),
     Plot.ruleY(data, Plot.groupY({x1: "min", x2: "max"}, {x: "share", y: "state", sort: {y: "x1"}})),
-    Plot.dot(data, {x: "share", y: "state", fill: "age", sort: {color: null}}),
-    Plot.text(data, Plot.selectMinX({x: "share", y: "state", z: "state", textAnchor: "end", dx: -6, text: "state"}))
+    Plot.dot(data, {
+      x: "share",
+      y: "state",
+      fill: "age",
+      sort: {color: null}
+    }),
+    Plot.text(
+      data,
+      Plot.selectMinX({
+        x: "share",
+        y: "state",
+        z: "state",
+        textAnchor: "end",
+        dx: -6,
+        text: "state"
+      })
+    )
   ]
-})
+});
 ```

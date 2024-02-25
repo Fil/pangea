@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Symbol channel</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Symbol channel
@@ -11,7 +16,12 @@ Plot.plot({
   y: {label: "↑ Flipper length (mm)"},
   symbol: {legend: true},
   marks: [
-    Plot.dot(penguins, {x: "body_mass_g", y: "flipper_length_mm", stroke: "species", symbol: "species"})
+    Plot.dot(penguins, {
+      x: "body_mass_g",
+      y: "flipper_length_mm",
+      stroke: "species",
+      symbol: "species"
+    })
   ]
-})
+});
 ```

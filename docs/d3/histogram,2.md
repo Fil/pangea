@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Histogram</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Histogram
@@ -5,7 +10,7 @@
 A histogram visualizes a one-dimensional distribution by grouping continuous values into discrete bins. This example shows the unemployment rate of U.S. counties as of August 2016. Data: [Bureau of Labor Statistics](http://www.bls.gov/lau/#tables)
 
 ```js echo
-chart = {
+const chart = {
   // Declare the chart dimensions and margins.
   const width = 960;
   const height = 500;
@@ -77,24 +82,21 @@ chart = {
 ```
 
 ```js echo
-unemployment = FileAttachment("unemployment-x.csv").csv({typed: true})
+const unemployment = FileAttachment("unemployment-x.csv").csv({typed: true});
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a histogram with the [bin transform](https://observablehq.com/plot/transforms/bin) and the [rect mark](https://observablehq.com/plot/marks/rect). Below, a [rule mark](https://observablehq.com/plot/marks/rule) also denotes *y* = 0.
+Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a histogram with the [bin transform](https://observablehq.com/plot/transforms/bin) and the [rect mark](https://observablehq.com/plot/marks/rect). Below, a [rule mark](https://observablehq.com/plot/marks/rule) also denotes _y_ = 0.
 
 ```js echo
 Plot.plot({
   width: 960,
   height: 500,
-  marks: [
-    Plot.rectY(unemployment, Plot.binX({y: "count"}, {x: "rate", fill: "steelblue"})),
-    Plot.ruleY([0])
-  ]
-})
+  marks: [Plot.rectY(unemployment, Plot.binX({y: "count"}, {x: "rate", fill: "steelblue"})), Plot.ruleY([0])]
+});
 ```
 
 Or, as a single line of code with [Observable Plot](/plot/):
 
 ```js echo
-Plot.rectY(unemployment, Plot.binX({y: "count"}, {x: "rate"})).plot()
+Plot.rectY(unemployment, Plot.binX({y: "count"}, {x: "rate"})).plot();
 ```

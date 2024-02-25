@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Dodge penguins</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Dodge penguins
@@ -8,8 +13,6 @@ Distribution of [Palmer penguins](https://allisonhorst.github.io/palmerpenguins/
 Plot.plot({
   y: {grid: true},
   color: {legend: true},
-  marks: [
-    Plot.dot(penguins, Plot.dodgeX("middle", {fx: "species", y: "body_mass_g", fill: "sex"}))
-  ]
-})
+  marks: [Plot.dot(penguins, Plot.dodgeX("middle", {fx: "species", y: "body_mass_g", fill: "sex"}))]
+});
 ```

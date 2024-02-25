@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Bubble chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Bubble chart
@@ -5,11 +10,11 @@
 Bubble charts are non-hierarchical [packed circles](/@d3/pack/2?intent=fork). The area of each circle is proportional its value (here, file size). The organic appearance of these diagrams can be intriguing, but also consider a [treemap](/@d3/treemap/2?intent=fork) or a humble [bar chart](/@d3/horizontal-bar-chart/2?intent=fork).
 
 ```js
-key = Swatches(chart.scales.color)
+const key = Swatches(chart.scales.color);
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the dimensions of the chart.
   const width = 928;
   const height = width;
@@ -83,9 +88,9 @@ chart = {
 ```
 
 ```js echo
-data = (await FileAttachment("flare.csv").csv({typed: true})).filter(({value}) => value !== null)
+const data = (await FileAttachment("flare.csv").csv({typed: true})).filter(({value}) => value !== null);
 ```
 
 ```js echo
-import {Swatches} from "@d3/color-legend"
+import {Swatches} from "@d3/color-legend";
 ```

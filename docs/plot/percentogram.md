@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Percentogram</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Percentogram
@@ -24,11 +29,11 @@ Plot.plot({
     }),
     Plot.ruleY([0])
   ]
-})
+});
 ```
 
 ```js echo
-numbers = Float64Array.from({length: 10000}, d3.randomNormal.source(d3.randomLcg(3))())
+const numbers = Float64Array.from({length: 10000}, d3.randomNormal.source(d3.randomLcg(3))());
 ```
 
 ```js echo

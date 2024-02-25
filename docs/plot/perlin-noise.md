@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Perlin noise</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Perlin noise
@@ -16,17 +21,17 @@ Plot.plot({
       rotate: ([x, y]) => noise(x, y) * 360
     })
   ]
-})
+});
 ```
 
 ```js echo
-noise = octave(perlin2, 2)
+const noise = octave(perlin2, 2);
 ```
 
 ```js echo
-import {octave, perlin2} from "@mbostock/perlin-noise"
+import {octave, perlin2} from "@mbostock/perlin-noise";
 ```
 
 ```js echo
-import {poisson} from "@mbostock/poisson-disk-sampling"
+import {poisson} from "@mbostock/poisson-disk-sampling";
 ```

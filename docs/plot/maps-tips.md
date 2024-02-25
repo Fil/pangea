@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Map and tips</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Map and tips
@@ -9,9 +14,16 @@ Plot.plot({
   projection: "albers-usa",
   marks: [
     Plot.geo(states),
-    Plot.tip(states, Plot.geoCentroid({title: (d) => d.properties.name, anchor: "bottom", textPadding: 3}))
+    Plot.tip(
+      states,
+      Plot.geoCentroid({
+        title: (d) => d.properties.name,
+        anchor: "bottom",
+        textPadding: 3
+      })
+    )
   ]
-})
+});
 ```
 
 For interactive tips, just combine the [pointer](https://observablehq.com/plot/interactions/pointer) and [centroid](https://observablehq.com/plot/transforms/centroid) transforms:
@@ -19,17 +31,14 @@ For interactive tips, just combine the [pointer](https://observablehq.com/plot/i
 ```js echo
 Plot.plot({
   projection: "albers-usa",
-  marks: [
-    Plot.geo(states),
-    Plot.tip(states, Plot.pointer(Plot.geoCentroid({title: (d) => d.properties.name})))
-  ]
-})
+  marks: [Plot.geo(states), Plot.tip(states, Plot.pointer(Plot.geoCentroid({title: (d) => d.properties.name})))]
+});
 ```
 
 ```js echo
-us = FileAttachment("us-counties-10m@1.json").json()
+const us = FileAttachment("us-counties-10m@1.json").json();
 ```
 
 ```js echo
-states = topojson.feature(us, us.objects.states).features
+const states = topojson.feature(us, us.objects.states).features;
 ```

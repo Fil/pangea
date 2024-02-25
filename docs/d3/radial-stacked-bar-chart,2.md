@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Radial stacked bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Radial stacked bar chart
@@ -5,7 +10,7 @@
 Radial layouts are pretty, but may impede comparison, so consider them primarily to emphasize cyclical patterns. (This example’s data is not cyclical, so the radial layout here is gratuitous!) See also the [sorted variant](/@d3/radial-stacked-bar-chart/3).
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = width;
   const innerRadius = 180;
@@ -128,7 +133,7 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   const data = await FileAttachment("data-2.csv").csv({typed: true});
   return data.columns.slice(1).flatMap((age) => data.map((d) => ({state: d.State, age, population: d[age]})));
 }

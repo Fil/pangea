@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Isotype Chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Isotype Chart
@@ -22,24 +27,24 @@ Plot.plot({
       y: "animal",
       fy: "country"
     }),
-    Plot.axisFy({ fontSize: 18, frameAnchor: "top", dy: -18 })
+    Plot.axisFy({fontSize: 18, frameAnchor: "top", dy: -18})
   ],
   caption: "Live stock (millions)"
-})
+});
 ```
 
 ```js echo
-emoji = ({ cattle: "🐄", sheep: "🐑", pigs: "🐖" })
+const emoji = {cattle: "🐄", sheep: "🐑", pigs: "🐖"};
 ```
 
 ```js echo
 // This dataset is purely made up.
 data = [
-  { animal: "pigs", country: "Great Britain", count: 1354979 },
-  { animal: "cattle", country: "Great Britain", count: 3962921 },
-  { animal: "sheep", country: "Great Britain", count: 10931215 },
-  { animal: "pigs", country: "United States", count: 6281935 },
-  { animal: "cattle", country: "United States", count: 9917873 },
-  { animal: "sheep", country: "United States", count: 7084151 }
-]
+  {animal: "pigs", country: "Great Britain", count: 1354979},
+  {animal: "cattle", country: "Great Britain", count: 3962921},
+  {animal: "sheep", country: "Great Britain", count: 10931215},
+  {animal: "pigs", country: "United States", count: 6281935},
+  {animal: "cattle", country: "United States", count: 9917873},
+  {animal: "sheep", country: "United States", count: 7084151}
+];
 ```

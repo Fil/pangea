@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Grouped bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Grouped bar chart
@@ -5,11 +10,11 @@
 Compare to a [stacked bar chart](/@d3/stacked-bar-chart/2). Data: [American Community Survey](/@mbostock/working-with-the-census-api)
 
 ```js
-key = legend({color: chart.scales.color, title: "Age (years)"})
+const key = legend({color: chart.scales.color, title: "Age (years)"});
 ```
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions.
   const width = 928;
   const height = 600;
@@ -86,7 +91,7 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   let data = await FileAttachment("us-population-state-age.csv").csv({typed: true});
   const ages = data.columns.slice(1);
   data = d3.sort(data, d => -d3.sum(ages, age => d[age])).slice(0, 6);
@@ -95,7 +100,7 @@ data = {
 ```
 
 ```js echo
-import {legend} from "@d3/color-legend"
+import {legend} from "@d3/color-legend";
 ```
 
 Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [bar mark](https://observablehq.com/plot/marks/bar). See the [Plot: Grouped bar chart](https://observablehq.com/@observablehq/plot-grouped-bar-chart?intent=fork) example notebook.
@@ -107,8 +112,14 @@ Plot.plot({
   fx: {label: null},
   color: {scheme: "spectral"},
   marks: [
-    Plot.barY(data, {fx: "state", x:"age", y: "population", fill: "age", sort: {color: null, x: null, fx: {value: "-y", reduce: "sum"}}}),
+    Plot.barY(data, {
+      fx: "state",
+      x: "age",
+      y: "population",
+      fill: "age",
+      sort: {color: null, x: null, fx: {value: "-y", reduce: "sum"}}
+    }),
     Plot.ruleY([0])
   ]
-})
+});
 ```

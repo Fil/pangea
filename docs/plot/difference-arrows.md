@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Difference arrows</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Difference arrows
@@ -14,7 +19,7 @@ Plot.plot({
     domain: [-1, 1],
     unknown: "#aaa",
     transform: Math.sign,
-    tickFormat: (c) => c < 0 ? "female" : "male",
+    tickFormat: (c) => (c < 0 ? "female" : "male"),
     legend: true
   },
   marks: [
@@ -40,5 +45,5 @@ Plot.plot({
       )
     )
   ]
-})
+});
 ```

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Difference chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Difference chart
@@ -5,7 +10,7 @@
 The temperature in New York compared to San Francisco; days when San Francisco was warmer are <span style="border-bottom: 2px solid #fc8d59">orange</span>, and colder days are <span style="border-bottom: 2px solid #91bfdb">blue</span>.
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -106,13 +111,13 @@ chart = {
           .curve(d3.curveStep)
           .x(d => x(d.date))
           .y(d => y(d.value0)));
-  
+
   return svg.node();
 }
 ```
 
 ```js echo
-data = {
+const data = {
   const parseDate = d3.timeParse("%Y%m%d");
   return d3.tsvParse(await FileAttachment("weather.tsv").text(), d => ({
     date: parseDate(d.date),
@@ -126,7 +131,7 @@ Or, using [Observable Plot](/plot/)’s concise API (see [complete example](/@ob
 
 ```js echo
 Plot.plot({
-  y: { grid: true },
+  y: {grid: true},
   color: {scheme: "RdYlBu"},
   marks: [
     Plot.areaY(data, {
@@ -143,5 +148,5 @@ Plot.plot({
       curve: "step-after"
     })
   ]
-})
+});
 ```

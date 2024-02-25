@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Phases of the Moon</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Phases of the Moon
@@ -43,9 +48,21 @@ Plot.plot({
   y: {domain: d3.range(12)}, // month of year
   length: {type: "identity"}, // overloading meaning as lunar phase angle!
   marks: (({data, x, y, r, hemisphere, projection}) => [
-    Plot.axisY({textAnchor: "start", tickFormat: Plot.formatMonth(locale, "long"), tickSize: 0, dx: -50}),
+    Plot.axisY({
+      textAnchor: "start",
+      tickFormat: Plot.formatMonth(locale, "long"),
+      tickSize: 0,
+      dx: -50
+    }),
     Plot.dot(data, {x, y, r, fill: "#333"}),
-    Plot.text(data, {x, y, r, text: (d) => d.getUTCDate(), dy: -r - 5, fontSize: 7}),
+    Plot.text(data, {
+      x,
+      y,
+      r,
+      text: (d) => d.getUTCDate(),
+      dy: -r - 5,
+      fontSize: 7
+    }),
     Plot.vector(data, {
       x,
       y,
@@ -81,11 +98,11 @@ Plot.plot({
     hemisphere: d3.geoCircle()(),
     projection: d3.geoOrthographic().translate([0, 0])
   })
-})
+});
 ```
 
-Above, to specify a custom [vector shape](https://observablehq.com/plot/marks/vector#vector-options), I’m using an [immediately-invoked function expression (IIFE)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) so that I can share a few local variables (`data`, `x`, `y`, `r`, *etc.*). A more conventional style would declare them as local variables before calling Plot.plot, say using `const`, but I wanted to declare them within.
+Above, to specify a custom [vector shape](https://observablehq.com/plot/marks/vector#vector-options), I’m using an [immediately-invoked function expression (IIFE)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) so that I can share a few local variables (`data`, `x`, `y`, `r`, _etc._). A more conventional style would declare them as local variables before calling Plot.plot, say using `const`, but I wanted to declare them within.
 
 ```js echo
-suncalc = (await import("https://cdn.jsdelivr.net/npm/suncalc@1/+esm")).default
+const suncalc = (await import("https://cdn.jsdelivr.net/npm/suncalc@1/+esm")).default;
 ```

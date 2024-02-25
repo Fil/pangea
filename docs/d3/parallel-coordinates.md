@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Parallel coordinates</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Parallel coordinates
@@ -14,11 +19,11 @@ viewof keyz = {
 ```
 
 ```js
-legend = Legend({color: chart.scales.color, title: keyz})
+const legend = Legend({color: chart.scales.color, title: keyz});
 ```
 
 ```js echo
-chart = {
+const chart = {
 
   // Specify the chart’s dimensions.
   const width = 928;
@@ -87,15 +92,15 @@ chart = {
 ```
 
 ```js echo
-data = FileAttachment("cars.csv").csv({typed: true})
+const data = FileAttachment("cars.csv").csv({typed: true});
 ```
 
 ```js echo
-keys = data.columns.slice(1)
+const keys = data.columns.slice(1);
 ```
 
 ```js echo
-import {legend as Legend} from "@d3/color-legend"
+import {legend as Legend} from "@d3/color-legend";
 ```
 
 For an alternative using [Observable Plot](/plot/)’s concise API, see [Plot: Parallel coordinates](https://observablehq.com/@observablehq/plot-parcoords).

@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Global temperature trends</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Global temperature trends
@@ -5,7 +10,7 @@
 Based on [“How 2016 Became Earth’s Hottest Year on Record”](https://www.nytimes.com/interactive/2017/01/18/science/earth/2016-hottest-year-on-record.html) by Jugal K. Patel. Data: [NASA Goddard Institute for Space Studies](https://data.giss.nasa.gov/gistemp/)
 
 ```js echo
-chart = {
+const chart = {
   const width = 928;
   const height = 600;
   const marginTop = 20;
@@ -72,7 +77,7 @@ chart = {
 ```
 
 ```js echo
-data = {
+const data = {
   const data = [];
   // https://data.giss.nasa.gov/gistemp/tabledata_v3/GLB.Ts+dSST.csv
   await d3.csvParse(await FileAttachment("temperatures.csv").text(), (d, i, columns) => {

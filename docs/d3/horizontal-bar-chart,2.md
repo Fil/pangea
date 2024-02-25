@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Horizontal bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Horizontal bar chart
@@ -5,7 +10,7 @@
 This chart shows the relative frequency of letters in the English language.
 
 ```js echo
-chart = {
+const chart = {
   // Specify the chart’s dimensions, based on a bar’s height.
   const barHeight = 25;
   const marginTop = 30;
@@ -19,7 +24,7 @@ chart = {
   const x = d3.scaleLinear()
       .domain([0, d3.max(alphabet, d => d.frequency)])
       .range([marginLeft, width - marginRight]);
-  
+
   const y = d3.scaleBand()
       .domain(d3.sort(alphabet, d => -d.frequency).map(d => d.letter))
       .rangeRound([marginTop, height - marginBottom])
@@ -34,7 +39,7 @@ chart = {
       .attr("height", height)
       .attr("viewBox", [0, 0, width, height])
       .attr("style", "max-width: 100%; height: auto; font: 10px sans-serif;");
-  
+
   // Append a rect for each letter.
   svg.append("g")
       .attr("fill", "steelblue")
@@ -45,7 +50,7 @@ chart = {
       .attr("y", (d) => y(d.letter))
       .attr("width", (d) => x(d.frequency) - x(0))
       .attr("height", y.bandwidth());
-  
+
   // Append a label for each letter.
   svg.append("g")
       .attr("fill", "white")
@@ -78,7 +83,7 @@ chart = {
 ```
 
 ```js echo
-alphabet = FileAttachment("alphabet.csv").csv({typed: true})
+const alphabet = FileAttachment("alphabet.csv").csv({typed: true});
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -88,14 +93,35 @@ Plot.plot({
   x: {axis: "top", percent: true},
   y: {label: null},
   marks: [
-    Plot.barX(alphabet, {x: "frequency", y: "letter", fill: "steelblue", sort: {y: "-x"}}),
-    Plot.text(alphabet, {x: "frequency", y: "letter", text: d => format(d.frequency), textAnchor: "start", dx: 3, filter: d => d.frequency <= 0.007, fill: "currentColor"}),
-    Plot.text(alphabet, {x: "frequency", y: "letter", text: d => format(d.frequency), textAnchor: "end", dx: -3, filter: d => d.frequency > 0.007, fill: "white" }),
+    Plot.barX(alphabet, {
+      x: "frequency",
+      y: "letter",
+      fill: "steelblue",
+      sort: {y: "-x"}
+    }),
+    Plot.text(alphabet, {
+      x: "frequency",
+      y: "letter",
+      text: (d) => format(d.frequency),
+      textAnchor: "start",
+      dx: 3,
+      filter: (d) => d.frequency <= 0.007,
+      fill: "currentColor"
+    }),
+    Plot.text(alphabet, {
+      x: "frequency",
+      y: "letter",
+      text: (d) => format(d.frequency),
+      textAnchor: "end",
+      dx: -3,
+      filter: (d) => d.frequency > 0.007,
+      fill: "white"
+    }),
     Plot.ruleX([0])
   ]
-})
+});
 ```
 
 ```js echo
-format = d3.format(".1%")
+const format = d3.format(".1%");
 ```

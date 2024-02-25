@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Voronoi labels</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Voronoi labels
@@ -5,13 +10,13 @@
 Here a [Voronoi diagram](/@d3/hover-voronoi) is used to label [a scatterplot](/@mbostock/d3-scatterplot): the area of each Voronoi cell determines whether the associated label is visible: larger cells tend to have room to accommodate labels. The vector between the point and the cell’s centroid (orange) determines the label orientation: top, right, bottom or left.
 
 ```js echo
-chart = {
+const chart = {
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width, height])
       .attr("width", width)
       .attr("height", height)
       .attr("style", "max-width: 100%; height: auto;");
-  
+
   const cells = data.map((d, i) => [d, voronoi.cellPolygon(i)]);
 
   svg.append("g")
@@ -51,24 +56,24 @@ chart = {
 ```
 
 ```js echo
-delaunay = d3.Delaunay.from(data)
+const delaunay = d3.Delaunay.from(data);
 ```
 
 ```js echo
-voronoi = delaunay.voronoi([-1, -1, width + 1, height + 1])
+const voronoi = delaunay.voronoi([-1, -1, width + 1, height + 1]);
 ```
 
 ```js echo
-orient = ({
-  top: text => text.attr("text-anchor", "middle").attr("y", -6),
-  right: text => text.attr("text-anchor", "start").attr("dy", "0.35em").attr("x", 6),
-  bottom: text => text.attr("text-anchor", "middle").attr("dy", "0.71em").attr("y", 6),
-  left: text => text.attr("text-anchor", "end").attr("dy", "0.35em").attr("x", -6)
-})
+const orient = {
+  top: (text) => text.attr("text-anchor", "middle").attr("y", -6),
+  right: (text) => text.attr("text-anchor", "start").attr("dy", "0.35em").attr("x", 6),
+  bottom: (text) => text.attr("text-anchor", "middle").attr("dy", "0.71em").attr("y", 6),
+  left: (text) => text.attr("text-anchor", "end").attr("dy", "0.35em").attr("x", -6)
+};
 ```
 
 ```js echo
-data = {
+const data = {
   const randomX = d3.randomNormal(width / 2, 80);
   const randomY = d3.randomNormal(height / 2, 80);
   return d3.range(200)
@@ -78,11 +83,11 @@ data = {
 ```
 
 ```js echo
-width = 928
+const width = 928;
 ```
 
 ```js echo
-height = 600
+const height = 600;
 ```
 
 See also the [Observable Plot](/plot/) [version](/@fil/plot-voronoi-labels).

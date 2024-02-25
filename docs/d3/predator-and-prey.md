@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 ```js
 md`# Predator and Prey
 
@@ -12,11 +17,11 @@ ${tex.block`\begin{aligned}
 
 In this model, the prey have unlimited food and grow exponentially (${tex`\alpha`}); however, they are sometimes eaten (${tex`\beta`}) by predators. The predators have unlimited appetite, but eat only prey, limiting their growth (${tex`\delta`}); their decay is exponential (${tex`\gamma`}). The parameters ${tex`\alpha`}, ${tex`\beta`}, ${tex`\gamma`}, and ${tex`\delta`} thus describe how the two populations behave, while ${tex`\tfrac{\mathrm{d}🐁}{\mathrm{d}t}`} and ${tex`\tfrac{\mathrm{d}🐈}{\mathrm{d}t}`} are the rates at which each population is increasing or decreasing.
 
-By iteratively evaluating these equations—by starting with some initial populations, calculating the rates, adjusting the populations accordingly, then repeating this process many times—we can compute the populations over time as shown in the plot below. Drag the cat 🐈 or the mouse 🐁 to change the initial populations. (You can’t have fractional mice, so interpret the numbers as thousands or similar.)`
+By iteratively evaluating these equations—by starting with some initial populations, calculating the rates, adjusting the populations accordingly, then repeating this process many times—we can compute the populations over time as shown in the plot below. Drag the cat 🐈 or the mouse 🐁 to change the initial populations. (You can’t have fractional mice, so interpret the numbers as thousands or similar.)`;
 ```
 
 ```js
-timeLineChart = {
+const timeLineChart = {
   let T, X, Y;
 
   const height = 420;
@@ -96,11 +101,11 @@ timeLineChart = {
 ```js
 md`As expected, both predator <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${yColor} stroke-width=1.5></path></svg> and prey <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${xColor} stroke-width=1.5></path></svg> populations repeatedly rise and fall.
 
-We can see this cycle literally in [phase space](https://en.wikipedia.org/wiki/Phase_space): rather than encode time ${tex`t`} along the ${tex`x`}-axis, encode the number of prey 🐁 along ${tex`x`}, and the number of predators 🐈 along ${tex`y`}. (We’ll use animation to show how the population changes over time.) Drag the point <svg width=8 height=16><circle r=3.5 cx=4 cy=10></circle></svg> to change the initial populations.`
+We can see this cycle literally in [phase space](https://en.wikipedia.org/wiki/Phase_space): rather than encode time ${tex`t`} along the ${tex`x`}-axis, encode the number of prey 🐁 along ${tex`x`}, and the number of predators 🐈 along ${tex`y`}. (We’ll use animation to show how the population changes over time.) Drag the point <svg width=8 height=16><circle r=3.5 cx=4 cy=10></circle></svg> to change the initial populations.`;
 ```
 
 ```js
-timeCycleChart = {
+const timeCycleChart = {
   let frame, i = 0, k = 24, T, X, Y;
 
   const size = Math.min(640, width);
@@ -186,15 +191,17 @@ timeCycleChart = {
 ```
 
 ```js
-md`This cycle suggests a counterintuitive but plausible result: if you instantaneously reduce the number of prey, predators will decline, allowing prey to recover, and a (temporarily) *larger* prey population than you started with. More generally, feedback loops in dynamical systems can make it hard to predict what will happen when you artificially introduce change!
+md`
+This cycle suggests a counterintuitive but plausible result: if you instantaneously reduce the number of prey, predators will decline, allowing prey to recover, and a (temporarily) _larger_ prey population than you started with. More generally, feedback loops in dynamical systems can make it hard to predict what will happen when you artificially introduce change!
 
-Interacting with the phase plot reveals something else: see if you can adjust the initial populations <svg width=8 height=16><circle r=3.5 cx=4 cy=10></circle></svg> to contract the cycle <svg width=16 height=16><circle r=7 cx=8 cy=8 fill=none stroke=#000 stroke-opacity=0.25 stroke-width=1.5></circle></svg> down to a single point. What does this singularity mean in terms of predator–prey behavior? It is *equilibrium*: both populations are unchanging; both predator and prey are dying at the same rate they are reproducing.
+Interacting with the phase plot reveals something else: see if you can adjust the initial populations <svg width=8 height=16><circle r=3.5 cx=4 cy=10></circle></svg> to contract the cycle <svg width=16 height=16><circle r=7 cx=8 cy=8 fill=none stroke=#000 stroke-opacity=0.25 stroke-width=1.5></circle></svg> down to a single point. What does this singularity mean in terms of predator–prey behavior? It is _equilibrium_: both populations are unchanging; both predator and prey are dying at the same rate they are reproducing.
 
-We can see the stationary point directly—no interaction required—by plotting the entire vector field (the rates of change for *all possible* conditions). It’s like a wind map: if you set the initial populations to a given point, the populations will follow the lines of the field and eventually loop back to the same point. The stationary point is the eye of the storm.`
+We can see the stationary point directly—no interaction required—by plotting the entire vector field (the rates of change for _all possible_ conditions). It’s like a wind map: if you set the initial populations to a given point, the populations will follow the lines of the field and eventually loop back to the same point. The stationary point is the eye of the storm.
+`;
 ```
 
 ```js
-vectorFieldChart = {
+const vectorFieldChart = {
   const div = html`<div style="position:relative;">`;
 
   const size = Math.min(640, width);
@@ -274,13 +281,15 @@ ${tex.block`\begin{aligned}
 🐈 &= \frac{\alpha}{\beta} \\[2ex]
 🐁 &= \frac{\gamma}{\delta}
 \end{aligned}`}
-`
+`;
 ```
 
 ```js
-md`But why is the cycle in the phase plot always counterclockwise? Meaning: why does the predator population “echo” the prey, such that the predators’ peaks and valleys always appear *after* those of the prey?
+md`
+But why is the cycle in the phase plot always counterclockwise? Meaning: why does the predator population “echo” the prey, such that the predators’ peaks and valleys always appear _after_ those of the prey?
 
-We can visualize this delayed interaction more directly by plotting the rates of change rather than the absolute populations. (If you adjusted the initial populations above to find the stationary point, consider resetting them back to the default values to see these plots.)`
+We can visualize this delayed interaction more directly by plotting the rates of change rather than the absolute populations. (If you adjusted the initial populations above to find the stationary point, consider resetting them back to the default values to see these plots.)
+`;
 ```
 
 ```js
@@ -292,7 +301,7 @@ We can visualize this delayed interaction more directly by plotting the rates of
 ```
 
 ```js
-phaseChart = {
+const phaseChart = {
   await visibility();
   const [T, X, Y] = simulate({alpha, beta, gamma, delta, x0: xy[0], y0: xy[1]});
 
@@ -331,11 +340,11 @@ phaseChart = {
 ```js
 md`For most of the cycle, the prey 🐁 rate of change <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${xColor} stroke-width=1.5></path></svg> is positive and slowly increasing. At a certain point (around ${tex`t = 8`} if you reset), however, the predator 🐈 rate of change <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${yColor} stroke-width=1.5></path></svg> spikes and the prey rate drops precipitously.
 
-To investigate further, let’s plot each term separately. The prey’s birth rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg> is ${tex`\alpha`}🐁 and death rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg> is ${tex`\beta`}🐁🐈; subtracting the two produces a positive rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${xColor}></path></svg> if the prey are increasing and a negative rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${negativeColor}></path></svg> if they are decreasing.`
+To investigate further, let’s plot each term separately. The prey’s birth rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg> is ${tex`\alpha`}🐁 and death rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg> is ${tex`\beta`}🐁🐈; subtracting the two produces a positive rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${xColor}></path></svg> if the prey are increasing and a negative rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${negativeColor}></path></svg> if they are decreasing.`;
 ```
 
 ```js
-preyRateChart = await visibility(), changeChart(
+const preyRateChart = await visibility(), changeChart(
   xColor,
   {alpha, beta, gamma, delta, x0: xy[0], y0: xy[1]},
   (x, y) => alpha * x,
@@ -344,11 +353,11 @@ preyRateChart = await visibility(), changeChart(
 ```
 
 ```js
-md`Likewise, the predator’s birth rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg> is ${tex`\delta`}🐁🐈 and death rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg> is ${tex`\gamma`}🐈; subtracting the two produces a positive rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${yColor}></path></svg> if the predators are increasing, and a negative rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${negativeColor}></path></svg> if they are decreasing.`
+md`Likewise, the predator’s birth rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg> is ${tex`\delta`}🐁🐈 and death rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg> is ${tex`\gamma`}🐈; subtracting the two produces a positive rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${yColor}></path></svg> if the predators are increasing, and a negative rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${negativeColor}></path></svg> if they are decreasing.`;
 ```
 
 ```js
-predatorRateChart = await visibility(), changeChart(
+const predatorRateChart = await visibility(), changeChart(
   yColor,
   {alpha, beta, gamma, delta, x0: xy[0], y0: xy[1]},
   (x, y) => delta * x * y,
@@ -364,11 +373,12 @@ Prey birth changes *slowly*.
 <br> Prey death changes *quickly*.
 <br> Predator death changes *slowly*.
 
-And this is why the predator population echoes the prey population.`
+And this is why the predator population echoes the prey population.`;
 ```
 
 ```js
-md`---
+md`
+---
 
 ## Further Reading
 
@@ -376,13 +386,16 @@ Bret Victor, [Interactive Exploration of a Dynamical System](https://vimeo.com/2
 <br>Colin Smith, [odex-js (ordinary differential equation solver)](https://github.com/littleredcomputer/odex-js)
 <br>Wikipedia, [Lotka–Volterra equations](https://en.wikipedia.org/wiki/Lotka–Volterra_equations)
 <br>Wikipedia, [Line integral convolution](https://en.wikipedia.org/wiki/Line_integral_convolution)
-<br>Wikipedia, [Phase space](https://en.wikipedia.org/wiki/Phase_space)`
+<br>Wikipedia, [Phase space](https://en.wikipedia.org/wiki/Phase_space)
+`;
 ```
 
 ```js
-md`---
+md`
+---
 
-## Appendix`
+## Appendix
+`;
 ```
 
 ```js echo
@@ -407,52 +420,107 @@ function changeChart(positiveColor, options, f1, f2) {
 
   const height = 240;
   const margin = {top: 20, right: 30, bottom: 30, left: 40};
-  const x = d3.scaleLinear().domain([0, 24]).range([margin.left, width - margin.right]);
-  const y = d3.scaleLinear().domain([0, 4]).range([height - margin.bottom, margin.top]);
+  const x = d3
+    .scaleLinear()
+    .domain([0, 24])
+    .range([margin.left, width - margin.right]);
+  const y = d3
+    .scaleLinear()
+    .domain([0, 4])
+    .range([height - margin.bottom, margin.top]);
 
   const svg = d3.select(DOM.svg(width, height));
   const positive = DOM.uid("positive");
   const negative = DOM.uid("negative");
   const defs = svg.append("defs");
 
-  defs.append("clipPath").attr("id", positive.id).append("path")
-      .attr("d", d3.area().x(x).y0(0).y1((t, i) => y(f2(X[i], Y[i])))(T));
+  defs
+    .append("clipPath")
+    .attr("id", positive.id)
+    .append("path")
+    .attr(
+      "d",
+      d3
+        .area()
+        .x(x)
+        .y0(0)
+        .y1((t, i) => y(f2(X[i], Y[i])))(T)
+    );
 
-  defs.append("clipPath").attr("id", negative.id).append("path")
-      .attr("d", d3.area().x(x).y0(0).y1((t, i) => y(f1(X[i], Y[i])))(T));
+  defs
+    .append("clipPath")
+    .attr("id", negative.id)
+    .append("path")
+    .attr(
+      "d",
+      d3
+        .area()
+        .x(x)
+        .y0(0)
+        .y1((t, i) => y(f1(X[i], Y[i])))(T)
+    );
 
-  svg.append("g")
-      .attr("transform", `translate(0,${y(0)})`)
-      .call(d3.axisBottom(x))
-      .call(g => g.select(".tick:first-of-type text").text("t = 0"));
+  svg
+    .append("g")
+    .attr("transform", `translate(0,${y(0)})`)
+    .call(d3.axisBottom(x))
+    .call((g) => g.select(".tick:first-of-type text").text("t = 0"));
 
-  svg.append("g")
-      .attr("transform", `translate(${margin.left},0)`)
-      .call(d3.axisLeft(y).ticks(5, "+f"));
+  svg.append("g").attr("transform", `translate(${margin.left},0)`).call(d3.axisLeft(y).ticks(5, "+f"));
 
-  svg.append("path")
-      .attr("clip-path", positive)
-      .attr("fill", positiveColor)
-      .attr("fill-opacity", 0.7)
-      .attr("d", d3.area().x(x).y0(y(0)).y1((t, i) => y(f1(X[i], Y[i])))(T));
+  svg
+    .append("path")
+    .attr("clip-path", positive)
+    .attr("fill", positiveColor)
+    .attr("fill-opacity", 0.7)
+    .attr(
+      "d",
+      d3
+        .area()
+        .x(x)
+        .y0(y(0))
+        .y1((t, i) => y(f1(X[i], Y[i])))(T)
+    );
 
-  svg.append("path")
-      .attr("clip-path", negative)
-      .attr("fill", negativeColor)
-      .attr("fill-opacity", 0.7)
-      .attr("d", d3.area().x(x).y0(y(0)).y1((t, i) => y(f2(X[i], Y[i])))(T));
+  svg
+    .append("path")
+    .attr("clip-path", negative)
+    .attr("fill", negativeColor)
+    .attr("fill-opacity", 0.7)
+    .attr(
+      "d",
+      d3
+        .area()
+        .x(x)
+        .y0(y(0))
+        .y1((t, i) => y(f2(X[i], Y[i])))(T)
+    );
 
-  svg.append("path")
-      .attr("fill", "none")
-      .attr("stroke", color1)
-      .attr("stroke-width", 1.5)
-      .attr("d", d3.line().x(x).y((t, i) => y(f1(X[i], Y[i])))(T));
+  svg
+    .append("path")
+    .attr("fill", "none")
+    .attr("stroke", color1)
+    .attr("stroke-width", 1.5)
+    .attr(
+      "d",
+      d3
+        .line()
+        .x(x)
+        .y((t, i) => y(f1(X[i], Y[i])))(T)
+    );
 
-  svg.append("path")
-      .attr("fill", "none")
-      .attr("stroke", color2)
-      .attr("stroke-width", 1.5)
-      .attr("d", d3.line().x(x).y((t, i) => y(f2(X[i], Y[i])))(T));
+  svg
+    .append("path")
+    .attr("fill", "none")
+    .attr("stroke", color2)
+    .attr("stroke-width", 1.5)
+    .attr(
+      "d",
+      d3
+        .line()
+        .x(x)
+        .y((t, i) => y(f2(X[i], Y[i])))(T)
+    );
 
   return svg.node();
 }
@@ -463,7 +531,7 @@ viewof xy = new View([1.4, 1.6])
 ```
 
 ```js echo
-simulate = {
+const simulate = {
   const l = 24, k = 20, n = l * k;
   const solver = new odex.Solver(2);
   solver.denseOutput = true;
@@ -482,9 +550,12 @@ simulate = {
 
 ```js echo
 function cycle(T, X, Y) {
-  let j, x0 = X[0], x1 = X[1], x2;
+  let j,
+    x0 = X[0],
+    x1 = X[1],
+    x2;
   for (let i = 2, n = T.length; i < n; ++i) {
-    x0 = x1, x1 = x2, x2 = X[i];
+    (x0 = x1), (x1 = x2), (x2 = X[i]);
     if (x0 > x1 && x1 < x2) {
       if (j > 0) return [T.slice(j, i), X.slice(j, i), Y.slice(j, i)];
       j = i;
@@ -495,23 +566,23 @@ function cycle(T, X, Y) {
 ```
 
 ```js echo
-xColor = d3.schemeCategory10[6]
+const xColor = d3.schemeCategory10[6];
 ```
 
 ```js echo
-yColor = d3.schemeCategory10[5]
+const yColor = d3.schemeCategory10[5];
 ```
 
 ```js echo
-color1 = d3.schemeCategory10[2]
+const color1 = d3.schemeCategory10[2];
 ```
 
 ```js echo
-color2 = d3.schemeCategory10[3]
+const color2 = d3.schemeCategory10[3];
 ```
 
 ```js echo
-negativeColor = "#aaa"
+const negativeColor = "#aaa";
 ```
 
 ```js echo
@@ -533,23 +604,23 @@ class View {
   }
   removeEventListener(type, listener) {
     if (type != "input") return;
-    this._list = this._list.filter(l => l !== listener);
+    this._list = this._list.filter((l) => l !== listener);
   }
   dispatchEvent(event) {
     const p = Promise.resolve(event);
-    this._list.forEach(l => p.then(l));
+    this._list.forEach((l) => p.then(l));
   }
 }
 ```
 
 ```js echo
-exports = window.exports = {}
+const exports = (window.exports = {});
 ```
 
 ```js echo
-odex = require("odex@2").catch(() => exports)
+const odex = require("odex@2").catch(() => exports);
 ```
 
 ```js echo
-d3 = require("d3@6")
+const d3 = require("d3@6");
 ```

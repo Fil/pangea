@@ -1,3 +1,8 @@
+---
+index: false
+status: draft
+---
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Crosshair</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Crosshair
@@ -10,5 +15,5 @@ Plot.plot({
     Plot.dot(olympians, {x: "weight", y: "height", stroke: "sex"}),
     Plot.crosshair(olympians, {x: "weight", y: "height"})
   ]
-})
+});
 ```
