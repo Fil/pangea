@@ -1,6 +1,8 @@
 ---
 title: The Mandelbrot Set in HTML5 Canvas &amp; JavaScript
 style: mandelbrot-style.css
+index: true
+source: https://github.com/cslarsen/mandelbrot-js
 ---
 
 # Mandelbrot
