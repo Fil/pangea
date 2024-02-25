@@ -1,19 +1,18 @@
 ---
 source: https://observablehq.com/@observablehq/plot-mandelbrot-set
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Mandelbrot set</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Mandelbrot set
 
 A [raster](https://observablehq.com/plot/marks/raster) can color each pixel with the result of a function. Here the function counts the number of iterations needed until the point “escapes”. Reference: [Wikipedia](https://en.wikipedia.org/wiki/Mandelbrot_set).
 
 ```js echo
-Plot.raster({fill: mandelbrot, x1: -2, x2: 1, y1: -1.164, y2: 1.164}).plot({
+const chart = Plot.raster({fill: mandelbrot, x1: -2, x2: 1, y1: -1.164, y2: 1.164}).plot({
   aspectRatio: 1
 });
+
+display(chart);
 ```
 
 ```js echo
