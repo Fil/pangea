@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-barley-trellis
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Barley Trellis</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Barley Trellis
 
@@ -13,7 +10,7 @@ The [Trellis display](https://www.jstor.org/stable/1390777) by Becker _et al._ h
 Notice anything unusual about one of the sites? This anomaly led Becker _et al._ to suspect a major error with the data that went undetected for six decades.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   height: 800,
   marginRight: 90,
   marginLeft: 110,
@@ -32,8 +29,10 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const barley = FileAttachment("barley.csv").csv({typed: true});
+const barley = FileAttachment("../data/barley.csv").csv({typed: true});
 ```

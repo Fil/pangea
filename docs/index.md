@@ -28,6 +28,6 @@ if (ask) {
     .slice(0, 5)
     .map((id) => html`<li><a href="${documentIds[id]}">${storedFields[id].title}</a></li>`);
 
-  display(html`I know about: ${that} `);
+  display(html`I know about ${Object.keys(documentIds).length} things: ${that} `);
 }
 ```

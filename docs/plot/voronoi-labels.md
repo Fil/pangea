@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@fil/plot-voronoi-labels
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Voronoi labels</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Voronoi labels
 
@@ -12,14 +9,11 @@ Using the [Voronoi diagram](https://github.com/d3/d3-delaunay) to limit label oc
 
 ```js
 const showVoronoi = view(Inputs.toggle({label: "show voronoi", value: true}));
-```
-
-```js
 const activate = view(Inputs.toggle({label: "move to centroids", value: true}));
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width,
   height: width * 0.7,
   inset: 20,
@@ -33,7 +27,7 @@ Plot.plot({
         y1: "latitude",
         x2: "longitude",
         y2: "latitude",
-        stroke: "black",
+        stroke: "currentColor",
         strokeWidth: 0.7,
         bend: true,
         headLength: 0
@@ -43,7 +37,7 @@ Plot.plot({
       x: "longitude",
       y: "latitude",
       r: 1.5,
-      fill: "black"
+      fill: "currentColor"
     }),
     Plot.text(
       airports,
@@ -51,13 +45,15 @@ Plot.plot({
         x: "longitude",
         y: "latitude",
         text: (d) => d.name.split(/ /)[0],
-        stroke: "white",
+        stroke: "var(--theme-background)",
         strokeWidth: 7,
-        fill: "black"
+        fill: "currentColor"
       })
     )
   ]
 });
+
+display(chart);
 ```
 
 The custom **voronoiCentroids** options transform (code below) modifies the ﹤ x, y ﹥ position channels (for the text mark)—and ﹤ x2, y2 ﹥, for the link mark— to reflect the cendroid of the associated polygon in the Voronoi diagram created by the data. This allows to position text labels where there is more space, thus limiting occlusion. If you pass a link or arrow mark, that has ﹤ x1, y1, x2, y2 ﹥ positions, the ﹤ x1, y1 ﹥ channels are left intact as the starting point, with ﹤ x2, y2 ﹥ being the end point.
@@ -110,7 +106,7 @@ const maybeVoronoiCentroids = activate ? voronoiCentroids : (options) => options
 _data_
 
 ```js echo
-const airports = FileAttachment("airports.csv")
+const airports = FileAttachment("../data/airports.csv")
   .csv({typed: true})
   .then((data) => data.filter((d, i) => i % 20 === 0));
 ```

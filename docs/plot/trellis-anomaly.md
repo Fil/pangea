@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-trellis-anomaly
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Barley Trellis plot with arrows</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Barley Trellis plot with arrows
 
-See the [Trellis display](https://observablehq.com/@observablehq/plot-barley-trellis) notebook for more context. Here the variation is shown as an [arrow](https://observablehq.com/plot/marks/arrow) and is used to sort the [facets](https://observablehq.com/plot/features/facets), strongly emphasizing the direction of the change in yield.
+See the [Trellis display](./barley-trellis) notebook for more context. Here the variation is shown as an [arrow](https://observablehq.com/plot/marks/arrow) and is used to sort the [facets](https://observablehq.com/plot/features/facets), strongly emphasizing the direction of the change in yield.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   height: 800,
   marginLeft: 110,
   grid: true,
@@ -46,8 +43,10 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const barley = FileAttachment("barley.csv").csv({typed: true});
+const barley = FileAttachment("../data/barley.csv").csv({typed: true});
 ```

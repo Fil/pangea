@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-tips-longer-text
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Interactive tips with longer text</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Interactive tips with longer text
 
 The [tip mark](https://observablehq.com/plot/marks/tip) supports the **title** channel for longer texts.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   grid: true,
   marks: [
     Plot.dot(olympians, {
@@ -19,7 +16,7 @@ Plot.plot({
       y: "height",
       fy: "sex",
       sort: (d) => !!d.info,
-      stroke: (d) => (d.info ? "currentColor" : "#aaa")
+      strokeOpacity: (d) => (d.info ? 1 : 0.02)
     }),
     Plot.tip(
       olympians,
@@ -33,4 +30,10 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const olympians = FileAttachment("../data/olympians.csv").csv({typed: true});
 ```

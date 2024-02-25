@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-population-pyramid
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Population pyramid</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Population pyramid
 
-Horizontally [stacked](https://observablehq.com/plot/transforms/stack) areas. Data: German Federal Institute for Population Research (BiB). To learn more, see Éric Mauvière’s [tutorial](/@ericmauviere/population-pyramid-with-plot) on population pyramids.
+Horizontally [stacked](https://observablehq.com/plot/transforms/stack) areas. Data: German Federal Institute for Population Research (BiB). To learn more, see Éric Mauvière’s [tutorial](https://observablehq.com/@ericmauviere/population-pyramid-with-plot) on population pyramids.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 500,
   height: 500,
   x: {
@@ -37,6 +34,8 @@ Plot.plot({
     Plot.ruleY([0])
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
@@ -49,11 +48,15 @@ const translations = {
 ```
 
 ```js echo
-const population = FileAttachment("population@1.csv").csv({typed: true});
+const population = FileAttachment("../data/population-germany.csv").csv({typed: true});
 ```
 
+---
+
+The variant below inserts an axis in the middle:
+
 ```js echo
-Plot.plot({
+const chart2 = Plot.plot({
   color: {
     domain: ["ledig", "verheiratet", "geschieden", "verwitwet"],
     range: ["#69AEBE", "#F1757A", "#F2B678", "#989D9E"],
@@ -93,7 +96,7 @@ Plot.plot({
       label: null,
       ticks: 10,
       fill: "currentColor",
-      textStroke: "white",
+      textStroke: "var(--theme-background)",
       textStrokeWidth: 10
     }),
     Plot.text(["↑ age"], {frameAnchor: "top", dy: -10}),
@@ -123,4 +126,6 @@ Plot.plot({
     })
   ]
 });
+
+display(chart2);
 ```
