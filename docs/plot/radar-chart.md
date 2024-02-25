@@ -7,7 +7,7 @@ index: true
 
 We create a polar coordinate system with an azimuthal equidistant [projection](https://observablehq.com/plot/features/projections) centered on the North Pole. A point is encoded with its angle as longitude: _x_ = _angle_; and its length as colatitude: _y_ = 90&thinsp;&minus;&thinsp;_length_.
 
-Note that overlapping areas make it difficult to compare, say, more than three objects. Instead, we suggest [radar charts as small multiples](https://observablehq.com/@observablehq/plot-radar-chart-faceted).
+Note that overlapping areas make it difficult to compare, say, more than three objects. Instead, we suggest [radar charts as small multiples](./radar-chart-faceted).
 
 _Design inspiration: Nadieh Bremer, “[A different look for the d3.js radar chart](https://www.visualcinnamon.com/2015/10/different-look-d3-radar-chart/),” 2015._
 

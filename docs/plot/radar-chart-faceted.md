@@ -1,19 +1,17 @@
 ---
 source: https://observablehq.com/@observablehq/plot-radar-chart-faceted
-index: false
-draft: true
+author: Jeff Pettiross
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Radar chart, small multiples</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Radar chart, small multiples
 
-[Radar charts](/@observablehq/plot-radar-chart) are best saved for a single purpose: to spot a difference across multiple values among members of a domain. We recommend avoiding any other use of radar charts because they are easy to misinterpret. When using radar charts, show them side by side in small multiples (using [facets](https://observablehq.com/plot/features/facets)) instead of overlapping them in a single view.
+[Radar charts](./radar-chart) are best saved for a single purpose: to spot a difference across multiple values among members of a domain. We recommend avoiding any other use of radar charts because they are easy to misinterpret. When using radar charts, show them side by side in small multiples (using [facets](https://observablehq.com/plot/features/facets)) instead of overlapping them in a single view.
 
 This example shows 5 values from cars sold in the United States in 1979.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: Math.max(width, 600),
   marginBottom: 10,
   projection: {
@@ -35,7 +33,7 @@ Plot.plot({
       Plot.selectFirst({
         text: "name",
         frameAnchor: "bottom",
-        fontWeight: "400",
+        fontWeight: 400,
         fontSize: 14
       })
     ),
@@ -43,8 +41,8 @@ Plot.plot({
     // grey discs
     Plot.geo([1.0, 0.8, 0.6, 0.4, 0.2], {
       geometry: (r) => d3.geoCircle().center([0, 90]).radius(r)(),
-      stroke: "black",
-      fill: "black",
+      stroke: "currentColor",
+      fill: "currentColor",
       strokeOpacity: 0.2,
       fillOpacity: 0.02,
       strokeWidth: 0.5
@@ -56,7 +54,7 @@ Plot.plot({
       y1: 90 - 0.8,
       x2: 0,
       y2: 90,
-      stroke: "white",
+      stroke: "var(--theme-background)",
       strokeOpacity: 0.5,
       strokeWidth: 2.5
     }),
@@ -71,7 +69,7 @@ Plot.plot({
       textAnchor: "start",
       text: (d) => (d == 0.8 ? `${100 * d}th percentile` : `${100 * d}th`),
       fill: "currentColor",
-      stroke: "white",
+      stroke: "var(--theme-background)",
       fontSize: 12
     }),
 
@@ -114,7 +112,7 @@ Plot.plot({
       x: ({key}) => longitude(key),
       y: ({value}) => 90 - value,
       fill: "#4269D0",
-      stroke: "white"
+      stroke: "var(--theme-background)"
     }),
 
     // interactive labels
@@ -127,24 +125,27 @@ Plot.plot({
         textAnchor: "start",
         dx: 4,
         fill: "currentColor",
-        stroke: "white",
+        stroke: "var(--theme-background)",
         maxRadius: 10,
         fontSize: 12
       })
     )
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const cars = FileAttachment("cars.csv").csv({typed: true});
+const cars = FileAttachment("../data/cars-selection.csv").csv({typed: true});
 ```
 
 Normalize and flatten the data into as many points as there are dimensions:
 
 ```js echo
-const points = {
-  const points = d3.sort(cars, d => d.Price).flatMap(({ name, ...values }, i) =>
+const points = d3
+  .sort(cars, (d) => d.Price)
+  .flatMap(({name, ...values}, i) =>
     Object.entries(values).map(([key, raw]) => ({
       name,
       key,
@@ -153,11 +154,9 @@ const points = {
       fy: Math.floor((1 + i) / 4)
     }))
   );
-  for (const [, g] of d3.group(points, d => d.key)) {
-    const m = d3.max(g, d => d.raw);
-    for (const d of g) d.value = d.raw / m;
-  }
-  return points;
+for (const [, g] of d3.group(points, (d) => d.key)) {
+  const m = d3.max(g, (d) => d.raw);
+  for (const d of g) d.value = d.raw / m;
 }
 ```
 
