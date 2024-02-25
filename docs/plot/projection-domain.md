@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-projection-domain
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Projection domain</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Projection domain
 
@@ -15,7 +12,7 @@ const radius = view(Inputs.range([10, 50], {step: 0.1, label: "radius"}));
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   projection: {
     type: "azimuthal-equidistant",
     rotate: [-9, -34],
@@ -29,6 +26,8 @@ Plot.plot({
     Plot.frame()
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
@@ -36,7 +35,7 @@ const circle = d3.geoCircle().center([9, 34]).radius(radius).precision(2)();
 ```
 
 ```js echo
-const world = FileAttachment("countries-110m.json").json();
+const world = FileAttachment("../data/world-110m-2020.json").json();
 ```
 
 ```js echo
