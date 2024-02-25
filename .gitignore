@@ -1,5 +1,6 @@
 .DS_Store
 dist/
 docs/.observablehq/cache/
+docs/data-unsorted/
 node_modules/
 yarn-error.log
