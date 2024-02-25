@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-radar-chart
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Radar chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Radar chart
 
@@ -15,7 +12,7 @@ Note that overlapping areas make it difficult to compare, say, more than three o
 _Design inspiration: Nadieh Bremer, “[A different look for the d3.js radar chart](https://www.visualcinnamon.com/2015/10/different-look-d3-radar-chart/),” 2015._
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 450,
   projection: {
     type: "azimuthal-equidistant",
@@ -28,8 +25,8 @@ Plot.plot({
     // grey discs
     Plot.geo([0.5, 0.4, 0.3, 0.2, 0.1], {
       geometry: (r) => d3.geoCircle().center([0, 90]).radius(r)(),
-      stroke: "black",
-      fill: "black",
+      stroke: "currentColor",
+      fill: "currentColor",
       strokeOpacity: 0.3,
       fillOpacity: 0.03,
       strokeWidth: 0.5
@@ -41,7 +38,7 @@ Plot.plot({
       y1: 90 - 0.57,
       x2: 0,
       y2: 90,
-      stroke: "white",
+      stroke: "var(--theme-background)",
       strokeOpacity: 0.5,
       strokeWidth: 2.5
     }),
@@ -54,7 +51,7 @@ Plot.plot({
       textAnchor: "start",
       text: (d) => `${100 * d}%`,
       fill: "currentColor",
-      stroke: "white",
+      stroke: "var(--theme-background)",
       fontSize: 8
     }),
 
@@ -82,7 +79,7 @@ Plot.plot({
       x: ({key}) => longitude(key),
       y: ({value}) => 90 - value,
       fill: "name",
-      stroke: "white"
+      stroke: "var(--theme-background)"
     }),
 
     // interactive labels
@@ -95,7 +92,7 @@ Plot.plot({
         textAnchor: "start",
         dx: 4,
         fill: "currentColor",
-        stroke: "white",
+        stroke: "var(--theme-background)",
         maxRadius: 10
       })
     ),
@@ -109,10 +106,12 @@ Plot.plot({
       `
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const phones = FileAttachment("phones.csv").csv({typed: true});
+const phones = FileAttachment("../data/phones.csv").csv({typed: true});
 ```
 
 Flatten the data into as many points as there are dimensions:
