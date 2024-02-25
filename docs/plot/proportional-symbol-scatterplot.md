@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-proportional-symbol-scatterplot
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Proportional symbol scatterplot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Proportional symbol scatterplot
 
 [Dots](https://observablehq.com/plot/marks/dot) with a radius [encoding](https://observablehq.com/plot/features/scales).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   grid: true,
   x: {
     label: "Daily change (%) →",
@@ -31,4 +28,10 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
 ```
