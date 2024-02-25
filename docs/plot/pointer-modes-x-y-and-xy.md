@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@observablehq/plot-pointer-modes-x-y-and-xy
 index: false
-status: draft
+draft: true
 ---
 
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Pointer modes (x, y, and xy)</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>

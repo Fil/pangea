@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@mbostock/predator-and-prey
 index: false
-status: draft
+draft: true
 ---
 
 ```js

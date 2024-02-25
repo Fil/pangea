@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@harrystevens/directly-labelling-lines
 index: false
-status: draft
+draft: true
 ---
 
 ```js

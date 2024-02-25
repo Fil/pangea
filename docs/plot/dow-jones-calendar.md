@@ -1,6 +1,6 @@
 ---
 source: https://observablehq.com/@observablehq/plot-dow-jones-calendar
-status: draft
+draft: true
 index: true
 ---
 

@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@d3/mareys-trains
 index: false
-status: draft
+draft: true
 ---
 
 ```js

@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@mbostock/phases-of-the-moon
 index: false
-status: draft
+draft: true
 ---
 
 ```js

@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@mbostock/the-wealth-health-of-nations
 index: false
-status: draft
+draft: true
 ---
 
 ```js

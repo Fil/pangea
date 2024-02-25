@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@mbostock/methods-of-comparison-compared
 index: false
-status: draft
+draft: true
 ---
 
 ```js

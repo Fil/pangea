@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@d3/hertzsprung-russell-diagram
 index: false
-status: draft
+draft: true
 ---
 
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Hertzsprung–Russell diagram</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>

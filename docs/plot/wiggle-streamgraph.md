@@ -1,5 +1,5 @@
 ---
-status: draft
+source: https://observablehq.com/@observablehq/plot-stack-offset
 index: true
 ---
 

@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@observablehq/plot-faceted-lollipop
 index: false
-status: draft
+draft: true
 ---
 
 # Plot: Faceted lollipop

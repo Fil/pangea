@@ -1,4 +1,5 @@
 ---
+source: https://observablehq.com/@observablehq/plot-spike
 index: true
 ---
 

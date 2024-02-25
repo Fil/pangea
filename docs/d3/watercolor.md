@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@veltman/watercolor
 index: false
-status: draft
+draft: true
 ---
 
 ```js

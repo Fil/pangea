@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@mbostock/owls-to-the-max
 index: false
-status: draft
+draft: true
 ---
 
 # Owls to the Max

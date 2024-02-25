@@ -1,3 +1,4 @@
+source: https://observablehq.com/@observablehq/observable-plot-grid-choropleth
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Grid choropleth</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Grid choropleth

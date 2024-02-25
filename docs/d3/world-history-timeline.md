@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@tezzutezzu/world-history-timeline
 index: false
-status: draft
+draft: true
 ---
 
 ```js

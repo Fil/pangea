@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@mbostock/stern-brocot-tree
 index: false
-status: draft
+draft: true
 ---
 
 ```js

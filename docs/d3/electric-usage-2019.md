@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@mbostock/electric-usage-2019
 index: false
-status: draft
+draft: true
 ---
 
 ```js

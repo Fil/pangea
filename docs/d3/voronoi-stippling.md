@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@mbostock/voronoi-stippling
 index: false
-status: draft
+draft: true
 ---
 
 ```js

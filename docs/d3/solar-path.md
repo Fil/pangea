@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@d3/solar-path
 index: false
-status: draft
+draft: true
 ---
 
 # Solar path

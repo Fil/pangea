@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@veltman/centerline-labeling
 index: false
-status: draft
+draft: true
 ---
 
 ```js

@@ -1,6 +1,7 @@
 ---
+source: https://observablehq.com/@d3/diverging-bar-chart/2
 index: false
-status: draft
+draft: true
 ---
 
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Diverging bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
