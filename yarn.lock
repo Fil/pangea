@@ -244,10 +244,9 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.12.tgz#c57c8afbb4054a3ab8317591a0b7320360b444ae"
   integrity sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==
 
-"@observablehq/framework@latest":
+"@observablehq/framework@https://github.com/observablehq/framework#fil/draft":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@observablehq/framework/-/framework-1.0.0.tgz#af19a25f9f6d9f46645ea1955739d58cb2ba04a6"
-  integrity sha512-dcGCg19Eqa+cCjCFdk6pCehJ6i2N5rHS5yDVxJbcTFpWoRYG99NgtwnyQnfEAb3XkAZ5LKGF5AipXGzfDJokrw==
+  resolved "https://github.com/observablehq/framework#940e3ffe3aa6cd63152b03cd9503813d1f9bb582"
   dependencies:
     "@clack/prompts" "^0.7.0"
     "@observablehq/inputs" "^0.10.6"
