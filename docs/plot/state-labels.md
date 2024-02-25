@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-state-labels
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: State labels</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # State labels
 
 Add a label to U.S. states with a [text mark](https://observablehq.com/plot/marks/text) and a [centroid](https://observablehq.com/plot/transforms/centroid) transform.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   projection: "albers-usa",
   marks: [
     Plot.geo(statemesh),
@@ -20,21 +17,20 @@ Plot.plot({
       Plot.centroid({
         text: (d) => d.properties.name,
         fill: "currentColor",
-        stroke: "white"
+        stroke: "var(--theme-background)"
       })
     )
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const us = FileAttachment("../data/us-counties-10m.json").json();
 ```
 
 ```js echo
 const states = topojson.feature(us, us.objects.states).features;
-```
-
-```js echo
 const statemesh = topojson.mesh(us, us.objects.states);
-```
-
-```js echo
-const us = FileAttachment("us-counties-10m.json").json();
 ```
