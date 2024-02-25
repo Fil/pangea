@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "rm -rf docs/.observablehq/cache",
     "build": "rm -rf dist && observable build",
-    "dev": "observable preview",
+    "dev": "observable preview --port 3033",
     "deploy": "observable deploy",
     "observable": "observable"
   },
