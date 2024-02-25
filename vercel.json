@@ -1,4 +1,5 @@
 {
+  "buildCommand": "mkdir -p node_modules/cache && ln -s ../node_modules/cache docs/.observablehq && rm -rf dist && observable build",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "framework": null

@@ -10,10 +10,17 @@
   },
   "dependencies": {
     "@observablehq/framework": "https://github.com/observablehq/framework#fil/save-search-query",
+    "@observablehq/plot": "^0.6.13",
+    "@resvg/resvg-js": "^2.6.0",
+    "d3": "^7.8.5",
     "d3-dsv": "^3.0.1",
-    "d3-time-format": "^4.1.0"
+    "d3-time-format": "^4.1.0",
+    "linkedom": "^0.16.8"
   },
   "engines": {
     "node": ">=20.6"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.19"
   }
 }
