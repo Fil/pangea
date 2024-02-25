@@ -1,39 +1,44 @@
 ---
 source: https://observablehq.com/@observablehq/plot-phases-of-the-moon
-index: false
-draft: true
+author: Mike Bostock
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Phases of the Moon</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Phases of the Moon
 
 For the year ${year}, in the style of [Irwin Glusker](https://www.moma.org/explore/inside_out/2012/10/16/a-paean-to-the-phases-of-the-moon/).
 
 ```js
-viewof year = Inputs.number({
-  label: "Year",
-  value: +new URLSearchParams(new URL(document.baseURI).search).get("year") || new Date().getUTCFullYear(),
-  min: 1900,
-  max: 2100,
-  step: 1
-})
+const year = view(
+  Inputs.number({
+    label: "Year",
+    value: +new URLSearchParams(new URL(document.baseURI).search).get("year") || new Date().getUTCFullYear(),
+    min: 1900,
+    max: 2100,
+    step: 1
+  })
+);
 ```
 
 ```js
-viewof locale = Inputs.text({
-  label: "Locale",
-  value: "en-US",
-  validate(input) {
-    try { (new Date).toLocaleString(input.value); }
-    catch { return false; }
-    return true;
-  }
-})
+const locale = view(
+  Inputs.text({
+    label: "Locale",
+    value: "en-US",
+    validate(input) {
+      try {
+        new Date().toLocaleString(input.value);
+      } catch {
+        return false;
+      }
+      return true;
+    }
+  })
+);
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   aspectRatio: 0.6,
   marginLeft: 90,
   width: 1152,
@@ -100,10 +105,12 @@ Plot.plot({
     projection: d3.geoOrthographic().translate([0, 0])
   })
 });
+
+display(chart);
 ```
 
 Above, to specify a custom [vector shape](https://observablehq.com/plot/marks/vector#vector-options), I’m using an [immediately-invoked function expression (IIFE)](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) so that I can share a few local variables (`data`, `x`, `y`, `r`, _etc._). A more conventional style would declare them as local variables before calling Plot.plot, say using `const`, but I wanted to declare them within.
 
 ```js echo
-const suncalc = (await import("https://cdn.jsdelivr.net/npm/suncalc@1/+esm")).default;
+import suncalc from "npm:suncalc@1";
 ```
