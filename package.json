@@ -9,7 +9,7 @@
     "observable": "observable"
   },
   "dependencies": {
-    "@observablehq/framework": "https://github.com/observablehq/framework#fil/draft",
+    "@observablehq/framework": "https://github.com/observablehq/framework#fil/save-search-query",
     "d3-dsv": "^3.0.1",
     "d3-time-format": "^4.1.0"
   },
