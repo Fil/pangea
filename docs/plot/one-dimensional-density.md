@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-one-dimensional-density
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: One-dimensional density</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # One-dimensional density
 
 Although it is inherently two-dimensional, the [density](https://observablehq.com/plot/marks/density) mark is compatible with one-dimensional data. For a more accurate estimation of one-dimensional densities, please upvote issue [#1469](https://github.com/observablehq/plot/issues/1469).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   height: 100,
   inset: 10,
   marks: [
@@ -30,8 +27,10 @@ Plot.plot({
     Plot.dot(faithful, {x: "waiting", fill: "currentColor", r: 1.5})
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const faithful = FileAttachment("faithful.tsv").tsv({typed: true});
+const faithful = FileAttachment("../data/faithful.tsv").tsv({typed: true});
 ```
