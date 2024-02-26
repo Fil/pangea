@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-maps-tips
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Map and tips</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Map and tips
 
 The [centroid transform](https://observablehq.com/plot/transforms/centroid) can derive **x** and **y** channels from [geometries](https://observablehq.com/plot/marks/geo), thus allowing the placement of [tips](https://observablehq.com/plot/marks/tip).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   projection: "albers-usa",
   marks: [
     Plot.geo(states),
@@ -25,19 +22,23 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
 ```
 
 For interactive tips, just combine the [pointer](https://observablehq.com/plot/interactions/pointer) and [centroid](https://observablehq.com/plot/transforms/centroid) transforms:
 
 ```js echo
-Plot.plot({
+const chart2 = Plot.plot({
   projection: "albers-usa",
   marks: [Plot.geo(states), Plot.tip(states, Plot.pointer(Plot.geoCentroid({title: (d) => d.properties.name})))]
 });
+
+display(chart2);
 ```
 
 ```js echo
-const us = FileAttachment("us-counties-10m@1.json").json();
+const us = FileAttachment("../data/us-counties-10m.json").json();
 ```
 
 ```js echo
