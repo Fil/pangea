@@ -1,14 +1,17 @@
 ---
 source: https://observablehq.com/@observablehq/plot-difference-chart
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Difference chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Difference chart
 
-A difference chart highlights the difference between two values, typically entries vs exits. The amount is encoded as height, and the sign (surplus vs. deficit) as a solid color. In the chart below, we compare the temperatures on the same day; days when San Francisco was warmer are <span style="border-bottom: 2px solid ${chart.scale("color").apply("NY")}">orange</span>, and colder days are <span style="border-bottom: 2px solid ${chart.scale("color").apply("SF")}">blue</span>.
+A difference chart highlights the difference between two values, typically entries vs exits. The amount is encoded as height, and the sign (surplus vs. deficit) as a solid color. In the chart below, we compare the temperatures on the same day; days when San Francisco was warmer are ${underline("NY", "orange")}, and colder days are ${underline("SF", "blue")}.
+
+```js
+function underline(cat, title) {
+  return html`<span style="border-bottom: 2px solid ${chart.scale("color").apply(cat)}">${title}</span>`;
+}
+```
 
 ```js echo
 const chart = Plot.plot({
@@ -67,10 +70,12 @@ const chart = Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const weather = FileAttachment("weather.tsv")
+const weather = FileAttachment("../data/weather.tsv")
   .tsv({typed: true})
   .then((l) => l.map((d) => ({...d, date: d3.utcParse("%Y%m%d")(`${d.date}`)})));
 ```
