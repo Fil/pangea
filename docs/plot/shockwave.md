@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-shockwave
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Shockwave</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Shockwave
 
 The shockwave created by the explosion of the [Hunga Tonga–Hunga Haʻapai volcano](https://en.wikipedia.org/wiki/2021%E2%80%9322_Hunga_Tonga%E2%80%93Hunga_Ha%CA%BBapai_eruption_and_tsunami) on January 15, 2022, shown as a series of [geodesic circles](https://github.com/d3/d3-geo/blob/main/README.md#geoCircle) of increasing radius; see the [geo mark](https://observablehq.com/plot/marks/geo).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   projection: {
     type: "equal-earth",
     rotate: [90, 0]
@@ -35,10 +32,12 @@ Plot.plot({
     Plot.sphere()
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const world = FileAttachment("countries-110m.json").json();
+const world = FileAttachment("../data/world-110m-2020.json").json();
 ```
 
 ```js echo
