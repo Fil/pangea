@@ -7,7 +7,7 @@ index: true
 
 This grid choropleth shows the population change in each state (and DC) in the United States between 2019 and 2010.
 
-A grid map, shown here using the [cell mark](https://observablehq.com/plot/marks/cell) makes each state the same size shape while keeping the states roughly aligned geographically. The diverging-log color scale with the green/pink scheme indicates if the state is increasing or decreasing in population, with darker colors representing a larger change.
+A grid map, shown here using the [cell mark](https://observablehq.com/plot/marks/cell) makes each state the same size shape while keeping the states roughly aligned geographically. The diverging-log color scale with the green/pink scheme indicates if the state is increasing or decreasing in population, with darker colors representing a larger change. See [state population change](./state-population-change) for an different representation of the same data.
 
 ```js echo
 const chart = Plot.plot({
@@ -36,7 +36,7 @@ const grid = FileAttachment("../data/us-states-grid.csv")
 ```
 
 ```js echo
-const population = FileAttachment("../data/us-states-population.csv").csv({typed: true});
+const population = FileAttachment("../data/us-state-population-2010-2019.csv").csv({typed: true});
 ```
 
 ```js echo
