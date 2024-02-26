@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-percentogram
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Percentogram</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Percentogram
 
 Ref. Andrew Gelman, [The “percentogram”—a histogram binned by percentages of the cumulative distribution, rather than using fixed bin widths](https://statmodeling.stat.columbia.edu/2023/04/13/the-percentogram-a-histogram-binned-by-percentages-of-the-cumulative-distribution-rather-than-using-fixed-bin-widths/), 13 April 2023.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   color: {
     legend: true,
     type: "quantize",
@@ -31,6 +28,8 @@ Plot.plot({
     Plot.ruleY([0])
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
