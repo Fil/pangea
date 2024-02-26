@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-finite-state-machine
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Finite state machine</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Finite state machine
 
 The [arrow](https://observablehq.com/plot/marks/arrow) mark connects machine states.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   inset: 60,
   aspectRatio: 1,
   axis: null,
@@ -36,6 +33,8 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
@@ -44,12 +43,7 @@ const matrix = [
   [1, 7, 2],
   [1, 1, 8]
 ];
-```
 
-```js echo
 const nodes = matrix.map((m, i) => d3.pointRadial(((2 - i) * 2 * Math.PI) / matrix.length, 100));
-```
-
-```js echo
 const edges = matrix.flatMap((m, i) => m.map((value, j) => [nodes[i], nodes[j], value]));
 ```
