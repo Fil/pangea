@@ -5,7 +5,7 @@ index: true
 
 # Image beeswarm (dodge)
 
-The [image](https://observablehq.com/plot/marks/image) mark supports the _r_ option, and can be used with the [dodge](https://observablehq.com/plot/transforms/dodge) transform. data: [YouGov](https://today.yougov.com/topics/politics/articles-reports/2021/07/27/most-and-least-popular-us-presidents-according-ame)
+The [image](https://observablehq.com/plot/marks/image) mark supports the _r_ option, and can be used with the [dodge](https://observablehq.com/plot/transforms/dodge) transform. Data: [YouGov](https://today.yougov.com/topics/politics/articles-reports/2021/07/27/most-and-least-popular-us-presidents-according-ame)
 
 ```js echo
 const chart = Plot.plot({

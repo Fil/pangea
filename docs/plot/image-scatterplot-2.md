@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-image-scatterplot-2
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Default image scatterplot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Default image scatterplot
 
 The default size of the [image](https://observablehq.com/plot/marks/image) mark is only 16×16 pixels. Data: [YouGov](https://today.yougov.com/topics/politics/articles-reports/2021/07/27/most-and-least-popular-us-presidents-according-ame)
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   aspectRatio: 1,
   grid: true,
   x: {label: "Favorable opinion (%) →"},
@@ -27,10 +24,12 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const presidents = FileAttachment("us-president-favorability@2.csv").csv({
+const presidents = FileAttachment("../data/us-president-favorability.csv").csv({
   typed: true
 });
 ```
