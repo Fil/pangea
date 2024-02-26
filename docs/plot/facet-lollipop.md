@@ -1,15 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-faceted-lollipop
-index: false
-draft: true
+index: true
 ---
 
-# Plot: Faceted lollipop
+# Small multiple lollipop
 
-[Facet](https://observablehq.com/plot/features/facets) [lollipops](https://observablehq.com/@observablehq/plot-lollipop) by category for an alternative to a [grouped bar chart](https://observablehq.com/@observablehq/plot-grouped-bar-chart).
+[Facet](https://observablehq.com/plot/features/facets) [lollipops](./lollipop) by category for an alternative to a [grouped bar chart](./grouped-bar-chart).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   marginLeft: 50,
   color: {domain: keys, scheme: "Warm", legend: true},
   facet: {data: population, x: "state"},
@@ -32,12 +31,18 @@ Plot.plot({
     Plot.ruleY([0])
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const population = FileAttachment("us-state-population.csv").csv({
+const population = FileAttachment("../data/population-state-age.csv").csv({
   typed: true
 });
+```
+
+```js
+display(population);
 ```
 
 ```js echo

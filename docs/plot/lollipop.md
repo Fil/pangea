@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-lollipop
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Lollipop</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Lollipop
 
-Use a [rule](https://observablehq.com/plot/marks/rule) mark to draw a thin line along one dimension. Add a [dot](https://observablehq.com/plot/marks/dot), and you get a lollipop!
+Use a [rule](https://observablehq.com/plot/marks/rule) mark to draw a thin line along one dimension. Add a [dot](https://observablehq.com/plot/marks/dot), and you get a lollipop! See also the [small multiple lollipop](./facet-lollipop).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   x: {label: null, tickPadding: 6, tickSize: 0},
   y: {percent: true},
   marks: [
@@ -24,4 +21,10 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const alphabet = FileAttachment("../data/alphabet.csv").csv({typed: true});
 ```
