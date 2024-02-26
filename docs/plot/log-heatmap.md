@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-log-heatmap
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Log heatmap</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Log heatmap
 
 This [heatmap](https://observablehq.com/plot/marks/raster) is using a log color [scale](https://observablehq.com/plot/features/scales), to better reflect variations in magnitude.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   height: 630,
   x: {ticks: 10, tickFormat: "+f"},
   y: {ticks: 10, tickFormat: "+f"},
@@ -32,4 +29,6 @@ Plot.plot({
     Plot.frame()
   ]
 });
+
+display(chart);
 ```
