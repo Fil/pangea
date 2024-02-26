@@ -1,22 +1,20 @@
 ---
 source: https://observablehq.com/@observablehq/plot-lebron-james-shots
-index: false
-draft: true
+author: Mike Bostock
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: LeBron James’ shots</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # LeBron James’ shots
 
-A recreation of [Matt Stiles’](/d/d280cb30053f69a9) and [Mitchell Thorson’s](/d/db0a303ce8c90c89) basketball shot charts in [Observable Plot](/@observablehq/plot), demonstrating a custom mark to render the court markings. Based on work by [Nicholas Ortenzio](/@nor/nba-2018-19-shooting-effeciency). The [bin transform](https://observablehq.com/plot/transforms/bin) is used to produce a heatmap.
+A recreation of [Matt Stiles’](https://observablehq.com/d/d280cb30053f69a9) and [Mitchell Thorson’s](https://observablehq.com/d/db0a303ce8c90c89) basketball shot charts in [Observable Plot](https://observablehq.com/plot/), demonstrating a custom mark to render the court markings. Based on work by [Nicholas Ortenzio](https://observablehq.com/@nor/nba-2018-19-shooting-effeciency). The [bin transform](https://observablehq.com/plot/transforms/bin) is used to produce a heatmap.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   height: 640,
   axis: null,
   x: {domain: [-250, 250]},
   y: {domain: [-50, 450]},
-  color: {type: "log", scheme: "ylgnbu", legend: true, label: "Made shots"},
+  color: {type: "log", scheme: dark ? "turbo" : "ylgnbu", legend: true, label: "Made shots"},
   marks: [
     Plot.rect(
       shots,
@@ -36,6 +34,8 @@ Plot.plot({
     markings()
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
@@ -91,5 +91,9 @@ function markings({stroke = "currentColor", strokeWidth = 1, strokeOpacity = 1} 
 ```
 
 ```js echo
-const shots = FileAttachment("lebron_shots.csv").csv();
+const shots = FileAttachment("../data/lebron_shots.csv").csv();
+```
+
+```js echo
+import {dark} from "../components/dark.js";
 ```
