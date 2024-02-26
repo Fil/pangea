@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-ordinal-scale-interval
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Ordinal scale interval</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Ordinal scale interval
 
@@ -15,9 +12,11 @@ const checked = view(Inputs.toggle({label: "interval", value: true}));
 ```
 
 ```js echo
-Plot.barY(timeseries, {x: "year", y: "population"}).plot({
+const chart = Plot.barY(timeseries, {x: "year", y: "population"}).plot({
   x: {tickFormat: "", interval: checked ? 1 : undefined}
 });
+
+display(chart);
 ```
 
 ```js echo
