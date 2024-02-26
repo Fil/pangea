@@ -1,0 +1,2205 @@
+train,speed,schedule,direction,station,distance,zone,time
+102,normal,weekday,S,San Francisco,0,1,4:55am
+102,normal,weekday,S,22nd Street,40,1,5:00am
+102,normal,weekday,S,Bayshore,124,1,5:05am
+102,normal,weekday,S,So. San Francisco,178,1,5:11am
+102,normal,weekday,S,San Bruno,216,1,5:15am
+102,normal,weekday,S,Millbrae,249,2,5:19am
+102,normal,weekday,S,Burlingame,307,2,5:23am
+102,normal,weekday,S,San Mateo,334,2,5:26am
+102,normal,weekday,S,Hayward Park,354,2,5:29am
+102,normal,weekday,S,Hillsdale,391,2,5:32am
+102,normal,weekday,S,Belmont,428,2,5:35am
+102,normal,weekday,S,San Carlos,458,2,5:38am
+102,normal,weekday,S,Redwood City,499,2,5:43am
+102,normal,weekday,S,Menlo Park,574,3,5:48am
+102,normal,weekday,S,Palo Alto,604,3,5:51am
+102,normal,weekday,S,California Ave,649,3,5:55am
+102,normal,weekday,S,San Antonio,676,3,5:59am
+102,normal,weekday,S,Mountain View,702,3,6:03am
+102,normal,weekday,S,Sunnyvale,731,3,6:08am
+102,normal,weekday,S,Lawrence,757,4,6:12am
+102,normal,weekday,S,Santa Clara,805,4,6:17am
+102,normal,weekday,S,San Jose,862,4,6:26am
+104,normal,weekday,S,San Francisco,0,1,5:25am
+104,normal,weekday,S,22nd Street,40,1,5:30am
+104,normal,weekday,S,Bayshore,124,1,5:35am
+104,normal,weekday,S,So. San Francisco,178,1,5:41am
+104,normal,weekday,S,San Bruno,216,1,5:45am
+104,normal,weekday,S,Millbrae,249,2,5:49am
+104,normal,weekday,S,Burlingame,307,2,5:53am
+104,normal,weekday,S,San Mateo,334,2,5:56am
+104,normal,weekday,S,Hayward Park,354,2,5:59am
+104,normal,weekday,S,Hillsdale,391,2,6:02am
+104,normal,weekday,S,Belmont,428,2,6:05am
+104,normal,weekday,S,San Carlos,458,2,6:08am
+104,normal,weekday,S,Redwood City,499,2,6:13am
+104,normal,weekday,S,Menlo Park,574,3,6:18am
+104,normal,weekday,S,Palo Alto,604,3,6:21am
+104,normal,weekday,S,California Ave,649,3,6:25am
+104,normal,weekday,S,San Antonio,676,3,6:29am
+104,normal,weekday,S,Mountain View,702,3,6:33am
+104,normal,weekday,S,Sunnyvale,731,3,6:38am
+104,normal,weekday,S,Lawrence,757,4,6:42am
+104,normal,weekday,S,Santa Clara,805,4,6:47am
+104,normal,weekday,S,San Jose,862,4,6:56am
+104,normal,weekday,S,Tamien,906,4,7:03am
+206,limited,weekday,S,San Francisco,0,1,6:11am
+206,limited,weekday,S,22nd Street,40,1,6:16am
+206,limited,weekday,S,Millbrae,249,2,6:29am
+206,limited,weekday,S,Burlingame,307,2,6:33am
+206,limited,weekday,S,San Mateo,334,2,6:36am
+206,limited,weekday,S,Hillsdale,391,2,6:40am
+206,limited,weekday,S,San Carlos,458,2,6:44am
+206,limited,weekday,S,Redwood City,499,2,6:49am
+206,limited,weekday,S,Menlo Park,574,3,6:54am
+206,limited,weekday,S,Palo Alto,604,3,6:57am
+206,limited,weekday,S,California Ave,649,3,7:01am
+206,limited,weekday,S,Mountain View,702,3,7:07am
+206,limited,weekday,S,Lawrence,757,4,7:12am
+206,limited,weekday,S,San Jose,862,4,7:24am
+208,limited,weekday,S,San Francisco,0,1,6:24am
+208,limited,weekday,S,22nd Street,40,1,6:29am
+208,limited,weekday,S,Bayshore,124,1,6:34am
+208,limited,weekday,S,So. San Francisco,178,1,6:40am
+208,limited,weekday,S,San Bruno,216,1,6:44am
+208,limited,weekday,S,Millbrae,249,2,6:48am
+208,limited,weekday,S,Burlingame,307,2,6:52am
+208,limited,weekday,S,San Mateo,334,2,6:55am
+208,limited,weekday,S,Hayward Park,354,2,6:58am
+208,limited,weekday,S,Hillsdale,391,2,7:01am
+208,limited,weekday,S,Belmont,428,2,7:04am
+208,limited,weekday,S,San Carlos,458,2,7:07am
+208,limited,weekday,S,Redwood City,499,2,7:12am
+208,limited,weekday,S,Palo Alto,604,3,7:18am
+208,limited,weekday,S,Santa Clara,805,4,7:34am
+208,limited,weekday,S,San Jose,862,4,7:43am
+208,limited,weekday,S,Tamien,906,4,7:50am
+210,limited,weekday,S,San Francisco,0,1,6:44am
+210,limited,weekday,S,22nd Street,40,1,6:49am
+210,limited,weekday,S,Millbrae,249,2,7:01am
+210,limited,weekday,S,San Mateo,334,2,7:07am
+210,limited,weekday,S,San Carlos,458,2,7:13am
+210,limited,weekday,S,Redwood City,499,2,7:18am
+210,limited,weekday,S,Menlo Park,574,3,7:23am
+210,limited,weekday,S,Palo Alto,604,3,7:26am
+210,limited,weekday,S,California Ave,649,3,7:30am
+210,limited,weekday,S,San Antonio,676,3,7:34am
+210,limited,weekday,S,Mountain View,702,3,7:38am
+210,limited,weekday,S,Sunnyvale,731,3,7:43am
+210,limited,weekday,S,Lawrence,757,4,7:49am
+210,limited,weekday,S,Santa Clara,805,4,7:56am
+210,limited,weekday,S,College Park,833,4,7:59am
+210,limited,weekday,S,San Jose,862,4,8:06am
+210,limited,weekday,S,Tamien,906,4,8:13am
+312,bullet,weekday,S,San Francisco,0,1,6:59am
+312,bullet,weekday,S,22nd Street,40,1,7:04am
+312,bullet,weekday,S,Millbrae,249,2,7:17am
+312,bullet,weekday,S,Redwood City,499,2,7:30am
+312,bullet,weekday,S,Menlo Park,574,3,7:35am
+312,bullet,weekday,S,Mountain View,702,3,7:44am
+312,bullet,weekday,S,San Jose,862,4,7:58am
+314,bullet,weekday,S,San Francisco,0,1,7:14am
+314,bullet,weekday,S,22nd Street,40,1,7:19am
+314,bullet,weekday,S,Millbrae,249,2,7:32am
+314,bullet,weekday,S,Hillsdale,391,2,7:40am
+314,bullet,weekday,S,Palo Alto,604,3,7:51am
+314,bullet,weekday,S,Mountain View,702,3,7:58am
+314,bullet,weekday,S,San Jose,862,4,8:13am
+216,limited,weekday,S,San Francisco,0,1,7:19am
+216,limited,weekday,S,San Bruno,216,1,7:33am
+216,limited,weekday,S,Burlingame,307,2,7:38am
+216,limited,weekday,S,San Mateo,334,2,7:42am
+216,limited,weekday,S,Hillsdale,391,2,7:46am
+216,limited,weekday,S,San Carlos,458,2,7:50am
+216,limited,weekday,S,Menlo Park,574,3,7:58am
+216,limited,weekday,S,Palo Alto,604,3,8:01am
+216,limited,weekday,S,Mountain View,702,3,8:09am
+216,limited,weekday,S,Lawrence,757,4,8:16am
+216,limited,weekday,S,San Jose,862,4,8:28am
+218,limited,weekday,S,San Francisco,0,1,7:24am
+218,limited,weekday,S,22nd Street,40,1,7:29am
+218,limited,weekday,S,Bayshore,124,1,7:34am
+218,limited,weekday,S,So. San Francisco,178,1,7:40am
+218,limited,weekday,S,San Bruno,216,1,7:44am
+218,limited,weekday,S,Millbrae,249,2,7:48am
+218,limited,weekday,S,Burlingame,307,2,7:52am
+218,limited,weekday,S,San Mateo,334,2,7:55am
+218,limited,weekday,S,Hayward Park,354,2,7:58am
+218,limited,weekday,S,Hillsdale,391,2,8:01am
+218,limited,weekday,S,Belmont,428,2,8:04am
+218,limited,weekday,S,San Carlos,458,2,8:07am
+218,limited,weekday,S,Redwood City,499,2,8:12am
+218,limited,weekday,S,Palo Alto,604,3,8:18am
+218,limited,weekday,S,Santa Clara,805,4,8:34am
+218,limited,weekday,S,San Jose,862,4,8:43am
+218,limited,weekday,S,Tamien,906,4,8:50am
+220,limited,weekday,S,San Francisco,0,1,7:44am
+220,limited,weekday,S,22nd Street,40,1,7:49am
+220,limited,weekday,S,Millbrae,249,2,8:01am
+220,limited,weekday,S,San Mateo,334,2,8:07am
+220,limited,weekday,S,San Carlos,458,2,8:13am
+220,limited,weekday,S,Redwood City,499,2,8:18am
+220,limited,weekday,S,Menlo Park,574,3,8:23am
+220,limited,weekday,S,Palo Alto,604,3,8:26am
+220,limited,weekday,S,California Ave,649,3,8:30am
+220,limited,weekday,S,San Antonio,676,3,8:34am
+220,limited,weekday,S,Mountain View,702,3,8:38am
+220,limited,weekday,S,Sunnyvale,731,3,8:43am
+220,limited,weekday,S,Lawrence,757,4,8:49am
+220,limited,weekday,S,Santa Clara,805,4,8:56am
+220,limited,weekday,S,San Jose,862,4,9:05am
+220,limited,weekday,S,Tamien,906,4,9:12am
+322,bullet,weekday,S,San Francisco,0,1,7:59am
+322,bullet,weekday,S,22nd Street,40,1,8:04am
+322,bullet,weekday,S,Millbrae,249,2,8:17am
+322,bullet,weekday,S,Redwood City,499,2,8:30am
+322,bullet,weekday,S,Menlo Park,574,3,8:35am
+322,bullet,weekday,S,Mountain View,702,3,8:44am
+322,bullet,weekday,S,San Jose,862,4,8:58am
+324,bullet,weekday,S,San Francisco,0,1,8:14am
+324,bullet,weekday,S,22nd Street,40,1,8:19am
+324,bullet,weekday,S,Millbrae,249,2,8:32am
+324,bullet,weekday,S,Hillsdale,391,2,8:40am
+324,bullet,weekday,S,Palo Alto,604,3,8:51am
+324,bullet,weekday,S,Mountain View,702,3,8:58am
+324,bullet,weekday,S,San Jose,862,4,9:13am
+226,limited,weekday,S,San Francisco,0,1,8:19am
+226,limited,weekday,S,San Bruno,216,1,8:33am
+226,limited,weekday,S,Burlingame,307,2,8:38am
+226,limited,weekday,S,San Mateo,334,2,8:42am
+226,limited,weekday,S,Hillsdale,391,2,8:46am
+226,limited,weekday,S,San Carlos,458,2,8:50am
+226,limited,weekday,S,Menlo Park,574,3,8:58am
+226,limited,weekday,S,Palo Alto,604,3,9:01am
+226,limited,weekday,S,Mountain View,702,3,9:09am
+226,limited,weekday,S,Lawrence,757,4,9:16am
+226,limited,weekday,S,San Jose,862,4,9:28am
+228,limited,weekday,S,San Francisco,0,1,8:24am
+228,limited,weekday,S,22nd Street,40,1,8:29am
+228,limited,weekday,S,Bayshore,124,1,8:34am
+228,limited,weekday,S,So. San Francisco,178,1,8:40am
+228,limited,weekday,S,San Bruno,216,1,8:44am
+228,limited,weekday,S,Millbrae,249,2,8:48am
+228,limited,weekday,S,Burlingame,307,2,8:52am
+228,limited,weekday,S,San Mateo,334,2,8:55am
+228,limited,weekday,S,Hayward Park,354,2,8:58am
+228,limited,weekday,S,Hillsdale,391,2,9:01am
+228,limited,weekday,S,Belmont,428,2,9:04am
+228,limited,weekday,S,San Carlos,458,2,9:07am
+228,limited,weekday,S,Redwood City,499,2,9:12am
+228,limited,weekday,S,Palo Alto,604,3,9:18am
+228,limited,weekday,S,Santa Clara,805,4,9:34am
+228,limited,weekday,S,San Jose,862,4,9:43am
+228,limited,weekday,S,Tamien,906,4,9:50am
+230,limited,weekday,S,San Francisco,0,1,8:44am
+230,limited,weekday,S,22nd Street,40,1,8:49am
+230,limited,weekday,S,Millbrae,249,2,9:01am
+230,limited,weekday,S,San Mateo,334,2,9:07am
+230,limited,weekday,S,San Carlos,458,2,9:13am
+230,limited,weekday,S,Redwood City,499,2,9:18am
+230,limited,weekday,S,Menlo Park,574,3,9:23am
+230,limited,weekday,S,Palo Alto,604,3,9:26am
+230,limited,weekday,S,California Ave,649,3,9:30am
+230,limited,weekday,S,San Antonio,676,3,9:34am
+230,limited,weekday,S,Mountain View,702,3,9:38am
+230,limited,weekday,S,Sunnyvale,731,3,9:43am
+230,limited,weekday,S,Lawrence,757,4,9:49am
+230,limited,weekday,S,Santa Clara,805,4,9:56am
+230,limited,weekday,S,San Jose,862,4,10:05am
+230,limited,weekday,S,Tamien,906,4,10:12am
+332,bullet,weekday,S,San Francisco,0,1,8:59am
+332,bullet,weekday,S,22nd Street,40,1,9:04am
+332,bullet,weekday,S,Millbrae,249,2,9:17am
+332,bullet,weekday,S,Redwood City,499,2,9:30am
+332,bullet,weekday,S,Menlo Park,574,3,9:35am
+332,bullet,weekday,S,Mountain View,702,3,9:44am
+332,bullet,weekday,S,San Jose,862,4,9:58am
+134,normal,weekday,S,San Francisco,0,1,9:07am
+134,normal,weekday,S,22nd Street,40,1,9:12am
+134,normal,weekday,S,Bayshore,124,1,9:17am
+134,normal,weekday,S,So. San Francisco,178,1,9:23am
+134,normal,weekday,S,San Bruno,216,1,9:27am
+134,normal,weekday,S,Millbrae,249,2,9:31am
+134,normal,weekday,S,Burlingame,307,2,9:35am
+134,normal,weekday,S,San Mateo,334,2,9:38am
+134,normal,weekday,S,Hayward Park,354,2,9:41am
+134,normal,weekday,S,Hillsdale,391,2,9:44am
+134,normal,weekday,S,Belmont,428,2,9:47am
+134,normal,weekday,S,San Carlos,458,2,9:50am
+134,normal,weekday,S,Redwood City,499,2,9:55am
+134,normal,weekday,S,Menlo Park,574,3,10:00am
+134,normal,weekday,S,Palo Alto,604,3,10:03am
+134,normal,weekday,S,California Ave,649,3,10:07am
+134,normal,weekday,S,San Antonio,676,3,10:11am
+134,normal,weekday,S,Mountain View,702,3,10:15am
+134,normal,weekday,S,Sunnyvale,731,3,10:20am
+134,normal,weekday,S,Lawrence,757,4,10:24am
+134,normal,weekday,S,Santa Clara,805,4,10:29am
+134,normal,weekday,S,San Jose,862,4,10:38am
+236,limited,weekday,S,San Francisco,0,1,9:37am
+236,limited,weekday,S,San Bruno,216,1,9:51am
+236,limited,weekday,S,Millbrae,249,2,9:55am
+236,limited,weekday,S,Burlingame,307,2,9:59am
+236,limited,weekday,S,San Mateo,334,2,10:02am
+236,limited,weekday,S,Hillsdale,391,2,10:06am
+236,limited,weekday,S,Belmont,428,2,10:09am
+236,limited,weekday,S,San Carlos,458,2,10:12am
+236,limited,weekday,S,Redwood City,499,2,10:17am
+236,limited,weekday,S,Menlo Park,574,3,10:22am
+236,limited,weekday,S,Palo Alto,604,3,10:25am
+236,limited,weekday,S,California Ave,649,3,10:29am
+236,limited,weekday,S,San Antonio,676,3,10:33am
+236,limited,weekday,S,Mountain View,702,3,10:37am
+236,limited,weekday,S,Sunnyvale,731,3,10:42am
+236,limited,weekday,S,Lawrence,757,4,10:46am
+236,limited,weekday,S,Santa Clara,805,4,10:51am
+236,limited,weekday,S,San Jose,862,4,11:00am
+236,limited,weekday,S,Tamien,906,4,11:07am
+138,normal,weekday,S,San Francisco,0,1,10:07am
+138,normal,weekday,S,22nd Street,40,1,10:12am
+138,normal,weekday,S,Bayshore,124,1,10:17am
+138,normal,weekday,S,So. San Francisco,178,1,10:23am
+138,normal,weekday,S,San Bruno,216,1,10:27am
+138,normal,weekday,S,Millbrae,249,2,10:31am
+138,normal,weekday,S,Burlingame,307,2,10:35am
+138,normal,weekday,S,San Mateo,334,2,10:38am
+138,normal,weekday,S,Hayward Park,354,2,10:41am
+138,normal,weekday,S,Hillsdale,391,2,10:44am
+138,normal,weekday,S,Belmont,428,2,10:47am
+138,normal,weekday,S,San Carlos,458,2,10:50am
+138,normal,weekday,S,Redwood City,499,2,10:55am
+138,normal,weekday,S,Menlo Park,574,3,11:00am
+138,normal,weekday,S,Palo Alto,604,3,11:03am
+138,normal,weekday,S,California Ave,649,3,11:07am
+138,normal,weekday,S,San Antonio,676,3,11:11am
+138,normal,weekday,S,Mountain View,702,3,11:15am
+138,normal,weekday,S,Sunnyvale,731,3,11:20am
+138,normal,weekday,S,Lawrence,757,4,11:24am
+138,normal,weekday,S,Santa Clara,805,4,11:29am
+138,normal,weekday,S,San Jose,862,4,11:38am
+142,normal,weekday,S,San Francisco,0,1,11:07am
+142,normal,weekday,S,22nd Street,40,1,11:12am
+142,normal,weekday,S,Bayshore,124,1,11:17am
+142,normal,weekday,S,So. San Francisco,178,1,11:23am
+142,normal,weekday,S,San Bruno,216,1,11:27am
+142,normal,weekday,S,Millbrae,249,2,11:31am
+142,normal,weekday,S,Burlingame,307,2,11:35am
+142,normal,weekday,S,San Mateo,334,2,11:38am
+142,normal,weekday,S,Hayward Park,354,2,11:41am
+142,normal,weekday,S,Hillsdale,391,2,11:44am
+142,normal,weekday,S,Belmont,428,2,11:47am
+142,normal,weekday,S,San Carlos,458,2,11:50am
+142,normal,weekday,S,Redwood City,499,2,11:55am
+142,normal,weekday,S,Menlo Park,574,3,12:00pm
+142,normal,weekday,S,Palo Alto,604,3,12:03pm
+142,normal,weekday,S,California Ave,649,3,12:07pm
+142,normal,weekday,S,San Antonio,676,3,12:11pm
+142,normal,weekday,S,Mountain View,702,3,12:15pm
+142,normal,weekday,S,Sunnyvale,731,3,12:20pm
+142,normal,weekday,S,Lawrence,757,4,12:24pm
+142,normal,weekday,S,Santa Clara,805,4,12:29pm
+142,normal,weekday,S,San Jose,862,4,12:38pm
+146,normal,weekday,S,San Francisco,0,1,12:07pm
+146,normal,weekday,S,22nd Street,40,1,12:12pm
+146,normal,weekday,S,Bayshore,124,1,12:17pm
+146,normal,weekday,S,So. San Francisco,178,1,12:23pm
+146,normal,weekday,S,San Bruno,216,1,12:27pm
+146,normal,weekday,S,Millbrae,249,2,12:31pm
+146,normal,weekday,S,Burlingame,307,2,12:35pm
+146,normal,weekday,S,San Mateo,334,2,12:38pm
+146,normal,weekday,S,Hayward Park,354,2,12:41pm
+146,normal,weekday,S,Hillsdale,391,2,12:44pm
+146,normal,weekday,S,Belmont,428,2,12:47pm
+146,normal,weekday,S,San Carlos,458,2,12:50pm
+146,normal,weekday,S,Redwood City,499,2,12:55pm
+146,normal,weekday,S,Menlo Park,574,3,1:00pm
+146,normal,weekday,S,Palo Alto,604,3,1:03pm
+146,normal,weekday,S,California Ave,649,3,1:07pm
+146,normal,weekday,S,San Antonio,676,3,1:11pm
+146,normal,weekday,S,Mountain View,702,3,1:15pm
+146,normal,weekday,S,Sunnyvale,731,3,1:20pm
+146,normal,weekday,S,Lawrence,757,4,1:24pm
+146,normal,weekday,S,Santa Clara,805,4,1:29pm
+146,normal,weekday,S,San Jose,862,4,1:38pm
+150,normal,weekday,S,San Francisco,0,1,1:07pm
+150,normal,weekday,S,22nd Street,40,1,1:12pm
+150,normal,weekday,S,Bayshore,124,1,1:17pm
+150,normal,weekday,S,So. San Francisco,178,1,1:23pm
+150,normal,weekday,S,San Bruno,216,1,1:27pm
+150,normal,weekday,S,Millbrae,249,2,1:31pm
+150,normal,weekday,S,Burlingame,307,2,1:35pm
+150,normal,weekday,S,San Mateo,334,2,1:38pm
+150,normal,weekday,S,Hayward Park,354,2,1:41pm
+150,normal,weekday,S,Hillsdale,391,2,1:44pm
+150,normal,weekday,S,Belmont,428,2,1:47pm
+150,normal,weekday,S,San Carlos,458,2,1:50pm
+150,normal,weekday,S,Redwood City,499,2,1:55pm
+150,normal,weekday,S,Menlo Park,574,3,2:00pm
+150,normal,weekday,S,Palo Alto,604,3,2:03pm
+150,normal,weekday,S,California Ave,649,3,2:07pm
+150,normal,weekday,S,San Antonio,676,3,2:11pm
+150,normal,weekday,S,Mountain View,702,3,2:15pm
+150,normal,weekday,S,Sunnyvale,731,3,2:20pm
+150,normal,weekday,S,Lawrence,757,4,2:24pm
+150,normal,weekday,S,Santa Clara,805,4,2:29pm
+150,normal,weekday,S,San Jose,862,4,2:38pm
+154,normal,weekday,S,San Francisco,0,1,2:07pm
+154,normal,weekday,S,22nd Street,40,1,2:12pm
+154,normal,weekday,S,Bayshore,124,1,2:17pm
+154,normal,weekday,S,So. San Francisco,178,1,2:23pm
+154,normal,weekday,S,San Bruno,216,1,2:27pm
+154,normal,weekday,S,Millbrae,249,2,2:31pm
+154,normal,weekday,S,Burlingame,307,2,2:35pm
+154,normal,weekday,S,San Mateo,334,2,2:38pm
+154,normal,weekday,S,Hayward Park,354,2,2:41pm
+154,normal,weekday,S,Hillsdale,391,2,2:44pm
+154,normal,weekday,S,Belmont,428,2,2:47pm
+154,normal,weekday,S,San Carlos,458,2,2:50pm
+154,normal,weekday,S,Redwood City,499,2,2:55pm
+154,normal,weekday,S,Menlo Park,574,3,3:00pm
+154,normal,weekday,S,Palo Alto,604,3,3:03pm
+154,normal,weekday,S,California Ave,649,3,3:07pm
+154,normal,weekday,S,San Antonio,676,3,3:11pm
+154,normal,weekday,S,Mountain View,702,3,3:15pm
+154,normal,weekday,S,Sunnyvale,731,3,3:20pm
+154,normal,weekday,S,Lawrence,757,4,3:24pm
+154,normal,weekday,S,Santa Clara,805,4,3:29pm
+154,normal,weekday,S,San Jose,862,4,3:38pm
+256,limited,weekday,S,San Francisco,0,1,2:37pm
+256,limited,weekday,S,San Bruno,216,1,2:51pm
+256,limited,weekday,S,Millbrae,249,2,2:55pm
+256,limited,weekday,S,Burlingame,307,2,2:59pm
+256,limited,weekday,S,San Mateo,334,2,3:02pm
+256,limited,weekday,S,Hillsdale,391,2,3:06pm
+256,limited,weekday,S,Belmont,428,2,3:09pm
+256,limited,weekday,S,San Carlos,458,2,3:12pm
+256,limited,weekday,S,Redwood City,499,2,3:17pm
+256,limited,weekday,S,Menlo Park,574,3,3:22pm
+256,limited,weekday,S,Palo Alto,604,3,3:25pm
+256,limited,weekday,S,California Ave,649,3,3:29pm
+256,limited,weekday,S,San Antonio,676,3,3:33pm
+256,limited,weekday,S,Mountain View,702,3,3:37pm
+256,limited,weekday,S,Sunnyvale,731,3,3:42pm
+256,limited,weekday,S,Lawrence,757,4,3:46pm
+256,limited,weekday,S,Santa Clara,805,4,3:51pm
+256,limited,weekday,S,San Jose,862,4,4:00pm
+256,limited,weekday,S,Tamien,906,4,4:07pm
+158,normal,weekday,S,San Francisco,0,1,3:07pm
+158,normal,weekday,S,22nd Street,40,1,3:12pm
+158,normal,weekday,S,Bayshore,124,1,3:17pm
+158,normal,weekday,S,So. San Francisco,178,1,3:23pm
+158,normal,weekday,S,San Bruno,216,1,3:27pm
+158,normal,weekday,S,Millbrae,249,2,3:31pm
+158,normal,weekday,S,Burlingame,307,2,3:35pm
+158,normal,weekday,S,San Mateo,334,2,3:38pm
+158,normal,weekday,S,Hayward Park,354,2,3:41pm
+158,normal,weekday,S,Hillsdale,391,2,3:44pm
+158,normal,weekday,S,Belmont,428,2,3:47pm
+158,normal,weekday,S,San Carlos,458,2,3:50pm
+158,normal,weekday,S,Redwood City,499,2,3:55pm
+158,normal,weekday,S,Menlo Park,574,3,4:00pm
+158,normal,weekday,S,Palo Alto,604,3,4:03pm
+158,normal,weekday,S,California Ave,649,3,4:07pm
+158,normal,weekday,S,San Antonio,676,3,4:11pm
+158,normal,weekday,S,Mountain View,702,3,4:15pm
+158,normal,weekday,S,Sunnyvale,731,3,4:20pm
+158,normal,weekday,S,Lawrence,757,4,4:24pm
+158,normal,weekday,S,Santa Clara,805,4,4:29pm
+158,normal,weekday,S,College Park,833,4,4:32pm
+158,normal,weekday,S,San Jose,862,4,4:39pm
+158,normal,weekday,S,Tamien,906,4,4:45pm
+158,normal,weekday,S,Capitol,939,5,4:52pm
+158,normal,weekday,S,Blossom Hill,966,5,4:58pm
+158,normal,weekday,S,Morgan Hill,997,6,5:11pm
+158,normal,weekday,S,San Martin,1021,6,5:17pm
+158,normal,weekday,S,Gilroy,1053,6,5:30pm
+260,limited,weekday,S,San Francisco,0,1,3:37pm
+260,limited,weekday,S,San Bruno,216,1,3:51pm
+260,limited,weekday,S,Millbrae,249,2,3:55pm
+260,limited,weekday,S,Burlingame,307,2,3:59pm
+260,limited,weekday,S,San Mateo,334,2,4:02pm
+260,limited,weekday,S,Hillsdale,391,2,4:06pm
+260,limited,weekday,S,Belmont,428,2,4:09pm
+260,limited,weekday,S,San Carlos,458,2,4:12pm
+260,limited,weekday,S,Redwood City,499,2,4:17pm
+260,limited,weekday,S,Menlo Park,574,3,4:22pm
+260,limited,weekday,S,Palo Alto,604,3,4:25pm
+260,limited,weekday,S,California Ave,649,3,4:29pm
+260,limited,weekday,S,San Antonio,676,3,4:33pm
+260,limited,weekday,S,Mountain View,702,3,4:37pm
+260,limited,weekday,S,Sunnyvale,731,3,4:42pm
+260,limited,weekday,S,Lawrence,757,4,4:46pm
+260,limited,weekday,S,Santa Clara,805,4,4:51pm
+260,limited,weekday,S,San Jose,862,4,5:00pm
+260,limited,weekday,S,Tamien,906,4,5:07pm
+362,bullet,weekday,S,San Francisco,0,1,4:09pm
+362,bullet,weekday,S,Millbrae,249,2,4:25pm
+362,bullet,weekday,S,Hillsdale,391,2,4:33pm
+362,bullet,weekday,S,Palo Alto,604,3,4:44pm
+362,bullet,weekday,S,Mountain View,702,3,4:51pm
+362,bullet,weekday,S,San Jose,862,4,5:06pm
+264,limited,weekday,S,San Francisco,0,1,4:19pm
+264,limited,weekday,S,San Bruno,216,1,4:33pm
+264,limited,weekday,S,Burlingame,307,2,4:38pm
+264,limited,weekday,S,San Mateo,334,2,4:42pm
+264,limited,weekday,S,Hillsdale,391,2,4:47pm
+264,limited,weekday,S,San Carlos,458,2,4:51pm
+264,limited,weekday,S,Palo Alto,604,3,5:01pm
+264,limited,weekday,S,California Ave,649,3,5:05pm
+264,limited,weekday,S,Mountain View,702,3,5:11pm
+264,limited,weekday,S,Sunnyvale,731,3,5:16pm
+264,limited,weekday,S,San Jose,862,4,5:27pm
+266,limited,weekday,S,San Francisco,0,1,4:27pm
+266,limited,weekday,S,22nd Street,40,1,4:32pm
+266,limited,weekday,S,Bayshore,124,1,4:40pm
+266,limited,weekday,S,So. San Francisco,178,1,4:48pm
+266,limited,weekday,S,San Bruno,216,1,4:52pm
+266,limited,weekday,S,Millbrae,249,2,4:56pm
+266,limited,weekday,S,Burlingame,307,2,5:00pm
+266,limited,weekday,S,San Mateo,334,2,5:04pm
+266,limited,weekday,S,Hayward Park,354,2,5:07pm
+266,limited,weekday,S,Hillsdale,391,2,5:11pm
+266,limited,weekday,S,Belmont,428,2,5:14pm
+266,limited,weekday,S,San Carlos,458,2,5:18pm
+266,limited,weekday,S,Redwood City,499,2,5:22pm
+266,limited,weekday,S,Menlo Park,574,3,5:28pm
+266,limited,weekday,S,Mountain View,702,3,5:36pm
+266,limited,weekday,S,Santa Clara,805,4,5:47pm
+266,limited,weekday,S,San Jose,862,4,5:55pm
+368,bullet,weekday,S,San Francisco,0,1,4:33pm
+368,bullet,weekday,S,Millbrae,249,2,4:49pm
+368,bullet,weekday,S,San Mateo,334,2,4:57pm
+368,bullet,weekday,S,Redwood City,499,2,5:06pm
+368,bullet,weekday,S,Palo Alto,604,3,5:12pm
+368,bullet,weekday,S,Sunnyvale,731,3,5:21pm
+368,bullet,weekday,S,San Jose,862,4,5:32pm
+368,bullet,weekday,S,Tamien,906,4,5:39pm
+270,limited,weekday,S,San Francisco,0,1,4:56pm
+270,limited,weekday,S,So. San Francisco,178,1,5:08pm
+270,limited,weekday,S,Millbrae,249,2,5:14pm
+270,limited,weekday,S,Hillsdale,391,2,5:22pm
+270,limited,weekday,S,Redwood City,499,2,5:28pm
+270,limited,weekday,S,Menlo Park,574,3,5:34pm
+270,limited,weekday,S,Palo Alto,604,3,5:38pm
+270,limited,weekday,S,California Ave,649,3,5:42pm
+270,limited,weekday,S,San Antonio,676,3,5:46pm
+270,limited,weekday,S,Mountain View,702,3,5:50pm
+270,limited,weekday,S,Sunnyvale,731,3,5:55pm
+270,limited,weekday,S,Lawrence,757,4,6:01pm
+270,limited,weekday,S,Santa Clara,805,4,6:08pm
+270,limited,weekday,S,San Jose,862,4,6:16pm
+270,limited,weekday,S,Tamien,906,4,6:22pm
+270,limited,weekday,S,Capitol,939,5,6:29pm
+270,limited,weekday,S,Blossom Hill,966,5,6:35pm
+270,limited,weekday,S,Morgan Hill,997,6,6:48pm
+270,limited,weekday,S,San Martin,1021,6,6:54pm
+270,limited,weekday,S,Gilroy,1053,6,7:07pm
+372,bullet,weekday,S,San Francisco,0,1,5:14pm
+372,bullet,weekday,S,Millbrae,249,2,5:30pm
+372,bullet,weekday,S,Hillsdale,391,2,5:38pm
+372,bullet,weekday,S,Palo Alto,604,3,5:49pm
+372,bullet,weekday,S,Mountain View,702,3,5:56pm
+372,bullet,weekday,S,San Jose,862,4,6:11pm
+274,limited,weekday,S,San Francisco,0,1,5:20pm
+274,limited,weekday,S,San Bruno,216,1,5:34pm
+274,limited,weekday,S,Burlingame,307,2,5:39pm
+274,limited,weekday,S,San Mateo,334,2,5:43pm
+274,limited,weekday,S,Hillsdale,391,2,5:48pm
+274,limited,weekday,S,San Carlos,458,2,5:52pm
+274,limited,weekday,S,Palo Alto,604,3,6:02pm
+274,limited,weekday,S,California Ave,649,3,6:06pm
+274,limited,weekday,S,Mountain View,702,3,6:12pm
+274,limited,weekday,S,Sunnyvale,731,3,6:17pm
+274,limited,weekday,S,San Jose,862,4,6:28pm
+276,limited,weekday,S,San Francisco,0,1,5:27pm
+276,limited,weekday,S,22nd Street,40,1,5:32pm
+276,limited,weekday,S,Bayshore,124,1,5:40pm
+276,limited,weekday,S,So. San Francisco,178,1,5:48pm
+276,limited,weekday,S,San Bruno,216,1,5:52pm
+276,limited,weekday,S,Millbrae,249,2,5:56pm
+276,limited,weekday,S,Burlingame,307,2,6:00pm
+276,limited,weekday,S,San Mateo,334,2,6:04pm
+276,limited,weekday,S,Hayward Park,354,2,6:07pm
+276,limited,weekday,S,Hillsdale,391,2,6:11pm
+276,limited,weekday,S,Belmont,428,2,6:14pm
+276,limited,weekday,S,San Carlos,458,2,6:18pm
+276,limited,weekday,S,Redwood City,499,2,6:22pm
+276,limited,weekday,S,Menlo Park,574,3,6:28pm
+276,limited,weekday,S,Mountain View,702,3,6:36pm
+276,limited,weekday,S,Lawrence,757,4,6:43pm
+276,limited,weekday,S,Santa Clara,805,4,6:48pm
+276,limited,weekday,S,San Jose,862,4,6:56pm
+276,limited,weekday,S,Tamien,906,4,7:02pm
+276,limited,weekday,S,Capitol,939,5,7:09pm
+276,limited,weekday,S,Blossom Hill,966,5,7:15pm
+276,limited,weekday,S,Morgan Hill,997,6,7:28pm
+276,limited,weekday,S,San Martin,1021,6,7:34pm
+276,limited,weekday,S,Gilroy,1053,6,7:47pm
+378,bullet,weekday,S,San Francisco,0,1,5:33pm
+378,bullet,weekday,S,Millbrae,249,2,5:49pm
+378,bullet,weekday,S,San Mateo,334,2,5:57pm
+378,bullet,weekday,S,Redwood City,499,2,6:06pm
+378,bullet,weekday,S,Palo Alto,604,3,6:12pm
+378,bullet,weekday,S,Sunnyvale,731,3,6:21pm
+378,bullet,weekday,S,San Jose,862,4,6:32pm
+378,bullet,weekday,S,Tamien,906,4,6:39pm
+280,limited,weekday,S,San Francisco,0,1,5:56pm
+280,limited,weekday,S,So. San Francisco,178,1,6:08pm
+280,limited,weekday,S,Millbrae,249,2,6:14pm
+280,limited,weekday,S,Hillsdale,391,2,6:22pm
+280,limited,weekday,S,Redwood City,499,2,6:28pm
+280,limited,weekday,S,Menlo Park,574,3,6:34pm
+280,limited,weekday,S,Palo Alto,604,3,6:38pm
+280,limited,weekday,S,California Ave,649,3,6:42pm
+280,limited,weekday,S,San Antonio,676,3,6:46pm
+280,limited,weekday,S,Mountain View,702,3,6:50pm
+280,limited,weekday,S,Sunnyvale,731,3,6:55pm
+280,limited,weekday,S,Lawrence,757,4,7:01pm
+280,limited,weekday,S,Santa Clara,805,4,7:08pm
+280,limited,weekday,S,San Jose,862,4,7:16pm
+280,limited,weekday,S,Tamien,906,4,7:23pm
+382,bullet,weekday,S,San Francisco,0,1,6:14pm
+382,bullet,weekday,S,Millbrae,249,2,6:30pm
+382,bullet,weekday,S,Hillsdale,391,2,6:38pm
+382,bullet,weekday,S,Palo Alto,604,3,6:49pm
+382,bullet,weekday,S,Mountain View,702,3,6:56pm
+382,bullet,weekday,S,San Jose,862,4,7:11pm
+284,limited,weekday,S,San Francisco,0,1,6:27pm
+284,limited,weekday,S,22nd Street,40,1,6:32pm
+284,limited,weekday,S,Bayshore,124,1,6:40pm
+284,limited,weekday,S,So. San Francisco,178,1,6:48pm
+284,limited,weekday,S,San Bruno,216,1,6:52pm
+284,limited,weekday,S,Millbrae,249,2,6:56pm
+284,limited,weekday,S,Burlingame,307,2,7:00pm
+284,limited,weekday,S,San Mateo,334,2,7:04pm
+284,limited,weekday,S,Hayward Park,354,2,7:07pm
+284,limited,weekday,S,Hillsdale,391,2,7:11pm
+284,limited,weekday,S,Belmont,428,2,7:14pm
+284,limited,weekday,S,San Carlos,458,2,7:18pm
+284,limited,weekday,S,Redwood City,499,2,7:22pm
+284,limited,weekday,S,Menlo Park,574,3,7:28pm
+284,limited,weekday,S,Mountain View,702,3,7:36pm
+284,limited,weekday,S,Santa Clara,805,4,7:47pm
+284,limited,weekday,S,San Jose,862,4,7:55pm
+386,bullet,weekday,S,San Francisco,0,1,6:33pm
+386,bullet,weekday,S,Millbrae,249,2,6:49pm
+386,bullet,weekday,S,San Mateo,334,2,6:57pm
+386,bullet,weekday,S,Redwood City,499,2,7:06pm
+386,bullet,weekday,S,Palo Alto,604,3,7:12pm
+386,bullet,weekday,S,Sunnyvale,731,3,7:21pm
+386,bullet,weekday,S,San Jose,862,4,7:32pm
+386,bullet,weekday,S,Tamien,906,4,7:39pm
+288,limited,weekday,S,San Francisco,0,1,6:56pm
+288,limited,weekday,S,So. San Francisco,178,1,7:08pm
+288,limited,weekday,S,Millbrae,249,2,7:14pm
+288,limited,weekday,S,Hillsdale,391,2,7:22pm
+288,limited,weekday,S,Redwood City,499,2,7:28pm
+288,limited,weekday,S,Menlo Park,574,3,7:34pm
+288,limited,weekday,S,Palo Alto,604,3,7:38pm
+288,limited,weekday,S,California Ave,649,3,7:42pm
+288,limited,weekday,S,San Antonio,676,3,7:46pm
+288,limited,weekday,S,Mountain View,702,3,7:50pm
+288,limited,weekday,S,Sunnyvale,731,3,7:55pm
+288,limited,weekday,S,Lawrence,757,4,7:59pm
+288,limited,weekday,S,Santa Clara,805,4,8:04pm
+288,limited,weekday,S,San Jose,862,4,8:12pm
+288,limited,weekday,S,Tamien,906,4,8:19pm
+190,normal,weekday,S,San Francisco,0,1,7:30pm
+190,normal,weekday,S,22nd Street,40,1,7:35pm
+190,normal,weekday,S,Bayshore,124,1,7:40pm
+190,normal,weekday,S,So. San Francisco,178,1,7:46pm
+190,normal,weekday,S,San Bruno,216,1,7:50pm
+190,normal,weekday,S,Millbrae,249,2,7:54pm
+190,normal,weekday,S,Burlingame,307,2,7:58pm
+190,normal,weekday,S,San Mateo,334,2,8:01pm
+190,normal,weekday,S,Hayward Park,354,2,8:04pm
+190,normal,weekday,S,Hillsdale,391,2,8:07pm
+190,normal,weekday,S,Belmont,428,2,8:10pm
+190,normal,weekday,S,San Carlos,458,2,8:13pm
+190,normal,weekday,S,Redwood City,499,2,8:18pm
+190,normal,weekday,S,Menlo Park,574,3,8:23pm
+190,normal,weekday,S,Palo Alto,604,3,8:26pm
+190,normal,weekday,S,California Ave,649,3,8:30pm
+190,normal,weekday,S,San Antonio,676,3,8:34pm
+190,normal,weekday,S,Mountain View,702,3,8:38pm
+190,normal,weekday,S,Sunnyvale,731,3,8:43pm
+190,normal,weekday,S,Lawrence,757,4,8:47pm
+190,normal,weekday,S,Santa Clara,805,4,8:52pm
+190,normal,weekday,S,San Jose,862,4,9:01pm
+192,normal,weekday,S,San Francisco,0,1,8:40pm
+192,normal,weekday,S,22nd Street,40,1,8:45pm
+192,normal,weekday,S,Bayshore,124,1,8:50pm
+192,normal,weekday,S,So. San Francisco,178,1,8:56pm
+192,normal,weekday,S,San Bruno,216,1,9:00pm
+192,normal,weekday,S,Millbrae,249,2,9:04pm
+192,normal,weekday,S,Burlingame,307,2,9:08pm
+192,normal,weekday,S,San Mateo,334,2,9:11pm
+192,normal,weekday,S,Hayward Park,354,2,9:14pm
+192,normal,weekday,S,Hillsdale,391,2,9:17pm
+192,normal,weekday,S,Belmont,428,2,9:20pm
+192,normal,weekday,S,San Carlos,458,2,9:23pm
+192,normal,weekday,S,Redwood City,499,2,9:28pm
+192,normal,weekday,S,Menlo Park,574,3,9:33pm
+192,normal,weekday,S,Palo Alto,604,3,9:36pm
+192,normal,weekday,S,California Ave,649,3,9:40pm
+192,normal,weekday,S,San Antonio,676,3,9:44pm
+192,normal,weekday,S,Mountain View,702,3,9:48pm
+192,normal,weekday,S,Sunnyvale,731,3,9:53pm
+192,normal,weekday,S,Lawrence,757,4,9:57pm
+192,normal,weekday,S,Santa Clara,805,4,10:02pm
+192,normal,weekday,S,San Jose,862,4,10:11pm
+192,normal,weekday,S,Tamien,906,4,10:18pm
+194,normal,weekday,S,San Francisco,0,1,9:40pm
+194,normal,weekday,S,22nd Street,40,1,9:45pm
+194,normal,weekday,S,Bayshore,124,1,9:50pm
+194,normal,weekday,S,So. San Francisco,178,1,9:56pm
+194,normal,weekday,S,San Bruno,216,1,10:00pm
+194,normal,weekday,S,Millbrae,249,2,10:04pm
+194,normal,weekday,S,Burlingame,307,2,10:08pm
+194,normal,weekday,S,San Mateo,334,2,10:11pm
+194,normal,weekday,S,Hayward Park,354,2,10:14pm
+194,normal,weekday,S,Hillsdale,391,2,10:17pm
+194,normal,weekday,S,Belmont,428,2,10:20pm
+194,normal,weekday,S,San Carlos,458,2,10:23pm
+194,normal,weekday,S,Redwood City,499,2,10:28pm
+194,normal,weekday,S,Menlo Park,574,3,10:33pm
+194,normal,weekday,S,Palo Alto,604,3,10:36pm
+194,normal,weekday,S,California Ave,649,3,10:40pm
+194,normal,weekday,S,San Antonio,676,3,10:44pm
+194,normal,weekday,S,Mountain View,702,3,10:48pm
+194,normal,weekday,S,Sunnyvale,731,3,10:53pm
+194,normal,weekday,S,Lawrence,757,4,10:57pm
+194,normal,weekday,S,Santa Clara,805,4,11:02pm
+194,normal,weekday,S,San Jose,862,4,11:11pm
+194,normal,weekday,S,Tamien,906,4,11:18pm
+196,normal,weekday,S,San Francisco,0,1,10:40pm
+196,normal,weekday,S,22nd Street,40,1,10:45pm
+196,normal,weekday,S,Bayshore,124,1,10:50pm
+196,normal,weekday,S,So. San Francisco,178,1,10:56pm
+196,normal,weekday,S,San Bruno,216,1,11:00pm
+196,normal,weekday,S,Millbrae,249,2,11:04pm
+196,normal,weekday,S,Burlingame,307,2,11:08pm
+196,normal,weekday,S,San Mateo,334,2,11:11pm
+196,normal,weekday,S,Hayward Park,354,2,11:14pm
+196,normal,weekday,S,Hillsdale,391,2,11:17pm
+196,normal,weekday,S,Belmont,428,2,11:20pm
+196,normal,weekday,S,San Carlos,458,2,11:23pm
+196,normal,weekday,S,Redwood City,499,2,11:28pm
+196,normal,weekday,S,Menlo Park,574,3,11:33pm
+196,normal,weekday,S,Palo Alto,604,3,11:36pm
+196,normal,weekday,S,California Ave,649,3,11:40pm
+196,normal,weekday,S,San Antonio,676,3,11:44pm
+196,normal,weekday,S,Mountain View,702,3,11:48pm
+196,normal,weekday,S,Sunnyvale,731,3,11:53pm
+196,normal,weekday,S,Lawrence,757,4,11:57pm
+196,normal,weekday,S,Santa Clara,805,4,12:02am
+196,normal,weekday,S,San Jose,862,4,12:11am
+198,normal,weekday,S,San Francisco,0,1,12:01am
+198,normal,weekday,S,22nd Street,40,1,12:06am
+198,normal,weekday,S,Bayshore,124,1,12:11am
+198,normal,weekday,S,So. San Francisco,178,1,12:17am
+198,normal,weekday,S,San Bruno,216,1,12:21am
+198,normal,weekday,S,Millbrae,249,2,12:25am
+198,normal,weekday,S,Burlingame,307,2,12:29am
+198,normal,weekday,S,San Mateo,334,2,12:32am
+198,normal,weekday,S,Hayward Park,354,2,12:35am
+198,normal,weekday,S,Hillsdale,391,2,12:38am
+198,normal,weekday,S,Belmont,428,2,12:41am
+198,normal,weekday,S,San Carlos,458,2,12:44am
+198,normal,weekday,S,Redwood City,499,2,12:49am
+198,normal,weekday,S,Menlo Park,574,3,12:54am
+198,normal,weekday,S,Palo Alto,604,3,12:57am
+198,normal,weekday,S,California Ave,649,3,1:01am
+198,normal,weekday,S,San Antonio,676,3,1:05am
+198,normal,weekday,S,Mountain View,702,3,1:09am
+198,normal,weekday,S,Sunnyvale,731,3,1:14am
+198,normal,weekday,S,Lawrence,757,4,1:18am
+198,normal,weekday,S,Santa Clara,805,4,1:23am
+198,normal,weekday,S,San Jose,862,4,1:32am
+422,normal,weekend,S,San Francisco,0,1,8:15am
+422,normal,weekend,S,22nd Street,40,1,8:20am
+422,normal,weekend,S,Bayshore,124,1,8:25am
+422,normal,weekend,S,So. San Francisco,178,1,8:31am
+422,normal,weekend,S,San Bruno,216,1,8:35am
+422,normal,weekend,S,Millbrae,249,2,8:39am
+422,normal,weekend,S,Broadway,280,2,8:43am
+422,normal,weekend,S,Burlingame,307,2,8:45am
+422,normal,weekend,S,San Mateo,334,2,8:49am
+422,normal,weekend,S,Hayward Park,354,2,8:52am
+422,normal,weekend,S,Hillsdale,391,2,8:55am
+422,normal,weekend,S,Belmont,428,2,8:58am
+422,normal,weekend,S,San Carlos,458,2,9:01am
+422,normal,weekend,S,Redwood City,499,2,9:07am
+422,normal,weekend,S,Atherton,543,3,9:11am
+422,normal,weekend,S,Menlo Park,574,3,9:14am
+422,normal,weekend,S,Palo Alto,604,3,9:17am
+422,normal,weekend,S,California Ave,649,3,9:21am
+422,normal,weekend,S,San Antonio,676,3,9:25am
+422,normal,weekend,S,Mountain View,702,3,9:29am
+422,normal,weekend,S,Sunnyvale,731,3,9:34am
+422,normal,weekend,S,Lawrence,757,4,9:38am
+422,normal,weekend,S,Santa Clara,805,4,9:43am
+422,normal,weekend,S,San Jose,862,4,9:51am
+424,normal,weekend,S,San Francisco,0,1,9:15am
+424,normal,weekend,S,22nd Street,40,1,9:20am
+424,normal,weekend,S,Bayshore,124,1,9:25am
+424,normal,weekend,S,So. San Francisco,178,1,9:31am
+424,normal,weekend,S,San Bruno,216,1,9:35am
+424,normal,weekend,S,Millbrae,249,2,9:39am
+424,normal,weekend,S,Broadway,280,2,9:43am
+424,normal,weekend,S,Burlingame,307,2,9:45am
+424,normal,weekend,S,San Mateo,334,2,9:49am
+424,normal,weekend,S,Hayward Park,354,2,9:52am
+424,normal,weekend,S,Hillsdale,391,2,9:55am
+424,normal,weekend,S,Belmont,428,2,9:58am
+424,normal,weekend,S,San Carlos,458,2,10:01am
+424,normal,weekend,S,Redwood City,499,2,10:07am
+424,normal,weekend,S,Atherton,543,3,10:11am
+424,normal,weekend,S,Menlo Park,574,3,10:14am
+424,normal,weekend,S,Palo Alto,604,3,10:17am
+424,normal,weekend,S,California Ave,649,3,10:21am
+424,normal,weekend,S,San Antonio,676,3,10:25am
+424,normal,weekend,S,Mountain View,702,3,10:29am
+424,normal,weekend,S,Sunnyvale,731,3,10:34am
+424,normal,weekend,S,Lawrence,757,4,10:38am
+424,normal,weekend,S,Santa Clara,805,4,10:43am
+424,normal,weekend,S,San Jose,862,4,10:51am
+426,normal,weekend,S,San Francisco,0,1,10:15am
+426,normal,weekend,S,22nd Street,40,1,10:20am
+426,normal,weekend,S,Bayshore,124,1,10:25am
+426,normal,weekend,S,So. San Francisco,178,1,10:31am
+426,normal,weekend,S,San Bruno,216,1,10:35am
+426,normal,weekend,S,Millbrae,249,2,10:39am
+426,normal,weekend,S,Broadway,280,2,10:43am
+426,normal,weekend,S,Burlingame,307,2,10:45am
+426,normal,weekend,S,San Mateo,334,2,10:49am
+426,normal,weekend,S,Hayward Park,354,2,10:52am
+426,normal,weekend,S,Hillsdale,391,2,10:55am
+426,normal,weekend,S,Belmont,428,2,10:58am
+426,normal,weekend,S,San Carlos,458,2,11:01am
+426,normal,weekend,S,Redwood City,499,2,11:07am
+426,normal,weekend,S,Atherton,543,3,11:11am
+426,normal,weekend,S,Menlo Park,574,3,11:14am
+426,normal,weekend,S,Palo Alto,604,3,11:17am
+426,normal,weekend,S,California Ave,649,3,11:21am
+426,normal,weekend,S,San Antonio,676,3,11:25am
+426,normal,weekend,S,Mountain View,702,3,11:29am
+426,normal,weekend,S,Sunnyvale,731,3,11:34am
+426,normal,weekend,S,Lawrence,757,4,11:38am
+426,normal,weekend,S,Santa Clara,805,4,11:43am
+426,normal,weekend,S,San Jose,862,4,11:51am
+428,normal,weekend,S,San Francisco,0,1,11:15am
+428,normal,weekend,S,22nd Street,40,1,11:20am
+428,normal,weekend,S,Bayshore,124,1,11:25am
+428,normal,weekend,S,So. San Francisco,178,1,11:31am
+428,normal,weekend,S,San Bruno,216,1,11:35am
+428,normal,weekend,S,Millbrae,249,2,11:39am
+428,normal,weekend,S,Broadway,280,2,11:43am
+428,normal,weekend,S,Burlingame,307,2,11:45am
+428,normal,weekend,S,San Mateo,334,2,11:49am
+428,normal,weekend,S,Hayward Park,354,2,11:52am
+428,normal,weekend,S,Hillsdale,391,2,11:55am
+428,normal,weekend,S,Belmont,428,2,11:58am
+428,normal,weekend,S,San Carlos,458,2,12:01pm
+428,normal,weekend,S,Redwood City,499,2,12:07pm
+428,normal,weekend,S,Atherton,543,3,12:11pm
+428,normal,weekend,S,Menlo Park,574,3,12:14pm
+428,normal,weekend,S,Palo Alto,604,3,12:17pm
+428,normal,weekend,S,California Ave,649,3,12:21pm
+428,normal,weekend,S,San Antonio,676,3,12:25pm
+428,normal,weekend,S,Mountain View,702,3,12:29pm
+428,normal,weekend,S,Sunnyvale,731,3,12:34pm
+428,normal,weekend,S,Lawrence,757,4,12:38pm
+428,normal,weekend,S,Santa Clara,805,4,12:43pm
+428,normal,weekend,S,San Jose,862,4,12:51pm
+430,normal,weekend,S,San Francisco,0,1,12:15pm
+430,normal,weekend,S,22nd Street,40,1,12:20pm
+430,normal,weekend,S,Bayshore,124,1,12:25pm
+430,normal,weekend,S,So. San Francisco,178,1,12:31pm
+430,normal,weekend,S,San Bruno,216,1,12:35pm
+430,normal,weekend,S,Millbrae,249,2,12:39pm
+430,normal,weekend,S,Broadway,280,2,12:43pm
+430,normal,weekend,S,Burlingame,307,2,12:45pm
+430,normal,weekend,S,San Mateo,334,2,12:49pm
+430,normal,weekend,S,Hayward Park,354,2,12:52pm
+430,normal,weekend,S,Hillsdale,391,2,12:55pm
+430,normal,weekend,S,Belmont,428,2,12:58pm
+430,normal,weekend,S,San Carlos,458,2,1:01pm
+430,normal,weekend,S,Redwood City,499,2,1:07pm
+430,normal,weekend,S,Atherton,543,3,1:11pm
+430,normal,weekend,S,Menlo Park,574,3,1:14pm
+430,normal,weekend,S,Palo Alto,604,3,1:17pm
+430,normal,weekend,S,California Ave,649,3,1:21pm
+430,normal,weekend,S,San Antonio,676,3,1:25pm
+430,normal,weekend,S,Mountain View,702,3,1:29pm
+430,normal,weekend,S,Sunnyvale,731,3,1:34pm
+430,normal,weekend,S,Lawrence,757,4,1:38pm
+430,normal,weekend,S,Santa Clara,805,4,1:43pm
+430,normal,weekend,S,San Jose,862,4,1:51pm
+432,normal,weekend,S,San Francisco,0,1,1:15pm
+432,normal,weekend,S,22nd Street,40,1,1:20pm
+432,normal,weekend,S,Bayshore,124,1,1:25pm
+432,normal,weekend,S,So. San Francisco,178,1,1:31pm
+432,normal,weekend,S,San Bruno,216,1,1:35pm
+432,normal,weekend,S,Millbrae,249,2,1:39pm
+432,normal,weekend,S,Broadway,280,2,1:43pm
+432,normal,weekend,S,Burlingame,307,2,1:45pm
+432,normal,weekend,S,San Mateo,334,2,1:49pm
+432,normal,weekend,S,Hayward Park,354,2,1:52pm
+432,normal,weekend,S,Hillsdale,391,2,1:55pm
+432,normal,weekend,S,Belmont,428,2,1:58pm
+432,normal,weekend,S,San Carlos,458,2,2:01pm
+432,normal,weekend,S,Redwood City,499,2,2:07pm
+432,normal,weekend,S,Atherton,543,3,2:11pm
+432,normal,weekend,S,Menlo Park,574,3,2:14pm
+432,normal,weekend,S,Palo Alto,604,3,2:17pm
+432,normal,weekend,S,California Ave,649,3,2:21pm
+432,normal,weekend,S,San Antonio,676,3,2:25pm
+432,normal,weekend,S,Mountain View,702,3,2:29pm
+432,normal,weekend,S,Sunnyvale,731,3,2:34pm
+432,normal,weekend,S,Lawrence,757,4,2:38pm
+432,normal,weekend,S,Santa Clara,805,4,2:43pm
+432,normal,weekend,S,San Jose,862,4,2:51pm
+434,normal,weekend,S,San Francisco,0,1,2:15pm
+434,normal,weekend,S,22nd Street,40,1,2:20pm
+434,normal,weekend,S,Bayshore,124,1,2:25pm
+434,normal,weekend,S,So. San Francisco,178,1,2:31pm
+434,normal,weekend,S,San Bruno,216,1,2:35pm
+434,normal,weekend,S,Millbrae,249,2,2:39pm
+434,normal,weekend,S,Broadway,280,2,2:43pm
+434,normal,weekend,S,Burlingame,307,2,2:45pm
+434,normal,weekend,S,San Mateo,334,2,2:49pm
+434,normal,weekend,S,Hayward Park,354,2,2:52pm
+434,normal,weekend,S,Hillsdale,391,2,2:55pm
+434,normal,weekend,S,Belmont,428,2,2:58pm
+434,normal,weekend,S,San Carlos,458,2,3:01pm
+434,normal,weekend,S,Redwood City,499,2,3:07pm
+434,normal,weekend,S,Atherton,543,3,3:11pm
+434,normal,weekend,S,Menlo Park,574,3,3:14pm
+434,normal,weekend,S,Palo Alto,604,3,3:17pm
+434,normal,weekend,S,California Ave,649,3,3:21pm
+434,normal,weekend,S,San Antonio,676,3,3:25pm
+434,normal,weekend,S,Mountain View,702,3,3:29pm
+434,normal,weekend,S,Sunnyvale,731,3,3:34pm
+434,normal,weekend,S,Lawrence,757,4,3:38pm
+434,normal,weekend,S,Santa Clara,805,4,3:43pm
+434,normal,weekend,S,San Jose,862,4,3:51pm
+436,normal,weekend,S,San Francisco,0,1,3:15pm
+436,normal,weekend,S,22nd Street,40,1,3:20pm
+436,normal,weekend,S,Bayshore,124,1,3:25pm
+436,normal,weekend,S,So. San Francisco,178,1,3:31pm
+436,normal,weekend,S,San Bruno,216,1,3:35pm
+436,normal,weekend,S,Millbrae,249,2,3:39pm
+436,normal,weekend,S,Broadway,280,2,3:43pm
+436,normal,weekend,S,Burlingame,307,2,3:45pm
+436,normal,weekend,S,San Mateo,334,2,3:49pm
+436,normal,weekend,S,Hayward Park,354,2,3:52pm
+436,normal,weekend,S,Hillsdale,391,2,3:55pm
+436,normal,weekend,S,Belmont,428,2,3:58pm
+436,normal,weekend,S,San Carlos,458,2,4:01pm
+436,normal,weekend,S,Redwood City,499,2,4:07pm
+436,normal,weekend,S,Atherton,543,3,4:11pm
+436,normal,weekend,S,Menlo Park,574,3,4:14pm
+436,normal,weekend,S,Palo Alto,604,3,4:17pm
+436,normal,weekend,S,California Ave,649,3,4:21pm
+436,normal,weekend,S,San Antonio,676,3,4:25pm
+436,normal,weekend,S,Mountain View,702,3,4:29pm
+436,normal,weekend,S,Sunnyvale,731,3,4:34pm
+436,normal,weekend,S,Lawrence,757,4,4:38pm
+436,normal,weekend,S,Santa Clara,805,4,4:43pm
+436,normal,weekend,S,San Jose,862,4,4:51pm
+438,normal,weekend,S,San Francisco,0,1,4:15pm
+438,normal,weekend,S,22nd Street,40,1,4:20pm
+438,normal,weekend,S,Bayshore,124,1,4:25pm
+438,normal,weekend,S,So. San Francisco,178,1,4:31pm
+438,normal,weekend,S,San Bruno,216,1,4:35pm
+438,normal,weekend,S,Millbrae,249,2,4:39pm
+438,normal,weekend,S,Broadway,280,2,4:43pm
+438,normal,weekend,S,Burlingame,307,2,4:45pm
+438,normal,weekend,S,San Mateo,334,2,4:49pm
+438,normal,weekend,S,Hayward Park,354,2,4:52pm
+438,normal,weekend,S,Hillsdale,391,2,4:55pm
+438,normal,weekend,S,Belmont,428,2,4:58pm
+438,normal,weekend,S,San Carlos,458,2,5:01pm
+438,normal,weekend,S,Redwood City,499,2,5:07pm
+438,normal,weekend,S,Atherton,543,3,5:11pm
+438,normal,weekend,S,Menlo Park,574,3,5:14pm
+438,normal,weekend,S,Palo Alto,604,3,5:17pm
+438,normal,weekend,S,California Ave,649,3,5:21pm
+438,normal,weekend,S,San Antonio,676,3,5:25pm
+438,normal,weekend,S,Mountain View,702,3,5:29pm
+438,normal,weekend,S,Sunnyvale,731,3,5:34pm
+438,normal,weekend,S,Lawrence,757,4,5:38pm
+438,normal,weekend,S,Santa Clara,805,4,5:43pm
+438,normal,weekend,S,San Jose,862,4,5:51pm
+440,normal,weekend,S,San Francisco,0,1,5:15pm
+440,normal,weekend,S,22nd Street,40,1,5:20pm
+440,normal,weekend,S,Bayshore,124,1,5:25pm
+440,normal,weekend,S,So. San Francisco,178,1,5:31pm
+440,normal,weekend,S,San Bruno,216,1,5:35pm
+440,normal,weekend,S,Millbrae,249,2,5:39pm
+440,normal,weekend,S,Broadway,280,2,5:43pm
+440,normal,weekend,S,Burlingame,307,2,5:45pm
+440,normal,weekend,S,San Mateo,334,2,5:49pm
+440,normal,weekend,S,Hayward Park,354,2,5:52pm
+440,normal,weekend,S,Hillsdale,391,2,5:55pm
+440,normal,weekend,S,Belmont,428,2,5:58pm
+440,normal,weekend,S,San Carlos,458,2,6:01pm
+440,normal,weekend,S,Redwood City,499,2,6:07pm
+440,normal,weekend,S,Atherton,543,3,6:11pm
+440,normal,weekend,S,Menlo Park,574,3,6:14pm
+440,normal,weekend,S,Palo Alto,604,3,6:17pm
+440,normal,weekend,S,California Ave,649,3,6:21pm
+440,normal,weekend,S,San Antonio,676,3,6:25pm
+440,normal,weekend,S,Mountain View,702,3,6:29pm
+440,normal,weekend,S,Sunnyvale,731,3,6:34pm
+440,normal,weekend,S,Lawrence,757,4,6:38pm
+440,normal,weekend,S,Santa Clara,805,4,6:43pm
+440,normal,weekend,S,San Jose,862,4,6:51pm
+442,normal,weekend,S,San Francisco,0,1,6:15pm
+442,normal,weekend,S,22nd Street,40,1,6:20pm
+442,normal,weekend,S,Bayshore,124,1,6:25pm
+442,normal,weekend,S,So. San Francisco,178,1,6:31pm
+442,normal,weekend,S,San Bruno,216,1,6:35pm
+442,normal,weekend,S,Millbrae,249,2,6:39pm
+442,normal,weekend,S,Broadway,280,2,6:43pm
+442,normal,weekend,S,Burlingame,307,2,6:45pm
+442,normal,weekend,S,San Mateo,334,2,6:49pm
+442,normal,weekend,S,Hayward Park,354,2,6:52pm
+442,normal,weekend,S,Hillsdale,391,2,6:55pm
+442,normal,weekend,S,Belmont,428,2,6:58pm
+442,normal,weekend,S,San Carlos,458,2,7:01pm
+442,normal,weekend,S,Redwood City,499,2,7:07pm
+442,normal,weekend,S,Atherton,543,3,7:11pm
+442,normal,weekend,S,Menlo Park,574,3,7:14pm
+442,normal,weekend,S,Palo Alto,604,3,7:17pm
+442,normal,weekend,S,California Ave,649,3,7:21pm
+442,normal,weekend,S,San Antonio,676,3,7:25pm
+442,normal,weekend,S,Mountain View,702,3,7:29pm
+442,normal,weekend,S,Sunnyvale,731,3,7:34pm
+442,normal,weekend,S,Lawrence,757,4,7:38pm
+442,normal,weekend,S,Santa Clara,805,4,7:43pm
+442,normal,weekend,S,San Jose,862,4,7:51pm
+444,normal,weekend,S,San Francisco,0,1,7:15pm
+444,normal,weekend,S,22nd Street,40,1,7:20pm
+444,normal,weekend,S,Bayshore,124,1,7:25pm
+444,normal,weekend,S,So. San Francisco,178,1,7:31pm
+444,normal,weekend,S,San Bruno,216,1,7:35pm
+444,normal,weekend,S,Millbrae,249,2,7:39pm
+444,normal,weekend,S,Broadway,280,2,7:43pm
+444,normal,weekend,S,Burlingame,307,2,7:45pm
+444,normal,weekend,S,San Mateo,334,2,7:49pm
+444,normal,weekend,S,Hayward Park,354,2,7:52pm
+444,normal,weekend,S,Hillsdale,391,2,7:55pm
+444,normal,weekend,S,Belmont,428,2,7:58pm
+444,normal,weekend,S,San Carlos,458,2,8:01pm
+444,normal,weekend,S,Redwood City,499,2,8:07pm
+444,normal,weekend,S,Atherton,543,3,8:11pm
+444,normal,weekend,S,Menlo Park,574,3,8:14pm
+444,normal,weekend,S,Palo Alto,604,3,8:17pm
+444,normal,weekend,S,California Ave,649,3,8:21pm
+444,normal,weekend,S,San Antonio,676,3,8:25pm
+444,normal,weekend,S,Mountain View,702,3,8:29pm
+444,normal,weekend,S,Sunnyvale,731,3,8:34pm
+444,normal,weekend,S,Lawrence,757,4,8:38pm
+444,normal,weekend,S,Santa Clara,805,4,8:43pm
+444,normal,weekend,S,San Jose,862,4,8:51pm
+446,normal,weekend,S,San Francisco,0,1,8:15pm
+446,normal,weekend,S,22nd Street,40,1,8:20pm
+446,normal,weekend,S,Bayshore,124,1,8:25pm
+446,normal,weekend,S,So. San Francisco,178,1,8:31pm
+446,normal,weekend,S,San Bruno,216,1,8:35pm
+446,normal,weekend,S,Millbrae,249,2,8:39pm
+446,normal,weekend,S,Broadway,280,2,8:43pm
+446,normal,weekend,S,Burlingame,307,2,8:45pm
+446,normal,weekend,S,San Mateo,334,2,8:49pm
+446,normal,weekend,S,Hayward Park,354,2,8:52pm
+446,normal,weekend,S,Hillsdale,391,2,8:55pm
+446,normal,weekend,S,Belmont,428,2,8:58pm
+446,normal,weekend,S,San Carlos,458,2,9:01pm
+446,normal,weekend,S,Redwood City,499,2,9:07pm
+446,normal,weekend,S,Atherton,543,3,9:11pm
+446,normal,weekend,S,Menlo Park,574,3,9:14pm
+446,normal,weekend,S,Palo Alto,604,3,9:17pm
+446,normal,weekend,S,California Ave,649,3,9:21pm
+446,normal,weekend,S,San Antonio,676,3,9:25pm
+446,normal,weekend,S,Mountain View,702,3,9:29pm
+446,normal,weekend,S,Sunnyvale,731,3,9:34pm
+446,normal,weekend,S,Lawrence,757,4,9:38pm
+446,normal,weekend,S,Santa Clara,805,4,9:43pm
+446,normal,weekend,S,San Jose,862,4,9:51pm
+448,normal,weekend,S,San Francisco,0,1,9:15pm
+448,normal,weekend,S,22nd Street,40,1,9:20pm
+448,normal,weekend,S,Bayshore,124,1,9:25pm
+448,normal,weekend,S,So. San Francisco,178,1,9:31pm
+448,normal,weekend,S,San Bruno,216,1,9:35pm
+448,normal,weekend,S,Millbrae,249,2,9:39pm
+448,normal,weekend,S,Broadway,280,2,9:43pm
+448,normal,weekend,S,Burlingame,307,2,9:45pm
+448,normal,weekend,S,San Mateo,334,2,9:49pm
+448,normal,weekend,S,Hayward Park,354,2,9:52pm
+448,normal,weekend,S,Hillsdale,391,2,9:55pm
+448,normal,weekend,S,Belmont,428,2,9:58pm
+448,normal,weekend,S,San Carlos,458,2,10:01pm
+448,normal,weekend,S,Redwood City,499,2,10:07pm
+448,normal,weekend,S,Atherton,543,3,10:11pm
+448,normal,weekend,S,Menlo Park,574,3,10:14pm
+448,normal,weekend,S,Palo Alto,604,3,10:17pm
+448,normal,weekend,S,California Ave,649,3,10:21pm
+448,normal,weekend,S,San Antonio,676,3,10:25pm
+448,normal,weekend,S,Mountain View,702,3,10:29pm
+448,normal,weekend,S,Sunnyvale,731,3,10:34pm
+448,normal,weekend,S,Lawrence,757,4,10:38pm
+448,normal,weekend,S,Santa Clara,805,4,10:43pm
+448,normal,weekend,S,San Jose,862,4,10:51pm
+450,normal,weekend,S,San Francisco,0,1,10:15pm
+450,normal,weekend,S,22nd Street,40,1,10:20pm
+450,normal,weekend,S,Bayshore,124,1,10:25pm
+450,normal,weekend,S,So. San Francisco,178,1,10:31pm
+450,normal,weekend,S,San Bruno,216,1,10:35pm
+450,normal,weekend,S,Millbrae,249,2,10:39pm
+450,normal,weekend,S,Broadway,280,2,10:43pm
+450,normal,weekend,S,Burlingame,307,2,10:45pm
+450,normal,weekend,S,San Mateo,334,2,10:49pm
+450,normal,weekend,S,Hayward Park,354,2,10:52pm
+450,normal,weekend,S,Hillsdale,391,2,10:55pm
+450,normal,weekend,S,Belmont,428,2,10:58pm
+450,normal,weekend,S,San Carlos,458,2,11:01pm
+450,normal,weekend,S,Redwood City,499,2,11:07pm
+450,normal,weekend,S,Atherton,543,3,11:11pm
+450,normal,weekend,S,Menlo Park,574,3,11:14pm
+450,normal,weekend,S,Palo Alto,604,3,11:17pm
+450,normal,weekend,S,California Ave,649,3,11:21pm
+450,normal,weekend,S,San Antonio,676,3,11:25pm
+450,normal,weekend,S,Mountain View,702,3,11:29pm
+450,normal,weekend,S,Sunnyvale,731,3,11:34pm
+450,normal,weekend,S,Lawrence,757,4,11:38pm
+450,normal,weekend,S,Santa Clara,805,4,11:43pm
+450,normal,weekend,S,San Jose,862,4,11:51pm
+454,normal,weekend,S,San Francisco,0,1,12:01am
+454,normal,weekend,S,22nd Street,40,1,12:06am
+454,normal,weekend,S,Bayshore,124,1,12:11am
+454,normal,weekend,S,So. San Francisco,178,1,12:17am
+454,normal,weekend,S,San Bruno,216,1,12:21am
+454,normal,weekend,S,Millbrae,249,2,12:25am
+454,normal,weekend,S,Broadway,280,2,12:29am
+454,normal,weekend,S,Burlingame,307,2,12:31am
+454,normal,weekend,S,San Mateo,334,2,12:35am
+454,normal,weekend,S,Hayward Park,354,2,12:38am
+454,normal,weekend,S,Hillsdale,391,2,12:41am
+454,normal,weekend,S,Belmont,428,2,12:44am
+454,normal,weekend,S,San Carlos,458,2,12:47am
+454,normal,weekend,S,Redwood City,499,2,12:53am
+454,normal,weekend,S,Atherton,543,3,12:57am
+454,normal,weekend,S,Menlo Park,574,3,1:00am
+454,normal,weekend,S,Palo Alto,604,3,1:03am
+454,normal,weekend,S,California Ave,649,3,1:07am
+454,normal,weekend,S,San Antonio,676,3,1:11am
+454,normal,weekend,S,Mountain View,702,3,1:15am
+454,normal,weekend,S,Sunnyvale,731,3,1:20am
+454,normal,weekend,S,Lawrence,757,4,1:24am
+454,normal,weekend,S,Santa Clara,805,4,1:29am
+454,normal,weekend,S,San Jose,862,4,1:37am
+101,normal,weekday,N,San Francisco,0,1,6:01am
+101,normal,weekday,N,22nd Street,40,1,5:52am
+101,normal,weekday,N,Bayshore,124,1,5:47am
+101,normal,weekday,N,So. San Francisco,178,1,5:41am
+101,normal,weekday,N,San Bruno,216,1,5:37am
+101,normal,weekday,N,Millbrae,249,2,5:33am
+101,normal,weekday,N,Burlingame,307,2,5:28am
+101,normal,weekday,N,San Mateo,334,2,5:25am
+101,normal,weekday,N,Hayward Park,354,2,5:22am
+101,normal,weekday,N,Hillsdale,391,2,5:19am
+101,normal,weekday,N,Belmont,428,2,5:16am
+101,normal,weekday,N,San Carlos,458,2,5:13am
+101,normal,weekday,N,Redwood City,499,2,5:09am
+101,normal,weekday,N,Menlo Park,574,3,5:04am
+101,normal,weekday,N,Palo Alto,604,3,5:01am
+101,normal,weekday,N,California Ave,649,3,4:57am
+101,normal,weekday,N,San Antonio,676,3,4:53am
+101,normal,weekday,N,Mountain View,702,3,4:49am
+101,normal,weekday,N,Sunnyvale,731,3,4:44am
+101,normal,weekday,N,Lawrence,757,4,4:40am
+101,normal,weekday,N,Santa Clara,805,4,4:35am
+101,normal,weekday,N,San Jose,862,4,4:30am
+103,normal,weekday,N,San Francisco,0,1,6:36am
+103,normal,weekday,N,22nd Street,40,1,6:27am
+103,normal,weekday,N,Bayshore,124,1,6:22am
+103,normal,weekday,N,So. San Francisco,178,1,6:16am
+103,normal,weekday,N,San Bruno,216,1,6:12am
+103,normal,weekday,N,Millbrae,249,2,6:08am
+103,normal,weekday,N,Burlingame,307,2,6:03am
+103,normal,weekday,N,San Mateo,334,2,6:00am
+103,normal,weekday,N,Hayward Park,354,2,5:57am
+103,normal,weekday,N,Hillsdale,391,2,5:54am
+103,normal,weekday,N,Belmont,428,2,5:51am
+103,normal,weekday,N,San Carlos,458,2,5:48am
+103,normal,weekday,N,Redwood City,499,2,5:44am
+103,normal,weekday,N,Menlo Park,574,3,5:39am
+103,normal,weekday,N,Palo Alto,604,3,5:36am
+103,normal,weekday,N,California Ave,649,3,5:32am
+103,normal,weekday,N,San Antonio,676,3,5:28am
+103,normal,weekday,N,Mountain View,702,3,5:24am
+103,normal,weekday,N,Sunnyvale,731,3,5:19am
+103,normal,weekday,N,Lawrence,757,4,5:15am
+103,normal,weekday,N,Santa Clara,805,4,5:10am
+103,normal,weekday,N,San Jose,862,4,5:05am
+103,normal,weekday,N,Tamien,906,4,4:58am
+305,bullet,weekday,N,San Francisco,0,1,6:42am
+305,bullet,weekday,N,Millbrae,249,2,6:24am
+305,bullet,weekday,N,Hillsdale,391,2,6:16am
+305,bullet,weekday,N,Palo Alto,604,3,6:05am
+305,bullet,weekday,N,Mountain View,702,3,5:57am
+305,bullet,weekday,N,San Jose,862,4,5:45am
+207,limited,weekday,N,San Francisco,0,1,7:19am
+207,limited,weekday,N,So. San Francisco,178,1,7:05am
+207,limited,weekday,N,Millbrae,249,2,6:59am
+207,limited,weekday,N,Hillsdale,391,2,6:51am
+207,limited,weekday,N,Redwood City,499,2,6:45am
+207,limited,weekday,N,Menlo Park,574,3,6:39am
+207,limited,weekday,N,Palo Alto,604,3,6:36am
+207,limited,weekday,N,California Ave,649,3,6:31am
+207,limited,weekday,N,San Antonio,676,3,6:27am
+207,limited,weekday,N,Mountain View,702,3,6:23am
+207,limited,weekday,N,Sunnyvale,731,3,6:18am
+207,limited,weekday,N,Lawrence,757,4,6:12am
+207,limited,weekday,N,Santa Clara,805,4,6:02am
+207,limited,weekday,N,San Jose,862,4,5:57am
+207,limited,weekday,N,Tamien,906,4,5:50am
+309,bullet,weekday,N,San Francisco,0,1,7:02am
+309,bullet,weekday,N,Millbrae,249,2,6:45am
+309,bullet,weekday,N,San Mateo,334,2,6:39am
+309,bullet,weekday,N,Redwood City,499,2,6:30am
+309,bullet,weekday,N,Palo Alto,604,3,6:23am
+309,bullet,weekday,N,Sunnyvale,731,3,6:13am
+309,bullet,weekday,N,San Jose,862,4,6:03am
+309,bullet,weekday,N,Tamien,906,4,5:56am
+211,limited,weekday,N,San Francisco,0,1,7:48am
+211,limited,weekday,N,22nd Street,40,1,7:40am
+211,limited,weekday,N,Bayshore,124,1,7:33am
+211,limited,weekday,N,So. San Francisco,178,1,7:25am
+211,limited,weekday,N,San Bruno,216,1,7:21am
+211,limited,weekday,N,Millbrae,249,2,7:17am
+211,limited,weekday,N,Burlingame,307,2,7:11am
+211,limited,weekday,N,San Mateo,334,2,7:08am
+211,limited,weekday,N,Hayward Park,354,2,7:05am
+211,limited,weekday,N,Hillsdale,391,2,7:02am
+211,limited,weekday,N,Belmont,428,2,6:58am
+211,limited,weekday,N,San Carlos,458,2,6:55am
+211,limited,weekday,N,Redwood City,499,2,6:51am
+211,limited,weekday,N,Menlo Park,574,3,6:45am
+211,limited,weekday,N,Mountain View,702,3,6:37am
+211,limited,weekday,N,Santa Clara,805,4,6:27am
+211,limited,weekday,N,San Jose,862,4,6:22am
+313,bullet,weekday,N,San Francisco,0,1,7:42am
+313,bullet,weekday,N,Millbrae,249,2,7:24am
+313,bullet,weekday,N,Hillsdale,391,2,7:16am
+313,bullet,weekday,N,Palo Alto,604,3,7:05am
+313,bullet,weekday,N,Mountain View,702,3,6:57am
+313,bullet,weekday,N,San Jose,862,4,6:45am
+215,limited,weekday,N,San Francisco,0,1,7:57am
+215,limited,weekday,N,San Bruno,216,1,7:42am
+215,limited,weekday,N,Burlingame,307,2,7:35am
+215,limited,weekday,N,San Mateo,334,2,7:32am
+215,limited,weekday,N,Hillsdale,391,2,7:28am
+215,limited,weekday,N,San Carlos,458,2,7:24am
+215,limited,weekday,N,Palo Alto,604,3,7:16am
+215,limited,weekday,N,California Ave,649,3,7:11am
+215,limited,weekday,N,Mountain View,702,3,7:05am
+215,limited,weekday,N,Sunnyvale,731,3,7:00am
+215,limited,weekday,N,San Jose,862,4,6:50am
+217,limited,weekday,N,San Francisco,0,1,8:19am
+217,limited,weekday,N,So. San Francisco,178,1,8:05am
+217,limited,weekday,N,Millbrae,249,2,7:59am
+217,limited,weekday,N,Hillsdale,391,2,7:51am
+217,limited,weekday,N,Redwood City,499,2,7:45am
+217,limited,weekday,N,Menlo Park,574,3,7:39am
+217,limited,weekday,N,Palo Alto,604,3,7:36am
+217,limited,weekday,N,California Ave,649,3,7:31am
+217,limited,weekday,N,San Antonio,676,3,7:27am
+217,limited,weekday,N,Mountain View,702,3,7:23am
+217,limited,weekday,N,Sunnyvale,731,3,7:18am
+217,limited,weekday,N,Lawrence,757,4,7:12am
+217,limited,weekday,N,Santa Clara,805,4,7:02am
+217,limited,weekday,N,San Jose,862,4,6:57am
+217,limited,weekday,N,Tamien,906,4,6:49am
+217,limited,weekday,N,Capitol,939,5,6:41am
+217,limited,weekday,N,Blossom Hill,966,5,6:35am
+217,limited,weekday,N,Morgan Hill,997,6,6:22am
+217,limited,weekday,N,San Martin,1021,6,6:16am
+217,limited,weekday,N,Gilroy,1053,6,6:07am
+319,bullet,weekday,N,San Francisco,0,1,8:02am
+319,bullet,weekday,N,Millbrae,249,2,7:45am
+319,bullet,weekday,N,San Mateo,334,2,7:39am
+319,bullet,weekday,N,Redwood City,499,2,7:30am
+319,bullet,weekday,N,Palo Alto,604,3,7:23am
+319,bullet,weekday,N,Sunnyvale,731,3,7:13am
+319,bullet,weekday,N,San Jose,862,4,7:03am
+319,bullet,weekday,N,Tamien,906,4,6:56am
+221,limited,weekday,N,San Francisco,0,1,8:48am
+221,limited,weekday,N,22nd Street,40,1,8:40am
+221,limited,weekday,N,Bayshore,124,1,8:33am
+221,limited,weekday,N,So. San Francisco,178,1,8:25am
+221,limited,weekday,N,San Bruno,216,1,8:21am
+221,limited,weekday,N,Millbrae,249,2,8:17am
+221,limited,weekday,N,Burlingame,307,2,8:11am
+221,limited,weekday,N,San Mateo,334,2,8:08am
+221,limited,weekday,N,Hayward Park,354,2,8:05am
+221,limited,weekday,N,Hillsdale,391,2,8:02am
+221,limited,weekday,N,Belmont,428,2,7:58am
+221,limited,weekday,N,San Carlos,458,2,7:55am
+221,limited,weekday,N,Redwood City,499,2,7:51am
+221,limited,weekday,N,Menlo Park,574,3,7:45am
+221,limited,weekday,N,Mountain View,702,3,7:37am
+221,limited,weekday,N,Lawrence,757,4,7:30am
+221,limited,weekday,N,Santa Clara,805,4,7:25am
+221,limited,weekday,N,San Jose,862,4,7:20am
+221,limited,weekday,N,Tamien,906,4,7:12am
+221,limited,weekday,N,Capitol,939,5,7:04am
+221,limited,weekday,N,Blossom Hill,966,5,6:58am
+221,limited,weekday,N,Morgan Hill,997,6,6:45am
+221,limited,weekday,N,San Martin,1021,6,6:39am
+221,limited,weekday,N,Gilroy,1053,6,6:30am
+323,bullet,weekday,N,San Francisco,0,1,8:42am
+323,bullet,weekday,N,Millbrae,249,2,8:24am
+323,bullet,weekday,N,Hillsdale,391,2,8:16am
+323,bullet,weekday,N,Palo Alto,604,3,8:05am
+323,bullet,weekday,N,Mountain View,702,3,7:57am
+323,bullet,weekday,N,San Jose,862,4,7:45am
+225,limited,weekday,N,San Francisco,0,1,8:57am
+225,limited,weekday,N,San Bruno,216,1,8:42am
+225,limited,weekday,N,Burlingame,307,2,8:35am
+225,limited,weekday,N,San Mateo,334,2,8:32am
+225,limited,weekday,N,Hillsdale,391,2,8:28am
+225,limited,weekday,N,San Carlos,458,2,8:24am
+225,limited,weekday,N,Palo Alto,604,3,8:16am
+225,limited,weekday,N,California Ave,649,3,8:11am
+225,limited,weekday,N,Mountain View,702,3,8:05am
+225,limited,weekday,N,Sunnyvale,731,3,8:00am
+225,limited,weekday,N,San Jose,862,4,7:50am
+227,limited,weekday,N,San Francisco,0,1,9:19am
+227,limited,weekday,N,So. San Francisco,178,1,9:05am
+227,limited,weekday,N,Millbrae,249,2,8:59am
+227,limited,weekday,N,Hillsdale,391,2,8:51am
+227,limited,weekday,N,Redwood City,499,2,8:45am
+227,limited,weekday,N,Menlo Park,574,3,8:39am
+227,limited,weekday,N,Palo Alto,604,3,8:36am
+227,limited,weekday,N,California Ave,649,3,8:31am
+227,limited,weekday,N,San Antonio,676,3,8:27am
+227,limited,weekday,N,Mountain View,702,3,8:23am
+227,limited,weekday,N,Sunnyvale,731,3,8:18am
+227,limited,weekday,N,Lawrence,757,4,8:12am
+227,limited,weekday,N,Santa Clara,805,4,8:02am
+227,limited,weekday,N,College Park,833,4,7:58am
+227,limited,weekday,N,San Jose,862,4,7:55am
+227,limited,weekday,N,Tamien,906,4,7:47am
+227,limited,weekday,N,Capitol,939,5,7:39am
+227,limited,weekday,N,Blossom Hill,966,5,7:33am
+227,limited,weekday,N,Morgan Hill,997,6,7:20am
+227,limited,weekday,N,San Martin,1021,6,7:14am
+227,limited,weekday,N,Gilroy,1053,6,7:05am
+329,bullet,weekday,N,San Francisco,0,1,9:02am
+329,bullet,weekday,N,Millbrae,249,2,8:45am
+329,bullet,weekday,N,San Mateo,334,2,8:39am
+329,bullet,weekday,N,Redwood City,499,2,8:30am
+329,bullet,weekday,N,Palo Alto,604,3,8:23am
+329,bullet,weekday,N,Sunnyvale,731,3,8:13am
+329,bullet,weekday,N,San Jose,862,4,8:03am
+329,bullet,weekday,N,Tamien,906,4,7:56am
+231,limited,weekday,N,San Francisco,0,1,9:45am
+231,limited,weekday,N,22nd Street,40,1,9:37am
+231,limited,weekday,N,Bayshore,124,1,9:31am
+231,limited,weekday,N,So. San Francisco,178,1,9:25am
+231,limited,weekday,N,San Bruno,216,1,9:21am
+231,limited,weekday,N,Millbrae,249,2,9:17am
+231,limited,weekday,N,Burlingame,307,2,9:11am
+231,limited,weekday,N,San Mateo,334,2,9:08am
+231,limited,weekday,N,Hayward Park,354,2,9:05am
+231,limited,weekday,N,Hillsdale,391,2,9:02am
+231,limited,weekday,N,Belmont,428,2,8:58am
+231,limited,weekday,N,San Carlos,458,2,8:55am
+231,limited,weekday,N,Redwood City,499,2,8:51am
+231,limited,weekday,N,Menlo Park,574,3,8:45am
+231,limited,weekday,N,Mountain View,702,3,8:37am
+231,limited,weekday,N,Santa Clara,805,4,8:27am
+231,limited,weekday,N,San Jose,862,4,8:22am
+233,limited,weekday,N,San Francisco,0,1,10:02am
+233,limited,weekday,N,San Bruno,216,1,9:45am
+233,limited,weekday,N,Millbrae,249,2,9:41am
+233,limited,weekday,N,Burlingame,307,2,9:36am
+233,limited,weekday,N,San Mateo,334,2,9:33am
+233,limited,weekday,N,Hillsdale,391,2,9:29am
+233,limited,weekday,N,Belmont,428,2,9:26am
+233,limited,weekday,N,San Carlos,458,2,9:23am
+233,limited,weekday,N,Redwood City,499,2,9:19am
+233,limited,weekday,N,Menlo Park,574,3,9:14am
+233,limited,weekday,N,Palo Alto,604,3,9:11am
+233,limited,weekday,N,California Ave,649,3,9:07am
+233,limited,weekday,N,San Antonio,676,3,9:03am
+233,limited,weekday,N,Mountain View,702,3,8:59am
+233,limited,weekday,N,Sunnyvale,731,3,8:54am
+233,limited,weekday,N,Lawrence,757,4,8:50am
+233,limited,weekday,N,Santa Clara,805,4,8:45am
+233,limited,weekday,N,San Jose,862,4,8:40am
+233,limited,weekday,N,Tamien,906,4,8:33am
+135,normal,weekday,N,San Francisco,0,1,10:41am
+135,normal,weekday,N,22nd Street,40,1,10:32am
+135,normal,weekday,N,Bayshore,124,1,10:27am
+135,normal,weekday,N,So. San Francisco,178,1,10:21am
+135,normal,weekday,N,San Bruno,216,1,10:17am
+135,normal,weekday,N,Millbrae,249,2,10:13am
+135,normal,weekday,N,Burlingame,307,2,10:08am
+135,normal,weekday,N,San Mateo,334,2,10:05am
+135,normal,weekday,N,Hayward Park,354,2,10:02am
+135,normal,weekday,N,Hillsdale,391,2,9:59am
+135,normal,weekday,N,Belmont,428,2,9:56am
+135,normal,weekday,N,San Carlos,458,2,9:53am
+135,normal,weekday,N,Redwood City,499,2,9:49am
+135,normal,weekday,N,Menlo Park,574,3,9:44am
+135,normal,weekday,N,Palo Alto,604,3,9:41am
+135,normal,weekday,N,California Ave,649,3,9:37am
+135,normal,weekday,N,San Antonio,676,3,9:33am
+135,normal,weekday,N,Mountain View,702,3,9:29am
+135,normal,weekday,N,Sunnyvale,731,3,9:24am
+135,normal,weekday,N,Lawrence,757,4,9:20am
+135,normal,weekday,N,Santa Clara,805,4,9:15am
+135,normal,weekday,N,San Jose,862,4,9:10am
+237,limited,weekday,N,San Francisco,0,1,11:02am
+237,limited,weekday,N,San Bruno,216,1,10:45am
+237,limited,weekday,N,Millbrae,249,2,10:41am
+237,limited,weekday,N,Burlingame,307,2,10:36am
+237,limited,weekday,N,San Mateo,334,2,10:33am
+237,limited,weekday,N,Hillsdale,391,2,10:29am
+237,limited,weekday,N,Belmont,428,2,10:26am
+237,limited,weekday,N,San Carlos,458,2,10:23am
+237,limited,weekday,N,Redwood City,499,2,10:19am
+237,limited,weekday,N,Menlo Park,574,3,10:14am
+237,limited,weekday,N,Palo Alto,604,3,10:11am
+237,limited,weekday,N,California Ave,649,3,10:07am
+237,limited,weekday,N,San Antonio,676,3,10:03am
+237,limited,weekday,N,Mountain View,702,3,9:59am
+237,limited,weekday,N,Sunnyvale,731,3,9:54am
+237,limited,weekday,N,Lawrence,757,4,9:50am
+237,limited,weekday,N,Santa Clara,805,4,9:45am
+237,limited,weekday,N,San Jose,862,4,9:40am
+237,limited,weekday,N,Tamien,906,4,9:33am
+139,normal,weekday,N,San Francisco,0,1,11:41am
+139,normal,weekday,N,22nd Street,40,1,11:32am
+139,normal,weekday,N,Bayshore,124,1,11:27am
+139,normal,weekday,N,So. San Francisco,178,1,11:21am
+139,normal,weekday,N,San Bruno,216,1,11:17am
+139,normal,weekday,N,Millbrae,249,2,11:13am
+139,normal,weekday,N,Burlingame,307,2,11:08am
+139,normal,weekday,N,San Mateo,334,2,11:05am
+139,normal,weekday,N,Hayward Park,354,2,11:02am
+139,normal,weekday,N,Hillsdale,391,2,10:59am
+139,normal,weekday,N,Belmont,428,2,10:56am
+139,normal,weekday,N,San Carlos,458,2,10:53am
+139,normal,weekday,N,Redwood City,499,2,10:49am
+139,normal,weekday,N,Menlo Park,574,3,10:44am
+139,normal,weekday,N,Palo Alto,604,3,10:41am
+139,normal,weekday,N,California Ave,649,3,10:37am
+139,normal,weekday,N,San Antonio,676,3,10:33am
+139,normal,weekday,N,Mountain View,702,3,10:29am
+139,normal,weekday,N,Sunnyvale,731,3,10:24am
+139,normal,weekday,N,Lawrence,757,4,10:20am
+139,normal,weekday,N,Santa Clara,805,4,10:15am
+139,normal,weekday,N,San Jose,862,4,10:10am
+143,normal,weekday,N,San Francisco,0,1,12:41pm
+143,normal,weekday,N,22nd Street,40,1,12:32pm
+143,normal,weekday,N,Bayshore,124,1,12:27pm
+143,normal,weekday,N,So. San Francisco,178,1,12:21pm
+143,normal,weekday,N,San Bruno,216,1,12:17pm
+143,normal,weekday,N,Millbrae,249,2,12:13pm
+143,normal,weekday,N,Burlingame,307,2,12:08pm
+143,normal,weekday,N,San Mateo,334,2,12:05pm
+143,normal,weekday,N,Hayward Park,354,2,12:02pm
+143,normal,weekday,N,Hillsdale,391,2,11:59am
+143,normal,weekday,N,Belmont,428,2,11:56am
+143,normal,weekday,N,San Carlos,458,2,11:53am
+143,normal,weekday,N,Redwood City,499,2,11:49am
+143,normal,weekday,N,Menlo Park,574,3,11:44am
+143,normal,weekday,N,Palo Alto,604,3,11:41am
+143,normal,weekday,N,California Ave,649,3,11:37am
+143,normal,weekday,N,San Antonio,676,3,11:33am
+143,normal,weekday,N,Mountain View,702,3,11:29am
+143,normal,weekday,N,Sunnyvale,731,3,11:24am
+143,normal,weekday,N,Lawrence,757,4,11:20am
+143,normal,weekday,N,Santa Clara,805,4,11:15am
+143,normal,weekday,N,San Jose,862,4,11:10am
+147,normal,weekday,N,San Francisco,0,1,1:41pm
+147,normal,weekday,N,22nd Street,40,1,1:32pm
+147,normal,weekday,N,Bayshore,124,1,1:27pm
+147,normal,weekday,N,So. San Francisco,178,1,1:21pm
+147,normal,weekday,N,San Bruno,216,1,1:17pm
+147,normal,weekday,N,Millbrae,249,2,1:13pm
+147,normal,weekday,N,Burlingame,307,2,1:08pm
+147,normal,weekday,N,San Mateo,334,2,1:05pm
+147,normal,weekday,N,Hayward Park,354,2,1:02pm
+147,normal,weekday,N,Hillsdale,391,2,12:59pm
+147,normal,weekday,N,Belmont,428,2,12:56pm
+147,normal,weekday,N,San Carlos,458,2,12:53pm
+147,normal,weekday,N,Redwood City,499,2,12:49pm
+147,normal,weekday,N,Menlo Park,574,3,12:44pm
+147,normal,weekday,N,Palo Alto,604,3,12:41pm
+147,normal,weekday,N,California Ave,649,3,12:37pm
+147,normal,weekday,N,San Antonio,676,3,12:33pm
+147,normal,weekday,N,Mountain View,702,3,12:29pm
+147,normal,weekday,N,Sunnyvale,731,3,12:24pm
+147,normal,weekday,N,Lawrence,757,4,12:20pm
+147,normal,weekday,N,Santa Clara,805,4,12:15pm
+147,normal,weekday,N,San Jose,862,4,12:10pm
+151,normal,weekday,N,San Francisco,0,1,2:41pm
+151,normal,weekday,N,22nd Street,40,1,2:32pm
+151,normal,weekday,N,Bayshore,124,1,2:27pm
+151,normal,weekday,N,So. San Francisco,178,1,2:21pm
+151,normal,weekday,N,San Bruno,216,1,2:17pm
+151,normal,weekday,N,Millbrae,249,2,2:13pm
+151,normal,weekday,N,Burlingame,307,2,2:08pm
+151,normal,weekday,N,San Mateo,334,2,2:05pm
+151,normal,weekday,N,Hayward Park,354,2,2:02pm
+151,normal,weekday,N,Hillsdale,391,2,1:59pm
+151,normal,weekday,N,Belmont,428,2,1:56pm
+151,normal,weekday,N,San Carlos,458,2,1:53pm
+151,normal,weekday,N,Redwood City,499,2,1:49pm
+151,normal,weekday,N,Menlo Park,574,3,1:44pm
+151,normal,weekday,N,Palo Alto,604,3,1:41pm
+151,normal,weekday,N,California Ave,649,3,1:37pm
+151,normal,weekday,N,San Antonio,676,3,1:33pm
+151,normal,weekday,N,Mountain View,702,3,1:29pm
+151,normal,weekday,N,Sunnyvale,731,3,1:24pm
+151,normal,weekday,N,Lawrence,757,4,1:20pm
+151,normal,weekday,N,Santa Clara,805,4,1:15pm
+151,normal,weekday,N,San Jose,862,4,1:10pm
+155,normal,weekday,N,San Francisco,0,1,3:41pm
+155,normal,weekday,N,22nd Street,40,1,3:32pm
+155,normal,weekday,N,Bayshore,124,1,3:27pm
+155,normal,weekday,N,So. San Francisco,178,1,3:21pm
+155,normal,weekday,N,San Bruno,216,1,3:17pm
+155,normal,weekday,N,Millbrae,249,2,3:13pm
+155,normal,weekday,N,Burlingame,307,2,3:08pm
+155,normal,weekday,N,San Mateo,334,2,3:05pm
+155,normal,weekday,N,Hayward Park,354,2,3:02pm
+155,normal,weekday,N,Hillsdale,391,2,2:59pm
+155,normal,weekday,N,Belmont,428,2,2:56pm
+155,normal,weekday,N,San Carlos,458,2,2:53pm
+155,normal,weekday,N,Redwood City,499,2,2:49pm
+155,normal,weekday,N,Menlo Park,574,3,2:44pm
+155,normal,weekday,N,Palo Alto,604,3,2:41pm
+155,normal,weekday,N,California Ave,649,3,2:37pm
+155,normal,weekday,N,San Antonio,676,3,2:33pm
+155,normal,weekday,N,Mountain View,702,3,2:29pm
+155,normal,weekday,N,Sunnyvale,731,3,2:24pm
+155,normal,weekday,N,Lawrence,757,4,2:20pm
+155,normal,weekday,N,Santa Clara,805,4,2:15pm
+155,normal,weekday,N,San Jose,862,4,2:10pm
+257,limited,weekday,N,San Francisco,0,1,4:02pm
+257,limited,weekday,N,San Bruno,216,1,3:45pm
+257,limited,weekday,N,Millbrae,249,2,3:41pm
+257,limited,weekday,N,Burlingame,307,2,3:36pm
+257,limited,weekday,N,San Mateo,334,2,3:33pm
+257,limited,weekday,N,Hillsdale,391,2,3:29pm
+257,limited,weekday,N,Belmont,428,2,3:26pm
+257,limited,weekday,N,San Carlos,458,2,3:23pm
+257,limited,weekday,N,Redwood City,499,2,3:19pm
+257,limited,weekday,N,Menlo Park,574,3,3:14pm
+257,limited,weekday,N,Palo Alto,604,3,3:11pm
+257,limited,weekday,N,California Ave,649,3,3:07pm
+257,limited,weekday,N,San Antonio,676,3,3:03pm
+257,limited,weekday,N,Mountain View,702,3,2:59pm
+257,limited,weekday,N,Sunnyvale,731,3,2:54pm
+257,limited,weekday,N,Lawrence,757,4,2:50pm
+257,limited,weekday,N,Santa Clara,805,4,2:45pm
+257,limited,weekday,N,San Jose,862,4,2:40pm
+257,limited,weekday,N,Tamien,906,4,2:33pm
+159,normal,weekday,N,San Francisco,0,1,4:38pm
+159,normal,weekday,N,22nd Street,40,1,4:29pm
+159,normal,weekday,N,Bayshore,124,1,4:24pm
+159,normal,weekday,N,So. San Francisco,178,1,4:18pm
+159,normal,weekday,N,San Bruno,216,1,4:14pm
+159,normal,weekday,N,Millbrae,249,2,4:10pm
+159,normal,weekday,N,Burlingame,307,2,4:05pm
+159,normal,weekday,N,San Mateo,334,2,4:02pm
+159,normal,weekday,N,Hayward Park,354,2,3:59pm
+159,normal,weekday,N,Hillsdale,391,2,3:56pm
+159,normal,weekday,N,Belmont,428,2,3:53pm
+159,normal,weekday,N,San Carlos,458,2,3:50pm
+159,normal,weekday,N,Redwood City,499,2,3:46pm
+159,normal,weekday,N,Menlo Park,574,3,3:41pm
+159,normal,weekday,N,Palo Alto,604,3,3:38pm
+159,normal,weekday,N,California Ave,649,3,3:34pm
+159,normal,weekday,N,San Antonio,676,3,3:30pm
+159,normal,weekday,N,Mountain View,702,3,3:26pm
+159,normal,weekday,N,Sunnyvale,731,3,3:21pm
+159,normal,weekday,N,Lawrence,757,4,3:17pm
+159,normal,weekday,N,Santa Clara,805,4,3:12pm
+159,normal,weekday,N,College Park,833,4,3:08pm
+159,normal,weekday,N,San Jose,862,4,3:05pm
+261,limited,weekday,N,San Francisco,0,1,5:03pm
+261,limited,weekday,N,22nd Street,40,1,4:55pm
+261,limited,weekday,N,Millbrae,249,2,4:43pm
+261,limited,weekday,N,San Mateo,334,2,4:36pm
+261,limited,weekday,N,San Carlos,458,2,4:29pm
+261,limited,weekday,N,Redwood City,499,2,4:25pm
+261,limited,weekday,N,Menlo Park,574,3,4:19pm
+261,limited,weekday,N,Palo Alto,604,3,4:16pm
+261,limited,weekday,N,California Ave,649,3,4:11pm
+261,limited,weekday,N,San Antonio,676,3,4:07pm
+261,limited,weekday,N,Mountain View,702,3,4:03pm
+261,limited,weekday,N,Sunnyvale,731,3,3:58pm
+261,limited,weekday,N,Lawrence,757,4,3:54pm
+261,limited,weekday,N,Santa Clara,805,4,3:49pm
+261,limited,weekday,N,San Jose,862,4,3:44pm
+261,limited,weekday,N,Tamien,906,4,3:37pm
+263,limited,weekday,N,San Francisco,0,1,5:29pm
+263,limited,weekday,N,22nd Street,40,1,5:21pm
+263,limited,weekday,N,Bayshore,124,1,5:13pm
+263,limited,weekday,N,So. San Francisco,178,1,5:05pm
+263,limited,weekday,N,San Bruno,216,1,5:01pm
+263,limited,weekday,N,Millbrae,249,2,4:57pm
+263,limited,weekday,N,Burlingame,307,2,4:51pm
+263,limited,weekday,N,San Mateo,334,2,4:48pm
+263,limited,weekday,N,Hayward Park,354,2,4:45pm
+263,limited,weekday,N,Hillsdale,391,2,4:42pm
+263,limited,weekday,N,Belmont,428,2,4:38pm
+263,limited,weekday,N,San Carlos,458,2,4:35pm
+263,limited,weekday,N,Redwood City,499,2,4:31pm
+263,limited,weekday,N,Palo Alto,604,3,4:24pm
+263,limited,weekday,N,Santa Clara,805,4,4:10pm
+263,limited,weekday,N,San Jose,862,4,4:05pm
+263,limited,weekday,N,Tamien,906,4,3:58pm
+365,bullet,weekday,N,San Francisco,0,1,5:24pm
+365,bullet,weekday,N,22nd Street,40,1,5:17pm
+365,bullet,weekday,N,Millbrae,249,2,5:05pm
+365,bullet,weekday,N,Redwood City,499,2,4:52pm
+365,bullet,weekday,N,Menlo Park,574,3,4:46pm
+365,bullet,weekday,N,Mountain View,702,3,4:37pm
+365,bullet,weekday,N,San Jose,862,4,4:25pm
+267,limited,weekday,N,San Francisco,0,1,6:02pm
+267,limited,weekday,N,22nd Street,40,1,5:55pm
+267,limited,weekday,N,Millbrae,249,2,5:43pm
+267,limited,weekday,N,San Mateo,334,2,5:36pm
+267,limited,weekday,N,San Carlos,458,2,5:29pm
+267,limited,weekday,N,Redwood City,499,2,5:25pm
+267,limited,weekday,N,Menlo Park,574,3,5:19pm
+267,limited,weekday,N,Palo Alto,604,3,5:16pm
+267,limited,weekday,N,California Ave,649,3,5:11pm
+267,limited,weekday,N,San Antonio,676,3,5:07pm
+267,limited,weekday,N,Mountain View,702,3,5:03pm
+267,limited,weekday,N,Sunnyvale,731,3,4:58pm
+267,limited,weekday,N,Lawrence,757,4,4:52pm
+267,limited,weekday,N,Santa Clara,805,4,4:44pm
+267,limited,weekday,N,San Jose,862,4,4:39pm
+267,limited,weekday,N,Tamien,906,4,4:32pm
+369,bullet,weekday,N,San Francisco,0,1,5:44pm
+369,bullet,weekday,N,22nd Street,40,1,5:37pm
+369,bullet,weekday,N,Millbrae,249,2,5:25pm
+369,bullet,weekday,N,Hillsdale,391,2,5:17pm
+369,bullet,weekday,N,Palo Alto,604,3,5:06pm
+369,bullet,weekday,N,Mountain View,702,3,4:58pm
+369,bullet,weekday,N,San Jose,862,4,4:45pm
+271,limited,weekday,N,San Francisco,0,1,6:29pm
+271,limited,weekday,N,22nd Street,40,1,6:21pm
+271,limited,weekday,N,Bayshore,124,1,6:13pm
+271,limited,weekday,N,So. San Francisco,178,1,6:05pm
+271,limited,weekday,N,San Bruno,216,1,6:01pm
+271,limited,weekday,N,Millbrae,249,2,5:57pm
+271,limited,weekday,N,Burlingame,307,2,5:51pm
+271,limited,weekday,N,San Mateo,334,2,5:48pm
+271,limited,weekday,N,Hayward Park,354,2,5:45pm
+271,limited,weekday,N,Hillsdale,391,2,5:42pm
+271,limited,weekday,N,Belmont,428,2,5:38pm
+271,limited,weekday,N,San Carlos,458,2,5:35pm
+271,limited,weekday,N,Redwood City,499,2,5:31pm
+271,limited,weekday,N,Palo Alto,604,3,5:24pm
+271,limited,weekday,N,Santa Clara,805,4,5:10pm
+271,limited,weekday,N,San Jose,862,4,5:05pm
+271,limited,weekday,N,Tamien,906,4,4:58pm
+373,bullet,weekday,N,San Francisco,0,1,6:24pm
+373,bullet,weekday,N,22nd Street,40,1,6:17pm
+373,bullet,weekday,N,Millbrae,249,2,6:05pm
+373,bullet,weekday,N,Redwood City,499,2,5:52pm
+373,bullet,weekday,N,Menlo Park,574,3,5:46pm
+373,bullet,weekday,N,Mountain View,702,3,5:37pm
+373,bullet,weekday,N,San Jose,862,4,5:25pm
+275,limited,weekday,N,San Francisco,0,1,6:39pm
+275,limited,weekday,N,San Bruno,216,1,6:22pm
+275,limited,weekday,N,Burlingame,307,2,6:15pm
+275,limited,weekday,N,San Mateo,334,2,6:12pm
+275,limited,weekday,N,Hillsdale,391,2,6:08pm
+275,limited,weekday,N,San Carlos,458,2,6:04pm
+275,limited,weekday,N,Menlo Park,574,3,5:57pm
+275,limited,weekday,N,Palo Alto,604,3,5:54pm
+275,limited,weekday,N,Mountain View,702,3,5:46pm
+275,limited,weekday,N,Lawrence,757,4,5:39pm
+275,limited,weekday,N,San Jose,862,4,5:31pm
+277,limited,weekday,N,San Francisco,0,1,7:02pm
+277,limited,weekday,N,22nd Street,40,1,6:55pm
+277,limited,weekday,N,Millbrae,249,2,6:43pm
+277,limited,weekday,N,San Mateo,334,2,6:36pm
+277,limited,weekday,N,San Carlos,458,2,6:29pm
+277,limited,weekday,N,Redwood City,499,2,6:25pm
+277,limited,weekday,N,Menlo Park,574,3,6:19pm
+277,limited,weekday,N,Palo Alto,604,3,6:16pm
+277,limited,weekday,N,California Ave,649,3,6:11pm
+277,limited,weekday,N,San Antonio,676,3,6:07pm
+277,limited,weekday,N,Mountain View,702,3,6:03pm
+277,limited,weekday,N,Sunnyvale,731,3,5:58pm
+277,limited,weekday,N,Lawrence,757,4,5:52pm
+277,limited,weekday,N,Santa Clara,805,4,5:44pm
+277,limited,weekday,N,San Jose,862,4,5:39pm
+277,limited,weekday,N,Tamien,906,4,5:32pm
+379,bullet,weekday,N,San Francisco,0,1,6:44pm
+379,bullet,weekday,N,22nd Street,40,1,6:37pm
+379,bullet,weekday,N,Millbrae,249,2,6:25pm
+379,bullet,weekday,N,Hillsdale,391,2,6:17pm
+379,bullet,weekday,N,Palo Alto,604,3,6:06pm
+379,bullet,weekday,N,Mountain View,702,3,5:58pm
+379,bullet,weekday,N,San Jose,862,4,5:45pm
+281,limited,weekday,N,San Francisco,0,1,7:29pm
+281,limited,weekday,N,22nd Street,40,1,7:21pm
+281,limited,weekday,N,Bayshore,124,1,7:13pm
+281,limited,weekday,N,So. San Francisco,178,1,7:05pm
+281,limited,weekday,N,San Bruno,216,1,7:01pm
+281,limited,weekday,N,Millbrae,249,2,6:57pm
+281,limited,weekday,N,Burlingame,307,2,6:51pm
+281,limited,weekday,N,San Mateo,334,2,6:48pm
+281,limited,weekday,N,Hayward Park,354,2,6:45pm
+281,limited,weekday,N,Hillsdale,391,2,6:42pm
+281,limited,weekday,N,Belmont,428,2,6:38pm
+281,limited,weekday,N,San Carlos,458,2,6:35pm
+281,limited,weekday,N,Redwood City,499,2,6:31pm
+281,limited,weekday,N,Palo Alto,604,3,6:24pm
+281,limited,weekday,N,Santa Clara,805,4,6:10pm
+281,limited,weekday,N,San Jose,862,4,6:05pm
+281,limited,weekday,N,Tamien,906,4,5:58pm
+383,bullet,weekday,N,San Francisco,0,1,7:24pm
+383,bullet,weekday,N,22nd Street,40,1,7:17pm
+383,bullet,weekday,N,Millbrae,249,2,7:05pm
+383,bullet,weekday,N,Redwood City,499,2,6:52pm
+383,bullet,weekday,N,Menlo Park,574,3,6:46pm
+383,bullet,weekday,N,Mountain View,702,3,6:37pm
+383,bullet,weekday,N,San Jose,862,4,6:25pm
+285,limited,weekday,N,San Francisco,0,1,7:39pm
+285,limited,weekday,N,San Bruno,216,1,7:22pm
+285,limited,weekday,N,Burlingame,307,2,7:15pm
+285,limited,weekday,N,San Mateo,334,2,7:12pm
+285,limited,weekday,N,Hillsdale,391,2,7:08pm
+285,limited,weekday,N,San Carlos,458,2,7:04pm
+285,limited,weekday,N,Menlo Park,574,3,6:57pm
+285,limited,weekday,N,Palo Alto,604,3,6:54pm
+285,limited,weekday,N,Mountain View,702,3,6:46pm
+285,limited,weekday,N,Lawrence,757,4,6:39pm
+285,limited,weekday,N,San Jose,862,4,6:31pm
+285,limited,weekday,N,Tamien,906,4,6:24pm
+287,limited,weekday,N,San Francisco,0,1,8:00pm
+287,limited,weekday,N,22nd Street,40,1,7:53pm
+287,limited,weekday,N,Millbrae,249,2,7:41pm
+287,limited,weekday,N,Burlingame,307,2,7:35pm
+287,limited,weekday,N,San Mateo,334,2,7:32pm
+287,limited,weekday,N,Hillsdale,391,2,7:28pm
+287,limited,weekday,N,San Carlos,458,2,7:23pm
+287,limited,weekday,N,Redwood City,499,2,7:19pm
+287,limited,weekday,N,Menlo Park,574,3,7:13pm
+287,limited,weekday,N,Palo Alto,604,3,7:10pm
+287,limited,weekday,N,California Ave,649,3,7:06pm
+287,limited,weekday,N,Mountain View,702,3,7:00pm
+287,limited,weekday,N,Lawrence,757,4,6:53pm
+287,limited,weekday,N,San Jose,862,4,6:45pm
+189,normal,weekday,N,San Francisco,0,1,8:21pm
+189,normal,weekday,N,22nd Street,40,1,8:12pm
+189,normal,weekday,N,Bayshore,124,1,8:07pm
+189,normal,weekday,N,So. San Francisco,178,1,8:01pm
+189,normal,weekday,N,San Bruno,216,1,7:57pm
+189,normal,weekday,N,Millbrae,249,2,7:53pm
+189,normal,weekday,N,Burlingame,307,2,7:48pm
+189,normal,weekday,N,San Mateo,334,2,7:45pm
+189,normal,weekday,N,Hayward Park,354,2,7:42pm
+189,normal,weekday,N,Hillsdale,391,2,7:39pm
+189,normal,weekday,N,Belmont,428,2,7:36pm
+189,normal,weekday,N,San Carlos,458,2,7:33pm
+189,normal,weekday,N,Redwood City,499,2,7:29pm
+189,normal,weekday,N,Menlo Park,574,3,7:24pm
+189,normal,weekday,N,Palo Alto,604,3,7:21pm
+189,normal,weekday,N,California Ave,649,3,7:17pm
+189,normal,weekday,N,San Antonio,676,3,7:13pm
+189,normal,weekday,N,Mountain View,702,3,7:09pm
+189,normal,weekday,N,Sunnyvale,731,3,7:04pm
+189,normal,weekday,N,Lawrence,757,4,7:00pm
+189,normal,weekday,N,Santa Clara,805,4,6:55pm
+189,normal,weekday,N,San Jose,862,4,6:50pm
+191,normal,weekday,N,San Francisco,0,1,9:01pm
+191,normal,weekday,N,22nd Street,40,1,8:52pm
+191,normal,weekday,N,Bayshore,124,1,8:47pm
+191,normal,weekday,N,So. San Francisco,178,1,8:41pm
+191,normal,weekday,N,San Bruno,216,1,8:37pm
+191,normal,weekday,N,Millbrae,249,2,8:33pm
+191,normal,weekday,N,Burlingame,307,2,8:28pm
+191,normal,weekday,N,San Mateo,334,2,8:25pm
+191,normal,weekday,N,Hayward Park,354,2,8:22pm
+191,normal,weekday,N,Hillsdale,391,2,8:19pm
+191,normal,weekday,N,Belmont,428,2,8:16pm
+191,normal,weekday,N,San Carlos,458,2,8:13pm
+191,normal,weekday,N,Redwood City,499,2,8:09pm
+191,normal,weekday,N,Menlo Park,574,3,8:04pm
+191,normal,weekday,N,Palo Alto,604,3,8:01pm
+191,normal,weekday,N,California Ave,649,3,7:57pm
+191,normal,weekday,N,San Antonio,676,3,7:53pm
+191,normal,weekday,N,Mountain View,702,3,7:49pm
+191,normal,weekday,N,Sunnyvale,731,3,7:44pm
+191,normal,weekday,N,Lawrence,757,4,7:40pm
+191,normal,weekday,N,Santa Clara,805,4,7:35pm
+191,normal,weekday,N,San Jose,862,4,7:30pm
+193,normal,weekday,N,San Francisco,0,1,10:01pm
+193,normal,weekday,N,22nd Street,40,1,9:52pm
+193,normal,weekday,N,Bayshore,124,1,9:47pm
+193,normal,weekday,N,So. San Francisco,178,1,9:41pm
+193,normal,weekday,N,San Bruno,216,1,9:37pm
+193,normal,weekday,N,Millbrae,249,2,9:33pm
+193,normal,weekday,N,Burlingame,307,2,9:28pm
+193,normal,weekday,N,San Mateo,334,2,9:25pm
+193,normal,weekday,N,Hayward Park,354,2,9:22pm
+193,normal,weekday,N,Hillsdale,391,2,9:19pm
+193,normal,weekday,N,Belmont,428,2,9:16pm
+193,normal,weekday,N,San Carlos,458,2,9:13pm
+193,normal,weekday,N,Redwood City,499,2,9:09pm
+193,normal,weekday,N,Menlo Park,574,3,9:04pm
+193,normal,weekday,N,Palo Alto,604,3,9:01pm
+193,normal,weekday,N,California Ave,649,3,8:57pm
+193,normal,weekday,N,San Antonio,676,3,8:53pm
+193,normal,weekday,N,Mountain View,702,3,8:49pm
+193,normal,weekday,N,Sunnyvale,731,3,8:44pm
+193,normal,weekday,N,Lawrence,757,4,8:40pm
+193,normal,weekday,N,Santa Clara,805,4,8:35pm
+193,normal,weekday,N,San Jose,862,4,8:30pm
+193,normal,weekday,N,Tamien,906,4,8:23pm
+195,normal,weekday,N,San Francisco,0,1,11:01pm
+195,normal,weekday,N,22nd Street,40,1,10:52pm
+195,normal,weekday,N,Bayshore,124,1,10:47pm
+195,normal,weekday,N,So. San Francisco,178,1,10:41pm
+195,normal,weekday,N,San Bruno,216,1,10:37pm
+195,normal,weekday,N,Millbrae,249,2,10:33pm
+195,normal,weekday,N,Burlingame,307,2,10:28pm
+195,normal,weekday,N,San Mateo,334,2,10:25pm
+195,normal,weekday,N,Hayward Park,354,2,10:22pm
+195,normal,weekday,N,Hillsdale,391,2,10:19pm
+195,normal,weekday,N,Belmont,428,2,10:16pm
+195,normal,weekday,N,San Carlos,458,2,10:13pm
+195,normal,weekday,N,Redwood City,499,2,10:09pm
+195,normal,weekday,N,Menlo Park,574,3,10:04pm
+195,normal,weekday,N,Palo Alto,604,3,10:01pm
+195,normal,weekday,N,California Ave,649,3,9:57pm
+195,normal,weekday,N,San Antonio,676,3,9:53pm
+195,normal,weekday,N,Mountain View,702,3,9:49pm
+195,normal,weekday,N,Sunnyvale,731,3,9:44pm
+195,normal,weekday,N,Lawrence,757,4,9:40pm
+195,normal,weekday,N,Santa Clara,805,4,9:35pm
+195,normal,weekday,N,San Jose,862,4,9:30pm
+195,normal,weekday,N,Tamien,906,4,9:23pm
+197,normal,weekday,N,San Francisco,0,1,12:01am
+197,normal,weekday,N,22nd Street,40,1,11:52pm
+197,normal,weekday,N,Bayshore,124,1,11:47pm
+197,normal,weekday,N,So. San Francisco,178,1,11:41pm
+197,normal,weekday,N,San Bruno,216,1,11:37pm
+197,normal,weekday,N,Millbrae,249,2,11:33pm
+197,normal,weekday,N,Burlingame,307,2,11:28pm
+197,normal,weekday,N,San Mateo,334,2,11:25pm
+197,normal,weekday,N,Hayward Park,354,2,11:22pm
+197,normal,weekday,N,Hillsdale,391,2,11:19pm
+197,normal,weekday,N,Belmont,428,2,11:16pm
+197,normal,weekday,N,San Carlos,458,2,11:13pm
+197,normal,weekday,N,Redwood City,499,2,11:09pm
+197,normal,weekday,N,Menlo Park,574,3,11:04pm
+197,normal,weekday,N,Palo Alto,604,3,11:01pm
+197,normal,weekday,N,California Ave,649,3,10:57pm
+197,normal,weekday,N,San Antonio,676,3,10:53pm
+197,normal,weekday,N,Mountain View,702,3,10:49pm
+197,normal,weekday,N,Sunnyvale,731,3,10:44pm
+197,normal,weekday,N,Lawrence,757,4,10:40pm
+197,normal,weekday,N,Santa Clara,805,4,10:35pm
+197,normal,weekday,N,San Jose,862,4,10:30pm
+421,normal,weekend,N,San Francisco,0,1,8:36am
+421,normal,weekend,N,22nd Street,40,1,8:28am
+421,normal,weekend,N,Bayshore,124,1,8:23am
+421,normal,weekend,N,So. San Francisco,178,1,8:17am
+421,normal,weekend,N,San Bruno,216,1,8:12am
+421,normal,weekend,N,Millbrae,249,2,8:08am
+421,normal,weekend,N,Broadway,280,2,8:03am
+421,normal,weekend,N,Burlingame,307,2,8:00am
+421,normal,weekend,N,San Mateo,334,2,7:57am
+421,normal,weekend,N,Hayward Park,354,2,7:54am
+421,normal,weekend,N,Hillsdale,391,2,7:51am
+421,normal,weekend,N,Belmont,428,2,7:48am
+421,normal,weekend,N,San Carlos,458,2,7:45am
+421,normal,weekend,N,Redwood City,499,2,7:41am
+421,normal,weekend,N,Atherton,543,3,7:37am
+421,normal,weekend,N,Menlo Park,574,3,7:34am
+421,normal,weekend,N,Palo Alto,604,3,7:31am
+421,normal,weekend,N,California Ave,649,3,7:27am
+421,normal,weekend,N,San Antonio,676,3,7:23am
+421,normal,weekend,N,Mountain View,702,3,7:19am
+421,normal,weekend,N,Sunnyvale,731,3,7:14am
+421,normal,weekend,N,Lawrence,757,4,7:10am
+421,normal,weekend,N,Santa Clara,805,4,7:05am
+421,normal,weekend,N,San Jose,862,4,7:00am
+423,normal,weekend,N,San Francisco,0,1,9:36am
+423,normal,weekend,N,22nd Street,40,1,9:28am
+423,normal,weekend,N,Bayshore,124,1,9:23am
+423,normal,weekend,N,So. San Francisco,178,1,9:17am
+423,normal,weekend,N,San Bruno,216,1,9:12am
+423,normal,weekend,N,Millbrae,249,2,9:08am
+423,normal,weekend,N,Broadway,280,2,9:03am
+423,normal,weekend,N,Burlingame,307,2,9:00am
+423,normal,weekend,N,San Mateo,334,2,8:57am
+423,normal,weekend,N,Hayward Park,354,2,8:54am
+423,normal,weekend,N,Hillsdale,391,2,8:51am
+423,normal,weekend,N,Belmont,428,2,8:48am
+423,normal,weekend,N,San Carlos,458,2,8:45am
+423,normal,weekend,N,Redwood City,499,2,8:41am
+423,normal,weekend,N,Atherton,543,3,8:37am
+423,normal,weekend,N,Menlo Park,574,3,8:34am
+423,normal,weekend,N,Palo Alto,604,3,8:31am
+423,normal,weekend,N,California Ave,649,3,8:27am
+423,normal,weekend,N,San Antonio,676,3,8:23am
+423,normal,weekend,N,Mountain View,702,3,8:19am
+423,normal,weekend,N,Sunnyvale,731,3,8:14am
+423,normal,weekend,N,Lawrence,757,4,8:10am
+423,normal,weekend,N,Santa Clara,805,4,8:05am
+423,normal,weekend,N,San Jose,862,4,8:00am
+425,normal,weekend,N,San Francisco,0,1,10:36am
+425,normal,weekend,N,22nd Street,40,1,10:28am
+425,normal,weekend,N,Bayshore,124,1,10:23am
+425,normal,weekend,N,So. San Francisco,178,1,10:17am
+425,normal,weekend,N,San Bruno,216,1,10:12am
+425,normal,weekend,N,Millbrae,249,2,10:08am
+425,normal,weekend,N,Broadway,280,2,10:03am
+425,normal,weekend,N,Burlingame,307,2,10:00am
+425,normal,weekend,N,San Mateo,334,2,9:57am
+425,normal,weekend,N,Hayward Park,354,2,9:54am
+425,normal,weekend,N,Hillsdale,391,2,9:51am
+425,normal,weekend,N,Belmont,428,2,9:48am
+425,normal,weekend,N,San Carlos,458,2,9:45am
+425,normal,weekend,N,Redwood City,499,2,9:41am
+425,normal,weekend,N,Atherton,543,3,9:37am
+425,normal,weekend,N,Menlo Park,574,3,9:34am
+425,normal,weekend,N,Palo Alto,604,3,9:31am
+425,normal,weekend,N,California Ave,649,3,9:27am
+425,normal,weekend,N,San Antonio,676,3,9:23am
+425,normal,weekend,N,Mountain View,702,3,9:19am
+425,normal,weekend,N,Sunnyvale,731,3,9:14am
+425,normal,weekend,N,Lawrence,757,4,9:10am
+425,normal,weekend,N,Santa Clara,805,4,9:05am
+425,normal,weekend,N,San Jose,862,4,9:00am
+427,normal,weekend,N,San Francisco,0,1,11:36am
+427,normal,weekend,N,22nd Street,40,1,11:28am
+427,normal,weekend,N,Bayshore,124,1,11:23am
+427,normal,weekend,N,So. San Francisco,178,1,11:17am
+427,normal,weekend,N,San Bruno,216,1,11:12am
+427,normal,weekend,N,Millbrae,249,2,11:08am
+427,normal,weekend,N,Broadway,280,2,11:03am
+427,normal,weekend,N,Burlingame,307,2,11:00am
+427,normal,weekend,N,San Mateo,334,2,10:57am
+427,normal,weekend,N,Hayward Park,354,2,10:54am
+427,normal,weekend,N,Hillsdale,391,2,10:51am
+427,normal,weekend,N,Belmont,428,2,10:48am
+427,normal,weekend,N,San Carlos,458,2,10:45am
+427,normal,weekend,N,Redwood City,499,2,10:41am
+427,normal,weekend,N,Atherton,543,3,10:37am
+427,normal,weekend,N,Menlo Park,574,3,10:34am
+427,normal,weekend,N,Palo Alto,604,3,10:31am
+427,normal,weekend,N,California Ave,649,3,10:27am
+427,normal,weekend,N,San Antonio,676,3,10:23am
+427,normal,weekend,N,Mountain View,702,3,10:19am
+427,normal,weekend,N,Sunnyvale,731,3,10:14am
+427,normal,weekend,N,Lawrence,757,4,10:10am
+427,normal,weekend,N,Santa Clara,805,4,10:05am
+427,normal,weekend,N,San Jose,862,4,10:00am
+429,normal,weekend,N,San Francisco,0,1,12:36pm
+429,normal,weekend,N,22nd Street,40,1,12:28pm
+429,normal,weekend,N,Bayshore,124,1,12:23pm
+429,normal,weekend,N,So. San Francisco,178,1,12:17pm
+429,normal,weekend,N,San Bruno,216,1,12:12pm
+429,normal,weekend,N,Millbrae,249,2,12:08pm
+429,normal,weekend,N,Broadway,280,2,12:03pm
+429,normal,weekend,N,Burlingame,307,2,12:00pm
+429,normal,weekend,N,San Mateo,334,2,11:57am
+429,normal,weekend,N,Hayward Park,354,2,11:54am
+429,normal,weekend,N,Hillsdale,391,2,11:51am
+429,normal,weekend,N,Belmont,428,2,11:48am
+429,normal,weekend,N,San Carlos,458,2,11:45am
+429,normal,weekend,N,Redwood City,499,2,11:41am
+429,normal,weekend,N,Atherton,543,3,11:37am
+429,normal,weekend,N,Menlo Park,574,3,11:34am
+429,normal,weekend,N,Palo Alto,604,3,11:31am
+429,normal,weekend,N,California Ave,649,3,11:27am
+429,normal,weekend,N,San Antonio,676,3,11:23am
+429,normal,weekend,N,Mountain View,702,3,11:19am
+429,normal,weekend,N,Sunnyvale,731,3,11:14am
+429,normal,weekend,N,Lawrence,757,4,11:10am
+429,normal,weekend,N,Santa Clara,805,4,11:05am
+429,normal,weekend,N,San Jose,862,4,11:00am
+431,normal,weekend,N,San Francisco,0,1,1:36pm
+431,normal,weekend,N,22nd Street,40,1,1:28pm
+431,normal,weekend,N,Bayshore,124,1,1:23pm
+431,normal,weekend,N,So. San Francisco,178,1,1:17pm
+431,normal,weekend,N,San Bruno,216,1,1:12pm
+431,normal,weekend,N,Millbrae,249,2,1:08pm
+431,normal,weekend,N,Broadway,280,2,1:03pm
+431,normal,weekend,N,Burlingame,307,2,1:00pm
+431,normal,weekend,N,San Mateo,334,2,12:57pm
+431,normal,weekend,N,Hayward Park,354,2,12:54pm
+431,normal,weekend,N,Hillsdale,391,2,12:51pm
+431,normal,weekend,N,Belmont,428,2,12:48pm
+431,normal,weekend,N,San Carlos,458,2,12:45pm
+431,normal,weekend,N,Redwood City,499,2,12:41pm
+431,normal,weekend,N,Atherton,543,3,12:37pm
+431,normal,weekend,N,Menlo Park,574,3,12:34pm
+431,normal,weekend,N,Palo Alto,604,3,12:31pm
+431,normal,weekend,N,California Ave,649,3,12:27pm
+431,normal,weekend,N,San Antonio,676,3,12:23pm
+431,normal,weekend,N,Mountain View,702,3,12:19pm
+431,normal,weekend,N,Sunnyvale,731,3,12:14pm
+431,normal,weekend,N,Lawrence,757,4,12:10pm
+431,normal,weekend,N,Santa Clara,805,4,12:05pm
+431,normal,weekend,N,San Jose,862,4,12:00pm
+433,normal,weekend,N,San Francisco,0,1,2:36pm
+433,normal,weekend,N,22nd Street,40,1,2:28pm
+433,normal,weekend,N,Bayshore,124,1,2:23pm
+433,normal,weekend,N,So. San Francisco,178,1,2:17pm
+433,normal,weekend,N,San Bruno,216,1,2:12pm
+433,normal,weekend,N,Millbrae,249,2,2:08pm
+433,normal,weekend,N,Broadway,280,2,2:03pm
+433,normal,weekend,N,Burlingame,307,2,2:00pm
+433,normal,weekend,N,San Mateo,334,2,1:57pm
+433,normal,weekend,N,Hayward Park,354,2,1:54pm
+433,normal,weekend,N,Hillsdale,391,2,1:51pm
+433,normal,weekend,N,Belmont,428,2,1:48pm
+433,normal,weekend,N,San Carlos,458,2,1:45pm
+433,normal,weekend,N,Redwood City,499,2,1:41pm
+433,normal,weekend,N,Atherton,543,3,1:37pm
+433,normal,weekend,N,Menlo Park,574,3,1:34pm
+433,normal,weekend,N,Palo Alto,604,3,1:31pm
+433,normal,weekend,N,California Ave,649,3,1:27pm
+433,normal,weekend,N,San Antonio,676,3,1:23pm
+433,normal,weekend,N,Mountain View,702,3,1:19pm
+433,normal,weekend,N,Sunnyvale,731,3,1:14pm
+433,normal,weekend,N,Lawrence,757,4,1:10pm
+433,normal,weekend,N,Santa Clara,805,4,1:05pm
+433,normal,weekend,N,San Jose,862,4,1:00pm
+435,normal,weekend,N,San Francisco,0,1,3:36pm
+435,normal,weekend,N,22nd Street,40,1,3:28pm
+435,normal,weekend,N,Bayshore,124,1,3:23pm
+435,normal,weekend,N,So. San Francisco,178,1,3:17pm
+435,normal,weekend,N,San Bruno,216,1,3:12pm
+435,normal,weekend,N,Millbrae,249,2,3:08pm
+435,normal,weekend,N,Broadway,280,2,3:03pm
+435,normal,weekend,N,Burlingame,307,2,3:00pm
+435,normal,weekend,N,San Mateo,334,2,2:57pm
+435,normal,weekend,N,Hayward Park,354,2,2:54pm
+435,normal,weekend,N,Hillsdale,391,2,2:51pm
+435,normal,weekend,N,Belmont,428,2,2:48pm
+435,normal,weekend,N,San Carlos,458,2,2:45pm
+435,normal,weekend,N,Redwood City,499,2,2:41pm
+435,normal,weekend,N,Atherton,543,3,2:37pm
+435,normal,weekend,N,Menlo Park,574,3,2:34pm
+435,normal,weekend,N,Palo Alto,604,3,2:31pm
+435,normal,weekend,N,California Ave,649,3,2:27pm
+435,normal,weekend,N,San Antonio,676,3,2:23pm
+435,normal,weekend,N,Mountain View,702,3,2:19pm
+435,normal,weekend,N,Sunnyvale,731,3,2:14pm
+435,normal,weekend,N,Lawrence,757,4,2:10pm
+435,normal,weekend,N,Santa Clara,805,4,2:05pm
+435,normal,weekend,N,San Jose,862,4,2:00pm
+437,normal,weekend,N,San Francisco,0,1,4:36pm
+437,normal,weekend,N,22nd Street,40,1,4:28pm
+437,normal,weekend,N,Bayshore,124,1,4:23pm
+437,normal,weekend,N,So. San Francisco,178,1,4:17pm
+437,normal,weekend,N,San Bruno,216,1,4:12pm
+437,normal,weekend,N,Millbrae,249,2,4:08pm
+437,normal,weekend,N,Broadway,280,2,4:03pm
+437,normal,weekend,N,Burlingame,307,2,4:00pm
+437,normal,weekend,N,San Mateo,334,2,3:57pm
+437,normal,weekend,N,Hayward Park,354,2,3:54pm
+437,normal,weekend,N,Hillsdale,391,2,3:51pm
+437,normal,weekend,N,Belmont,428,2,3:48pm
+437,normal,weekend,N,San Carlos,458,2,3:45pm
+437,normal,weekend,N,Redwood City,499,2,3:41pm
+437,normal,weekend,N,Atherton,543,3,3:37pm
+437,normal,weekend,N,Menlo Park,574,3,3:34pm
+437,normal,weekend,N,Palo Alto,604,3,3:31pm
+437,normal,weekend,N,California Ave,649,3,3:27pm
+437,normal,weekend,N,San Antonio,676,3,3:23pm
+437,normal,weekend,N,Mountain View,702,3,3:19pm
+437,normal,weekend,N,Sunnyvale,731,3,3:14pm
+437,normal,weekend,N,Lawrence,757,4,3:10pm
+437,normal,weekend,N,Santa Clara,805,4,3:05pm
+437,normal,weekend,N,San Jose,862,4,3:00pm
+439,normal,weekend,N,San Francisco,0,1,5:36pm
+439,normal,weekend,N,22nd Street,40,1,5:28pm
+439,normal,weekend,N,Bayshore,124,1,5:23pm
+439,normal,weekend,N,So. San Francisco,178,1,5:17pm
+439,normal,weekend,N,San Bruno,216,1,5:12pm
+439,normal,weekend,N,Millbrae,249,2,5:08pm
+439,normal,weekend,N,Broadway,280,2,5:03pm
+439,normal,weekend,N,Burlingame,307,2,5:00pm
+439,normal,weekend,N,San Mateo,334,2,4:57pm
+439,normal,weekend,N,Hayward Park,354,2,4:54pm
+439,normal,weekend,N,Hillsdale,391,2,4:51pm
+439,normal,weekend,N,Belmont,428,2,4:48pm
+439,normal,weekend,N,San Carlos,458,2,4:45pm
+439,normal,weekend,N,Redwood City,499,2,4:41pm
+439,normal,weekend,N,Atherton,543,3,4:37pm
+439,normal,weekend,N,Menlo Park,574,3,4:34pm
+439,normal,weekend,N,Palo Alto,604,3,4:31pm
+439,normal,weekend,N,California Ave,649,3,4:27pm
+439,normal,weekend,N,San Antonio,676,3,4:23pm
+439,normal,weekend,N,Mountain View,702,3,4:19pm
+439,normal,weekend,N,Sunnyvale,731,3,4:14pm
+439,normal,weekend,N,Lawrence,757,4,4:10pm
+439,normal,weekend,N,Santa Clara,805,4,4:05pm
+439,normal,weekend,N,San Jose,862,4,4:00pm
+441,normal,weekend,N,San Francisco,0,1,6:36pm
+441,normal,weekend,N,22nd Street,40,1,6:28pm
+441,normal,weekend,N,Bayshore,124,1,6:23pm
+441,normal,weekend,N,So. San Francisco,178,1,6:17pm
+441,normal,weekend,N,San Bruno,216,1,6:12pm
+441,normal,weekend,N,Millbrae,249,2,6:08pm
+441,normal,weekend,N,Broadway,280,2,6:03pm
+441,normal,weekend,N,Burlingame,307,2,6:00pm
+441,normal,weekend,N,San Mateo,334,2,5:57pm
+441,normal,weekend,N,Hayward Park,354,2,5:54pm
+441,normal,weekend,N,Hillsdale,391,2,5:51pm
+441,normal,weekend,N,Belmont,428,2,5:48pm
+441,normal,weekend,N,San Carlos,458,2,5:45pm
+441,normal,weekend,N,Redwood City,499,2,5:41pm
+441,normal,weekend,N,Atherton,543,3,5:37pm
+441,normal,weekend,N,Menlo Park,574,3,5:34pm
+441,normal,weekend,N,Palo Alto,604,3,5:31pm
+441,normal,weekend,N,California Ave,649,3,5:27pm
+441,normal,weekend,N,San Antonio,676,3,5:23pm
+441,normal,weekend,N,Mountain View,702,3,5:19pm
+441,normal,weekend,N,Sunnyvale,731,3,5:14pm
+441,normal,weekend,N,Lawrence,757,4,5:10pm
+441,normal,weekend,N,Santa Clara,805,4,5:05pm
+441,normal,weekend,N,San Jose,862,4,5:00pm
+443,normal,weekend,N,San Francisco,0,1,7:36pm
+443,normal,weekend,N,22nd Street,40,1,7:28pm
+443,normal,weekend,N,Bayshore,124,1,7:23pm
+443,normal,weekend,N,So. San Francisco,178,1,7:17pm
+443,normal,weekend,N,San Bruno,216,1,7:12pm
+443,normal,weekend,N,Millbrae,249,2,7:08pm
+443,normal,weekend,N,Broadway,280,2,7:03pm
+443,normal,weekend,N,Burlingame,307,2,7:00pm
+443,normal,weekend,N,San Mateo,334,2,6:57pm
+443,normal,weekend,N,Hayward Park,354,2,6:54pm
+443,normal,weekend,N,Hillsdale,391,2,6:51pm
+443,normal,weekend,N,Belmont,428,2,6:48pm
+443,normal,weekend,N,San Carlos,458,2,6:45pm
+443,normal,weekend,N,Redwood City,499,2,6:41pm
+443,normal,weekend,N,Atherton,543,3,6:37pm
+443,normal,weekend,N,Menlo Park,574,3,6:34pm
+443,normal,weekend,N,Palo Alto,604,3,6:31pm
+443,normal,weekend,N,California Ave,649,3,6:27pm
+443,normal,weekend,N,San Antonio,676,3,6:23pm
+443,normal,weekend,N,Mountain View,702,3,6:19pm
+443,normal,weekend,N,Sunnyvale,731,3,6:14pm
+443,normal,weekend,N,Lawrence,757,4,6:10pm
+443,normal,weekend,N,Santa Clara,805,4,6:05pm
+443,normal,weekend,N,San Jose,862,4,6:00pm
+445,normal,weekend,N,San Francisco,0,1,8:36pm
+445,normal,weekend,N,22nd Street,40,1,8:28pm
+445,normal,weekend,N,Bayshore,124,1,8:23pm
+445,normal,weekend,N,So. San Francisco,178,1,8:17pm
+445,normal,weekend,N,San Bruno,216,1,8:12pm
+445,normal,weekend,N,Millbrae,249,2,8:08pm
+445,normal,weekend,N,Broadway,280,2,8:03pm
+445,normal,weekend,N,Burlingame,307,2,8:00pm
+445,normal,weekend,N,San Mateo,334,2,7:57pm
+445,normal,weekend,N,Hayward Park,354,2,7:54pm
+445,normal,weekend,N,Hillsdale,391,2,7:51pm
+445,normal,weekend,N,Belmont,428,2,7:48pm
+445,normal,weekend,N,San Carlos,458,2,7:45pm
+445,normal,weekend,N,Redwood City,499,2,7:41pm
+445,normal,weekend,N,Atherton,543,3,7:37pm
+445,normal,weekend,N,Menlo Park,574,3,7:34pm
+445,normal,weekend,N,Palo Alto,604,3,7:31pm
+445,normal,weekend,N,California Ave,649,3,7:27pm
+445,normal,weekend,N,San Antonio,676,3,7:23pm
+445,normal,weekend,N,Mountain View,702,3,7:19pm
+445,normal,weekend,N,Sunnyvale,731,3,7:14pm
+445,normal,weekend,N,Lawrence,757,4,7:10pm
+445,normal,weekend,N,Santa Clara,805,4,7:05pm
+445,normal,weekend,N,San Jose,862,4,7:00pm
+447,normal,weekend,N,San Francisco,0,1,9:36pm
+447,normal,weekend,N,22nd Street,40,1,9:28pm
+447,normal,weekend,N,Bayshore,124,1,9:23pm
+447,normal,weekend,N,So. San Francisco,178,1,9:17pm
+447,normal,weekend,N,San Bruno,216,1,9:12pm
+447,normal,weekend,N,Millbrae,249,2,9:08pm
+447,normal,weekend,N,Broadway,280,2,9:03pm
+447,normal,weekend,N,Burlingame,307,2,9:00pm
+447,normal,weekend,N,San Mateo,334,2,8:57pm
+447,normal,weekend,N,Hayward Park,354,2,8:54pm
+447,normal,weekend,N,Hillsdale,391,2,8:51pm
+447,normal,weekend,N,Belmont,428,2,8:48pm
+447,normal,weekend,N,San Carlos,458,2,8:45pm
+447,normal,weekend,N,Redwood City,499,2,8:41pm
+447,normal,weekend,N,Atherton,543,3,8:37pm
+447,normal,weekend,N,Menlo Park,574,3,8:34pm
+447,normal,weekend,N,Palo Alto,604,3,8:31pm
+447,normal,weekend,N,California Ave,649,3,8:27pm
+447,normal,weekend,N,San Antonio,676,3,8:23pm
+447,normal,weekend,N,Mountain View,702,3,8:19pm
+447,normal,weekend,N,Sunnyvale,731,3,8:14pm
+447,normal,weekend,N,Lawrence,757,4,8:10pm
+447,normal,weekend,N,Santa Clara,805,4,8:05pm
+447,normal,weekend,N,San Jose,862,4,8:00pm
+449,normal,weekend,N,San Francisco,0,1,10:36pm
+449,normal,weekend,N,22nd Street,40,1,10:28pm
+449,normal,weekend,N,Bayshore,124,1,10:23pm
+449,normal,weekend,N,So. San Francisco,178,1,10:17pm
+449,normal,weekend,N,San Bruno,216,1,10:12pm
+449,normal,weekend,N,Millbrae,249,2,10:08pm
+449,normal,weekend,N,Broadway,280,2,10:03pm
+449,normal,weekend,N,Burlingame,307,2,10:00pm
+449,normal,weekend,N,San Mateo,334,2,9:57pm
+449,normal,weekend,N,Hayward Park,354,2,9:54pm
+449,normal,weekend,N,Hillsdale,391,2,9:51pm
+449,normal,weekend,N,Belmont,428,2,9:48pm
+449,normal,weekend,N,San Carlos,458,2,9:45pm
+449,normal,weekend,N,Redwood City,499,2,9:41pm
+449,normal,weekend,N,Atherton,543,3,9:37pm
+449,normal,weekend,N,Menlo Park,574,3,9:34pm
+449,normal,weekend,N,Palo Alto,604,3,9:31pm
+449,normal,weekend,N,California Ave,649,3,9:27pm
+449,normal,weekend,N,San Antonio,676,3,9:23pm
+449,normal,weekend,N,Mountain View,702,3,9:19pm
+449,normal,weekend,N,Sunnyvale,731,3,9:14pm
+449,normal,weekend,N,Lawrence,757,4,9:10pm
+449,normal,weekend,N,Santa Clara,805,4,9:05pm
+449,normal,weekend,N,San Jose,862,4,9:00pm
+451,normal,weekend,N,San Francisco,0,1,12:06am
+451,normal,weekend,N,22nd Street,40,1,11:58pm
+451,normal,weekend,N,Bayshore,124,1,11:53pm
+451,normal,weekend,N,So. San Francisco,178,1,11:47pm
+451,normal,weekend,N,San Bruno,216,1,11:42pm
+451,normal,weekend,N,Millbrae,249,2,11:38pm
+451,normal,weekend,N,Broadway,280,2,11:33pm
+451,normal,weekend,N,Burlingame,307,2,11:30pm
+451,normal,weekend,N,San Mateo,334,2,11:27pm
+451,normal,weekend,N,Hayward Park,354,2,11:24pm
+451,normal,weekend,N,Hillsdale,391,2,11:21pm
+451,normal,weekend,N,Belmont,428,2,11:18pm
+451,normal,weekend,N,San Carlos,458,2,11:15pm
+451,normal,weekend,N,Redwood City,499,2,11:11pm
+451,normal,weekend,N,Atherton,543,3,11:07pm
+451,normal,weekend,N,Menlo Park,574,3,11:04pm
+451,normal,weekend,N,Palo Alto,604,3,11:01pm
+451,normal,weekend,N,California Ave,649,3,10:57pm
+451,normal,weekend,N,San Antonio,676,3,10:53pm
+451,normal,weekend,N,Mountain View,702,3,10:49pm
+451,normal,weekend,N,Sunnyvale,731,3,10:44pm
+451,normal,weekend,N,Lawrence,757,4,10:40pm
+451,normal,weekend,N,Santa Clara,805,4,10:35pm
+451,normal,weekend,N,San Jose,862,4,10:30pm
