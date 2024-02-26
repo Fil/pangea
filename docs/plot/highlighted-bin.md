@@ -1,34 +1,19 @@
 ---
 source: https://observablehq.com/@observablehq/plot-highlighted-bin
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Highlighted bin</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Highlighted bin
 
-A custom [function reducer](https://observablehq.com/plot/transforms/bin#bin-transform) that tests if [Aaron Brown](https://en.wikipedia.org/wiki/Aaron_Brown_(sprinter%29) belongs to a given bin.
+A custom [function reducer](https://observablehq.com/plot/transforms/bin#bin-transform) that tests if [Aaron Brown](<https://en.wikipedia.org/wiki/Aaron_Brown_(sprinter)>) belongs to a given bin.
 
 ```js echo
-Plot.plot({
-  y: {
-    grid: true
-  },
-  marks: [
-    Plot.rectY(
-      olympians,
-      Plot.binX(
-        {
-          y: "count",
-          fill: test
-        },
-        {x: "weight"}
-      )
-    ),
-    Plot.ruleY([0])
-  ]
+const chart = Plot.plot({
+  y: {grid: true},
+  marks: [Plot.rectY(olympians, Plot.binX({y: "count", fill: test}, {x: "weight"})), Plot.ruleY([0])]
 });
+
+display(chart);
 ```
 
 In this example we highlight the bin that has a certain athlete.
