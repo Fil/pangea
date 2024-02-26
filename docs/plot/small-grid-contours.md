@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-small-grid-contours
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Small grid contours</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Small grid contours
 
 Part of the documentation for the [contour](https://observablehq.com/plot/marks/contour) mark.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   grid: true,
   x: {domain: [0, grid.width], label: "column →"},
   y: {domain: [0, grid.height], label: "↑ row"},
@@ -24,10 +21,12 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-Plot.plot({
+const chart2 = Plot.plot({
   marks: [
     Plot.contour(grid.values, {
       width: grid.width,
@@ -43,6 +42,8 @@ Plot.plot({
     })
   ]
 });
+
+display(chart2);
 ```
 
 ```js echo
