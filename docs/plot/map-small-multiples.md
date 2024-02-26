@@ -1,17 +1,15 @@
 ---
 source: https://observablehq.com/@observablehq/plot-map-small-multiples
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Map small multiples</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Map small multiples
 
 Plot’s [projection](https://observablehq.com/plot/features/projections) system is compatible with its [faceting](https://observablehq.com/plot/features/facets) system. Below, a comic strip of sorts shows the locations of Walmart store openings in past decades.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
+  width,
   marginLeft: 0,
   marginRight: 0,
   projection: "albers",
@@ -32,20 +30,16 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const walmarts = FileAttachment("walmarts.tsv").tsv({typed: true});
-```
-
-```js echo
-const us = FileAttachment("us-counties-10m.json").json();
+const walmarts = FileAttachment("../data/walmarts.tsv").tsv({typed: true});
+const us = FileAttachment("../data/us-counties-10m.json").json();
 ```
 
 ```js echo
 const statemesh = topojson.mesh(us, us.objects.states);
-```
-
-```js echo
 const nation = topojson.feature(us, us.objects.nation);
 ```
