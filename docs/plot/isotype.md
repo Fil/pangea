@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-isotype-chart
-index: false
-draft: true
+index: true
 ---
 
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Isotype Chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
-
-# Isotype Chart
+# Isotype
 
 Emoji icons [repeated](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/repeat) as many times as necessary, and rendered with the [text](https://observablehq.com/plot/marks/text) mark for unit charts à la [Isotype](https://eagereyes.org/techniques/isotype).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 610,
   height: 380,
   marginLeft: 60,
@@ -32,6 +29,8 @@ Plot.plot({
   ],
   caption: "Live stock (millions)"
 });
+
+display(chart);
 ```
 
 ```js echo
@@ -40,7 +39,7 @@ const emoji = {cattle: "🐄", sheep: "🐑", pigs: "🐖"};
 
 ```js echo
 // This dataset is purely made up.
-data = [
+const data = [
   {animal: "pigs", country: "Great Britain", count: 1354979},
   {animal: "cattle", country: "Great Britain", count: 3962921},
   {animal: "sheep", country: "Great Britain", count: 10931215},
