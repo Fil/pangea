@@ -1,66 +1,65 @@
 ---
 source: https://observablehq.com/@observablehq/plot-index-chart
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Index chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Index chart
 
 A [normalize](https://observablehq.com/plot/transforms/normalize) transform is applied on the reference day, allowing comparison of stocks performance.
 
 ```js
-viewof date = Scrubber(d3.union(stocks.map((d) => d.Date)), {
-  format: Plot.formatIsoDate,
-  initial: 500,
-  loop: false,
-  autoplay: false
-})
+const date = view(
+  Scrubber(d3.union(stocks.map((d) => d.Date)), {
+    format: Plot.formatIsoDate,
+    initial: 500,
+    loop: false,
+    autoplay: false
+  })
+);
 ```
 
 ```js echo
-{
-  const bisector = d3.bisector((i) => stocks[i].Date);
-  const basis = (I, Y) => Y[I[bisector.center(I, date)]];
-  return Plot.plot({
-    style: "overflow: visible;",
-    y: {
-      type: "log",
-      grid: true,
-      label: "Change in price (%)",
-      tickFormat: (
-        (f) => (x) =>
-          f((x - 1) * 100)
-      )(d3.format("+d"))
-    },
-    marks: [
-      Plot.ruleY([1]),
-      Plot.ruleX([date]),
-      Plot.lineY(
-        stocks,
+const bisector = d3.bisector((i) => stocks[i].Date);
+const basis = (I, Y) => Y[I[bisector.center(I, date)]];
+const chart = Plot.plot({
+  style: "overflow: visible;",
+  y: {
+    type: "log",
+    grid: true,
+    label: "Change in price (%)",
+    tickFormat: (
+      (f) => (x) =>
+        f((x - 1) * 100)
+    )(d3.format("+d"))
+  },
+  marks: [
+    Plot.ruleY([1]),
+    Plot.ruleX([date]),
+    Plot.lineY(
+      stocks,
+      Plot.normalizeY(basis, {
+        x: "Date",
+        y: "Close",
+        stroke: "Symbol"
+      })
+    ),
+    Plot.text(
+      stocks,
+      Plot.selectLast(
         Plot.normalizeY(basis, {
           x: "Date",
           y: "Close",
-          stroke: "Symbol"
+          z: "Symbol",
+          text: "Symbol",
+          textAnchor: "start",
+          dx: 3
         })
-      ),
-      Plot.text(
-        stocks,
-        Plot.selectLast(
-          Plot.normalizeY(basis, {
-            x: "Date",
-            y: "Close",
-            z: "Symbol",
-            text: "Symbol",
-            textAnchor: "start",
-            dx: 3
-          })
-        )
       )
-    ]
-  });
-}
+    )
+  ]
+});
+
+display(chart);
 ```
 
 The cell below merges four CSV files, adding the symbol for each stock as the first column for each row.
@@ -68,16 +67,16 @@ The cell below merges four CSV files, adding the symbol for each stock as the fi
 ```js echo
 const stocks = (
   await Promise.all([
-    FileAttachment("aapl.csv")
+    FileAttachment("../data/aapl.csv")
       .csv({typed: true})
       .then((values) => ["AAPL", values]),
-    FileAttachment("amzn.csv")
+    FileAttachment("../data/amzn.csv")
       .csv({typed: true})
       .then((values) => ["AMZN", values]),
-    FileAttachment("goog.csv")
+    FileAttachment("../data/goog.csv")
       .csv({typed: true})
       .then((values) => ["GOOG", values]),
-    FileAttachment("ibm.csv")
+    FileAttachment("../data/ibm.csv")
       .csv({typed: true})
       .then((values) => ["IBM", values])
   ])
