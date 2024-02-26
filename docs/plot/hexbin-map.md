@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-hexbin-map
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Hexbin map</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Hexbin map
 
 The [hexbin](https://observablehq.com/plot/transforms/hexbin) transform works with Plot’s [projection system](https://observablehq.com/plot/features/projections). Below, hexagon size represents the number of nearby Walmart stores, while color represents the date the first nearby Walmart store opened. (The first Walmart opened in Rogers, Arkansas.)
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   projection: "albers",
   r: {range: [0, 16]},
   color: {scheme: "spectral", label: "First year opened", legend: true},
@@ -21,20 +18,19 @@ Plot.plot({
     Plot.dot(walmarts, Plot.hexbin({r: "count", fill: "min"}, {x: "longitude", y: "latitude", fill: "date"}))
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
 const nation = topojson.feature(us, us.objects.nation);
-```
-
-```js echo
 const statemesh = topojson.feature(us, us.objects.states);
 ```
 
 ```js echo
-const us = FileAttachment("us-counties-10m.json").json();
+const us = FileAttachment("../data/us-counties-10m.json").json();
 ```
 
 ```js echo
-const walmarts = FileAttachment("walmarts.tsv").tsv({typed: true});
+const walmarts = FileAttachment("../data/walmarts.tsv").tsv({typed: true});
 ```
