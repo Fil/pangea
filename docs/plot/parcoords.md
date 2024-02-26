@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-parcoords
 index: false
-draft: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Parallel coordinates</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Parallel coordinates
 
@@ -34,12 +31,22 @@ const color = view(Inputs.select(dimensions, {label: "color by"}));
       .map((value) => ({dimension, value}));
   });
 
-  return Plot.plot({
+  const chart = Plot.plot({
     marginLeft: 104,
     marginRight: 20,
     x: {axis: null},
     y: {padding: 0.1, domain: dimensions, label: null, tickPadding: 9},
-    color: {scheme: "BrBG", type: "linear", reverse: true, legend: true},
+    color: {
+      ...(dark
+        ? {
+            type: "diverging",
+            interpolate: interpolateOrDBu
+          }
+        : {scheme: "BrBG"}),
+      type: "linear",
+      reverse: true,
+      legend: true
+    },
     marks: [
       Plot.ruleY(dimensions),
       Plot.lineX(points, {
@@ -54,12 +61,14 @@ const color = view(Inputs.select(dimensions, {label: "color by"}));
         x: ({dimension, value}) => scales.get(dimension)(value),
         y: "dimension",
         text: "value",
-        fill: "black",
-        stroke: "white",
+        fill: "currentColor",
+        stroke: "var(--theme-background)",
         strokeWidth: 3
       })
     ]
   });
+
+  display(chart);
 }
 ```
 
@@ -68,5 +77,9 @@ const dimensions = cars.columns.slice(1);
 ```
 
 ```js echo
-const cars = FileAttachment("cars.csv").csv({typed: true});
+const cars = FileAttachment("../data/cars.csv").csv({typed: true});
+```
+
+```js echo
+import {dark, interpolateOrDBu} from "../components/dark.js";
 ```
