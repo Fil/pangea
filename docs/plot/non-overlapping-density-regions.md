@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-non-overlapping-density-regions
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Non-overlapping density regions</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Non-overlapping density regions
 
 By specifying a negative [weight](https://observablehq.com/plot/marks/density#density-options) for some points, we make them repulsive to the density contours—this technique limits overlapping and occlusion.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   inset: 10,
   color: {legend: true},
   marks: [
@@ -35,4 +32,10 @@ Plot.plot({
     Plot.frame()
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const penguins = FileAttachment("../data/penguins.csv").csv({typed: true});
 ```
