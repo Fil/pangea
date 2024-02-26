@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-function-contour-2
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Function contour 2</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Function contour 2
 
 A function [contour](https://observablehq.com/plot/marks/contour) with a [diverging](https://observablehq.com/plot/features/scales#color-scale-options) color scale.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   aspectRatio: 1,
   x: {tickSpacing: 80, label: "x →"},
   y: {tickSpacing: 80, label: "↑ y"},
@@ -26,4 +23,6 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
