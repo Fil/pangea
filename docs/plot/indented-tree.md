@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-custom-tree-layout
-index: false
-draft: true
+index: true
 ---
 
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Indented tree diagram</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
+# Indented tree
 
-# Indented tree diagram
-
-A [tree](https://observablehq.com/plot/marks/tree) with a custom layout.
+A tabular layout for hierarchical data, indented [trees](https://observablehq.com/plot/marks/tree) allow one or more columns of values to be shown alongside indented names.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   axis: null,
   inset: 10,
   insetRight: 120,
@@ -27,7 +24,11 @@ Plot.plot({
     textStroke: "none"
   })
 });
+
+display(chart);
 ```
+
+This type of tree needs a custom layout:
 
 ```js echo
 function indent() {
@@ -38,4 +39,8 @@ function indent() {
     });
   };
 }
+```
+
+```js echo
+const flare = FileAttachment("../data/flare.csv").csv({typed: true});
 ```
