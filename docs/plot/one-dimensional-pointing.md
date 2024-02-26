@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-one-dimensional-pointing
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: One-dimensional pointing</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # One-dimensional pointing
 
@@ -15,7 +12,7 @@ const tipmode = view(Inputs.radio(["xy", "x"], {value: "x", label: "Tip mode"}))
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   x: {label: "Daily volume (log₁₀)"},
   marks: [
     Plot.rectY(aapl, Plot.binX({y: "count"}, {x: (d) => Math.log10(d.Volume), thresholds: 40, tip: tipmode})),
@@ -25,4 +22,10 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
 ```
