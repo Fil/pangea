@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-single-stacked-bar
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Single stacked bar</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Single stacked bar
 
-The [text](https://observablehq.com/plot/marks/text) mark consumes the _x_ channel, which is the midpoint of the [stacked](https://observablehq.com/plot/transforms/stack) positions _x1_ and _x2_—putting the label in the middle of each bar. See also [Stacked percentages](/@observablehq/plot-stacked-percentages).
+The [text](https://observablehq.com/plot/marks/text) mark consumes the _x_ channel, which is the midpoint of the [stacked](https://observablehq.com/plot/transforms/stack) positions _x1_ and _x2_—putting the label in the middle of each bar. See also [stacked percentages](./stacked-percentages).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   height: 100,
   x: {percent: true},
   marks: [
@@ -35,4 +32,10 @@ Plot.plot({
     Plot.ruleX([0, 1])
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const olympians = FileAttachment("../data/olympians.csv").csv({typed: true});
 ```
