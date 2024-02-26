@@ -68,7 +68,7 @@ do {
   svg.select(`text:nth-of-type(${i})`).raise();
   svg.call(occlusion);
 
-  await Promises.delay(300);
+  await delay(300);
 } while (true);
 ```
 
@@ -114,5 +114,5 @@ function intersectRect(a, b) {
 // https://www.npmjs.com/package/random-words
 import rwg from "npm:random-words@1.1.0";
 
-import {Promises} from "../components/Promises.js";
+import {delay} from "../components/Promises.js";
 ```
