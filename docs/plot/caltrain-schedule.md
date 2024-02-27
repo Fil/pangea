@@ -4,21 +4,21 @@ index: false
 draft: true
 ---
 
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Stem-and-leaf plot</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
-
 # Stem-and-leaf plot
+
+## Caltrain schedule
 
 [Stack](https://observablehq.com/plot/transforms/stack) a [text](https://observablehq.com/plot/marks/text) mark to display a neat schedule for the Caltrain.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 240,
   axis: null,
   x: {type: "point"},
   y: {type: "point", domain: d3.range(4, 25)},
   color: {
     domain: "NLB",
-    range: ["currentColor", "peru", "brown"],
+    range: dark ? ["currentColor", "orange", "#ff6622"] : ["currentColor", "peru", "brown"],
     legend: true
   },
   marks: [
@@ -49,8 +49,14 @@ Plot.plot({
     Plot.ruleX([-0.5, 0.5])
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const caltrain = FileAttachment("caltrain.csv").csv({typed: true});
+const caltrain = FileAttachment("../data/caltrain-schedule.csv").csv({typed: true});
+```
+
+```js echo
+import {dark} from "../components/dark.js";
 ```
