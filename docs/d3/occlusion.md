@@ -11,7 +11,7 @@ Hides the text nodes that are covered by another node. Add a data-priority attri
 Usage:
 
 ```{js}
-svg.call(occlusion)
+svg.call(occlusion);
 ```
 
 Style with CSS:
@@ -58,7 +58,7 @@ svg
   .on("click", function () {
     const node = d3.select(this);
     const cur = +node.attr("data-priority");
-    node.attr("data-priority", cur ? null : ++priority).style("fill", cur ? null : "steelblue");
+    node.attr("data-priority", cur ? null : ++priority).style("fill", cur ? null : "var(--theme-foreground-focus)");
     svg.call(occlusion);
   });
 
@@ -76,6 +76,9 @@ do {
 <style>
   svg {
     cursor: pointer;
+  }
+  svg text {
+    fill: currentColor;
   }
   svg text.occluded {
     opacity: 0.1;
