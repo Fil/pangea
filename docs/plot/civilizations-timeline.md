@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-civilizations-timeline
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot:  Civilizations timeline</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Civilizations timeline
 
 A [bar](https://observablehq.com/plot/marks/bar) mark with explicit _x1_ and _x2_ channels, marking the start and end of civilizations.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   marginLeft: 130,
   axis: null,
   x: {
@@ -35,8 +32,10 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const civilizations = FileAttachment("civilizations.csv").csv({typed: true});
+const civilizations = FileAttachment("../data/civilizations.csv").csv({typed: true});
 ```
