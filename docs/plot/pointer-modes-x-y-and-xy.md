@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-pointer-modes-x-y-and-xy
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Pointer modes (x, y, and xy)</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Pointer modes (x, y, and xy)
 
@@ -17,5 +14,11 @@ const pointermode = view(Inputs.radio(["xy", "x", "y"], {value: "x", label: "Poi
 ```
 
 ```js echo
-Plot.lineY(aapl, {x: "Date", y: "Close", tip: pointermode}).plot();
+const chart = Plot.lineY(aapl, {x: "Date", y: "Close", tip: pointermode}).plot();
+
+display(chart);
+```
+
+```js echo
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
 ```
