@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-choropleth
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Choropleth</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Choropleth
 
-Unemployment rate by U.S. county, August 2016. Data: [Bureau of Labor Statistics](http://www.bls.gov/lau/#tables). We use the [geo mark](https://observablehq.com/plot/marks/geo) to paint each county with a color representing the unemployment rate, and render a white mesh of the states boundaries on top. A [centroid transform](https://observablehq.com/plot/transforms/centroid) and extra channels support [interactive tips](https://observablehq.com/plot/features/interactions). See the [D3 version](/@d3/choropleth/2).
+Unemployment rate by U.S. county, August 2016. Data: [Bureau of Labor Statistics](http://www.bls.gov/lau/#tables). We use the [geo mark](https://observablehq.com/plot/marks/geo) to paint each county with a color representing the unemployment rate, and render a white mesh of the states boundaries on top. A [centroid transform](https://observablehq.com/plot/transforms/centroid) and extra channels support [interactive tips](https://observablehq.com/plot/features/interactions). See the [D3 version](../d3/choropleth).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 975,
   height: 610,
   projection: "identity",
@@ -35,32 +32,30 @@ Plot.plot({
         }
       })
     ),
-    Plot.geo(states, {stroke: "white"})
+    Plot.geo(states, {stroke: "var(--theme-background)"})
   ]
 });
+
+display(chart);
 ```
 
 In the _unemployment_ dataset, we don’t use automatic type inference for CSV (_a.k.a._, typed: true) as that would coerce the FIPS identifiers to numbers, which then wouldn’t match the identifiers in our GeoJSON. However, we still want to coerce the _rate_ values to numbers, so we do that explicitly. While we’re at it, we store the values in a [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) object for fast lookups.
 
 ```js echo
-const unemployment = new Map((await FileAttachment("unemployment-x.csv").csv()).map((d) => [d.id, +d.rate]));
+const unemployment = new Map(
+  (await FileAttachment("../data/unemployment-by-county.csv").csv()).map((d) => [d.id, +d.rate])
+);
 ```
 
 The geometries used in this example are from the [TopoJSON U.S. Atlas](https://github.com/topojson/us-atlas), which are derived from the U.S. Census Bureau shapefiles, 2017 edition. (There’s also the [TopoJSON World Atlas](https://github.com/topojson/world-atlas), which is derived from [Natural Earth](https://www.naturalearthdata.com).) The _counties_ feature collection is all U.S. counties, using the five-digit FIPS identifier. The _statemap_ lets us lookup the name of the state that contains a given county; a state’s two-digit identifier corresponds to the first two digits of its counties’ identifiers.
 
 ```js echo
-const us = FileAttachment("counties-albers-10m.json").json();
+const us = FileAttachment("../data/counties-albers-10m.json").json();
 ```
 
 ```js echo
 const counties = topojson.feature(us, us.objects.counties);
-```
-
-```js echo
 const states = topojson.feature(us, us.objects.states);
-```
-
-```js echo
 const statemap = new Map(states.features.map((d) => [d.id, d]));
 ```
 
