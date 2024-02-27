@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-difference-arrows
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Difference arrows</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Difference arrows
 
 The chart plots the difference between the number of male and female Olympic athletes by sport. Sports with more men are right-pointing orange [arrows](https://observablehq.com/plot/marks/arrow), while sports with more women (only gymnastics and fencing) are left-pointing blue arrows.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   marginTop: 0,
   marginLeft: 100,
   y: {grid: true, label: null},
@@ -47,4 +44,10 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const olympians = FileAttachment("../data/olympians.csv").csv({typed: true});
 ```
