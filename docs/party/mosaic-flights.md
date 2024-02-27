@@ -15,7 +15,7 @@ ${makePlot("distance")}
 
 _Try selecting delayed flights. How much more likely are they to leave later in the day?_
 
-```js
+```js echo
 // load flights data from external parquet file
 const datasource = new URL(await FileAttachment("../data/flights-10m.parquet").url(), document.location).href;
 await vg.coordinator().exec(`CREATE TABLE IF NOT EXISTS flights10m AS
@@ -48,7 +48,7 @@ const makePlot = (column) =>
 //  display(vg.vconcat(makePlot("delay"), makePlot("time"), makePlot("distance")));
 ```
 
-```js
+```js echo
 // import vgplot and configure Mosaic to use DuckDB-WASM
 const vg = await import("npm:@uwdata/vgplot");
 {
