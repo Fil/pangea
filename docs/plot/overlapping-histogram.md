@@ -5,7 +5,7 @@ index: true
 
 # Overlapping histogram
 
-Olympic athletes [binned](https://observablehq.com/plot/transforms/bin) by weight, separately for each category (_sex_). You can opt-out of [rectY](https://observablehq.com/plot/marks/rect)’s implicit [stackY](https://observablehq.com/plot/transforms/stack) transform by specifying either **y1** or **y2**.
+Olympic athletes [binned](https://observablehq.com/plot/transforms/bin) by weight, separately for each category (_sex_). You can opt-out of [rectY](https://observablehq.com/plot/marks/rect)’s implicit [stackY](https://observablehq.com/plot/transforms/stack) transform by specifying either **y1** or **y2**. See also the [stacked histogram](./stacked-histogram).
 
 ```js echo
 const chart0 = Plot.plot({
