@@ -9,6 +9,7 @@ The [line](https://observablehq.com/plot/marks/line) mark draws two-dimensional 
 
 ```js echo
 const chart = Plot.lineY(aapl, {x: "Date", y: "Close"}).plot({y: {grid: true}});
+
 display(chart);
 ```
 
