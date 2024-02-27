@@ -9,7 +9,7 @@ The [window](https://observablehq.com/plot/transforms/window) transform can be u
 
 ```js echo
 const chart = Plot.plot({
-  color: {scheme: "BuRd"},
+  color: dark ? {type: "diverging", interpolate: interpolateBuGyRd} : {scheme: "BuRd"},
   marks: [
     Plot.ruleY([0]),
     Plot.dot(gistemp, {x: "Date", y: "Anomaly", stroke: "Anomaly"}),
@@ -22,4 +22,8 @@ display(chart);
 
 ```js echo
 const gistemp = FileAttachment("../data/gistemp.csv").csv({typed: true});
+```
+
+```js echo
+import {dark, interpolateBuGyRd} from "../components/dark.js";
 ```

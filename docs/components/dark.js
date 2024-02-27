@@ -40,6 +40,13 @@ export const interpolatePuDOr = interpolateDivergent("purple", "orange", {
   easing: easePolyInOut.exponent(1.2)
 });
 
+// blue gray red
+export const interpolateBuGyRd = interpolateDivergent("#04f", "#f30", {
+  pivot: rgb(NaN, 70, NaN),
+  back: "#777",
+  easing: easePolyInOut.exponent(1.2)
+});
+
 // red dark white
 export const interpolateRdDW = interpolateDivergent("red", "white", {
   pivot: rgb(NaN, NaN, NaN),
