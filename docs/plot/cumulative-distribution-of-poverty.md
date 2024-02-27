@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-cumulative-distribution-of-poverty
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Cumulative distribution of poverty</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Cumulative distribution of poverty
 
 Each [rect](https://observablehq.com/plot/marks/rect) represents a country: _x_ encodes the country’s population, while _y_ encodes the proportion of that population living in poverty; hence area represents the number of people living in poverty. Rects are [stacked](https://observablehq.com/plot/transforms/stack) along _x_ in order of descending _y_. Inspired by [Max Roser](https://ourworldindata.org/poverty-minimum-growth-needed).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   x: {label: "Population (millions) →"},
   y: {
     percent: true,
@@ -34,8 +31,10 @@ Plot.plot({
     Plot.ruleY([0])
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const povcalnet = FileAttachment("povcalnet.csv").csv({typed: true});
+const povcalnet = FileAttachment("../data/povcalnet.csv").csv({typed: true});
 ```
