@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-earthquake-globe
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Earthquake globe</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Earthquake globe
 
@@ -15,7 +12,7 @@ const longitude = view(Inputs.range([-180, 180], {label: "longitude", step: 1, v
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   projection: {type: "orthographic", rotate: [-longitude, -30]},
   r: {transform: (d) => Math.pow(10, d)}, // convert Richter to amplitude
   style: "overflow: visible;", // allow dots to escape
@@ -32,10 +29,12 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const world = FileAttachment("countries-110m.json").json();
+const world = FileAttachment("../data/world-110m-2020.json").json();
 ```
 
 ```js echo
@@ -43,10 +42,12 @@ const land = topojson.feature(world, world.objects.land);
 ```
 
 ```js echo
-const earthquakes = d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson").then((d) =>
-  d.features.map((f) => {
-    const c = d3.geoCentroid(f);
-    return {magnitude: f.properties.mag, longitude: c[0], latitude: c[1]};
-  })
-);
+const earthquakes = fetch("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojson")
+  .then((d) => d.json())
+  .then((d) =>
+    d.features.map((f) => {
+      const c = d3.geoCentroid(f);
+      return {magnitude: f.properties.mag, longitude: c[0], latitude: c[1]};
+    })
+  );
 ```
