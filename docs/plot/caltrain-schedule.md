@@ -1,7 +1,6 @@
 ---
 source: https://observablehq.com/@observablehq/plot-caltrain-schedule
-index: false
-draft: true
+index: true
 ---
 
 # Stem-and-leaf plot
