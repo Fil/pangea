@@ -1,14 +1,11 @@
 ---
 source: https://observablehq.com/@observablehq/plot-line-chart-percent-change
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Line chart, percent change</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Line chart, percent change
 
-The variant of a [line chart](/@observablehq/plot-simple-line-chart?intent=fork) shows the change in price of Apple stock relative to ${basis.toFixed(2) === aapl[0].Close.toFixed(2) ? `its ${aapl[0].Date.toLocaleString("en-US", {
+The variant of a [line chart](./simple-line-chart) shows the change in price of Apple stock relative to ${basis.toFixed(2) === aapl[0].Close.toFixed(2) ? `its ${aapl[0].Date.toLocaleString("en-US", {
   year: "numeric",
   month: "long",
   day: "numeric",
@@ -29,7 +26,7 @@ const basis = view(
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 928,
   marginLeft: 45,
   y: {
@@ -50,4 +47,10 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
 ```
