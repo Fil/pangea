@@ -4,8 +4,9 @@ index: true
 
 # Mosaic Cross-Filter Flights 10M
 
-An example using [Mosaic vgplot](https://uwdata.github.io/mosaic/vgplot/) to interactively cross-filter 10 million flight records.
-You may need to wait a few seconds for the dataset to load.
+An example using [Mosaic vgplot](https://uwdata.github.io/mosaic/vgplot/) to interactively cross-filter 10 million flight records. You may need to wait a few seconds for the dataset to load.
+
+For more, see [Mosaic + Framework Examples](https://uwdata.github.io/mosaic-framework-example/).
 
 <div style="display: flex; flex-wrap: wrap">
 ${makePlot("delay")}
