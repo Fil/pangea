@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-density-weighted
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Density skew (weight) interactive</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Density skew (weight) interactive
 
@@ -15,7 +12,7 @@ const skew = view(Inputs.range([-1, 1], {label: "skew (-F/+M)", step: 0.01}));
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   inset: 10,
   color: {legend: true},
   marks: [
@@ -41,4 +38,10 @@ Plot.plot({
     Plot.frame()
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const penguins = FileAttachment("../data/penguins.csv").csv({typed: true});
 ```
