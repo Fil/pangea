@@ -2,7 +2,7 @@
 index: true
 ---
 
-# Connected scatterplot
+# Connected scatterplot (D3)
 
 This is a recreation of Hannah Fairfield’s [_Driving Shifts Into Reverse_](https://www.nytimes.com/imagepages/2010/05/02/business/02metrics.html), sans annotations. See also Fairfield’s [_Driving Safety, in Fits and Starts_](https://www.nytimes.com/interactive/2012/09/17/science/driving-safety-in-fits-and-starts.html), [Noah Veltman’s variation](https://blocks.roadtolarissa.com/veltman/87596f5a256079b95eb9) of this graphic, and [a paper on connected scatterplots](http://steveharoz.com/research/connected_scatterplot/) by Haroz _et al._
 
@@ -160,8 +160,4 @@ The _length_ helper method computes the total length of the given SVG _path_ str
 const length = (path) => d3.create("svg:path").attr("d", path).node().getTotalLength();
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [line mark](https://observablehq.com/plot/marks/line) and [markers](https://observablehq.com/plot/features/markers). See [Plot: Connected scatterplot](https://observablehq.com/@observablehq/plot-connected-scatterplot?intent=fork) for a detailed example.
-
-```js echo
-display(Plot.line(driving, {x: "miles", y: "gas", marker: true, curve: "natural"}).plot({grid: true}));
-```
+To use Observable Plot instead of D3, see [Plot: connected scatterplot](../plot/connected-scatterplot).
