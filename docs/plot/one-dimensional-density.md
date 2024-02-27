@@ -14,13 +14,13 @@ const chart = Plot.plot({
   marks: [
     Plot.density(faithful, {
       x: "waiting",
-      stroke: "steelblue",
+      stroke: "var(--theme-foreground-focus)",
       strokeWidth: 0.25,
       bandwidth: 10
     }),
     Plot.density(faithful, {
       x: "waiting",
-      stroke: "steelblue",
+      stroke: "var(--theme-foreground-focus)",
       thresholds: 4,
       bandwidth: 10
     }),
