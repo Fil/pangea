@@ -1,22 +1,24 @@
 ---
 source: https://observablehq.com/@observablehq/plot-diverging-stacked-bar
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Diverging stacked bars</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Diverging stacked bars
 
 The dataset contains hundreds of answers to a survey. There are five questions, and the answers rank from negative/red (“Strongly Disagree”, “Disagree”), then neutral/gray, to positive/blue (“Agree”, “Strongly Agree”). Answers are counted and represented as bars describing the absolute frequency of each response. The [bars](https://observablehq.com/plot/marks/bar) are organized in the order of their semantic value, with the
-negative answers flowing to the left, and the positive answers flowing to the right. Neutral answers sit in the center. We use a custom [stack offset](https://observablehq.com/plot/transforms/stack#stack-options) to position the bars correctly.
+negative answers flowing to the left, and the positive answers flowing to the right. Neutral answers sit in the center. We use a custom [stack offset](https://observablehq.com/plot/transforms/stack#stack-options) to adjust the bars’ positions.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   x: {tickFormat: Math.abs},
   color: {domain: likert.order, scheme: "RdBu", legend: true},
-  marks: [Plot.barX(survey, Plot.groupZ({x: "count"}, {fy: "Question", fill: "Response", ...likert})), Plot.ruleX([0])]
+  marks: [
+    Plot.barX(survey, Plot.groupZ({x: "count"}, {fy: "Question", fill: "Response", ...likert})),
+    Plot.ruleX([0], {stroke: "var(--theme-background)", strokeDasharray: 2})
+  ]
 });
+
+display(chart);
 ```
 
 ```js echo
@@ -45,7 +47,7 @@ that prompted this notebook. The write-up below details how we built the chart
 Using Plot.groupY and fill: "Response" allows us to create a bar for each type of response to each question. The length of each bar corresponds to the count of the corresponding answers (as the _fill_ or _z_ channel) to the question (as the _y_ channel).
 
 ```js echo
-Plot.plot({
+const chart1 = Plot.plot({
   x: {tickFormat: Math.abs, label: "# of answers"},
   y: {tickSize: 0},
   color: {
@@ -67,6 +69,8 @@ Plot.plot({
     )
   ]
 });
+
+display(chart1);
 ```
 
 The next step is to make the red answers flow to the left, the blue answers to the right, and the gray centered.
@@ -80,7 +84,7 @@ const sign = (label) => (label.match(/neutral/i) ? 0 : label.match(/disagree/i) 
 ```
 
 ```js echo
-Plot.plot({
+const chart2 = Plot.plot({
   color: {
     domain: ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"],
     scheme: "RdBu"
@@ -99,6 +103,8 @@ Plot.plot({
     )
   ]
 });
+
+display(chart2);
 ```
 
 However, this immediately raises two issues: first, the neutral value has
@@ -124,7 +130,7 @@ const normalize = view(Inputs.toggle({label: "normalize"}));
     ["Strongly Agree", 1]
   ]);
 
-  return Plot.plot({
+  const chart3 = Plot.plot({
     x: normalize ? {tickFormat: "%", label: "answers (%)"} : {tickFormat: Math.abs, label: "# of answers"},
     y: {tickSize: 0},
     facet: {data: survey, y: "Question"},
@@ -159,6 +165,8 @@ const normalize = view(Inputs.toggle({label: "normalize"}));
       )
     ]
   });
+
+  display(chart3);
 }
 ```
 
@@ -189,7 +197,7 @@ function Likert(responses) {
 _data_
 
 ```js echo
-const survey = FileAttachment("survey.json").json();
+const survey = FileAttachment("../data/survey.json").json();
 ```
 
 ```js
