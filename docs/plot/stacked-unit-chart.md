@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-colored-stacked-bar-chart
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Stacked unit chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Stacked unit chart
 
 Each penguin in the dataset is represented by a [bar](https://observablehq.com/plot/marks/bar) of width _x_ = 1; bars are implicitly [stacked](https://observablehq.com/plot/transforms/stack), resulting in this unit chart.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   marginLeft: 60,
   x: {label: "Frequency →"},
   y: {label: null},
@@ -27,4 +24,10 @@ Plot.plot({
     Plot.ruleX([0])
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const penguins = FileAttachment("../data/penguins.csv").csv({typed: true});
 ```
