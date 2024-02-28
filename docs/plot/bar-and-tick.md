@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-bar-and-tick
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Bar and tick</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Bar and tick
 
 A [tick](https://observablehq.com/plot/marks/tick) is convenient for stroking the upper bound of a [bar](https://observablehq.com/plot/marks/bar) for emphasis.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   x: {label: null},
   y: {percent: true},
   marks: [
@@ -20,4 +17,10 @@ Plot.plot({
     Plot.ruleY([0])
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const alphabet = FileAttachment("../data/alphabet.csv").csv({typed: true});
 ```
