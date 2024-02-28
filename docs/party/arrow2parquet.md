@@ -1,3 +1,7 @@
+---
+index: true
+---
+
 # Convert Arrow files to parquet
 
 A simple app that converts your arrow files to the parquet format, using DuckDB-wasm under the hood.
@@ -15,20 +19,25 @@ const db = file && DuckDBClient.of({[table]: file});
 ```
 
 ```js
-display(file
-  ? html`<button onclick=${async function() {
-    this.disabled = true;
-    download(await toParquet(db, {table}));
-    this.disabled = false;
-    }}>Download ${table}.parquet`
-  : html`<button disabled>…`
+display(
+  file
+    ? html`<button
+        onclick=${async function () {
+          this.disabled = true;
+          download(await toParquet(db, {table}));
+          this.disabled = false;
+        }}
+      >
+        Download ${table}.parquet
+      </button>`
+    : html`<button disabled>…</button>`
 );
 ```
 
 ```js
 // Exports a DuckDB table to parquet.
 async function toParquet(duckDbClient, {table = "data", name = `${table}.parquet`} = {}) {
-  const tmp = (Math.random()*1e16).toString(16);
+  const tmp = (Math.random() * 1e16).toString(16);
   const db = duckDbClient._db;
   // https://duckdb.org/docs/sql/statements/copy
   console.log("start COPY", {table, name, tmp});
@@ -54,4 +63,3 @@ function download(file) {
 ```
 
 <div style="height: 40vh"></div>
-

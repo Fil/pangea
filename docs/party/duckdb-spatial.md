@@ -1,3 +1,7 @@
+---
+index: true
+---
+
 # DuckDB spatial
 
 ```js echo
@@ -17,7 +21,7 @@ display(
 );
 ```
 
-<p class=warning>This page only works if we upgrade DuckDBClient to import duckdb-wasm@1.28.1-dev106.0 or later, coupled with apache-arrow@14 or later (like I did here manually). See issues <a href=https://github.com/duckdb/duckdb-wasm/issues/1561>duckdb-wasm#1561</a>; <a href=https://github.com/observablehq/framework/issues/750>framework#750</a> and <a href=https://github.com/observablehq/framework/issues/733>framework#733</a>.</p>
+<p class=warning>This page only works if we upgrade DuckDBClient to import duckdb-wasm@1.28.1-dev106.0 or later, coupled with apache-arrow@14 or later. See issues <a href=https://github.com/duckdb/duckdb-wasm/issues/1561>duckdb-wasm#1561</a>; <a href=https://github.com/observablehq/framework/issues/750>framework#750</a> and <a href=https://github.com/observablehq/framework/issues/733>framework#733</a>.</p>
 
 ---
 
