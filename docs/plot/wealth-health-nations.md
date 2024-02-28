@@ -1,14 +1,11 @@
 ---
 source: https://observablehq.com/@observablehq/plot-wealth-health-nations
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: The Wealth & Health of Nations</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # The Wealth & Health of Nations
 
-This is a [recreation](/@mbostock/the-wealth-health-of-nations) of a [Gapminder visualization](http://gapminder.org/world/) made famous by [Hans Rosling](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen). It shows per-capita income (_x_), life expectancy (_y_) and population (_area_) of 180 nations over the last 209 years, colored by region. Data prior to 1950 is sparse, so this chart shows the latest value in the data.
+This is a [recreation](https://observablehq.com/@mbostock/the-wealth-health-of-nations) of a [Gapminder visualization](http://gapminder.org/world/) made famous by [Hans Rosling](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen). It shows per-capita income (_x_), life expectancy (_y_) and population (_area_) of 180 nations over the last 209 years, colored by region. Data prior to 1950 is sparse, so this chart shows the latest value in the data.
 
 ```js
 const year = view(
@@ -20,7 +17,7 @@ const year = view(
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width: 1152,
   height: 600,
   grid: true,
@@ -49,6 +46,8 @@ Plot.plot({
     )
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
@@ -65,7 +64,7 @@ const lastDefined = {
 ```
 
 ```js echo
-const nations = FileAttachment("nations.csv").csv({typed: true});
+const nations = FileAttachment("../data/nations.csv").csv({typed: true});
 ```
 
 ```js echo
