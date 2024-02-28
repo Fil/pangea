@@ -11,7 +11,7 @@ index: false
 <br>Self-destruct looms, search with hope,
 <br>Luck in pixels found.</em></p>
 
-<h4 style="margin-top: 3em">What do I know?</h4>
+<h4 style="margin-top: 3em;">What do I know?</h4>
 
 ```js
 const askInput = Inputs.button("Ask me");
