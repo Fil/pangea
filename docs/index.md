@@ -9,7 +9,7 @@ index: false
 
 <p class=warning><em>Site’s fate whispers near,
 <br>Self-destruct looms, search with hope,
-<br>Luck in pixels found.
+<br>Luck in pixels found.</em></p>
 
 <h4 style="margin-top: 3em">What do I know?</h4>
 
