@@ -1,22 +1,19 @@
 ---
 source: https://observablehq.com/@observablehq/plot-arc-diagram
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Arc diagram</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Arc diagram
 
-This diagram places nodes in a vertical line with circular arcs for links. Unlike other network visualizations such as a [force layout](/@d3/force-directed-graph), the appearance (and usefulness) of an arc diagram is highly dependent on the order of nodes.
+This diagram places nodes in a vertical line with circular arcs for links. Unlike other network visualizations such as a [force layout](../d3/force-directed-graph), the appearance (and usefulness) of an arc diagram is highly dependent on the order of nodes. See also the animated [D3 version](../d3/arc-diagram).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   height: 1080,
   marginLeft: 100,
   axis: null,
   x: {domain: [0, 1]}, // see https://github.com/observablehq/plot/issues/1541
-  color: {domain: d3.range(10), unknown: "#ccc"},
+  color: {domain: d3.range(10), unknown: "var(--theme-foreground-fainter)"},
   marks: [
     Plot.dot(miserables.nodes, {
       x: 0,
@@ -45,15 +42,15 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const samegroup = {
-  const groups = new Map(miserables.nodes.map((d) => [d.id, d.group]));
-  return ({source, target}) => {
-    source = groups.get(source);
-    target = groups.get(target);
-    return source === target ? source : null;
-  };
-}
+const groups = new Map(miserables.nodes.map((d) => [d.id, d.group]));
+const samegroup = ({source, target}) => {
+  source = groups.get(source);
+  target = groups.get(target);
+  return source === target ? source : null;
+};
 ```

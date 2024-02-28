@@ -1,22 +1,19 @@
 ---
 source: https://observablehq.com/@observablehq/plot-candlestick-chart
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Candlestick chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Candlestick chart
 
-A [ruleX](https://observablehq.com/plot/marks/rule) encodes a vertical extent at a given horizontal position. For more, read Zan Armstrong’s [Candlestick Chart](/@observablehq/observable-plot-candlestick) tutorial.
+A [ruleX](https://observablehq.com/plot/marks/rule) encodes a vertical extent at a given horizontal position. For more, read Zan Armstrong’s [Candlestick Chart](https://observablehq.com/@observablehq/observable-plot-candlestick) tutorial.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   inset: 6,
   width: 928,
   grid: true,
   y: {label: "↑ Apple stock price ($)"},
-  color: {domain: [-1, 0, 1], range: ["#e41a1c", "#000000", "#4daf4a"]},
+  color: {domain: [-1, 0, 1], range: ["#e41a1c", "currentColor", "#4daf4a"]},
   marks: [
     Plot.ruleX(ticker, {
       x: "Date",
@@ -33,6 +30,12 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
 ```
 
 ```js echo
