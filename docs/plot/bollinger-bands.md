@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-bollinger-bands
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Bollinger bands</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Bollinger bands
 
@@ -19,11 +16,13 @@ const k = view(Inputs.range([0, 4], {step: 0.1, value: 2, label: "Deviations (K)
 ```
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   y: {grid: true},
   marks: [
     Plot.bollingerY(aapl, {n, k, x: "Date", y: "Close", stroke: "none"}),
     Plot.lineY(aapl, {x: "Date", y: "Close", strokeWidth: 1})
   ]
 });
+
+display(chart);
 ```
