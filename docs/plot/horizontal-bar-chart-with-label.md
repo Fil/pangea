@@ -25,7 +25,7 @@ const chart = Plot.plot({
       x: "value",
       textAnchor: "end",
       dx: -3,
-      fill: "var(--theme-background)"
+      fill: "var(--plot-background)"
     })
   ]
 });

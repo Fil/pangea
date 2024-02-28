@@ -60,7 +60,7 @@ const chart2 = Plot.plot({
       x: "value",
       textAnchor: "end",
       dx: -3,
-      fill: "var(--theme-background)"
+      fill: "var(--plot-background)"
     })
   ]
 });
@@ -92,7 +92,7 @@ const chart3 = Plot.plot({
     Plot.axisY({
       label: null,
       textAnchor: "start",
-      fill: "var(--theme-background)",
+      fill: "var(--plot-background)",
       dx: 14
     })
   ]
@@ -123,7 +123,7 @@ const chart4 = Plot.plot({
       frameAnchor: "left",
       dx: 4,
       filter: (d) => d.value >= 130000,
-      fill: "var(--theme-background)"
+      fill: "var(--plot-background)"
     }),
     // labels for smaller bars
     Plot.text(brands, {
@@ -134,7 +134,7 @@ const chart4 = Plot.plot({
       dx: 3,
       filter: (d) => d.value < 130000,
       fill: "currentColor",
-      stroke: "var(--theme-background)"
+      stroke: "var(--plot-background)"
     })
   ]
 });

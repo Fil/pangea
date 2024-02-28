@@ -14,7 +14,7 @@ const chart = Plot.plot({
   color: {domain: likert.order, scheme: "RdBu", legend: true},
   marks: [
     Plot.barX(survey, Plot.groupZ({x: "count"}, {fy: "Question", fill: "Response", ...likert})),
-    Plot.ruleX([0], {stroke: "var(--theme-background)", strokeDasharray: 2})
+    Plot.ruleX([0], {stroke: "var(--plot-background)", strokeDasharray: 2})
   ]
 });
 

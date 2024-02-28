@@ -38,7 +38,7 @@ const chart = Plot.plot({
       y1: 90 - 0.57,
       x2: 0,
       y2: 90,
-      stroke: "var(--theme-background)",
+      stroke: "var(--plot-background)",
       strokeOpacity: 0.5,
       strokeWidth: 2.5
     }),
@@ -51,7 +51,7 @@ const chart = Plot.plot({
       textAnchor: "start",
       text: (d) => `${100 * d}%`,
       fill: "currentColor",
-      stroke: "var(--theme-background)",
+      stroke: "var(--plot-background)",
       fontSize: 8
     }),
 
@@ -79,7 +79,7 @@ const chart = Plot.plot({
       x: ({key}) => longitude(key),
       y: ({value}) => 90 - value,
       fill: "name",
-      stroke: "var(--theme-background)"
+      stroke: "var(--plot-background)"
     }),
 
     // interactive labels
@@ -92,7 +92,7 @@ const chart = Plot.plot({
         textAnchor: "start",
         dx: 4,
         fill: "currentColor",
-        stroke: "var(--theme-background)",
+        stroke: "var(--plot-background)",
         maxRadius: 10
       })
     ),

@@ -23,7 +23,7 @@ const chart = Plot.plot({
       fill: "group",
       order: "value",
       curve: "monotone-x",
-      stroke: "var(--theme-background)"
+      stroke: "var(--plot-background)"
     }),
     Plot.ruleY([0])
   ]

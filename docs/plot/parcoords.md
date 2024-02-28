@@ -62,7 +62,7 @@ const color = view(Inputs.select(dimensions, {label: "color by"}));
         y: "dimension",
         text: "value",
         fill: "currentColor",
-        stroke: "var(--theme-background)",
+        stroke: "var(--plot-background)",
         strokeWidth: 3
       })
     ]

@@ -17,7 +17,7 @@ const chart = Plot.plot({
       Plot.centroid({
         text: (d) => d.properties.name,
         fill: "currentColor",
-        stroke: "var(--theme-background)"
+        stroke: "var(--plot-background)"
       })
     )
   ]

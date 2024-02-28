@@ -14,7 +14,7 @@ const chart = Plot.plot({
   r: {range: [0, 40]},
   marks: [
     Plot.geo(nation, {fill: "var(--theme-foreground-faintest)"}),
-    Plot.geo(statemesh, {stroke: "var(--theme-background)"}),
+    Plot.geo(statemesh, {stroke: "var(--plot-background)"}),
     Plot.dot(
       population,
       Plot.centroid({

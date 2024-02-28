@@ -12,8 +12,8 @@ const chart = Plot.plot({
   inset: 10,
   marks: [
     Plot.frame({fill: "currentColor", fillOpacity: 0.15}),
-    Plot.gridY({stroke: "var(--theme-background)", strokeOpacity: 1}),
-    Plot.gridX({stroke: "var(--theme-background)", strokeOpacity: 1}),
+    Plot.gridY({stroke: "var(--plot-background)", strokeOpacity: 1}),
+    Plot.gridX({stroke: "var(--plot-background)", strokeOpacity: 1}),
     Plot.line(aapl, {x: "Date", y: "Close", stroke: "currentColor"})
   ]
 });

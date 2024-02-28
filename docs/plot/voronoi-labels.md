@@ -45,7 +45,7 @@ const chart = Plot.plot({
         x: "longitude",
         y: "latitude",
         text: (d) => d.name.split(/ /)[0],
-        stroke: "var(--theme-background)",
+        stroke: "var(--plot-background)",
         strokeWidth: 7,
         fill: "currentColor"
       })

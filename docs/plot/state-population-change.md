@@ -28,7 +28,7 @@ const chart = Plot.plot({
       fill: (d) => d.value > 0,
       sort: {y: "x"}
     }),
-    Plot.gridX({stroke: "var(--theme-background)", strokeOpacity: 0.5}),
+    Plot.gridX({stroke: "var(--plot-background)", strokeOpacity: 0.5}),
     d3
       .groups(statepop, (d) => d.value > 0)
       .map(([growth, states]) => [

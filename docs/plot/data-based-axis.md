@@ -14,7 +14,7 @@ const chart = Plot.plot({
     Plot.ruleY([0]),
     Plot.line(aapl, {x: "Date", y: "Close"}),
     Plot.gridY({x: (y) => aapl.find((d) => d.Close >= y)?.Date, insetLeft: -6}),
-    Plot.axisY({x: (y) => aapl.find((d) => d.Close >= y)?.Date, insetLeft: -6, textStroke: "var(--theme-background)"})
+    Plot.axisY({x: (y) => aapl.find((d) => d.Close >= y)?.Date, insetLeft: -6, textStroke: "var(--plot-background)"})
   ]
 });
 

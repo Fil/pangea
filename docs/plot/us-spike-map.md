@@ -14,7 +14,7 @@ const map = Plot.plot({
   length: {range: [0, 200]},
   marks: [
     Plot.geo(nation, {fill: "currentColor", fillOpacity: 0.2}),
-    Plot.geo(statemesh, {stroke: "var(--theme-background)"}),
+    Plot.geo(statemesh, {stroke: "var(--plot-background)"}),
     Plot.spike(counties.features, Plot.centroid({stroke: "red", length: (d) => population.get(d.id)})),
     legendSpike([2e6, 4e6, 6e6, 8e6, 10e6], {stroke: "red"})
   ]

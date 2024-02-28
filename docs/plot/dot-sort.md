@@ -21,7 +21,7 @@ const chart = Plot.plot({
       Plot.geoCentroid({
         r: (d) => d.properties.population,
         fill: "currentColor",
-        stroke: "var(--theme-background)",
+        stroke: "var(--plot-background)",
         strokeWidth: 1,
         sort: sorted
           ? {channel: "r", order: "descending"} // explicitly sort “by descending radius”, which is the default

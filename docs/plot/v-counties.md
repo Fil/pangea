@@ -18,7 +18,7 @@ const chart = Plot.plot({
       Plot.centroid({
         filter: (d) => d.properties.name.match(/^V/),
         fill: "currentColor",
-        stroke: "var(--theme-background)"
+        stroke: "var(--plot-background)"
       })
     ),
     Plot.text(
@@ -27,7 +27,7 @@ const chart = Plot.plot({
         filter: (d) => d.properties.name.match(/^V/),
         text: (d) => d.properties.name,
         fill: "currentColor",
-        stroke: "var(--theme-background)",
+        stroke: "var(--plot-background)",
         textAnchor: "start",
         dx: 6
       })

@@ -25,7 +25,7 @@ const chart = Plot.plot({
       y: Plot.identity,
       text: Plot.identity,
       fill: "currentColor",
-      stroke: "var(--theme-background)"
+      stroke: "var(--plot-background)"
     })
   ]
 });

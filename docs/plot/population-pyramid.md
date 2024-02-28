@@ -96,7 +96,7 @@ const chart2 = Plot.plot({
       label: null,
       ticks: 10,
       fill: "currentColor",
-      textStroke: "var(--theme-background)",
+      textStroke: "var(--plot-background)",
       textStrokeWidth: 10
     }),
     Plot.text(["↑ age"], {frameAnchor: "top", dy: -10}),

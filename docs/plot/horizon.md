@@ -40,7 +40,7 @@ const chart = Plot.plot({
       frameAnchor: "left",
       dx: -28,
       fill: "currentColor",
-      textStroke: "var(--theme-background)",
+      textStroke: "var(--plot-background)",
       label: null
     })
   ]

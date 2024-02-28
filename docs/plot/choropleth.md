@@ -32,7 +32,7 @@ const chart = Plot.plot({
         }
       })
     ),
-    Plot.geo(states, {stroke: "var(--theme-background)"})
+    Plot.geo(states, {stroke: "var(--plot-background)"})
   ]
 });
 

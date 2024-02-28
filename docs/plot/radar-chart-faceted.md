@@ -54,7 +54,7 @@ const chart = Plot.plot({
       y1: 90 - 0.8,
       x2: 0,
       y2: 90,
-      stroke: "var(--theme-background)",
+      stroke: "var(--plot-background)",
       strokeOpacity: 0.5,
       strokeWidth: 2.5
     }),
@@ -69,7 +69,7 @@ const chart = Plot.plot({
       textAnchor: "start",
       text: (d) => (d == 0.8 ? `${100 * d}th percentile` : `${100 * d}th`),
       fill: "currentColor",
-      stroke: "var(--theme-background)",
+      stroke: "var(--plot-background)",
       fontSize: 12
     }),
 
@@ -112,7 +112,7 @@ const chart = Plot.plot({
       x: ({key}) => longitude(key),
       y: ({value}) => 90 - value,
       fill: "#4269D0",
-      stroke: "var(--theme-background)"
+      stroke: "var(--plot-background)"
     }),
 
     // interactive labels
@@ -125,7 +125,7 @@ const chart = Plot.plot({
         textAnchor: "start",
         dx: 4,
         fill: "currentColor",
-        stroke: "var(--theme-background)",
+        stroke: "var(--plot-background)",
         maxRadius: 10,
         fontSize: 12
       })

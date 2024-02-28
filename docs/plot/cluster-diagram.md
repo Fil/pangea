@@ -20,7 +20,7 @@ const chart = Plot.plot({
       path: "name",
       treeSort: "node:height",
       delimiter: ".",
-      textStroke: "var(--theme-background)"
+      textStroke: "var(--plot-background)"
     })
   ]
 });

@@ -16,7 +16,7 @@ const chart = Plot.plot({
       y: "culmen_length_mm",
       fill: "species",
       fillOpacity: 0.2,
-      stroke: "var(--theme-background)"
+      stroke: "var(--plot-background)"
     }),
     Plot.frame(),
     Plot.dot(penguins, {

@@ -37,7 +37,7 @@ const chart = Plot.plot({
                 : "survival",
             textAnchor: year === "5 Year" ? "end" : year === "20 Year" ? "start" : "middle",
             fill: "currentColor",
-            stroke: "var(--theme-background)",
+            stroke: "var(--plot-background)",
             strokeWidth: 5,
             dx: year === "5 Year" ? -3 : year === "20 Year" ? 3 : 0
           })
