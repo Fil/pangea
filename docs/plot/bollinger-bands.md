@@ -26,3 +26,7 @@ const chart = Plot.plot({
 
 display(chart);
 ```
+
+```js echo
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
+```
