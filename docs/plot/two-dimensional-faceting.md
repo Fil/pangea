@@ -27,5 +27,5 @@ display(chart);
 ```
 
 ```js echo
-const penguins = FileAttachment("penguins.csv").csv({typed: true});
+const penguins = FileAttachment("../data/penguins.csv").csv({typed: true});
 ```
