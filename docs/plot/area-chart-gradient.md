@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-area-chart-with-gradient
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Area chart with gradient</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Area chart with gradient
 
 A custom [function mark](https://observablehq.com/plot/features/marks) returns a svg gradient (generated with [Hypertext Literal](https://observablehq.com/@observablehq/htl)), that can be referenced as a [funciri](https://developer.mozilla.org/en-US/docs/Web/SVG/Content_type#funciri) color in the [area](https://observablehq.com/plot/marks/area) mark.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   y: {grid: true},
   marks: [
     () => htl.svg`<defs>
@@ -25,4 +22,10 @@ Plot.plot({
     Plot.ruleY([0])
   ]
 });
+
+display(chart);
+```
+
+```js echo
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
 ```
