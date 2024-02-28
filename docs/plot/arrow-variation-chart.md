@@ -1,17 +1,14 @@
 ---
 source: https://observablehq.com/@observablehq/plot-arrow-variation-chart
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Arrow variation chart</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Arrow variation chart
 
 An [arrow](https://observablehq.com/plot/marks/arrow) connects the positions in 1980 and 2015 of each city on this population &times; inequality chart. Color [encodes](https://observablehq.com/plot/features/scales) variation.
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   grid: true,
   inset: 10,
   x: {
@@ -23,7 +20,10 @@ Plot.plot({
     ticks: 4
   },
   color: {
-    scheme: "BuRd",
+    type: "diverging",
+    ...(dark
+      ? {interpolate: interpolateDivergent("#44f", "#f96", {pivot: d3.rgb(NaN, NaN, NaN), back: "#311"})}
+      : {scheme: "BuRd"}),
     label: "Change in inequality from 1980 to 2015",
     legend: true,
     tickFormat: "+f"
@@ -43,13 +43,19 @@ Plot.plot({
       filter: "highlight",
       text: "nyt_display",
       fill: "currentColor",
-      stroke: "white",
+      stroke: "var(--plot-background)",
       dy: -6
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js echo
-const metros = FileAttachment("metros.csv").csv({typed: true});
+const metros = FileAttachment("../data/metros.csv").csv({typed: true});
+```
+
+```js echo
+import {dark, interpolateDivergent} from "../components/dark.js";
 ```
