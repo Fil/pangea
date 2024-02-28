@@ -5,7 +5,7 @@ index: true
 
 # Candlestick chart
 
-This chart shows the daily low, high, open and close of Apple stock. Each “candle” represents a single trading day. A specialized _x_-axis is used to avoid gaps on the weekend when the markets are closed. Compare to a [line chart](./line-chart). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
+This chart shows the daily low, high, open and close of Apple stock. Each “candle” represents a single trading day. A specialized _x_-axis is used to avoid gaps on the weekend when the markets are closed. Compare to a [line chart](./line-chart). See also the [Plot version](../plot/candlestick-chart). Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js echo
 // Declare the chart dimensions and margins.
@@ -105,31 +105,6 @@ display(svg.node());
 const ticker = aapl.slice(-130);
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with two [tick marks](https://observablehq.com/plot/marks/tick). See [Plot: Candlestick chart](https://observablehq.com/@observablehq/plot-candlestick-chart?intent=fork) for a detailed example.
-
 ```js echo
-const chart2 = Plot.plot({
-  inset: 6,
-  width: 928,
-  grid: true,
-  y: {label: "↑ Apple stock price ($)"},
-  color: {domain: [-1, 0, 1], range: ["#e41a1c", "#000000", "#4daf4a"]},
-  marks: [
-    Plot.ruleX(ticker, {
-      x: "Date",
-      y1: "Low",
-      y2: "High"
-    }),
-    Plot.ruleX(ticker, {
-      x: "Date",
-      y1: "Open",
-      y2: "Close",
-      stroke: (d) => Math.sign(d.Close - d.Open),
-      strokeWidth: 4,
-      strokeLinecap: "round"
-    })
-  ]
-});
-
-display(chart2);
+const aapl = FileAttachment("../data/aapl.csv").csv({typed: true});
 ```
