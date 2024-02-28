@@ -1,21 +1,18 @@
 ---
 source: https://observablehq.com/@observablehq/plot-bullet-graph
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Plot: Bullet graph</h1><a href="/plot">Observable Plot</a> › <a href="/@observablehq/plot-gallery">Gallery</a></div>
 
 # Bullet graph
 
 ## California COVID-19 disparities
 
-Data: Ben Welsh (17 May, 2020), [“Tracking coronavirus in California”](https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/), _Los Angeles Times_ (see the [original notebook](https://observablehq.com/@datadesk/california-covid-19-disparities-bullet-graph)). This version uses two [bar](https://observablehq.com/plot/marks/bar) marks, one for the background (proportion of the general population) and one for the data (proportion of Covid-19 cases). Compare to [Bullet graph II](/@fil/bullet-graph-2).
+Data: Ben Welsh (17 May, 2020), [“Tracking coronavirus in California”](https://www.latimes.com/projects/california-coronavirus-cases-tracking-outbreak/), _Los Angeles Times_ (see the [original notebook](https://observablehq.com/@datadesk/california-covid-19-disparities-bullet-graph)). This version uses two [bar](https://observablehq.com/plot/marks/bar) marks, one for the background (proportion of the general population) and one for the data (proportion of Covid-19 cases). Compare to [Bullet graph II](https://observablehq.com/@fil/bullet-graph-2).
 
 For more details on bullet graph designs, see [Wikipedia](https://en.wikipedia.org/wiki/Bullet_graph).
 
 ```js echo
-Plot.plot({
+const chart = Plot.plot({
   width,
   height: 200,
   facet: {
@@ -39,7 +36,7 @@ Plot.plot({
     Plot.barX(data, {
       x: "population_percent",
       y: "age",
-      fill: "#ddd",
+      fill: "var(--theme-foreground-fainter)",
       insetTop: 2,
       insetBottom: 2
     }),
@@ -53,6 +50,8 @@ Plot.plot({
     })
   ]
 });
+
+display(chart);
 ```
 
 ```js
@@ -60,5 +59,5 @@ Inputs.table(data);
 ```
 
 ```js echo
-const data = FileAttachment("covid.csv").csv({typed: true});
+const data = FileAttachment("../data/covid-disparities.csv").csv({typed: true});
 ```
