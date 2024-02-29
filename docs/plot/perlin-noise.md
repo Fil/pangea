@@ -1,7 +1,7 @@
 ---
 source: https://observablehq.com/@observablehq/plot-perlin-noise
-index: false
-draft: true
+index: true
+author: Mike Bostock
 ---
 
 # Perlin noise
@@ -26,8 +26,11 @@ display(chart);
 ```
 
 ```js echo
-import {octave, perlin2} from "@mbostock/perlin-noise";
-import {poisson} from "@mbostock/poisson-disk-sampling";
+// https://observablehq.com/@mbostock/perlin-noise
+import {octave, perlin2} from "../components/perlin-noise.js";
+
+// https://observablehq.com/@mbostock/poisson-disk-sampling
+import {poisson} from "../components/poisson-disk-sampling.js";
 
 const noise = octave(perlin2, 2);
 ```
