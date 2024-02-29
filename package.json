@@ -9,7 +9,7 @@
     "observable": "observable"
   },
   "dependencies": {
-    "@observablehq/framework": "https://github.com/observablehq/framework#mbostock/download-npm",
+    "@observablehq/framework": "https://github.com/observablehq/framework#fil/save-search-query",
     "@observablehq/plot": "^0.6.13",
     "@resvg/resvg-js": "^2.6.0",
     "d3": "^7.8.5",

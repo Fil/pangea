@@ -244,9 +244,9 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.12.tgz#c57c8afbb4054a3ab8317591a0b7320360b444ae"
   integrity sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==
 
-"@observablehq/framework@https://github.com/observablehq/framework#mbostock/download-npm":
+"@observablehq/framework@https://github.com/observablehq/framework#fil/save-search-query":
   version "1.0.0"
-  resolved "https://github.com/observablehq/framework#320630b336a67b28d3230a976fb078a233cf712a"
+  resolved "https://github.com/observablehq/framework#2fad74cba230008dd215f81d8f94522202c369eb"
   dependencies:
     "@clack/prompts" "^0.7.0"
     "@observablehq/inputs" "^0.10.6"
@@ -257,6 +257,7 @@
     ci-info "^4.0.0"
     esbuild "^0.19.8"
     fast-array-diff "^1.1.0"
+    fast-deep-equal "^3.1.3"
     gray-matter "^4.0.3"
     he "^1.2.0"
     highlight.js "^11.8.0"
@@ -271,7 +272,6 @@
     open "^9.1.0"
     rollup "^4.6.0"
     rollup-plugin-esbuild "^6.1.0"
-    semver "^7.5.4"
     send "^0.18.0"
     tar-stream "^3.1.6"
     tsx "~4.2.1"
@@ -1114,6 +1114,11 @@ fast-array-diff@^1.1.0:
   resolved "https://registry.yarnpkg.com/fast-array-diff/-/fast-array-diff-1.1.0.tgz#3f0a48b208f7d146671db6b4efdabf8995ad86be"
   integrity sha512-muSPyZa/yHCoDQhah9th57AmLENB1nekbrUoLAqOpQXdl1Kw8VbH24Syl5XLscaQJlx7KRU95bfTDPvVB5BJvw==
 
+fast-deep-equal@^3.1.3:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
+  integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
+
 fast-fifo@^1.1.0, fast-fifo@^1.2.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/fast-fifo/-/fast-fifo-1.3.2.tgz#286e31de96eb96d38a97899815740ba2a4f3640c"
@@ -1402,13 +1407,6 @@ linkify-it@^4.0.1:
   dependencies:
     uc.micro "^1.0.1"
 
-lru-cache@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
-  integrity sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==
-  dependencies:
-    yallist "^4.0.0"
-
 markdown-it-anchor@^8.6.7:
   version "8.6.7"
   resolved "https://registry.yarnpkg.com/markdown-it-anchor/-/markdown-it-anchor-8.6.7.tgz#ee6926daf3ad1ed5e4e3968b1740eef1c6399634"
@@ -1666,13 +1664,6 @@ section-matter@^1.0.0:
     extend-shallow "^2.0.1"
     kind-of "^6.0.0"
 
-semver@^7.5.4:
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.0.tgz#1a46a4db4bffcccd97b743b5005c8325f23d4e2d"
-  integrity sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==
-  dependencies:
-    lru-cache "^6.0.0"
-
 send@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/send/-/send-0.18.0.tgz#670167cc654b05f5aa4a767f9113bb371bc706be"
@@ -1880,8 +1871,3 @@ ws@^8.14.2:
   version "8.16.0"
   resolved "https://registry.yarnpkg.com/ws/-/ws-8.16.0.tgz#d1cd774f36fbc07165066a60e40323eab6446fd4"
   integrity sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==
-
-yallist@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
-  integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
