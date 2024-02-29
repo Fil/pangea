@@ -1,3 +1,7 @@
+---
+index: true
+---
+
 # Greek youth
 
 A DuckDB data loader.
