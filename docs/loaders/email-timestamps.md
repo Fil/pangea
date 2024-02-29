@@ -4,13 +4,13 @@ index: true
 
 # email timestamps
 
-A friend who operates a fairly large mailing-list wanted to know how quickly the server delivered its messages, with Mailman and postfix. I saved the following command as `data/email-timestamps.txt.sh`:
+A friend who operates a fairly large mailing-list wanted to know how quickly the server delivered its messages, with Mailman and postfix. I saved the following command as `docs/data/email-timestamps.txt.sh`:
 
 ```sh echo run=false
 ssh example.org "awk '/status=sent/ {print \$1, \$2, \$3}' /var/log/mail.log"
 ```
 
-This short data loader connects to the server and echoes a timestamp for each log that contains `status=sent`. We can then create a chart to answer the question:
+This short data loader connects to the server and echoes a timestamp for each log that contains `status=sent`. A simple histogram then answers the question:
 
 ```js echo
 display(Plot.rectY(ts, Plot.binX()).plot({marginLeft: 60}));
