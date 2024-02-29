@@ -1,4 +1,8 @@
-# SUM’Eau (Covid tracker)
+---
+index: true
+---
+
+# Sum’eau (Covid tracker)
 
 This tracks the relative concentration of the coronavirus **gene E** over ammoniacal nitrogen in the sewers of 12 French cities, loading live data from data.gouv.fr. For methodological details, see [the dataset description](https://www.data.gouv.fr/fr/datasets/surveillance-du-sars-cov-2-dans-les-eaux-usees-sumeau/#/information). For California, see [Zan Armstrong’s work on SCAN](https://observablehq.com/@zanarmstrong/sewer-coronavirus-alert-network).
 
@@ -42,12 +46,7 @@ display(
         stroke: (d) => (d.city === city ? "steelblue" : d.city === "National" ? "grey" : "currentColor"),
         strokeWidth: (d) => (d.city === city ? 3 : d.city === "National" ? 1.5 : 0.25),
         channels: {semaine: "semaine"},
-        tip: {
-          format: {
-            stroke: false,
-            strokeWidth: false
-          }
-        },
+        tip: {format: {stroke: false, strokeWidth: false}},
         sort: (d) => d.city === "National"
       })
     ]
