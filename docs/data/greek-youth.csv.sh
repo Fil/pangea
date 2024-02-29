@@ -1,5 +1,7 @@
+export TMPDIR="docs/.observablehq/.cache"
+mkdir -p $TMPDIR
+
 # install duckdb if not already present
-export TMPDIR=$TMPDIR || ./
 export PATH=$TMPDIR:$PATH
 command -v duckdb > /dev/null || $(
   curl --location --output duckdb.zip \
