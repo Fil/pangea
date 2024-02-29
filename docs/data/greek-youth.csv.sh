@@ -1,5 +1,14 @@
+# install duckdb if not already present
+export TMPDIR=$TMPDIR || .
+export PATH=$TMPDIR:$PATH
+command -v duckdb > /dev/null || $(
+  curl --location --output duckdb.zip \
+    https://github.com/duckdb/duckdb/releases/download/v0.10.0/duckdb_cli-linux-amd64.zip && \
+    unzip -qq duckdb.zip && chmod +x duckdb && mv duckdb $TMPDIR/
+)
+
 URI="https://ec.europa.eu/eurostat/databrowser-backend/api/extraction/1.0/LIVE/true/sdmx/csv/ilc_lvps08?i=1&compressed=true";
-CACHE="$TMPDIR/observablehq-cli/ilc_lvps08.csv.gz";
+CACHE="$TMPDIR/cache/ilc_lvps08.csv.gz";
 mkdir -p $(dirname "$CACHE");
 if [ ! -e "$CACHE" ]; then curl -o "$CACHE" "$URI"; fi
 
