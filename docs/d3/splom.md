@@ -1,11 +1,11 @@
 ---
-source: https://observablehq.com/@d3/brushable-scatterplot-matrix
+source: https://observablehq.com/@d3/splom/2
 index: true
 ---
 
-# Brushable scatterplot matrix
+# Scatterplot matrix
 
-The [scatterplot matrix](./splom) (SPLOM) shows pairwise correlations for multi-dimensional data; each cell is a scatterplot where _x_ encodes the column’s dimension and _y_ encodes the row’s dimension. This matrix shows Kristen Gorman’s data on penguins near Palmer Station in Antarctica. The implementation allows brushing to select data points in one cell, and highlight them across all other cells.
+The scatterplot matrix (SPLOM) shows pairwise correlations for multi-dimensional data; each cell is a scatterplot where _x_ encodes the column’s dimension and _y_ encodes the row’s dimension. This matrix shows Kristen Gorman’s data on penguins near Palmer Station in Antarctica. See also the [brushable](./brushable-scatterplot-matrix) version.
 
 ```js
 display(Swatches(chart.scales.color));
@@ -72,7 +72,7 @@ const yAxis = (g) =>
 
 const svg = d3.create("svg").attr("width", width).attr("height", height).attr("viewBox", [-padding, 0, width, height]);
 
-svg.append("style").text(`circle.hidden { fill: currentColor; fill-opacity: 1; r: 1px; }`);
+svg.append("style").text(`circle.hidden { fill: var(--theme-background); fill-opacity: 1; r: 1px; }`);
 
 svg.append("g").call(xAxis);
 
@@ -109,9 +109,6 @@ const circle = cell
   .attr("fill-opacity", 0.7)
   .attr("fill", (d) => color(d.species));
 
-// Ignore this line if you don’t need the brushing behavior.
-cell.call(brush, circle, svg, {padding, size, x, y, columns});
-
 svg
   .append("g")
   .style("font", "bold 10px sans-serif")
@@ -126,65 +123,9 @@ svg
   .attr("fill", "currentColor")
   .text((d) => d);
 
-svg.property("value", []);
 const chart = Object.assign(svg.node(), {scales: {color}});
 
 display(chart);
-```
-
-```js echo
-const selection = Generators.input(chart); // or use const selection = view(chart) to display the chart at the same time
-```
-
-```js echo
-function brush(cell, circle, svg, {padding, size, x, y, columns}) {
-  const brush = d3
-    .brush()
-    .extent([
-      [padding / 2, padding / 2],
-      [size - padding / 2, size - padding / 2]
-    ])
-    .on("start", brushstarted)
-    .on("brush", brushed)
-    .on("end", brushended);
-
-  cell.call(brush);
-
-  let brushCell;
-
-  // Clear the previously-active brush, if any.
-  function brushstarted() {
-    if (brushCell !== this) {
-      d3.select(brushCell).call(brush.move, null);
-      brushCell = this;
-    }
-  }
-
-  // Highlight the selected circles.
-  function brushed({selection}, [i, j]) {
-    let selected = [];
-    if (selection) {
-      const [[x0, y0], [x1, y1]] = selection;
-      circle.classed(
-        "hidden",
-        (d) =>
-          x0 > x[i](d[columns[i]]) || x1 < x[i](d[columns[i]]) || y0 > y[j](d[columns[j]]) || y1 < y[j](d[columns[j]])
-      );
-      selected = data.filter(
-        (d) =>
-          x0 < x[i](d[columns[i]]) && x1 > x[i](d[columns[i]]) && y0 < y[j](d[columns[j]]) && y1 > y[j](d[columns[j]])
-      );
-    }
-    svg.property("value", selected).dispatch("input");
-  }
-
-  // If the brush is empty, select all circles.
-  function brushended({selection}) {
-    if (selection) return;
-    svg.property("value", []).dispatch("input");
-    circle.classed("hidden", false);
-  }
-}
 ```
 
 ```js echo
