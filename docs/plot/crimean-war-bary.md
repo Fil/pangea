@@ -3,7 +3,7 @@ source: https://observablehq.com/@observablehq/plot-crimean-war-bary
 index: true
 ---
 
-# Crimean war casualties by cause
+# Crimean war casualties by cause (bar)
 
 A stacked bar chart of [deaths in the Crimean War](https://en.wikipedia.org/wiki/Florence_Nightingale#Crimean_War)—predominantly from <span style="border-bottom: solid ${d3.schemeTableau10[0]} 3px;">disease</span>—using Florence Nightingale’s data. This uses the [bar](https://observablehq.com/plot/marks/bar) mark, with dates quantized by the [interval scale option](https://observablehq.com/plot/features/scales#interval)—compare with the [rect-mark](./crimean-war-recty) variant.
 
