@@ -244,9 +244,9 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.12.tgz#c57c8afbb4054a3ab8317591a0b7320360b444ae"
   integrity sha512-T1QyPSDCyMXaO3pzBkF96E8xMkiRYbUEZADd29SyPGabqxMViNoii+NcK7eWJAEoU6RZyEm5lVSIjTmcdoB9HA==
 
-"@observablehq/framework@https://github.com/observablehq/framework#mbostock/download-npm":
+"@observablehq/framework@https://github.com/observablehq/framework#fil/save-search-query":
   version "1.0.0"
-  resolved "https://github.com/observablehq/framework#b4aa2ec1a4703d6ef8fda28b43e9d99560169e9c"
+  resolved "https://github.com/observablehq/framework#75b09c3d927153cc43ea2604c3a75796b586f4ab"
   dependencies:
     "@clack/prompts" "^0.7.0"
     "@observablehq/inputs" "^0.10.6"
@@ -1379,11 +1379,6 @@ is-stream@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-3.0.0.tgz#e6bfd7aa6bef69f4f472ce9bb681e3e57b4319ac"
   integrity sha512-LnQR4bZ9IADDRSkvpqMGvt/tEJWclzklNgSw48V5EAaAeDd6qGvN8ei6k5p0tvxSR171VmGyHuTiAOfxAbr8kA==
-
-is-unicode-supported@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/is-unicode-supported/-/is-unicode-supported-1.3.0.tgz#d824984b616c292a2e198207d4a609983842f714"
-  integrity sha512-43r2mRvz+8JRIKnWJ+3j8JtjRKZ6GmjzfaE/qiBJnikNnYv/6bagRJ1kUhNk8R5EX/GkobD+r+sfxCPJsiKBLQ==
 
 is-wsl@^2.2.0:
   version "2.2.0"
