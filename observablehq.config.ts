@@ -2,6 +2,36 @@ const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" tar
   .toISOString()
   .slice(0, 10)}</a>.</p>`;
 
+const SOURCE_REPO = "https://github.com/Fil/pangea/blob/main/docs";
+
+const VIEW_SOURCE = !SOURCE_REPO
+  ? ""
+  : `
+<style>
+a.view-source {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font: 700 18px var(--sans-serif);
+  text-decoration: none !important;
+  padding: 0 4px;
+}
+a.view-source:not(:hover,:focus) {
+  color: inherit;
+}
+</style>
+<a class="view-source" target="_blank" aria-label="view source" title="view source" href="${SOURCE_REPO}">⚉</a>
+<script type="module">
+const a = document.querySelector(".view-source");
+a.setAttribute("href", a.getAttribute("href") + (
+  document.location.pathname
+    .replace(/[/]$/, "/index")
+    .replace(/^pangea-proxima/,"")
+  ) + ".md?plain=1"
+);
+</script>
+`;
+
 // https://vercel.com/fil/pangea/settings
 const VERCEL_USER_ID = "Gqs9rlMU1BvoK9jKM2glOzEl";
 const VERCEL_PROJECT_ID = "prj_BBG643i8KOAgNQkQt9wVyJ2NryNK";
@@ -65,6 +95,7 @@ export default {
   pager: false, // whether to show previous & next links in the footer
   sidebar: true,
   search: true,
+  header: `${VIEW_SOURCE}`,
   footer: `
     ${FOOTER_OBSERVABLE}
     ${VERCEL_SPEED_INSIGHTS}
