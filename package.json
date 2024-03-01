@@ -3,13 +3,13 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf docs/.observablehq/cache",
-    "build": "rm -f docs/.observablehq/cache/index-minisearch.url; rm -rf dist && observable build",
+    "build": "rm -rf dist && observable build",
     "dev": "observable preview --port 3033",
     "deploy": "observable deploy",
     "observable": "observable"
   },
   "dependencies": {
-    "@observablehq/framework": "https://github.com/observablehq/framework#mbostock/download-npm",
+    "@observablehq/framework": "https://github.com/observablehq/framework#fil/save-search-query",
     "@observablehq/plot": "^0.6.13",
     "@resvg/resvg-js": "^2.6.0",
     "d3": "^7.8.5",
