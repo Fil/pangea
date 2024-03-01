@@ -1,6 +1,7 @@
 ---
 index: true
 author: Jeff Heer
+keywords: mosaic
 ---
 
 # NYC Taxi Rides
@@ -9,6 +10,8 @@ author: Jeff Heer
 
 Using a data loader, we ingest a remote file into DuckDB and project [_longitude_, _latitude_] coordinates (in the database!) to spatial positions with units of feet (1 foot = 12 inches).
 We then load the prepared data to visualize taxi pickup and dropoff locations, as well as the volume of rides by the time of day.
+
+For more Mosaic examples, see the [Mosaic + Framework](https://uwdata.github.io/mosaic-framework-example/) website.
 
 _Please wait a few seconds for the dataset to load._
 
