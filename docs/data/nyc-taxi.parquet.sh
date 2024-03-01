@@ -1,7 +1,16 @@
-# The DuckDB executable must be on your environment path!
-# Use DuckDB version 0.9.2 or later
-# Write to a named file as portable file descriptors such as
-# (/dev/stdout) appear to be unavailable in GitHub actions.
+export TMPDIR="docs/.observablehq/.cache"
+mkdir -p $TMPDIR
+
+echo "running loader" >&2
+
+# install duckdb if not already present
+export PATH=$TMPDIR:$PATH
+command -v duckdb > /dev/null || $(
+  curl --location --output duckdb.zip \
+    https://github.com/duckdb/duckdb/releases/download/v0.10.0/duckdb_cli-linux-amd64.zip && \
+    unzip -qq duckdb.zip && chmod +x duckdb && mv duckdb $TMPDIR/
+)
+
 duckdb :memory: << EOF
 -- Load spatial extension
 INSTALL spatial; LOAD spatial;
