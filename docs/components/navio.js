@@ -1,6 +1,5 @@
 export async function navio(data, {columns = data.columns ?? Object.keys(data[0]), height = 300} = {}) {
-  const navio = await import("https://esm.sh/navio@0.0.74").then((d) => d.default);
-  const d3 = await import("https://esm.sh/d3-selection@3.0.0");
+  const [navio, d3] = await Promise.all([import("npm:navio").then((d) => d.default), import("npm:d3-selection")]);
   const selection = d3.create("div");
   selection.style("fill", "currentColor"); // for dark mode
   const div = selection.node();
