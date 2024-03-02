@@ -1,4 +1,4 @@
-import hljs from "https://cdn.jsdelivr.net/npm/highlight.js/+esm";
+import hljs from "npm:highlight.js";
 
 export function showCode(file, {language = file.name.match(/\.(\w+)$/)?.[1], copy = true} = {}) {
   const div = document.createElement("details");
