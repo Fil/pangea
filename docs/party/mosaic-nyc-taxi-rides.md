@@ -14,9 +14,9 @@ For more Mosaic examples, see the [Mosaic + Framework](https://uwdata.github.io/
 
 _Please wait a few seconds for the dataset to load._
 
-${chart}
+${maps}
 
-${chart2}
+${histogram}
 
 Select an interval in a plot to filter the maps.
 _What spatial patterns can you find?_
@@ -47,7 +47,7 @@ const defaultAttributes = [
 ```
 
 ```js echo
-const chart = vg.hconcat(
+const maps = vg.hconcat(
   vg.plot(
     vg.raster(vg.from("trips", {filterBy: $filter}), {x: "px", y: "py", imageRendering: "pixelated"}),
     vg.intervalXY({as: $filter}),
@@ -81,7 +81,7 @@ const chart = vg.hconcat(
 ```
 
 ```js echo
-const chart2 = vg.plot(
+const histogram = vg.plot(
   vg.rectY(vg.from("trips"), {x: vg.bin("time"), y: vg.count(), fill: "steelblue", inset: 0.5}),
   vg.intervalX({as: $filter}),
   vg.yTickFormat("s"),
