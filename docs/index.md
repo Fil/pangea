@@ -21,7 +21,7 @@ const ask = view(askInput);
 ```js
 let V;
 if (ask) {
-  if (!V) V = {}; // await fetch(import.meta.resolve("observablehq:minisearch.json")).then((d) => d.json());
+  V ||= await fetch(import.meta.resolve("observablehq:minisearch.json")).then((d) => d.json());
   setTimeout(() => (askInput.querySelector("button").textContent = "Ask me again"), 4000);
   const {documentIds, storedFields} = V;
 
