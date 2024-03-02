@@ -29,7 +29,9 @@ COPY (SELECT
   ST_Y(pick)::INTEGER AS py, -- extract pickup y-coord
   ST_X(drop)::INTEGER AS dx, -- extract dropff x-coord
   ST_Y(drop)::INTEGER AS dy  -- extract dropff y-coord
-FROM rides) TO 'trips.parquet' WITH (FORMAT PARQUET);
+FROM rides
+ORDER BY 2,3,4,5,1 -- optimize output size by sorting
+) TO 'trips.parquet' (COMPRESSION 'ZSTD', row_group_size 10000000);
 EOF
 
 cat trips.parquet >&1  # Write output to stdout
