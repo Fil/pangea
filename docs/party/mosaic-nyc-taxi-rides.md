@@ -8,8 +8,7 @@ keywords: mosaic
 
 ## Pickup and dropoff points for 1M NYC taxi rides on Jan 1-3, 2010.
 
-Using a data loader, we ingest a remote file into DuckDB and project [_longitude_, _latitude_] coordinates (in the database!) to spatial positions with units of feet (1 foot = 12 inches).
-We then load the prepared data to visualize taxi pickup and dropoff locations, as well as the volume of rides by the time of day.
+Using a data loader, we ingest a remote file into DuckDB and project [_longitude_, _latitude_] coordinates (in the database!) to spatial positions with the [EPSG:32118](https://epsg.io/32118) projection. We then load the prepared data to visualize taxi pickup and dropoff locations, as well as the volume of rides by the time of day.
 
 For more Mosaic examples, see the [Mosaic + Framework](https://uwdata.github.io/mosaic-framework-example/) website.
 
@@ -41,8 +40,8 @@ const defaultAttributes = [
   vg.margin(0),
   vg.xAxis(null),
   vg.yAxis(null),
-  vg.xDomain([975000, 1005000]),
-  vg.yDomain([190000, 240000]),
+  vg.xDomain([297000, 297000 + 28.36 * 335]),
+  vg.yDomain([57900, 57900 + 28.36 * 550]), // ensure aspect ratio of 1
   vg.colorScale("symlog")
 ];
 ```
