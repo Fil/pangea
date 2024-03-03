@@ -168,7 +168,7 @@ display(svg.node());
 ```
 
 ```js echo
-const data = FileAttachment("../flare.json").json();
+const data = FileAttachment("../data/flare.json").json();
 ```
 
 Alternatively, create a [tidy tree](../plot/tidy-tree-json) in a few lines of code with [Observable Plot](/plot/)’s tree mark.
