@@ -15,12 +15,7 @@ export const darkPrefers = Generators.observe((change) => {
 // preview, also watch for changes in the theme meta.
 export const dark = Generators.observe((change) => {
   const mql = matchMedia("(prefers-color-scheme: dark)");
-  const changed = () => {
-    const c = rgb(
-      getComputedStyle(document.querySelector("#observablehq-main, body")).getPropertyValue("--theme-foreground")
-    );
-    change(c.r + c.g + c.b > 360);
-  };
+  const changed = () => change(getComputedStyle(document.body).getPropertyValue("color-scheme") === "dark");
   changed();
   mql.addEventListener("change", changed);
   return () => mql.removeEventListener("change", changed);
