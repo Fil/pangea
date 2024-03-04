@@ -12,7 +12,7 @@ Using a data loader, we ingest a remote file into DuckDB and project [_longitude
 
 For more Mosaic examples, see the [Mosaic + Framework](https://uwdata.github.io/mosaic-framework-example/) website.
 
-_Please wait a few seconds for the dataset to load._
+<em id="loading">Please wait a few seconds for the dataset to load.</em>
 
 ${maps}
 
@@ -44,6 +44,7 @@ const defaultAttributes = [
   vg.yDomain([57900, 57900 + 28.36 * 550]), // ensure aspect ratio of 1
   vg.colorScale("symlog")
 ];
+document.querySelector("#loading")?.remove();
 ```
 
 ```js echo
