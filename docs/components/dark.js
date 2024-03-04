@@ -11,8 +11,8 @@ export const darkPrefers = Generators.observe((change) => {
   return () => mql.removeEventListener("change", changed);
 });
 
-// Watches currentColor (dark mode based on theme and user preference). TODO in
-// preview, also watch for changes in the theme meta.
+// Watches dark mode based on theme and user preference.
+// TODO: in preview, also watch for changes in the theme meta.
 export const dark = Generators.observe((change) => {
   const mql = matchMedia("(prefers-color-scheme: dark)");
   const changed = () => change(getComputedStyle(document.body).getPropertyValue("color-scheme") === "dark");
