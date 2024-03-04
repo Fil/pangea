@@ -1,3 +1,4 @@
+const EMOJI_FAVICON = "🍀";
 const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="${new Date().toISOString()}">${new Date()
   .toISOString()
   .slice(0, 10)}</a>.</p>`;
@@ -95,6 +96,7 @@ export default {
   pager: false, // whether to show previous & next links in the footer
   sidebar: true,
   search: true,
+  head: `<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${EMOJI_FAVICON}</text></svg>">`,
   header: `${VIEW_SOURCE}`,
   footer: `
     ${FOOTER_OBSERVABLE}
