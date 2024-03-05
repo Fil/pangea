@@ -27,7 +27,7 @@ const a = document.querySelector(".view-source");
 a.setAttribute("href", a.getAttribute("href") + (
   document.location.pathname
     .replace(/[/]$/, "/index")
-    .replace(/^pangea(-proxima)?/,"")
+    .replace(/^[/]pangea(-proxima)?/, "")
   ) + ".md?plain=1"
 );
 </script>
