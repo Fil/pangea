@@ -1,5 +1,5 @@
 {
-  "buildCommand": "mkdir -p node_modules/cache && ln -s ../node_modules/cache docs/.observablehq && yarn install:duckdb && rm -rf dist && observable build",
+  "buildCommand": "mkdir -p node_modules/cache && ln -s ../node_modules/cache docs/.observablehq && yarn install:duckdb && rm -rf dist && tsx node_modules/@observablehq/framework/src/bin/observable.ts build",
   "outputDirectory": "dist",
   "cleanUrls": true,
   "framework": null
