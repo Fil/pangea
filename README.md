@@ -1,3 +1,3 @@
 # Pangea
 
-See https://pangea-proxima.vercel.app/
+See https://observablehq.observablehq.cloud/pangea/

@@ -3,7 +3,7 @@ const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" tar
   .toISOString()
   .slice(0, 10)}</a>.</p>`;
 
-const SOURCE_REPO = "https://github.com/Fil/pangea/blob/main/docs";
+const SOURCE_REPO = "https://github.com/observablehq/pangea/blob/main/docs";
 
 const VIEW_SOURCE = !SOURCE_REPO
   ? ""
@@ -102,6 +102,6 @@ export default {
     ${FOOTER_OBSERVABLE}
     ${VERCEL_SPEED_INSIGHTS}
     ${VERCEL_WEB_ANALYTICS}
-    ${VERCEL_COMMENTS}
+    ${/* VERCEL_COMMENTS */ ""}
   `
 };
