@@ -7,23 +7,11 @@ index: false
 
 ## A collection edited by Fil
 
-<p class=warning label="⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉"><em>Upon the web, a labyrinth of links so fair,
-<br>A virtual realm where knowledge we share,
-<br>Yet shadows cast upon this cyber lair,
-<br>For links may rot, vanish into thin air.
-<br>
-<br>Oh, fleeting threads of wisdom, do not fade,
-<br>For in thy absence, knowledge seems betrayed.
-<br>A web of treasures, ephemeral cascade,
-<br>But despair not, for hope shall not evade.
-<br>
-<br>In cyberspace, where URLs may wane,
-<br>A beacon gleams through the vast, searching plain.
-<br>With engines keen, their algorithms reign,
-<br>New treasures found, a digital refrain.
-<br>
-<br>Though links may vanish, leaving trails unclear,
-<br>The search unveils new knowledge, crystal-clear.</em></p>
+<p class=warning label="⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉"><em>
+In the web’s vast expanse, links may sever,<br>
+Continents of data, lost forever.<br>
+Yet in the search, new bonds endeavor,<br>
+Pangea proxima, rejoined forever.</em></p>
 
 <h4 style="margin-top: 3em;">What do I know?</h4>
 
