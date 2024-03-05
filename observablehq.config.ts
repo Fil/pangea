@@ -1,4 +1,4 @@
-const EMOJI_FAVICON = "🍀";
+const EMOJI_FAVICON = "🧶";
 const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="${new Date().toISOString()}">${new Date()
   .toISOString()
   .slice(0, 10)}</a>.</p>`;
