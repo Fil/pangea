@@ -1,16 +1,5 @@
-export TMPDIR="docs/.observablehq/.cache"
-mkdir -p $TMPDIR
-
-echo "running loader" >&2
-
-# install duckdb if not already present
+export TMPDIR="docs/.observablehq/cache"
 export PATH=$TMPDIR:$PATH
-command -v duckdb > /dev/null || $(
-  curl --location --output duckdb.zip \
-    https://github.com/duckdb/duckdb/releases/download/v0.10.0/duckdb_cli-linux-amd64.zip && \
-    unzip -qq duckdb.zip && chmod +x duckdb && mv duckdb $TMPDIR/
-)
-
 duckdb :memory: << EOF
 -- Load spatial extension
 INSTALL spatial; LOAD spatial;
@@ -31,8 +20,8 @@ COPY (SELECT
   ST_Y(drop)::INTEGER AS dy  -- extract dropff y-coord
 FROM rides
 ORDER BY 2,3,4,5,1 -- optimize output size by sorting
-) TO 'trips.parquet' (COMPRESSION 'ZSTD', row_group_size 10000000);
+) TO '$TMPDIR/trips.parquet' (COMPRESSION 'ZSTD', row_group_size 10000000);
 EOF
 
-cat trips.parquet >&1  # Write output to stdout
-rm trips.parquet       # Clean up
+cat $TMPDIR/trips.parquet >&1  # Write output to stdout
+rm $TMPDIR/trips.parquet       # Clean up

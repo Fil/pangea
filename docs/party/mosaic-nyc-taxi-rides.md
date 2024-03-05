@@ -8,7 +8,9 @@ keywords: mosaic
 
 ## Pickup and dropoff points for 1M NYC taxi rides on Jan 1-3, 2010.
 
-Using a data loader, we ingest a remote file into DuckDB and project [_longitude_, _latitude_] coordinates (in the database!) to spatial positions with the [EPSG:32118](https://epsg.io/32118) projection. We then load the prepared data to visualize taxi pickup and dropoff locations, as well as the volume of rides by the time of day.
+[Mosaic](https://uwdata.github.io/mosaic/) is a system for linking data visualizations, tables, and input widgets, all leveraging a database (DuckDB) for scalable processing. With Mosaic, you can interactively visualize and explore millions —and even billions— of data points.
+
+This example uses a data loader that ingests a remote file with taxi pickup and dropoff locations into DuckDB and projects point coordinates (_longitude_, _latitude_) to meters with the [EPSG:32118](https://epsg.io/32118) projection.
 
 For more Mosaic examples, see the [Mosaic + Framework](https://uwdata.github.io/mosaic-framework-example/) website.
 
