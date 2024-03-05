@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf docs/.observablehq/cache",
-    "build": "rm -rf dist && observable build",
+    "build": "rm -rf dist && tsx node_modules/@observablehq/framework/src/bin/observable.ts build",
     "dev": "observable preview --port 3033",
     "deploy": "observable deploy",
     "observable": "observable",
