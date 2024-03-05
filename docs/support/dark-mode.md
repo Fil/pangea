@@ -73,4 +73,9 @@ canvas doesn't have currentColor.
 
 Apple’s _Human interface guidelines_ have a very detailed [page about Dark Mode](https://developer.apple.com/design/human-interface-guidelines/dark-mode), outlining best practices.
 
-<p class="note">These recommandations will evolve with time as browser support for dark mode improves (see [light-dark](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark)).</p>
+<p class="note">
+
+These recommandations will evolve with time as browser support for dark mode improves (see [light-dark](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/light-dark)).
+
+</p>
+
