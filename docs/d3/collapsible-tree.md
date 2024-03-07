@@ -5,7 +5,7 @@ index: true
 
 # Collapsible tree
 
-Click a black node to expand or collapse [the tree](./tree).
+Click a node to expand or collapse [the tree](./tree).
 
 ```js echo
 // Specify the charts’ dimensions. The height is variable, depending on the layout.
@@ -97,11 +97,11 @@ function update(event, source) {
     .attr("x", (d) => (d._children ? -6 : 6))
     .attr("text-anchor", (d) => (d._children ? "end" : "start"))
     .text((d) => d.data.name)
-    .clone(true)
-    .lower()
     .attr("stroke-linejoin", "round")
     .attr("stroke-width", 3)
-    .attr("stroke", "white");
+    .attr("paint-order", "stroke")
+    .attr("fill", "currentColor")
+    .attr("stroke", "var(--theme-background)");
 
   // Transition nodes to their new position.
   const nodeUpdate = node
