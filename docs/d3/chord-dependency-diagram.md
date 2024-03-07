@@ -1,3 +1,8 @@
+---
+source: https://observablehq.com/@d3/chord-dependency-diagram
+index: true
+---
+
 # Chord dependency diagram
 
 This [chord diagram](./chord-diagram) shows dependencies among a software class hierarchy. Although it does not reveal class-level detail, as [hierarchical edge bundling](./hierarchical-edge-bundling) does, it conveys the total number of imports between and within packages. Note, for example, that the _util_ package does not import anything besides itself.
