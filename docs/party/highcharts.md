@@ -1,10 +1,14 @@
+---
+index: true
+---
+
 # Highcharts
 
 ```js echo
 import Highcharts from "npm:highcharts";
 ```
 
-```js
+```js echo
 // Data retrieved https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature
 
 const container = display(document.createElement("div"));
