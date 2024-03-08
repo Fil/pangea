@@ -4,21 +4,21 @@ import {easePolyInOut} from "npm:d3-ease";
 
 // Watches user dark mode preference
 export const darkPrefers = Generators.observe((change) => {
-  const mql = matchMedia("(prefers-color-scheme: dark)");
-  const changed = () => change(mql.matches);
-  changed();
-  mql.addEventListener("change", changed);
-  return () => mql.removeEventListener("change", changed);
+  const media = matchMedia("(prefers-color-scheme: dark)");
+  const changed = (event) => change(event.matches);
+  media.addEventListener("change", changed);
+  change(media.matches);
+  return () => media.removeEventListener("change", changed);
 });
 
 // Watches dark mode based on theme and user preference.
 // TODO: in preview, also watch for changes in the theme meta.
 export const dark = Generators.observe((change) => {
-  const mql = matchMedia("(prefers-color-scheme: dark)");
+  const media = matchMedia("(prefers-color-scheme: dark)");
   const changed = () => change(getComputedStyle(document.body).getPropertyValue("color-scheme") === "dark");
   changed();
-  mql.addEventListener("change", changed);
-  return () => mql.removeEventListener("change", changed);
+  media.addEventListener("change", changed);
+  return () => media.removeEventListener("change", changed);
 });
 
 // orange dark blue
