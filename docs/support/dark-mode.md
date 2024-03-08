@@ -137,6 +137,20 @@ Plot.lineY(data, {
 
 See [Overlapping histogram](../plot/overlapping-histogram) for a complete example.
 
+Note that **dark** does not return user preference, but the current theme. This reflects user preference if the page supports dark mode, but otherwise reflects the page’s selected theme (either light or dark).
+
+If you want to reflect user preference even when your page has a fixed theme, import **darkPrefers** instead:
+
+```js echo
+import {darkPrefers} from "../components/dark.js";
+```
+
+```js echo
+display(darkPrefers ? "User prefers dark" : "User prefers light");
+```
+
+(When a page supports dark mode, these are equivalent.)
+
 ## D3
 
 As a low-level library, D3 has no “good defaults” for color, and everything needs to be specified. To upgrade code that has been designed with only a light theme in mind, you will find that you often have to be explicit about filling text elements with:
