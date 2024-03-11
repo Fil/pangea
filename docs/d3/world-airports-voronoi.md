@@ -8,13 +8,8 @@ index: true
 Ref. [jasondavies.com/maps/voronoi/airports](https://www.jasondavies.com/maps/voronoi/airports/)
 
 ```js echo
-const canvas = document.createElement("canvas");
-canvas.setAttribute("width", width << 1);
-canvas.setAttribute("height", height << 1);
-canvas.setAttribute("style", "width: ${width}px; max-width: 100%;");
-
-const context = canvas.getContext("2d");
-context.scale(2, 2);
+import {context2d} from "../components/DOM.js";
+const context = context2d(width, height);
 
 const path = d3.geoPath(projection, context).pointRadius(1.5);
 
@@ -50,7 +45,7 @@ function dragged() {
   render();
 }
 
-display(d3.select(canvas).call(drag(projection).on("drag.render", dragged)).call(render).node());
+display(d3.select(context.canvas).call(drag(projection).on("drag.render", dragged)).call(render).node());
 ```
 
 ```js echo
