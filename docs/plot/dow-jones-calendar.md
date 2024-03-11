@@ -1,12 +1,11 @@
 ---
 source: https://observablehq.com/@observablehq/plot-dow-jones-calendar
-draft: true
 index: true
 ---
 
 # Simple calendar
 
-A faceted heatmap where the week of year is encoded as _x_, day of week as _y_, year as the _fy_ facet, and value as the fill color of each [cell](https://observablehq.com/plot/features/marks/cell). <!-- See also the [fancy version](./calendar). -->
+A faceted heatmap where the week of year is encoded as _x_, day of week as _y_, year as the _fy_ facet, and value as the fill color of each [cell](https://observablehq.com/plot/features/marks/cell). See also an [elaborate calendar](./calendar).
 
 ```js echo
 const calendar = Plot.plot({
