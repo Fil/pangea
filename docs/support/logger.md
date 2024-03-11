@@ -1,26 +1,21 @@
 ---
 index: true
+draft: true
+source: https://observable-community.slack.com/archives/C03SEMPUF6F/p1710011536436639?thread_ts=1709895589.501389&cid=C03SEMPUF6F
 ---
 
 # Logger
 
-<div class="card">${logger}</div>
-
-```js echo
-const logger = document.createElement("div");
-logger.setAttribute("style", "white-space:pre-wrap");
-logger.textContent = "Log:";
-logger.append = (text) => (logger.textContent += "\n" + text);
-```
+<div class="card" id="log" style="white-space: pre-wrap;"></div>
 
 ```js echo
 setTimeout(() => {
-  logger.append("ciao");
+  log.append(`ciao\n`);
 }, 1000);
 ```
 
 ```js echo
 setTimeout(() => {
-  logger.append("bonjour");
+  log.append(`bonjour\n`);
 }, 2000);
 ```
