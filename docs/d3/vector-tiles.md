@@ -11,9 +11,11 @@ This notebook demonstrates using [d3-tile](https://github.com/d3/d3-tile) to dis
 ```js echo
 const map = svg`<svg viewBox="0 0 ${width} ${height}">${tiles.map(
   (d) => svg`
-  <path fill="#eee" d="${path(filter(d.data.water, (d) => !d.properties.boundary))}"></path>
-  <path fill="none" stroke="#aaa" d="${path(filter(d.data.water, (d) => d.properties.boundary))}"></path>
-  <path fill="none" stroke="#000" stroke-width="0.75" d="${path(d.data.roads)}"></path>
+  <path fill="var(--theme-foreground-faintest)" d="${path(filter(d.data.water, (d) => !d.properties.boundary))}"></path>
+  <path fill="none" stroke="currentColor" stroke-opacity="0.8" d="${path(
+    filter(d.data.water, (d) => d.properties.boundary)
+  )}"></path>
+  <path fill="none" stroke="currentColor" stroke-width="0.75" d="${path(d.data.roads)}"></path>
 `
 )}
 </svg>`;
