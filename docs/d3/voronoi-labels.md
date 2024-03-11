@@ -1,59 +1,55 @@
 ---
 source: https://observablehq.com/@d3/voronoi-labels
-index: false
-draft: true
+index: true
+author: Mike Bostock
+title: D3 Voronoi labels
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Voronoi labels</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Voronoi labels
 
-Here a [Voronoi diagram](/@d3/hover-voronoi) is used to label [a scatterplot](/@mbostock/d3-scatterplot): the area of each Voronoi cell determines whether the associated label is visible: larger cells tend to have room to accommodate labels. The vector between the point and the cell’s centroid (orange) determines the label orientation: top, right, bottom or left.
+Here a [Voronoi diagram](https://observablehq.com/@d3/hover-voronoi) is used to label [a scatterplot](../plot/scatterplot): the area of each Voronoi cell determines whether the associated label is visible: larger cells tend to have room to accommodate labels. The vector between the point and the cell’s centroid (orange) determines the label orientation: top, right, bottom or left.
 
 ```js echo
-const chart = {
-  const svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height])
-      .attr("width", width)
-      .attr("height", height)
-      .attr("style", "max-width: 100%; height: auto;");
+const svg = d3
+  .create("svg")
+  .attr("viewBox", [0, 0, width, height])
+  .attr("width", width)
+  .attr("height", height)
+  .attr("style", "max-width: 100%; height: auto;");
 
-  const cells = data.map((d, i) => [d, voronoi.cellPolygon(i)]);
+const cells = data.map((d, i) => [d, voronoi.cellPolygon(i)]);
 
-  svg.append("g")
-      .attr("stroke", "orange")
-    .selectAll("path")
-    .data(cells)
-    .join("path")
-      .attr("d", ([d, cell]) => `M${d3.polygonCentroid(cell)}L${d}`);
+svg
+  .append("g")
+  .attr("stroke", "orange")
+  .selectAll("path")
+  .data(cells)
+  .join("path")
+  .attr("d", ([d, cell]) => `M${d3.polygonCentroid(cell)}L${d}`);
 
-  svg.append("path")
-      .attr("fill", "none")
-      .attr("stroke", "#ccc")
-      .attr("d", voronoi.render());
+svg.append("path").attr("fill", "none").attr("stroke", "#ccc").attr("d", voronoi.render());
 
-  svg.append("path")
-      .attr("d", delaunay.renderPoints(null, 2));
+svg.append("path").attr("fill", "currentColor").attr("d", delaunay.renderPoints(null, 2));
 
-  svg.append("g")
-      .style("font", "10px sans-serif")
-    .selectAll("text")
-    .data(cells)
-    .join("text")
-      .each(function([[x, y], cell]) {
-        const [cx, cy] = d3.polygonCentroid(cell);
-        const angle = (Math.round(Math.atan2(cy - y, cx - x) / Math.PI * 2) + 4) % 4;
-        d3.select(this).call(angle === 0 ? orient.right
-            : angle === 3 ? orient.top
-            : angle === 1 ? orient.bottom
-            : orient.left);
-      })
-      .attr("transform", ([d]) => `translate(${d})`)
-      .attr("display", ([, cell]) => -d3.polygonArea(cell) > 2000 ? null : "none")
-      .text((d, i) => i);
+svg
+  .append("g")
+  .style("font", "10px sans-serif")
+  .selectAll("text")
+  .data(cells)
+  .join("text")
+  .attr("fill", "currentColor")
+  .each(function ([[x, y], cell]) {
+    const [cx, cy] = d3.polygonCentroid(cell);
+    const angle = (Math.round((Math.atan2(cy - y, cx - x) / Math.PI) * 2) + 4) % 4;
+    d3.select(this).call(
+      angle === 0 ? orient.right : angle === 3 ? orient.top : angle === 1 ? orient.bottom : orient.left
+    );
+  })
+  .attr("transform", ([d]) => `translate(${d})`)
+  .attr("display", ([, cell]) => (-d3.polygonArea(cell) > 2000 ? null : "none"))
+  .text((d, i) => i);
 
-  return svg.node();
-}
+display(svg.node());
 ```
 
 ```js echo
@@ -74,12 +70,14 @@ const orient = {
 ```
 
 ```js echo
-const data = {
+let data;
+{
   const randomX = d3.randomNormal(width / 2, 80);
   const randomY = d3.randomNormal(height / 2, 80);
-  return d3.range(200)
-      .map(() => ([randomX(), randomY()]))
-      .filter(d => 0 <= d[0] && d[0] <= width && 0 <= d[1] && d[1] <= height);
+  data = d3
+    .range(200)
+    .map(() => [randomX(), randomY()])
+    .filter((d) => 0 <= d[0] && d[0] <= width && 0 <= d[1] && d[1] <= height);
 }
 ```
 
@@ -91,4 +89,4 @@ const width = 928;
 const height = 600;
 ```
 
-See also the [Observable Plot](/plot/) [version](/@fil/plot-voronoi-labels).
+See also the Observable Plot [version](../plot/voronoi-labels).
