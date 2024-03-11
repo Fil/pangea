@@ -17,6 +17,8 @@ const map = svg`<svg viewBox="0 0 ${width} ${height}">${tiles.map(
 `
 )}
 </svg>`;
+
+display(map);
 ```
 
 ```js echo
