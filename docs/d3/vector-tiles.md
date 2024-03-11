@@ -65,5 +65,5 @@ import * as d3Tile from "npm:d3-tile";
 ```
 
 ```js
-const APIKEY = `iNwFYT6DSB-ip33BBjo0FA`;
+const APIKEY = `fnZaju3QSt6upiPPN7Mm6w`;
 ```
