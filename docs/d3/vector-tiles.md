@@ -1,6 +1,6 @@
 ---
 source: https://observablehq.com/@d3/vector-tiles
-index: false
+index: true
 title: "D3: Vector tiles"
 ---
 
