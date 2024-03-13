@@ -8,7 +8,7 @@ index: true
 
 # A-frame
 
-You know how a page is just HTML? So you can use A-Frame and work with three.js and glb models just by creating DOM nodes:
+You know how a page is just HTML? So you can use [A-Frame](https://aframe.io/) and work with [three.js](https://threejs.org/) and 3D models (glb, glTF) just by creating DOM nodes:
 
 <div style="width:100%; height: 500px">
   <a-scene>
