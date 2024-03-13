@@ -11,7 +11,7 @@ _Your color code: ${color}._
 This block defines a default color, but a value stored in [sessionStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/sessionStorage) takes precedence.
 
 ```js echo
-const defaultColor = d3.rgb("steelblue").formatHex();
+const defaultColor = d3.rgb(dark ? "orange" : "steelblue").formatHex();
 const color = view(Inputs.color({value: sessionStorage.getItem("color") ?? defaultColor}));
 ```
 
