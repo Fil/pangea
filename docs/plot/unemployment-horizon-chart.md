@@ -48,6 +48,3 @@ const step = d3.max(industries, (d) => d.unemployed) / bands;
 const industries = FileAttachment("../data/industries.csv").csv({typed: true});
 ```
 
-```js echo
-import {dark} from "../components/dark.js";
-```

@@ -1,25 +1,5 @@
-import {Generators} from "npm:@observablehq/stdlib";
 import {rgb} from "npm:d3-color";
 import {easePolyInOut} from "npm:d3-ease";
-
-// Watches user dark mode preference
-export const darkPrefers = Generators.observe((change) => {
-  const media = matchMedia("(prefers-color-scheme: dark)");
-  const changed = (event) => change(event.matches);
-  media.addEventListener("change", changed);
-  change(media.matches);
-  return () => media.removeEventListener("change", changed);
-});
-
-// Watches dark mode based on theme and user preference.
-// TODO: in preview, also watch for changes in the theme meta.
-export const dark = Generators.observe((change) => {
-  const media = matchMedia("(prefers-color-scheme: dark)");
-  const changed = () => change(getComputedStyle(document.body).getPropertyValue("color-scheme") === "dark");
-  changed();
-  media.addEventListener("change", changed);
-  return () => media.removeEventListener("change", changed);
-});
 
 // orange dark blue
 export const interpolateOrDBu = interpolateDivergent("#ff9c00", "#0090ff", {

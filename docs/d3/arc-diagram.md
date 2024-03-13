@@ -211,7 +211,3 @@ const orders = new Map([
   ]
 ]);
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

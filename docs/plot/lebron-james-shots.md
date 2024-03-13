@@ -93,7 +93,3 @@ function markings({stroke = "currentColor", strokeWidth = 1, strokeOpacity = 1} 
 ```js echo
 const shots = FileAttachment("../data/lebron_shots.csv").csv();
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

@@ -36,6 +36,3 @@ display(chart);
 const penguins = FileAttachment("../data/penguins.csv").csv({typed: true});
 ```
 
-```js echo
-import {dark} from "../components/dark.js";
-```

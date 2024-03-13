@@ -123,7 +123,3 @@ const data = Object.assign(
   }
 );
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

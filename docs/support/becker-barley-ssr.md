@@ -35,11 +35,7 @@ On this page, for the purpose of the demo, we are very greedy and want a **light
 | ${showCode(FileAttachment("becker-barley-ssr.png.ts"))}      | png        | -         |
 | ${showCode(FileAttachment("becker-barley-ssr-dark.png.ts"))} | png        | yes       |
 
-For the page to select the images it needs to load, based on the user’s preferred color mode, we use the reactive **dark.js** component:
-
-```js echo
-import {dark} from "../components/dark.js";
-```
+For the page to select the images it needs to load, based on the user’s preferred color mode, we use the [reactive **dark** variable](<https://observablehq.com/framework/lib/generators#dark()>):
 
 ```js echo
 const assets = dark

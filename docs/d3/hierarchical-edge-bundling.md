@@ -148,7 +148,3 @@ const colorin = "var(--theme-blue)";
 const colorout = "var(--theme-red)";
 const colornone = "color-mix(in srgb, currentColor, var(--theme-background) 80%)";
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

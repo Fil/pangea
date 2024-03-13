@@ -92,6 +92,3 @@ const formatTime = d3.utcFormat("%-I %p");
 const trains = FileAttachment("../data/caltrain.csv").csv({typed: true});
 ```
 
-```js echo
-import {dark} from "../components/dark.js";
-```

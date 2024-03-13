@@ -91,7 +91,3 @@ import {geoVoronoi} from "npm:d3-geo-voronoi@2";
 ```js echo
 import {drag} from "../components/versor-dragging.js";
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

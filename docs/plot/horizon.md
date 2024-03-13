@@ -56,7 +56,3 @@ const traffic = FileAttachment("../data/traffic.csv").csv({typed: true});
 ```js echo
 const step = (d3.max(traffic, (d) => d.vehicles) / bands).toPrecision(2);
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```
