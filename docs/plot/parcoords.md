@@ -79,5 +79,5 @@ const cars = FileAttachment("../data/cars.csv").csv({typed: true});
 ```
 
 ```js echo
-import {dark, interpolateOrDBu} from "../components/dark.js";
+import {interpolateOrDBu} from "../components/dark.js";
 ```

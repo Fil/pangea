@@ -163,7 +163,3 @@ const unemployment = FileAttachment("../data/bls-metro-unemployment.csv").csv({
   typed: true
 });
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

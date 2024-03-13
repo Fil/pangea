@@ -101,21 +101,13 @@ When using continous color scales, you’ll often want to change the color schem
 
 Raster images (JPEG, PNG, canvas) define a color as RGB (red, green, blue) or RGBa (with an additional alpha for transparency) for each pixel. There is no notion of “currentColor” or CSS variables: a pixel can only have its own RGB color, possibly alpha-blended with the background. As a consequence it’s impossible to define a pixel that is white on a dark background and black on a white background. This means that, in general, you will need two versions of the image, or a parameter in the code that generates the image if it’s a data-driven canvas.
 
-The {dark} component helps with the latter situation: it is a reactive variable (like stdlib’s _width_), which yield true when the theme is dark and false when the theme is light. It reflects what is one the page, whether it has been set as a specific light or dark theme, or by dark mode and reflecting user preference. In that case it also updates live when the user’s preference changes (at dawn, dusk, or because they’re manually changing their preference in system settings).
-
-You can import it like so:
-
-```js echo
-import {dark} from "../components/dark.js";
-```
-
-and then use it, in a different cell, to reflect the current theme:
+The [**dark**](<https://observablehq.com/framework/lib/generators#dark()>) reactive variable helps with the latter situation: it yields true when the theme is dark and false when the theme is light. It reflects what the color of the page —whether it has been set as a specific light or dark theme, or by dark mode and reflecting user preference. In that case it also updates live when the user’s preference changes (at dawn, dusk, or because they’re manually changing their preference in system settings).
 
 ```js echo
 display(dark ? "it’s dark in here" : "I feel light!");
 ```
 
-Or as part of a Plot definition (see [the impact of vaccines](../plot/impact-of-vaccines) for a complete example):
+You can use it as part of a Plot definition (see [the impact of vaccines](../plot/impact-of-vaccines) for a complete example):
 
 ```js echo run=false
 Plot.plot({
@@ -124,7 +116,7 @@ Plot.plot({
 })
 ```
 
-Another very common use case for this {dark} component is when using mix-blend-mode: where the preferred option for mixing colors in light mode is “multiply”, in dark mode you obtain the equivalent effect by using “screen” instead.
+Another very common use case is with mix-blend-mode: where the preferred option for mixing colors in light mode is “multiply”, in dark mode you obtain the equivalent effect by using “screen” instead.
 
 ```js echo run=false
 Plot.lineY(data, {
@@ -138,18 +130,6 @@ Plot.lineY(data, {
 See [Overlapping histogram](../plot/overlapping-histogram) for a complete example.
 
 Note that **dark** does not return user preference, but the current theme. This reflects user preference if the page supports dark mode, but otherwise reflects the page’s selected theme (either light or dark).
-
-If you want to reflect user preference even when your page has a fixed theme, import **darkPrefers** instead:
-
-```js echo
-import {darkPrefers} from "../components/dark.js";
-```
-
-```js echo
-display(darkPrefers ? "User prefers dark" : "User prefers light");
-```
-
-(When a page supports dark mode, these are equivalent.)
 
 ## D3
 

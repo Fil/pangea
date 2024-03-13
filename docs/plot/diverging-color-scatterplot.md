@@ -29,5 +29,5 @@ const gistemp = FileAttachment("../data/gistemp.csv").csv({typed: true});
 ```
 
 ```js echo
-import {dark, interpolateBuGyRd} from "../components/dark.js";
+import {interpolateBuGyRd} from "../components/dark.js";
 ```

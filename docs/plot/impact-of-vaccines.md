@@ -96,7 +96,3 @@ const introductions = data.map(
   })
 );
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

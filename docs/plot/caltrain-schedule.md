@@ -55,7 +55,3 @@ display(chart);
 ```js echo
 const caltrain = FileAttachment("../data/caltrain-schedule.csv").csv({typed: true});
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

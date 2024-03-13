@@ -29,7 +29,3 @@ display(chart);
 ```js echo
 const diamonds = FileAttachment("../data/diamonds.csv").csv({typed: true});
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

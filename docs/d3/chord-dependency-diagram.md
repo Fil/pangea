@@ -103,7 +103,3 @@ const ribbon = d3
 
 const color = d3.scaleOrdinal(names, d3.quantize(d3.interpolateRainbow, names.length));
 ```
-
-```js echo
-import {dark} from "../components/dark.js";
-```

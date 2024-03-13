@@ -27,6 +27,3 @@ display(chart);
 const olympians = FileAttachment("../data/olympians.csv").csv({typed: true});
 ```
 
-```js echo
-import {dark} from "../components/dark.js";
-```

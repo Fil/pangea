@@ -36,10 +36,6 @@ while (true) {
 }
 ```
 
-```js
-import {dark} from "../components/dark.js";
-```
-
 ```js echo
 import * as d3 from "npm:d3-geo@1";
 import * as shapefile from "npm:shapefile@0.6";

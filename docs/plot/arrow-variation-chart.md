@@ -57,5 +57,5 @@ const metros = FileAttachment("../data/metros.csv").csv({typed: true});
 ```
 
 ```js echo
-import {dark, interpolateDivergent} from "../components/dark.js";
+import {interpolateDivergent} from "../components/dark.js";
 ```

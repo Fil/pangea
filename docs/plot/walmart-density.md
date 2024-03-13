@@ -33,6 +33,3 @@ const nation = topojson.feature(us, us.objects.nation);
 const statemesh = topojson.mesh(us, us.objects.states);
 ```
 
-```js echo
-import {dark} from "../components/dark.js";
-```
