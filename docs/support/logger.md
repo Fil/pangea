@@ -1,5 +1,5 @@
 ---
-index: true
+index: false
 draft: true
 source: https://observable-community.slack.com/archives/C03SEMPUF6F/p1710011536436639?thread_ts=1709895589.501389&cid=C03SEMPUF6F
 ---
