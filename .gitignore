@@ -2,5 +2,6 @@
 dist/
 docs/.observablehq/cache/
 docs/data-unsorted/
+docs/stash/
 node_modules/
 yarn-error.log
