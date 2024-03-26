@@ -7,7 +7,7 @@ index: true
 
 # Arc tween
 
-A commented example of tweening arcs; see [Pie chart update](./pie-chart-update) and [Arc clock](https://blocks.roadtolarissa.com/mbostock/1098617) for more examples. (There’s also [The Amazing Pie](https://blocks.roadtolarissa.com/mbostock/4341574) and [Donut Transitions](https://blocks.roadtolarissa.com/mbostock/4341417) if you want to get fancy.) See the API reference for [*transition*.attrTween](https://d3js.org/d3-transition#transition_attrTween) and my tutorial [Working with Transitions](https://bost.ocks.org/mike/transition/) for more.
+A commented example of tweening arcs; see [Pie chart update](./pie-chart-update) and [Arc clock](./arc-clock) for more examples. (There’s also [The Amazing Pie](https://blocks.roadtolarissa.com/mbostock/4341574) and [Donut Transitions](https://blocks.roadtolarissa.com/mbostock/4341417) if you want to get fancy.) See the API reference for [*transition*.attrTween](https://d3js.org/d3-transition#transition_attrTween) and my tutorial [Working with Transitions](https://bost.ocks.org/mike/transition/) for more.
 
 ```js echo
 {
