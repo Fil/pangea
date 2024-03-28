@@ -18,7 +18,7 @@ const types = Array.from(new Set(suits.map((d) => d.type)));
 const nodes = Array.from(new Set(suits.flatMap((l) => [l.source, l.target])), (id) => ({id}));
 const links = suits.map((d) => Object.create(d));
 
-const color = d3.scaleOrdinal(types, d3.schemeCategory10);
+const color = d3.scaleOrdinal(types, d3.schemeObservable10);
 
 const simulation = d3
   .forceSimulation(nodes)
