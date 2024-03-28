@@ -84,7 +84,7 @@ node
   .clone(true)
   .lower()
   .attr("fill", "none")
-  .attr("stroke", "white")
+  .attr("stroke", "var(--theme-background)")
   .attr("stroke-width", 3);
 
 simulation.on("tick", () => {
