@@ -11,7 +11,7 @@ index: true
 ```
 
 ```html echo
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl/dist/maplibre-gl.css" />
+<link rel="stylesheet" href="${import.meta.resolve("npm:maplibre-gl/dist/maplibre-gl.css")}">
 ```
 
 ```js echo
