@@ -1,3 +1,7 @@
+---
+index: true
+---
+
 # Hello, deck.gl
 
 https://deck.gl/gallery/point-cloud-layer
