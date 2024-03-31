@@ -4,7 +4,7 @@ index: true
 
 # deck.gl map
 
-See [deck.gl](./deck.gl). This example is adapted from <https://deck.gl/examples/hexagon-layer> and <https://github.com/visgl/deck.gl/blob/9.0-release/examples/get-started/pure-js/basic/app.js>.
+This page combines a [HexagonLayer](https://deck.gl/examples/hexagon-layer) and a [GeoJsonLayer](https://github.com/visgl/deck.gl/blob/9.0-release/examples/get-started/pure-js/basic/app.js). See [deck.gl point cloud](./deck.gl) for a different example.
 
 ```js echo
 const container = display(html`<div id="container" style="background: black; height: 700px"></div>`);

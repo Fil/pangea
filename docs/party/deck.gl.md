@@ -2,9 +2,9 @@
 index: true
 ---
 
-# deck.gl
+# deck.gl point cloud
 
-[deck.gl](https://deck.gl/) is a GPU-powered framework for visual exploratory data analysis of large datasets. The example below is taken [from the documentation](https://deck.gl/gallery/point-cloud-layer). See [deck.gl map](./deck.gl-map) for a map example.
+[deck.gl](https://deck.gl/) is a GPU-powered framework for visual exploratory data analysis of large datasets. The example below uses a [PointCloudLayer](https://deck.gl/gallery/point-cloud-layer). See [deck.gl map](./deck.gl-map) for a GeoJSON+hexagon example.
 
 ```js echo
 const container = display(html`<div id="container" style="background: black; height: 700px"></div>`);
