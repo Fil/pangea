@@ -6,24 +6,76 @@ index: true
 
 This page combines a [HexagonLayer](https://deck.gl/examples/hexagon-layer) and a [GeoJsonLayer](https://github.com/visgl/deck.gl/blob/9.0-release/examples/get-started/pure-js/basic/app.js). See [deck.gl point cloud](./deck.gl) for a different example.
 
-```js echo
-const container = display(html`<div id="container" style="background: black; height: 700px"></div>`);
+**TODO:** title, interaction, tooltips, color legend as in https://deck.gl/examples/hexagon-layer. See https://github.com/visgl/deck.gl/blob/master/website/src/examples/hexagon-layer.js
 
-new DeckGL({
+<div id="container" style="background: black; height: 700px"></div>
+
+```js
+const radius = view(Inputs.range([500, 20000], {value: 1000, label: "radius", step: 100}));
+```
+
+```js echo
+hexagonLayer.props.radius = radius;
+```
+
+```html echo run=false
+<div id="container" style="background: black; height: 700px"></div>
+```
+
+```js echo
+const hexagonLayer = new HexagonLayer({
+  id: "heatmap",
+  colorRange,
+  coverage,
+  data,
+  elevationRange: [0, 3000],
+  elevationScale: data && data.length ? 50 : 0,
+  extruded: true,
+  getPosition: (d) => d,
+  pickable: true,
+  radius: 1000,
+  upperPercentile,
+  material,
+
+  // TODO this doesn't seem to work
+  transitions: {
+    elevationScale: 3000
+  }
+});
+
+display(hexagonLayer);
+```
+
+```js echo
+const d = new DeckGL({
   container,
   initialViewState: INITIAL_VIEW_STATE,
   controller: true,
   effects,
-  layers
+  layers: [
+    new GeoJsonLayer({
+      id: "base-map",
+      data: countries,
+      stroked: true,
+      filled: false,
+      lineWidthMinPixels: 2,
+      opacity: 0.4,
+      getLineColor: [60, 60, 60]
+    }),
+    hexagonLayer
+  ]
 });
+
+// TODO proper invalidation/update when interactive values change
+invalidation.then(() => (container.innerHTML = ""));
 ```
 
 ```js echo
+// TODO why does this not work?
+// import {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLight} from "npm:deck.gl";
 import deck from "npm:deck.gl";
+const {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLight} = deck;
 
-const {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, PointLight, LightingEffect} = deck;
-
-const radius = 1000;
 const upperPercentile = 100;
 const coverage = 1;
 
@@ -62,36 +114,6 @@ const pointLight2 = new PointLight({
 
 const effects = [new LightingEffect({ambientLight, pointLight1, pointLight2})];
 
-const layers = [
-  new GeoJsonLayer({
-    id: "base-map",
-    data: countries,
-    // Styles
-    stroked: true,
-    filled: false,
-    lineWidthMinPixels: 2,
-    opacity: 0.4,
-    getLineColor: [60, 60, 60]
-  }),
-  new HexagonLayer({
-    id: "heatmap",
-    colorRange,
-    coverage,
-    data,
-    elevationRange: [0, 3000],
-    elevationScale: data && data.length ? 50 : 0,
-    extruded: true,
-    getPosition: (d) => d,
-    pickable: true,
-    radius,
-    upperPercentile,
-    material,
-    transitions: {
-      elevationScale: 3000
-    }
-  })
-];
-
 const INITIAL_VIEW_STATE = {
   longitude: -1.415727,
   latitude: 52.232395,
@@ -104,6 +126,7 @@ const INITIAL_VIEW_STATE = {
 ```
 
 ```js echo
+// TODO data loader
 const data = d3.csv(
   "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv",
   (d) => [Number(d.lng), Number(d.lat)]
