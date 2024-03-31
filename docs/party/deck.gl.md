@@ -67,7 +67,7 @@ new DeckGL({
       getPosition: (d) => d.position,
       getNormal: (d) => d.normal,
       getColor: (d) => d.color,
-      radiusPixels: 1
+      pointSize: 1
     })
   ]
 });
