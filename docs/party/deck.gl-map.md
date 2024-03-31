@@ -4,7 +4,7 @@ index: true
 
 # deck.gl map
 
-See [deck.gl](./deck.gl). This example is adapted from <https://deck.gl/examples/hexagon-layer> and <https://github.com/visgl/deck.gl/blob/9.0-release/examples/get-started/pure-js/basic/app.js>.
+This page combines a [HexagonLayer](https://deck.gl/examples/hexagon-layer) and a [GeoJsonLayer](https://github.com/visgl/deck.gl/blob/9.0-release/examples/get-started/pure-js/basic/app.js). See [deck.gl point cloud](./deck.gl) for a different example.
 
 ```js echo
 const container = display(html`<div id="container" style="background: black; height: 700px"></div>`);
@@ -22,8 +22,6 @@ new DeckGL({
 import deck from "npm:deck.gl";
 
 const {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, PointLight, LightingEffect} = deck;
-
-const COUNTRIES = "https://d2ad6b4ur7yvpq.cloudfront.net/naturalearth-3.3.0/ne_50m_admin_0_scale_rank.geojson";
 
 const radius = 1000;
 const upperPercentile = 100;
@@ -67,7 +65,7 @@ const effects = [new LightingEffect({ambientLight, pointLight1, pointLight2})];
 const layers = [
   new GeoJsonLayer({
     id: "base-map",
-    data: COUNTRIES,
+    data: countries,
     // Styles
     stroked: true,
     filled: false,
@@ -110,4 +108,10 @@ const data = d3.csv(
   "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv",
   (d) => [Number(d.lng), Number(d.lat)]
 );
+```
+
+```js echo
+const topo = import.meta.resolve("npm:visionscarto-world-atlas@0.1.0/world/50m.json");
+const world = await fetch(topo).then((response) => response.json());
+const countries = topojson.feature(world, world.objects.countries);
 ```

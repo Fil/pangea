@@ -34,10 +34,8 @@ display(chart);
 ```
 
 ```js echo
-const world = FileAttachment("../data/world-110m-2020.json").json();
-```
-
-```js echo
+const topo = import.meta.resolve("npm:visionscarto-world-atlas@0.1.0/world/50m.json");
+const world = await fetch(topo).then((response) => response.json());
 const land = topojson.feature(world, world.objects.land);
 ```
 
