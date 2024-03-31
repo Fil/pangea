@@ -1,18 +1,24 @@
-# Hello, deck.gl
+---
+index: true
+---
 
-https://deck.gl/gallery/point-cloud-layer
+# deck.gl
 
-<div id="container" style="background: black; height: 500px"></div>
+[deck.gl](https://deck.gl/) is a GPU-powered framework for visual exploratory data analysis of large datasets. The example below is taken [from the documentation](https://deck.gl/gallery/point-cloud-layer). See [deck.gl map](./deck.gl-map) for a map example.
 
 ```js echo
-import deck from "npm:deck.gl/dist.min.js/+esm";
+const container = display(html`<div id="container" style="background: black; height: 700px"></div>`);
+```
+
+```js echo
+import deck from "npm:deck.gl";
 ```
 
 ```js echo
 const {DeckGL, OrbitView, PointCloudLayer, COORDINATE_SYSTEM} = deck;
 
-// One million points
-const SAMPLE_SIZE = 1e6;
+// 100k points
+const SAMPLE_SIZE = 1e5;
 const SURFACE_EQUATION = (x, y) => (Math.sin(x * x + y * y) * x) / Math.PI;
 const EPSILON = 1e-4;
 
@@ -45,11 +51,7 @@ for (let i = 0; i < dim; i++) {
 
     const p = getPosition(u, v);
     const n = getNormal(u, v);
-    points.push({
-      position: p,
-      normal: n,
-      color: [u * 128, v * 128, p[2] * 255]
-    });
+    points.push({position: p, color: [u * 128, v * 128, p[2] * 255]});
   }
 }
 
