@@ -251,7 +251,7 @@
 
 "@observablehq/framework@https://github.com/observablehq/framework#fil/save-search-query":
   version "1.5.1"
-  resolved "https://github.com/observablehq/framework#82ce4c005ea8b45d1228ee6339fc74aed1c8e6b1"
+  resolved "https://github.com/observablehq/framework#a92ae2e66cd8ad62ecbaac9216039e93ccd2d54b"
   dependencies:
     "@clack/prompts" "^0.7.0"
     "@observablehq/inputs" "^0.10.6"
