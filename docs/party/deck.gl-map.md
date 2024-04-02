@@ -12,10 +12,8 @@ This page combines a [HexagonLayer](https://deck.gl/examples/hexagon-layer) and 
 
 ```js
 const radius = view(Inputs.range([500, 20000], {value: 1000, label: "radius", step: 100}));
-```
-
-```js echo
-hexagonLayer.props.radius = radius;
+const coverage = view(Inputs.range([0, 1], {value: 1, label: "coverage", step: 0.01}));
+const upperPercentile = view(Inputs.range([0, 100], {value: 100, label: "upper percentile", step: 1}));
 ```
 
 ```html echo run=false
@@ -23,35 +21,19 @@ hexagonLayer.props.radius = radius;
 ```
 
 ```js echo
-const hexagonLayer = new HexagonLayer({
-  id: "heatmap",
-  colorRange,
-  coverage,
-  data,
-  elevationRange: [0, 3000],
-  elevationScale: data && data.length ? 50 : 0,
-  extruded: true,
-  getPosition: (d) => d,
-  pickable: true,
-  radius: 1000,
-  upperPercentile,
-  material,
-
-  // TODO this doesn't seem to work
-  transitions: {
-    elevationScale: 3000
-  }
-});
-
-display(hexagonLayer);
-```
-
-```js echo
-const d = new DeckGL({
+const deckInstance = new DeckGL({
   container,
   initialViewState: INITIAL_VIEW_STATE,
   controller: true,
-  effects,
+  effects
+});
+
+// TODO proper invalidation/update when interactive values change
+invalidation.then(() => (container.innerHTML = ""));
+```
+
+```js echo
+deckInstance.setProps({
   layers: [
     new GeoJsonLayer({
       id: "base-map",
@@ -62,12 +44,27 @@ const d = new DeckGL({
       opacity: 0.4,
       getLineColor: [60, 60, 60]
     }),
-    hexagonLayer
+    new HexagonLayer({
+      id: "heatmap",
+      colorRange,
+      coverage,
+      data,
+      elevationRange: [0, 3000],
+      elevationScale: data && data.length ? 50 : 0,
+      extruded: true,
+      getPosition: (d) => d,
+      pickable: true,
+      radius,
+      upperPercentile,
+      material,
+
+      // TODO this doesn't seem to work
+      transitions: {
+        elevationScale: 3000
+      }
+    })
   ]
 });
-
-// TODO proper invalidation/update when interactive values change
-invalidation.then(() => (container.innerHTML = ""));
 ```
 
 ```js echo
@@ -75,9 +72,6 @@ invalidation.then(() => (container.innerHTML = ""));
 // import {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLight} from "npm:deck.gl";
 import deck from "npm:deck.gl";
 const {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLight} = deck;
-
-const upperPercentile = 100;
-const coverage = 1;
 
 const material = {
   ambient: 0.64,
