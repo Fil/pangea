@@ -30,7 +30,7 @@ const replay = view(Object.assign(Inputs.button("↻"), {style: "position: absol
 
 </div>
 
-<div id="container" style="background: #000; height: 800px; width: 100%;"></div>
+<div id="container" style="background: rgb(18,35,48); height: 800px; width: 100%;"></div>
 
 </div>
 
@@ -101,7 +101,8 @@ deckInstance.setProps({
       id: "base-map",
       data: countries,
       lineWidthMinPixels: 1,
-      getLineColor: [60, 60, 60]
+      getLineColor: [60, 60, 60],
+      getFillColor: [9, 16, 29]
     }),
     new HexagonLayer({
       id: "heatmap",
