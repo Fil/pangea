@@ -6,14 +6,60 @@ index: true
 
 This page combines a [HexagonLayer](https://deck.gl/examples/hexagon-layer) and a [GeoJsonLayer](https://github.com/visgl/deck.gl/blob/9.0-release/examples/get-started/pure-js/basic/app.js). See [deck.gl point cloud](./deck.gl) for a different example.
 
-**TODO:** title, interaction, tooltips, color legend as in https://deck.gl/examples/hexagon-layer. See https://github.com/visgl/deck.gl/blob/master/website/src/examples/hexagon-layer.js
+<div class=card>
 
-<div id="container" style="background: black; height: 700px"></div>
+# United Kingdom Road Safety
+
+## Personal injury road accidents in GB from 1979
+
+The layer aggregates data within the boundary of each hexagon cell
+
+${
+  Plot.plot({
+    margin: 0,
+    marginTop: 20,
+    width: 360,
+    height: 35,
+    x: {padding: 0, round: false, axis: null},
+    marks: [
+      Plot.cellX(colorRange, {fill: ([r, g, b]) => `rgb(${r},${g},${b})`}),
+Plot.text(["Fewer accidents"], {frameAnchor: "top-left", dy: -12}),
+Plot.text(["More accidents"], {frameAnchor: "top-right", dy: -12}),
+]
+})
+}
+
+Data source: [DATA.GOV.UK](https://www.data.gov.uk/).
+
+ACCIDENTS
+
+# ${d3.format(".4s")(data.length)}
 
 ```js
 const radius = view(Inputs.range([500, 20000], {value: 1000, label: "radius", step: 100}));
 const coverage = view(Inputs.range([0, 1], {value: 1, label: "coverage", step: 0.01}));
 const upperPercentile = view(Inputs.range([0, 100], {value: 100, label: "upper percentile", step: 1}));
+```
+
+</div>
+
+<div id="container" style="background: black; height: 700px"></div>
+
+```js
+const replay = view(Inputs.button("replay"));
+```
+
+```js echo
+const transition =
+  (replay,
+  Generators.queue((notify) => {
+    const duration = 900;
+    const delay = 500;
+    const t = d3.timer((elapsed) => {
+      if (elapsed > duration) t.stop();
+      notify(d3.easeCubicInOut(elapsed / duration));
+    }, delay);
+  }));
 ```
 
 ```html echo run=false
@@ -25,7 +71,17 @@ const deckInstance = new DeckGL({
   container,
   initialViewState: INITIAL_VIEW_STATE,
   controller: true,
-  effects
+  effects,
+  getTooltip: ({object}) => {
+    if (!object) return null;
+    const [lng, lat] = object.position;
+    const count = object.points.length;
+    return `\
+    latitude: ${Number.isFinite(lat) ? lat.toFixed(2) : ""}
+    longitude: ${Number.isFinite(lng) ? lng.toFixed(2) : ""}
+    ${count} accidents
+  `;
+  }
 });
 
 // TODO proper invalidation/update when interactive values change
@@ -49,19 +105,14 @@ deckInstance.setProps({
       colorRange,
       coverage,
       data,
-      elevationRange: [0, 3000],
+      elevationRange: [0, 3000 * transition],
       elevationScale: data && data.length ? 50 : 0,
       extruded: true,
       getPosition: (d) => d,
       pickable: true,
       radius,
       upperPercentile,
-      material,
-
-      // TODO this doesn't seem to work
-      transitions: {
-        elevationScale: 3000
-      }
+      material
     })
   ]
 });
@@ -120,11 +171,7 @@ const INITIAL_VIEW_STATE = {
 ```
 
 ```js echo
-// TODO data loader
-const data = d3.csv(
-  "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv",
-  (d) => [Number(d.lng), Number(d.lat)]
-);
+const data = FileAttachment("/data/uk-accidents.csv").csv({array: true, typed: true});
 ```
 
 ```js echo
