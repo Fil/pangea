@@ -72,7 +72,10 @@ const transition =
 ```
 
 ```js
+// clean up if this code reruns (preview only)
 container.innerHTML = "";
+invalidation.then(() => deckInstance.finalize());
+
 const deckInstance = new DeckGL({
   container,
   initialViewState,
@@ -89,8 +92,6 @@ const deckInstance = new DeckGL({
   `;
   }
 });
-
-invalidation.then(() => deckInstance.finalize());
 ```
 
 ```js
@@ -129,13 +130,13 @@ const {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLi
 ```js
 const material = {ambient: 0.64, diffuse: 0.6, shininess: 32, specularColor: [51, 51, 51]};
 
-const ambientLight = new AmbientLight({color: [255, 255, 255], intensity: 1.0});
-
-const pointLight1 = new PointLight({color: [255, 255, 255], intensity: 0.8, position: [-0.144528, 49.739968, 80000]});
-
-const pointLight2 = new PointLight({color: [255, 255, 255], intensity: 0.8, position: [-3.807751, 54.104682, 8000]});
-
-const effects = [new LightingEffect({ambientLight, pointLight1, pointLight2})];
+const effects = [
+  new LightingEffect({
+    ambientLight: new AmbientLight({color: [255, 255, 255], intensity: 1.0}),
+    pointLight: new PointLight({color: [255, 255, 255], intensity: 0.8, position: [-0.144528, 49.739968, 80000]}),
+    pointLight2: new PointLight({color: [255, 255, 255], intensity: 0.8, position: [-3.807751, 54.104682, 8000]})
+  })
+];
 
 const initialViewState = {
   longitude: -2,
