@@ -7,53 +7,53 @@ theme: dashboard
 
 This page combines a [HexagonLayer](https://deck.gl/examples/hexagon-layer) and a [GeoJsonLayer](https://github.com/visgl/deck.gl/blob/9.0-release/examples/get-started/pure-js/basic/app.js). See [deck.gl point cloud](./deck.gl) for a different example.
 
-<div class="grid grid-cols-4">
+<div style="width: 100%; position: relative;">
 
-<div id="container" class="grid-colspan-3" style="background: black; height: 700px"></div>
+<div class=card style="max-width: 270px; position: absolute; top:0; margin-left: 14px; right:14px; z-index:1;">
 
-<div class=card>
+# UK Road Safety
 
-# United Kingdom Road Safety
+## Personal injury road accidents from 1979
 
-## Personal injury road accidents in GB from 1979
-
-The layer aggregates data within the boundary of each hexagon cell
-
-**ACCIDENTS**
-
-# ${d3.format(".4s")(data.length)}
+# ${d3.format(".4s")(data.length)} ACCIDENTS
 
 ${colorLegend}
 
-<small>Data source: [DATA.GOV.UK](https://www.data.gov.uk/).</small>
-
----
+<div style="font-size: small; text-align: right; font-style: italic;"><a href="https://www.data.gov.uk/">data.gov.uk</a></div>
 
 ```js
 const radius = view(Inputs.range([500, 20000], {value: 1000, label: "radius", step: 100}));
 const coverage = view(Inputs.range([0, 1], {value: 1, label: "coverage", step: 0.01}));
 const upperPercentile = view(Inputs.range([0, 100], {value: 100, label: "upper percentile", step: 1}));
-```
-
-```js
-const replay = view(Inputs.button("replay"));
+const replay = view(Object.assign(Inputs.button("↻"), {style: "position: absolute; right: 14px; width: 2em;"}));
 ```
 
 </div>
 
+<div id="container" style="background: #000; height: 800px; width: 100%;"></div>
+
 </div>
 
 ```js
+const colorRange = [
+  [1, 152, 189],
+  [73, 227, 206],
+  [216, 254, 181],
+  [254, 237, 177],
+  [254, 173, 84],
+  [209, 55, 78]
+];
+
 const colorLegend = Plot.plot({
   margin: 0,
   marginTop: 20,
-  width: 250,
+  width: 270,
   height: 35,
   x: {padding: 0, round: false, axis: null},
   marks: [
     Plot.cellX(colorRange, {fill: ([r, g, b]) => `rgb(${r},${g},${b})`}),
-    Plot.text(["Fewer accidents"], {frameAnchor: "top-left", dy: -12}),
-    Plot.text(["More accidents"], {frameAnchor: "top-right", dy: -12})
+    Plot.text(["Fewer"], {frameAnchor: "top-left", dy: -12}),
+    Plot.text(["More"], {frameAnchor: "top-right", dy: -12})
   ]
 });
 ```
@@ -128,15 +128,6 @@ const {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLi
 
 ```js
 const material = {ambient: 0.64, diffuse: 0.6, shininess: 32, specularColor: [51, 51, 51]};
-
-const colorRange = [
-  [1, 152, 189],
-  [73, 227, 206],
-  [216, 254, 181],
-  [254, 237, 177],
-  [254, 173, 84],
-  [209, 55, 78]
-];
 
 const ambientLight = new AmbientLight({color: [255, 255, 255], intensity: 1.0});
 
