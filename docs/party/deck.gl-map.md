@@ -138,9 +138,9 @@ const pointLight2 = new PointLight({color: [255, 255, 255], intensity: 0.8, posi
 const effects = [new LightingEffect({ambientLight, pointLight1, pointLight2})];
 
 const initialViewState = {
-  longitude: -1.415727,
-  latitude: 52.232395,
-  zoom: 6.6,
+  longitude: -2,
+  latitude: 53.5,
+  zoom: 5.7,
   minZoom: 5,
   maxZoom: 15,
   pitch: 40.5,
