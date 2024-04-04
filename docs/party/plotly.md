@@ -2,14 +2,19 @@
 index: true
 ---
 
-# Plotly
+# Plotly 3D elevation map
 
 ```js echo
 const container = display(document.createElement("div"));
-Plotly.newPlot(container, {
-  data: [{y: [1, 2, 5, 0, 8]}],
-  layout: {width: 600, height: 400}
+Plotly.newPlot(container, [{z: elevation, type: "surface"}], {
+  title: "Mt Bruno Elevation",
+  width,
+  height: Math.min(800, width)
 });
+```
+
+```js echo
+const elevation = FileAttachment("/data/mt_bruno.csv").csv({array: true, typed: true});
 ```
 
 ```js echo
