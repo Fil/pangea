@@ -123,7 +123,6 @@ deckInstance.setProps({
 ```
 
 ```js
-// import {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLight} from "npm:deck.gl"; doesn't work
 import deck from "npm:deck.gl";
 const {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLight} = deck;
 ```
