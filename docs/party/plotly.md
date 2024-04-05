@@ -4,6 +4,8 @@ index: true
 
 # Plotly 3D elevation map
 
+Reference: https://plotly.com/javascript/
+
 ```js echo
 const container = display(document.createElement("div"));
 Plotly.newPlot(container, [{z: elevation, type: "surface"}], {
