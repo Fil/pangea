@@ -1,3 +1,7 @@
+---
+index: true
+---
+
 # Eurostat data loaders
 
 The [Eurostat data browser](https://ec.europa.eu/eurostat/databrowser/explore/all/all_themes) is a great sources for all european statistics. But it is sometimes a bit difficult to use. This page loads its XML catalog and converts it to an easier csv format. Click on a specific dataset to create a data loader which returns a highly optimized parquet file.
