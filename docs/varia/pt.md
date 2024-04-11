@@ -1,10 +1,11 @@
 ---
 index: true
+keywords: pt
 ---
 
-# pt - pretty-print matrices & tensors
+# pretty-print matrices & tensors
 
-`pt` pretty prints a JavaScript array, a matrix, a [mljs matrix](../party/ml-matrix), a ndjs matrix, or a tjfs tensor.
+`pt` uses ${tex`\KaTeX`} to make a readable presentation of your arrays and tensors. It supports JavaScript arrays, matrices ([mljs matrix](../party/ml-matrix), ndjs matrix), and tjfs tensors.
 
 Usage:
 
@@ -55,6 +56,6 @@ display(
 
 <div class="note" label="Credits">
 
-Inspired/copied from [@tmcw](https://observablehq.com/@tmcw/pt) and [@chitacan](https://observablehq.com/@chitacan/handling-matrices), and suggestions by [@jrus](https://observablehq.com/@jrus).
+Inspired by [@tmcw](https://observablehq.com/@tmcw/pt) and [@chitacan](https://observablehq.com/@chitacan/handling-matrices), with suggestions by [@jrus](https://observablehq.com/@jrus).
 
 </div>
