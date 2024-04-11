@@ -4,7 +4,7 @@ index: true
 
 # pt - pretty-print matrices & tensors
 
-`pt` pretty prints an array, a matrix, a ndjs matrix, or a tjfs tensor.
+`pt` pretty prints a JavaScript array, a matrix, a [mljs matrix](../party/ml-matrix), a ndjs matrix, or a tjfs tensor.
 
 Usage:
 
