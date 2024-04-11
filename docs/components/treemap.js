@@ -155,6 +155,7 @@ export function Treemap(
 
     node
       .append("text")
+      .attr("fill", "currentColor")
       .attr("clip-path", (d, i) => `url(${new URL(`#${uid}-clip-${i}`, location)})`)
       .selectAll("tspan")
       .data((d, i) => `${L[i]}`.split(/\n/g))
