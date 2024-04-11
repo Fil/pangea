@@ -9,10 +9,6 @@ index: true
 Usage:
 
 ```js echo
-import {pt} from "/components/pt.js";
-```
-
-```js echo
 const matrix = new Array(10).fill(1).map(Math.random);
 display(await pt([matrix]));
 ```
@@ -43,6 +39,14 @@ display(
     }
   )
 );
+```
+
+---
+
+To import pt, you first need to copy its ${await FileAttachment("/components/pt.js").url().then(url => html`<a href="${url}" download>source code</a>`)} and save it to your project (for instance, as `docs/components/pt.js`), then import it like so:
+
+```js echo
+import {pt} from "/components/pt.js";
 ```
 
 <div class="note" label="Credits">
