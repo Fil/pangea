@@ -38,6 +38,8 @@ display(await pt(B));
 display(B);
 ```
 
+We display the matrix with [pt](../varia/pt):
+
 ```js echo
 import {pt} from "../components/pt.js";
 ```

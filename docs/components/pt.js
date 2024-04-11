@@ -58,7 +58,7 @@ export async function pt(matrix, opts = {}) {
   }
 
   // simple value
-  if (typeof values !== "object") return md`${desc}${values}`;
+  if (typeof values !== "object") return tex`${desc}${format(values)}`;
 
   // single row
   if (typeof values[0] !== "object") values = [values];
