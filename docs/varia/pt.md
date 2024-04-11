@@ -8,14 +8,26 @@ index: true
 
 Usage:
 
-```js echo
-const matrix = new Array(10).fill(1).map(Math.random);
-display(await pt([matrix]));
+```js run=false
+display(await pt(data, options));
 ```
 
-pt is asynchronous (hence the `await` keyword), because some of the supported data structures are asynchronous.
+For example:
 
-`pt` accepts options:
+```js echo
+const matrix = Array.from({length: 10}, Math.random);
+display(await pt(matrix));
+```
+
+`pt` is asynchronous (hence the `await` keyword), because some of the data structures it supports are asynchronous.
+
+To import `pt`, you first need to download the module’s ${await FileAttachment("/components/pt.js").url().then(url => html`<a href="${url}" download>source code</a>`)} and save it to your project (for instance, as `docs/components/pt.js`). Then you can import it like so:
+
+```js echo
+import {pt} from "/components/pt.js";
+```
+
+`pt` accepts the following options:
 
 - **title** - define a preamble (usually the name of the matrix, followed by an equal sign)
 - **format** - how to format values
@@ -39,14 +51,6 @@ display(
     }
   )
 );
-```
-
----
-
-To import pt, you first need to copy its ${await FileAttachment("/components/pt.js").url().then(url => html`<a href="${url}" download>source code</a>`)} and save it to your project (for instance, as `docs/components/pt.js`), then import it like so:
-
-```js echo
-import {pt} from "/components/pt.js";
 ```
 
 <div class="note" label="Credits">
