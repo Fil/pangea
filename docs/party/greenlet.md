@@ -1,3 +1,8 @@
+---
+index: true
+keywords: webworker, worker
+---
+
 # Greenlet & workerize
 
 [greenlet](https://github.com/developit/greenlet) and [workerize]() are bits of glue code that make it easier to use web workers. greenlet is for lightweight functions, and workerize covers more ground, allowing to export several functions at once.
