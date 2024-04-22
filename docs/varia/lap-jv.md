@@ -23,9 +23,11 @@ const data = d3
 ```
 
 ```js
+const r = Math.min(140, 640 / Math.sqrt(data.length) / 3);
 const chart = Plot.plot({
   aspectRatio: 1,
-  inset: 10,
+  axis: null,
+  inset: r,
   marks: [
     Plot.link(data, {
       x1: "0",
@@ -39,12 +41,12 @@ const chart = Plot.plot({
           .selectAll("*")
           .style("opacity", 0)
           .transition()
-          .delay((i) => i * 3)
+          .delay((i) => 1000 + i * 3)
           .style("opacity", 1);
         d3.select(g)
           .selectAll("*")
           .transition()
-          .delay((i) => i * 3 + 400)
+          .delay((i) => 1400 + i * 3)
           .style("opacity", 0);
 
         return g;
@@ -54,13 +56,13 @@ const chart = Plot.plot({
       x: "0",
       y: "1",
       fill: "color",
-      r: 640 / Math.sqrt(data.length) / 3,
+      r,
       render: (index, scales, values, dimensions, context, next) => {
         const g = next(index, scales, values, dimensions, context);
         d3.select(g)
           .selectAll("circle")
           .transition()
-          .delay((i) => i * 3 + 100)
+          .delay((i) => 1100 + i * 3)
           .attr("cx", (i) => scales.x(row[i] % m))
           .attr("cy", (i) => scales.y(Math.floor(row[i] / m)));
         return g;
@@ -71,12 +73,8 @@ const chart = Plot.plot({
 display(chart);
 ```
 
-```js echo
-const status = {row: []};
-```
-
-```js echo
-const {row} = await solve(data);
+```js
+const row = solve(data);
 ```
 
 ```js echo
@@ -97,7 +95,7 @@ const solve = (data) =>
         return dx * dx + dy * dy;
       })
     );
-    return lap(n, costs);
+    return lap(n, costs).row;
   })(data, import.meta.resolve("../components/lap-jv.js"));
 ```
 
