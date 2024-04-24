@@ -1,92 +1,94 @@
 ---
 source: https://observablehq.com/@d3/zoomable-bar-chart
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Zoomable bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Zoomable bar chart
 
 This bar chart uses D3’s [zoom](https://d3js.org/d3-zoom) behavior on the _x_-axis. Double-click on the bar chart below or use the mouse wheel (or pinch) to zoom. This example is contrived—you don’t need zooming if you can easily display all the bars at once.
 
 ```js echo
-const chart = {
+// Specify the chart’s dimensions.
+const width = 928;
+const height = 500;
+const marginTop = 20;
+const marginRight = 0;
+const marginBottom = 30;
+const marginLeft = 40;
 
-  // Specify the chart’s dimensions.
-  const width = 928;
-  const height = 500;
-  const marginTop = 20;
-  const marginRight = 0;
-  const marginBottom = 30;
-  const marginLeft = 40;
+// Create the horizontal scale and its axis generator.
+const x = d3
+  .scaleBand()
+  .domain(d3.sort(data, (d) => -d.frequency).map((d) => d.letter))
+  .range([marginLeft, width - marginRight])
+  .padding(0.1);
 
-  // Create the horizontal scale and its axis generator.
-  const x = d3.scaleBand()
-    .domain(d3.sort(data, d => -d.frequency).map(d => d.letter))
-    .range([marginLeft, width - marginRight])
-    .padding(0.1);
+const xAxis = d3.axisBottom(x).tickSizeOuter(0);
 
-  const xAxis = d3.axisBottom(x).tickSizeOuter(0);
+// Create the vertical scale.
+const y = d3
+  .scaleLinear()
+  .domain([0, d3.max(data, (d) => d.frequency)])
+  .nice()
+  .range([height - marginBottom, marginTop]);
 
+// Create the SVG container and call the zoom behavior.
+const svg = d3
+  .create("svg")
+  .attr("viewBox", [0, 0, width, height])
+  .attr("width", width)
+  .attr("height", height)
+  .attr("style", "max-width: 100%; height: auto;")
+  .call(zoom);
 
-  // Create the vertical scale.
-  const y = d3.scaleLinear()
-    .domain([0, d3.max(data, d => d.frequency)]).nice()
-    .range([height - marginBottom, marginTop]);
+// Append the bars.
+svg
+  .append("g")
+  .attr("class", "bars")
+  .attr("fill", "steelblue")
+  .selectAll("rect")
+  .data(data)
+  .join("rect")
+  .attr("x", (d) => x(d.letter))
+  .attr("y", (d) => y(d.frequency))
+  .attr("height", (d) => y(0) - y(d.frequency))
+  .attr("width", x.bandwidth());
 
-  // Create the SVG container and call the zoom behavior.
-  const svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height])
-       .attr("width", width)
-      .attr("height", height)
-      .attr("style", "max-width: 100%; height: auto;")
-      .call(zoom);
+// Append the axes.
+svg
+  .append("g")
+  .attr("class", "x-axis")
+  .attr("transform", `translate(0,${height - marginBottom})`)
+  .call(xAxis);
 
-  // Append the bars.
-  svg.append("g")
-      .attr("class", "bars")
-      .attr("fill", "steelblue")
-    .selectAll("rect")
-    .data(data)
-    .join("rect")
-      .attr("x", d => x(d.letter))
-      .attr("y", d => y(d.frequency))
-      .attr("height", d => y(0) - y(d.frequency))
+svg
+  .append("g")
+  .attr("class", "y-axis")
+  .attr("transform", `translate(${marginLeft},0)`)
+  .call(d3.axisLeft(y))
+  .call((g) => g.select(".domain").remove());
+
+display(svg.node());
+
+function zoom(svg) {
+  const extent = [
+    [marginLeft, marginTop],
+    [width - marginRight, height - marginTop]
+  ];
+
+  svg.call(d3.zoom().scaleExtent([1, 8]).translateExtent(extent).extent(extent).on("zoom", zoomed));
+
+  function zoomed(event) {
+    x.range([marginLeft, width - marginRight].map((d) => event.transform.applyX(d)));
+    svg
+      .selectAll(".bars rect")
+      .attr("x", (d) => x(d.letter))
       .attr("width", x.bandwidth());
-
-  // Append the axes.
-  svg.append("g")
-      .attr("class", "x-axis")
-      .attr("transform", `translate(0,${height - marginBottom})`)
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y-axis")
-      .attr("transform", `translate(${marginLeft},0)`)
-      .call(d3.axisLeft(y))
-      .call(g => g.select(".domain").remove());
-
-  return svg.node();
-
-  function zoom(svg) {
-    const extent = [[marginLeft, marginTop], [width - marginRight, height - marginTop]];
-
-    svg.call(d3.zoom()
-        .scaleExtent([1, 8])
-        .translateExtent(extent)
-        .extent(extent)
-        .on("zoom", zoomed));
-
-    function zoomed(event) {
-      x.range([marginLeft, width - marginRight].map(d => event.transform.applyX(d)));
-      svg.selectAll(".bars rect").attr("x", d => x(d.letter)).attr("width", x.bandwidth());
-      svg.selectAll(".x-axis").call(xAxis);
-    }
+    svg.selectAll(".x-axis").call(xAxis);
   }
 }
 ```
 
 ```js echo
-const data = FileAttachment("alphabet.csv").csv({typed: true});
+const data = FileAttachment("../data/alphabet.csv").csv({typed: true});
 ```
