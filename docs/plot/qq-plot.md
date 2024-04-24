@@ -9,12 +9,12 @@ A [quantile-quantile plot](https://en.wikipedia.org/wiki/Q–Q_plot) compares tw
 
 ```js echo
 const chart = qq({
-  x: jahanmi2.filter((d) => d.Bat === 2).map((d) => d.Y), // batch 2
-  y: jahanmi2.filter((d) => d.Bat === 1).map((d) => d.Y), // batch 1
-  stroke: "steelblue"
+  x: jahanmi2.filter((d) => d.batch === 2).map((d) => d.value), // batch 2
+  y: jahanmi2.filter((d) => d.batch === 1).map((d) => d.value), // batch 1
+  stroke: "var(--theme-foreground-focus)"
 }).plot({
   aspectRatio: 1,
-  grid: true,
+  grid: 10,
   nice: true,
   x: {label: "Batch 2 →"},
   y: {label: "↑ Batch 1"}
@@ -24,13 +24,7 @@ display(chart);
 ```
 
 ```js echo
-let jahanmi2;
-{
-  const text = await FileAttachment("../data/JAHANMI2.DAT").text();
-  const lines = text.split("\r\n").slice(48, -1);
-  const [header, , ...rows] = lines.map((l) => l.trim().split(/\s+/g));
-  jahanmi2 = rows.map((r) => Object.fromEntries(header.map((h, i) => [h, +r[i]])));
-}
+const jahanmi2 = FileAttachment("../data/ceramics.csv").csv({typed: true});
 ```
 
 ---
