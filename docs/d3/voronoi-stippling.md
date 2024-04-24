@@ -1,50 +1,46 @@
 ---
 source: https://observablehq.com/@mbostock/voronoi-stippling
-index: false
-draft: true
+author: Mike Bostock
+index: true
 ---
 
-```js
-md`
-# Voronoi Stippling
+# Voronoi stippling
 
-This notebook applies a weighted variant of [Lloyd’s algorithm](/@mbostock/lloyds-algorithm) to implement stippling. Points are initially positioned randomly using rejection sampling, then at each iteration, the Voronoi cell centroids are weighted by the lightness of the contained pixels.
+This page applies a weighted variant of [Lloyd’s algorithm](/@mbostock/lloyds-algorithm) to implement stippling. Points are initially positioned randomly using rejection sampling, then at each iteration, the Voronoi cell centroids are weighted by the lightness of the contained pixels.
 
 This technique is based on [_Weighted Voronoi Stippling_](https://www.cs.ubc.ca/labs/imager/tr/2002/secord2002b/secord.2002b.pdf) by [Adrian Secord](https://cs.nyu.edu/~ajsecord/stipples.html); see also posts by [Muhammad Firmansyah Kasim](https://mfkasim91.github.io/2016/12/06/stippling-pictures-with-lloyds-algorithm/), [Egor Larionov](https://elrnv.com/blog/weighted-lloyds-method-for-voronoi-tesselation/) and [Noah Veltman](https://bl.ocks.org/veltman/017a2093623e1bf3ae041dd3380578cb).
-`;
-```
 
 ```js echo
-const image = {
-  const context = DOM.context2d(width, height);
-  const worker = new Worker(script);
+const context = DOM.context2d(width, height);
+const worker = new Worker(script);
 
-  function messaged({data: points}) {
-    context.fillStyle = "#fff";
-    context.fillRect(0, 0, width, height);
-    context.beginPath();
-    for (let i = 0, n = points.length; i < n; i += 2) {
-      const x = points[i], y = points[i + 1];
-      context.moveTo(x + 1.5, y);
-      context.arc(x, y, 1.5, 0, 2 * Math.PI);
-    }
-    context.fillStyle = "#000";
-    context.fill();
+function messaged({data: points}) {
+  context.fillStyle = "#fff";
+  context.fillRect(0, 0, width, height);
+  context.beginPath();
+  for (let i = 0, n = points.length; i < n; i += 2) {
+    const x = points[i],
+      y = points[i + 1];
+    context.moveTo(x + 1.5, y);
+    context.arc(x, y, 1.5, 0, 2 * Math.PI);
   }
-
-  invalidation.then(() => worker.terminate());
-  worker.addEventListener("message", messaged);
-  worker.postMessage({data, width, height, n});
-  return context.canvas;
+  context.fillStyle = "#000";
+  context.fill();
 }
+
+invalidation.then(() => worker.terminate());
+worker.addEventListener("message", messaged);
+worker.postMessage({data, width, height, n});
+display(context.canvas);
 ```
 
 ```js echo
-const script = {
-  const blob = new Blob([`
-importScripts("${await require.resolve("d3-delaunay@6")}");
+const blob = new Blob(
+  [
+    `
+onmessage = async event => {
+  const d3 = await import("${import.meta.resolve("npm:d3")}");
 
-onmessage = event => {
   const {data: {data, width, height, n}} = event;
   const points = new Float64Array(n * 2);
   const c = new Float64Array(n * 2);
@@ -93,25 +89,26 @@ onmessage = event => {
 
   close();
 };
-`], {type: "text/javascript"});
-  const script = URL.createObjectURL(blob);
-  invalidation.then(() => URL.revokeObjectURL(script));
-  return script;
-}
+`
+  ],
+  {type: "text/javascript"}
+);
+const script = URL.createObjectURL(blob);
+invalidation.then(() => URL.revokeObjectURL(script));
 ```
 
 ```js echo
-const data = {
-  const image = await FileAttachment("obama.png").image();
-  const height = Math.round(width * image.height / image.width);
+const image = await FileAttachment("../data/obama.png").image();
+let data;
+{
+  const height = Math.round((width * image.height) / image.width);
   const context = DOM.context2d(width, height, 1);
   context.drawImage(image, 0, 0, image.width, image.height, 0, 0, width, height);
   const {data: rgba} = context.getImageData(0, 0, width, height);
-  const data = new Float64Array(width * height);
+  data = new Float64Array(width * height);
   for (let i = 0, n = rgba.length / 4; i < n; ++i) data[i] = Math.max(0, 1 - rgba[i * 4] / 254);
   data.width = width;
   data.height = height;
-  return data;
 }
 ```
 
@@ -121,4 +118,8 @@ const n = Math.round((width * height) / 40);
 
 ```js echo
 const height = data.height;
+```
+
+```js echo
+import * as DOM from "../components/DOM.js";
 ```
