@@ -1,7 +1,7 @@
-const EMOJI_FAVICON = "🧶";
-const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on <a title="${new Date().toISOString()}">${new Date()
+const EMOJI_FAVICON = "🤖";
+const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on ${new Date()
   .toISOString()
-  .slice(0, 10)}</a>.</p>`;
+  .slice(0, 10)}.</p>`;
 
 const SOURCE_REPO = "https://github.com/observablehq/pangea/blob/sane/docs";
 
@@ -37,6 +37,8 @@ a.setAttribute("href", a.getAttribute("href") + (
 export default {
   // The project’s title; used in the sidebar and webpage titles.
   title: "Pangea Proxima",
+
+  root: "src", // the new preferred default
 
   // The pages and sections in the sidebar. If you don’t specify this option,
   // all pages will be listed in alphabetical order. Listing pages explicitly
