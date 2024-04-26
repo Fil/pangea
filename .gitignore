@@ -3,5 +3,8 @@ dist/
 docs/.observablehq/cache/
 docs/data-unsorted/
 docs/stash/
+src/.observablehq/cache/
+src/data-unsorted/
+src/stash/
 node_modules/
 yarn-error.log
