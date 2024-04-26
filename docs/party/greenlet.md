@@ -86,3 +86,9 @@ display(html`3 + 9 = ${await worker.add(3, 9)}`);
 ```js echo
 display(html`3 - 9 = ${await worker.sub(3, 9)}`);
 ```
+
+<div class="warning">
+
+It is tempting to push a lot of data to the worker, but be aware that there is no invalidation mechanism and that if you do long computations with a lot of data that depend on (say) an interactive slider, you might end up crashing the browser. See [LAP-JV](../varia/lap-jv) for an example.
+
+</div>
