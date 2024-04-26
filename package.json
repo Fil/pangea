@@ -2,12 +2,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "clean": "rm -rf docs/.observablehq/cache",
+    "clean": "rm -rf src/.observablehq/cache",
     "build": "rm -rf dist && tsx node_modules/@observablehq/framework/src/bin/observable.ts build",
     "dev": "tsx node_modules/@observablehq/framework/src/bin/observable.ts preview --port 3033",
     "deploy": "tsx node_modules/@observablehq/framework/src/bin/observable.ts deploy",
     "observable": "observable",
-    "install:duckdb": "export TMPDIR='docs/.observablehq/cache' && mkdir -p $TMPDIR && export PATH=$TMPDIR:$PATH && command -v duckdb > /dev/null || $(curl --location --output duckdb.zip 'https://github.com/duckdb/duckdb/releases/download/v0.10.0/duckdb_cli-linux-amd64.zip' && unzip -qq duckdb.zip && chmod +x duckdb && mv duckdb $TMPDIR/)"
+    "install:duckdb": "export TMPDIR='src/.observablehq/cache' && mkdir -p $TMPDIR && export PATH=$TMPDIR:$PATH && command -v duckdb > /dev/null || $(curl --location --output duckdb.zip 'https://github.com/duckdb/duckdb/releases/download/v0.10.0/duckdb_cli-linux-amd64.zip' && unzip -qq duckdb.zip && chmod +x duckdb && mv duckdb $TMPDIR/)"
   },
   "dependencies": {
     "@observablehq/framework": "https://github.com/observablehq/framework#fil/save-search-query",
