@@ -8,7 +8,7 @@ source: https://observablehq.com/@d3/force-directed-graph-component
 This network of character co-occurence in _Les Misérables_ is positioned by simulated forces using [d3-force](https://d3js.org/d3-force). See also a [disconnected graph](./disjoint-force-directed-graph), and compare to [WebCoLa](https://observablehq.com/@mbostock/hello-cola).
 
 ```js echo
-const chart = ForceGraph(miserables, {
+const chart = ForceGraph(data, {
   nodeId: (d) => d.id,
   nodeGroup: (d) => d.group,
   nodeTitle: (d) => `${d.id}\n${d.group}`,
