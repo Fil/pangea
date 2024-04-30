@@ -255,8 +255,8 @@
   integrity sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==
 
 "@observablehq/framework@https://github.com/observablehq/framework#fil/save-search-query":
-  version "1.6.0"
-  resolved "https://github.com/observablehq/framework#433164973aa5acde235e92145a0adcfe2acaa01e"
+  version "1.7.0"
+  resolved "https://github.com/observablehq/framework#d4de0d13c2407e6bd4c94d6e99649bb1b42fbc5d"
   dependencies:
     "@clack/prompts" "^0.7.0"
     "@observablehq/inputs" "^0.10.6"
@@ -271,6 +271,7 @@
     cross-env "^7.0.3"
     cross-spawn "^7.0.3"
     d3-array "^3.2.4"
+    d3-hierarchy "^3.1.2"
     esbuild "^0.20.1"
     fast-array-diff "^1.1.0"
     gray-matter "^4.0.3"
@@ -820,7 +821,7 @@ d3-geo@3:
   dependencies:
     d3-array "2.5.0 - 3"
 
-d3-hierarchy@3:
+d3-hierarchy@3, d3-hierarchy@^3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/d3-hierarchy/-/d3-hierarchy-3.1.2.tgz#b01cd42c1eed3d46db77a5966cf726f8c09160c6"
   integrity sha512-FX/9frcub54beBdugHjDCdikxThEqjnR93Qt7PvQTOHxyiNCAlvMrHhclk3cD5VeAaq9fxmfRp+CnWw9rEMBuA==
