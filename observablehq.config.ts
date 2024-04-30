@@ -3,7 +3,7 @@ const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" tar
   .toISOString()
   .slice(0, 10)}.</p>`;
 
-const SOURCE_REPO = "https://github.com/Fil/pangea/blob/main/docs";
+const SOURCE_REPO = "https://github.com/Fil/pangea/blob/main/src";
 
 const VIEW_SOURCE = !SOURCE_REPO
   ? ""
