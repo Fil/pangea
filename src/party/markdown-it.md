@@ -12,7 +12,7 @@ import markdownit from "markdown-it";
 import matter from "npm:gray-matter";
 ```
 
-```js
+```js echo
 const Markdown = new markdownit({html: true});
 
 const md = {
