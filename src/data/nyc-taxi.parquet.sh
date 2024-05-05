@@ -1,4 +1,4 @@
-export TMPDIR="docs/.observablehq/cache"
+export TMPDIR="src/.observablehq/cache"
 export PATH=$TMPDIR:$PATH
 duckdb :memory: << EOF
 -- Load spatial extension
