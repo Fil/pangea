@@ -1,0 +1,795 @@
+city,country,population,region,active,car
+Tokyo,Japan,37468000,East Asia and Pacific,0.37,0.12
+Delhi,India,28514000,South Asia,0.33,0.19
+Shanghai,China,25582000,East Asia and Pacific,0.47,0.2
+São Paulo,Brazil,21650000,Latin America and Caribbean,0.33,0.31
+Mexico City,Mexico,21249239,Latin America and Caribbean,0.34,0.21
+Mumbai,India,19980000,South Asia,0.33,0.15
+New York,United States,19635666,North America,0.07513,0.678756
+Beijing,China,19618000,East Asia and Pacific,0.53,0.21
+Dhaka,Bangladesh,19578000,South Asia,0.58,0.13
+Osaka,Japan,19281000,East Asia and Pacific,0.26,0.13
+Los Angeles,United States,18867980,North America,0.031766,0.932656
+Buenos Aires,Argentina,15370000,Latin America and Caribbean,0.27,0.24
+Manila,Philippines,13482000,East Asia and Pacific,0.11,0.45
+Rio de Janeiro,Brazil,13293000,Latin America and Caribbean,0.32,0.25
+Lagos,Nigeria,11847635,Sub-Saharan Africa,0.4,0.13
+Paris,France,11000000,Europe,0.20202,0.20202
+Seoul,South Korea,9963000,East Asia and Pacific,0.11,0.23
+London,United Kingdom,9790000,Europe,0.285,0.27
+Chicago,United States,9402769,North America,0.042038,0.896815
+Bangalore,India,8400000,South Asia,0.366667,0.355556
+Kuala Lumpur,Malaysia,7564000,East Asia and Pacific,0.080994,0.521598
+Hong Kong,Hong Kong,7429000,East Asia and Pacific,0.114428,0.119403
+Bogota,Colombia,7181000,Latin America and Caribbean,0.30439,0.33433
+Santiago,Chile,6900000,Latin America and Caribbean,0.410448,0.273987
+Dallas,United States,6613589,North America,0.015132,0.977301
+Houston,United States,6117444,North America,0.017751,0.966864
+Toronto,Canada,6082000,North America,0.061224,0.693878
+Philadelphia,United States,5945411,North America,0.04194,0.896461
+Nairobi,Kenya,5877118,Sub-Saharan Africa,0.39604,0.19802
+Singapore,Singapore,5792000,East Asia and Pacific,0.23,0.33
+Washington,United States,5787825,North America,0.038864,0.899851
+Miami,United States,5713638,North America,0.021454,0.954708
+Ahmedabad,India,5600000,South Asia,0.36,0.48
+Atlanta,United States,5386650,North America,0.014512,0.972296
+Dar Es Salaam,Tanzania,5325879,Sub-Saharan Africa,0.45,0.12
+Sydney,Australia,5312000,East Asia and Pacific,0.06,0.67
+Guadalajara,Mexico,5121034,Latin America and Caribbean,0.39,0.33
+Chennai,India,4646732,South Asia,0.31,0.38
+Boston,United States,4600543,North America,0.067123,0.856164
+Barcelona,Spain,4600000,Europe,0.3663,0.2604
+Melbourne,Australia,4453000,East Asia and Pacific,0.059406,0.752475
+Accra,Ghana,4452483,Sub-Saharan Africa,0.50495,0.33663
+San Francisco,United States,4418311,North America,0.064715,0.859784
+Phoenix,United States,4281127,North America,0.022222,0.966013
+Detroit,United States,4243488,North America,0.017478,0.971286
+Medellin,Colombia,4100000,Latin America and Caribbean,0.29167,0.35417
+Addis Ababa,Ethiopia,3711329,Sub-Saharan Africa,0.54,0.15
+Cape Town,South Africa,3661684,Sub-Saharan Africa,0.09,0.65
+Athens,Greece,3600000,Europe,0.1,0.53
+Seattle,United States,3513620,North America,0.049133,0.907514
+Berlin,Germany,3500000,Europe,0.475248,0.257426
+Tel Aviv,Israel,3464000,Middle East and North Africa,0.29,0.43
+Minneapolis,United States,3380410,North America,0.02977,0.947226
+Madrid,Spain,3200000,Europe,0.346734,0.40201
+San Diego,United States,3143901,North America,0.046213,0.931964
+Rome,Italy,2900000,Europe,0.05,0.66
+Tampa,United States,2823138,North America,0.019036,0.972081
+Lisbon,Portugal,2800000,Europe,0.24,0.6
+"St, Louis",United States,2764888,North America,0.01845,0.96679
+Belo Horizonte,Brazil,2722000,Latin America and Caribbean,0.35,0.37
+Baltimore,United States,2721102,North America,0.029563,0.937018
+Kaohsiung,Taiwan,2720000,East Asia and Pacific,0.09901,0.83168
+West Midlands,United Kingdom,2700000,Europe,0.12,0.7
+Manchester,United Kingdom,2700000,Europe,0.12,0.71
+Taipei,Taiwan,2650000,East Asia and Pacific,0.17,0.4
+Denver,United States,2617172,North America,0.030387,0.946133
+Pittsburgh,United States,2336409,North America,0.031726,0.937817
+Leeds,United Kingdom,2325000,Europe,0.06,0.63
+Rotterdam,Netherlands,2300000,Europe,0.44,0.46
+Visakhapatnam,India,2278000,South Asia,0.55,0.26
+San Juan,United States,2273614,North America,0.030468,0.958651
+Charlotte,United States,2270473,North America,0.016021,0.974633
+Portland,United States,2262204,North America,0.049655,0.918621
+Brisbane,Australia,2209000,East Asia and Pacific,0.05,0.81
+San Antonio,United States,2208718,North America,0.019025,0.967895
+Orlando,United States,2200597,North America,0.017305,0.972806
+Sacramento,United States,2172460,North America,0.031291,0.956975
+Kochi,India,2119724,South Asia,0.15,0.36
+Cincinnati,United States,2105491,North America,0.022919,0.966224
+Cleveland,United States,2046514,North America,0.027545,0.955689
+Kansas City,United States,2013678,North America,0.01623,0.977528
+Quito,Ecuador,2011000,Latin America and Caribbean,0.15,0.23
+Montevideo,Uruguay,2000000,Latin America and Caribbean,0.362,0.358
+Curitiba,Brazil,1982000,Latin America and Caribbean,0.25,0.3
+Las Vegas,United States,1978938,North America,0.016148,0.963091
+Perth,Australia,1958000,East Asia and Pacific,0.04,0.84
+Minsk,Belarus,1949000,Europe,0.14433,0.206186
+Columbus,United States,1923605,North America,0.023407,0.964889
+Indianapolis,United States,1906705,North America,0.019441,0.973269
+Stockholm,Sweden,1900000,Europe,0.18,0.47
+Brest,France,1900000,Europe,0.26,0.66
+San Jose,United States,1875277,North America,0.046083,0.93702
+Bucharest,Romania,1830000,Europe,0.33,0.4
+Austin,United States,1810894,North America,0.027982,0.961708
+Vienna,Austria,1800000,Europe,0.34,0.27
+Montreal,Canada,1763000,North America,0.070707,0.707071
+Rosario,Argentina,1750000,Latin America and Caribbean,0.25,0.35
+Warsaw,Poland,1740000,Europe,0.21,0.32
+Nashville,United States,1708758,North America,0.015113,0.97733
+Budapest,Hungary,1700000,Europe,0.2,0.35
+Hamburg,Germany,1700000,Europe,0.42,0.36
+Virginia Beach,United States,1674973,North America,0.034803,0.953596
+Auckland,New Zealand,1614000,East Asia and Pacific,0.060606,0.818182
+Providence,United States,1588425,North America,0.030842,0.954923
+Milwaukee,United States,1546202,North America,0.030451,0.948843
+Daejeon,South Korea,1533000,East Asia and Pacific,0.28,0.44
+Valencia,Spain,1500000,Europe,0.42829,0.3994
+Lyon,France,1400000,Europe,0.36634,0.44554
+Sofia,Bulgaria,1400000,Europe,0.17,0.51
+Jacksonville,United States,1364873,North America,0.017073,0.97439
+Milan,Italy,1330000,Europe,0.285714,0.295918
+Memphis,United States,1319572,North America,0.010193,0.987542
+Calgary,Canada,1318000,North America,0.062,0.794
+Munich,Germany,1300000,Europe,0.42,0.34
+Adelaide,Australia,1288681,East Asia and Pacific,0.04,0.85
+Oklahoma City,United States,1279535,North America,0.020548,0.977169
+Prague,Czechia,1267000,Europe,0.225352,0.251509
+Louisville,United States,1238803,North America,0.015366,0.976359
+Richmond,United States,1220584,North America,0.019455,0.968872
+New Orleans,United States,1212380,North America,0.027366,0.95667
+Hartford,United States,1202726,North America,0.025094,0.951067
+Marseille,France,1200000,Europe,0.35,0.54
+Raleigh,United States,1175043,North America,0.017366,0.976845
+Strasbourg,France,1127000,Europe,0.31,0.61
+Buffalo,United States,1123794,North America,0.028037,0.942757
+Birmingham,United States,1121608,North America,0.013889,0.983796
+Salt Lake City,United States,1105655,North America,0.032425,0.941634
+Dublin,Ireland,1100000,Europe,0.252525,0.59596
+Lille,France,1100000,Europe,0.33,0.57
+Birmingham,United Kingdom,1085000,Europe,0.021505,0.709677
+Rochester,United States,1071712,North America,0.033019,0.950472
+Changwon,South Korea,1070000,East Asia and Pacific,0.20937,0.48853
+Cologne,Germany,1060000,Europe,0.44,0.35
+Naples,Italy,1000000,Europe,0.131313,0.606061
+Grand Rapids,United States,994009,North America,0.031323,0.959397
+Tucson,United States,981766,North America,0.028015,0.954933
+Ottawa,Canada,973000,North America,0.1,0.72
+Edmonton,Canada,969000,North America,0.047,0.84
+Urban Honolulu,United States,962879,North America,0.061798,0.892135
+Tulsa,United States,941942,North America,0.017143,0.981714
+Fresno,United States,936048,North America,0.021421,0.96956
+Bridgeport,United States,924777,North America,0.033987,0.909804
+Toulouse,France,924000,Europe,0.17,0.75
+Worcester,United States,914452,North America,0.021951,0.970732
+Torino,Italy,900000,Europe,0.08,0.64
+Turin,Italy,900000,Europe,0.151515,0.79798
+Albuquerque,United States,887976,North America,0.025767,0.968098
+Bordeaux,France,881000,Europe,0.24,0.67
+Omaha,United States,872995,North America,0.019254,0.974729
+Albany,United States,866964,North America,0.033416,0.940594
+New Haven,United States,854789,North America,0.047847,0.924641
+Knoxville,United States,838775,North America,0.011547,0.984988
+Greenville-Anderson-Mauldin,United States,833228,North America,0.01373,0.982838
+Allentown,United States,817821,North America,0.02521,0.963986
+El Paso,United States,815448,North America,0.020022,0.969967
+Baton Rouge,United States,804491,North America,0.010893,0.981481
+Dayton,United States,792415,North America,0.02093,0.968605
+McAllen,United States,791346,North America,0.006682,0.991091
+Thessaloniki,Greece,780000,Europe,0.2,0.55
+Zagreb,Croatia,779000,Europe,0.26,0.37
+Columbia,United States,776019,North America,0.042697,0.952809
+La Paz,Bolivia,766468,Latin America and Caribbean,0.19,0.06
+Krakow,Poland,756183,Europe,0.297189,0.338353
+Amsterdam,Netherlands,747093,Europe,0.44,0.27
+Winnipeg,Canada,735000,North America,0.07,0.79
+Lviv,Ukraine,733989,Europe,0.35,0.26
+Greensboro,United States,726949,North America,0.017544,0.97193
+North Port,United States,716977,North America,0.022727,0.972488
+Little Rock,United States,708066,North America,0.011261,0.98536
+Riga,Latvia,706413,Europe,0.21,0.45
+Seville,Spain,700000,Europe,0.2,0.62
+Akron,United States,695688,North America,0.020095,0.969267
+Stockton,United States,690889,North America,0.013559,0.978531
+Charleston,United States,689205,North America,0.027446,0.968974
+Frankfurt,Germany,680000,Europe,0.26,0.44
+Palermo,Italy,678492,Europe,0.13,0.78
+Zaragoza,Spain,674000,Europe,0.491046,0.270423
+Frankfurt am Main,Germany,670170,Europe,0.43,0.34
+Vancouver,Canada,670000,North America,0.091837,0.704082
+Colorado Springs,United States,660034,North America,0.043902,0.953659
+Syracuse,United States,655008,North America,0.04729,0.936563
+Cape Coral,United States,641513,North America,0.01889,0.977568
+Winston-Salem,United States,640858,North America,0.013841,0.981546
+Boise City,United States,631462,North America,0.034814,0.963986
+Wroclaw,Poland,630000,Europe,0.306533,0.41608
+Wichita,United States,627862,North America,0.077754,0.920086
+Springfield,United States,621087,North America,0.039521,0.935329
+Genova,Italy,614700,Europe,0.20792,0.48515
+Helsinki,Finland,613100,Europe,0.484848,0.222222
+Madison,United States,612986,North America,0.082687,0.900517
+Lakeland,United States,609482,North America,0.014874,0.985126
+Ogden,United States,603869,North America,0.019465,0.969586
+Toledo,United States,601847,North America,0.016667,0.977778
+Stuttgart,Germany,592915,Europe,0.31,0.45
+Deltona,United States,592455,North America,0.017878,0.978546
+Copenhagen,Denmark,591000,Europe,0.47,0.33
+Dusseldorf,Germany,588000,Europe,0.43,0.36
+Essen,Germany,583109,Europe,0.26,0.55
+Des Moines,United States,582353,North America,0.025284,0.970923
+Dortmund,Germany,580000,Europe,0.29,0.49
+Nantes,France,580000,Europe,0.32,0.52
+Toulon,France,575000,Europe,0.28,0.67
+Oslo,Norway,573185,Europe,0.37,0.37
+Malaga,Spain,570000,Europe,0.12,0.77
+Santa Fe,Argentina,570000,Latin America and Caribbean,0.5,0.36
+Augusta-Richmond County,United States,568595,North America,0.009967,0.987818
+Jackson,United States,568025,North America,0.010917,0.9869
+Hamilton,Canada,561000,North America,0.050505,0.848485
+Scranton,United States,557430,North America,0.035187,0.955732
+Sheffield,United Kingdom,555000,Europe,0.08081,0.68687
+Vilnius,Lithuania,554192,Europe,0.37,0.38
+Youngstown,United States,553906,North America,0.023732,0.970874
+Harrisburg-Carlisle,United States,549259,North America,0.033666,0.958853
+Bremen,Germany,547735,Europe,0.49505,0.356436
+Palm Bay,United States,543963,North America,0.016588,0.973934
+Poznan,Poland,542000,Europe,0.29,0.373
+Provo-Orem,United States,539377,North America,0.036896,0.947837
+Quebec City,Canada,539000,North America,0.080808,0.808081
+Hannover,Germany,532000,Europe,0.45,0.36
+Chattanooga,United States,531445,North America,0.017503,0.978997
+Tarragona,Spain,528000,Europe,0.4491,0.49701
+Spokane,United States,527585,North America,0.042118,0.939832
+Lancaster,United States,519763,North America,0.045191,0.947856
+Durham,United States,519050,North America,0.035613,0.945869
+Leipzig,Germany,518862,Europe,0.42,0.4
+Nurnberg,Germany,518000,Europe,0.37624,0.42574
+Modesto,United States,515124,North America,0.016429,0.972618
+The Hague,Netherlands,514861,Europe,0.51,0.38
+Portland,United States,513420,North America,0.064683,0.931436
+Niteroi,Brazil,513317,Latin America and Caribbean,0.31,0.24
+Dresden,Germany,512546,Europe,0.44,0.36
+Nuremberg,Germany,510000,Europe,0.38,0.39
+Saint-Etienne,France,510000,Europe,0.3,0.6
+Florianopolis,Brazil,508826,Latin America and Caribbean,0.26,0.48
+Nice,France,508000,Europe,0.41,0.48
+Antwerp,Belgium,506000,Europe,0.43,0.41
+Duisburg,Germany,501564,Europe,0.33,0.56
+Santa Rosa,United States,486699,North America,0.040252,0.953459
+Gothenburg,Sweden,485000,Europe,0.31313,0.41414
+Lexington,United States,477997,North America,0.034803,0.955916
+Fayetteville,United States,477314,North America,0.016867,0.980723
+Edinburgh,United Kingdom,471650,Europe,0.24752,0.30693
+Lafayette,United States,469085,North America,0.017486,0.980328
+Lansing,United States,462062,North America,0.037453,0.946317
+Gdansk,Poland,460000,Europe,0.267,0.412
+Pensacola-Ferry Pass-Brent,United States,456563,North America,0.062718,0.936121
+Montpellier,France,445000,Europe,0.28,0.64
+Visalia-Porterville,United States,444334,North America,0.017223,0.977395
+Springfield,United States,439346,North America,0.03171,0.964892
+Shreveport,United States,439242,North America,0.009657,0.982833
+Bristol,United Kingdom,437000,Europe,0.35,0.49
+Liverpool,United Kingdom,435500,Europe,0.22902,0.62981
+Manizales,Colombia,434000,Latin America and Caribbean,0.30087,0.41831
+York-Hanover,United States,433572,North America,0.022962,0.972445
+Corpus Christi,United States,431694,North America,0.014878,0.976621
+Murcia,Spain,430000,Europe,0.38,0.52
+"Port St, Lucie",United States,429788,North America,0.011377,0.986348
+Asheville,United States,429136,North America,0.01533,0.981132
+Reno,United States,428774,North America,0.01986,0.961449
+Santa Maria,United States,426462,North America,0.077106,0.907473
+Huntsville,United States,425199,North America,0.008537,0.991463
+Halifax,Canada,425000,North America,0.090909,0.787879
+Canberra,Australia,424000,East Asia and Pacific,0.079208,0.841584
+Bratislava,Slovakia,420000,Europe,0.287018,0.382353
+Salinas,United States,418803,North America,0.036077,0.958286
+Vallejo-Fairfield,United States,416642,North America,0.018349,0.962156
+Fort Wayne,United States,416313,North America,0.019868,0.975717
+Tallinn,Estonia,414752,Europe,0.161616,0.49495
+Flint,United States,413873,North America,0.010147,0.979707
+Killeen-Temple,United States,411559,North America,0.02649,0.972406
+Mobile,United States,408884,North America,0.008649,0.989189
+Brownsville,United States,408872,North America,0.018438,0.979393
+Reading,United States,408413,North America,0.035714,0.956221
+Beaumont,United States,400092,North America,0.01971,0.978216
+Canton-Massillon,United States,399052,North America,0.017162,0.978261
+Manchester-Nashua,United States,398595,North America,0.021992,0.974127
+Grenoble,France,393000,Europe,0.271,0.607
+Myrtle Beach,United States,392482,North America,0.014623,0.979753
+Salem,United States,392173,North America,0.045949,0.945586
+Rennes,France,392000,Europe,0.32,0.55
+Zurich,Switzerland,390000,Europe,0.459184,0.214286
+Anchorage,United States,386261,North America,0.036405,0.949943
+Florence,Italy,379000,Europe,0.117647,0.676471
+Las Palmas,Spain,378000,Europe,0.12,0.64
+Salisbury,United States,377981,North America,0.021445,0.975169
+Brno,Czechia,377440,Europe,0.08,0.39
+Davenport,United States,376779,North America,0.024472,0.969967
+Vorarlberg Land,Austria,375282,Europe,0.34,0.52
+Peoria,United States,375115,North America,0.022962,0.973594
+Bochum,Germany,374737,Europe,0.24,0.56
+Gulfport-Biloxi-Pascagoula,United States,374371,North America,0.025192,0.972618
+Christchurch,New Zealand,374000,East Asia and Pacific,0.10101,0.848485
+Bologna,Italy,373026,Europe,0.2719,0.59718
+Montgomery,United States,371125,North America,0.007617,0.991295
+Tallahassee,United States,369243,North America,0.015777,0.976942
+Lens,France,368000,Europe,0.3,0.66
+Fayetteville,United States,367623,North America,0.035987,0.960742
+Trenton,United States,365938,North America,0.036161,0.916551
+Huntington,United States,360834,North America,0.020742,0.973799
+Hickory-Lenoir-Morganton,United States,360384,North America,0.01726,0.98274
+Kaunas,Lithuania,357000,Europe,0.17,0.23
+Savannah,United States,356467,North America,0.024229,0.968062
+Bilbao,Spain,353000,Europe,0.66,0.12
+Eugene,United States,351609,North America,0.066586,0.921308
+Wuppertal,Germany,349470,Europe,0.3,0.58
+Ann Arbor,United States,347784,North America,0.072443,0.892045
+Clermont-Ferrand,France,344000,Europe,0.28,0.65
+Varna,Bulgaria,343602,Europe,0.29703,0.47525
+Rockford,United States,342161,North America,0.010193,0.984145
+Ponce,United States,334052,North America,0.021053,0.977895
+Alicante,Spain,333000,Europe,0.18,0.69
+Ocala,United States,331443,North America,0.007778,0.992222
+Naples,United States,331121,North America,0.012746,0.986095
+Aarhus,Denmark,331000,Europe,0.354167,0.447917
+Cordoba,Spain,330000,Europe,0.45,0.45
+Aguadilla-Isabela,United States,327849,North America,0.034079,0.964856
+Mannheim,Germany,326964,Europe,0.4,0.44
+Kalamazoo-Portage,United States,326942,North America,0.021053,0.961404
+Bonn,Germany,324000,Europe,0.425743,0.405941
+Bielefeld,Germany,323270,Europe,0.3,0.54
+Bari,Italy,322751,Europe,0.28,0.52
+Catania,Italy,320974,Europe,0.23232,0.63636
+Singra,Bangladesh,320818,South Asia,0.25,0.25
+Aix,France,317000,Europe,0.27,0.66
+Utrecht,Netherlands,316000,Europe,0.753579,0.191207
+South Bend,United States,315135,North America,0.034792,0.953984
+Spartanburg,United States,312939,North America,0.012141,0.987859
+Evansville,United States,309577,North America,0.022099,0.973481
+Fort Collins,United States,308196,North America,0.063241,0.928854
+Valladolid,Spain,308000,Europe,0.23,0.57
+Roanoke,United States,307295,North America,0.011494,0.975862
+Green Bay,United States,307003,North America,0.024504,0.973162
+Kingsport,United States,306079,North America,0.010011,0.989989
+Lincoln,United States,306006,North America,0.043931,0.946821
+Quelimane,Mozambique,304155,Sub-Saharan Africa,0.91,0.05
+Columbus,United States,304016,North America,0.024609,0.969799
+Nottingham,United Kingdom,303900,Europe,0.21,0.54
+Boulder,United States,302194,North America,0.091052,0.89168
+Utica,United States,295152,North America,0.034208,0.95439
+Vigo,Spain,295000,Europe,0.19,0.68
+Lubbock,United States,294953,North America,0.024731,0.966667
+Leicester,United Kingdom,294700,Europe,0.3,0.35
+Karlsruhe,Germany,291959,Europe,0.49,0.34
+Venezia,Italy,289264,Europe,0.3,0.45
+Malmo,Sweden,287000,Europe,0.37,0.42
+Munster,Germany,280000,Europe,0.61,0.29
+Wiesbaden,Germany,277493,Europe,0.256,0.467
+Fort Smith,United States,277342,North America,0.014784,0.984161
+Duluth,United States,277198,North America,0.047344,0.946882
+Erie,United States,277159,North America,0.039909,0.947548
+Gijon,Spain,275000,Europe,0.24,0.59
+Newcastle,United Kingdom,273600,Europe,0.31,0.3
+Bethune,France,273000,Europe,0.23,0.73
+Atlantic City,United States,272863,North America,0.046275,0.904063
+San Luis Obispo,United States,271695,North America,0.057247,0.937881
+Norwich,United States,271406,North America,0.029797,0.959476
+Le Havre,France,267000,Europe,0.35,0.57
+Clarksville,United States,266343,North America,0.039046,0.957701
+Ljubljana,Slovenia,265881,Europe,0.29,0.58
+Gainesville,United States,265873,North America,0.037296,0.940559
+Augsburg,Germany,265000,Europe,0.50751,0.33734
+Santa Cruz,United States,264292,North America,0.061842,0.921053
+Oporto,Portugal,263000,Europe,0.32673,0.42574
+Kennewick-Richland,United States,262209,North America,0.007874,0.987627
+Moenchengladbach,Germany,261444,Europe,0.25,0.59
+Greeley,United States,261384,North America,0.027348,0.970273
+Wilmington,United States,261335,North America,0.010791,0.980815
+Espoo,Finland,260800,Europe,0.3,0.5
+Verona,Italy,259941,Europe,0.19,0.69
+Dunkerque,France,259000,Europe,0.27,0.66
+Cedar Rapids,United States,258198,North America,0.020757,0.970696
+Nancy,France,258000,Europe,0.37,0.5
+Merced,United States,257674,North America,0.032503,0.96208
+Graz,Austria,257328,Europe,0.38,0.42
+Aachen,Germany,256605,Europe,0.40594,0.46535
+Olympia-Tumwater,United States,256477,North America,0.024804,0.963446
+Laredo,United States,254496,North America,0.014846,0.973489
+Waco,United States,254144,North America,0.01908,0.98092
+Hagerstown,United States,253596,North America,0.014823,0.980616
+Amarillo,United States,253391,North America,0.012209,0.985572
+Messina,Italy,253134,Europe,0.18182,0.66667
+Lynchburg,United States,252706,North America,0.022222,0.976608
+Parkstad Limburg,Netherlands,252000,Europe,0.4,0.5
+Bremerton,United States,250448,North America,0.076261,0.879459
+Chemnitz,Germany,249500,Europe,0.32,0.54
+Ghent,Belgium,248000,Europe,0.455446,0.39604
+Medio Tejo,Portugal,247331,Europe,0.16832,0.70297
+Binghamton,United States,246797,North America,0.034208,0.947548
+Leziria do Tejo,Portugal,246210,Europe,0.17,0.68
+Crestview,United States,243654,North America,0.028441,0.969283
+Yakima,United States,242624,North America,0.019459,0.979459
+Kiel,Germany,242600,Europe,0.49,0.41
+Bergen,Norway,241949,Europe,0.29,0.55
+Vitoria-Gasteiz,Spain,240000,Europe,0.66667,0.25726
+Metropole Savoie,France,240000,Europe,0.28,0.67
+Braunschweig,Germany,239921,Europe,0.39,0.47
+Halle Saale,Germany,238837,Europe,0.43,0.39
+Krefeld,Germany,238270,Europe,0.35,0.51
+Porto,Portugal,237584,Europe,0.22,0.52
+Sioux Falls,United States,235078,North America,0.022042,0.969838
+Magdeburg,Germany,234977,Europe,0.31,0.48
+Champaign-Urbana,United States,232311,North America,0.090909,0.870303
+College Station-Bryan,United States,232224,North America,0.029412,0.958145
+Topeka,United States,231634,North America,0.012629,0.985075
+Tuscaloosa,United States,230945,North America,0.010846,0.9859
+Macon,United States,229059,North America,0.014541,0.980984
+Reims,France,228000,Europe,0.31,0.6
+Appleton,United States,226172,North America,0.03517,0.955451
+Freiburg im Breisgau,Germany,226000,Europe,0.63,0.21
+Charleston,United States,223113,North America,0.034444,0.955556
+Freiburg,Germany,221924,Europe,0.63,0.21
+Charlottesville,United States,220824,North America,0.063554,0.918288
+Eindhoven,Netherlands,220782,Europe,0.53,0.42
+Chico,United States,219308,North America,0.038946,0.958763
+Lubeck,Germany,216854,Europe,0.26,0.58
+Fargo,United States,215360,North America,0.033487,0.960739
+Longview,United States,213769,North America,0.01824,0.98176
+Barnstable Town,United States,213756,North America,0.01956,0.976773
+Oberhausen,Germany,213000,Europe,0.28,0.57
+Prescott,United States,211891,North America,0.032941,0.962353
+Tyler,United States,211824,North America,0.012987,0.985931
+Burlington,United States,211635,North America,0.080369,0.909091
+Aberdeen,United Kingdom,211000,Europe,0.31683,0.50495
+Las Cruces,United States,210156,North America,0.030168,0.968715
+Springfield,United States,209225,North America,0.022676,0.96712
+Vantaa,Finland,208100,Europe,0.34,0.48
+Rochester,United States,207240,North America,0.05257,0.922897
+Wellington,New Zealand,207000,East Asia and Pacific,0.257732,0.505155
+Limoges,France,206000,Europe,0.24,0.69
+Medford,United States,204831,North America,0.038554,0.955422
+Lafayette,United States,204106,North America,0.08238,0.901602
+Florence,United States,203615,North America,0.014254,0.985746
+Charleroi,Belgium,202598,Europe,0.04,0.84
+Bellingham,United States,202568,North America,0.052885,0.9375
+Mainz,Germany,201500,Europe,0.38,0.41
+Erfurt,Germany,201368,Europe,0.41,0.42
+Lake Havasu City,United States,200737,North America,0.013771,0.981992
+Lorient,France,200000,Europe,0.26,0.66
+Lake Charles,United States,199175,North America,0.036345,0.963655
+Yuma,United States,199154,North America,0.012035,0.97046
+Cork,Ireland,198582,Europe,0.17,0.76
+Rostock,Germany,198303,Europe,0.42,0.37
+Kassel,Germany,198167,Europe,0.36,0.42
+Johnson City,United States,198151,North America,0.015402,0.980198
+York,United Kingdom,197800,Europe,0.32,0.57
+Elkhart-Goshen,United States,196502,North America,0.048077,0.949786
+Saginaw,United States,195469,North America,0.028027,0.971973
+Athens,United States,194156,North America,0.039855,0.955314
+Racine,United States,192805,North America,0.012443,0.977376
+Liege,Belgium,192504,Europe,0.08,0.76
+Brescia,Italy,192151,Europe,0.18,0.68
+Le Mans,France,192000,Europe,0.32,0.6
+Hilton Head Island-Bluffton-Beaufort,United States,191998,North America,0.030999,0.958668
+Burgas,Bulgaria,190830,Europe,0.05,0.58
+Linz,Austria,190000,Europe,0.29,0.5
+"St, Cloud",United States,188365,North America,0.043142,0.94469
+Parma,Italy,187214,Europe,0.12,0.75
+Odense,Denmark,187000,Europe,0.46,0.28
+Bloomington,United States,186676,North America,0.054759,0.940026
+Panama City,United States,186067,North America,0.014412,0.984479
+Almere,Netherlands,186011,Europe,0.42,0.45
+Donostia-San Sebastian,Spain,183000,Europe,0.42543,0.31932
+Groningen,Netherlands,182484,Europe,0.46,0.44
+Warner Robins,United States,182468,North America,0.011161,0.982143
+Hamm,Germany,182459,Europe,0.28,0.61
+Gainesville,United States,182457,North America,0.009101,0.98521
+Leganes,Spain,181248,Europe,0.3,0.36
+Ulm,Germany,180205,Europe,0.34,0.5
+Breda,Netherlands,180053,Europe,0.42,0.53
+Kingston,United States,179942,North America,0.051637,0.933249
+Jacksonville,United States,178878,North America,0.089758,0.910242
+Burgos,Spain,178500,Europe,0.49,0.28
+Blacksburg,United States,178148,North America,0.057803,0.923699
+Redding,United States,176957,North America,0.049199,0.946224
+Saarbrücken,Germany,175741,Europe,0.27,0.56
+Monroe,United States,175542,North America,0.021882,0.974836
+San Miguel de Allende,Mexico,174615,Latin America and Caribbean,0.35,0.24
+Almada,Portugal,174030,Europe,0.18,0.46
+El Centro,United States,173867,North America,0.031351,0.956757
+Joplin,United States,173655,North America,0.026696,0.972191
+Thurrock,United Kingdom,173405,Europe,0.08,0.7
+Cagliari,Italy,171538,Europe,0.2,0.66
+Brussels,Belgium,171459,Europe,0.28,0.44
+Terre Haute,United States,170128,North America,0.034232,0.961618
+Shimla,India,169578,South Asia,0.43,0.08
+Basel,Switzerland,169464,Europe,0.50505,0.22222
+Muskegon,United States,169460,North America,0.020675,0.979325
+Szeged,Hungary,169000,Europe,0.31,0.22
+East Stroudsburg,United States,166878,North America,0.011534,0.967705
+Waterloo-Cedar Falls,United States,166588,North America,0.052049,0.947951
+Oshkosh,United States,166380,North America,0.021739,0.966819
+Sioux City,United States,166317,North America,0.021119,0.972545
+Columbia,United States,165814,North America,0.045055,0.947253
+Yuba City,United States,165810,North America,0.016026,0.980769
+Dover,United States,165444,North America,0.011996,0.977099
+Abilene,United States,164878,North America,0.009901,0.987899
+Osnabruck,Germany,164405,Europe,0.31,0.53
+Peterborough,United Kingdom,164000,Europe,0.31,0.61
+Punta Gorda,United States,162281,North America,0.042725,0.95612
+Eau Claire,United States,161894,North America,0.031106,0.964286
+Solingen,Germany,161779,Europe,0.17,0.61
+Bend-Redmond,United States,161556,North America,0.051443,0.943538
+Nijmegen,Netherlands,161251,Europe,0.32,0.5
+Billings,United States,161068,North America,0.024554,0.969866
+Bloomington,United States,160738,North America,0.083032,0.902527
+Bowling Green,United States,160300,North America,0.038627,0.958155
+Oldenburg,Germany,159563,Europe,0.39,0.55
+Pueblo,United States,158986,North America,0.027624,0.970166
+Janesville-Beloit,United States,158458,North America,0.02072,0.973828
+Jackson,United States,158230,North America,0.01934,0.973834
+Pecs,Hungary,158000,Europe,0.24,0.35
+Kahului,United States,157022,North America,0.034783,0.943478
+Iowa City,United States,156798,North America,0.099265,0.876225
+Vineland-Bridgeton,United States,155340,North America,0.014317,0.982379
+Apeldoorn,Netherlands,155108,Europe,0.41,0.55
+State College,United States,154889,North America,0.104738,0.876559
+Enschede,Netherlands,154753,Europe,0.41,0.55
+Albany,United States,154351,North America,0.0131,0.979258
+Niles,United States,154308,North America,0.029885,0.966667
+Neuss,Germany,153758,Europe,0.22,0.64
+Foggia,Italy,153154,Europe,0.32673,0.55446
+Alexandria,United States,152783,North America,0.016129,0.967742
+Amersfoort,Netherlands,152481,Europe,0.48255,0.46361
+Bangor,United States,152160,North America,0.03778,0.961039
+Decatur,United States,151768,North America,0.025414,0.964641
+Madera,United States,149996,North America,0.005774,0.989607
+Chambersburg,United States,149754,North America,0.025414,0.973481
+Potsdam,Germany,149687,Europe,0.43,0.38
+Hanford-Corcoran,United States,149544,North America,0.011603,0.982068
+Wichita Falls,United States,149495,North America,0.015385,0.98022
+Trondheim,Norway,149336,Europe,0.38,0.53
+Rocky Mount,United States,149108,North America,0.005618,0.992135
+Monroe,United States,148887,North America,0.018847,0.978936
+Elizabethtown-Fort Knox,United States,148712,North America,0.025442,0.972345
+Jefferson City,United States,148529,North America,0.024444,0.973333
+Ruse,Bulgaria,148502,Europe,0.46,0.33
+Blackburn with Darwen,United Kingdom,148000,Europe,0.21,0.7
+Salzburg,Austria,148000,Europe,0.38,0.46
+Texarkana,United States,147125,North America,0.008502,0.991498
+Saint Quentin en Yvelines,France,146000,Europe,0.33,0.52
+Florence,United States,145831,North America,0.009375,0.989583
+Grand Junction,United States,145522,North America,0.022485,0.96213
+Wheeling,United States,145460,North America,0.03125,0.965517
+Dothan,United States,145158,North America,0.007384,0.991561
+Santa Fe,United States,145064,North America,0.048877,0.940555
+Darmstadt,Germany,145000,Europe,0.46,0.39
+Hattiesburg,United States,144425,North America,0.005198,0.991684
+Paderborn,Germany,143769,Europe,0.37,0.56
+Arnhem,Netherlands,143582,Europe,0.3913,0.45217
+"St, George",United States,142797,North America,0.020808,0.979192
+Dundee,United Kingdom,142070,Europe,0.32,0.48
+Pointe-a-Pitre,France,142000,Europe,0.23,0.67
+Oulu,Finland,142000,Europe,0.4,0.54
+Linkoping,Sweden,141200,Europe,0.35,0.55
+Valdosta,United States,140818,North America,0.011803,0.988197
+Coeur d'Alene,United States,140625,North America,0.011574,0.975694
+Stara Zagora,Bulgaria,140303,Europe,0.35,0.4
+Uppsala,Sweden,140175,Europe,0.47,0.42
+Orebro,Sweden,140000,Europe,0.37,0.55
+Coimbra,Portugal,140000,Europe,0.13,0.69
+Pau,France,140000,Europe,0.25,0.71
+Johnstown,United States,139562,North America,0.019187,0.975169
+Heidelberg,Germany,139200,Europe,0.45,0.37
+Napa,United States,137637,North America,0.023573,0.967742
+Rapid City,United States,137181,North America,0.035754,0.963128
+Leon,Spain,137064,Europe,0.65,0.29
+Springfield,United States,135842,North America,0.025386,0.972406
+Maia,Portugal,135306,Europe,0.11,0.71
+Wrexham,United Kingdom,134800,Europe,0.1,0.83
+Flagstaff,United States,134039,North America,0.092527,0.893238
+Idaho Falls,United States,133902,North America,0.015556,0.963333
+La Crosse-Onalaska,United States,133844,North America,0.04387,0.947132
+Lebanon,United States,133475,North America,0.037204,0.947012
+Wausau,United States,133363,North America,0.023283,0.974389
+Morgantown,United States,132964,North America,0.033998,0.961313
+Amiens,France,132874,Europe,0.35,0.58
+Norwich,United Kingdom,132512,Europe,0.35,0.55
+Jyvaskyla,Finland,130974,Europe,0.34,0.61
+Ferrara,Italy,130837,Europe,0.39,0.56
+Gyor,Hungary,130478,Europe,0.33,0.41
+Lawton,United States,130246,North America,0.035308,0.961276
+Siauliai,Lithuania,130020,Europe,0.41,0.38
+Norrkoping,Sweden,129985,Europe,0.31,0.59
+Winchester,United States,129477,North America,0.035068,0.960407
+Sierra Vista-Douglas,United States,129300,North America,0.033822,0.965051
+Pittsfield,United States,128831,North America,0.062945,0.900238
+Jackson,United States,128613,North America,0.009815,0.984733
+Ipswich,United Kingdom,128000,Europe,0.22122,0.67167
+Glens Falls,United States,127371,North America,0.019144,0.972973
+Harrisonburg,United States,126952,North America,0.06044,0.936264
+Logan,United States,126586,North America,0.047953,0.94269
+"St, Joseph",United States,126015,North America,0.017112,0.980749
+New Bern,United States,125917,North America,0.018579,0.980328
+Lausanne,Switzerland,125885,Europe,0.51,0.36
+Carbondale,United States,125713,North America,0.032503,0.957746
+Altoona,United States,125485,North America,0.029284,0.966377
+Maubeuge,France,125000,Europe,0.25,0.7
+Bern,Switzerland,124381,Europe,0.45455,0.22222
+Plock,Poland,124000,Europe,0.12,0.53
+Gottingen,Germany,123594,Europe,0.52,0.35
+Jonesboro,United States,122524,North America,0.009709,0.990291
+Heilbronn,Germany,122302,Europe,0.28,0.6
+Weirton-Steubenville,United States,121661,North America,0.029967,0.968923
+Mansfield,United States,121513,North America,0.017223,0.972013
+Watford,United Kingdom,121000,Europe,0.305,0.58
+Sherman-Denison,United States,120451,North America,0.032992,0.96132
+Innsbruck,Austria,120000,Europe,0.51515,0.32323
+Bergamo,Italy,119234,Europe,0.16,0.69
+Bismarck,United States,119168,North America,0.029703,0.969197
+Staunton-Waynesboro,United States,117688,North America,0.013158,0.980263
+Pforzheim,Germany,117156,Europe,0.25,0.58
+Mount Vernon,United States,117136,North America,0.028335,0.968123
+Albany,United States,117080,North America,0.027555,0.964409
+Chambery,France,117000,Europe,0.3,0.64
+Brugge,Belgium,117000,Europe,0.38614,0.43564
+Watertown-Fort Drum,United States,116882,North America,0.078947,0.919956
+Cleveland,United States,116519,North America,0.027545,0.955689
+Muncie,United States,116392,North America,0.037838,0.95027
+Williamsport,United States,115501,North America,0.039867,0.949059
+Besanzon,France,115400,Europe,0.29,0.6
+Furth,Germany,114044,Europe,0.33,0.51
+Sheboygan,United States,113919,North America,0.042697,0.95618
+San Angelo,United States,113675,North America,0.037904,0.959866
+Lawrence,United States,112329,North America,0.06383,0.913712
+Reutlingen,Germany,112258,Europe,0.37,0.53
+Stavanger,Norway,112243,Europe,0.32,0.58
+Wenatchee,United States,111451,North America,0.045455,0.940909
+Kankakee,United States,111336,North America,0.028662,0.962845
+Lund,Sweden,110332,Europe,0.42,0.42
+Rouen,France,110169,Europe,0.32,0.58
+Missoula,United States,110160,North America,0.080626,0.914561
+Jena,Germany,110097,Europe,0.49,0.35
+Umea,Sweden,110000,Europe,0.35,0.57
+Shkoder,Albania,110000,Europe,0.73,0.24
+Braga,Portugal,109460,Europe,0.31,0.52
+Namur,Belgium,108950,Europe,0.08,0.7
+Decatur,United States,108393,North America,0.025414,0.964641
+California,United States,107236,North America,0.026482,0.967213
+Vasteras,Sweden,107005,Europe,0.43,0.52
+Pleven,Bulgaria,106854,Europe,0.58,0.21
+Koblenz,Germany,106501,Europe,0.32,0.58
+Sumter,United States,106428,North America,0.010384,0.985462
+Gera,Germany,105689,Europe,0.33,0.48
+Kaiserslautern,Germany,105352,Europe,0.32,0.54
+Lima,United States,104310,North America,0.018008,0.977754
+Bolzano,Italy,104000,Europe,0.58,0.34
+Hildesheim,Germany,103593,Europe,0.34,0.55
+Erlangen,Germany,103197,Europe,0.25,0.61
+Tartu,Estonia,103000,Europe,0.45,0.28
+Ithaca,United States,102155,North America,0.201811,0.727038
+Cottbus,Germany,101671,Europe,0.47,0.41
+Cumberland,United States,100942,North America,0.024229,0.975771
+Fond du Lac,United States,100851,North America,0.025843,0.973034
+Gettysburg,United States,100717,North America,0.040092,0.959908
+Longview,United States,100668,North America,0.011299,0.988701
+Witten,Germany,100248,Europe,0.19,0.68
+Funchal,Portugal,100000,Europe,0.13,0.53
+Peja,Kosovo,100000,Europe,0.79,0.16
+Zwickau,Germany,99605,Europe,0.28,0.61
+Grand Forks,United States,98529,North America,0.048544,0.940669
+Fairbanks,United States,97721,North America,0.068553,0.924918
+Eskilstuna,Sweden,97596,Europe,0.34,0.58
+Schwerin,Germany,97001,Europe,0.39,0.44
+Mankato-North Mankato,United States,96427,North America,0.059565,0.935853
+Daugavpils,Latvia,96028,Europe,0.25,0.4
+Douro,Portugal,95672,Europe,0.19,0.66
+Ocean City,United States,95345,North America,0.019563,0.975834
+Manhattan,United States,95225,North America,0.086462,0.9124
+Rome,United States,94936,North America,0.045259,0.953664
+Karditsa,Greece,94800,Europe,0.5,0.35
+Dubuque,United States,93905,North America,0.019495,0.972477
+Dessau-Rosslau,Germany,93810,Europe,0.42,0.5
+Hradec Kralove,Czechia,93035,Europe,0.52475,0.28713
+Limerick,Ireland,91454,Europe,0.18,0.78
+Ames,United States,90975,North America,0.085956,0.887409
+Pardubice,Czechia,89552,Europe,0.46,0.35
+Leuven,Belgium,88559,Europe,0.34,0.51
+Ludwigsburg,Germany,87735,Europe,0.3,0.59
+Victoria,Canada,87320,North America,0.173469,0.714286
+Ratingen,Germany,86388,Europe,0.47,0.49
+Corvallis,United States,85323,North America,0.114483,0.864828
+Konstanz,Germany,85000,Europe,0.57,0.31
+Istres,France,85000,Europe,0.27,0.69
+Bloomsburg,United States,84777,North America,0.045455,0.953409
+Midland,United States,82890,North America,0.030637,0.954657
+Grand Island,United States,82293,North America,0.026371,0.971519
+Pocatello,United States,82257,North America,0.032584,0.958427
+Zilina,Slovakia,81515,Europe,0.32,0.46
+Great Falls,United States,80826,North America,0.042162,0.951351
+Naestved,Denmark,79284,Europe,0.27,0.68
+Barreiro,Portugal,78764,Europe,0.19192,0.45455
+Aveiro,Portugal,78000,Europe,0.21,0.65
+Casper,United States,77875,North America,0.019417,0.968716
+Roosendaal,Netherlands,76968,Europe,0.35,0.6
+Galway,Ireland,76778,Europe,0.22,0.71
+Kortrijk,Belgium,75623,Europe,0.39604,0.45545
+Zlín,Czechia,75112,Europe,0.23,0.51
+Haskovo,Bulgaria,74826,Europe,0.36,0.52
+Kristiansand,Norway,72672,Europe,0.31,0.61
+Veliko Tarnovo,Bulgaria,71412,Europe,0.15,0.65
+Pavia,Italy,71142,Europe,0.41584,0.46535
+Bamberg,Germany,69827,Europe,0.45,0.43
+Hasselt,Belgium,68353,Europe,0.17,0.78
+Fredrikstad,Norway,67591,Europe,0.22,0.71
+Kardjali,Bulgaria,67460,Europe,0.37,0.46
+Herford,Germany,66015,Europe,0.29,0.66
+Genk,Belgium,65000,Europe,0.15,0.7
+Faro,Portugal,64560,Europe,0.26733,0.65347
+Erd,Hungary,63000,Europe,0.18,0.52
+Gladsaxe,Denmark,63000,Europe,0.41,0.5
+Walla Walla,United States,62899,North America,0.072009,0.923345
+Palmela,Portugal,62831,Europe,0.14,0.66
+Vratza,Bulgaria,60692,Europe,0.25,0.55
+Granollers,Spain,59954,Europe,0.72,0.24
+Helsingor Elsinore,Denmark,59013,Europe,0.32353,0.57843
+Schweinfurt,Germany,57917,Europe,0.35,0.59
+Drammen,Norway,55725,Europe,0.25,0.65
+Portimao,Portugal,55614,Europe,0.21,0.69
+Coswig/Radebeul,Germany,55357,Europe,0.44,0.49
+Falkensee/Dallgow/Wustermark,Germany,55295,Europe,0.25,0.6
+Montana,Bulgaria,55209,Europe,0.41,0.41
+Elbeuf,France,55000,Europe,0.29,0.66
+Kotka,Finland,54873,Europe,0.35,0.57
+Carson City,United States,54161,North America,0.027233,0.927015
+Tromso,Norway,54127,Europe,0.29,0.59
+Greifswald,Germany,53845,Europe,0.55,0.4
+Teltow/Stahnsdorf/Kleinmachnow,Germany,53668,Europe,0.3,0.58
+St. Polten,Austria,52160,Europe,0.27,0.56
+Sandnes,Norway,51981,Europe,0.19,0.78
+Waterford,Ireland,51519,Europe,0.17,0.8
+Jihlava,Czechia,50598,Europe,0.36,0.28
+Emden,Germany,49751,Europe,0.38,0.59
+Bodo,Norway,49731,Europe,0.31,0.64
+Karlovy Vary,Czechia,49000,Europe,0.34,0.21
+Monopoli,Italy,48403,Europe,0.4,0.55
+Roskilde,Denmark,48186,Europe,0.34653,0.57426
+Houten,Netherlands,48000,Europe,0.67,0.31
+Agueda,Portugal,47729,Europe,0.15,0.82
+Greve,Denmark,47022,Europe,0.31683,0.60396
+Hyvinkaa,Finland,46343,Europe,0.38,0.54
+Hoeje Taastrup,Denmark,46250,Europe,0.32673,0.57426
+Ålesund,Norway,45747,Europe,0.24,0.7
+Olhao,Portugal,45000,Europe,0.29,0.66
+Bayonne,France,45000,Europe,0.29,0.63
+Veroia,Greece,44847,Europe,0.25,0.6
+Sarpsborg,Norway,44825,Europe,0.22,0.73
+Freital/Tharandt,Germany,44822,Europe,0.24,0.67
+Skien,Norway,44744,Europe,0.25,0.71
+Lemgo,Germany,44000,Europe,0.35,0.56
+Oranienburg,Germany,41488,Europe,0.4,0.5
+Eberswalde,Germany,41396,Europe,0.4,0.47
+Syddjurs,Denmark,40430,Europe,0.23,0.71
+Pirna,Germany,39438,Europe,0.38,0.5
+Norddjurs,Denmark,38427,Europe,0.30392,0.64706
+Kranj,Slovenia,37151,Europe,0.24,0.54
+Ballerup,Denmark,37000,Europe,0.37624,0.52475
+Bernau bei Berlin,Germany,35859,Europe,0.37,0.52
+Riesa,Germany,35508,Europe,0.41,0.52
+Annemasse,France,35234,Europe,0.29,0.66
+Velenje,Slovenia,32912,Europe,0.19,0.71
+Porsgrunn,Norway,31513,Europe,0.23,0.74
+Feldkirch,Austria,31045,Europe,0.29,0.57
+Bernheze,Netherlands,29888,Europe,0.44,0.52
+Gjovik,Norway,29668,Europe,0.22,0.73
+Hamar,Norway,29520,Europe,0.29,0.66
+Fundao,Portugal,29213,Europe,0.24,0.64
+Vienne,France,29162,Europe,0.21,0.74
+Bregenz,Austria,28412,Europe,0.45,0.4
+Meissen,Germany,27856,Europe,0.4,0.48
+Leoben,Austria,27545,Europe,0.41,0.5
+Lillehammer,Norway,27028,Europe,0.28,0.64
+Strausberg,Germany,26347,Europe,0.38,0.5
+Molde,Norway,26048,Europe,0.26,0.69
+Bauska,Latvia,25613,Europe,0.35,0.4
+Spremberg,Germany,25484,Europe,0.33,0.62
+Breclav,Czechia,25012,Europe,0.61,0.15
+Harstad,Norway,24441,Europe,0.25,0.71
+Ludwigsfelde,Germany,24177,Europe,0.42,0.52
+Elverum,Norway,20563,Europe,0.26,0.7
+Barcelos,Portugal,20493,Europe,0.16,0.65
+Alta,Norway,19822,Europe,0.22,0.74
+Radeberg,Germany,18411,Europe,0.38,0.55
+Kamenz,Germany,17802,Europe,0.37,0.57
+Heidenau,Germany,16456,Europe,0.39,0.52
+Eichwalde/Zeuthen,Germany,16417,Europe,0.34,0.53
+Grossenhain,Germany,15652,Europe,0.41,0.53
+Rüdersdorf bei Berlin,Germany,15582,Europe,0.28,0.61
+Beaujolais,France,13314,Europe,0.22,0.74
+Nova Gorica,Slovenia,12997,Europe,0.23,0.69
+Balchik,Bulgaria,12755,Europe,0.37624,0.46535
+Kavarna,Bulgaria,12669,Europe,0.4,0.4
+Razlog,Bulgaria,11960,Europe,0.3,0.48
+Ljutomer,Slovenia,11663,Europe,0.36,0.35
+Dippoldiswalde,Germany,10544,Europe,0.27,0.65
