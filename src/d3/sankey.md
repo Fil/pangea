@@ -16,10 +16,7 @@ const linkColor = view(
       ["source", "source"],
       ["target", "target"]
     ]),
-    {
-      value: new URLSearchParams(html`<a href></a>`.search).get("color") || "source-target",
-      label: "Link color"
-    }
+    {label: "Link color", value: "source-target"}
   )
 );
 ```
