@@ -33,15 +33,3 @@ if (ask) {
   display(html`I know about ${Object.keys(documentIds).length} things: ${that} `);
 }
 ```
-
-```js
-fetch(import.meta.resolve("observablehq:search.js")).then(
-  (d) => (
-    (d = new Date(d.headers.get("Last-Modified")).toISOString()),
-    (document.querySelector("#observablehq-footer div span").innerHTML = ` on <span title="${d.slice(0, 16)}">${d.slice(
-      0,
-      10
-    )}</span>`)
-  )
-);
-```
