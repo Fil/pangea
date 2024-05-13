@@ -1,7 +1,5 @@
 const EMOJI_FAVICON = "🍀";
-const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a> on ${new Date()
-  .toISOString()
-  .slice(0, 10)}.</p>`;
+const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a><span></span>.</p>`;
 
 const SOURCE_REPO = "https://github.com/Fil/pangea/blob/main/src";
 
