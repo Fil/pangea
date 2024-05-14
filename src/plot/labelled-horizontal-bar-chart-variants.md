@@ -1,5 +1,6 @@
 ---
 index: true
+source: https://observablehq.com/@observablehq/plot-labelled-horizontal-bar-chart-variants
 ---
 
 # Plot: labelled horizontal bar charts

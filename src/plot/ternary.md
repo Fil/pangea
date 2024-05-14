@@ -1,3 +1,8 @@
+---
+index: true
+source: https://observablehq.com/@fil/ternary-plot
+---
+
 # Ternary diagrams
 
 In [The ABC of mobility](https://www.sciencedirect.com/science/article/pii/S0160412024001272), _Environment International_,

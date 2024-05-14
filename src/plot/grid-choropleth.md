@@ -1,5 +1,6 @@
 ---
 author: Zan Armstrong
+source: https://observablehq.com/@observablehq/observable-plot-grid-choropleth
 index: true
 ---
 

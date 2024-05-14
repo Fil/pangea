@@ -1,5 +1,6 @@
 ---
 index: true
+source: https://observablehq.com/@d3/disjoint-force-directed-graph/2
 ---
 
 # Disjoint force-directed graph

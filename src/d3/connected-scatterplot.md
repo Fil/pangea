@@ -1,5 +1,6 @@
 ---
 index: true
+source: https://observablehq.com/@d3/connected-scatterplot/2
 ---
 
 # Connected scatterplot (D3)

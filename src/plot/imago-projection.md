@@ -1,6 +1,7 @@
 ---
 index: true
 keywords: projection, polygon
+source: https://observablehq.com/@recifs/plot-imago
 ---
 
 # Plot: Imago projection
