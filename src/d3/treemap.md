@@ -1,5 +1,6 @@
 ---
 index: true
+source: https://observablehq.com/@d3/treemap-component
 ---
 
 # Treemap

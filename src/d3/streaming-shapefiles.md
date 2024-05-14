@@ -1,5 +1,6 @@
 ---
 index: true
+source: https://observablehq.com/@d3/streaming-shapefiles
 ---
 
 # Streaming shapefiles
