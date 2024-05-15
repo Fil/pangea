@@ -16,7 +16,7 @@ async function main() {
   const pangea = await getMinisearchIndex("https://observablehq.observablehq.cloud/pangea/");
   const framework = await getMinisearchIndex("https://observablehq.com/framework/");
   const plot = {
-    source: "https://observablehq.com/",
+    source: "https://observablehq.com",
     index: {...JSON.parse(plotindex), options: {fields: ["title", "titles", "text"], storeFields: ["title"]}}
   };
   process.stdout.write(JSON.stringify({d3, plot, pangea, framework}));
