@@ -30,8 +30,8 @@ for (const {corpus, source, index} of indexes) {
 }
 
 display(html`${d3.sort(results, d => -d.score).slice(0, 50).map(({
-  title, url, corpus
-}) => html`<li><span style="background:${color(corpus)}; color: white; font-weight: bold;">[${corpus}]</span> <a href=${url}>${title}`)}` ?? html`…`)
+  title, url, corpus, score
+}) => html`<li><span style="background:${color(corpus)}; color: white; font-weight: bold;">[${corpus}]</span> <a href=${url}>${title}</a> <small>${Math.ceil(10 * score)/10}</small>`)}` ?? html`…`)
 ```
 
 ```js
