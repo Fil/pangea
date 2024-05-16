@@ -1,25 +1,39 @@
-// this file needs to be copied over from
-// "../plot/docs/.vitepress/dist/assets/chunks/@localSearchIndexroot.k5mZR14Z.js"
-import plotindex from "../src/.observablehq/cache/plotsearch.js";
+async function find(needle: string, ext: string, ref: string): Promise<string> {
+  const re = new RegExp(`\\b${needle}\\.\\w+\\.${ext}\\b`);
+  const haystack = await fetch(ref).then((resp) => resp.text());
+  const m = re.exec(haystack);
+  if (!m) throw new Error(`can't find ${needle} in ${ref} (${haystack})`);
+  return m[0];
+}
 
-async function getMinisearchIndex(source: string) {
-  const r1 = await fetch(`${source}_observablehq/search.js`);
-  if (r1.ok) {
-    const script = (await r1.text()).match(/minisearch.\w+.json/)![0];
-    const r2 = await fetch(`${source}_observablehq/${script}`);
-    if (r2.ok) return {source, index: JSON.parse(await r2.text())};
-  }
+// Gets the minisearch index from a framework project. The file
+// minisearch.xxx.json is referenced in search.js
+async function getMinisearchIndexFW(source: string) {
+  const minisearch = await find("minisearch", "json", `${source}_observablehq/search.js`);
+  return {source, index: JSON.parse(await fetch(`${source}_observablehq/${minisearch}`).then((resp) => resp.text()))};
+}
+
+// Gets the minisearch index from a vitepress project. The
+// @localSearchIndexroot.zzz.js file is referenced through theme.xxx.js and
+// VPLocalSearchBox.yyy.js
+async function getMinisearchIndexVP(ref: string, source = ref) {
+  const theme = await find("theme", "js", ref);
+  const searchbox = await find("VPLocalSearchBox", "js", `${ref}assets/chunks/${theme}`);
+  const searchroot = await find("localSearchIndexroot", "js", `${ref}assets/chunks/${searchbox}`);
+  const searchindex = await fetch(`${ref}assets/chunks/@${searchroot}`).then((d) => d.text());
+  return {
+    source,
+    index: JSON.parse(searchindex.match(/'(.*)'/m)![1])
+  };
 }
 
 async function main() {
-  const d3 = await getMinisearchIndex("https://d3.observablehq.cloud/examples/");
-  const pangea = await getMinisearchIndex("https://observablehq.observablehq.cloud/pangea/");
-  const framework = await getMinisearchIndex("https://observablehq.com/framework/");
-  const plot = {
-    source: "https://observablehq.com",
-    index: {...JSON.parse(plotindex), options: {fields: ["title", "titles", "text"], storeFields: ["title"]}}
-  };
-  process.stdout.write(JSON.stringify({d3, plot, pangea, framework}));
+  const d3 = await getMinisearchIndexFW("https://d3.observablehq.cloud/examples/");
+  const framework = await getMinisearchIndexFW("https://observablehq.com/framework/");
+  const pangea = await getMinisearchIndexFW("https://observablehq.observablehq.cloud/pangea/");
+  const plot = await getMinisearchIndexVP("https://observablehq.com/plot/", "https://observablehq.com");
+  const d3docs = await getMinisearchIndexVP("https://d3js.org/", "https://d3js.org");
+  process.stdout.write(JSON.stringify({d3, d3docs, framework, pangea, plot}));
 }
 
 main();

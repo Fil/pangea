@@ -38,7 +38,7 @@ display(html`${d3.sort(results, d => -d.score).slice(0, 50).map(({
 const indexes = Object.entries(rawIndexes).map(([corpus, {source, index:json}]) => ({
   corpus,
   source, index: MiniSearch.loadJS(json, {
-      ...json.options,
+      fields: ["title"],
       processTerm: (term) =>
         term
           .slice(0, 15)
