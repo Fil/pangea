@@ -46,6 +46,7 @@ const corpora = new Map([
   ["Observable", FileAttachment("search/observable.json")],
   ["Pangea", FileAttachment("search/pangea.json")],
   ["Plot docs", FileAttachment("search/plotdocs.json")],
+  ["Framework examples", FileAttachment("search/framework-examples.json")],
 ])
 
 const color = d3.scaleOrdinal(corpora.keys(), d3.schemeObservable10);
