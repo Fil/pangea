@@ -1,0 +1,25 @@
+To create the framework examples index, I have a "fake" framework project with the following bash script:
+
+❯ cat copy.sh
+```bash
+rm ./src/*.md
+for dir in ~/Source/framework/examples/*/; do
+  example=$(basename $dir);
+  echo $example;
+  cat $dir/src/index.md $dir/README.md > ./src/$example.md 2>/dev/null
+done
+
+yarn dev --no-open --host 127.0.0.1 --port 4567 &
+PID=$!
+sleep 3
+curl http://127.0.0.1:4567/_observablehq/minisearch.json > framework-examples.json
+
+kill -9 $PID
+```
+
+I then have to edit the file (manually) and add:
+
+```
+{"root":"https://observablehq.observablehq.cloud/framework-example-","index":{…}}
+```
+
