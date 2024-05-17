@@ -116,7 +116,7 @@ const leaf = svg
 
 leaf
   .append("rect")
-  .attr("id", (d) => (d.leafUid = DOM.uid("leaf")).id)
+  .attr("id", (d) => (d.leafUid = uid("leaf")).id)
   .attr("fill", (d) => {
     while (d.depth > 1) d = d.parent;
     return color(d.data[0]);
@@ -127,7 +127,7 @@ leaf
 // Clip the text to the containing node.
 leaf
   .append("clipPath")
-  .attr("id", (d) => (d.clipUid = DOM.uid("clip")).id)
+  .attr("id", (d) => (d.clipUid = uid("clip")).id)
   .append("use")
   .attr("xlink:href", (d) => d.leafUid.href);
 
@@ -223,6 +223,6 @@ const data = {
 ```
 
 ```js echo
-import * as DOM from "../components/DOM.js";
+import {uid} from "../components/DOM.js";
 import {Scrubber} from "../components/scrubber.js";
 ```

@@ -1,7 +1,6 @@
 ---
 source: https://observablehq.com/@d3/cascaded-treemap
-index: false
-draft: true
+index: true
 ---
 
 # Cascaded treemap
@@ -55,7 +54,7 @@ const svg = d3
   .attr("style", "max-width: 100%; height: auto; overflow: visible; font: 10px sans-serif;");
 
 // Create the drop shadow.
-const shadow = DOM.uid("shadow");
+const shadow = uid("shadow");
 svg
   .append("filter")
   .attr("id", shadow.id)
@@ -87,14 +86,14 @@ node.append("title").text(
 
 node
   .append("rect")
-  .attr("id", (d) => (d.nodeUid = DOM.uid("node")).id)
+  .attr("id", (d) => (d.nodeUid = uid("node")).id)
   .attr("fill", (d) => color(d.height))
   .attr("width", (d) => d.x1 - d.x0)
   .attr("height", (d) => d.y1 - d.y0);
 
 node
   .append("clipPath")
-  .attr("id", (d) => (d.clipUid = DOM.uid("clip")).id)
+  .attr("id", (d) => (d.clipUid = uid("clip")).id)
   .append("use")
   .attr("xlink:href", (d) => d.nodeUid.href);
 
@@ -127,5 +126,5 @@ const data = FileAttachment("../data/flare.json").json();
 ```
 
 ```js echo
-import * as DOM from "../components/DOM.js";
+import {uid} from "../components/DOM.js";
 ```
