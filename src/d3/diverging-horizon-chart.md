@@ -58,6 +58,7 @@ g.append("text")
     .attr("x", 4)
     .attr("y", step / 2)
     .attr("dy", "0.35em")
+    .attr("fill", "currentColor")
     .text(d => d.key);
 
 svg.append("g")
@@ -102,7 +103,13 @@ const area = d3.area()
 
 ```js echo
 const parseDate = d3.utcParse("%Y-%m-%d");
-const data = Promise.all([FileAttachment("../data/aapl.csv"), FileAttachment("../data/amzn.csv"), FileAttachment("../data/goog.csv"), FileAttachment("../data/ibm.csv"), FileAttachment("../data/msft.csv")].map(async file => {
+const data = Promise.all([
+  FileAttachment("../data/aapl.csv"),
+  FileAttachment("../data/amzn.csv"),
+  FileAttachment("../data/goog.csv"),
+  FileAttachment("../data/ibm.csv"),
+  FileAttachment("../data/msft.csv")
+].map(async file => {
   const values = d3.csvParse(await file.text(), d => {
     const date = parseDate(d["Date"]);
     return {date, value: +d["Close"]};

@@ -5,14 +5,11 @@ index: true
 
 # Line chart, multiple series
 
+
 This [line chart](./line-chart) shows the unemployment rate of various U.S. metro divisions from 2000 through 2013. On hover, the closest data point to the pointer and its associated series is highlighted. Data: [Bureau of Labor Statistics](https://www.bls.gov/)
 
 ```js
 const voronoi = view(Inputs.toggle({label: "Show voronoi"}));
-```
-
-```js echo
-const focus = view(chart);
 ```
 
 ```js echo
@@ -127,7 +124,7 @@ svg
   .on("pointerleave", pointerleft)
   .on("touchstart", (event) => event.preventDefault());
 
-const chart = display(svg.node());
+display(svg.node());
 
 // When the pointer moves, find the closest point, update the interactive tip, and highlight
 // the corresponding line. Note: we don't actually use Voronoi here, since an exhaustive search
@@ -159,7 +156,5 @@ function pointerleft() {
 ```
 
 ```js echo
-const unemployment = FileAttachment("../data/bls-metro-unemployment.csv").csv({
-  typed: true
-});
+const unemployment = FileAttachment("../data/bls-metro-unemployment.csv").csv({typed: true});
 ```
