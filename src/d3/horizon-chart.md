@@ -40,6 +40,12 @@ const bands = view(Inputs.range([1, 9], {value: 7, step: 1, label: "Bands"}));
 ```
 
 ```js echo
+const colors = (dark
+  ? [...scheme[Math.min(Math.max(3, bands) + dark, 9)]].reverse()
+  : scheme[Math.max(3, bands)]
+)
+  .slice(Math.max(0, 3 - bands));
+
 // Derive series, sorted by date.
 const series = d3.rollup(
   data,
@@ -129,6 +135,7 @@ g.append("text")
   .attr("x", 4)
   .attr("y", (size + padding) / 2)
   .attr("dy", "0.35em")
+  .attr("fill", "currentColor")
   .text(([name]) => name);
 
 // Add the horizontal axis.
