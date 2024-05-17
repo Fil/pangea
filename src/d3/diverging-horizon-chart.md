@@ -140,7 +140,7 @@ const area = d3.area()
 ```
 
 ```js echo
-const data = Promise.all([FileAttachment("../data/AAPL.csv"), FileAttachment("../data/AMZN.csv"), FileAttachment("../data/GOOG.csv"), FileAttachment("../data/IBM.csv"), FileAttachment("../data/MSFT.csv")].map(async file => {
+const data = Promise.all([FileAttachment("../data/aapl.csv"), FileAttachment("../data/amzn.csv"), FileAttachment("../data/goog.csv"), FileAttachment("../data/ibm.csv"), FileAttachment("../data/msft.csv")].map(async file => {
   const values = d3.csvParse(await file.text(), d => {
     const date = parseDate(d["Date"]);
     return {date, value: +d["Close"]};
