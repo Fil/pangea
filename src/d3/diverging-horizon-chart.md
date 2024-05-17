@@ -10,38 +10,11 @@ This [horizon chart](./horizon-chart) represents negative values in purples and 
 Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js
-const scheme = view(html`<select>
-<option value="schemeBrBG">BrBG</option>
-<option value="schemePRGn">PRGn</option>
-<option value="schemePiYG" selected>PiYG</option>
-<option value="schemePuOr">PuOr</option>
-<option value="schemeRdBu">RdBu</option>
-<option value="schemeRdGy">RdGy</option>
-<option value="schemeRdYlBu">RdYlBu</option>
-<option value="schemeRdYlGn">RdYlGn</option>
-<option value="schemeSpectral">Spectral</option>
-</select>`);
-```
-
-```js
-const label = html`<label style="user-select:none;font:10px sans-serif;"><input type=checkbox> Mirror negative values`;
-label.value = label.control.checked;
-label.onclick = event => {
-  label.value = label.control.checked;
-  label.dispatchEvent(new CustomEvent("input"));
-};
-const mirror = view(label);
-```
-
-```js
-const form = html`<form>
-<input name=i type=range min=1 max=5 value=5 step=1 style="width:180px;">
-<output style="font-size:smaller;font-style:oblique;" name=o></output>
-</form>`;
-form.i.oninput = () => form.o.value = `${form.value = form.i.valueAsNumber} band${form.i.valueAsNumber === 1 ? "" : "s"}`;
-form.i.oninput();
-
-const overlap = view(form);
+const scheme = view(Inputs.select([
+  "BrBG", "PRGn", "PiYG", "PuOr", "RdBu", "RdGy", "RdYlBu", "RdYlGn", "Spectral"
+], {label: "scheme", value: "PiYG"}));
+const mirror = view(Inputs.toggle({label: "Mirror negative"}));
+const overlap = view(Inputs.range([1, 5], {label: "bands", value: 5, step: 1}));
 ```
 
 ```js echo
@@ -55,7 +28,7 @@ const g = svg.append("g")
   .selectAll("g")
   .data(data)
   .enter().append("g")
-    .attr("transform", (d, i) => `translate(0,${i * (step + 1) + margin.top})`);
+    .attr("transform", (d, i) => `translate(0,${i * (step + 1) + marginTop})`);
 
 g.append("clipPath")
     .attr("id", d => (d.clip = DOM.uid("clip")).id)
@@ -94,43 +67,31 @@ svg.append("g")
 ```
 
 ```js echo
-const height = data.length * (step + 1) + margin.top + margin.bottom;
-```
-
-```js echo
-const margin = ({top: 30, right: 10, bottom: 0, left: 10});
-```
-
-```js echo
+const marginTop = 30;
+const marginRight = 10;
+const marginBottom = 0;
+const marginLeft = 10;
 const step = 59;
-```
 
-```js echo
-const color = i => d3[scheme][overlap * 2 + 1][i + (i >= 0) + overlap];
-```
+const height = data.length * (step + 1) + marginTop + marginBottom;
 
-```js echo
+const color = i => d3[`scheme${scheme}`][overlap * 2 + 1][i + (i >= 0) + overlap];
+
 const x = d3.scaleUtc()
     .domain([data[0].values[0].date, data[0].values[data[0].values.length - 1].date])
     .range([0, width]);
-```
 
-```js echo
+const xAxis = g => g
+    .attr("transform", `translate(0,${marginTop})`)
+    .call(d3.axisTop(x).ticks(width / 80).tickSizeOuter(0))
+    .call(g => g.selectAll(".tick").filter(d => x(d) < marginLeft || x(d) >= width - marginRight).remove())
+    .call(g => g.select(".domain").remove());
+
 const max = d3.max(data, d => d3.max(d.values, d => Math.abs(d.value)));
 const y = d3.scaleLinear()
     .domain([-max, +max])
     .range([overlap * step, -overlap * step]);
-```
 
-```js echo
-const xAxis = g => g
-    .attr("transform", `translate(0,${margin.top})`)
-    .call(d3.axisTop(x).ticks(width / 80).tickSizeOuter(0))
-    .call(g => g.selectAll(".tick").filter(d => x(d) < margin.left || x(d) >= width - margin.right).remove())
-    .call(g => g.select(".domain").remove());
-```
-
-```js echo
 const area = d3.area()
     .curve(d3.curveStep)
     .defined(d => !isNaN(d.value))
@@ -140,6 +101,7 @@ const area = d3.area()
 ```
 
 ```js echo
+const parseDate = d3.utcParse("%Y-%m-%d");
 const data = Promise.all([FileAttachment("../data/aapl.csv"), FileAttachment("../data/amzn.csv"), FileAttachment("../data/goog.csv"), FileAttachment("../data/ibm.csv"), FileAttachment("../data/msft.csv")].map(async file => {
   const values = d3.csvParse(await file.text(), d => {
     const date = parseDate(d["Date"]);
@@ -151,10 +113,6 @@ const data = Promise.all([FileAttachment("../data/aapl.csv"), FileAttachment("..
     values: values.map(({date, value}) => ({date, value: Math.log(value / v)}))
   };
 }));
-```
-
-```js echo
-const parseDate = d3.utcParse("%Y-%m-%d");
 ```
 
 ```js echo
