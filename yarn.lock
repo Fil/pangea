@@ -149,8 +149,8 @@
   integrity sha512-eF2rxCRulEKXHTRiDrDy6erMYWqNw4LPdQ8UQA4huuxaQsVeRPFl2oM8oDGxMFhJUWZf9McpLtJasDDZb/Bpeg==
 
 "@observablehq/framework@https://github.com/observablehq/framework#fil/save-search-query":
-  version "1.7.1"
-  resolved "https://github.com/observablehq/framework#9e11d09b095833176ea0fd4cf7fd1f18c6eb3ac8"
+  version "1.8.0"
+  resolved "https://github.com/observablehq/framework#7dbae0cc6dbf171dcc7f571efdcb6c9cd7a272cd"
   dependencies:
     "@clack/prompts" "^0.7.0"
     "@observablehq/inputs" "^0.10.6"
