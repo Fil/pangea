@@ -1,7 +1,7 @@
 ---
 index: true
 source: https://github.com/carlosfpj/equipment-designer
-source: https://observablehq.com/@fil/liquid-flow-velocity
+source2: https://observablehq.com/@fil/liquid-flow-velocity
 keywords: abacus, log-log paper
 ---
 
