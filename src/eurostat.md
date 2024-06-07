@@ -80,7 +80,7 @@ COPY (
   FROM read_csv('$TMPDIR/$CODE.csv')
   -- WHERE OBS_VALUE > 0
   -- ORDER BY 2, 3, 6, 4…
-  TO '$TMPDIR/$CODE.parquet' (COMPRESSION ZSTD, row_group_size 10000000);
+) TO '$TMPDIR/$CODE.parquet' (COMPRESSION ZSTD, row_group_size 100000);
 EOF
 cat $TMPDIR/$CODE.parquet >&1  # Write output to stdout
 rm $TMPDIR/$CODE.csv $TMPDIR/$CODE.parquet  # Clean up
@@ -89,5 +89,90 @@ rm $TMPDIR/$CODE.csv $TMPDIR/$CODE.parquet  # Clean up
 ```
 
 ```js
-FileAttachment("/data/eurostat/lan_use_ovw.parquet").parquet();
+//const data = FileAttachment("/data/eurostat/educ_uoe_grad02.parquet").parquet();
+```
+
+```js
+const data = FileAttachment("/data/eurostat/educ_uoe_mobs02.parquet").parquet();
+```
+
+```js
+data.numRows
+```
+
+```js
+Inputs.table(data)
+```
+
+```js
+const geo = d3.groupSort(data, v => -d3.sum(v, d => Number(d.OBS_VALUE)), d => d.geo);
+const partner = d3.groupSort(data, v => -d3.sum(v, d => Number(d.OBS_VALUE)), d => d.partner);
+
+display(partner)
+```
+
+```js
+Plot.plot({
+  aspectRatio: 1,
+  x: {domain: geo},
+  y: {domain: geo.concat(partner)},
+  color: {type:"log", scheme: dark ? "turbo" : "blues"},
+  marks: [
+    Plot.cell(data, {
+      x: "geo",
+      y: "partner",
+      fill: "OBS_VALUE",
+      tip: true
+    })
+  ]
+})
+```
+
+```js
+const languages = FileAttachment("/data/eurostat/educ_uoe_lang01.parquet").parquet();
+```
+
+```js
+Inputs.table(languages)
+```
+
+```js
+Plot.plot({
+  x: {axis: "top"},
+  y: {axis: "right", grid: true},
+  marginRight: 50,
+  r: {range: [1, 8]},
+  marks: [
+    Plot.dot(languages, {
+      x: "geo",
+      y: "language",
+      r: "OBS_VALUE",
+      fill: "var(--plot-background)",
+      stroke: "currentColor",
+      sort: {y: "-r", reduce: "sum", limit: 12},
+      tip: true
+    })
+  ]
+})
+```
+
+```js
+const domain = d3.groupSort(languages, v => -d3.sum(v, d => d.OBS_VALUE), d => d.language).slice(0,9).concat("others");
+```
+
+```js
+Plot.plot({
+  y: {axis: "right", grid: true},
+  color: {legend: true, domain, unknown: "grey"},
+  marks: [
+    Plot.barY(languages, {
+      x: "geo",
+      y: "OBS_VALUE",
+      fill: "language",
+      order: "sum",
+      sort: {x: "-y"},
+      tip: true
+    })
+  ]
+})
 ```
