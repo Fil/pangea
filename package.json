@@ -16,7 +16,7 @@
     "d3": "^7.8.5",
     "d3-dsv": "^3.0.1",
     "d3-time-format": "^4.1.0",
-    "linkedom": "^0.16.8"
+    "linkedom": "0.16.8"
   },
   "engines": {
     "node": ">=18"
