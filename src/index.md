@@ -30,7 +30,7 @@ if (ask) {
   const that = d3
     .shuffle(Object.keys(documentIds))
     .slice(0, 5)
-    .map((id) => html`<li><a href="${documentIds[id]}">${storedFields[id].title}</a></li>`);
+    .map((id) => html`<li><a href="${documentIds[id].startsWith("/") ? ".":""}${documentIds[id]}">${storedFields[id].title}</a></li>`);
 
   display(html`I know about ${Object.keys(documentIds).length} things: ${that} `);
 }
