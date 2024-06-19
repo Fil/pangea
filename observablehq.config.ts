@@ -52,16 +52,10 @@ const VERCEL_COMMENTS = `
 ></script>
 `;
 
-// See https://observablehq.com/framework/config for documentation.
 export default {
-  // The project’s title; used in the sidebar and webpage titles.
   title: "Pangea Proxima",
-
-  root: "src", // the new preferred default
-
-  // The pages and sections in the sidebar. If you don’t specify this option,
-  // all pages will be listed in alphabetical order. Listing pages explicitly
-  // lets you organize them into sections and have unlisted pages.
+  root: "src",
+  style: "/assets/pangea.css",
   pages: [
     /*
     {
@@ -88,10 +82,6 @@ export default {
     // },
     */
   ],
-
-  // Some additional configuration options and their defaults:
-  // theme: "default", // try "light", "dark", "slate", etc.
-  // header: "", // what to show in the header (HTML)
   toc: false, // whether to show the table of contents
   pager: false, // whether to show previous & next links in the footer
   sidebar: true,
