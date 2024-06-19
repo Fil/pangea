@@ -1,0 +1,33 @@
+@import url("observablehq:default.css");
+@import url("observablehq:theme-air.css") (prefers-color-scheme: light);
+@import url("observablehq:theme-near-midnight.css") (prefers-color-scheme: dark);
+
+/* Makes code visible in prose */
+a code {
+  color: inherit;
+}
+span > code,
+p > code,
+li > code,
+td > code,
+th > code {
+  color: var(--syntax-keyword);
+  background-color: var(--theme-background-alt);
+  padding: 3px 5px;
+  border-radius: 4px;
+}
+a[href]:has(code):hover,
+a[href]:has(code):focus {
+  text-decoration: none;
+}
+a[href] > code {
+  text-underline-offset: 2px;
+  text-decoration: underline dotted 1.5px;
+}
+a[href]:hover > code,
+a[href]:focus > code {
+  text-decoration: underline solid 1.5px;
+}
+a[href]:visited {
+  color: inherit;
+}
