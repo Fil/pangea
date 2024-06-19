@@ -1,9 +1,7 @@
 // Copyright 2021-2024 Observable, Inc.
 // Released under the ISC license.
 // https://observablehq.com/@d3/treemap
-
 import * as d3 from "npm:d3";
-import * as DOM from "./DOM.js";
 
 export function Treemap(
   data,
