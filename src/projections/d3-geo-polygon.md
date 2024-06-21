@@ -11,9 +11,9 @@ import {geoDodecahedral} from "npm:d3-geo-polygon";
 ```
 
 ```js echo
-worldmap(geoDodecahedral())
+_(geoDodecahedral())
 ```
 
 ```js
-import {worldmap} from "/components/map.js"
+import {worldmap as _} from "/components/map.js"
 ```
