@@ -28,6 +28,6 @@ a[href]:hover > code,
 a[href]:focus > code {
   text-decoration: underline solid 1.5px;
 }
-a[href]:visited {
+a[href]:visited > code {
   color: inherit;
 }
