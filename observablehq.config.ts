@@ -1,7 +1,7 @@
-const EMOJI_FAVICON = "🤖";
+const EMOJI_FAVICON = "🌍";
 const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a><span></span>.</p>`;
 
-const SOURCE_REPO = "https://github.com/observablehq/pangea/blob/sane/src";
+const SOURCE_REPO = "https://github.com/Fil/pangea/blob/main/src";
 
 const VIEW_SOURCE = !SOURCE_REPO
   ? ""
