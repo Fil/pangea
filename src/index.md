@@ -3,13 +3,15 @@ title: Pangea Proxima
 index: false
 ---
 
-# Where everything converges again
+# D3, Observable Framework, Plot and more…
 
-## D3, Observable Framework, Plot and more…
+## A collection edited by Fil
 
-<p class=warning><em>Site’s fate whispers near,
-<br>Self-destruct looms, search with hope,
-<br>Luck in pixels found.</em></p>
+<p class=warning label="⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉ ⚉"><em>
+In the web’s vast expanse, links may sever,<br>
+Continents of data, lost forever.<br>
+Yet in the search, new bonds endeavor,<br>
+Pangea proxima, rejoined forever.</em></p>
 
 <h4 style="margin-top: 3em;">What do I know?</h4>
 

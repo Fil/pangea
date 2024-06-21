@@ -1,7 +1,7 @@
-const EMOJI_FAVICON = "🍀";
+const EMOJI_FAVICON = "🤖";
 const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a><span></span>.</p>`;
 
-const SOURCE_REPO = "https://github.com/Fil/pangea/blob/main/src";
+const SOURCE_REPO = "https://github.com/observablehq/pangea/blob/sane/src";
 
 const VIEW_SOURCE = !SOURCE_REPO
   ? ""
@@ -25,31 +25,10 @@ const a = document.querySelector(".view-source");
 a.setAttribute("href", a.getAttribute("href") + (
   document.location.pathname
     .replace(/[/]$/, "/index")
-    .replace(/^pangea-proxima/,"")
+    .replace(/^[/]pangea(-proxima)?/, "")
   ) + ".md?plain=1"
 );
 </script>
-`;
-
-// https://vercel.com/fil/pangea/settings
-const VERCEL_USER_ID = "Gqs9rlMU1BvoK9jKM2glOzEl";
-const VERCEL_PROJECT_ID = "prj_BBG643i8KOAgNQkQt9wVyJ2NryNK";
-
-// https://vercel.com/docs/speed-insights
-const VERCEL_SPEED_INSIGHTS = `<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script><script defer src="/_vercel/speed-insights/script.js"></script>`;
-
-// https://vercel.com/docs/analytics
-const VERCEL_WEB_ANALYTICS = `<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script><script defer src="/_vercel/insights/script.js"></script>`;
-
-// https://vercel.com/docs/workflow-collaboration/vercel-toolbar/in-production-and-localhost/add-to-production
-const VERCEL_COMMENTS = `
-<script
-  src="https://vercel.live/_next-live/feedback/feedback.js"
-  data-explicit-opt-in="true"
-  data-owner-id="${VERCEL_USER_ID}"
-  data-project-id="${VERCEL_PROJECT_ID}"
-  data-branch="main"
-></script>
 `;
 
 export default {
@@ -88,10 +67,5 @@ export default {
   search: true,
   head: `<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${EMOJI_FAVICON}</text></svg>">`,
   header: `${VIEW_SOURCE}`,
-  footer: `
-    ${FOOTER_OBSERVABLE}
-    ${VERCEL_SPEED_INSIGHTS}
-    ${VERCEL_WEB_ANALYTICS}
-    ${VERCEL_COMMENTS}
-  `
+  footer: FOOTER_OBSERVABLE
 };
