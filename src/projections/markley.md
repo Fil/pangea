@@ -315,9 +315,9 @@ const clipPolygon = (e) => {
 
 ## Markley’s paper
 
-With this notebook, we are publishing Dr. F. Landis Markley’s paper describing the projection’s history and concept, as well as the original matlab code used to generate the maps in the PDF. Download or read below.
+With this notebook, we are publishing Dr. F. Landis Markley’s paper describing the projection’s history and concept, as well as the original matlab code used to generate the maps in the PDF. Download <!-- or read -->below.
 
-<pre>${html`🅿🅳🅵 <a href="${FileAttachment("Tetrahedral map projection with appendix.pdf").href}"
+<pre>${html`🅿🅳🅵 <a href="${FileAttachment("Tetrahedral-map-projection-with-appendix.pdf").href}"
   download="Markley-Tetrahedral-map-projection.pdf" target="_blank">Tetrahedral map projection with appendix.pdf</a>`}
 </pre>
 
@@ -326,9 +326,14 @@ With this notebook, we are publishing Dr. F. Landis Markley’s paper describing
 </pre>
 
 ```js
-const land = d3.json(import.meta.resolve("npm:visionscarto-world-atlas@0.0.4/world/110m_land.geojson"));
 import {geoClipPolygon, geoTetrahedralLee} from "npm:d3-geo-polygon";
 import { acos, degrees, radians, sqrt } from "/components/math.js";
 import {context2d} from "/components/DOM.js";
 import {drag} from "../components/versor-dragging.js";
+```
+
+```js
+const topo = import.meta.resolve("npm:visionscarto-world-atlas/world/110m.json");
+const world = await fetch(topo).then((response) => response.json());
+const land = topojson.feature(world, world.objects.land);
 ```

@@ -47,4 +47,5 @@ const projection = geoInterrupt(apian2Raw, [
       ]
     ]
   ])
+  .rotate([20, 0])
 ```
