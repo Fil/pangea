@@ -6,12 +6,13 @@ author: Mike Bostock
 
 # Himawari 8
 
-The Japanese weather satellite [Himawari-8](https://himawari8.nict.go.jp/satellite) monitors the Asia-Pacific region from a geostationary orbit (alt. 35,793km over the Earth radius of 6,371km). We can adjust the [satellite projection](https://github.com/d3/d3-geo-projection?tab=readme-ov-file#geoSatellite) to match its “full disk imagery” like so:
+The Japanese weather satellite [Himawari-8](https://himawari8.nict.go.jp/) monitors the Asia-Pacific region from a geostationary orbit (alt. 35,793km over the Earth radius of 6,371km). We can adjust the [satellite projection](https://github.com/d3/d3-geo-projection?tab=readme-ov-file#geoSatellite) to match its “full disk imagery” like so:
 
-<div>${map()}</div>
+```js
+image
+```
 
-
-${dark ? html`<style>:root {--theme-background: black;};` : ""}
+<div>${dark ? html`<style>:root {--theme-background: black;};` : ""}</div>
 
 ```js
 const date = view(Inputs.date({value: Date.now()}));
@@ -28,6 +29,10 @@ const projection = geoSatellite()
     .fitSize([width, width], {type: "Sphere"});
 ```
 
+---
+
+The following code loads the land shape and draws the map:
+
 ```js echo
 const land = fetch(import.meta.resolve("npm:visionscarto-world-atlas/world/50m.json"))
   .then((response) => response.json())
@@ -36,13 +41,21 @@ const land = fetch(import.meta.resolve("npm:visionscarto-world-atlas/world/50m.j
 
 ```js echo
 import {context2d} from "/components/DOM.js";
-function map() {
-  const context = context2d(width, width);
-  const path = d3.geoPath(projection, context);
-  context.canvas.style.background = `url(https://himawari8.nict.go.jp/img/D531106/1d/550/${d3.utcFormat("%Y/%m/%d")(date)}/${hour.toLocaleString(undefined, {minimumIntegerDigits: 2})}0000_0_0.png) no-repeat center/100%`;
-  context.beginPath(), path(d3.geoGraticule10()), context.strokeStyle = "#fff", context.stroke();
-  context.beginPath(), path({type: "Sphere"}), context.strokeStyle = "#fff", context.stroke();
-  context.beginPath(), path(land), context.strokeStyle = "#ff0", context.stroke();
-  return context.canvas;
-}
+const context = context2d(width, width);
+const path = d3.geoPath(projection, context);
+context.beginPath(), path(d3.geoGraticule10()), context.strokeStyle = "#fff", context.stroke();
+context.beginPath(), path({type: "Sphere"}), context.strokeStyle = "#fff", context.stroke();
+context.beginPath(), path(land), context.strokeStyle = "#ff0", context.stroke();
+const image = context.canvas;
+```
+
+Finally, the background image reflects the values of the date and hour inputs (if you want more details, note that imagery is available every 10 minutes):
+
+```js echo
+const url = `https://himawari8.nict.go.jp/img/D531106/1d/550/${
+  d3.utcFormat("%Y/%m/%d")(date) // "2024/06/23"
+}/${
+  hour.toLocaleString(undefined, {minimumIntegerDigits: 2} // "01"
+)}0000_0_0.png`;
+image.style.background = `url(${url}) no-repeat center/100%`;
 ```
