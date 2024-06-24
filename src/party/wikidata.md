@@ -27,7 +27,7 @@ const points = data.results.bindings
 ```
 
 
-The function below extracts the geographic coordinates from the `POINT(logitude latitude)` values:
+The function below extracts the geographic coordinates from the `POINT(lon lat)` values:
 
 ```js echo
 function parsePoint(value) {
@@ -36,17 +36,27 @@ function parsePoint(value) {
 }
 ```
 
-And here is a quick map, using Observable Plot:
+And here is a quick heatmap, using Observable Plot:
 
 ```js echo
 Plot.plot({
+  width,
   projection: "equal-earth",
+  color: {type: "log", legend: true},
   marks: [
     Plot.sphere(),
-    Plot.dot(points, {r: 1})
+    Plot.geo(land, {fill: "currentColor", fillOpacity: 0.1}),
+    Plot.dot(points, Plot.hexbin({fill: "count"}, {binWidth: 3, tip: true}))
   ]
 })
 ```
+
+<div class="tip">
+
+Note the choice of an equal-area projection: the hexagonal cells all have the same surface area, and can be compared.
+
+</div>
+
 
 <details>
 
@@ -82,3 +92,10 @@ function parsePoint(value) {
 and then load the data with `FileAttachment("points.json").json()`.
 
 </details>
+
+
+```js echo
+const land = fetch(import.meta.resolve("npm:visionscarto-world-atlas/world/110m.json"))
+  .then((d) => d.json())
+  .then((world) => topojson.feature(world, world.objects.land));
+```
