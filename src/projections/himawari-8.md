@@ -12,7 +12,10 @@ The Japanese weather satellite [Himawari-8](https://himawari8.nict.go.jp/) monit
 image
 ```
 
-<div>${dark ? html`<style>:root {--theme-background: black;};` : ""}</div>
+<div>${html`<style>${dark
+  ? `:root {--theme-background: black;}`
+  : `div:has(>canvas) {background: black;}`
+}</style>`}</div>
 
 ```js
 const date = view(Inputs.date({value: Date.now()}));
