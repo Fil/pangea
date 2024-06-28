@@ -3,7 +3,7 @@ index: true
 source: https://observablehq.com/d/64ae824759ebe815
 ---
 
-# Walmart’s Growth - tree
+# Walmart’s growth - tree
 
 ```js
 const width = 960;
