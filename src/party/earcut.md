@@ -17,6 +17,13 @@ const {vertices, holes, dimensions} = flatten(AUS.geometry.coordinates[0]);
 const triangles = earcut(vertices, holes, dimensions);
 ```
 
+The **deviation** utility measures the quality of the triangulation (the lower the better):
+
+```js echo
+deviation(vertices, holes, dimensions, triangles)
+```
+
+
 ```js
 Plot.plot({
   projection: {type: "mercator", domain: AUS},
