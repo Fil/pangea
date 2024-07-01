@@ -17,13 +17,6 @@ const {vertices, holes, dimensions} = flatten(AUS.geometry.coordinates[0]);
 const triangles = earcut(vertices, holes, dimensions);
 ```
 
-The **deviation** utility measures the quality of the triangulation (the lower the better):
-
-```js echo
-deviation(vertices, holes, dimensions, triangles)
-```
-
-
 ```js
 Plot.plot({
   projection: {type: "mercator", domain: AUS},
@@ -48,7 +41,14 @@ Plot.plot({
 })
 ```
 
-To include Tasmania —and more generally for MultiPolygons—, we have to loop through all the polygons:
+
+The **deviation** utility measures the quality of the triangulation (the lower the better):
+
+```js echo
+deviation(vertices, holes, dimensions, triangles)
+```
+
+The map above is missing Tasmania. To deal with MultiPolygons, we have to apply earcut to each polygon in turn, and concatenate the results:
 
 ```js echo
 const V = [];
@@ -78,28 +78,28 @@ Plot.plot({
 })
 ```
 
-An additional difficulty when dealing with geographic coordinates comes from clipping. To make this work we must first project the geometry, apply earcut, then go back to original coordinates:
+An additional difficulty when dealing with geographic coordinates comes from clipping. To make this work we must first project the geometry, apply earcut, then either invert the coordinates back to longitudes and latitudes in degrees (see the commented-out code below), or continue working with the projected geometry and an **identity** projection (for better performance).
 
 ```js echo
 const V2 = [];
 const T2 = [];
 const projection = geoBertin1953();
-for (const polygon of geoProject(land, projection).features[0].geometry.coordinates) {
+const projectedLand = geoProject(land, projection).features[0];
+for (const polygon of projectedLand.geometry.coordinates) {
   const {vertices, holes, dimensions} = flatten(polygon);
   const triangles = earcut(vertices, holes, dimensions);
   T2.push(...triangles.map(d => d + V2.length / 2));
   V2.push(...vertices);
 }
-for (let i = 0; i < V2.length; i += 2) {
-  [V2[i], V2[i + 1]] = projection.invert([V2[i], V2[i + 1]]);
-}
+// for (let i = 0; i < V2.length; i += 2)
+//   [V2[i], V2[i + 1]] = projection.invert([V2[i], V2[i + 1]]);
 ```
 
 ```js
 Plot.plot({
-  projection: ({width, height}) => geoBertin1953().fitSize([width, height], {type:"Sphere"}),
+  projection: {type: "identity", domain: projectedLand},
   marks: [
-    Plot.geo(land),
+    Plot.geo(projectedLand),
     Plot.line(T2, {
       z: (_, i) => (i / 3) | 0,
       x: (d) => V2[dimensions * d],
@@ -116,10 +116,7 @@ Plot.plot({
 const topo = import.meta.resolve("npm:visionscarto-world-atlas/world/110m.json");
 const world = await fetch(topo).then((response) => response.json());
 const AUS = topojson.feature(world, world.objects.countries).features.find(d => d.properties.name === "Australia");
-
-// the world without Antarctica
 const land = topojson.feature(world, world.objects.land);
-land.features[0].geometry.coordinates = land.features[0].geometry.coordinates.filter((d) => d[0][0][1] > -78);
 ```
 
 ```js echo
