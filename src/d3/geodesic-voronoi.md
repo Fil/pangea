@@ -1,10 +1,40 @@
 ---
 index: true
-source: https://observablehq.com/@mbostock/geodesic-rainbow
-author: Mike Bostock
+source: https://observablehq.com/@fil/perturbed-geodesic-rainbow
 ---
 
-# Geodesic rainbow
+# Geodesic voronoi
+
+Compute the [Geodesic Rainbow](./geodesic-rainbow) as the [Spherical Voronoi diagram](https://github.com/Fil/d3-geo-voronoi) of its faces’ centroids. Then perturbate those centers with Brownian motion.
+
+
+```js echo
+const context = context2d(width, height);
+const faces = geodesic(subdivision);
+const path = d3.geoPath().projection(projection).context(context).pointRadius(1.5);
+
+function update(t) {
+  projection.rotate([t / 200, -40]);
+
+  context.clearRect(0, 0, width, height);
+
+  for (const point of points) perturbate(point);
+
+  geoVoronoi(points).polygons().features.forEach((p, i) => {
+    context.beginPath();
+    path(p);
+    context.strokeStyle = context.fillStyle = points[i][2];
+    context.fill(), context.stroke();
+  });
+
+  context.beginPath();
+  path({type: "MultiPoint", coordinates: points});
+  context.fillStyle = "black";
+  context.fill();
+}
+
+display(context.canvas);
+```
 
 ```js
 const subdivision = view(Inputs.range([1, 16], {
@@ -14,42 +44,16 @@ const subdivision = view(Inputs.range([1, 16], {
 }));
 ```
 
-```js echo
-const context = context2d(width, height);
-const faces = geodesic(subdivision);
-
-function drawTriangle([p0, p1, p2]) {
-  context.moveTo(...p0);
-  context.lineTo(...p1);
-  context.lineTo(...p2);
-  context.closePath();
-}
-
-function update(t) {
-  projection.rotate([t / 200, -40]);
-  const triangles = faces
-      .map((d, i) => (d = d.map(projection), d.index = i, d))
-      .filter(d => d3.polygonArea(d) < 0);
-
-  context.clearRect(0, 0, width, height);
-  for (const t of triangles) {
-    context.beginPath();
-    drawTriangle(t);
-    context.fillStyle = d3.interpolateRainbow(faces[t.index][0][0] / 360);
-    context.fill();
-  }
-
-  context.beginPath();
-  for (const t of triangles) drawTriangle(t);
-  context.stroke();
-}
-
-display(context.canvas);
-```
-
-```js echo
+```js
 update(now);
 ```
+
+```js echo
+const points = geodesic(subdivision)
+  .map((d) => d3.geoCentroid({ type: "MultiPoint", coordinates: d }))
+  .map((d) => [d[0], d[1], d3.interpolateRainbow(d[0] / 360)]);
+```
+
 
 ```js echo
 const height = Math.min(width, 640);
@@ -122,5 +126,27 @@ function geodesic(n) {
 ```
 
 ```js echo
+const random = d3.randomNormal.source(d3.randomLcg(42))(0, 0.005);
+function perturbate(point) {
+  // TODO: there must be a simpler formula
+  const d = cartesian(point.map(d => d * radians));
+  cartesianAddInPlace(d, [random(), random(), random()]);
+  cartesianNormalizeInPlace(d);
+  const s = spherical(d);
+  point[0] = s[0] * degrees;
+  point[1] = s[1] * degrees;
+}
+```
+
+```js echo
 import {context2d} from "/components/DOM.js";
+```
+
+```js echo
+import {cos, degrees, radians} from "/components/math.js";
+import {cartesian, cartesianAddInPlace, cartesianNormalizeInPlace, spherical} from "/components/cartesian.js";
+```
+
+```js echo
+import {geoVoronoi} from "npm:d3-geo-voronoi@2";
 ```
