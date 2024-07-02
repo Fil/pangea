@@ -107,7 +107,7 @@ const data = hierarchy(await FileAttachment("../data/flare-imports.json").json()
 ```
 
 ```js echo
-function hierarchy(data, display) {
+function hierarchy(data) {
   const delimiter = ".";
   let root;
   const map = new Map();
