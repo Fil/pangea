@@ -79,24 +79,32 @@ const row = solve(data);
 
 ```js echo
 import greenlet from "npm:greenlet";
+import {queue} from "../components/queue.js";
 import {lap} from "../components/lap-jv.js";
 
-const solve = (data) =>
+const solve = queue((data) =>
   greenlet(async (data, lapjv) => {
     const {lap} = await import(lapjv);
     const n = data.length;
     const m = Math.ceil(Math.sqrt(n));
     const costs = data.map((d) =>
       data.map((_, k) => {
-        const i = k % m,
-          j = (k - i) / m;
-        const dx = d[0] - i - 0.5,
-          dy = d[1] - j - 0.5;
+        const i = k % m;
+        const j = (k - i) / m;
+        const dx = d[0] - i - 0.5;
+        const dy = d[1] - j - 0.5;
         return dx * dx + dy * dy;
       })
     );
-    return lap(n, costs).row;
-  })(data, import.meta.resolve("../components/lap-jv.js"));
+    const t = performance.now();
+    const {row} = lap(n, costs);
+    console.warn("lap", n, performance.now() - t);
+    return row;
+  })(data, import.meta.resolve("../components/lap-jv.js")));
 ```
 
-_TODO:_ there is a bug when we change the slider too fast and the worker can’t keep up, crashing the browser.
+<div class="note">
+
+We’re using [greenlet](../party/greenlet) and a queue to make computations happen in the background with a web worker.
+
+</div>
