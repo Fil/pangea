@@ -11,11 +11,13 @@ source: https://observablehq.com/@fil/4-color-clingo
     type: "GeometryCollection",
     geometries
   });
-  const projection = world.objects.countries
-    ? geoBertin1953()
-    : d3.geoAlbersUsa();
   const height = width * 0.7;
   const svg = d3.create("svg").attr("viewBox", [0, 0, width, height]);
+  const projection = world.objects.countries
+    ? geoBertin1953()
+    : world.objects.a_com2022
+    ? d3.geoIdentity().reflectY(true)
+    : d3.geoAlbersUsa();
   const path = d3.geoPath(
     projection.fitExtent(
       [
@@ -51,7 +53,8 @@ const topo = view(Inputs.select(
       "https://cdn.jsdelivr.net/npm/visionscarto-world-atlas@0.1.0/world/50m.json"
     ],
     ["US States", "https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json"],
-    ["US Counties", "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json"]
+    ["US Counties", "https://cdn.jsdelivr.net/npm/us-atlas@3/counties-10m.json"],
+    ["France / Bretagne", "https://static.data.gouv.fr/resources/contours-des-communes-de-france-simplifie-avec-regions-et-departement-doutre-mer-rapproches/20220423-134434/a-com2022-topo-2154.json"]
   ]),
   { label: "topology source" }
 ));
@@ -115,6 +118,10 @@ Huge thanks to Dominik Moritz for the “[Hello, Clingo](https://observablehq.co
 const result = clingo.run(program);
 ```
 
+```js echo
+display(result)
+```
+
 ---
 
 <!-- For some reason this script tag unblocks the import below. (but why?) -->
@@ -139,10 +146,12 @@ const world = d3.json(topo);
 
 ```js echo
 const geometries = (
-  world.objects.countries ||
-  world.objects.counties ||
-  world.objects.states
-).geometries.filter((d) => d.id !== "010"); // removes Antarctica
+  world.objects.countries?.geometries?.filter((d) => d.id !== "010") // removes Antarctica
+  ?? world.objects.counties?.geometries
+  ?? world.objects.states?.geometries
+  ?? world.objects.a_com2022?.geometries?.filter((d) => ["22", "29", "35", "44", "56"].includes(d.properties.dep))
+);
+
 const edges = topojson.neighbors(geometries);
 ```
 
@@ -155,7 +164,7 @@ const color = (() => {
   const fills = d3.schemePastel1;
   const colors = new Map();
 
-  if (!result.Call[0].Witnesses) return "#888";
+  if (!result?.Call?.[0]?.Witnesses) return "#888";
 
   result.Call[0].Witnesses[0].Value.forEach((r) => {
     const [, i, c] = r.match(/(\d+),(\d+)/);
