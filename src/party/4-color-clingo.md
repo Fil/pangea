@@ -112,7 +112,7 @@ ${edges
 Huge thanks to Dominik Moritz for the “[Hello, Clingo](https://observablehq.com/@cmudig/clingo)” notebook. See also this map colored by [a simpler algorithm](https://observablehq.com/@mbostock/map-coloring) (9 colors), and Éric Mauvière’s [implementation](https://observablehq.com/@ericmauviere/map-coloring-france-6-colors-for-35-000-municipalities) of the Welsh-Powell algorithm (which colors French communes with 6 colors).
 
 ```js echo
-const result = run(program);
+const result = clingo.run(program);
 ```
 
 ---
@@ -123,7 +123,6 @@ const result = run(program);
 ```js echo
 import clingo from 'npm:clingo-wasm@0.1.1';
 await clingo.init(import.meta.resolve('npm:clingo-wasm@0.1.1/dist/clingo.wasm'));
-const {run} = clingo;
 ```
 
 ---
