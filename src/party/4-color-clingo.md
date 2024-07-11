@@ -169,7 +169,7 @@ const color = (() => {
   function color(c) {
     return colorType === "textures"
       ? `url(#diverging-12541021-${c})`
-      : fills[c];
+      : fills[c % fills.length]
   }
 })();
 ```
