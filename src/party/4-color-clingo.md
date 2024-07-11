@@ -115,7 +115,7 @@ ${edges
 Huge thanks to Dominik Moritz for the “[Hello, Clingo](https://observablehq.com/@cmudig/clingo)” notebook. See also this map colored by [a simpler algorithm](https://observablehq.com/@mbostock/map-coloring) (9 colors), and Éric Mauvière’s [implementation](https://observablehq.com/@ericmauviere/map-coloring-france-6-colors-for-35-000-municipalities) of the Welsh-Powell algorithm (which colors French communes with 6 colors).
 
 ```js echo
-const result = clingo.run(program);
+const result = clingo.run(program, 1);
 ```
 
 ```js echo
