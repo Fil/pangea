@@ -80,7 +80,7 @@ const row = solve(data);
 ```js echo
 import greenlet from "npm:greenlet";
 import {queue} from "../components/queue.js";
-import {lap} from "../components/lap-jv.js";
+const lapjv = import.meta.resolve("../components/lap-jv.js");
 
 const solve = queue((data) =>
   greenlet(async (data, lapjv) => {
@@ -100,7 +100,7 @@ const solve = queue((data) =>
     const {row} = lap(n, costs);
     console.warn("lap", n, performance.now() - t);
     return row;
-  })(data, import.meta.resolve("../components/lap-jv.js")));
+  })(data, lapjv));
 ```
 
 <div class="note">
