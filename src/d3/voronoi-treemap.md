@@ -7,13 +7,14 @@ index: true
 The [voronoi treemap](https://github.com/Kcnarf/d3-voronoi-treemap) function partitions a given convex polygon to represent a hierarchy with an area proportional to the value of each node. This is similar to a classic [treemap](/d3/treemap), but the shapes need not be rectangular.
 
 ```js
-const sides = view (Inputs.select(new Map([
+const sides = view(Inputs.select(new Map([
   ["square", 4],
   ["pentagon", 5],
   ["hexagon", 6],
   ["octogon", 8],
   ["circle", 100]
 ]), {label: "polygon"}));
+const stainedGlass = view(Inputs.toggle({label: "stained glass", value: true}));
 ```
 
 ```js echo
@@ -35,12 +36,16 @@ display(
       legend: true
     },
     marks: [
-      Plot.geo(data.descendants().filter(d => d.depth === 1), {
+      Plot.geo(data.leaves(), {
         geometry: ({polygon: l}) => ({
           type: "LineString",
           coordinates: [...l, l[0]]
         }),
-        fill: d => d.data.name
+        fill: (d) => {
+          while (d.parent && d.parent.depth) d = d.parent;
+          return d.data.name;
+        },
+        fillOpacity: stainedGlass ? ((d, i) => (5 + Math.cos(2 * i)) / 6) : 0.8,
       }),
       Plot.geo(data.descendants(), {
         geometry: ({polygon: l}) => ({
@@ -55,7 +60,7 @@ display(
           type: "LineString",
           coordinates: [...l, l[0]]
         }),
-        fill: d => {
+        fill: (d) => {
           while (d.parent && d.parent.depth) d = d.parent;
           return d.data.name;
         },
