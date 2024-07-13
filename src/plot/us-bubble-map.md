@@ -5,7 +5,7 @@ index: true
 
 # U.S. bubble map
 
-Estimated population by county, 2016. See also the [spike map](./spike) as an alternative presentation of this data. Data: [American Community Survey](https://api.census.gov/data/2016/acs/acs5/cprofile/examples.html)
+Estimated population by county, 2016. See also the [spike map](./us-spike-map) as an alternative presentation of this data. Data: [American Community Survey](https://api.census.gov/data/2016/acs/acs5/cprofile/examples.html)
 
 ```js echo
 const chart = Plot.plot({
@@ -43,7 +43,7 @@ display(chart);
 This dataset comes from the U.S. Census API and contains three columns: the estimated population (as a string), the two-digit state FIPS code, and the three-digit county FIPS code.
 
 ```js echo
-const population = FileAttachment("../data/population.csv").csv();
+const population = FileAttachment("/data/us-county-population.csv").csv();
 ```
 
 The geometries used in this example are from the [TopoJSON U.S. Atlas](https://github.com/topojson/us-atlas), which are derived from the U.S. Census Bureau shapefiles. (There’s also the [TopoJSON World Atlas](https://github.com/topojson/world-atlas), which is derived from [Natural Earth](https://www.naturalearthdata.com).) The _counties_ feature collection is all U.S. counties, using the five-digit FIPS identifier. The _statemap_ lets us lookup the name of the state that contains a given county; a state’s two-digit identifier corresponds to the first two digits of its counties’ identifiers. Similarly, the _countymap_ lets us lookup the name and geometry of each county.

@@ -56,7 +56,7 @@ function legendSpike(values, {frameAnchor = "bottom-right", format = "~s", strok
 We get the population data from a CSV file; we process it into a JavaScript Map for fast lookups. The key is the FIPS code (state and county codes, concatenated into a string), and value is the population coerced to a number.
 
 ```js echo
-const population = FileAttachment("../data/population.csv")
+const population = FileAttachment("/data/us-county-population.csv")
   .csv()
   .then((data) => new Map(data.map(({state, county, population}) => [`${state}${county}`, +population])));
 ```
