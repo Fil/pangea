@@ -8,11 +8,11 @@ The [voronoi treemap](https://github.com/Kcnarf/d3-voronoi-treemap) function par
 
 ```js
 const sides = view(Inputs.select(new Map([
+  ["circle", 100],
   ["square", 4],
   ["pentagon", 5],
   ["hexagon", 6],
-  ["octogon", 8],
-  ["circle", 100]
+  ["octogon", 8]
 ]), {label: "polygon"}));
 const stainedGlass = view(Inputs.toggle({label: "stained glass", value: true}));
 ```

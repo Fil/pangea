@@ -54,7 +54,7 @@ const land = topojson.feature(world, world.objects.land);
 ```
 
 ```js echo
-const world = FileAttachment("land-50m.json").json();
+const world = fetch(import.meta.resolve("npm:visionscarto-world-atlas/world/50m.json")).then((d) => d.json());
 ```
 
 ```js echo

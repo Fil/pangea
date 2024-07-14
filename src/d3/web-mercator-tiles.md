@@ -149,8 +149,8 @@ const url = (x, y, z) =>
 ```
 
 ```js echo
-const land = FileAttachment("land-50m.json")
-  .json()
+const land = fetch(import.meta.resolve("npm:visionscarto-world-atlas/world/50m.json"))
+  .then((d) => d.json())
   .then((topology) => topojson.feature(topology, topology.objects.land));
 ```
 

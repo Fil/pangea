@@ -64,7 +64,7 @@ const land = topojson.feature(world, world.objects.land);
 ```
 
 ```js echo
-const world = d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json");
+const world = fetch(import.meta.resolve("npm:visionscarto-world-atlas/world/50m.json")).then((d) => d.json());
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
