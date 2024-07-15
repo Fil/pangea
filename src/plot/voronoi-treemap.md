@@ -4,7 +4,7 @@ index: true
 
 # Voronoi treemap
 
-The [voronoi treemap](https://github.com/Kcnarf/d3-voronoi-treemap) function partitions a given convex polygon to represent a hierarchy with an area proportional to the value of each node. This is similar to a classic [treemap](/d3/treemap), but the shapes need not be rectangular.
+Franck Lebeau’s [voronoi treemap](https://github.com/Kcnarf/d3-voronoi-treemap) method partitions a given convex polygon according to a hierarchy, with an area proportional to the value of each node. This is similar to a classic [treemap](/d3/treemap), with more organic-looking shapes.
 
 ```js
 const sides = view(Inputs.select(new Map([
