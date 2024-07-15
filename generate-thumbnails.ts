@@ -66,19 +66,22 @@ const HTTP_ROOT = "http://127.0.0.1:3033";
 
 async function main() {
   const browser = await playwright.chromium.launch({headless: true});
-  const context = await browser.newContext({
-    deviceScaleFactor: 2, // retina images
-    colorScheme: "light" // or dark
-  });
+  const prefs = {deviceScaleFactor: 2};
+  const context = await browser.newContext(prefs);
+  const contextDark = await browser.newContext({...prefs, colorScheme: "dark"});
   const index = await fetch(`${HTTP_ROOT}/_observablehq/minisearch.json`).then((resp) => resp.json());
   for (const id of Object.values(index.documentIds)) {
     const path = `src/thumbnail${id}.png`;
+    const pathDark = `src/thumbnail${id}-dark.png`;
     let save = true;
     try {
       save &&= !existsSync(path);
     } catch (e) {}
     console.warn("page", id, save ? "no thumbnail found" : path);
-    if (save) await generate_thumbnail(context, id as string, path, {sleep: 500});
+    if (save) {
+      await generate_thumbnail(context, id as string, path, {sleep: 500});
+      await generate_thumbnail(contextDark, id as string, pathDark, {sleep: 500});
+    }
   }
   await browser.close();
 }
