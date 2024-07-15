@@ -89,7 +89,7 @@ Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can 
 ```js echo
 const chart2 = Plot.plot({
   y: {grid: true, label: "Daily close ($)"},
-  marks: [Plot.ruleY([0]), Plot.areaY(aapl, {x: "date", y1: "close", fill: "var(--theme-foreground-focus)"})]
+  marks: [Plot.ruleY([0]), Plot.areaY(aapl, {x: "Date", y1: "Close", fill: "var(--theme-foreground-focus)"})]
 });
 
 display(chart2);
