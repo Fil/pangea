@@ -88,7 +88,7 @@ display(svg.node());
 ```
 
 ```js echo
-const qy = Float64Array.from(data).sort();
+const qy = Float64Array.from(data, (d) => d.value).sort();
 const n = qy.length;
 const z = (i) => qnorm((i + a) / (n + 1 - 2 * a));
 const a = n <= 10 ? 5 / 8 : 0.5;
@@ -105,14 +105,7 @@ const erfinv = (x) => {
 ```
 
 ```js echo
-const data = FileAttachment("../data/JAHANMI2.DAT")
-  .text()
-  .then((text) =>
-    text
-      .split("\r\n")
-      .slice(50, -1)
-      .map((l) => +l.trim().split(/\s+/g)[4])
-  );
+const data = FileAttachment("../data/ceramics.csv").csv({typed: true});
 ```
 
 ```js echo
