@@ -147,7 +147,7 @@ sidebar: false
 <a id="_102" href="../party/geocontour"><span>Spherical contours</span></a>
 <a id="_103" href="../party/geotiff"><span>GeoTIFF contours</span></a>
 <a id="_104" href="../party/geotoolbox"><span>Hello, geotoolbox</span></a>
-<a id="_105" href="../party/google-sheets"><span>Hello google sheets</span></a>
+<a id="_105" href="../party/google-sheets"><span>Hello, Google sheets</span></a>
 <a id="_106" href="../party/graphviz-connected-clusters"><span>Graphviz - connected clusters</span></a>
 <a id="_107" href="../party/greenlet"><span>Greenlet & workerize</span></a>
 <a id="_108" href="../party/highcharts"><span>Highcharts</span></a>
