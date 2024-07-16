@@ -6,20 +6,31 @@ sidebar: false
 ---
 
 <style>
-#list p {display: flex; flex-wrap: wrap; max-width: 100%; gap: 10px;}
+#list p {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  gap: 10px;
+}
 #list a {
   display: block;
-  height: 240px;
-  width: 320px;
+  max-width: 320px;
+  width: 260px;
+  flex-grow: 1;
+  height: 195px;
   background-size: cover;
   border: 2px solid var(--theme-foreground-focus);
   font-family: var(--sans-serif);
+}
+#list a:hover {
+  box-shadow: 0 4px 12px var(--theme-foreground-focus);
+  transform: translateY(-1px);
 }
 #list a span {
   padding: 4px 15px;
   background: var(--theme-foreground-focus);
   color: var(--theme-background-alt);
-  max-width: 180px;
+  max-width: 60%;
   border-radius: 0 0 14px;
   display: inline-block;
   line-height: 1.25em;
