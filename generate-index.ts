@@ -71,28 +71,41 @@ sidebar: false
 
 <div id=list>
 
-${documents.map(({id, title}, i) => `<a id="_${i}" href="..${id}"><span>${title}</span></a>`).join("\n")}
+${documents.map(({id, title}) => `<a href="..${id}"><span>${title}</span></a>`).join("\n")}
 
 </div>
 
 ~~~js
-{
-function s(i, d, l) {
-  document.querySelector(\`#_\${i}\`).style.backgroundImage = "url(" + (dark ? (d ?? l) : (l ?? d)).href + ")";
+const bg = [
+${documents.map(({light, dark}) => `${fa(dark)}, ${fa(light)}`).join(",\n")}
+];
+~~~
+
+~~~js
+function intersect(entries) {
+  for (const {isIntersecting, target} of entries) {
+    if (isIntersecting) {
+      const {v} = target;
+      if (v) target.style.backgroundImage = \`url("\${v.href}")\`;
+      observer.unobserve(target);
+    }
+  }
 }
-${documents
-  .map((d, i) => ({...d, i}))
-  .filter(({light, dark}) => light || dark)
-  .map(({light, dark, i}) => `s(${i}, ${fa(dark)}, ${fa(light)})`)
-  .join("\n")}
+const observer = new IntersectionObserver(intersect);
+let i = 0;
+for (const node of document.querySelectorAll("#list a")) {
+  const d = bg[i++];
+  const l = bg[i++];
+  const v = dark ? (d ?? l) : (l ?? d);
+  if (v) observer.observe(Object.assign(node, {v}));
 }
 ~~~
 `
   );
 }
 
-main();
-
 function fa(x: string | undefined): string {
   return x ? `FileAttachment(${JSON.stringify(`../${x}`)})` : "null";
 }
+
+main();
