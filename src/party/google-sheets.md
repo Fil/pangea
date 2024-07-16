@@ -2,7 +2,9 @@
 index: true
 ---
 
-# Hello google sheets
+# Hello, Google sheets
+
+To load data from Google sheets, the easiest way is to allow it to be exported to csv:
 
 ```sql echo
 FROM read_csv_auto(
@@ -10,6 +12,4 @@ FROM read_csv_auto(
 );
 ```
 
-```sql echo
-pragma version
-```
+When that is not possible (say, for confidentiality), you can use a [data loader](/loaders/google-sheets) instead.
