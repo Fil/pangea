@@ -24,8 +24,12 @@ async function main() {
 
   writeFileSync(
     "src/thumbnail/index.md",
-    `
-# Index
+    `---
+theme: dashboard
+title: Gallery
+index: false
+sidebar: false
+---
 
 <style>
 #list p {display: flex; flex-wrap: wrap; max-width: 100%; gap: 10px;}
