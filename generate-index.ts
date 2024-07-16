@@ -55,7 +55,8 @@ sidebar: false
   box-shadow: 0 4px 12px var(--theme-foreground-focus);
   transform: translateY(-1px);
 }
-#list a span {
+#list a q {
+  quotes: none;
   padding: 4px 15px;
   background: var(--theme-foreground-focus);
   color: var(--theme-background-alt);
@@ -71,7 +72,7 @@ sidebar: false
 
 <div id=list>
 
-${documents.map(({id, title}) => `<a href="..${id}"><span>${title}</span></a>`).join("\n")}
+${documents.map(({id, title}) => `<a href="..${id}"><q>${title}</q></a>`).join("\n")}
 
 </div>
 
@@ -82,22 +83,24 @@ ${documents.map(({light, dark}) => `${fa(dark)}, ${fa(light)}`).join(",\n")}
 ~~~
 
 ~~~js
-function intersect(entries) {
-  for (const {isIntersecting, target} of entries) {
-    if (isIntersecting) {
-      const {v} = target;
-      if (v) target.style.backgroundImage = \`url("\${v.href}")\`;
-      observer.unobserve(target);
+{
+  function intersect(entries) {
+    for (const {isIntersecting, target} of entries) {
+      if (isIntersecting) {
+        const {v} = target;
+        if (v) target.style.backgroundImage = \`url("\${v.href}")\`;
+        observer.unobserve(target);
+      }
     }
   }
-}
-const observer = new IntersectionObserver(intersect);
-let i = 0;
-for (const node of document.querySelectorAll("#list a")) {
-  const d = bg[i++];
-  const l = bg[i++];
-  const v = dark ? (d ?? l) : (l ?? d);
-  if (v) observer.observe(Object.assign(node, {v}));
+  const observer = new IntersectionObserver(intersect);
+  let i = 0;
+  for (const node of document.querySelectorAll("#list a")) {
+    const d = bg[i++];
+    const l = bg[i++];
+    const v = dark ? (d ?? l) : (l ?? d);
+    if (v) observer.observe(Object.assign(node, {v}));
+  }
 }
 ~~~
 `
