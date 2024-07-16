@@ -419,11 +419,10 @@ sidebar: false
 <a id="_371" href="../topojson/county-topology"><span>County Topology</span></a>
 <a id="_372" href="../topojson/hexagon-mesh"><span>Hexagon Mesh</span></a>
 <a id="_373" href="../varia/covid-sumeau"><span>Sum’eau (Covid tracker)</span></a>
-<a id="_374" href="../varia/input"><span>Input.table: how to re-select a previously selected table row</span></a>
-<a id="_375" href="../varia/lap-jv"><span>The linear assignment problem</span></a>
-<a id="_376" href="../varia/pt"><span>pretty-print matrices & tensors</span></a>
-<a id="_377" href="../varia/sequence-logos"><span>Sequence Logos</span></a>
-<a id="_378" href="../video/ed3RfgPPZ2w"><span>Video: Deploy Framework projects to Observable</span></a>
+<a id="_374" href="../varia/lap-jv"><span>The linear assignment problem</span></a>
+<a id="_375" href="../varia/pt"><span>pretty-print matrices & tensors</span></a>
+<a id="_376" href="../varia/sequence-logos"><span>Sequence Logos</span></a>
+<a id="_377" href="../video/ed3RfgPPZ2w"><span>Video: Deploy Framework projects to Observable</span></a>
 
 </div>
 
@@ -806,10 +805,9 @@ s(370, FileAttachment("../thumbnail/topojson/country-topology-dark.png"), FileAt
 s(371, FileAttachment("../thumbnail/topojson/county-topology-dark.png"), FileAttachment("../thumbnail/topojson/county-topology-light.png"))
 s(372, FileAttachment("../thumbnail/topojson/hexagon-mesh-dark.png"), FileAttachment("../thumbnail/topojson/hexagon-mesh-light.png"))
 s(373, FileAttachment("../thumbnail/varia/covid-sumeau-dark.png"), FileAttachment("../thumbnail/varia/covid-sumeau-light.png"))
-s(374, FileAttachment("../thumbnail/varia/input-dark.png"), FileAttachment("../thumbnail/varia/input-light.png"))
-s(375, FileAttachment("../thumbnail/varia/lap-jv-dark.png"), FileAttachment("../thumbnail/varia/lap-jv-light.png"))
-s(376, FileAttachment("../thumbnail/varia/pt-dark.png"), FileAttachment("../thumbnail/varia/pt-light.png"))
-s(377, FileAttachment("../thumbnail/varia/sequence-logos-dark.png"), FileAttachment("../thumbnail/varia/sequence-logos-light.png"))
-s(378, FileAttachment("../thumbnail/video/ed3RfgPPZ2w-dark.png"), FileAttachment("../thumbnail/video/ed3RfgPPZ2w-light.png"))
+s(374, FileAttachment("../thumbnail/varia/lap-jv-dark.png"), FileAttachment("../thumbnail/varia/lap-jv-light.png"))
+s(375, FileAttachment("../thumbnail/varia/pt-dark.png"), FileAttachment("../thumbnail/varia/pt-light.png"))
+s(376, FileAttachment("../thumbnail/varia/sequence-logos-dark.png"), FileAttachment("../thumbnail/varia/sequence-logos-light.png"))
+s(377, FileAttachment("../thumbnail/video/ed3RfgPPZ2w-dark.png"), FileAttachment("../thumbnail/video/ed3RfgPPZ2w-light.png"))
 }
 ~~~
