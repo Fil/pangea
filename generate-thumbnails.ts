@@ -83,7 +83,7 @@ async function delay(sleep) {
 const HTTP_ROOT = "http://127.0.0.1:3033";
 
 async function main() {
-  const browser = await playwright.chromium.launch({headless: false});
+  const browser = await playwright.chromium.launch({headless: true});
   const context = await browser.newContext({deviceScaleFactor: 2});
   const page = await context.newPage();
   page.setViewportSize({width: 800, height: 1200});

@@ -410,7 +410,7 @@
 
 </div>
 
-~~~js echo
+~~~js
 {
 function s(i, d, l) {
   document.querySelector(`#_${i}`).style.backgroundImage = "url(" + (dark ? (d ?? l) : (l ?? d)).href + ")";

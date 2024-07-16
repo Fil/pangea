@@ -57,7 +57,7 @@ ${documents.map(({id, title}, i) => `<a id="_${i}" href="..${id}"><span>${title}
 
 </div>
 
-~~~js echo
+~~~js
 {
 function s(i, d, l) {
   document.querySelector(\`#_\${i}\`).style.backgroundImage = "url(" + (dark ? (d ?? l) : (l ?? d)).href + ")";
