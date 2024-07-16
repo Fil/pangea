@@ -5,7 +5,7 @@ keywords: webworker, worker
 
 # Greenlet & workerize
 
-[greenlet](https://github.com/developit/greenlet) and [workerize]() are bits of glue code that make it easier to use web workers. greenlet is for lightweight functions, and workerize covers more ground, allowing to export several functions at once.
+Jason Miller’s [greenlet](https://github.com/developit/greenlet) and [workerize](https://github.com/developit/workerize) are bits of glue code that make it easier to use web workers. greenlet is for lightweight functions, and workerize covers more ground, allowing to export several functions at once.
 
 ```js echo
 import greenlet from "npm:greenlet";
@@ -66,12 +66,12 @@ const worker = workerize(`
     const start = Date.now();
     while (Date.now() - start < 500);
   }
-  
+
   export function add(a, b) {
     block_sychronous();
     return a + b;
   }
-  
+
   export function sub(a, b) {
     block_sychronous();
     return a - b;
