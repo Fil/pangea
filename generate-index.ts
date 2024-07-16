@@ -81,7 +81,9 @@ ${documents
   .map(({id, title, light, dark}) =>
     light && dark
       ? `<a href="..${id}"><picture><source srcset="../${dark}" media="(prefers-color-scheme: dark)"><img src="../${light}" loading="lazy"></picture><q>${title}</q></a>`
-      : `<a href="..${id}"><img src="../${light ?? dark}" loading="lazy"><q>${title}</q></a>`
+      : light || dark
+      ? `<a href="..${id}"><img src="../${light ?? dark}" loading="lazy"><q>${title}</q></a>`
+      : `<a href="..${id}"><q>${title}</q></a>`
   )
   .join("\n")}
 </div>
