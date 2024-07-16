@@ -43,3 +43,7 @@ display(calendar);
 ```js echo
 const dji = FileAttachment("../data/^DJI.csv").csv({typed: true});
 ```
+
+```js echo
+import {interpolatePiDG} from "/components/dark.js"
+```
