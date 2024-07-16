@@ -23,13 +23,10 @@ Plot.plot({
   marks: [
     Plot.geo(mesh),
     Plot.sphere(),
-    Plot.dot(countries.features.map((d) => poi(d, projection)), {
-      r: 2,
-      fill: "red"
-    }),
+    Plot.dot(countries.features.map((d) => poi(d, projection)), {r: 2, fill: "red"}),
     Plot.tip(countries.features, Plot.pointer(Plot.centroid({
       geometry: (d) => ({type: "Point", coordinates: poi(d, projection) ?? []}),
-      title: d => d.properties.name,
+      title: (d) => d.properties.name,
     })))
   ]
 })
