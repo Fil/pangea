@@ -3,7 +3,9 @@ index: true
 source: https://observablehq.com/@fil/4-color-clingo
 ---
 
-# Four-color world map with Clingo
+# Four-color world map
+
+## using Clingo
 
 ```js
 {
