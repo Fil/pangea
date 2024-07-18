@@ -5,7 +5,7 @@ source: https://observablehq.com/@jwilber/roughviz-examples
 
 # RoughViz
 
-[RoughViz](https://github.com/jwilber/roughViz) is “a reusable JavaScript library for creating sketchy/hand-drawn styled charts in the browser”. See https://observablehq.com/@jwilber/roughviz-examples for more examples.
+[RoughViz](https://github.com/jwilber/roughViz) is “a reusable JavaScript library for creating sketchy/hand-drawn styled charts in the browser”. See https://observablehq.com/@jwilber/roughviz-examples for more examples, and [Rough Plot](/plot/rough-plot) to see how to use this style of rendering with Observable Plot.
 
 ```js echo
 const roughViz = import("npm:rough-viz");
