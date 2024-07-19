@@ -25,9 +25,12 @@ don’t find here, please open a [feature request](https://github.com/Fil/pangea
 
 _Who?_ I’m Fil Rivière, I work at [Observable](https://observablehq.com/) with the aim of building a strong foundation
 for data visualization on the Web. This is a place where I collect, experiment, showcase, and share some
-of the goodies. Most of it was authored by other people: Mike Bostock, Volodymyr Agafonkin, Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian
-Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer, Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert,
-Cobus Theunissen, Enrico Spinielli, Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman, Danilo Di Cuia, John Alexis Guerra Gómez, and others… thanks to everyone who publishes open source!
+of the goodies. Most of these pages were initially authored by other people: Mike Bostock, Volodymyr Agafonkin,
+Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer,
+Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert, Cobus Theunissen, Enrico Spinielli,
+Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman,
+Danilo Di Cuia, John Alexis Guerra Gómez,
+and others… thank you to everyone who publishes open source!
 
 <a class="view-source" href="https://github.com/Fil/pangea/blob/main/src/thumbnail/index.md?plain=1">⚉</a>
 `;

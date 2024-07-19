@@ -20,9 +20,12 @@ don’t find here, please open a [feature request](https://github.com/Fil/pangea
 
 _Who?_ I’m Fil Rivière, I work at [Observable](https://observablehq.com/) with the aim of building a strong foundation
 for data visualization on the Web. This is a place where I collect, experiment, showcase, and share some
-of the goodies. Most of it was authored by other people: Mike Bostock, Volodymyr Agafonkin, Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian
-Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer, Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert,
-Cobus Theunissen, Enrico Spinielli, Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman, Danilo Di Cuia, John Alexis Guerra Gómez, and others… thanks to everyone who publishes open source!
+of the goodies. Most of these pages were initially authored by other people: Mike Bostock, Volodymyr Agafonkin,
+Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer,
+Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert, Cobus Theunissen, Enrico Spinielli,
+Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman,
+Danilo Di Cuia, John Alexis Guerra Gómez,
+and others… thank you to everyone who publishes open source!
 
 <a class="view-source" href="https://github.com/Fil/pangea/blob/main/src/thumbnail/index.md?plain=1">⚉</a>
 
@@ -318,7 +321,7 @@ Cobus Theunissen, Enrico Spinielli, Harry Stevens, Jareb Wilber, Jean-Daniel Fek
 <a href="/d3/occlusion"><picture><source srcset="../thumbnail/d3/occlusion-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/occlusion-light.png" loading="lazy"></picture><q>Occlusion</q></a>
 <a href="/d3/voronoi-labels"><picture><source srcset="../thumbnail/d3/voronoi-labels-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/voronoi-labels-light.png" loading="lazy"></picture><q>D3 Voronoi labels</q></a>
 <a href="/d3/voronoi-stippling"><picture><source srcset="../thumbnail/d3/voronoi-stippling-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/voronoi-stippling-light.png" loading="lazy"></picture><q>Voronoi stippling</q></a>
-<a href="/party/bitcoin-transaction-size"><picture><source srcset="../thumbnail/party/bitcoin-transaction-size-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/party/bitcoin-transaction-size-light.png" loading="lazy"></picture><q>Bitcoin transaction size</q></a>
+<a href="/party/bitcoin-transaction-size"><picture><source srcset="../thumbnail/party/bitcoin-transaction-size-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/party/bitcoin-transaction-size-light.png" loading="lazy"></picture><q>WebSocket: Bitcoin transactions</q></a>
 <a href="/party/google-sheets"><picture><source srcset="../thumbnail/party/google-sheets-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/party/google-sheets-light.png" loading="lazy"></picture><q>Hello, Google sheets</q></a>
 <a href="/party/greenlet"><picture><source srcset="../thumbnail/party/greenlet-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/party/greenlet-light.png" loading="lazy"></picture><q>Greenlet & workerize</q></a>
 <a href="/party/vega-lite-tooltips"><picture><source srcset="../thumbnail/party/vega-lite-tooltips-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/party/vega-lite-tooltips-light.png" loading="lazy"></picture><q>Vega lite tooltips</q></a>
