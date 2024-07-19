@@ -4,6 +4,7 @@
 import {existsSync, writeFileSync} from "node:fs";
 import type {AsPlainObject as MinisearchIndex} from "minisearch";
 type Section = {title: string; pages?: string[]; description?: string};
+type Document = {id: string; title: string; light?: string; dark?: string};
 import {sections} from "./src/index.json" assert {type: "json"};
 
 const HTTP_ROOT = "http://127.0.0.1:3033";
@@ -25,32 +26,30 @@ don’t find here, please open a [feature request](https://github.com/Fil/pangea
 _Who?_ I’m Fil Rivière, I work at [Observable](https://observablehq.com/) with the aim of building a strong foundation
 for data visualization on the Web. This is a place where I collect, experiment, showcase, and share some
 of the goodies. Most of it was authored by other people: Mike Bostock, Volodymyr Agafonkin, Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian
-Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert,
-Cobus Theunissen, Enrico Spinielli, Harry Stevens, Jareb Wilber, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman, Danilo Di Cuia, John Alexis Guerra Gómez, and others… thanks to everyone who publishes open source!
+Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer, Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert,
+Cobus Theunissen, Enrico Spinielli, Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman, Danilo Di Cuia, John Alexis Guerra Gómez, and others… thanks to everyone who publishes open source!
 
 <a class="view-source" href="https://github.com/Fil/pangea/blob/main/src/thumbnail/index.md?plain=1">⚉</a>
 `;
 
 async function main() {
   const ms: MinisearchIndex = await fetch(`${HTTP_ROOT}/_observablehq/minisearch.json`).then((resp) => resp.json());
-  const documents: {id: string; title: string; light?: string; dark?: string}[] = Object.entries(ms.documentIds).map(
-    ([i, id]) => {
-      const pathLight = `thumbnail${id}-light.png`;
-      const pathDark = `thumbnail${id}-dark.png`;
-      let hasLight = false;
-      let hasDark = false;
-      try {
-        if (existsSync(`src/${pathLight}`)) hasLight = true;
-        if (existsSync(`src/${pathDark}`)) hasDark = true;
-      } catch (e) {}
-      return {
-        id,
-        title: ms.storedFields[i].title,
-        light: hasLight ? `../${pathLight}` : undefined,
-        dark: hasDark ? `../${pathDark}` : undefined
-      };
-    }
-  );
+  const documents: Document[] = Object.entries(ms.documentIds).map(([i, id]) => {
+    const pathLight = `thumbnail${id}-light.png`;
+    const pathDark = `thumbnail${id}-dark.png`;
+    let hasLight = false;
+    let hasDark = false;
+    try {
+      if (existsSync(`src/${pathLight}`)) hasLight = true;
+      if (existsSync(`src/${pathDark}`)) hasDark = true;
+    } catch (e) {}
+    return {
+      id,
+      title: ms.storedFields[i].title,
+      light: hasLight ? `../${pathLight}` : undefined,
+      dark: hasDark ? `../${pathDark}` : undefined
+    };
+  });
 
   const cat = new Map<string, Set<string>>();
 
@@ -76,20 +75,20 @@ async function main() {
   }
 
   cat.set("more", new Set(Array.from(documents, (_, i) => `${i}`)));
-  const seen = new Set();
+  const debug = null; //show_debug(cat, documents);
 
-  const debug = null; /*
-    Array.from(
-      cat,
-      ([word, ids]) => `*${word}*\n\n${Array.from(ids, (i) => JSON.stringify(documents[i]?.id)).join(", <br>")}`
-    ).join("\n\n"); */
+  const seen = new Set();
 
   const groups = Array.from(
     cat,
     ([word, ids]) =>
       `## ${categories.get(word)?.title}\n\n${
         categories.get(word)?.description ? `\n\n${categories.get(word)?.description}\n\n` : ""
-      }<div class="list">\n${Array.from(ids, (id) => (seen.has(id) ? null : (seen.add(id), documents[id])))
+      }<div class="list">\n${Array.from(ids, (id) =>
+        seen.has(id)
+          ? (word !== "more" && console.warn("duplicate", documents[id].id), null)
+          : (seen.add(id), documents[id])
+      )
         .filter((d) => d != null)
         .map(({id, title, light, dark}) =>
           light && dark
@@ -157,8 +156,7 @@ ${intro ?? ""}
 }
 </style>`;
 
-  writeFileSync(
-    "src/thumbnail/index.md",
+  process.stdout.write(
     `${HEAD}
 
 <div class=gallery>
@@ -170,6 +168,17 @@ ${groups.join(`\n\n\n`)}
 ${debug ?? ""}
 `
   );
+}
+
+function show_debug(cat: Map<string, Set<string>>, documents: Document[]) {
+  const seen = new Set();
+  return Array.from(
+    cat,
+    ([word, ids]) =>
+      `*${word}*\n\n${Array.from(ids, (i) => JSON.stringify(documents[i]?.id))
+        .filter((id) => (seen.has(id) ? false : (seen.add(id), true)))
+        .join(", <br>")}`
+  ).join("\n\n");
 }
 
 main();
