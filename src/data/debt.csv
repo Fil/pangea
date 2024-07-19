@@ -1,0 +1,46 @@
+source,target,value
+France,Britain,22.4
+Greece,Britain,0.55
+Italy,Britain,26
+Portugal,Britain,19.4
+United States,Britain,345
+Germany,France,53.8
+Greece,France,53.9
+Ireland,France,17.3
+Italy,France,366
+Japan,France,7.73
+Portugal,France,18.3
+Spain,France,118
+United States,France,322
+Britain,Germany,321
+Greece,Germany,19.3
+Ireland,Germany,48.9
+Portugal,Germany,32.5
+Spain,Germany,57.6
+United States,Germany,324
+Britain,Ireland,12
+Greece,Ireland,0.34
+Spain,Ireland,6.38
+Germany,Italy,111
+Greece,Italy,3.22
+Ireland,Italy,2.83
+Portugal,Italy,0.87
+Britain,Japan,28.2
+Germany,Japan,88.5
+Greece,Japan,1.37
+Ireland,Japan,18.9
+Italy,Japan,38.8
+Portugal,Japan,2.18
+Spain,Japan,25.9
+United States,Japan,796
+Greece,Portugal,10.1
+Ireland,Portugal,3.77
+United States,Portugal,0.52
+Britain,Spain,326
+Greece,Spain,0.78
+Italy,Spain,9.79
+Portugal,Spain,62
+United States,Spain,163
+Greece,United States,3.1
+Ireland,United States,11.1
+Italy,United States,3.16
