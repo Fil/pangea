@@ -60,6 +60,10 @@ them easier to draw with [Plot.geo](https://observablehq.com/plot/marks/geo). At
 the same time, we identify their category (_i.e._ the branch from which they
 stem), to use as a fill color.
 
+```js
+display(data)
+```
+
 ```js echo
 const data = d3.hierarchy(flare).sum((d) => d.value);
 
