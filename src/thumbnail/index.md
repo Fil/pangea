@@ -354,7 +354,11 @@ and others… thank you to everyone who publishes open source!
 ## and more…
 
 <div class="list">
+<a href="/d3/density-contours"><picture><source srcset="../thumbnail/d3/density-contours-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/density-contours-light.png" loading="lazy"></picture><q>Density contours</q></a>
+<a href="/d3/directed-chord-diagram"><picture><source srcset="../thumbnail/d3/directed-chord-diagram-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/directed-chord-diagram-light.png" loading="lazy"></picture><q>Directed chord diagram</q></a>
+<a href="/d3/force-directed-tree"><picture><source srcset="../thumbnail/d3/force-directed-tree-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/force-directed-tree-light.png" loading="lazy"></picture><q>Force-directed tree</q></a>
 <a href="/d3/function-contours"><picture><source srcset="../thumbnail/d3/function-contours-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/function-contours-light.png" loading="lazy"></picture><q>Function contours</q></a>
+<a href="/d3/kernel-density-estimation"><picture><source srcset="../thumbnail/d3/kernel-density-estimation-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/kernel-density-estimation-light.png" loading="lazy"></picture><q>Kernel density estimation</q></a>
 <a href="/d3/pannable-chart"><picture><source srcset="../thumbnail/d3/pannable-chart-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/pannable-chart-light.png" loading="lazy"></picture><q>Pannable chart</q></a>
 <a href="/d3/parallel-sets"><picture><source srcset="../thumbnail/d3/parallel-sets-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/parallel-sets-light.png" loading="lazy"></picture><q>Parallel sets</q></a>
 <a href="/d3/radial-stacked-bar-chart"><picture><source srcset="../thumbnail/d3/radial-stacked-bar-chart-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/radial-stacked-bar-chart-light.png" loading="lazy"></picture><q>Radial stacked bar chart</q></a>
