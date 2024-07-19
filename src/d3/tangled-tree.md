@@ -1,40 +1,26 @@
 ---
 source: https://observablehq.com/@nitaku/tangled-tree-visualization-ii
-index: false
-draft: true
+author: Matteo Abrate
+index: true
 ---
 
-```js
-md`
-# Tangled tree visualization
-`;
-```
+# Tangled tree
 
 ```js
-renderChart(data);
+display(renderChart(data));
 ```
 
-```js
-const intro = md`
 A tree with multiple inheritance (sometimes called _tangled tree_) cannot be represented by using a classic tree visualization. It is technically a directed acyclic graph (DAG) with one (or more) nodes identified as root. Using a graph visualization technique solves the issue, but poorly represents some peculiarities of a quasi-tree structure.
 
-This visualization tries to address the representation of a tangled tree (a genealogy in this specific example). The layout and basic technique is the same underlying [Geneaquilts](https://aviz.fr/Research/Geneaquilts) [[1](#footnote1)], but with curved links instead of matrices. Metro-style bundling is used when a parent node appears in multiple "families", and the layout is made more compact on the y axis.
+This visualization tries to address the representation of a tangled tree (a genealogy in this specific example). The layout and basic technique is the same underlying Geneaquilts[¹](#footnote1), but with curved links instead of matrices. Metro-style bundling is used when a parent node appears in multiple "families", and the layout is made more compact on the y axis.
 
 The intention is for the graphic to be more readily understood, while losing some of the advantages of Geneaquilts (e.g., representing a union without children). See also [this older, simpler example](https://beta.observablehq.com/@nitaku/tangled-tree-visualization).
 
 The technique can also be applied to other types of tangled trees. Such structures are commonly found in computational linguistics (thesauri, some ontologies, wordnets).
 
 (Thanks to [@trebor](https://observablehq.com/@trebor) for making it more reusable!)
-`;
-```
 
-```js
-md`
-## Code
-`;
-```
-
-```js
+```js echo
 const renderChart = (data, options = {}) => {
   options.color ||= (d, i) => color(i);
 
@@ -68,14 +54,14 @@ const renderChart = (data, options = {}) => {
       L${l.xs} ${l.ys}`
       )
       .join("");
-    return `
+    return svg`
       <path class="link" d="${d}" stroke="${background_color}" stroke-width="5"/>
       <path class="link" d="${d}" stroke="${options.color(b, i)}" stroke-width="2"/>
     `;
   })}
 
   ${tangleLayout.nodes.map(
-    (n) => `
+    (n) => svg`
     <path class="selectable node" data-id="${n.id}" stroke="black" stroke-width="8" d="M${n.x} ${n.y - n.height / 2} L${
       n.x
     } ${n.y + n.height / 2}"/>
@@ -347,37 +333,9 @@ const color = d3.scaleOrdinal(d3.schemeDark2);
 ```
 
 ```js
-const background_color = "white";
+const background_color = "var(--theme-background)";
 ```
 
-```js
-md`
-## Dependencies
-`;
-```
+## Reference
 
-```js
-const d3 = require("d3-scale", "d3-scale-chromatic", "d3-array");
-```
-
-```js
-const _ = require("lodash");
-```
-
-```js
-import {footnote} from "@jashkenas/markdown-style-footnotes";
-```
-
-```js
-md`
-## References
-`;
-```
-
-```js
-const footnote1 = footnote(
-  "intro",
-  1,
-  `A. Bezerianos, P. Dragicevic, J. Fekete, J. Bae and B. Watson, "GeneaQuilts: A System for Exploring Large Genealogies," in IEEE Transactions on Visualization and Computer Graphics, vol. 16, no. 6, pp. 1073-1081, Nov.-Dec. 2010, doi: 10.1109/TVCG.2010.159.`
-);
-```
+<a name="footnote1">1.</a> A. Bezerianos, P. Dragicevic, J. Fekete, J. Bae and B. Watson, "GeneaQuilts: A System for Exploring Large Genealogies," in IEEE Transactions on Visualization and Computer Graphics, vol. 16, no. 6, pp. 1073-1081, Nov.-Dec. 2010, doi: 10.1109/TVCG.2010.159.

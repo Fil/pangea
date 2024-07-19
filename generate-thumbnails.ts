@@ -96,8 +96,10 @@ async function main() {
     try {
       save &&= !existsSync(`${ref}-light.png`);
     } catch (e) {}
-    console.warn("page", id, save ? "no thumbnail found" : ref);
-    if (save) await generate_thumbnails(page, id as string, ref);
+    if (save) {
+      console.warn("page", id, ref);
+      await generate_thumbnails(page, id as string, ref);
+    }
   }
   await browser.close();
 }

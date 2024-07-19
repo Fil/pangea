@@ -1,44 +1,39 @@
 ---
 source: https://observablehq.com/@d3/hierarchical-bar-chart
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Hierarchical bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Hierarchical bar chart
 
 Click a blue bar to drill down, or click the background to go back up.
 
 ```js echo
-const chart = {
-  const svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height])
-      .attr("width", width)
-      .attr("height", height)
-      .attr("style", "max-width: 100%; height: auto;");
+const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "max-width: 100%; height: auto;");
 
-  x.domain([0, root.value]);
+x.domain([0, root.value]);
 
-  svg.append("rect")
-      .attr("class", "background")
-      .attr("fill", "none")
-      .attr("pointer-events", "all")
-      .attr("width", width)
-      .attr("height", height)
-      .attr("cursor", "pointer")
-      .on("click", (event, d) => up(svg, d));
+svg.append("rect")
+    .attr("class", "background")
+    .attr("fill", "none")
+    .attr("pointer-events", "all")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("cursor", "pointer")
+    .on("click", (event, d) => up(svg, d));
 
-  svg.append("g")
-      .call(xAxis);
+svg.append("g")
+    .call(xAxis);
 
-  svg.append("g")
-      .call(yAxis);
+svg.append("g")
+    .call(yAxis);
 
-  down(svg, root);
+down(svg, root);
 
-  return svg.node();
-}
+const chart = display(svg.node());
 ```
 
 ```js echo
@@ -60,6 +55,7 @@ function bar(svg, down, d, selector) {
 
   bar
     .append("text")
+    .attr("fill", "currentColor")
     .attr("x", marginLeft - 6)
     .attr("y", (barStep * (1 - barPadding)) / 2)
     .attr("dy", ".35em")
@@ -220,7 +216,7 @@ const root = d3
 ```
 
 ```js echo
-const data = FileAttachment("flare-2.json").json();
+const data = FileAttachment("/data/flare.json").json();
 ```
 
 ```js echo
@@ -267,11 +263,9 @@ const duration = 750;
 ```
 
 ```js echo
-const height = {
-  let max = 1;
-  root.each(d => d.children && (max = Math.max(max, d.children.length)));
-  return max * barStep + marginTop + marginBottom;
-}
+let max = 1;
+root.each(d => d.children && (max = Math.max(max, d.children.length)));
+const height = max * barStep + marginTop + marginBottom;
 ```
 
 ```js echo

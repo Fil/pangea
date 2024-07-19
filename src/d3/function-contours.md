@@ -1,12 +1,9 @@
 ---
 source: https://observablehq.com/@d3/contours
-index: false
-draft: true
+index: true
 ---
 
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Contours</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
-
-# Contours
+# Function contours
 
 Showing the [Goldstein–Price test function](https://en.wikipedia.org/wiki/Test_functions_for_optimization).
 
@@ -17,11 +14,10 @@ const value = (x, y) =>
 ```
 
 ```js
-Legend(color, {title: "Value", tickFormat: ","});
+Legend(color, {title: "Value", tickFormat: ","})
 ```
 
 ```js echo
-const chart = {
   const svg = d3.create("svg")
       .attr("viewBox", [0, 0, width + 28, height])
       .style("display", "block")
@@ -44,8 +40,7 @@ const chart = {
   svg.append("g")
       .call(yAxis);
 
-  return svg.node();
-}
+  display(svg.node());
 ```
 
 ```js echo
@@ -57,30 +52,27 @@ const thresholds = d3.range(1, 20).map((i) => Math.pow(2, i));
 ```
 
 ```js echo
-const grid = {
-  const q = 4; // The level of detail, e.g., sample every 4 pixels in x and y.
-  const x0 = -q / 2, x1 = width + 28 + q;
-  const y0 = -q / 2, y1 = height + q;
-  const n = Math.ceil((x1 - x0) / q);
-  const m = Math.ceil((y1 - y0) / q);
-  const grid = new Array(n * m);
-  for (let j = 0; j < m; ++j) {
-    for (let i = 0; i < n; ++i) {
-      grid[j * n + i] = value(x.invert(i * q + x0), y.invert(j * q + y0));
-    }
+const q = 4; // The level of detail, e.g., sample every 4 pixels in x and y.
+const x0 = -q / 2, x1 = width + 28 + q;
+const y0 = -q / 2, y1 = height + q;
+const n = Math.ceil((x1 - x0) / q);
+const m = Math.ceil((y1 - y0) / q);
+const grid = new Array(n * m);
+for (let j = 0; j < m; ++j) {
+  for (let i = 0; i < n; ++i) {
+    grid[j * n + i] = value(x.invert(i * q + x0), y.invert(j * q + y0));
   }
-  grid.x = -q;
-  grid.y = -q;
-  grid.k = q;
-  grid.n = n;
-  grid.m = m;
-  return grid;
 }
+grid.x = -q;
+grid.y = -q;
+grid.k = q;
+grid.n = n;
+grid.m = m;
 ```
 
 ```js echo
 // Converts from grid coordinates (indexes) to screen coordinates (pixels).
-transform = ({type, value, coordinates}) => {
+const transform = ({type, value, coordinates}) => {
   return {
     type,
     value,
@@ -138,7 +130,7 @@ const height = 600;
 ```
 
 ```js echo
-import {Legend} from "@d3/color-legend";
+import {Legend} from "/components/color-legend.js";
 ```
 
 ---

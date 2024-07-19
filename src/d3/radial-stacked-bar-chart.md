@@ -1,21 +1,21 @@
 ---
 source: https://observablehq.com/@d3/radial-stacked-bar-chart/2
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Radial stacked bar chart</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Radial stacked bar chart
 
-Radial layouts are pretty, but may impede comparison, so consider them primarily to emphasize cyclical patterns. (This example’s data is not cyclical, so the radial layout here is gratuitous!) See also the [sorted variant](/@d3/radial-stacked-bar-chart/3).
+Radial layouts are pretty, but may impede comparison, so consider them primarily to emphasize cyclical patterns. (This example’s data is not cyclical, so the radial layout here is gratuitous!)
+
+```js
+const sort = view(Inputs.toggle({label: "sort"}));
+```
 
 ```js echo
-const chart = {
   const width = 928;
   const height = width;
   const innerRadius = 180;
-  const outerRadius = Math.min(width, height) / 2;
+  const outerRadius = Math.min(width, height) * (sort ? 0.67 : 0.5);
 
   // Stack the data into series by age
   const series = d3.stack()
@@ -33,7 +33,10 @@ const chart = {
 
   // An angular x-scale
   const x = d3.scaleBand()
-      .domain(data.map(d => d.state))
+      .domain(sort
+        ? d3.groupSort(data, D => -d3.sum(D, d => d.population), d => d.state)
+        : data.map(d => d.state)
+      )
       .range([0, 2 * Math.PI])
       .align(0);
 
@@ -53,7 +56,7 @@ const chart = {
   const svg = d3.create("svg")
       .attr("width", width)
       .attr("height", height)
-      .attr("viewBox", [-width / 2, -height / 2, width, height])
+      .attr("viewBox", [-width / 2, -height * (sort ? 0.69 : 0.5), width, height])
       .attr("style", "width: 100%; height: auto; font: 10px sans-serif;");
 
   // A group for each series, and a rect for each element in the series
@@ -62,6 +65,7 @@ const chart = {
     .data(series)
     .join("g")
       .attr("fill", d => color(d.key))
+      .attr("stroke", d => color(d.key))
     .selectAll("path")
     .data(D => D.map(d => (d.key = D.key, d)))
     .join("path")
@@ -81,8 +85,9 @@ const chart = {
       `)
       .call(g => g.append("line")
           .attr("x2", -5)
-          .attr("stroke", "#000"))
+          .attr("stroke", "currentColor"))
       .call(g => g.append("text")
+          .attr("fill", "currentColor")
           .attr("transform", d => (x(d) + x.bandwidth() / 2 + Math.PI / 2) % (2 * Math.PI) < Math.PI
               ? "rotate(90)translate(0,16)"
               : "rotate(-90)translate(0,-9)")
@@ -90,28 +95,29 @@ const chart = {
 
   // y axis
   svg.append("g")
-      .attr("text-anchor", "middle")
+      .attr("text-anchor", sort ? "end" : "middle")
+      .attr("fill", "currentColor")
       .call(g => g.append("text")
-          .attr("y", d => -y(y.ticks(5).pop()))
+          .attr("y", d => -y(y.ticks(sort ? 10 : 5).pop()))
           .attr("dy", "-1em")
           .text("Population"))
       .call(g => g.selectAll("g")
-        .data(y.ticks(5).slice(1))
+        .data(y.ticks(sort ? 10 : 5).slice(1))
         .join("g")
           .attr("fill", "none")
           .call(g => g.append("circle")
-              .attr("stroke", "#000")
+              .attr("stroke", "currentColor")
               .attr("stroke-opacity", 0.5)
               .attr("r", y))
-          .call(g => g.append("text")
+          .append("text")
+              .attr("x", sort ? -6 : 0)
               .attr("y", d => -y(d))
               .attr("dy", "0.35em")
-              .attr("stroke", "#fff")
+              .attr("paint-order", "stroke")
+              .attr("fill", "currentColor")
+              .attr("stroke", "var(--theme-background)")
               .attr("stroke-width", 5)
-              .text(y.tickFormat(5, "s"))
-           .clone(true)
-              .attr("fill", "#000")
-              .attr("stroke", "none")));
+              .text(y.tickFormat(5, "s")));
 
   // color legend
   svg.append("g")
@@ -124,18 +130,16 @@ const chart = {
           .attr("height", 18)
           .attr("fill", color))
       .call(g => g.append("text")
+          .attr("fill", "currentColor")
           .attr("x", 24)
           .attr("y", 9)
           .attr("dy", "0.35em")
           .text(d => d));
 
-  return svg.node();
-}
+display(svg.node());
 ```
 
 ```js echo
-const data = {
-  const data = await FileAttachment("data-2.csv").csv({typed: true});
-  return data.columns.slice(1).flatMap((age) => data.map((d) => ({state: d.State, age, population: d[age]})));
-}
+const wide = await FileAttachment("/data/population-state-age-complete.csv").csv({typed: true});
+const data = wide.columns.slice(1).flatMap((age) => wide.map((d) => ({state: d.State, age, population: d[age]})));
 ```

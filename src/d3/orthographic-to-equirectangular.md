@@ -1,41 +1,37 @@
 ---
 source: https://observablehq.com/@d3/orthographic-to-equirectangular
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Orthographic to equirectangular</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Orthographic to equirectangular
 
 This notebook demonstrates how to interpolate smoothly between two projections ([orthographic](/@d3/orthographic) and [equirectangular](/@d3/equirectangular)) by blending their raw projection functions.
 
 ```js echo
-const canvas = {
-  const context = DOM.context2d(width, height);
-  const path = d3.geoPath(projection, context);
-  while (true) {
-    for (let i = 0, n = 480; i < n; ++i) {
-      const t = d3.easeCubic(2 * i > n ? 2 - 2 * i / n : 2 * i / n);
-      projection.alpha(t).rotate(rotate(t)).scale(scale(t));
-      context.clearRect(0, 0, width, height);
-      context.beginPath();
-      path(graticule);
-      context.lineWidth = 1;
-      context.strokeStyle = "#aaa";
-      context.stroke();
-      context.beginPath();
-      path(sphere);
-      context.lineWidth = 1.5;
-      context.strokeStyle = "#000";
-      context.stroke();
-      context.beginPath();
-      path(equator);
-      context.lineWidth = 1.5;
-      context.strokeStyle = "#f00";
-      context.stroke();
-      yield context.canvas;
-    }
+const context = context2d(width, height);
+display(context.canvas);
+const path = d3.geoPath(projection, context);
+while (true) {
+  for (let i = 0, n = 480; i < n; ++i) {
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    const t = d3.easeCubic(2 * i > n ? 2 - 2 * i / n : 2 * i / n);
+    projection.alpha(t).rotate(rotate(t)).scale(scale(t));
+    context.clearRect(0, 0, width, height);
+    context.beginPath();
+    path(graticule);
+    context.lineWidth = 1;
+    context.strokeStyle = dark ? "#666" : "#aaa";
+    context.stroke();
+    context.beginPath();
+    path(sphere);
+    context.lineWidth = 1.5;
+    context.strokeStyle = dark ? "#fff" : "#000";
+    context.stroke();
+    context.beginPath();
+    path(equator);
+    context.lineWidth = 1.5;
+    context.strokeStyle = "#f00";
+    context.stroke();
   }
 }
 ```
@@ -66,17 +62,9 @@ const projection = interpolateProjection(d3.geoOrthographicRaw, d3.geoEquirectan
 
 ```js echo
 const rotate = d3.interpolate([10, -20], [0, 0]);
-```
-
-```js echo
 const scale = d3.interpolate(width / 4, (width - 2) / (2 * Math.PI));
-```
-
-```js echo
 const height = width / 1.8;
-```
 
-```js echo
 const equator = {
   type: "LineString",
   coordinates: [
@@ -87,16 +75,12 @@ const equator = {
     [180, 0]
   ]
 };
-```
 
-```js echo
 const sphere = {type: "Sphere"};
-```
 
-```js echo
 const graticule = d3.geoGraticule10();
 ```
 
 ```js echo
-const d3 = require("d3-geo@2", "d3-interpolate@2", "d3-ease@2");
+import {context2d} from "/components/DOM.js";
 ```

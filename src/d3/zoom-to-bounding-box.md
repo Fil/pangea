@@ -1,17 +1,13 @@
 ---
 source: https://observablehq.com/@d3/zoom-to-bounding-box
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Zoom to bounding box</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Zoom to bounding box
 
 Pan and zoom, or click to zoom into a particular state using [_zoom_.transform](https://d3js.org/d3-zoom#zoom_transform) transitions. The bounding box is computed using [_path_.bounds](https://d3js.org/d3-geo/path#path_bounds).
 
 ```js echo
-const chart = {
   const width = 975;
   const height = 610;
 
@@ -31,7 +27,7 @@ const chart = {
   const g = svg.append("g");
 
   const states = g.append("g")
-      .attr("fill", "#444")
+      .attr("fill", dark ? "#ccc" : "#444")
       .attr("cursor", "pointer")
     .selectAll("path")
     .data(topojson.feature(us, us.objects.states).features)
@@ -44,7 +40,7 @@ const chart = {
 
   g.append("path")
       .attr("fill", "none")
-      .attr("stroke", "white")
+      .attr("stroke", dark ? "black" : "white")
       .attr("stroke-linejoin", "round")
       .attr("d", path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
 
@@ -80,10 +76,9 @@ const chart = {
     g.attr("stroke-width", 1 / transform.k);
   }
 
-  return svg.node();
-}
+display(svg.node());
 ```
 
 ```js echo
-const us = FileAttachment("states-albers-10m.json").json();
+const us = FileAttachment("/data/counties-albers-10m.json").json();
 ```

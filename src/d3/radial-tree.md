@@ -3,7 +3,7 @@ source: https://observablehq.com/@d3/radial-tree-component
 index: true
 ---
 
-# Radial tree component
+# Radial tidy tree
 
 D3’s [tree layout](https://d3js.org/d3-hierarchy/tree) implements the [Reingold–Tilford “tidy” algorithm](http://reingold.co/tidier-drawings.pdf) for constructing hierarchical node-link diagrams, improved to run in linear time by [Buchheim _et al._](http://dirk.jivas.de/papers/buchheim02improving.pdf) Tidy trees are typically more compact than [cluster dendrograms](./radial-cluster), which place all leaves at the same level. See also the [Cartesian variant](./tree).
 
