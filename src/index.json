@@ -35,6 +35,7 @@
           "/plot/index-chart",
           "/d3/connected-scatterplot",
           "/d3/random-tree",
+          "/d3/streamgraph-transitions",
           "/d3/zoomable-bar-chart",
           "/d3/zoomable-icicle",
           "/d3/zoomable-sunburst",
