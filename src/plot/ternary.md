@@ -8,11 +8,11 @@ source: https://observablehq.com/@fil/ternary-plot
 In [The ABC of mobility](https://www.sciencedirect.com/science/article/pii/S0160412024001272), _Environment International_,
 volume 185, March 2024, Rafael Prieto-Curiel and Juan P. Ospina use ternary diagrams (aka ternary plots) to organize ${data.length} cities according to the proportion of people who commute to work by active means (walking, biking), public transport (bus), or by car.
 
-Each city is represented by a dot with a size proportional to its population, and color corresponding to its region. The position is defined by a ternary (A = Active, B = Public transport, and C = car).
+Each city is represented by a dot with a size proportional to its population, and color corresponding to its region. The position is defined by a ternary (**A** = Active, **B** = Bus, and **C** = car).
 
 ```js echo
 const chart = Plot.plot({
-  width,
+  width: Math.min(920, width),
   projection: {type: ternary.projection, inset: 32},
   marks: [
     Plot.sphere(),
