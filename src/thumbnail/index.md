@@ -24,7 +24,7 @@ of the goodies. Most of these pages were initially authored by other people: Mik
 Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer,
 Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert, Cobus Theunissen, Enrico Spinielli,
 Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman,
-Danilo Di Cuia, John Alexis Guerra Gómez,
+Danilo Di Cuia, John Alexis Guerra Gómez, Justin Kunimune,
 and others… thank you to everyone who publishes open source!
 
 <a class="view-source" href="https://github.com/Fil/pangea/blob/main/src/thumbnail/index.md?plain=1">⚉</a>
@@ -101,7 +101,12 @@ and others… thank you to everyone who publishes open source!
 <a href="/d3/pie-chart-update"><picture><source srcset="../thumbnail/d3/pie-chart-update-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/pie-chart-update-light.png" loading="lazy"></picture><q>Pie chart update</q></a>
 <a href="/d3/bar-chart-transitions"><picture><source srcset="../thumbnail/d3/bar-chart-transitions-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/bar-chart-transitions-light.png" loading="lazy"></picture><q>Bar chart transitions</q></a>
 <a href="/d3/bar-chart-race"><picture><source srcset="../thumbnail/d3/bar-chart-race-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/bar-chart-race-light.png" loading="lazy"></picture><q>Bar chart race</q></a>
+<a href="/d3/scatterplot-tour"><picture><source srcset="../thumbnail/d3/scatterplot-tour-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/scatterplot-tour-light.png" loading="lazy"></picture><q>Scatterplot tour</q></a>
+<a href="/d3/dot-plot"><picture><source srcset="../thumbnail/d3/dot-plot-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/dot-plot-light.png" loading="lazy"></picture><q>Dot plot</q></a>
+<a href="/d3/stacked-to-grouped-bars"><picture><source srcset="../thumbnail/d3/stacked-to-grouped-bars-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/stacked-to-grouped-bars-light.png" loading="lazy"></picture><q>Stacked-to-grouped bars</q></a>
+<a href="/d3/temporal-force-directed-graph"><picture><source srcset="../thumbnail/d3/temporal-force-directed-graph-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/temporal-force-directed-graph-light.png" loading="lazy"></picture><q>Temporal force-directed graph</q></a>
 <a href="/d3/change-line-chart"><picture><source srcset="../thumbnail/d3/change-line-chart-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/change-line-chart-light.png" loading="lazy"></picture><q>Line chart, percent change</q></a>
+<a href="/d3/world-tour"><picture><source srcset="../thumbnail/d3/world-tour-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/world-tour-light.png" loading="lazy"></picture><q>World tour</q></a>
 <a href="/plot/index-chart"><picture><source srcset="../thumbnail/plot/index-chart-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/plot/index-chart-light.png" loading="lazy"></picture><q>Index chart</q></a>
 <a href="/d3/connected-scatterplot"><picture><source srcset="../thumbnail/d3/connected-scatterplot-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/connected-scatterplot-light.png" loading="lazy"></picture><q>Connected scatterplot (D3)</q></a>
 <a href="/d3/random-tree"><picture><source srcset="../thumbnail/d3/random-tree-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/random-tree-light.png" loading="lazy"></picture><q>Random Tree</q></a>
@@ -243,7 +248,6 @@ and others… thank you to everyone who publishes open source!
 <a href="/d3/walmarts-growth-tree"><picture><source srcset="../thumbnail/d3/walmarts-growth-tree-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/walmarts-growth-tree-light.png" loading="lazy"></picture><q>Walmart’s growth - tree</q></a>
 <a href="/d3/walmarts-growth"><picture><source srcset="../thumbnail/d3/walmarts-growth-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/walmarts-growth-light.png" loading="lazy"></picture><q>Walmart’s growth</q></a>
 <a href="/d3/world-airports-voronoi"><picture><source srcset="../thumbnail/d3/world-airports-voronoi-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/world-airports-voronoi-light.png" loading="lazy"></picture><q>World airports voronoi</q></a>
-<a href="/d3/world-tour"><picture><source srcset="../thumbnail/d3/world-tour-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/world-tour-light.png" loading="lazy"></picture><q>World tour</q></a>
 <a href="/plot/filled-contours"><picture><source srcset="../thumbnail/plot/filled-contours-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/plot/filled-contours-light.png" loading="lazy"></picture><q>Filled contours</q></a>
 <a href="/projections/d3-geo-polygon"><picture><source srcset="../thumbnail/projections/d3-geo-polygon-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/projections/d3-geo-polygon-light.png" loading="lazy"></picture><q>d3-geo-polygon</q></a>
 <a href="/d3/adaptive-sampling"><picture><source srcset="../thumbnail/d3/adaptive-sampling-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/adaptive-sampling-light.png" loading="lazy"></picture><q>Adaptive sampling</q></a>

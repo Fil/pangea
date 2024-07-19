@@ -29,7 +29,7 @@ of the goodies. Most of these pages were initially authored by other people: Mik
 Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer,
 Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert, Cobus Theunissen, Enrico Spinielli,
 Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman,
-Danilo Di Cuia, John Alexis Guerra Gómez,
+Danilo Di Cuia, John Alexis Guerra Gómez, Justin Kunimune,
 and others… thank you to everyone who publishes open source!
 
 <a class="view-source" href="https://github.com/Fil/pangea/blob/main/src/thumbnail/index.md?plain=1">⚉</a>
