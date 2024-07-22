@@ -130,10 +130,11 @@ ${intro ?? ""}
   width: 260px;
   flex-grow: 1;
   height: 195px;
-  border: 1px solid var(--theme-foreground-focus);
+  border: 1px solid color-mix(in srgb, var(--theme-foreground-focus), transparent 80%);
   font-family: var(--sans-serif);
 }
 .list a:hover {
+  border: 1px solid var(--theme-foreground-focus);
   box-shadow: 0 4px 12px var(--theme-foreground-focus);
   transform: translateY(-1px);
 }
