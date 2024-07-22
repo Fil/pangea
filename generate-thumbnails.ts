@@ -10,7 +10,7 @@ async function generate_thumbnails(page: Page, id: string, ref: string) {
   await page.emulateMedia({colorScheme: "light"});
   try {
     await page.goto(`${HTTP_ROOT}${id}`);
-    await delay(1000);
+    await delay(30000);
   } catch (e) {
     console.warn(e);
     return;
