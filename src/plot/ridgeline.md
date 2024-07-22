@@ -27,12 +27,15 @@ const traffic = FileAttachment("/data/traffic.csv").csv({typed: true});
 
 Materializes all the channels:
 
+```js
+display({X, Y, FY, locations});
+```
+
 ```js echo
 const X = Plot.valueof(traffic, "date");
 const Y = Plot.valueof(traffic, "vehicles");
 const FY = Plot.valueof(traffic, "location");
 const locations = new Set(FY);
-display({X, Y, FY, locations});
 ```
 
 Creates the chart with a different mark for each facet, ensuring that each new ridge is drawn over the previous ones.
