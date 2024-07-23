@@ -228,7 +228,7 @@ const mesh = topojson
 ```
 
 ```js
-const us = await d3.json("https://unpkg.com/us-atlas@1/us/10m.json");
+const us = FileAttachment("../data/counties-albers-10m.json").json();
 ```
 
 ```js
