@@ -6,6 +6,8 @@ index: true
 
 # Grid choropleth
 
+<p class=author>by <a href="https://www.zanarmstrong.com/">Zan Armstrong</a></p>
+
 This grid choropleth shows the population change in each state (and DC) in the United States between 2019 and 2010.
 
 A grid map, shown here using the [cell mark](https://observablehq.com/plot/marks/cell) makes each state the same size shape while keeping the states roughly aligned geographically. The diverging-log color scale with the green/pink scheme indicates if the state is increasing or decreasing in population, with darker colors representing a larger change. See [state population change](./state-population-change) for an different representation of the same data.

@@ -2,6 +2,19 @@
 @import url("observablehq:theme-air.css") (prefers-color-scheme: light);
 @import url("observablehq:theme-near-midnight.css") (prefers-color-scheme: dark);
 
+p.author {
+  text-align: right;
+  font-style: italic;
+}
+
+p.author a {
+  color: inherit;
+}
+
+p.author:not(:empty)::before {
+  content: "■ ";
+}
+
 /* Makes code visible in prose */
 a code {
   color: inherit;

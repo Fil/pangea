@@ -1,199 +1,170 @@
 ---
 source: https://observablehq.com/@veltman/watercolor
-index: false
-draft: true
+author: Noah Veltman
+index: true
 ---
 
-```js
-md`
 # Watercolor
 
+<p class=author>by <a href="https://observablehq.com/@veltman">Noah Veltman</a></p>
+
 Some pseudo-watercolor effects with blurs, thresholds, and fractal noise.
-`;
-```
 
 ```js
-{
-  const svg = DOM.svg(960, 600);
+const svg = d3.create("svg").attr("viewBox", [0, 0, 960, 600]);
 
-  const defs = d3.select(svg).attr("class", "watercolor").append("defs");
+const defs = svg.attr("class", "watercolor").append("defs");
 
-  const splotch = DOM.uid("splotch");
+const splotch = uid("splotch");
 
-  const path = d3.geoPath();
+const path = d3.geoPath();
 
-  defs
-    .append("filter")
-    .attr("id", splotch.id)
-    .html(
-      `${
-        noise
-          ? `<feTurbulence
-        type="fractalNoise"
-        baseFrequency="${noise}"
-        numOctaves="4"
-    ></feTurbulence>
-    <feColorMatrix
-        values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -0.9 1.2"
-        result="texture"
-    ></feColorMatrix>
-    <feComposite
-        in="SourceGraphic"
-        in2="texture"
-        operator="in"
-    ></feComposite>`
-          : ``
-      }<feGaussianBlur stdDeviation="${blur}"></feGaussianBlur>`
-    );
+defs
+  .append("filter")
+  .attr("id", splotch.id)
+  .html(
+    `${
+      noise
+        ? `<feTurbulence
+      type="fractalNoise"
+      baseFrequency="${noise}"
+      numOctaves="4"
+  ></feTurbulence>
+  <feColorMatrix
+      values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -0.9 1.2"
+      result="texture"
+  ></feColorMatrix>
+  <feComposite
+      in="SourceGraphic"
+      in2="texture"
+      operator="in"
+  ></feComposite>`
+        : ``
+    }<feGaussianBlur stdDeviation="${blur}"></feGaussianBlur>`
+  );
 
-  // Generate Observable-friendly IDs
-  states.forEach((d, i) => {
-    d.filterUid = DOM.uid("filter" + i);
-  });
+// Generate Observable-friendly IDs
+states.forEach((d, i) => (d.filterUid = uid("filter" + i)));
 
-  const groups = d3
-    .select(svg)
-    .selectAll(".state")
-    .data(states)
-    .enter()
-    .append("g")
-    .attr("class", "state")
-    .attr("filter", splotch);
+const groups = svg
+  .selectAll(".state")
+  .data(states)
+  .enter()
+  .append("g")
+  .attr("class", "state")
+  .attr("filter", splotch);
 
-  const paths = groups
-    .append("path")
-    .attr("d", path)
-    .attr("fill", (d) => d.properties.color)
-    .attr("stroke", (d) => d.properties.color)
-    .attr("stroke-width", strokeWidth)
-    .attr("filter", (d) => d.filterUid);
+const paths = groups
+  .append("path")
+  .attr("d", path)
+  .attr("fill", (d) => d.properties.color)
+  .attr("stroke", (d) => d.properties.color)
+  .attr("stroke-width", strokeWidth)
+  .attr("filter", (d) => d.filterUid);
 
-  if (drawMesh) {
-    const pencil = DOM.uid("pencil");
-    defs.append("filter").attr("id", pencil.id)
-      .html(`<feTurbulence baseFrequency="0.03" numOctaves="6" type="fractalNoise" />
-      <feDisplacementMap scale="4" in="SourceGraphic" xChannelSelector="R" yChannelSelector="G" />
-      <feGaussianBlur stdDeviation="0.5" />`);
-
-    d3.select(svg)
+if (drawMesh) {
+  const pencil = uid("pencil");
+  defs.append("filter").attr("id", pencil.id)
+    .html(`<feTurbulence baseFrequency="0.03" numOctaves="6" type="fractalNoise" />
+    <feDisplacementMap scale="4" in="SourceGraphic" xChannelSelector="R" yChannelSelector="G" />
+    <feGaussianBlur stdDeviation="0.5" />`);
+  svg
       .append("g")
       .attr("class", "mesh")
       .attr("filter", pencil)
       .append("path")
       .attr("d", mesh.map(spline).join(""));
-  }
-
-  defs
-    .selectAll(".state")
-    .data(states)
-    .enter()
-    .append("filter")
-    .attr("id", (d) => d.filterUid.id)
-    .html(
-      (d) =>
-        `<feGaussianBlur
-         in="SourceGraphic"
-         stdDeviation="${blurScale(path.area(d))}"
-         result="blur"
-     ></feGaussianBlur>
-     <feColorMatrix
-         in="blur"
-         type="matrix"
-         values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-         result="threshold"
-     ></feColorMatrix>
-     <feComposite
-         in="SourceGraphic"
-         in2="threshold"
-         operator="atop"
-     ></feComposite>`
-    );
-
-  return svg;
 }
+
+defs
+  .selectAll(".state")
+  .data(states)
+  .enter()
+  .append("filter")
+  .attr("id", (d) => d.filterUid.id)
+  .html(
+    (d) =>
+      `<feGaussianBlur
+        in="SourceGraphic"
+        stdDeviation="${blurScale(path.area(d))}"
+        result="blur"
+    ></feGaussianBlur>
+    <feColorMatrix
+        in="blur"
+        type="matrix"
+        values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+        result="threshold"
+    ></feColorMatrix>
+    <feComposite
+        in="SourceGraphic"
+        in2="threshold"
+        operator="atop"
+    ></feComposite>`
+  );
+
+display(svg.node());
 ```
 
 ```js
-const randomize = view(button("Randomize colors"));
+const randomize = view(Inputs.button({label: "Randomize colors"}));
 ```
 
 ```js
-viewof palette = select({
-  title: "Color palette",
-  options: [
-    "Wes Anderson",
-    "Blues",
-    "verena",
-    "iiso_daily",
-    "iiso_zeitung",
-    "present-correct",
-    "rag-taj",
-    "rag-mysore"
-  ]
-})
+const palette = view(Inputs.select([
+  "Wes Anderson",
+  "Blues",
+  "verena",
+  "iiso_daily",
+  "iiso_zeitung",
+  "present-correct",
+  "rag-taj",
+  "rag-mysore"
+], {
+  label: "Color palette"
+}));
 ```
 
 ```js
-viewof drawMesh = checkbox([
-  { value: "drawMesh", label: "Draw pencil outlines" }
-])
+const drawMesh = view(Inputs.toggle({label: "Pencil outlines"}));
 ```
 
 ```js
-viewof deviation = slider({
-  min: 0,
-  max: 5,
+const deviation = view(Inputs.range([0, 5], {
   step: 0.5,
   value: 2,
-  title: "Shape deviation"
-})
+  label: "Shape deviation"
+}));
 ```
 
 ```js
-viewof strokeWidth = slider({
-  min: 0,
-  max: 8,
+const strokeWidth = view(Inputs.range([0, 8], {
   step: 0.1,
   value: 3.5,
-  title: "Stroke width"
-})
+  label: "Stroke width"
+}));
 ```
 
 ```js
-viewof blur = slider({
-  min: 0,
-  max: 5,
+const blur = view(Inputs.range([0, 5], {
   step: 0.1,
   value: 0.8,
-  title: "Outer blur amount"
-})
+  label: "Outer blur amount"
+}));
 ```
 
 ```js
-viewof noise = slider({
-  min: 0,
-  max: 0.03,
+const noise = view(Inputs.range([0, 0.03], {
   value: 0.01,
   precision: 3,
-  title: "Fractal noise"
-})
+  label: "Fractal noise"
+}));
 ```
 
-```js
-md`
-## See also
+### See also
 
-[Oil paint](https://observablehq.com/@veltman/scribble-paint)  
-[Pencil/watercolor map style](https://bl.ocks.org/veltman/2f2aa947772afa095a620dfe5e5486cb)  
-[Tyler Hobbs' generative watercolor](https://tylerxhobbs.com/essays/2017/a-generative-approach-to-simulating-watercolor-paints)
-`;
-```
-
-```js
-md`
-## Appendix
-`;
-```
+- [Oil paint](https://observablehq.com/@veltman/scribble-paint)
+- [Pencil/watercolor map style](https://blocks.roadtolarissa.com/veltman/2f2aa947772afa095a620dfe5e5486cb)
+- [Tyler Hobbs' generative watercolor](https://tylerxhobbs.com/essays/2017/a-generative-approach-to-simulating-watercolor-paints)
 
 ```js
 const simplification = 1.8;
@@ -229,37 +200,31 @@ const palettes = {
 ```
 
 ```js
-const states = {
-  randomize;
-  const states = topojson.feature(us, us.objects.states).features;
-  const neighbors = topojson.neighbors(us.objects.states.geometries);
-  const colors = d3.shuffle(palettes[palette].slice(0));
+randomize;
+const states = topojson.feature(us, us.objects.states).features;
+const neighbors = topojson.neighbors(us.objects.states.geometries);
+const colors = d3.shuffle(palettes[palette].slice(0));
 
-  states.forEach((d, i) => {
-    const color =
-      colors.find(
-        c => !neighbors[i].some(n => states[n].properties.color === c)
-      ) || colors[0];
-
-    colors.push(colors.shift());
-
-    d.properties.color = color;
-  });
-
-  return states;
-}
+states.forEach((d, i) => {
+  const color =
+    colors.find(
+      c => !neighbors[i].some(n => states[n].properties.color === c)
+    ) || colors[0];
+  d.properties.color = color;
+  colors.push(colors.shift());
+});
 ```
 
 ```js
-const mesh = {
-  return topojson
-    .mesh(us, us.objects.states)
-    .coordinates.map(line =>
-      simplify(line.map(d => ({ x: d[0], y: d[1] })), simplification, true).map(
-        d => [d.x, d.y]
-      )
-    );
-}
+const mesh = topojson
+  .mesh(us, us.objects.states)
+  .coordinates.map((line) =>
+    simplify(
+      line.map((d) => ({ x: d[0], y: d[1] })),
+      simplification,
+      true
+    ).map((d) => [d.x, d.y])
+  );
 ```
 
 ```js
@@ -267,23 +232,14 @@ const us = await d3.json("https://unpkg.com/us-atlas@1/us/10m.json");
 ```
 
 ```js
-const simplify = require("simplify-js@1");
+import simplify from "npm:simplify-js@1";
 ```
 
 ```js
-const d3 = require("d3@5");
+import {uid} from "/components/DOM.js";
 ```
 
-```js
-const topojson = require("topojson-client@3");
-```
-
-```js
-import {checkbox, button, select, slider} from "@jashkenas/inputs";
-```
-
-```js
-html`<style>
+<style>
   .watercolor * {
     mix-blend-mode: multiply;
   }
@@ -298,5 +254,4 @@ html`<style>
     width: 100%;
     height: auto;
   }
-</style>`;
-```
+</style>
