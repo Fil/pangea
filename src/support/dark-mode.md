@@ -37,7 +37,7 @@ _Note that the user preference might depend on the time of day (or night), and m
 
 Basic HTML is designed to be displayed by a browser in whatever way it wants—which usually on graphic browsers results in black text on a white background.
 
-But of course, the page designer wants text to have a specific color or background. (As a rule, never set one without checking the other! Or you’ll end up with low contrast and unreadable copy.) So a DOM element (a paragraph, a few words) can have a specific color (and background color). Another (nested) element can also have a specific style applied to it that sets its color (for example, links &lt;a> would be blue). If you want this link to be of the “same color as the text around it”, you will use the “[currentColor](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) keyword.
+But of course, the page designer wants text to have a specific color or background. (As a rule, never set one without checking the other! Or you’ll end up with low contrast and unreadable copy.) So a DOM element (a paragraph, a few words) can have a specific color (and background color). Another (nested) element can also have a specific style applied to it that sets its color (for example, links &lt;a> would be blue). If you want this link to be of the “same color as the text around it”, you will use the [currentColor](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value) keyword.
 
 ## CSS (var & color-mix)
 
