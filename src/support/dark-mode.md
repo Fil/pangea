@@ -116,7 +116,7 @@ Plot.plot({
 })
 ```
 
-Another very common use case is with mix-blend-mode: where the preferred option for mixing colors in light mode is “multiply”, in dark mode you obtain the equivalent effect by using “screen” instead.
+Another very common use case is with [mix-blend-mode](https://developer.mozilla.org/en-US/docs/Web/CSS/mix-blend-mode) (and [globalCompositeOperation](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation)): where the preferred option for mixing colors in light mode is “multiply”, in dark mode you obtain the equivalent effect by using “screen” or “lighter” instead.
 
 ```js echo run=false
 Plot.lineY(data, {
