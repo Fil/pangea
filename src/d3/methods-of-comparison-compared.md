@@ -7,6 +7,9 @@ draft: true
 ```js
 md`# Methods of Comparison, Compared
 
+
+<p class=author>by <a href="https://observablehq.com/@mbostock">Mike Bostock</a></p>
+
 We often wish to understand something by comparing values.
 
 For example, say I’m happily biking along 🚲😅 at ${tex`17\,\text{mph}`} when I get passed by a car 🚗💨 going ${tex`51\,\text{mph}`}. I might think: *Yikes! That car was going ${tex`\tfrac{51}{17} = `} three times my speed!* Or: *That car was going ${tex`51 - 17 = +34\,\text{mph}`} faster than me!* (Cars are scary!) Or maybe I’m a cryptocurrency speculator, and I bought one Dinglecoin at the start of the year for ${tex`\$14{,}741`} and then sold it yesterday for ${tex`\$6{,}638`}. I’d say: *Oops, my return was ${tex`\tfrac{6{,}638 - 14{,}741}{14{,}741} = -55\%`}*. Maybe I should invest elsewhere.

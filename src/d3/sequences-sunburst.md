@@ -6,6 +6,8 @@ index: true
 
 # Sequences Sunburst
 
+<p class=author>by <a href="https://observablehq.com/@kerryrodden">Kerry Roden</a></p>
+
 This example shows how it is possible to use a [sunburst visualization](./sunburst) with data that describes sequences of events. Hover over the segments to see the corresponding sequences.
 
 A good use case is to summarize navigation paths through a web site or app, as in the sample data file. Where a funnel lets you understand a single pre-selected path, this allows you to see all possible paths. For example, you might want to compare visits that start directly on a product page (e.g. after landing there from a search engine) to visits where users arrive on the site's home page and navigate from there.

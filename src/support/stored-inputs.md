@@ -4,6 +4,8 @@ index: true
 
 # Stored inputs
 
+<p class=author>by <a href="https://observablehq.com/@fil">Fil</a></p>
+
 Q: [_Is there an easy solution for persisting input values?_](https://github.com/observablehq/framework/discussions/887)
 
 _Your color codes:_

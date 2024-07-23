@@ -8,6 +8,8 @@ draft: true
 
 # d3.packEnclose
 
+<p class=author>by <a href="https://observablehq.com/@mbostock">Mike Bostock</a></p>
+
 [d3.packEnclose](https://d3js.org/d3-hierarchy/pack#packEnclose) computes the smallest circle that encloses the given circles. Given an array of objects [{*x*, *y*, *r*}, …] representing circles centered at ${tex`\langle x,y \rangle`} with radius ${tex`r`}, it returns an object {_x_, _y_, _r_} that represents the smallest enclosing circle.
 
 ```js echo

@@ -6,6 +6,8 @@ index: true
 
 # Tangled tree
 
+<p class=author>by <a href="https://observablehq.com/@nitaku">Matteo Abrate</a></p>
+
 ```js
 display(renderChart(data));
 ```

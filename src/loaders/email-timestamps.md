@@ -4,6 +4,8 @@ index: true
 
 # email timestamps
 
+<p class=author>by <a href="https://observablehq.com/@fil">Fil</a></p>
+
 A friend who operates a fairly large mailing-list wanted to know how quickly the server delivered its messages, with Mailman and postfix. I saved the following command as `docs/data/email-timestamps.txt.sh`:
 
 ```sh echo run=false

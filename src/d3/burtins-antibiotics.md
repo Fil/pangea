@@ -6,6 +6,8 @@ index: true
 
 # Burtin’s Antibiotics
 
+<p class=author>by <a href="https://observablehq.com/@mbostock">Mike Bostock</a></p>
+
 Ref. https://mbostock.github.io/protovis/ex/antibiotics-burtin.html
 
 ```js echo
@@ -162,7 +164,6 @@ svg.append("g")
 display(svg.node());
 ```
 
-
 ```js echo
 const antibiotics = [
   {bacteria: "Mycobacterium tuberculosis", penicillin: 800, streptomycin: 5, neomycin: 2, gram: "negative"},
@@ -191,4 +192,4 @@ const antibiotics = [
   bacteria: d.bacteria,
   gram: d.gram
 })));
-````
+```

@@ -6,6 +6,8 @@ author: Allison Horst
 
 # Video: Deploy Framework projects to Observable
 
+<p class=author>by <a href="https://observablehq.com/@allisonhorst">Allison Horst</a></p>
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ed3RfgPPZ2w?si=yEJWXkl_ntku_8Vp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Hi everybody, Allison here again.

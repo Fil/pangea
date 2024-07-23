@@ -8,6 +8,8 @@ draft: true
 
 # Inequality in American cities
 
+<p class=author>by <a href="https://observablehq.com/@mbostock">Mike Bostock</a></p>
+
 Based on a graphic by [Emily Badger and Kevin Quealy](https://www.nytimes.com/2019/12/02/upshot/wealth-poverty-divide-american-cities.html), this chart shows the change from 1980 to 2015 of the ratio of 90th-percentile wages to 10th-percentile wages, along with population, in 195 metro areas. I prefer the static display to [animation](/@mbostock/inequality-in-american-cities/2).
 
 ```js

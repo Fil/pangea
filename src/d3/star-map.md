@@ -6,6 +6,8 @@ author: Mike Bostock
 
 # Star map
 
+<p class=author>by <a href="https://observablehq.com/@mbostock">Mike Bostock</a></p>
+
 A star map of the Northern Hemisphere using a flipped stereographic projection, showing [declination](https://en.wikipedia.org/wiki/Declination) and [right ascension](https://en.wikipedia.org/wiki/Right_ascension). I believe the data is from the [Yale Bright Star Catalog](http://tdc-www.harvard.edu/catalogs/bsc5.html), but I got it from [Matteo Abrate’s sky map](https://blocks.roadtolarissa.com/nitaku/9607405).
 
 ```js echo

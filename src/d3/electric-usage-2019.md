@@ -8,6 +8,9 @@ draft: true
 md`
 # Electricity Usage, 2019
 
+
+<p class=author>by <a href="https://observablehq.com/@mbostock">Mike Bostock</a></p>
+
 During sunny days in the summer, my home’s solar cells typically produce more energy than we consume. However, at night, on cloudy days, and during the winter when the sun is lower in the sky, we pull energy from PG&E’s grid.
 
 We also have an electric car and a fast charger that can draw 10 kW! The frequent 4-6 hour evening spikes in energy consumption show the car charging. You can also see our electric furnace warming up the house on cold February mornings. And you can see our four-day power outage in October. 😣

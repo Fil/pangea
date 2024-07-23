@@ -10,6 +10,8 @@ md`
 `;
 ```
 
+<p class=author>by <a href="https://observablehq.com/@harrystevens">Harry Stevens</a></p>
+
 ```js
 md`
 A common goal of data visualization is to show how some values have changed over time. More often than not, you will use a line chart for this purpose. But when you want to show several different values in the same chart, you will need to come up with a way to explain to your reader which line represents which value.
