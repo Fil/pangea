@@ -22,6 +22,7 @@ const path = d3.geoPath();
 defs
   .append("filter")
   .attr("id", splotch.id)
+  .attr("color-interpolation-filters", "sRGB")
   .html(
     `${
       noise
@@ -65,6 +66,7 @@ const paths = groups
 if (drawMesh) {
   const pencil = uid("pencil");
   defs.append("filter").attr("id", pencil.id)
+    .attr("color-interpolation-filters", "sRGB")
     .html(`<feTurbulence baseFrequency="0.03" numOctaves="6" type="fractalNoise" />
     <feDisplacementMap scale="4" in="SourceGraphic" xChannelSelector="R" yChannelSelector="G" />
     <feGaussianBlur stdDeviation="0.5" />`);
@@ -81,6 +83,7 @@ defs
   .data(states)
   .enter()
   .append("filter")
+  .attr("color-interpolation-filters", "sRGB")
   .attr("id", (d) => d.filterUid.id)
   .html(
     (d) =>
@@ -240,18 +243,23 @@ import {uid} from "/components/DOM.js";
 ```
 
 <style>
+.watercolor * {
+  mix-blend-mode: multiply;
+}
+@media (prefers-color-scheme: dark) {
   .watercolor * {
-    mix-blend-mode: multiply;
+    mix-blend-mode: screen;
   }
-  .mesh {
-    stroke: #777;
-    fill: none;
-    opacity: 0.8;
-    stroke-width: 2px;
-    stroke-linejoin: round;
-  }
-  .watercolor {
-    width: 100%;
-    height: auto;
-  }
+}
+.mesh {
+  stroke: #777;
+  fill: none;
+  opacity: 0.8;
+  stroke-width: 2px;
+  stroke-linejoin: round;
+}
+.watercolor {
+  width: 100%;
+  height: auto;
+}
 </style>
