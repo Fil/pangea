@@ -1,97 +1,72 @@
 ---
 source: https://observablehq.com/@d3/mareys-trains
-index: false
-draft: true
+index: true
 ---
 
-```js
-md`# Marey’s Trains
+# Marey’s trains
 
-A recreation of [E.J. Marey](https://en.wikipedia.org/wiki/Étienne-Jules_Marey)’s graphical train schedule. Stations are positioned to scale so that slope encodes speed. This display also reveals when and where <b style="color:${colors.L}">limited service trains</b> are passed by <b style="color:${colors.B}">baby bullets</b>. This type of plot is sometimes called a stringline chart.`;
+A recreation of [E.J. Marey](https://en.wikipedia.org/wiki/Étienne-Jules_Marey)’s graphical train schedule. Stations are positioned to scale so that slope encodes speed. This display also reveals when and where <b style="color:${colors.L}">limited service trains</b> are passed by <b style="color:${colors.B}">baby bullets</b>. This type of plot is sometimes called a stringline chart.
+
+```js
+const days = view(Inputs.select(new Map([
+  ["Weekdays", (d) => /^[NLB]$/.test(d.type)],
+  ["Saturday", (d) => /^[WS]$/.test(d.type)],
+  ["Sunday", (d) => /^[W]$/.test(d.type)]
+])));
 ```
 
 ```js
-viewof days = {
-  const values = {
-    weekday: d => /^[NLB]$/.test(d.type),
-    saturday: d => /^[WS]$/.test(d.type),
-    sunday: d => /^[W]$/.test(d.type)
-  };
-  const form = html`<form><select name=i>
-  <option value="weekday">Weekdays
-  <option value="saturday">Saturday
-  <option value="sunday">Sunday
-</select></form>`;
-  form.i.onchange = () => {
-    form.value = values[form.i.value];
-    form.dispatchEvent(new CustomEvent("input"));
-  };
-  form.value = values[form.i.value];
-  return form;
-}
-```
-
-```js
-viewof direction = {
-  const values = {
-    either: () => true,
-    north: d => d.direction === "N",
-    south: d => d.direction === "S"
-  };
-  const form = html`<form><select name=i>
-  <option value="either">Either direction
-  <option value="north">Northbound
-  <option value="south">Southbound
-</select></form>`;
-  form.i.onchange = () => {
-    form.value = values[form.i.value];
-    form.dispatchEvent(new CustomEvent("input"));
-  };
-  form.value = values[form.i.value];
-  return form;
-}
+const direction = view(Inputs.select(new Map([
+  ["Either direction", () => true],
+  ["Northbound", ({direction}) => direction === "N"],
+  ["Southbound", ({direction}) => direction === "S"]
+])));
 ```
 
 ```js echo
-const chart = {
-  const svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height]);
+const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height]);
 
-  svg.append("g")
-      .call(xAxis);
+svg.append("g")
+    .call(xAxis);
 
-  svg.append("g")
-      .call(yAxis);
+svg.append("g")
+    .call(yAxis);
 
-  const train = svg.append("g")
-      .attr("stroke-width", 1.5)
-    .selectAll("g")
-    .data(data)
-    .join("g");
+const train = svg.append("g")
+    .attr("stroke-width", 1.5)
+  .selectAll("g")
+  .data(data)
+  .join("g");
 
-  train.append("path")
-      .attr("fill", "none")
-      .attr("stroke", d => colors[d.type])
-      .attr("d", d => line(d.stops));
+train.append("path")
+    .attr("fill", "none")
+    .attr("stroke", d => colors[d.type])
+    .attr("d", d => line(d.stops));
 
-  train.append("g")
-      .attr("stroke", "white")
-      .attr("fill", d => colors[d.type])
-    .selectAll("circle")
-    .data(d => d.stops)
-    .join("circle")
-      .attr("transform", d => `translate(${x(d.station.distance)},${y(d.time)})`)
-      .attr("r", 2.5);
+train.append("g")
+    .attr("stroke", "white")
+    .attr("fill", d => colors[d.type])
+  .selectAll("circle")
+  .data(d => d.stops)
+  .join("circle")
+    .attr("transform", d => `translate(${x(d.station.distance)},${y(d.time)})`)
+    .attr("r", 2.5);
 
-  svg.append("g")
-      .call(tooltip);
+svg.append("g")
+    .call(tooltip);
 
-  return svg.node();
-}
+ display(svg.node());
 ```
 
 ```js echo
-const colors = {
+const colors = dark ? {
+  N: "rgb(200, 200, 200)",
+  L: "rgb(203, 166, 69)",
+  B: "rgb(222, 82, 69)",
+  W: "currentColor",
+  S: "currentColor"
+} : {
   N: "rgb(34, 34, 34)",
   L: "rgb(183, 116, 9)",
   B: "rgb(192, 62, 29)",
@@ -156,6 +131,7 @@ const xAxis = (g) =>
       g
         .append("text")
         .attr("transform", `translate(0,${margin.top}) rotate(-90)`)
+        .attr("fill", "currentColor")
         .attr("x", 12)
         .attr("dy", "0.35em")
         .text((d) => d.name)
@@ -186,9 +162,9 @@ const tooltip = (g) => {
 
   const tooltip = g.append("g").style("font", "10px sans-serif");
 
-  const path = tooltip.append("path").attr("fill", "white");
+  const path = tooltip.append("path").attr("fill", dark ? "black" : "white");
 
-  const text = tooltip.append("text");
+  const text = tooltip.append("text").attr("fill", "currentColor");
 
   const line1 = text.append("tspan").attr("x", 0).attr("y", 0).style("font-weight", "bold");
 
@@ -240,48 +216,37 @@ const data = alldata.filter((d) => days(d) && direction(d));
 ```
 
 ```js echo
-const stations = alldata.stations;
-```
-
-```js echo
 const stops = d3.merge(data.map((d) => d.stops.map((s) => ({train: d, stop: s}))));
 ```
 
 ```js echo
-const alldata = {
-  const data = d3.tsvParse(await FileAttachment("schedule.tsv").text());
+const rawData = d3.tsvParse(await FileAttachment("/data/schedule.tsv").text());
 
-  // Extract the stations from the "stop|*" columns.
-  const stations = data.columns
-    .filter(key => /^stop\|/.test(key))
-    .map(key => {
-      const [, name, distance, zone] = key.split("|");
-      return {key, name, distance: +distance, zone: +zone};
-    });
+// Extract the stations from the "stop|*" columns.
+const stations = rawData.columns
+  .filter(key => /^stop\|/.test(key))
+  .map(key => {
+    const [, name, distance, zone] = key.split("|");
+    return {key, name, distance: +distance, zone: +zone};
+  });
 
-  return Object.assign(
-    data.map(d => ({
-      number: d.number,
-      type: d.type,
-      direction: d.direction,
-      stops: stations
-          .map(station => ({station, time: parseTime(d[station.key])}))
-          .filter(station => station.time !== null)
-    })),
-    {stations}
-  );
-}
+const alldata = rawData.map(d => ({
+  number: d.number,
+  type: d.type,
+  direction: d.direction,
+  stops: stations
+      .map(station => ({station, time: parseTime(d[station.key])}))
+      .filter(station => station.time !== null)
+}));
 ```
 
 ```js echo
-const parseTime = {
-  const parseTime = d3.utcParse("%I:%M%p");
-  return string => {
-    const date = parseTime(string);
-    if (date !== null && date.getUTCHours() < 3) date.setUTCDate(date.getUTCDate() + 1);
-    return date;
-  };
-}
+const parse = d3.utcParse("%I:%M%p");
+const parseTime = (string) => {
+  const date = parse(string);
+  if (date !== null && date.getUTCHours() < 3) date.setUTCDate(date.getUTCDate() + 1);
+  return date;
+};
 ```
 
 ```js echo
