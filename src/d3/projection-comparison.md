@@ -29,7 +29,6 @@ const land = topojson.feature(world, world.objects.land);
 const red = projections.find(({name}) => name === redName).value();
 const blue = projections.find(({name}) => name === blueName).value();
 
-const width = 928;
 const heightRed = fitWidth(red);
 const heightBlue = fitWidth(blue);
 const height = Math.max(heightRed, heightBlue);
