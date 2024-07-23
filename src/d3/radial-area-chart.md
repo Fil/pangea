@@ -67,7 +67,7 @@ svg.append("g")
   .join("g")
     .each((d, i) => d.id = DOM.uid("month"))
     .call(g => g.append("path")
-        .attr("stroke", "#000")
+        .attr("stroke", "currentColor")
         .attr("stroke-opacity", 0.2)
         .attr("d", d => `
           M${d3.pointRadial(x(d), innerRadius)}
@@ -83,6 +83,7 @@ svg.append("g")
         `))
     .call(g => g.append("text")
       .append("textPath")
+        .attr("fill", "currentColor")
         .attr("startOffset", 6)
         .attr("xlink:href", d => d.id.href)
         .text(d3.utcFormat("%B")));
@@ -100,7 +101,7 @@ svg.append("g")
     .call(g => g.append("text")
         .attr("y", d => -y(d))
         .attr("dy", "0.35em")
-        .attr("stroke", "#fff")
+        .attr("stroke", "var(--theme-background-alt)")
         .attr("stroke-width", 5)
         .attr("fill", "currentColor")
         .attr("paint-order", "stroke")
@@ -112,8 +113,7 @@ display(svg.node());
 ```
 
 ```js echo
-const data = d3
-  .groups(
+const data = d3.groups(
     await FileAttachment("/data/sfo-temperature.csv").csv({typed: true}),
     ({DATE}) => new Date(Date.UTC(2000, DATE.getUTCMonth(), DATE.getUTCDate())) // group by day of year
   )
@@ -127,7 +127,6 @@ const data = d3
     maxmax: d3.max(v, (d) => d.TMAX || NaN)
   }));
 ```
-
 
 ```js echo
 import * as DOM from "/components/DOM.js";

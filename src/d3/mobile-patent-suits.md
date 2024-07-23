@@ -82,9 +82,7 @@ node
   .attr("x", 8)
   .attr("y", "0.31em")
   .text((d) => d.id)
-  .clone(true)
-  .lower()
-  .attr("fill", "none")
+  .attr("paint-order", "stroke")
   .attr("stroke", "var(--theme-background)")
   .attr("stroke-width", 3);
 
