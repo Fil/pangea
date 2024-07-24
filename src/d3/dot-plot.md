@@ -21,7 +21,7 @@ invalidation.then(() => (clear(), form.removeEventListener("change", clear)));
 ```
 
 ```js
-display(Legend(chart.scales.color, {title: "Age (years)", tickSize: 0}));
+Legend(chart.scales.color, {title: "Age (years)", tickSize: 0})
 ```
 
 ```js echo

@@ -1,7 +1,7 @@
 /**
  * This script generates markdown for the home page, see src/thumbnail/index.md
  */
-import {existsSync, writeFileSync} from "node:fs";
+import {existsSync} from "node:fs";
 import type {AsPlainObject as MinisearchIndex} from "minisearch";
 type Section = {title: string; pages?: string[]; description?: string};
 type Document = {id: string; title: string; light?: string; dark?: string};
@@ -61,11 +61,15 @@ async function main() {
       cat.set(
         word,
         new Set(
-          pages.map((id) => {
-            const i = documents.findIndex((d) => d.id === id);
-            if (i > -1) return String(i);
-            throw new Error(`Couldn't find ${id}`);
-          })
+          pages
+            .map((id) => {
+              const i = documents.findIndex((d) => d.id === id);
+              if (i > -1) return String(i);
+              console.warn(`Couldn't find ${id}`);
+              return "";
+              // throw new Error(`Couldn't find ${id}`);
+            })
+            .filter((d) => d)
         )
       );
     } else {

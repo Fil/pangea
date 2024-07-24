@@ -1,25 +1,20 @@
 ---
 source: https://observablehq.com/@mbostock/the-wealth-health-of-nations
-index: false
-draft: true
+index: true
 ---
 
-```js
-md`
 # The Wealth & Health of Nations
 
-This is a recreation of a [Gapminder visualization](http://gapminder.org/world/) made famous by [Hans Rosling](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen). It shows per-capita income (_x_), life expectancy (_y_) and population (_area_) of 180 nations over the last 209 years, colored by region. Data prior to 1950 is sparse, so this chart uses [bisection](https://en.wikipedia.org/wiki/Binary_search_algorithm) and [linear interpolation](https://en.wikipedia.org/wiki/Linear_interpolation) to fill in missing data points.
-`;
-```
+This is a recreation of a [Gapminder visualization](https://www.gapminder.org/tools/?from=world) made famous by [Hans Rosling](https://www.ted.com/talks/hans_rosling_the_best_stats_you_ve_ever_seen). It shows per-capita income (_x_), life expectancy (_y_) and population (_area_) of 180 nations over the last 209 years, colored by region. Data prior to 1950 is sparse, so this chart uses [bisection](https://en.wikipedia.org/wiki/Binary_search_algorithm) and [linear interpolation](https://en.wikipedia.org/wiki/Linear_interpolation) to fill in missing data points.
 
 ```js
 const date = view(Scrubber(dates, {format: (d) => d.getUTCFullYear(), loop: false}));
 ```
 
 ```js
-const legend = {
-  const id = DOM.uid().id;
-  return html`<style>
+{
+  const id = uid().id;
+  display(html`<style>
 
 .${id} {
   display: inline-flex;
@@ -35,47 +30,47 @@ const legend = {
   background: var(--color);
 }
 
-</style><div style="display: flex; align-items: center; min-height: 33px; font: 10px sans-serif; margin-left: ${margin.left}px;"><div>${color.domain().map(region => html`<span class="${id}" style="--color: ${color(region)}">${document.createTextNode(region)}</span>`)}`;
+</style><div style="display: flex; align-items: center; min-height: 33px; font: 10px sans-serif; margin-left: ${margin.left}px;"><div>${color.domain().map(region => html`<span class="${id}" style="--color: ${color(region)}">${document.createTextNode(region)}</span>`)}`);
 }
 ```
 
 ```js echo
-const chart = {
-  const svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height]);
+const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height]);
 
-  svg.append("g")
-      .call(xAxis);
+svg.append("g")
+    .call(xAxis);
 
-  svg.append("g")
-      .call(yAxis);
+svg.append("g")
+    .call(yAxis);
 
-  svg.append("g")
-      .call(grid);
+svg.append("g")
+    .call(grid);
 
-  const circle = svg.append("g")
-      .attr("stroke", "black")
-    .selectAll("circle")
-    .data(dataAt(1800), d => d.name)
-    .join("circle")
-      .sort((a, b) => d3.descending(a.population, b.population))
-      .attr("cx", d => x(d.income))
-      .attr("cy", d => y(d.lifeExpectancy))
-      .attr("r", d => radius(d.population))
-      .attr("fill", d => color(d.region))
-      .call(circle => circle.append("title")
-        .text(d => [d.name, d.region].join("\n")));
+const circle = svg.append("g")
+    .attr("stroke", "currentColor")
+  .selectAll("circle")
+  .data(dataAt(1800), d => d.name)
+  .join("circle")
+    .sort((a, b) => d3.descending(a.population, b.population))
+    .attr("cx", d => x(d.income))
+    .attr("cy", d => y(d.lifeExpectancy))
+    .attr("r", d => radius(d.population))
+    .attr("fill", d => color(d.region))
+    .call(circle => circle.append("title")
+      .text(d => [d.name, d.region].join("\n")));
 
-  return Object.assign(svg.node(), {
-    update(data) {
-      circle.data(data, d => d.name)
-          .sort((a, b) => d3.descending(a.population, b.population))
-          .attr("cx", d => x(d.income))
-          .attr("cy", d => y(d.lifeExpectancy))
-          .attr("r", d => radius(d.population));
-    }
-  });
-}
+const chart = Object.assign(svg.node(), {
+  update(data) {
+    circle.data(data, d => d.name)
+        .sort((a, b) => d3.descending(a.population, b.population))
+        .attr("cx", d => x(d.income))
+        .attr("cy", d => y(d.lifeExpectancy))
+        .attr("r", d => radius(d.population));
+  }
+});
+
+display(chart);
 ```
 
 ```js echo
@@ -102,9 +97,9 @@ const radius = d3.scaleSqrt([0, 5e8], [0, width / 24]);
 const color = d3
   .scaleOrdinal(
     data.map((d) => d.region),
-    d3.schemeCategory10
+    d3.schemeObservable10
   )
-  .unknown("black");
+  .unknown(dark ? "white" : "black");
 ```
 
 ```js echo
@@ -196,7 +191,7 @@ function valueAt(values, date) {
 ```
 
 ```js echo
-const data = (await FileAttachment("nations.json").json()).map(
+const data = (await FileAttachment("/data/nations.json").json()).map(
   ({name, region, income, population, lifeExpectancy}) => ({
     name,
     region,
@@ -248,9 +243,6 @@ const height = 560;
 ```
 
 ```js echo
-const d3 = require("d3@6.7.0/dist/d3.min.js");
-```
-
-```js echo
 import {Scrubber} from "../components/scrubber.js";
+import {uid} from "/components/DOM.js";
 ```

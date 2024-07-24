@@ -1,115 +1,95 @@
 ---
 source: https://observablehq.com/@tezzutezzu/world-history-timeline
-index: false
-draft: true
+index: true
 ---
 
-```js
-md`
-# World History Timeline
+# World history timeline
+
+<p class="author">by <a href="https://observablehq.com/@tezzutezzu">Danilo Di Cuia</a></p>
 
 Data adapted from [Essential Humanities](http://www.essential-humanities.net/history-overview/world-history-timeline/)
-`;
+
+```js
+const sorting = view(Inputs.select(["region", "time"], {label: "Sorted by", value: "time"}));
 ```
 
 ```js
-const sorting = view(select({title: "Sorted by", options: ["region", "time"], value: "time"}));
+data.forEach((d) => d.color = d3.color(color(d.region)));
+
+const chart = document.createElement("div");
+const svg = d3.create("svg")
+  .attr("viewBox", [0, 0, width, height])
+  .style("font", "11px sans-serif");
+
+const g = svg.append("g").attr("transform", (d,i)=>`translate(${margin.left} ${margin.top})`);
+
+const groups = g.selectAll("g")
+  .data(data)
+  .join("g")
+  .attr("class", "civ")
+
+const tooltip = d3.select(document.createElement("div")).call(createTooltip);
+
+const line = svg.append("line")
+  .attr("y1", margin.top - 10)
+  .attr("y2", height-margin.bottom)
+  .attr("stroke", dark ? "rgba(255,255,255,0.2)" : "rgba(0,0,0,0.2)")
+  .style("pointer-events","none");
+
+groups.attr("transform", (d, i) => `translate(0;${y(i)})`);
+
+groups
+  .each(getRect)
+  .on("mouseover", function(event, d) {
+    d3.select(this).select("rect").attr("fill", d.color.darker())
+    tooltip
+      .style("opacity", 1)
+      .html(getTooltipContent(d))
+  })
+  .on("mouseleave", function(event, d) {
+    d3.select(this).select("rect").attr("fill", d.color)
+    tooltip.style("opacity", 0)
+  });
+
+svg
+  .append("g")
+  .attr("transform", (d,i)=>`translate(${margin.left},${margin.top-10})`)
+  .call(axisTop)
+
+svg
+  .append("g")
+  .attr("transform", (d,i)=>`translate(${margin.left},${height-margin.bottom})`)
+  .call(axisBottom)
+
+svg.on("mousemove", function(event, d) {
+  let [x,y] = d3.pointer(event, svg.node());
+  line.attr("transform", `translate(${x} 0)`);
+  y += 20;
+  if (x > width / 2) x -= 100;
+  tooltip
+    .style("left", x + "px")
+    .style("top", y + "px")
+})
+
+chart.style= "position: relative;";
+chart.append(svg.node(), tooltip.node());
+chart.groups = groups;
+
+chart.update = ((data) => {
+  const civs = d3.selectAll(".civ")
+  civs.data(data, (d) => d.civilization)
+    .transition()
+    .ease(d3.easeCubic)
+    .attr("transform", (d,i) => `translate(0 ${y(i)})`)
+})
+
+display(chart);
 ```
 
 ```js
-const chart = {
-
-  let filteredData;
-  if(sorting !== "time") {
-    filteredData = [].concat.apply([], dataByRegion.map(d=>d.values));
-  } else {
-    filteredData = data.sort((a,b)=>  a.start-b.start);
-  }
-
-  filteredData.forEach(d=> d.color = d3.color(color(d.region)))
-
-
-  let parent = this;
-  if (!parent) {
-    parent = document.createElement("div");
-    const svg = d3.select(DOM.svg(width, height));
-
-
-    const g = svg.append("g").attr("transform", (d,i)=>`translate(${margin.left} ${margin.top})`);
-
-    const groups = g
-    .selectAll("g")
-    .data(filteredData)
-    .enter()
-    .append("g")
-    .attr("class", "civ")
-
-
-    const tooltip = d3.select(document.createElement("div")).call(createTooltip);
-
-    const line = svg.append("line").attr("y1", margin.top-10).attr("y2", height-margin.bottom).attr("stroke", "rgba(0,0,0,0.2)").style("pointer-events","none");
-
-    groups.attr("transform", (d,i)=>`translate(0 ${y(i)})`)
-
-    groups
-      .each(getRect)
-      .on("mouseover", function(d) {
-      d3.select(this).select("rect").attr("fill", d.color.darker())
-
-      tooltip
-        .style("opacity", 1)
-        .html(getTooltipContent(d))
-    })
-      .on("mouseleave", function(d) {
-      d3.select(this).select("rect").attr("fill", d.color)
-      tooltip.style("opacity", 0)
-    })
-
-
-    svg
-      .append("g")
-      .attr("transform", (d,i)=>`translate(${margin.left} ${margin.top-10})`)
-      .call(axisTop)
-
-    svg
-      .append("g")
-      .attr("transform", (d,i)=>`translate(${margin.left} ${height-margin.bottom})`)
-      .call(axisBottom)
-
-
-
-    svg.on("mousemove", function(d) {
-
-      let [x,y] = d3.mouse(this);
-      line.attr("transform", `translate(${x} 0)`);
-      y +=20;
-      if(x>width/2) x-= 100;
-
-      tooltip
-        .style("left", x + "px")
-        .style("top", y + "px")
-    })
-
-    parent.appendChild(svg.node());
-    parent.appendChild(tooltip.node());
-    parent.groups = groups;
-
-  } else {
-
-
-    const civs = d3.selectAll(".civ")
-
-    civs.data(filteredData, d=>d.civilization)
-      .transition()
-      // .delay((d,i)=>i*10)
-      .ease(d3.easeCubic)
-      .attr("transform", (d,i)=>`translate(0 ${y(i)})`)
-
-
-  }
-  return parent
-
-}
+chart.update(sorting === "time"
+  ? data.sort((a,b)=>  a.start-b.start)
+  : [].concat.apply([], [...dataByRegion.values()]));
 ```
 
 ```js
@@ -152,6 +132,7 @@ const createTooltip = function (el) {
     .style("pointer-events", "none")
     .style("top", 0)
     .style("opacity", 0)
+    .style("color", "black")
     .style("background", "white")
     .style("border-radius", "5px")
     .style("box-shadow", "0 0 10px rgba(0,0,0,.25)")
@@ -176,24 +157,18 @@ const getRect = function (d) {
     .text(d.civilization)
     .attr("x", isLabelRight ? sx - 5 : sx + w + 5)
     .attr("y", 2.5)
-    .attr("fill", "black")
+    .attr("fill", "currentColor")
     .style("text-anchor", isLabelRight ? "end" : "start")
     .style("dominant-baseline", "hanging");
 };
 ```
 
 ```js
-const dataByTimeline = d3
-  .nest()
-  .key((d) => d.timeline)
-  .entries(data);
+const dataByTimeline = d3.group(data, (d) => d.timeline);
 ```
 
 ```js
-const dataByRegion = d3
-  .nest()
-  .key((d) => d.region)
-  .entries(data);
+const dataByRegion = d3.group(data, (d) => d.region);
 ```
 
 ```js
@@ -209,49 +184,18 @@ const formatDate = (d) => (d < 0 ? `${-d}BC` : `${d}AD`);
 ```
 
 ```js
-const d3 = require("d3@5");
+const data = FileAttachment("/data/civilizations.csv").csv({typed: true})
+  .then((data) => data.sort((a, b) => a.start - b.start));
 ```
 
 ```js
-const csv = d3.csvParse(await FileAttachment("civilization timelines - civilization timelines.csv").text());
+const regions = [...d3.group(data, (d) => d.region).keys()];
 ```
 
 ```js
-const data = csv
-  .map((d) => {
-    return {
-      ...d,
-      start: +d.start,
-      end: +d.end
-    };
-  })
-  .sort((a, b) => a.start - b.start);
-```
-
-```js
-const regions = d3
-  .nest()
-  .key((d) => d.region)
-  .entries(data)
-  .map((d) => d.key);
-```
-
-```js
-const timelines = dataByTimeline.map((d) => d.key);
+const timelines = [...dataByTimeline.keys()];
 ```
 
 ```js
 const color = d3.scaleOrdinal(d3.schemeSet2).domain(regions);
-```
-
-```js
-import {checkbox, select} from "@jashkenas/inputs";
-```
-
-```js
-html`CSS<style>
-    svg {
-      font: 11px sans-serif;
-    }
-  </style>`;
 ```
