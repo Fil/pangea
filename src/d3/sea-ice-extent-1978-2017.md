@@ -1,25 +1,21 @@
 ---
 source: https://observablehq.com/@d3/sea-ice-extent-1978-2017
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Sea ice extent, 1978–2017</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Sea ice extent, 1978–2017
 
-The average daily extent of sea ice in the northern hemisphere, measured in millions of square kilometers. Data: [NSIDC](http://nsidc.org/data/nsidc-0051), [Tom Shanley](http://bl.ocks.org/tomshanley/77f12d419e71e572f4250a52ef9bf1ad)
+The average daily extent of sea ice in the northern hemisphere, measured in millions of square kilometers. Data: [NSIDC](http://nsidc.org/data/nsidc-0051), [Tom Shanley](http://blocks.roadtolarissa.com/tomshanley/77f12d419e71e572f4250a52ef9bf1ad)
 
 ```js
 const replay = view(html`<button>Replay</button>`);
 ```
 
 ```js
-legend({title: "Year", color: chart.scales.color, tickFormat: (x) => x});
+Legend(chart.scales.color, {title: "Year", tickFormat: (x) => x})
 ```
 
 ```js echo
-const chart = {
   replay;
 
   const width = 928;
@@ -64,6 +60,9 @@ const chart = {
         .attr("x", 3)
         .attr("text-anchor", "start")
         .attr("font-weight", "bold")
+        .attr("stroke", "var(--theme-background)")
+        .attr("stroke-width", 3)
+        .attr("paint-order", "stroke")
         .text(data.y));
 
   // Create the container for lines.
@@ -76,7 +75,7 @@ const chart = {
 
   // Start the animation and return the chart.
   requestAnimationFrame(animate);
-  return Object.assign(svg.node(), {scales: {color: z}});
+  const chart = display(Object.assign(svg.node(), {scales: {color: z}}));
 
   // Animate: add lines iteratively.
   async function animate() {
@@ -94,7 +93,7 @@ const chart = {
       if (!isNaN(values[values.length - 1].value)) {
         g.append("text")
             .attr("paint-order", "stroke")
-            .attr("stroke", "white")
+            .attr("stroke", "var(--theme-background)")
             .attr("stroke-width", 3)
             .attr("fill", z(key))
             .attr("dx", 4)
@@ -105,7 +104,7 @@ const chart = {
       }
     }
   }
-}
+
 ```
 
 ```js echo
@@ -126,7 +125,7 @@ function intrayear(date) {
 ```js echo
 const data = Object.assign(
   await d3
-    .csvParse(await FileAttachment("sea-ice-extent.csv").text(), ({date, extent}) => ({
+    .csvParse(await FileAttachment("/data/sea-ice-extent.csv").text(), ({date, extent}) => ({
       date: new Date(date),
       value: 1e6 * extent
     }))
@@ -136,7 +135,7 @@ const data = Object.assign(
 ```
 
 ```js echo
-import {legend} from "@d3/color-legend";
+import {Legend} from "/components/color-legend.js";
 ```
 
 Or, using [Observable Plot](/plot/)’s concise API:
@@ -155,5 +154,5 @@ Plot.plot({
       strokeWidth: 0.75
     })
   ]
-});
+})
 ```

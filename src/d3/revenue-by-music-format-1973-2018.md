@@ -1,106 +1,92 @@
 ---
 source: https://observablehq.com/@d3/revenue-by-music-format-1973-2018
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Revenue by music format, 1973–2018</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Revenue by music format, 1973–2018
 
 Data: [RIAA](https://www.riaa.com/u-s-sales-database/)
 
 ```js
-const legend = swatches({
-  color: chart.scales.color,
+Swatches(chart.scales.color, {
   columns: "130px 4",
   marginLeft: 10
-});
+})
 ```
 
 ```js echo
-const chart = {
+const width = 928;
+const height = 500;
+const marginTop = 20;
+const marginRight = 30;
+const marginBottom = 30;
+const marginLeft = 30;
 
-  const width = 928;
-  const height = 500;
-  const marginTop = 20;
-  const marginRight = 30;
-  const marginBottom = 30;
-  const marginLeft = 30;
+// Create scales.
+const x = d3.scaleBand()
+    .domain(data.map(d => d.year))
+    .rangeRound([marginLeft, width - marginRight]);
 
-  // Create scales.
-  const x = d3.scaleBand()
-      .domain(data.map(d => d.year))
-      .rangeRound([marginLeft, width - marginRight]);
+const y = d3.scaleLinear()
+    .domain([0, d3.max(series, d => d3.max(d, d => d[1]))]).nice()
+    .range([height - marginBottom, marginTop]);
 
-  const y = d3.scaleLinear()
-      .domain([0, d3.max(series, d => d3.max(d, d => d[1]))]).nice()
-      .range([height - marginBottom, marginTop]);
+const color = d3.scaleOrdinal()
+    .domain(colors.keys())
+    .range(colors.values());
 
-  const color = d3.scaleOrdinal()
-      .domain(colors.keys())
-      .range(colors.values());
+// Create the SVG container.
+const svg = d3.create("svg")
+    .attr("viewBox", [0, 0, width, height])
+    .attr("width", width)
+    .attr("height", height)
+    .attr("style", "max-width: 100%; height: auto;");
 
-  // Create the SVG container.
-  const svg = d3.create("svg")
-      .attr("viewBox", [0, 0, width, height])
-      .attr("width", width)
-      .attr("height", height)
-      .attr("style", "max-width: 100%; height: auto;");
+// Create the bars.
+const formatRevenue = x => (+(x / 1e3).toFixed(2) >= 1)
+  ? `${(x / 1e3).toFixed(2)}B`
+  : `${(x / 1).toFixed(0)}M`;
 
-  // Create the bars.
-  const formatRevenue = x => (+(x / 1e9).toFixed(2) >= 1)
-    ? `${(x / 1e9).toFixed(2)}B`
-    : `${(x / 1e6).toFixed(0)}M`;
+svg.append("g")
+  .selectAll("g")
+  .data(series)
+  .join("g")
+    .attr("fill", ({key}) => color(key))
+    .call(g => g.selectAll("rect")
+      .data(d => d)
+      .join("rect")
+        .attr("x", d => x(d.data.year))
+        .attr("y", d => y(d[1]))
+        .attr("width", x.bandwidth() - 1)
+        .attr("height", d => y(d[0]) - y(d[1]))
+      .append("title")
+        .text(d => `${d.data.format}, ${d.data.year.getUTCFullYear()}
+${formatRevenue(d.data.revenue)}`));
 
-  svg.append("g")
-    .selectAll("g")
-    .data(series)
-    .join("g")
-      .attr("fill", ({key}) => color(key))
-      .call(g => g.selectAll("rect")
-        .data(d => d)
-        .join("rect")
-          .attr("x", d => x(d.data.year))
-          .attr("y", d => y(d[1]))
-          .attr("width", x.bandwidth() - 1)
-          .attr("height", d => y(d[0]) - y(d[1]))
-       .append("title")
-          .text(d => `${d.data.name}, ${d.data.year}
-${formatRevenue(d.data.value)}`));
+// Create axes.
+svg.append("g")
+    .attr("transform", `translate(0,${height - marginBottom})`)
+    .call(d3.axisBottom(x)
+        .tickValues(d3.utcTicks(...d3.extent(x.domain()), width / 80))
+        .tickFormat(d3.utcFormat("%Y"))
+        .tickSizeOuter(0));
 
-  // Create axes.
-  svg.append("g")
-      .attr("transform", `translate(0,${height - marginBottom})`)
-      .call(d3.axisBottom(x)
-          .tickValues(d3.ticks(...d3.extent(x.domain()), width / 80))
-          .tickSizeOuter(0));
+svg.append("g")
+    .attr("transform", `translate(${marginLeft},0)`)
+    .call(d3.axisLeft(y)
+        .tickFormat(x => (x / 1e3).toFixed(0)))
+    .call(g => g.select(".domain").remove())
+    .call(g => g.select(".tick:last-of-type text").clone()
+        .attr("x", 3)
+        .attr("text-anchor", "start")
+        .attr("font-weight", "bold")
+        .text("Revenue (billions, adj.)"));
 
-  svg.append("g")
-      .attr("transform", `translate(${marginLeft},0)`)
-      .call(d3.axisLeft(y)
-          .tickFormat(x => (x / 1e9).toFixed(0)))
-      .call(g => g.select(".domain").remove())
-      .call(g => g.select(".tick:last-of-type text").clone()
-          .attr("x", 3)
-          .attr("text-anchor", "start")
-          .attr("font-weight", "bold")
-          .text("Revenue (billions, adj.)"));
-
-  return Object.assign(svg.node(), {scales: {color}});
-}
+const chart = display(Object.assign(svg.node(), {scales: {color}}));
 ```
 
 ```js echo
-const data = FileAttachment("music.csv")
-  .csv()
-  .then((data) =>
-    data.map(({Format, Year, ["Revenue (Inflation Adjusted)"]: Revenue}) => ({
-      name: Format,
-      year: +Year,
-      value: +Revenue
-    }))
-  );
+const data = FileAttachment("/data/riaa-us-revenue.csv").csv({typed: true});
 ```
 
 ```js echo
@@ -135,14 +121,14 @@ const colors = new Map([
 const series = d3
   .stack()
   .keys(colors.keys())
-  .value((group, key) => group.get(key).value)
+  .value((group, key) => group.get(key).revenue)
   .order(d3.stackOrderReverse)(
     d3
       .rollup(
         data,
         ([d]) => d,
         (d) => d.year,
-        (d) => d.name
+        (d) => d.format
       )
       .values()
   )
@@ -150,7 +136,7 @@ const series = d3
 ```
 
 ```js echo
-import {swatches} from "@d3/color-legend";
+import {Swatches} from "/components/color-legend.js";
 ```
 
 For a similar chart using [Observable Plot](/plot)’s concise API, see [this notebook](https://observablehq.com/@observablehq/plot-stacking-order), that emphasizes the various ways data can be stacked.
