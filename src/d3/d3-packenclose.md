@@ -1,10 +1,8 @@
 ---
 source: https://observablehq.com/@d3/d3-packenclose
-index: false
-draft: true
+author: Mike Bostock
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">d3.packEnclose</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # d3.packEnclose
 
@@ -29,10 +27,10 @@ svg`<svg style="width:${width}px;height:auto;display:block;overflow:visible;" vi
   <g fill="none" stroke="red">
     <circle cx="${enclosingCircle.x}" cy="${enclosingCircle.y}" r="${enclosingCircle.r}" />
   </g>
-  <g fill-opacity="0.1" stroke="black">
+  <g fill-opacity="0.1" stroke="currentColor">
     ${circles.map(({x, y, r}) => svg`<circle cx="${x}" cy="${y}" r="${r}" />`)}
   </g>
-</svg>`;
+</svg>`
 ```
 
 d3.packEnclose is used in conjunction with [d3.packSiblings](https://d3js.org/d3-hierarchy/pack#packSiblings) by [d3.pack](/@d3/circle-packing) to compute the bounding circle for each internal node in a circle-packing diagram.
@@ -44,13 +42,16 @@ const replay = view(html`<button>Replay</button>`);
 ```
 
 ```js
-{
-  const context = DOM.context2d(width, 500);
-  const L = d3.packSiblings(d3.range(200).map(() => ({r: Math.random() * 22})));
+const context = context2d(width, 500);
+display(context.canvas);
 
-  replay;
+const L = d3.packSiblings(d3.range(200).map(() => ({r: Math.random() * 22})));
 
+replay;
+
+(async () => {
   for (const S of encloseStar(L)) {
+    console.warn("yo")
     context.save();
     context.clearRect(0, 0, width, 500);
     context.translate(width / 2, 250);
@@ -77,9 +78,9 @@ const replay = view(html`<button>Replay</button>`);
         context.moveTo(p.x + p.r, p.y);
         context.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
       });
-      context.fillStyle = "rgba(0,0,0,0.1)";
+      context.fillStyle = dark ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)";
       context.fill();
-      context.strokeStyle = "#000";
+      context.strokeStyle = dark ? "white" : "black";
       context.stroke();
     }
 
@@ -88,30 +89,29 @@ const replay = view(html`<button>Replay</button>`);
       context.moveTo(p.x + p.r, p.y);
       context.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
     });
-    context.fillStyle = "black";
+    context.fillStyle = dark ? "white" : "black";
     context.fill();
 
     context.restore();
-    yield context.canvas;
+    await new Promise((resolve) => setTimeout(() => resolve(true), 10));
     await visibility();
   }
-}
+})();
 ```
 
-To start, let’s think about how to represent an enclosing circle. As you drag circles <nobr>_L_ <svg style="overflow:visible;" width="1.8em" height="1em" fill-opacity="0.1" stroke-width="1.5" stroke="black" viewBox="-10 -10 36 20">
+To start, let’s think about how to represent an enclosing circle. As you drag circles <nobr>_L_ <svg style="overflow:visible;" width="1.8em" height="1em" fill-opacity="0.1" stroke-width="1.5" stroke="currentColor" viewBox="-10 -10 36 20">
 <circle r="8"></circle>
 <circle cx="17" cy="6" r="7"></circle>
 </svg></nobr> below, notice that the enclosing circle <nobr>_e_ <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
 <circle fill="none" stroke="red" cy="2" r="8"></circle>
-</svg></nobr> only moves when you move a circle that is _tangent_ to the enclosing circle, and that the set of tangent circles <svg style="overflow:visible;" width="1.8em" height="1em" viewBox="-10 -10 36 20">
+</svg></nobr> only moves when you move a circle that is _tangent_ to the enclosing circle, and that the set of tangent circles <svg style="overflow:visible;" width="1.8em" height="1em" viewBox="-10 -10 36 20" stroke="currentColor">
 <circle r="8"></circle>
 <circle cx="17" cy="6" r="7"></circle>
 </svg> depends on how the circles are arranged.
 
 ```js
 {
-  var svg = d3
-    .select(DOM.svg(width, height))
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
     .style("overflow", "visible")
     .datum([
       {x: 302, y: 105, r: 47},
@@ -126,11 +126,11 @@ To start, let’s think about how to represent an enclosing circle. As you drag 
       {x: 286, y: 141, r: 4}
     ]);
 
-  var e = svg.append("circle").attr("stroke", "red").attr("fill", "none");
+  const e = svg.append("circle").attr("stroke", "red").attr("fill", "none");
 
-  var p = svg
+  const p = svg
     .append("g")
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill-opacity", 0.1)
     .attr("cursor", "move")
     .selectAll("circle")
@@ -166,7 +166,7 @@ To start, let’s think about how to represent an enclosing circle. As you drag 
 
   update();
 
-  return svg.node();
+  display(svg.node());
 }
 ```
 
@@ -179,10 +179,10 @@ tex.block`r_a \geq r_b + \sqrt{(x_a - x_b)^2 + (y_a - y_b)^2}`;
 ```
 
 In the diagram below, the larger circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
-<circle cy="2" fill="none" stroke="black" r="8"></circle>
+<circle cy="2" fill="none" stroke="currentColor" r="8"></circle>
 </svg> represents _a_ and
 the smaller circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
-<circle cy="2" fill-opacity="0.1" stroke="black" r="8"></circle>
+<circle cy="2" fill-opacity="0.1" stroke="currentColor" r="8"></circle>
 </svg> represents _b_. The inequality value can be seen
 as the radius of gray circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
 <circle cy="2" fill="none" stroke="gray" r="8"></circle>
@@ -190,31 +190,35 @@ as the radius of gray circle <svg style="overflow:visible;" width="1em" height="
 
 ```js
 {
-  var svg = d3.select(DOM.svg(width, height)).style("overflow", "visible");
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height]).style("overflow", "visible");
 
-  var delta = svg.append("line").attr("stroke", "black").attr("stroke-width", 2);
+  const delta = svg.append("line").attr("stroke", "currentColor").attr("stroke-width", 2);
 
-  var a = svg
+  const a = svg
     .append("g")
     .datum({x: 290, y: 201, r: 144})
     .attr("transform", (d) => `translate(${d.x},${d.y})`);
 
   a.append("circle")
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill", "none")
     .attr("r", (d) => d.r);
 
-  a.append("circle").attr("r", 3.5);
+  a.append("circle")
+    .attr("fill", "currentColor")
+    .attr("r", 3.5);
 
   a.append("circle").attr("class", "gray").attr("stroke", "gray").attr("fill", "none");
 
-  var b = svg.append("g").datum({x: 302, y: 130, r: 47}).attr("cursor", "move").call(d3.drag().on("drag", dragged));
+  const b = svg.append("g").datum({x: 302, y: 130, r: 47}).attr("cursor", "move").call(d3.drag().on("drag", dragged));
 
   b.append("circle")
     .attr("fill-opacity", 0.1)
     .attr("r", (d) => d.r);
 
-  b.append("circle").attr("r", 3.5);
+  b.append("circle")
+    .attr("fill", "currentColor")
+    .attr("r", 3.5);
 
   svg
     .append("path")
@@ -241,13 +245,13 @@ as the radius of gray circle <svg style="overflow:visible;" width="1em" height="
 
     b.attr("transform", (d) => `translate(${d.x},${d.y})`)
       .select("circle")
-      .attr("stroke", e ? "black" : "red")
-      .attr("fill", e ? "black" : "red");
+      .attr("stroke", e ? "currentColor" : "red")
+      .attr("fill", e ? "currentColor" : "red");
 
     a.select(".gray").attr("r", l + bd.r);
 
     delta
-      .attr("stroke", e ? "black" : "red")
+      .attr("stroke", e ? "currentColor" : "red")
       .attr("x1", ad.x)
       .attr("y1", ad.y)
       .attr("x2", bd.x)
@@ -256,7 +260,7 @@ as the radius of gray circle <svg style="overflow:visible;" width="1em" height="
 
   update();
 
-  return svg.node();
+  display(svg.node());
 }
 ```
 
@@ -344,23 +348,22 @@ If we have two input circles, and neither contains the other, we can compute the
 
 ```js
 {
-  var svg = d3
-    .select(DOM.svg(width, height))
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
     .style("overflow", "visible")
     .datum([
       {x: 290, y: 201, r: 80},
       {x: 302, y: 130, r: 47}
     ]);
 
-  var delta = svg.append("line").attr("stroke", "red").attr("stroke-width", 2).attr("stroke-linecap", "round");
+  const delta = svg.append("line").attr("stroke", "red").attr("stroke-width", 2).attr("stroke-linecap", "round");
 
-  var e = svg.append("g");
+  const e = svg.append("g");
 
   e.append("circle").attr("fill", "none").attr("stroke", "red");
 
   e.append("circle").attr("fill", "red").attr("r", 3.5);
 
-  var circle = svg
+  const circle = svg
     .append("g")
     .attr("cursor", "move")
     .selectAll("g")
@@ -372,11 +375,13 @@ If we have two input circles, and neither contains the other, we can compute the
 
   circle
     .append("circle")
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill-opacity", 0.1)
     .attr("r", (d) => d.r);
 
-  circle.append("circle").attr("r", 3.5);
+  circle.append("circle")
+    .attr("fill", "currentColor")
+    .attr("r", 3.5);
 
   svg
     .append("path")
@@ -387,14 +392,14 @@ If we have two input circles, and neither contains the other, we can compute the
     .text("Try dragging a circle!");
 
   function dragged(event) {
-    var d = d3.select(this).datum();
+    const d = d3.select(this).datum();
     d.x = Math.max(0, Math.min(width, event.x));
     d.y = Math.max(0, Math.min(height, event.y));
     update();
   }
 
   function update() {
-    var circles = svg.datum(),
+    const circles = svg.datum(),
       ad = circles[0],
       bd = circles[1],
       dx = bd.x - ad.x,
@@ -414,14 +419,14 @@ If we have two input circles, and neither contains the other, we can compute the
       return;
     }
 
-    var ed = encloseBasis2(ad, bd);
+    const ed = encloseBasis2(ad, bd);
 
     e.style("display", null).attr("transform", `translate(${ed.x},${ed.y})`).select("circle").attr("r", ed.r);
   }
 
   update();
 
-  return svg.node();
+  display(svg.node());
 }
 ```
 
@@ -494,19 +499,18 @@ The two-bases are shown below in gray <svg style="overflow:visible;" width="1em"
 
 ```js
 {
-  var circles = [
+  const circles = [
     {x: 328, y: 125, r: 47},
     {x: 415, y: 222, r: 23},
     {x: 257, y: 258, r: 22}
   ];
 
-  var svg = d3
-    .select(DOM.svg(width, height))
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
     .style("overflow", "visible")
     .datum(circles)
     .property("value", (d) => d);
 
-  var e2 = svg
+  const e2 = svg
     .append("g")
     .attr("stroke", "gray")
     .attr("fill", "none")
@@ -519,11 +523,11 @@ The two-bases are shown below in gray <svg style="overflow:visible;" width="1em"
     .enter()
     .append("circle");
 
-  var e3 = svg.append("circle").attr("stroke", "red").attr("fill", "none");
+  const e3 = svg.append("circle").attr("stroke", "red").attr("fill", "none");
 
-  var p = svg
+  const p = svg
     .append("g")
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill-opacity", 0.1)
     .attr("cursor", "move")
     .selectAll("circle")
@@ -581,7 +585,7 @@ The two-bases are shown below in gray <svg style="overflow:visible;" width="1em"
 
   update();
 
-  return svg.node();
+  display(svg.node());
 }
 ```
 
@@ -701,7 +705,7 @@ Let’s look at examples of each of these three cases.
 
 If _p_ <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
 <circle cy="2" fill="steelblue" fill-opacity="0.1" stroke="steelblue" r="8"></circle>
-</svg> encloses every circle in _B_ <svg style="overflow:visible;" width="1.8em" height="1em" fill-opacity="0.1" stroke-width="1.5" stroke="black" viewBox="-10 -10 36 20">
+</svg> encloses every circle in _B_ <svg style="overflow:visible;" width="1.8em" height="1em" fill-opacity="0.1" stroke-width="1.5" stroke="currentColor" viewBox="-10 -10 36 20">
 <circle r="8"></circle>
 <circle cx="17" cy="6" r="7"></circle>
 </svg>, {_p_} is the new basis. The old enclosing circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
@@ -710,7 +714,8 @@ If _p_ <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 
 
 ```js
 {
-  var svg = d3.select(DOM.svg(width, height - 100)).datum([
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height - 100])
+  .datum([
     {x: 328, y: 85, r: 47},
     {x: 415, y: 182, r: 23},
     {x: 257, y: 218, r: 22},
@@ -719,7 +724,7 @@ If _p_ <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 
 
   svg
     .append("g")
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill-opacity", 0.1)
     .selectAll("circle")
     .data((d) => d)
@@ -740,28 +745,29 @@ If _p_ <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 
     .attr("cy", (d) => d.y)
     .attr("r", (d) => d.r);
 
-  return svg.node();
+  display(svg.node());
 }
 ```
 
 #### Two-Basis
 
-If _B_ ⊈ _p_, then we must next look for a two-basis {_B_[*i*], _p_} that encloses every circle in _B_ <svg style="overflow:visible;" width="1.8em" height="1em" fill-opacity="0.1" stroke-width="1.5" stroke="black" viewBox="-10 -10 36 20">
+If _B_ ⊈ _p_, then we must next look for a two-basis {_B_[*i*], _p_} that encloses every circle in _B_ <svg style="overflow:visible;" width="1.8em" height="1em" fill-opacity="0.1" stroke-width="1.5" stroke="currentColor" viewBox="-10 -10 36 20">
 <circle r="8"></circle>
 <circle cx="17" cy="6" r="7"></circle>
 </svg>. Below, the tangent circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
-<circle cy="2" fill="none" stroke="black" r="8"></circle>
+<circle cy="2" fill="none" stroke="currentColor" r="8"></circle>
 </svg> of circle _p_ <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
 <circle cy="2" fill="steelblue" fill-opacity="0.1" stroke="steelblue" r="8"></circle>
 </svg> and circle _B_[*i*] <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
-<circle cy="2" fill-opacity="0.1" stroke="black" r="8"></circle>
+<circle cy="2" fill-opacity="0.1" stroke="currentColor" r="8"></circle>
 </svg> encloses every circle in _B_ and thus replaces the old tangent circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
 <circle cy="2" fill="none" stroke="red" r="8"></circle>
 </svg>. If _B_ only has one circle, then {_B_[0], _p_} must be a two-basis that encloses _B_ because _B_[0] ⊈ _p_.
 
 ```js
 {
-  var svg = d3.select(DOM.svg(width, height - 100)).datum([
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height - 100])
+  .datum([
     {x: 328, y: 85, r: 47},
     {x: 415, y: 182, r: 23},
     {x: 257, y: 218, r: 22},
@@ -780,7 +786,7 @@ If _B_ ⊈ _p_, then we must next look for a two-basis {_B_[*i*], _p_} that encl
   svg
     .append("circle")
     .datum(enclose(svg.datum()))
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill", "none")
     .attr("cx", (d) => d.x)
     .attr("cy", (d) => d.y)
@@ -788,7 +794,7 @@ If _B_ ⊈ _p_, then we must next look for a two-basis {_B_[*i*], _p_} that encl
 
   svg
     .append("g")
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill-opacity", 0.1)
     .selectAll("circle")
     .data((d) => d)
@@ -800,24 +806,25 @@ If _B_ ⊈ _p_, then we must next look for a two-basis {_B_[*i*], _p_} that encl
     .attr("cy", (d) => d.y)
     .attr("r", (d) => d.r);
 
-  return svg.node();
+  display(svg.node());
 }
 ```
 
 #### Three-Basis
 
-If no suitable one- or two-basis is found, there must be a three-basis {_B_[*i*], _B_[*j*], _p_} that encloses every circle in _B_ <svg style="overflow:visible;" width="1.8em" height="1em" fill-opacity="0.1" stroke-width="1.5" stroke="black" viewBox="-10 -10 36 20">
+If no suitable one- or two-basis is found, there must be a three-basis {_B_[*i*], _B_[*j*], _p_} that encloses every circle in _B_ <svg style="overflow:visible;" width="1.8em" height="1em" fill-opacity="0.1" stroke-width="1.5" stroke="currentColor" viewBox="-10 -10 36 20">
 <circle r="8"></circle>
 <circle cx="17" cy="6" r="7"></circle>
 </svg>. Below, _p_ <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
 <circle cy="2" fill="steelblue" fill-opacity="0.1" stroke="steelblue" r="8"></circle>
 </svg> replaces a circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
-<circle cy="2" fill-opacity="0.1" stroke="black" r="8"></circle>
+<circle cy="2" fill-opacity="0.1" stroke="currentColor" r="8"></circle>
 </svg> from _B_ to form the new three-basis.
 
 ```js
 {
-  var svg = d3.select(DOM.svg(width, height - 100)).datum([
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height - 100])
+  .datum([
     {x: 328, y: 85, r: 47},
     {x: 415, y: 182, r: 23},
     {x: 257, y: 218, r: 22},
@@ -836,7 +843,7 @@ If no suitable one- or two-basis is found, there must be a three-basis {_B_[*i*]
   svg
     .append("circle")
     .datum(enclose(svg.datum()))
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill", "none")
     .attr("cx", (d) => d.x)
     .attr("cy", (d) => d.y)
@@ -844,7 +851,7 @@ If no suitable one- or two-basis is found, there must be a three-basis {_B_[*i*]
 
   svg
     .append("g")
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill-opacity", 0.1)
     .selectAll("circle")
     .data((d) => d)
@@ -856,7 +863,7 @@ If no suitable one- or two-basis is found, there must be a three-basis {_B_[*i*]
     .attr("cy", (d) => d.y)
     .attr("r", (d) => d.r);
 
-  return svg.node();
+  display(svg.node());
 }
 ```
 
@@ -867,21 +874,22 @@ Whew, almost there!
 Unfortunately it’s not sufficient to simply extend the basis _B_ to enclose _p_. The extended basis represents the smallest enclosing circle of _B_ ∪ _p_, but a bigger circle might be needed to enclose the other circles {_L_[*0*], … _L_[*i*]}: there may exist an input circle that is enclosed by the old tangent circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
 <circle cy="2" fill="none" stroke="red" r="8"></circle>
 </svg> but _not_ enclosed by the new tangent circle <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
-<circle cy="2" fill="none" stroke="black" r="8"></circle>
+<circle cy="2" fill="none" stroke="currentColor" r="8"></circle>
 </svg>. This gap <svg style="overflow:visible;" width="1em" height="1em" viewBox="-10 -10 20 20" stroke-width="1.5">
 <circle cy="2" fill="red" stroke="red" r="8"></circle>
 </svg> is highlighted below. We must find a new basis *B*ʹ that encloses all the input circles seen so far before we can move on to the next circle _L_[*i* + 1].
 
 ```js
 {
-  var svg = d3.select(DOM.svg(width, height)).datum([
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height])
+  .datum([
     {x: 328, y: 135, r: 47},
     {x: 415, y: 232, r: 23},
     {x: 257, y: 268, r: 22},
     {x: 430, y: 260, r: 30, color: "steelblue"}
   ]);
 
-  var e0 = enclose(svg.datum().slice(0, 3)),
+  const e0 = enclose(svg.datum().slice(0, 3)),
     e1 = enclose(svg.datum());
 
   svg
@@ -946,7 +954,7 @@ Unfortunately it’s not sufficient to simply extend the basis _B_ to enclose _p
   svg
     .append("circle")
     .datum(e1)
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill", "none")
     .attr("cx", (d) => d.x)
     .attr("cy", (d) => d.y)
@@ -954,7 +962,7 @@ Unfortunately it’s not sufficient to simply extend the basis _B_ to enclose _p
 
   svg
     .append("g")
-    .attr("stroke", "black")
+    .attr("stroke", "currentColor")
     .attr("fill-opacity", 0.1)
     .selectAll("circle")
     .data((d) => d)
@@ -965,7 +973,7 @@ Unfortunately it’s not sufficient to simply extend the basis _B_ to enclose _p
     .attr("cy", (d) => d.y)
     .attr("r", (d) => d.r);
 
-  return svg.node();
+  display(svg.node());
 }
 ```
 
@@ -1020,8 +1028,7 @@ function* encloseStar(L) {
 ```
 
 ```js echo
-path =
-  "M0,-300l100,100h-50v150h150v-50L300,0l-100,100v-50h-150v150h50L0,300l-100,-100h50v-150h-150v50L-300,0l100,-100v50h150v-150h-50z";
+const path = "M0,-300l100,100h-50v150h150v-50L300,0l-100,100v-50h-150v150h50L0,300l-100,-100h50v-150h-150v50L-300,0l100,-100v50h150v-150h-50z";
 ```
 
 ```js echo
@@ -1030,4 +1037,8 @@ const width = 640;
 
 ```js echo
 const height = 400;
+```
+
+```js echo
+import {context2d} from "/components/DOM.js";
 ```

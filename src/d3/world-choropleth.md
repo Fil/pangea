@@ -1,75 +1,69 @@
 ---
 source: https://observablehq.com/@d3/world-choropleth/2
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">World choropleth</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # World choropleth
 
 Health-adjusted life expectancy, 2016. Data: [WHO](https://www.who.int/gho/publications/world_health_statistics/2018/en/)
 
 ```js echo
-const chart = {
+// Specify the chart’s dimensions.
+const width = 928;
+const marginTop = 46;
+const height = width / 2 + marginTop;
 
-  // Specify the chart’s dimensions.
-  const width = 928;
-  const marginTop = 46;
-  const height = width / 2 + marginTop;
+// Fit the projection.
+const projection = d3.geoEqualEarth().fitExtent([[2, marginTop + 2], [width - 2, height]], {type: "Sphere"});
+const path = d3.geoPath(projection);
 
-  // Fit the projection.
-  const projection = d3.geoEqualEarth().fitExtent([[2, marginTop + 2], [width - 2, height]], {type: "Sphere"});
-  const path = d3.geoPath(projection);
+// Index the values and create the color scale.
+const valuemap = new Map(hale.map(d => [d.name, d.hale]));
+const color = d3.scaleSequential(d3.extent(valuemap.values()), d3.interpolateYlGnBu);
 
-  // Index the values and create the color scale.
-  const valuemap = new Map(hale.map(d => [d.name, d.hale]));
-  const color = d3.scaleSequential(d3.extent(valuemap.values()), d3.interpolateYlGnBu);
+// Create the SVG container.
+const svg = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "max-width: 100%; height: auto;");
 
-  // Create the SVG container.
-  const svg = d3.create("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .attr("viewBox", [0, 0, width, height])
-      .attr("style", "max-width: 100%; height: auto;");
+// Append the legend.
+svg.append("g")
+    .attr("transform", "translate(20,0)")
+    .append(() => Legend(color, {title: "Healthy life expectancy (years)", width: 260}));
 
-  // Append the legend.
-  svg.append("g")
-      .attr("transform", "translate(20,0)")
-      .append(() => Legend(color, {title: "Healthy life expectancy (years)", width: 260}));
+// Add a white sphere with a black border.
+svg.append("path")
+  .datum({type: "Sphere"})
+  .attr("fill", "var(--theme-background-alt)")
+  .attr("stroke", "currentColor")
+  .attr("d", path);
 
-  // Add a white sphere with a black border.
-  svg.append("path")
-    .datum({type: "Sphere"})
-    .attr("fill", "white")
-    .attr("stroke", "currentColor")
-    .attr("d", path);
+// Add a path for each country and color it according te this data.
+svg.append("g")
+  .selectAll("path")
+  .data(countries.features)
+  .join("path")
+    .attr("fill", d => color(valuemap.get(d.properties.name)) ?? "#aaa")
+    .attr("d", path)
+  .append("title")
+    .text(d => `${d.properties.name}\n${valuemap.get(d.properties.name)}`);
 
-  // Add a path for each country and color it according te this data.
-  svg.append("g")
-    .selectAll("path")
-    .data(countries.features)
-    .join("path")
-      .attr("fill", d => color(valuemap.get(d.properties.name)))
-      .attr("d", path)
-    .append("title")
-      .text(d => `${d.properties.name}\n${valuemap.get(d.properties.name)}`);
+// Add a white mesh.
+svg.append("path")
+  .datum(countrymesh)
+  .attr("fill", "none")
+  .attr("stroke", "var(--theme-background-alt)")
+  .attr("d", path);
 
-  // Add a white mesh.
-  svg.append("path")
-    .datum(countrymesh)
-    .attr("fill", "none")
-    .attr("stroke", "white")
-    .attr("d", path);
-
-  return svg.node();
-}
+display(svg.node());
 ```
 
 The _hale_ dataset regrettably doesn’t include ISO 3166-1 numeric identifiers; it only has country names. Country names are often recorded inconsistently, so here we use a _rename_ map to patch a handful of country names to the values used by our GeoJSON which comes from [Natural Earth](https://naturalearthdata.com) by way of the [TopoJSON World Atlas](https://github.com/topojson/world-atlas). If your data has ISO 3166-1 numeric identifiers, then you should use those and drop the _featureId_ option above.
 
 ```js echo
-const hale = (await FileAttachment("hale.csv").csv()).map((d) => ({
+const hale = (await FileAttachment("/data/hale.csv").csv()).map((d) => ({
   name: rename.get(d.country) || d.country,
   hale: +d.hale
 }));
@@ -112,7 +106,7 @@ const rename = new Map([
 The world geometries are represented in TopoJSON, which we convert into GeoJSON using topojson.feature. (TopoJSON, like D3, is available by default in all Observable notebooks.) These geometries are represented in spherical coordinates (_i.e._, latitude and longitude in degrees); therefore we’ll need the _projection_ option above to convert to screen coordinates (_i.e._, pixels).
 
 ```js echo
-const world = FileAttachment("countries-50m.json").json();
+const world = fetch(import.meta.resolve("npm:visionscarto-world-atlas/world/50m.json")).then((response) => response.json());
 ```
 
 ```js echo
@@ -126,7 +120,7 @@ const countrymesh = topojson.mesh(world, world.objects.countries, (a, b) => a !=
 ```
 
 ```js echo
-import {Legend} from "@d3/color-legend";
+import {Legend} from "/components/color-legend.js";
 ```
 
 Alternatively, use [Observable Plot](https://observablehq.com/plot)’s concise API to create [maps](https://observablehq.com/@observablehq/plot-mapping) with the [geo mark](https://observablehq.com/plot/marks/geo).
@@ -152,5 +146,5 @@ Plot.plot({
     }),
     Plot.geo(countrymesh, {stroke: "white"})
   ]
-});
+})
 ```

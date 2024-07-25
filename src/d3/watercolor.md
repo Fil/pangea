@@ -231,7 +231,7 @@ const mesh = topojson
 ```
 
 ```js
-const us = FileAttachment("../data/counties-albers-10m.json").json();
+const us = fetch(import.meta.resolve("npm:us-atlas/counties-albers-10m.json")).then((response) => response.json());
 ```
 
 ```js

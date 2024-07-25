@@ -68,7 +68,7 @@ const data = (await FileAttachment("../data/unemployment-by-county.csv").csv()).
 ```
 
 ```js echo
-const us = FileAttachment("../data/counties-albers-10m.json").json(); // https://github.com/topojson/us-atlas
+const us = fetch(import.meta.resolve("npm:us-atlas/counties-albers-10m.json")).then((response) => response.json());
 ```
 
 ```js echo

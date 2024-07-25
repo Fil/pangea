@@ -106,7 +106,6 @@ const histogram = display(Plot.plot({
 }));
 ```
 
-
 ```js
 const color = d3.scaleSequential(d3.interpolateSpectral).domain([data[0].date, data[data.length - 1].date]);
 
@@ -130,7 +129,8 @@ const data = FileAttachment("../data/walmarts.tsv").tsv({typed: true})
   .sort((a, b) => a.date - b.date)
 );
 
-const us = FileAttachment("../data/counties-albers-10m.json").json()
+const us = fetch(import.meta.resolve("npm:us-atlas/counties-albers-10m.json"))
+  .then((response) => response.json())
   .then(us => {
     us.objects.lower48 = {
       type: "GeometryCollection",

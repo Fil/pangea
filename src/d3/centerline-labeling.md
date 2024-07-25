@@ -1,116 +1,105 @@
 ---
 source: https://observablehq.com/@veltman/centerline-labeling
-index: false
-draft: true
+index: true
+author: Noah Veltman
 ---
 
-```js
-md`
 # Centerline labeling
 
+<p class=author>by <a href="https://observablehq.com/@veltman">Noah Veltman</a></p>
+
 An explorable calculator for placing curved labels inside weird shapes.
-`;
-```
 
 ```js
-viewof place = radio({
-  options: places.features.map(f => f.properties.name),
-  value: "California"
-})
+const place = view(Inputs.radio(
+  places.features.map(f => f.properties.name),
+  {value: "California"}
+));
 ```
 
 ```js
 {
-  const {id, href} = DOM.uid("centerline"); // necessary for Firefox
-  return svg`<svg width=${width} height=${height}>
+  const {id, href} = uid("centerline"); // necessary for Firefox
+  display(svg`<svg width=${width} height=${height}>
     <path d="${background}" stroke="#444" fill="#f9f9f9"/>
     <path d=${centerline} id="${id}" stroke="none" fill="none" />
     <text class="label" dy="0.35em" fill="#444" style="font-size: ${maxFontSize}px;">
       <textPath xlink:href="${href}" startOffset="${100 * offset}%" text-anchor="middle">${place}</textPath>
     </text>
-  </svg>`;
+  </svg>`);
 }
 ```
 
-```js
-md`
 ## Step 1: turn the shape into evenly spaced points
 
 First, we walk the perimeter of the shape to get a set of evenly spaced points that approximate the original shape. Adjust the slider to change how many points we're using (more points = more precision and more computation).
-`;
-```
 
 ```js
-viewof numPerimeterPoints = slider({
-  min: 10,
-  max: 200,
+const numPerimeterPoints = view(Inputs.range([10, 200], {
   step: 1,
   value: 50,
-  title: "Number of perimeter points"
-})
+  label: "Number of perimeter points"
+}));
 ```
 
 ```js
-svg`<svg width=${width} height=${height}>
+display(svg`<svg width=${width} height=${height}>
   <path d="${background}" stroke="#444" fill="#f9f9f9"/>
-  ${polygon.map((p) => `<circle cx=${p[0]} cy=${p[1]} fill="#e91e63" r="2"/>`)}
-</svg>`;
+  ${polygon.map((p) => svg`<circle cx=${p[0]} cy=${p[1]} fill="#e91e63" r="2"/>`)}
+</svg>`);
 ```
 
-```js
+```js echo
 const polygon = getPointsAlongPolyline(outerRing, numPerimeterPoints);
 ```
 
-```js
-const outerRing = {
-  const s = projection.scale(),
-    t = projection.translate();
+```js echo
+const s = projection.scale(),
+  t = projection.translate();
 
-  return feature.geometry.coordinates[0][0]
-    .slice(1)
-    .map(point => [s * point[0] + t[0], s * point[1] + t[1]]);
-}
+const outerRing = feature.geometry.coordinates[0][0]
+  .slice(1)
+  .map(point => [s * point[0] + t[0], s * point[1] + t[1]]);
 ```
 
-```js
-md`
 ## Step 2: compute the Voronoi diagram of the points
 
 Next, we compute the Voronoi diagram from our generated points, and we clip all the edges to the boundary of our polygon.
-`;
-```
 
 ```js
-svg`<svg width=${width} height=${height}>
+display(svg`<svg width=${width} height=${height}>
   <path d="${background}" stroke="#444" fill="#f9f9f9" opacity="0.15"/>
   ${(clipped ? edges : voronoi).map(
-    (e) => `<line stroke="#999" x1=${e[0][0]} y1=${e[0][1]} x2=${e[1][0]} y2=${e[1][1]} />`
+    (e) => svg`<line stroke="#999" x1=${e[0][0]} y1=${e[0][1]} x2=${e[1][0]} y2=${e[1][1]} />`
   )}
-  ${polygon.map((p) => `<circle cx=${p[0]} cy=${p[1]} fill="#e91e63" r="2"/>`)}
-</svg>`;
+  ${polygon.map((p) => svg`<circle cx=${p[0]} cy=${p[1]} fill="#e91e63" r="2"/>`)}
+</svg>`);
 ```
 
 ```js
-const clipped = {
+const clipped = (async function*() {
   let clip = false;
   yield clip;
   while (true) {
     clip = !clip;
-    yield Promises.delay(1000, clip);
+    yield delay(1000, clip);
   }
-}
+})();
 ```
 
-```js
-const voronoi = {
-  const [x0, x1] = d3.extent(polygon.map(d => d[0])),
-    [y0, y1] = d3.extent(polygon.map(d => d[1]));
-
-  return d3.voronoi().extent([[x0 - 1, y0 - 1], [x1 + 1, y1 + 1]])(polygon).edges;
-}
+```js echo
+// This uses the deprecated d3-voronoi module
+// TODO: replace with the more modern d3-delaunay
+import {voronoi as Voronoi} from "npm:d3-voronoi";
 ```
 
-```js
+```js echo
+const [x0, x1] = d3.extent(polygon.map(d => d[0]));
+const [y0, y1] = d3.extent(polygon.map(d => d[1]));
+const voronoi = Voronoi().extent([[x0 - 1, y0 - 1], [x1 + 1, y1 + 1]])(polygon).edges;
+```
+
+```js echo
 const edges = voronoi
   .filter((edge) => {
     if (edge && edge.right) {
@@ -140,108 +129,92 @@ const edges = voronoi
   });
 ```
 
-```js
-md`
 ## Step 3: Compute a graph from the clipped Voronoi edges
 
 Use [node-dijkstra](https://github.com/albertorestifo/node-dijkstra) to construct a graph of all the nodes and edges in the Voronoi diagram.
-`;
-```
 
 ```js
-svg`<svg width=${width} height=${height}>
+display(svg`<svg width=${width} height=${height}>
   <path d="${background}" stroke="#444" fill="#f9f9f9" opacity="0.15"/>
-  ${edges.map((e) => `<line stroke="#999" x1=${e[0][0]} y1=${e[0][1]} x2=${e[1][0]} y2=${e[1][1]} />`)}
-  ${nodes.map((p) => `<circle cx=${p[0]} cy=${p[1]} fill=${p.clipped ? "#e91e63" : "#4db6ac"} r="2"/>`)}
-</svg>`;
+  ${edges.map((e) => svg`<line stroke="#999" x1=${e[0][0]} y1=${e[0][1]} x2=${e[1][0]} y2=${e[1][1]} />`)}
+  ${nodes.map((p) => svg`<circle cx=${p[0]} cy=${p[1]} fill=${p.clipped ? "#e91e63" : "#4db6ac"} r="2"/>`)}
+</svg>`);
 ```
 
-```js
-const graph = {
-  const graph = new Graph();
-  nodes.forEach(node => graph.addNode(node.id, node.links));
-  return graph;
-}
+```js echo
+const graph = new Graph();
+nodes.forEach(node => graph.addNode(node.id, node.links));
 ```
 
-```js
-const nodes = {
-  const nodes = [];
+```js echo
+const nodes = [];
 
-  edges.forEach(edge => {
-    edge.forEach((node, i) => {
-      if (!i || !node.clipped) {
-        const match = nodes.find(d => d === node);
-        if (match) {
-          return (node.id = match.id);
-        }
+edges.forEach(edge => {
+  edge.forEach((node, i) => {
+    if (!i || !node.clipped) {
+      const match = nodes.find(d => d === node);
+      if (match) {
+        return (node.id = match.id);
       }
-      node.id = nodes.length.toString();
-      node.links = {};
-      nodes.push(node);
-    });
-    edge[0].links[edge[1].id] = edge.distance;
-    edge[1].links[edge[0].id] = edge.distance;
+    }
+    node.id = nodes.length.toString();
+    node.links = {};
+    nodes.push(node);
   });
-
-  return nodes;
-}
+  edge[0].links[edge[1].id] = edge.distance;
+  edge[1].links[edge[0].id] = edge.distance;
+});
 ```
 
-```js
+```js echo
 const perimeterNodes = nodes.filter((d) => d.clipped);
 ```
 
-```js
-md`
 ## Step 4: walk the graph and find the best path
 
 For each pair of perimeter nodes, find the shortest path between them. Keep the longest one we find, or use a strategy that also factors in how straight the line is.
-`;
-```
 
 ```js
-viewof strategy = radio({
-  title: "Optimization strategy",
+const strategy = view(Inputs.radio(new Map([
+    ["Just take the longest one", "longest" ],
+    ["Care a little about straightness", "medium" ],
+    ["Care a lot about straightness", "high" ]
+  ]),
+{
+  label: "Optimization strategy",
   description: "edit fitnessFunction() below to create a custom strategy!",
-  options: [
-    { label: "Just take the longest one", value: "longest" },
-    { label: "Care a little about straightness", value: "medium" },
-    { label: "Care a lot about straightness", value: "high" }
-  ],
   value: "medium"
-})
+}));
 ```
 
 ```js
-svg`<svg width=${width} height=${height}>
-  ${edges.map((e) => `<line stroke="#999" x1=${e[0][0]} y1=${e[0][1]} x2=${e[1][0]} y2=${e[1][1]} />`)}
+display(svg`<svg width=${width} height=${height}>
+  ${edges.map((e) => svg`<line stroke="#999" x1=${e[0][0]} y1=${e[0][1]} x2=${e[1][0]} y2=${e[1][1]} />`)}
   ${
     traversal.bestPath &&
-    `<path stroke-width="3" stroke="#e91e63" fill="none" d=${"M" + traversal.bestPath.join("L")} />`
+    svg`<path stroke-width="3" stroke="#e91e63" fill="none" d=${"M" + traversal.bestPath.join("L")} />`
   }
   ${
     traversal.currentPath &&
-    `<path stroke-width="3" stroke="#ffd54f" fill="none" d=${"M" + traversal.currentPath.join("L")} />`
+    svg`<path stroke-width="3" stroke="#ffd54f" fill="none" d=${"M" + traversal.currentPath.join("L")} />`
   }
-</svg>`;
+</svg>`);
 ```
 
 ```js
-viewof speed = radio({
-  title: "Traversal speed",
+const speed = view(Inputs.radio(new Map([
+    ["Slow", "250"],
+    ["Medium", "100"],
+    ["Fast", "0"]
+  ]), {
+  label: "Traversal speed",
   description: "Slow things down to see each step.",
-  options: [
-    { label: "Slow", value: "250" },
-    { label: "Medium", value: "100" },
-    { label: "Fast", value: "0" }
-  ],
   value: "0"
-})
+}));
 ```
 
 ```js
-const traversal = {
+const traversal = (async function*() {
   let totalBest;
 
   for (let i = 0; i < perimeterNodes.length; i++) {
@@ -261,7 +234,7 @@ const traversal = {
         totalBest = longestShortestPath;
       }
 
-      yield Promises.delay(+speed, {
+      yield delay(+speed, {
         bestPath: totalBest.path,
         currentPath: longestShortestPath.path
       });
@@ -272,53 +245,44 @@ const traversal = {
       bestPath: totalBest.path
     };
   }
-}
+})();
 ```
 
-```js
-md`
 ## Step 5: simplify the best line
 
 We can use [simplify-js](http://mourner.github.io/simplify-js/) and a basis spline to smooth out our best candidate, and flip the direction of the line if the text would be upside down.
-`;
-```
 
 ```js
-viewof simplification = slider({
-  min: 0.1,
-  max: 50,
+const simplification = view(Inputs.range([0.1, 50], {
   value: 8,
-  title: "Simplification tolerance",
+  label: "Simplification tolerance",
   description: "How much should we simplify the best line once we find it?"
-})
+}));
 ```
 
 ```js
-svg`<svg width=${width} height=${height}>
+display(svg`<svg width=${width} height=${height}>
   <path d="${background}" stroke="#444" fill="#f9f9f9" opacity="0.15"/>
   <path d="M${traversal.bestPath.join(
     "L"
   )}" stroke-width="2" stroke-dasharray="5,5" stroke="#f06292" fill="none" opacity="0.75"/>
   <path d="${centerline}" stroke-width="2" stroke="#e91e63" fill="none" opacity="0.75" />
-</svg>`;
+</svg>`);
 ```
 
-```js
+```js echo
 const simplifiedLine = simplify(traversal.bestPath);
 ```
 
-```js
-const flipText = {
-  const svg = DOM.svg(width, height);
-
-  const path = d3.select(svg)
-    .append("path")
+```js echo
+let flipText;
+{
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height]);
+  const path = svg.append("path")
     .attr("d", "M" + simplifiedLine.join("L"))
     .node();
-
   const tangent = tangentAt(path, path.getTotalLength() * offset);
-
-  return Math.abs(tangent) > Math.PI / 2;
+  flipText = Math.abs(tangent) > Math.PI / 2;
 }
 ```
 
@@ -326,46 +290,38 @@ const flipText = {
 const centerline = d3.line().curve(d3.curveBasis)(flipText ? simplifiedLine.slice(0).reverse() : simplifiedLine);
 ```
 
-```js
-md`
 ## Step 7: choose the best offset and font size
 
 As a final step, we can roughly estimate how large we can make the text without overrunning the shape's borders.
 
 We'll approximate this by walking the centerline from the middle out, and measuring the shortest perpendicular distance from the center to the boundary at each step. Combined with the aspect ratio of the text, we then know roughly how large we can make the text without it overrunning the containing shape's border.
-`;
-```
 
 ```js
-viewof measurementStep = slider({
-  min: 1,
-  max: 25,
+const measurementStep = view(Inputs.range([1, 25], {
   value: 5,
-  title: "Measurement step",
+  label: "Measurement step",
   description: "How frequently should we measure the available space?"
-})
+}));
 ```
 
 ```js
-viewof offset = slider({
-  min: 0.01,
-  max: 0.99,
+const offset = view(Inputs.range([0.01, 0.99], {
   value: 0.5,
-  title: "Text offset",
+  label: "Text offset",
   description: "How far along the path should we place the label? (0.5 = the center)"
-})
+}));
 ```
 
 ```js
 {
-  const {id, href} = DOM.uid("centerline"); // necessary for Firefox
-  return svg`<svg width=${width} height=${height}>
+  const {id, href} = uid("centerline"); // necessary for Firefox
+  display(svg`<svg width=${width} height=${height}>
     <path d="${background}" stroke="#444" fill="#f9f9f9" opacity="0.15"/>
     <path d=${centerline} id="${id}" stroke="#ddd" fill="none" stroke-dasharray="4,4" />
     ${measurements.map((pair, i) =>
       pair.map(
         (line) =>
-          `<line x1=${line[0][0]} y1=${line[0][1]} x2=${line[1][0]} y2=${line[1][1]} stroke=${
+          svg`<line x1=${line[0][0]} y1=${line[0][1]} x2=${line[1][0]} y2=${line[1][1]} stroke=${
             i <= (maxFontSize * widthPerPixel) / (2 * measurementStep) ? "#F8BBD0" : "#ddd"
           } />`
       )
@@ -373,12 +329,13 @@ viewof offset = slider({
     <text class="label" opacity="0.5" dy="0.35em" style="font-size: ${maxFontSize}px;" fill="none" stroke="#444">
       <textPath xlink:href="${href}" startOffset="${100 * offset}%" text-anchor="middle">${place}</textPath>
     </text>
-  </svg>`;
+  </svg>`);
 }
 ```
 
 ```js
-const maxFontSize = {
+let maxFontSize;
+{
  let ceiling = Infinity,
      maxWidth = 0;
 
@@ -389,23 +346,20 @@ const maxFontSize = {
    maxWidth = Math.max(maxWidth, 2 * Math.min(i * measurementStep, ceiling * aspectRatio));
  });
 
- return maxWidth / widthPerPixel;
+ maxFontSize = maxWidth / widthPerPixel;
 }
 ```
 
 ```js
-const measurements = {
-  const svg = DOM.svg(width, height);
+const measurements = [];
+{
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height]);
 
-  const path = d3
-    .select(svg)
-    .append("path")
+  const path = svg.append("path")
     .attr("d", centerline)
     .node();
 
   const length = path.getTotalLength();
-
-  const measurements = [];
 
   for (
     let halfwidth = 0;
@@ -447,8 +401,6 @@ const measurements = {
         .filter(d => d)
     );
   }
-
-  return measurements;
 }
 ```
 
@@ -461,57 +413,50 @@ const widthPerPixel = bbox.width / 100;
 ```
 
 ```js
-const bbox = {
-  const svg = DOM.svg(width, height);
+const bbox = (() => {
+  const svg = d3.create("svg").attr("viewBox", [0, 0, width, height]);
 
-  const text = d3.select(svg)
-    .append("text")
+  const text = svg.append("text")
     .attr("class", "label")
     .style("font-size", "100px")
     .text(place)
     .node();
 
   // Have to yield the SVG first before element has a measurable width and height
-  yield svg;
-  yield text.getBBox();
-}
+  const node = svg.node();
+  display(node);
+  const bbox = text.getBBox();
+  node.remove();
+  return bbox;
+})();
 ```
 
-```js
-md`
 ## Epilogue: other potential exercises
 
 1. Rather than manually select the starting offset along the path, we could [automatically find the roomiest offset](https://bl.ocks.org/veltman/6204863ae290904fbae83ca5490d4b1b).
 2. We could do a side-by-side comparison of the results of this approach vs. a flat label using [Polylabel](https://github.com/mapbox/polylabel) for different kinds of shapes and see where it tends to break down.
 3. We could make a label span multiple shapes, like the Hawaiian Islands, by using the [concave hull](https://github.com/mapbox/concaveman) of the group of shapes as the basis for all our operations.
 4. Sinuosity might not be the best choice for a fitness function, we could come up with some other heuristic that factors in some other sense of straightness or smoothness of the centerline.
-5. We could avoid using \`.getPointAtLength()\` for measurement and do everything with DOM-less math for better performance (but maybe more verbose code).
-`;
-```
+5. We could avoid using `.getPointAtLength()` for measurement and do everything with DOM-less math for better performance (but maybe more verbose code).
 
-```js
-md`
 ## Appendix
-`;
-```
 
-```js
+```js echo
 const height = Math.min(width / 2, 400);
 ```
 
-```js
-const places = d3.json(
-  "https://gist.githubusercontent.com/veltman/644f16a90259a20a88b036ef189d71fd/raw/d2f0a027bfc9b63ca223b509bd2cfe0cf5d138c2/places.geojson"
-);
+```js echo
+// https://gist.githubusercontent.com/veltman/644f16a90259a20a88b036ef189d71fd/raw/d2f0a027bfc9b63ca223b509bd2cfe0cf5d138c2/places.geojson
+const places = FileAttachment("/data/places.geojson").json();
 ```
 
-```js
+```js echo
 const feature = places.features.find((f) => f.properties.name === place);
 ```
 
-```js
+```js echo
 // Rescale to fit at the current screen width
-projection = d3.geoIdentity().fitExtent(
+const projection = d3.geoIdentity().fitExtent(
   [
     [5, 5],
     [width - 5, height - 5]
@@ -520,11 +465,11 @@ projection = d3.geoIdentity().fitExtent(
 );
 ```
 
-```js
+```js echo
 const background = d3.geoPath().projection(projection)(feature);
 ```
 
-```js
+```js echo
 function fitnessFunction(path, length) {
   let fitness = length;
   if (strategy !== "longest") {
@@ -538,7 +483,7 @@ function fitnessFunction(path, length) {
 }
 ```
 
-```js
+```js echo
 function findClosestPolygonIntersection(start, end, polygon) {
   return polygon.reduce((best, point, i) => {
     const intersection = findIntersection(start, end, point, polygon[i + 1] || polygon[0]);
@@ -553,7 +498,7 @@ function findClosestPolygonIntersection(start, end, polygon) {
 }
 ```
 
-```js
+```js echo
 function getPointsAlongPolyline(polyline, count) {
   const distances = polyline.map((p, i) => distanceBetween(p, polyline[i + 1] || polyline[0]));
   const totalLength = d3.sum(distances);
@@ -576,7 +521,7 @@ function getPointsAlongPolyline(polyline, count) {
 }
 ```
 
-```js
+```js echo
 function findIntersection(a1, a2, b1, b2) {
   // Adapted from https://github.com/Turfjs/turf-line-slice-at-intersection
   const uaT = (b2[0] - b1[0]) * (a1[1] - b1[1]) - (b2[1] - b1[1]) * (a1[0] - b1[0]),
@@ -593,7 +538,7 @@ function findIntersection(a1, a2, b1, b2) {
 }
 ```
 
-```js
+```js echo
 function rotatePoint(point, angle, center) {
   const x2 = (point[0] - center[0]) * Math.cos(angle) - (point[1] - center[1]) * Math.sin(angle),
     y2 = (point[0] - center[0]) * Math.sin(angle) + (point[1] - center[1]) * Math.cos(angle);
@@ -605,7 +550,7 @@ function rotatePoint(point, angle, center) {
 }
 ```
 
-```js
+```js echo
 function tangentAt(el, len) {
   const a = el.getPointAtLength(Math.max(len - 0.01, 0)),
     b = el.getPointAtLength(len + 0.01);
@@ -614,7 +559,7 @@ function tangentAt(el, len) {
 }
 ```
 
-```js
+```js echo
 function distanceBetween(a, b) {
   const dx = a[0] - b[0],
     dy = a[1] - b[1];
@@ -623,8 +568,10 @@ function distanceBetween(a, b) {
 }
 ```
 
-```js
-const Graph = {
+```js echo
+let Graph;
+
+{
   // Observable-compatible stub of Alberto Restifo's node-dijsktra
   // https://github.com/albertorestifo/node-dijkstra
   class Queue {
@@ -723,7 +670,7 @@ const Graph = {
 
   }
 
-  class Graph {
+  class _Graph {
     /**
      * Creates a new Graph, optionally initializing it a nodes graph representation.
      *
@@ -1070,7 +1017,7 @@ const Graph = {
     return newMap;
   }
 
-  return Graph;
+  Graph = _Graph;
 }
 ```
 
@@ -1085,24 +1032,16 @@ function simplify(points) {
 ```
 
 ```js
-const simplifyJS = require("simplify-js");
+import simplifyJS from "npm:simplify-js";
+import {uid} from "/components/DOM.js";
+import {delay} from "/components/Promises.js";
 ```
 
-```js
-const d3 = require("d3@5");
-```
-
-```js
-import {slider, radio} from "@jashkenas/inputs";
-```
-
-```js
-const styles = html`<style>
+<style>
   .label {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     font-weight: 500;
     letter-spacing: 0.03em;
     text-transform: uppercase;
   }
-</style>`;
-```
+</style>

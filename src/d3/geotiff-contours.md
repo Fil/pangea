@@ -1,21 +1,18 @@
 ---
 source: https://observablehq.com/@d3/geotiff-contours-ii
-index: false
-draft: true
+index: true
 ---
 
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">GeoTIFF contours II</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
-
-# GeoTIFF contours II
+# GeoTIFF contours
 
 These contours are computed in equirectangular coordinates and then reprojected.
 
 ```js echo
-const chart = html`<svg style="width: 100%; height: auto; display: block;" viewBox="0 0 960 500">
+display(svg`<svg style="width: 100%; height: auto; display: block;" viewBox="0 0 960 500">
   <g stroke="#000" stroke-width="0.5" stroke-linejoin="round" stroke-linecap="round">
     ${Array.from(contours(values), (d) => svg`<path d="${path(invert(d))}" fill="${color(d.value)}" />`)}
   </g>
-</svg>`;
+</svg>`);
 ```
 
 ```js echo
@@ -104,7 +101,7 @@ function invert(d) {
     });
   });
 
-  p = d3.geoStitch(p);
+  p = d3P.geoStitch(p);
 
   // If the MultiPolygon is empty, treat it as the Sphere.
   return p.coordinates.length ? {type: "Polygon", coordinates: p.coordinates} : {type: "Sphere"};
@@ -112,35 +109,14 @@ function invert(d) {
 ```
 
 ```js echo
-const tiff = FileAttachment("sfctmp.tiff")
+const tiff = FileAttachment("/data/sfctmp.tiff")
   .arrayBuffer()
   .then((buffer) => GeoTIFF.fromArrayBuffer(buffer));
 ```
 
 ```js echo
-const GeoTIFF = require("geotiff@2.0.7");
+import * as GeoTIFF from "npm:geotiff@2.0.7";
+import * as d3P from "npm:d3-geo-projection@4";
 ```
 
-```js echo
-const d3 = require("d3@7", "d3-geo-projection@4");
-```
-
-Or, using [Observable Plot](/plot/)’s concise API:
-
-```js echo
-Plot.plot({
-  projection: "equal-earth",
-  color: {scheme: "Magma"},
-  marks: [
-    Plot.contour(values, {
-      x: (_, i) => (i % n) / 2 - 180,
-      y: (_, i) => 90 - Math.floor(i / n) / 2,
-      fill: values,
-      thresholds: 10,
-      stroke: "#000",
-      strokeWidth: 0.5,
-      clip: "sphere"
-    })
-  ]
-});
-```
+Alternatively, consider using [Observable Plot](https://observablehq.com/plot/)’s concise API to recreate this map [in a dozen lines of code](/party/geotiff).

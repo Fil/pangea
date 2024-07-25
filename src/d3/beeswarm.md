@@ -1,52 +1,48 @@
 ---
 source: https://observablehq.com/@d3/beeswarm/2
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Beeswarm</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Beeswarm
 
-A beeswarm plot functions similarly to a [histogram](/@d3/histogram/2?intent=fork), except it allows individual data points to be seen. Dots are offset vertically, without affecting horizontal position. (See also the [mirrored variant](/@d3/beeswarm-mirrored/2?intent=fork).) This chart shows the weights of cars from 1974. Data: _Motor Trend_
+A beeswarm plot functions similarly to a [histogram](./histogram), except it allows individual data points to be seen. Dots are offset vertically, without affecting horizontal position. (See also the [mirrored variant](./beeswarm-mirrored).) This chart shows the weights of cars from 1974. Data: _Motor Trend_
 
 ```js echo
-const chart = {
-  const width = 928;
-  const height = 160;
-  const marginTop = 20;
-  const marginRight = 20;
-  const marginBottom = 20;
-  const marginLeft = 20;
-  const radius = 3;
-  const padding = 1.5;
+const width = 928;
+const height = 160;
+const marginTop = 20;
+const marginRight = 20;
+const marginBottom = 20;
+const marginLeft = 20;
+const radius = 3;
+const padding = 1.5;
 
-  const x = d3.scaleLinear()
-      .domain(d3.extent(cars, d => d["weight (lb)"]))
-      .range([marginLeft, width - marginRight]);
+const x = d3.scaleLinear()
+    .domain(d3.extent(cars, d => d["weight (lb)"]))
+    .range([marginLeft, width - marginRight]);
 
-  const svg = d3.create("svg")
-      .attr("width", width)
-      .attr("height", height)
-      .attr("viewBox", [0, 0, width, height])
-      .attr("style", "max-width: 100%; height: auto;");
+const svg = d3.create("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .attr("viewBox", [0, 0, width, height])
+    .attr("style", "max-width: 100%; height: auto;");
 
-  svg.append("g")
-      .attr("transform", `translate(0,${height - marginBottom})`)
-      .call(d3.axisBottom(x).tickSizeOuter(0));
+svg.append("g")
+    .attr("transform", `translate(0,${height - marginBottom})`)
+    .call(d3.axisBottom(x).tickSizeOuter(0));
 
-  svg.append("g")
-    .selectAll()
-    .data(dodge(cars, {radius: radius * 2 + padding, x: d => x(d["weight (lb)"])}))
-    .join("circle")
-      .attr("cx", d => d.x)
-      .attr("cy", d => height - marginBottom - radius - padding - d.y)
-      .attr("r", radius)
-    .append("title")
-      .text(d => d.data.name);
+svg.append("g")
+  .attr("fill", "currentColor")
+  .selectAll()
+  .data(dodge(cars, {radius: radius * 2 + padding, x: d => x(d["weight (lb)"])}))
+  .join("circle")
+    .attr("cx", d => d.x)
+    .attr("cy", d => height - marginBottom - radius - padding - d.y)
+    .attr("r", radius)
+  .append("title")
+    .text(d => d.data.name);
 
-  return svg.node();
-}
+display(svg.node());
 ```
 
 ```js echo
@@ -112,5 +108,5 @@ Plot.plot({
       })
     )
   ]
-});
+})
 ```

@@ -119,7 +119,7 @@ const data = new Map(
 ```
 
 ```js echo
-const us = FileAttachment("../data/counties-albers-10m.json").json();
+const us = fetch(import.meta.resolve("npm:us-atlas/counties-albers-10m.json")).then((response) => response.json());
 ```
 
 ```js echo
