@@ -1,14 +1,14 @@
 ---
 source: https://observablehq.com/@mbostock/phases-of-the-moon
-index: false
-draft: true
+index: true
+author: Mike Bostock
 ---
 
-```js
-md`# Phases of the Moon
+# Phases of the Moon
 
-For the year ${year}, in the style of [Irwin Glusker](https://www.moma.org/explore/inside_out/2012/10/16/a-paean-to-the-phases-of-the-moon/).`;
-```
+<p class=author>by <a href="https://observablehq.com/@mbostock">Mike Bostock</a></p>
+
+For the year ${year}, in the style of [Irwin Glusker](https://www.moma.org/explore/inside_out/2012/10/16/a-paean-to-the-phases-of-the-moon/).
 
 ```js
 const chart = html`<svg viewBox="0 0 ${width} ${height}" style="margin: 0 -14px; display: block; background: #111;">
@@ -35,6 +35,8 @@ const chart = html`<svg viewBox="0 0 ${width} ${height}" style="margin: 0 -14px;
     })}
   </g>
 </svg>`;
+
+display(chart);
 ```
 
 ```js
@@ -52,10 +54,11 @@ const year = view(
 ```
 
 ```js
-viewof locale = {
-  const form = md`<form>
+let locale;
+{
+  const form = html`<form>
   <input name=input type=text placeholder="Enter a locale (optional)" style="width:120px;">
-  <i style="font-size:smaller;">[language](https://en.wikipedia.org/wiki/ISO_639-1)-[country](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code</i>
+  <i style="font-size:smaller;"><a href="https://en.wikipedia.org/wiki/ISO_639-1" target=_blank>language</a>-<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2" target=_blank>country</a> code</i>
 </form>`;
   form.input.oninput = event => {
     if (form.input.value) {
@@ -67,17 +70,13 @@ viewof locale = {
   };
   form.onsubmit = event => event.preventDefault();
   form.value = Promise.resolve();
-  return form;
+  locale = view(form);
 }
 ```
 
-```js
-md`
 ---
 
 ## Appendix
-`;
-```
 
 ```js echo
 const projection = d3.geoOrthographic().translate([0, 0]).scale(10);
@@ -92,12 +91,13 @@ const hemisphere = d3.geoCircle()();
 ```
 
 ```js echo
-const dayScale = {
+let dayScale;
+{
   const scale = d3.scalePoint()
       .domain(d3.range(1, 40))
       .range([margin.left, width - margin.right])
       .padding(1);
-  return d => {
+  dayScale = (d) => {
     const start = d3.timeMonth(d);
     const offset = start.getDay() || 7;
     return scale(d.getDate() + offset);
@@ -106,29 +106,21 @@ const dayScale = {
 ```
 
 ```js echo
-const monthScale = {
+let monthScale;
+{
   const scale = d3.scalePoint()
       .domain(d3.range(12))
       .range([margin.top, height - margin.bottom])
       .padding(1);
-  return d => scale(d.getMonth());
+  monthScale = (d) => scale(d.getMonth());
 }
 ```
 
 ```js echo
-const days = {
-  const now = new Date(year, 0, 1);
-  const start = d3.timeYear(now);
-  return d3.timeDays(start, d3.timeYear.offset(start, 1));
-}
-```
-
-```js echo
-const months = {
-  const now = new Date(year, 0, 1);
-  const start = d3.timeYear(now);
-  return d3.timeMonths(start, d3.timeYear.offset(start, 1));
-}
+const now = new Date(year, 0, 1);
+const start = d3.timeYear(now);
+const days = d3.timeDays(start, d3.timeYear.offset(start, 1));
+const months = d3.timeMonths(start, d3.timeYear.offset(start, 1));
 ```
 
 ```js echo
@@ -144,9 +136,5 @@ const margin = {top: 0, right: 0, bottom: 0, left: 60};
 ```
 
 ```js echo
-const suncalc = require("suncalc@1");
-```
-
-```js echo
-const d3 = require("d3@6");
+import suncalc from "npm:suncalc@1";
 ```

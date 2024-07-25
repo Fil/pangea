@@ -1,10 +1,7 @@
 ---
 source: https://observablehq.com/@d3/color-schemes
-index: false
-draft: true
+index: true
 ---
-
-<div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Color Schemes</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Color Schemes
 
@@ -13,241 +10,221 @@ draft: true
 Click any [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic) scheme below to copy it to the clipboard.
 
 ```js
-viewof n = Inputs.select(new Map([
+const n = view(Inputs.select(new Map([
   ["continuous", 256],
   ...d3.range(11, 2, -1).map(n => [`discrete (${n})`, n])
-]), {label: "Scheme size"})
+]), {label: "Scheme size"}));
 ```
 
-```js
-const sequential = md`
 ## Sequential (Single-Hue)
-`;
+
+```js
+const Blues = display(ramp("Blues"));
 ```
 
 ```js
-const Blues = ramp("Blues");
+const Greens = display(ramp("Greens"));
 ```
 
 ```js
-const Greens = ramp("Greens");
+const Greys = display(ramp("Greys"));
 ```
 
 ```js
-const Greys = ramp("Greys");
+const Oranges = display(ramp("Oranges"));
 ```
 
 ```js
-const Oranges = ramp("Oranges");
+const Purples = display(ramp("Purples"));
 ```
 
 ```js
-const Purples = ramp("Purples");
+const Reds = display(ramp("Reds"));
 ```
 
-```js
-const Reds = ramp("Reds");
-```
-
-```js
-md`
 ## Sequential (Multi-Hue)
-`;
+
+```js
+const BuGn = display(ramp("BuGn"));
 ```
 
 ```js
-const BuGn = ramp("BuGn");
+const BuPu = display(ramp("BuPu"));
 ```
 
 ```js
-const BuPu = ramp("BuPu");
+const GnBu = display(ramp("GnBu"));
 ```
 
 ```js
-const GnBu = ramp("GnBu");
+const OrRd = display(ramp("OrRd"));
 ```
 
 ```js
-const OrRd = ramp("OrRd");
+const PuBuGn = display(ramp("PuBuGn"));
 ```
 
 ```js
-const PuBuGn = ramp("PuBuGn");
+const PuBu = display(ramp("PuBu"));
 ```
 
 ```js
-const PuBu = ramp("PuBu");
+const PuRd = display(ramp("PuRd"));
 ```
 
 ```js
-const PuRd = ramp("PuRd");
+const RdPu = display(ramp("RdPu"));
 ```
 
 ```js
-const RdPu = ramp("RdPu");
+const YlGnBu = display(ramp("YlGnBu"));
 ```
 
 ```js
-const YlGnBu = ramp("YlGnBu");
+const YlGn = display(ramp("YlGn"));
 ```
 
 ```js
-const YlGn = ramp("YlGn");
+const YlOrBr = display(ramp("YlOrBr"));
 ```
 
 ```js
-const YlOrBr = ramp("YlOrBr");
+const YlOrRd = display(ramp("YlOrRd"));
 ```
 
 ```js
-const YlOrRd = ramp("YlOrRd");
+const Cividis = display(ramp("Cividis"));
 ```
 
 ```js
-const Cividis = ramp("Cividis");
+const Viridis = display(ramp("Viridis"));
 ```
 
 ```js
-const Viridis = ramp("Viridis");
+const Inferno = display(ramp("Inferno"));
 ```
 
 ```js
-const Inferno = ramp("Inferno");
+const Magma = display(ramp("Magma"));
 ```
 
 ```js
-const Magma = ramp("Magma");
+const Plasma = display(ramp("Plasma"));
 ```
 
 ```js
-const Plasma = ramp("Plasma");
+const Warm = display(ramp("Warm"));
 ```
 
 ```js
-const Warm = ramp("Warm");
+const Cool = display(ramp("Cool"));
 ```
 
 ```js
-const Cool = ramp("Cool");
+const CubehelixDefault = display(ramp("CubehelixDefault"));
 ```
 
 ```js
-const CubehelixDefault = ramp("CubehelixDefault");
+const Turbo = display(ramp("Turbo"));
 ```
 
-```js
-const Turbo = ramp("Turbo");
-```
-
-```js
-const diverging = md`
 ## Diverging
-`;
+
+```js
+const BrBG = display(ramp("BrBG"));
 ```
 
 ```js
-const BrBG = ramp("BrBG");
+const PRGn = display(ramp("PRGn"));
 ```
 
 ```js
-const PRGn = ramp("PRGn");
+const PiYG = display(ramp("PiYG"));
 ```
 
 ```js
-const PiYG = ramp("PiYG");
+const PuOr = display(ramp("PuOr"));
 ```
 
 ```js
-const PuOr = ramp("PuOr");
+const RdBu = display(ramp("RdBu"));
 ```
 
 ```js
-const RdBu = ramp("RdBu");
+const RdGy = display(ramp("RdGy"));
 ```
 
 ```js
-const RdGy = ramp("RdGy");
+const RdYlBu = display(ramp("RdYlBu"));
 ```
 
 ```js
-const RdYlBu = ramp("RdYlBu");
+const RdYlGn = display(ramp("RdYlGn"));
 ```
 
 ```js
-const RdYlGn = ramp("RdYlGn");
+const Spectral = display(ramp("Spectral"));
 ```
 
-```js
-const Spectral = ramp("Spectral");
-```
-
-```js
-const cyclical = md`
 ## Cyclical
-`;
+
+```js
+const Rainbow = display(ramp("Rainbow"));
 ```
 
 ```js
-const Rainbow = ramp("Rainbow");
+const Sinebow = display(ramp("Sinebow"));
 ```
 
-```js
-const Sinebow = ramp("Sinebow");
-```
-
-```js
-md`
 ## Categorical
-`;
+
+```js
+const Observable10 = display(swatches("Observable10"));
 ```
 
 ```js
-const Category10 = swatches("Category10");
+const Category10 = display(swatches("Category10"));
 ```
 
 ```js
-const Accent = swatches("Accent");
+const Accent = display(swatches("Accent"));
 ```
 
 ```js
-const Dark2 = swatches("Dark2");
+const Dark2 = display(swatches("Dark2"));
 ```
 
 ```js
-const Paired = swatches("Paired");
+const Paired = display(swatches("Paired"));
 ```
 
 ```js
-const Pastel1 = swatches("Pastel1");
+const Pastel1 = display(swatches("Pastel1"));
 ```
 
 ```js
-const Pastel2 = swatches("Pastel2");
+const Pastel2 = display(swatches("Pastel2"));
 ```
 
 ```js
-const Set1 = swatches("Set1");
+const Set1 = display(swatches("Set1"));
 ```
 
 ```js
-const Set2 = swatches("Set2");
+const Set2 = display(swatches("Set2"));
 ```
 
 ```js
-const Set3 = swatches("Set3");
+const Set3 = display(swatches("Set3"));
 ```
 
 ```js
-const Tableau10 = swatches("Tableau10");
+const Tableau10 = display(swatches("Tableau10"));
 ```
 
-```js
-md`
 ---
 
 ## Appendix
-`;
-```
 
 ```js echo
 function swatches(name) {
@@ -269,7 +246,7 @@ function swatches(name) {
     navigator.clipboard.writeText(JSON.stringify(colors));
     setTimeout(() => (label.textContent = name), 2000);
   };
-  return html`${canvas}${label}`;
+  return html`<div style="position:relative;">${canvas}${label}</div>`;
 }
 ```
 
@@ -317,6 +294,6 @@ function ramp(name) {
     navigator.clipboard.writeText(JSON.stringify(colors));
     setTimeout(() => (label.textContent = name), 2000);
   };
-  return html`${canvas}${label}`;
+  return html`<div style="position:relative;">${canvas}${label}</a>`;
 }
 ```

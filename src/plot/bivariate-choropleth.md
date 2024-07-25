@@ -137,7 +137,7 @@ const scheme = ["#e8e8e8", "#ace4e4", "#5ac8c8", "#dfb0d6", "#a5add3", "#5698b9"
 ```
 
 ```js echo
-const us = FileAttachment("../data/counties-albers-10m.json").json();
+const us = fetch(import.meta.resolve("npm:us-atlas/counties-albers-10m.json")).then((response) => response.json());
 ```
 
 ```js echo

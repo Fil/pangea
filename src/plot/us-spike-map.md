@@ -66,7 +66,7 @@ The dataset doesn’t include the positions of the counties, so we call Plot’s
 The geometries used in this example are from the [TopoJSON U.S. Atlas](https://github.com/topojson/us-atlas), which are derived from the U.S. Census Bureau shapefiles. (There’s also the [TopoJSON World Atlas](https://github.com/topojson/world-atlas), which is derived from [Natural Earth](https://www.naturalearthdata.com).) The _counties_ feature collection is all U.S. counties, using the five-digit FIPS identifier. The _statemap_ lets us look up the name of the state that contains a given county; a state’s two-digit identifier corresponds to the first two digits of its counties’ identifiers. Since the shapes have already been projected to screen coordinates, we use the _identity_ projection.
 
 ```js echo
-const us = FileAttachment("../data/counties-albers-10m.json").json();
+const us = fetch(import.meta.resolve("npm:us-atlas/counties-albers-10m.json")).then((response) => response.json());
 ```
 
 ```js echo
