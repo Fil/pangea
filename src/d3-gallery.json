@@ -1,0 +1,293 @@
+{
+  "sections": [
+    [
+      "animation",
+      {
+        "title": "Animation",
+        "description": "D3’s [data join](https://d3js.org/d3-selection/joining), [interpolators](https://d3js.org/d3-interpolate), and [easings](https://d3js.org/d3-ease) enable flexible [animated transitions](https://d3js.org/d3-transition) between views while preserving [object constancy](https://bost.ocks.org/mike/constancy/).",
+        "pages": [
+          "/d3/animated-treemap",
+          "/d3/temporal-force-directed-graph",
+          "/d3/connected-scatterplot",
+          "/d3/the-wealth-health-of-nations",
+          "/d3/scatterplot-tour",
+          "/d3/bar-chart-race",
+          "/d3/stacked-to-grouped-bars",
+          "/d3/streamgraph-transitions",
+          "/d3/smooth-zooming",
+          "/d3/zoom-to-bounding-box",
+          "/d3/orthographic-to-equirectangular",
+          "/d3/world-tour",
+          "/d3/walmarts-growth",
+          "/d3/hierarchical-bar-chart",
+          "/d3/zoomable-treemap",
+          "/d3/zoomable-circle-packing",
+          "/d3/collapsible-tree",
+          "/d3/zoomable-icicle",
+          "/d3/zoomable-sunburst",
+          "/d3/bar-chart-transitions",
+          "/d3/icelandic-population-by-age-1841-2019"
+        ]
+      }
+    ],
+    [
+      "interaction",
+      {
+        "title": "Interaction",
+        "description": "D3’s low-level approach allows for performant incremental updates during interaction. And D3 supports popular interaction methods including [dragging](https://d3js.org/d3-drag), [brushing](https://d3js.org/d3-brush), and [zooming](https://d3js.org/d3-zoom).",
+        "pages": [
+          "/d3/versor-dragging",
+          "/d3/index-chart",
+          "/d3/sequences-sunburst",
+          "/d3/brushable-scatterplot",
+          "/d3/brushable-scatterplot-matrix",
+          "/d3/pannable-chart",
+          "/d3/zoomable-area-chart",
+          "/d3/zoomable-bar-chart",
+          "/d3/seamless-zoomable-map-tiles"
+        ]
+      }
+    ],
+    [
+      "analysis",
+      {
+        "title": "Analysis",
+        "description": "D3 is for more than visualization; it includes tools for quantitative analysis, such as [data transformation](https://d3js.org/d3-array), [random number generation](https://d3js.org/d3-random), [hexagonal binning](https://observablehq.com/collection/@d3/d3-hexbin), and [contours via marching squares](https://d3js.org/d3-contour).",
+        "pages": [
+          "/d3/moving-average",
+          "/d3/bollinger-bands",
+          "/d3/box-plot",
+          "/d3/histogram",
+          "/d3/kernel-density-estimation",
+          "/d3/density-contours",
+          "/d3/volcano-contours",
+          "/d3/function-contours",
+          "/d3/hexbin",
+          "/d3/hexbin-area",
+          "/d3/hexbin-map",
+          "/d3/q-q-plot",
+          "/d3/normal-quantile-plot",
+          "/d3/parallel-sets"
+        ]
+      }
+    ],
+    [
+      "hierarchies",
+      {
+        "title": "Hierarchies",
+        "description": "D3 supports [hierarchical data](https://d3js.org/d3-hierarchy), too, with popular layouts such as [treemaps](https://d3js.org/d3-hierarchy/treemap), [tidy trees](https://d3js.org/d3-hierarchy/tree), and [packed circles](https://d3js.org/d3-hierarchy/pack). And you retain complete control over how the data is displayed.",
+        "pages": [
+          "/d3/treemap",
+          "/d3/cascaded-treemap",
+          "/d3/nested-treemap",
+          "/d3/pack",
+          "/d3/indented-tree",
+          "/d3/tree",
+          "/d3/radial-tree",
+          "/d3/cluster",
+          "/d3/radial-cluster",
+          "/d3/sunburst",
+          "/d3/icicle",
+          "/d3/tangled-tree",
+          "/d3/tree-of-life",
+          "/d3/force-directed-tree"
+        ]
+      }
+    ],
+    [
+      "networks",
+      {
+        "title": "Networks",
+        "description": "D3 works with networked data (graphs), including [simulated forces](https://d3js.org/d3-force) for resolving competing constraints and an iterative [Sankey layout](https://observablehq.com/collection/@d3/d3-sankey).",
+        "pages": [
+          "/d3/force-directed-graph",
+          "/d3/disjoint-force-directed-graph",
+          "/d3/mobile-patent-suits",
+          "/d3/arc-diagram",
+          "/d3/sankey",
+          "/d3/hierarchical-edge-bundling",
+          "/d3/hierarchical-edge-bundling",
+          "/d3/chord-diagram",
+          "/d3/chord-diagram",
+          "/d3/directed-chord-diagram",
+          "/d3/chord-dependency-diagram"
+        ]
+      }
+    ],
+    [
+      "bars",
+      {
+        "title": "Bars",
+        "description": "D3 [scales](https://d3js.org/d3-scale) and [axes](https://d3js.org/d3-axis) support basic charts. Or invent a new form that better serves your needs.",
+        "pages": [
+          "/d3/bar-chart",
+          "/d3/horizontal-bar-chart",
+          "/d3/diverging-bar-chart",
+          "/d3/stacked-bar-chart",
+          "/d3/stacked-horizontal-bar-chart",
+          "/d3/stacked-normalized-horizontal-bar",
+          "/d3/grouped-bar-chart",
+          "/d3/diverging-stacked-bar-chart",
+          "/d3/marimekko",
+          "/d3/world-history-timeline",
+          "/d3/calendar",
+          "/d3/impact-of-vaccines",
+          "/d3/electric-usage-2019",
+          "/d3/revenue-by-music-format-1973-2018"
+        ]
+      }
+    ],
+    [
+      "lines",
+      {
+        "title": "Lines",
+        "description": "With direct control over [graphics](https://d3js.org/d3-shape), and support for both SVG and Canvas, the possibilities are endless.",
+        "pages": [
+          "/d3/line-chart",
+          "/d3/line-chart-missing-data",
+          "/d3/multi-line-chart",
+          "/d3/change-line-chart",
+          "/d3/slope-chart",
+          "/d3/cancer-survival-rates",
+          "/d3/mareys-trains",
+          "/d3/candlestick-chart",
+          "/d3/variable-color-line",
+          "/d3/gradient-encoding",
+          "/d3/threshold-encoding",
+          "/d3/parallel-coordinates",
+          "/d3/inequality-in-american-cities",
+          "/d3/new-zealand-tourists-1921-2018",
+          "/d3/sea-ice-extent-1978-2017"
+        ]
+      }
+    ],
+    [
+      "areas",
+      {
+        "title": "Areas",
+        "description": "Go beyond basic area charts with [difference charts](/d3/difference-chart) or [streamgraphs](/d3/streamgraph). [Ridgeline plots](/d3/ridgeline-plots) and [horizon charts](/d3/horizon-charts) are great for comparing many simultaneous time series.",
+        "pages": [
+          "/d3/area-chart",
+          "/d3/area-chart-missing-data",
+          "/d3/stacked-area-chart",
+          "/d3/normalized-stacked-area-chart",
+          "/d3/u-s-population-by-state-1790-1990",
+          "/d3/streamgraph",
+          "/d3/difference-chart",
+          "/d3/band-chart",
+          "/d3/ridgeline-plot",
+          "/d3/horizon-chart",
+          "/d3/realtime-horizon-chart"
+        ]
+      }
+    ],
+    [
+      "dots",
+      {
+        "title": "Dots",
+        "description": "Don’t forget the humble scatterplot. For a single dimension, consider the [beeswarm](/d3/beeswarm); for finding pairwise dimensional correlations, try a [SPLOM](/d3/splom).",
+        "pages": [
+          "/d3/scatterplot",
+          "/d3/scatterplot-with-shapes",
+          "/d3/splom",
+          "/d3/dot-plot",
+          "/d3/global-temperature-trends",
+          "/d3/bubble-map",
+          "/d3/spike-map",
+          "/d3/bubble-chart",
+          "/d3/beeswarm",
+          "/d3/beeswarm-mirrored",
+          "/d3/hertzsprung-russell-diagram"
+        ]
+      }
+    ],
+    [
+      "radial",
+      {
+        "title": "Radial",
+        "description": "Pies and donuts are good for comparing a part to the whole. And radial layouts can be appropriate for cyclical data.",
+        "pages": ["/d3/pie-chart", "/d3/donut-chart", "/d3/radial-area-chart", "/d3/radial-stacked-bar-chart"]
+      }
+    ],
+    [
+      "annotation",
+      {
+        "title": "Annotation",
+        "description": "Labels, legends, axes, titles, guides, and keys help a visualization communicate effectively. Here are a few strategies.",
+        "pages": [
+          "/d3/inline-labels",
+          "/d3/directly-labelling-lines",
+          "/d3/line-with-tooltip",
+          "/d3/voronoi-labels",
+          "/d3/occlusion"
+        ]
+      }
+    ],
+    [
+      "maps",
+      {
+        "title": "Maps",
+        "description": "D3 implements a dizzying array of [geographic projections](https://observablehq.com/collection/@d3/d3-geo-projection). It works great with [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON), [TopoJSON](https://github.com/topojson), and even [shapefiles](/d3/streaming-shapefiles).",
+        "pages": [
+          "/d3/graticule-labels-stereographic",
+          "/d3/styled-axes",
+          "/d3/color-legend",
+          "/d3/choropleth",
+          "/d3/bivariate-choropleth",
+          "/d3/us-state-choropleth",
+          "/d3/world-choropleth",
+          "/d3/world-map",
+          "/d3/projection-comparison",
+          "/d3/tissots-indicatrix",
+          "/d3/web-mercator-tiles",
+          "/d3/raster-tiles",
+          "/d3/vector-tiles",
+          "/d3/clipped-map-tiles",
+          "/d3/raster-vector",
+          "/d3/vector-field",
+          "/d3/geotiff-contours",
+          "/d3/us-airports-voronoi",
+          "/d3/world-airports-voronoi",
+          "/d3/solar-terminator",
+          "/d3/solar-path",
+          "/d3/star-map",
+          "/d3/non-contiguous-cartogram"
+        ]
+      }
+    ],
+    [
+      "essays",
+      {
+        "title": "Essays",
+        "description": "Weave interactive visualizations seamlessly into prose for explorable explanations. Don’t just *tell* the reader something; let the reader see, engage, and ask questions.",
+        "pages": [
+          "/d3/d3-packenclose",
+          "/d3/centerline-labeling",
+          "/d3/methods-of-comparison-compared",
+          "/d3/predator-and-prey"
+        ]
+      }
+    ],
+    [
+      "fun",
+      {
+        "title": "Just for fun",
+        "description": "Why not have a little fun? Life’s not just about work, you know.",
+        "pages": [
+          "/d3/polar-clock",
+          "/d3/stern-brocot-tree",
+          "/d3/voronoi-stippling",
+          "/d3/watercolor",
+          "/d3/psr-b1919-21",
+          "/d3/epicyclic-gearing",
+          "/d3/owls-to-the-max",
+          "/d3/tadpoles",
+          "/d3/wordcloud",
+          "/d3/spilhaus-shoreline-map",
+          "/d3/phases-of-the-moon",
+          "/d3/color-schemes"
+        ]
+      }
+    ]
+  ]
+}

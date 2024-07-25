@@ -5,37 +5,13 @@ import {existsSync} from "node:fs";
 import type {AsPlainObject as MinisearchIndex} from "minisearch";
 type Section = {title: string; pages?: string[]; description?: string};
 type Document = {id: string; title: string; light?: string; dark?: string};
-import {sections} from "./src/index.json" assert {type: "json"};
+import {sections as allSections} from "./src/index.json" assert {type: "json"};
+import {sections as d3Gallery} from "./src/d3-gallery.json" assert {type: "json"};
 
 const HTTP_ROOT = "http://127.0.0.1:3033";
-const categories = new Map<string, Section>(sections as [string, Section][]);
 
-const intro = `# Pangea Proxima
-## Examples, techniques, algorithms: a collection edited by Fil
-
-_What?_ These pages demonstrate some modern data visualization techniques that you
-can use on the Web. They are built with [Observable Framework](https://observablehq.com/framework/),
-an open-source static site generator for data apps, dashboards, reports, and more.
-We mostly use [Observable Plot](https://observablehq.com/plot/) and [D3](https://d3js.org/),
-but also venture outside this ecosystem.
-
-_How?_ To access the code of any page, just click on the view source icon <span>⚉</span> in the top-right corner. If
-you’d like to contribute examples, please open a pull-request on the project’s GitHub [repo](https://github.com/fil/pangea). If you want something that you
-don’t find here, please open a [feature request](https://github.com/Fil/pangea/issues/new).
-
-_Who?_ I’m Fil Rivière, I work at [Observable](https://observablehq.com/) with the aim of building a strong foundation
-for data visualization on the Web. This is a place where I collect, experiment, showcase, and share some
-of the goodies. Most of these pages were initially authored by other people: Mike Bostock, Volodymyr Agafonkin,
-Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer,
-Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert, Cobus Theunissen, Enrico Spinielli,
-Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman,
-Danilo Di Cuia, John Alexis Guerra Gómez, Justin Kunimune,
-and others… thank you to everyone who publishes open source!
-
-<a class="view-source" href="https://github.com/Fil/pangea/blob/main/src/thumbnail/index.md?plain=1">⚉</a>
-`;
-
-async function main() {
+async function createIndex(sections, intro, more) {
+  const categories = new Map<string, Section>(sections as [string, Section][]);
   const ms: MinisearchIndex = await fetch(`${HTTP_ROOT}/_observablehq/minisearch.json`).then((resp) => resp.json());
   const documents: Document[] = Object.entries(ms.documentIds).map(([i, id]) => {
     const pathLight = `thumbnail${id}-light.png`;
@@ -81,7 +57,7 @@ async function main() {
     }
   }
 
-  cat.set("more", new Set(Array.from(documents, (_, i) => `${i}`)));
+  if (more) cat.set("more", new Set(Array.from(documents, (_, i) => `${i}`)));
   const debug = null; //show_debug(cat, documents);
 
   const seen = new Set();
@@ -187,6 +163,42 @@ function show_debug(cat: Map<string, Set<string>>, documents: Document[]) {
         .filter((id) => (seen.has(id) ? false : (seen.add(id), true)))
         .join(", <br>")}`
   ).join("\n\n");
+}
+
+const intro = `# Pangea Proxima
+## Examples, techniques, algorithms: a collection edited by Fil
+
+_What?_ These pages demonstrate some modern data visualization techniques that you
+can use on the Web. They are built with [Observable Framework](https://observablehq.com/framework/),
+an open-source static site generator for data apps, dashboards, reports, and more.
+We mostly use [Observable Plot](https://observablehq.com/plot/) and [D3](https://d3js.org/),
+but also venture outside this ecosystem.
+
+_How?_ To access the code of any page, just click on the view source icon <span>⚉</span> in the top-right corner. If
+you’d like to contribute examples, please open a pull-request on the project’s GitHub [repo](https://github.com/fil/pangea). If you want something that you
+don’t find here, please open a [feature request](https://github.com/Fil/pangea/issues/new).
+
+_Who?_ I’m Fil Rivière, I work at [Observable](https://observablehq.com/) with the aim of building a strong foundation
+for data visualization on the Web. This is a place where I collect, experiment, showcase, and share some
+of the goodies. Most of these pages were initially authored by other people: Mike Bostock, Volodymyr Agafonkin,
+Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer,
+Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert, Cobus Theunissen, Enrico Spinielli,
+Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman,
+Danilo Di Cuia, John Alexis Guerra Gómez, Justin Kunimune,
+and others… thank you to everyone who publishes open source!
+
+<a class="view-source" href="https://github.com/Fil/pangea/blob/main/src/thumbnail/index.md?plain=1">⚉</a>
+`;
+
+const count = new Set(d3Gallery.flatMap((d) => d[1].pages)).size;
+const d3Intro = `# D3 gallery
+
+Looking for a good D3 example? Here’s a few (okay, ${count.toLocaleString("en")}…) to peruse.
+`;
+
+async function main() {
+  createIndex(allSections, intro, true);
+  //createIndex(d3Gallery, d3Intro, false);
 }
 
 main();
