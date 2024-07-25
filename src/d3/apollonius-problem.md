@@ -244,11 +244,12 @@ function clamp(x, lo, hi) {
 
 .circle {
   fill-opacity: .5;
+  fill: currentColor;
 }
 
 .ring {
   fill: none;
-  stroke: #000;
+  stroke: currentColor;
   pointer-events: none;
 }
 
