@@ -377,6 +377,7 @@ and others… thank you to everyone who publishes open source!
 ## and more…
 
 <div class="list">
+<a href="/d3/apollonius-problem"><picture><source srcset="../thumbnail/d3/apollonius-problem-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/apollonius-problem-light.png" loading="lazy"></picture><q>Apollonius’ Problem</q></a>
 <a href="/d3/band-chart"><picture><source srcset="../thumbnail/d3/band-chart-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/band-chart-light.png" loading="lazy"></picture><q>Band chart</q></a>
 <a href="/d3/beeswarm-mirrored"><picture><source srcset="../thumbnail/d3/beeswarm-mirrored-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/beeswarm-mirrored-light.png" loading="lazy"></picture><q>Mirrored beeswarm</q></a>
 <a href="/d3/beeswarm"><picture><source srcset="../thumbnail/d3/beeswarm-dark.png" media="(prefers-color-scheme: dark)"><img src="../thumbnail/d3/beeswarm-light.png" loading="lazy"></picture><q>Beeswarm</q></a>

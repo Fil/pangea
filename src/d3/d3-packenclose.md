@@ -592,7 +592,7 @@ The two-bases are shown below in gray <svg style="overflow:visible;" width="1em"
 ```
 
 I’ll omit the geometric solution for the three-circle case as it is a bit complicated.
-(See [Apollonius’ Problem](https://observablehq.com/@d3/apollonius-problem).)
+(See [Apollonius’ Problem](./apollonius-problem).)
 It requires solving a system of three quadratic equations:
 
 ```js
