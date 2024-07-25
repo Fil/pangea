@@ -1,7 +1,7 @@
 ---
 source: https://observablehq.com/@mbostock/predator-and-prey
-index: false
-draft: true
+index: true
+author: Mike Bostock
 ---
 
 # Predator and Prey
@@ -31,6 +31,7 @@ const timeLineChart = (() => {
   const y = d3.scaleLinear().domain([0, 3]).range([height - margin.bottom, margin.top]);
 
   const svg = d3.create("svg")
+      .attr("width", width)
       .attr("viewBox", [0, 0, width, height]);
 
   svg.append("g")
@@ -60,12 +61,12 @@ const timeLineChart = (() => {
       .attr("r", 9)
       .attr("cx", margin.left)
       .call(d3.drag().on("drag", event => {
-        viewof xy.value = [Math.max(0, Math.min(3, +y.invert(event.y).toFixed(3))), viewof xy.value[1]];
+        xyView.value = [Math.max(0, Math.min(3, +y.invert(event.y).toFixed(3))), xyView.value[1]];
       }));
 
   const dotY = dotX.clone()
       .call(d3.drag().on("drag", event => {
-        viewof xy.value = [viewof xy.value[0], Math.max(0, Math.min(3, +y.invert(event.y).toFixed(3)))];
+        xyView.value = [xyView.value[0], Math.max(0, Math.min(3, +y.invert(event.y).toFixed(3)))];
       }));
 
   const labelX = svg.append("text")
@@ -82,7 +83,7 @@ const timeLineChart = (() => {
       .text("🐈");
 
   function update() {
-    const [x0, y0] = viewof xy.value;
+    const [x0, y0] = xyView.value;
     [T, X, Y] = simulate({alpha, beta, gamma, delta, x0, y0});
     pathX.attr("d", d3.line().x(x).y((_, i) => y(X[i]))(T));
     pathY.attr("d", d3.line().x(x).y((_, i) => y(Y[i]))(T));
@@ -93,8 +94,8 @@ const timeLineChart = (() => {
   }
 
   update();
-  viewof xy.addEventListener("input", update);
-  invalidation.then(() => viewof xy.removeEventListener("input", update));
+  xyView.addEventListener("input", update);
+  invalidation.then(() => xyView.removeEventListener("input", update));
   return svg.node();
 })();
 
@@ -106,7 +107,7 @@ As expected, both predator ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,
 We can see this cycle literally in [phase space](https://en.wikipedia.org/wiki/Phase_space): rather than encode time ${tex`t`} along the ${tex`x`}-axis, encode the number of prey 🐁 along ${tex`x`}, and the number of predators 🐈 along ${tex`y`}. (We’ll use animation to show how the population changes over time.) Drag the point ${svg`<svg width=8 height=16><circle r=3.5 cx=4 cy=10></circle></svg>`} to change the initial populations.
 
 ```js
-const timeCycleChart = {
+const timeCycleChart = (() => {
   let frame, i = 0, k = 24, T, X, Y;
 
   const size = Math.min(640, width);
@@ -123,7 +124,9 @@ const timeCycleChart = {
       .x(j => x(X[(i + j) % X.length]))
       .y(j => y(Y[(i + j) % Y.length]));
 
-  const svg = d3.select(DOM.svg(size, size))
+  const svg = d3.create("svg")
+      .attr("width", size)
+      .attr("viewBox", [0, 0, size, size])
       .style("overflow", "visible");
 
   svg.append("g")
@@ -164,14 +167,14 @@ const timeCycleChart = {
       .attr("fill", "black")
       .attr("r", 4)
       .call(d3.drag().on("start drag", event => {
-        viewof xy.value = [
+        xyView.value = [
           Math.max(0, Math.min(3, +x.invert(event.x).toFixed(3))),
           Math.max(0, Math.min(3, +y.invert(event.y).toFixed(3)))
         ];
       }));
 
   function reset() {
-    const [x0, y0] = viewof xy.value;
+    const [x0, y0] = xyView.value;
     dot.attr("cx", x(x0)).attr("cy", y(y0));
     [T, X, Y] = cycle(...simulate({alpha, beta, gamma, delta, x0, y0}));
     pathStatic.datum(T).attr("d", lineStatic);
@@ -184,22 +187,24 @@ const timeCycleChart = {
   }
 
   reset(), tick();
-  viewof xy.addEventListener("input", reset);
-  invalidation.then(() => viewof xy.removeEventListener("input", reset));
+  xyView.addEventListener("input", reset);
+  invalidation.then(() => xyView.removeEventListener("input", reset));
   invalidation.then(() => cancelAnimationFrame(frame));
   return svg.node();
-}
+})();
+
+display(timeCycleChart);
 ```
 
 This cycle suggests a counterintuitive but plausible result: if you instantaneously reduce the number of prey, predators will decline, allowing prey to recover, and a (temporarily) _larger_ prey population than you started with. More generally, feedback loops in dynamical systems can make it hard to predict what will happen when you artificially introduce change!
 
-Interacting with the phase plot reveals something else: see if you can adjust the initial populations <svg width=8 height=16><circle r=3.5 cx=4 cy=10></circle></svg> to contract the cycle <svg width=16 height=16><circle r=7 cx=8 cy=8 fill=none stroke=#000 stroke-opacity=0.25 stroke-width=1.5></circle></svg> down to a single point. What does this singularity mean in terms of predator–prey behavior? It is _equilibrium_: both populations are unchanging; both predator and prey are dying at the same rate they are reproducing.
+Interacting with the phase plot reveals something else: see if you can adjust the initial populations ${svg`<svg width=8 height=16><circle r=3.5 cx=4 cy=10></circle></svg>`} to contract the cycle ${svg`<svg width=16 height=16><circle r=7 cx=8 cy=8 fill=none stroke=#000 stroke-opacity=0.25 stroke-width=1.5></circle></svg>`} down to a single point. What does this singularity mean in terms of predator–prey behavior? It is _equilibrium_: both populations are unchanging; both predator and prey are dying at the same rate they are reproducing.
 
 We can see the stationary point directly—no interaction required—by plotting the entire vector field (the rates of change for _all possible_ conditions). It’s like a wind map: if you set the initial populations to a given point, the populations will follow the lines of the field and eventually loop back to the same point. The stationary point is the eye of the storm.
 
 ```js
-const vectorFieldChart = {
-  const div = html`<div style="position:relative;">`;
+{
+  const div = display(html`<div style="position:relative;">`);
 
   const size = Math.min(640, width);
   const margin = {top: 20, right: 30, bottom: 30, left: 40};
@@ -207,9 +212,11 @@ const vectorFieldChart = {
   const y = d3.scaleLinear().domain([0, 3]).range([size - margin.bottom, margin.top]);
   const z = d3.scaleSequential(d3.interpolateReds).domain([0, 20]);
 
-  const context = DOM.context2d(size, size);
+  const context = context2d(size, size);
   const canvas = div.appendChild(context.canvas);
-  const svg = d3.select(div.appendChild(DOM.svg(size, size)));
+  const svg = d3.select(div.appendChild(d3.create("svg")
+      .attr("width", size)
+      .attr("viewBox", [0, 0, size, size]).node()));
 
   svg.style("position", "relative");
   canvas.style.position = "absolute";
@@ -234,7 +241,7 @@ const vectorFieldChart = {
           .attr("x", 6)
           .text("🐈"));
 
-  yield visibility(div);
+  await visibility();
 
   for (let k = 0; k < 2e5; ++k) {
     let x0 = Math.random() * 5, x1, dx;
@@ -250,7 +257,7 @@ const vectorFieldChart = {
     }
     context.strokeStyle = d3.rgb(z((dx / x0) ** 2 + (dy / y0) ** 2)).darker(Math.random() * 2);
     context.stroke();
-    if (k % 1024 === 0) yield div;
+    if (k % 1024 === 0) await delay(10);
   }
 }
 ```
@@ -283,16 +290,13 @@ But why is the cycle in the phase plot always counterclockwise? Meaning: why doe
 We can visualize this delayed interaction more directly by plotting the rates of change rather than the absolute populations. (If you adjusted the initial populations above to find the stationary point, consider resetting them back to the default values to see these plots.)
 
 ```js
-{
-  const button = html`<button>Reset`;
-  button.onclick = () => viewof xy.value = [1.4, 1.6];
-  return button;
-}
+const button = display(html`<button>Reset</button>`);
+button.onclick = () => xyView.value = [1.4, 1.6];
 ```
 
 ```js
-const phaseChart = {
-  await visibility();
+await visibility();
+{
   const [T, X, Y] = simulate({alpha, beta, gamma, delta, x0: xy[0], y0: xy[1]});
 
   const height = 240;
@@ -300,7 +304,9 @@ const phaseChart = {
   const x = d3.scaleLinear().domain([0, 24]).range([margin.left, width - margin.right]);
   const y = d3.scaleLinear().domain([-4, 4]).range([height - margin.bottom, margin.top]);
 
-  const svg = d3.select(DOM.svg(width, height));
+  const svg = d3.create("svg").attr("width", width).attr("viewBox", [0, 0, width, height]);
+
+  display(svg.node());
 
   svg.append("g")
       .attr("transform", `translate(0,${y(0)})`)
@@ -322,36 +328,36 @@ const phaseChart = {
       .attr("stroke", yColor)
       .attr("stroke-width", 1.5)
       .attr("d", d3.line().x(x).y((t, i) => y(delta * X[i] * Y[i] - gamma * Y[i]))(T));
-
-  return svg.node();
 }
 ```
 
-For most of the cycle, the prey 🐁 rate of change <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${xColor} stroke-width=1.5></path></svg> is positive and slowly increasing. At a certain point (around ${tex`t = 8`} if you reset), however, the predator 🐈 rate of change <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${yColor} stroke-width=1.5></path></svg> spikes and the prey rate drops precipitously.
+For most of the cycle, the prey 🐁 rate of change ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${xColor} stroke-width=1.5></path></svg>`} is positive and slowly increasing. At a certain point (around ${tex`t = 8`} if you reset), however, the predator 🐈 rate of change ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${yColor} stroke-width=1.5></path></svg>`} spikes and the prey rate drops precipitously.
 
-To investigate further, let’s plot each term separately. The prey’s birth rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg> is ${tex`\alpha`}🐁 and death rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg> is ${tex`\beta`}🐁🐈; subtracting the two produces a positive rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${xColor}></path></svg> if the prey are increasing and a negative rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${negativeColor}></path></svg> if they are decreasing.
+To investigate further, let’s plot each term separately. The prey’s birth rate ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg>`} is ${tex`\alpha`}🐁 and death rate ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg>`} is ${tex`\beta`}🐁🐈; subtracting the two produces a positive rate ${svg`<svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${xColor}></path></svg>`} if the prey are increasing and a negative rate ${svg`<svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${negativeColor}></path></svg>`} if they are decreasing.
 
 ```js
-const preyRateChart = await visibility(), changeChart(
+await visibility();
+display(changeChart(
   xColor,
   {alpha, beta, gamma, delta, x0: xy[0], y0: xy[1]},
   (x, y) => alpha * x,
   (x, y) => beta * x * y
-)
+));
 ```
 
-Likewise, the predator’s birth rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg> is ${tex`\delta`}🐁🐈 and death rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg> is ${tex`\gamma`}🐈; subtracting the two produces a positive rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${yColor}></path></svg> if the predators are increasing, and a negative rate <svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${negativeColor}></path></svg> if they are decreasing.
+Likewise, the predator’s birth rate ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg>`} is ${tex`\delta`}🐁🐈 and death rate ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg>`} is ${tex`\gamma`}🐈; subtracting the two produces a positive rate ${svg`<svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${yColor}></path></svg>`} if the predators are increasing, and a negative rate ${svg`<svg width=16 height=16><path d="M1,16V10C4,14 12,6 15,10V16" fill=${negativeColor}></path></svg>`} if they are decreasing.
 
 ```js
-const predatorRateChart = await visibility(), changeChart(
+await visibility();
+display(changeChart(
   yColor,
   {alpha, beta, gamma, delta, x0: xy[0], y0: xy[1]},
   (x, y) => delta * x * y,
   (x, y) => gamma * y
-)
+));
 ```
 
-Notice that the double-population terms—the prey death rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg> ${tex`\beta`}🐁🐈 (top chart) and the predator birth rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg> ${tex`\delta`}🐁🐈 (bottom chart)—are much spikier than the single-population terms—the prey birth rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg> ${tex`\alpha`}🐁 (top) and the predator death rate <svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg> ${tex`\gamma`}🐈 (bottom). These double terms are asymptotically larger than the single terms: assuming the parameters ${tex`\alpha, \beta, \ldots`} are positive, the double terms will always dwarf the single terms when the populations are big enough. The double terms are “fast” while the single terms are “slow”.
+Notice that the double-population terms—the prey death rate ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg>`} ${tex`\beta`}🐁🐈 (top chart) and the predator birth rate ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg>`} ${tex`\delta`}🐁🐈 (bottom chart)—are much spikier than the single-population terms—the prey birth rate ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color1} stroke-width=1.5></path></svg>`} ${tex`\alpha`}🐁 (top) and the predator death rate ${svg`<svg width=16 height=16><path d="M1,10C4,14 12,6 15,10" fill=none stroke=${color2} stroke-width=1.5></path></svg>`} ${tex`\gamma`}🐈 (bottom). These double terms are asymptotically larger than the single terms: assuming the parameters ${tex`\alpha, \beta, \ldots`} are positive, the double terms will always dwarf the single terms when the populations are big enough. The double terms are “fast” while the single terms are “slow”.
 
 Prey birth changes _slowly_.
 <br> Predator birth changes _quickly_.
@@ -375,19 +381,19 @@ Bret Victor, [Interactive Exploration of a Dynamical System](https://vimeo.com/2
 ## Appendix
 
 ```js echo
-viewof alpha = html`<input type=range min=0 max=2 value=0.6667 step=any>`
+const alpha = view(html`<input type=range min=0 max=2 value=0.6667 step=any>`);
 ```
 
 ```js echo
-viewof beta = html`<input type=range min=0 max=2 value=1.3333 step=any>`
+const beta = view(html`<input type=range min=0 max=2 value=1.3333 step=any>`);
 ```
 
 ```js echo
-viewof gamma = html`<input type=range min=0 max=2 value=1 step=any>`
+const gamma = view(html`<input type=range min=0 max=2 value=1 step=any>`);
 ```
 
 ```js echo
-viewof delta = html`<input type=range min=0 max=2 value=1 step=any>`
+const delta = view(html`<input type=range min=0 max=2 value=1 step=any>`);
 ```
 
 ```js echo
@@ -405,9 +411,9 @@ function changeChart(positiveColor, options, f1, f2) {
     .domain([0, 4])
     .range([height - margin.bottom, margin.top]);
 
-  const svg = d3.select(DOM.svg(width, height));
-  const positive = DOM.uid("positive");
-  const negative = DOM.uid("negative");
+  const svg = d3.create("svg").attr("width", width).attr("viewBox", [0, 0, width, height]);
+  const positive = uid("positive");
+  const negative = uid("negative");
   const defs = svg.append("defs");
 
   defs
@@ -503,15 +509,17 @@ function changeChart(positiveColor, options, f1, f2) {
 ```
 
 ```js echo
-viewof xy = new View([1.4, 1.6])
+const xyView = new View([1.4, 1.6]);
+const xy = view(xyView);
 ```
 
 ```js echo
-const simulate = {
+let simulate;
+{
   const l = 24, k = 20, n = l * k;
   const solver = new odex.Solver(2);
   solver.denseOutput = true;
-  return ({alpha, beta, gamma, delta, x0, y0}) => {
+  simulate = ({alpha, beta, gamma, delta, x0, y0}) => {
     let i = 0;
     const T = new Float64Array(n);
     const X = new Float64Array(n);
@@ -579,4 +587,12 @@ class View {
 
 ```js echo
 import odex from "npm:odex@2";
+```
+
+```js echo
+import {delay} from "/components/Promises.js";
+```
+
+```js echo
+import {context2d, uid} from "/components/DOM.js";
 ```
