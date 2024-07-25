@@ -131,6 +131,7 @@ To start, let’s think about how to represent an enclosing circle. As you drag 
   const p = svg
     .append("g")
     .attr("stroke", "currentColor")
+    .attr("fill", "currentColor")
     .attr("fill-opacity", 0.1)
     .attr("cursor", "move")
     .selectAll("circle")
@@ -213,6 +214,7 @@ as the radius of gray circle <svg style="overflow:visible;" width="1em" height="
   const b = svg.append("g").datum({x: 302, y: 130, r: 47}).attr("cursor", "move").call(d3.drag().on("drag", dragged));
 
   b.append("circle")
+    .attr("fill", "currentColor")
     .attr("fill-opacity", 0.1)
     .attr("r", (d) => d.r);
 
@@ -590,7 +592,7 @@ The two-bases are shown below in gray <svg style="overflow:visible;" width="1em"
 ```
 
 I’ll omit the geometric solution for the three-circle case as it is a bit complicated.
-(See [Apollonius’ Problem](/@d3/apollonius-problem).)
+(See [Apollonius’ Problem](https://observablehq.com/@d3/apollonius-problem).)
 It requires solving a system of three quadratic equations:
 
 ```js
@@ -1042,3 +1044,7 @@ const height = 400;
 ```js echo
 import {context2d} from "/components/DOM.js";
 ```
+
+<style>
+  .path-move {fill: currentColor;}
+</style>
