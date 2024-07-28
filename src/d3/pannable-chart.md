@@ -5,7 +5,7 @@ index: true
 
 # Pannable chart
 
-This scrollable [area chart](/@d3/area-chart) supports horizontal panning. Try scrolling left below to see earlier data.
+This scrollable [area chart](./area-chart) supports horizontal panning. Try scrolling left below to see earlier data.
 
 ```js echo
 // Specify the chart dimensions and margins. The width is determined by Observable’s stdlib,
