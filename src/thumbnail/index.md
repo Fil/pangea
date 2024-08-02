@@ -23,7 +23,7 @@ for data visualization on the Web. This is a place where I collect, experiment, 
 of the goodies. Most of these pages were initially authored by other people: Mike Bostock, Volodymyr Agafonkin,
 Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer,
 Rene Cutura, Jeff Pettiross, Zan Armstrong, Fabian Iwand, Nicolas Lambert, Cobus Theunissen, Enrico Spinielli,
-Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Roden, Matteo Abrate, Noah Veltman,
+Harry Stevens, Jareb Wilber, Jean-Daniel Fekete, Dominik Moritz, Kerry Rodden, Matteo Abrate, Noah Veltman,
 Danilo Di Cuia, John Alexis Guerra Gómez, Justin Kunimune,
 and others… thank you to everyone who publishes open source!
 
