@@ -44,7 +44,7 @@ g.append("g")
     .attr("clip-path", d => d.clip)
   .selectAll("use")
   .data(d => Array.from(
-    {length: overlap * 2}, 
+    {length: overlap * 2},
     (_, i) => Object.assign({index: i < overlap ? -i - 1 : i - overlap}, d)
   ))
   .enter().append("use")
@@ -102,18 +102,17 @@ const area = d3.area()
 ```
 
 ```js echo
-const parseDate = d3.utcParse("%Y-%m-%d");
 const data = Promise.all([
   FileAttachment("../data/aapl.csv"),
   FileAttachment("../data/amzn.csv"),
   FileAttachment("../data/goog.csv"),
   FileAttachment("../data/ibm.csv"),
   FileAttachment("../data/msft.csv")
-].map(async file => {
-  const values = d3.csvParse(await file.text(), d => {
-    const date = parseDate(d["Date"]);
-    return {date, value: +d["Close"]};
-  });
+].map(async (file) => {
+  const values = Array.from(
+    await file.csv({typed: true}),
+    (d) => ({date: d["Date"], value: d["Close"]})
+  );
   const v = values[0].value;
   return {
     key: file.name.slice(0, -4),

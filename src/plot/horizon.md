@@ -5,7 +5,7 @@ index: true
 
 # Horizon chart
 
-Horizon charts are an alternative to [ridgeline plots](./ridgeline-plot) and small-multiple area charts that allow greater precision for a given vertical space by using colored bands. These charts can be used with diverging color scales to differentiate positive and negative values. Data: [Christopher Möller](https://gist.github.com/chrtze/c74efb46cadb6a908bbbf5227934bfea).
+Horizon charts are an alternative to [ridgeline plots](./ridgeline-plot) and small-multiple area charts that allow greater precision for a given vertical space by using colored bands. These charts can be used with diverging color scales to [differentiate positive and negative values](./diverging-horizon-chart). Data: [Christopher Möller](https://gist.github.com/chrtze/c74efb46cadb6a908bbbf5227934bfea).
 
 ```js
 const bands = view(Inputs.range([2, 8], {step: 1, label: "Bands"}));

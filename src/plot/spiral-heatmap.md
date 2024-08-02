@@ -1,5 +1,5 @@
 ---
-source:
+source: https://observablehq.com/@fil/spiral-heatmap
 index: true
 ---
 
