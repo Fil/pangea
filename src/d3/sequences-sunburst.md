@@ -1,12 +1,12 @@
 ---
 source: https://observablehq.com/@kerryrodden/sequences-sunburst
-author: Kerry Roden
+author: Kerry Rodden
 index: true
 ---
 
 # Sequences Sunburst
 
-<p class=author>by <a href="https://observablehq.com/@kerryrodden">Kerry Roden</a></p>
+<p class=author>by <a href="https://observablehq.com/@kerryrodden">Kerry Rodden</a></p>
 
 This example shows how it is possible to use a [sunburst visualization](./sunburst) with data that describes sequences of events. Hover over the segments to see the corresponding sequences.
 
