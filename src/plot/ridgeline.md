@@ -38,7 +38,7 @@ const FY = Plot.valueof(traffic, "location");
 const locations = new Set(FY);
 ```
 
-Creates the chart with a different mark for each facet, ensuring that each new ridge is drawn over the previous ones.
+Creates the chart, then ensures that each new ridge is drawn over the previous ones by sandwiching the areas and lines.
 
 ```js echo
 const chart = Plot.plot({
@@ -49,26 +49,31 @@ const chart = Plot.plot({
   x: {axis: "top"},
   y: {axis: null, range: [2.5 * 17 - 2, (2.5 - overlap) * 17 - 2]},
   fy: {label: null, domain: locations}, // preserve input order
-  marks: Array.from(locations, (location) => [
-      Plot.areaY(traffic, {
-        filter: FY.map((l) => l === location),
-        x: X,
-        y: Y,
-        fy: FY,
-        curve: "basis",
-        sort: "date",
-        fill: "var(--theme-foreground-faintest)"
-      }),
-      Plot.lineY(traffic, {
-        filter: FY.map((l) => l === location),
-        x: X,
-        y: Y,
-        fy: FY,
-        curve: "basis",
-        sort: "date",
-        strokeWidth: 1
-      })
-    ]
-  )
+  marks: [
+    Plot.areaY(traffic, {
+      x: X,
+      y: Y,
+      fy: FY,
+      curve: "basis",
+      sort: "date",
+      fill: "var(--theme-foreground-faintest)"
+    }),
+    Plot.lineY(traffic, {
+      x: X,
+      y: Y,
+      fy: FY,
+      strokeWidth: 1,
+      curve: "basis",
+      sort: "date"
+    })
+  ]
 });
+
+for (const [area, line] of d3.zip(
+  chart.querySelectorAll("[aria-label='area']>g"),
+  chart.querySelectorAll("[aria-label='line']>g")
+))
+  area.parentNode.insertBefore(line, area.nextSibling);
+
+chart.querySelector("[aria-label='line']").remove();
 ```
