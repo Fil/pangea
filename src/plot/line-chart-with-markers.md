@@ -21,7 +21,7 @@ Plot.plot({
 })
 ```
 
-The dataset is a CSV in the so-called “wide” format, with multiple observations for each date (an observation is the number of deaths in the Crimea war, from a given cause of death).
+The dataset is a CSV in the so-called “wide” format, with multiple observations for each date (an observation is the number of deaths in the Crimean war, from a given cause of death).
 
 ${Inputs.table(data)}
 
