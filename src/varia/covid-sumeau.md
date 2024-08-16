@@ -32,30 +32,27 @@ const city = view(Inputs.select(new Set(["National", ...cities.sort()])));
 ```
 
 ```js
-display(
-  Plot.plot({
-    width,
-    marginLeft: 60,
-    y: {type: "log"},
-    marks: [
-      Plot.gridY({ticks: 5}),
-      Plot.lineY(tidy, {
-        x: "date",
-        y: "concentration",
-        z: "city",
-        curve: "natural",
-        stroke: (d) => (d.city === city ? "steelblue" : d.city === "National" ? "grey" : "currentColor"),
-        strokeWidth: (d) => (d.city === city ? 3 : d.city === "National" ? 1.5 : 0.25),
-        channels: {semaine: "semaine"},
-        tip: {format: {stroke: false, strokeWidth: false}},
-        sort: (d) => d.city === "National"
-      })
-    ]
-  })
-);
+Plot.plot({
+  width,
+  marginLeft: 60,
+  y: {type: "log"},
+  marks: [
+    Plot.gridY({ticks: 5}),
+    Plot.lineY(tidy, {
+      x: "date",
+      y: "concentration",
+      z: "city",
+      curve: "natural",
+      stroke: (d) => (d.city === city ? "steelblue" : d.city === "National" ? "grey" : "currentColor"),
+      strokeWidth: (d) => (d.city === city ? 3 : d.city === "National" ? 1.5 : 0.25),
+      channels: {semaine: "semaine"},
+      tip: {format: {stroke: false, strokeWidth: false}},
+      sort: (d) => d.city === "National"
+    })
+  ]
+})
 ```
 
 ```js
-//display(Inputs.table(data));
-display(Inputs.table(tidy));
+Inputs.table(tidy, {select: false})
 ```
