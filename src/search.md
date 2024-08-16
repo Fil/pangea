@@ -24,7 +24,7 @@ for (const {corpus, root, index} of indexes) {
         title: res.title,
         score: res.score,
         corpus,
-        url: `${root}${res.id}`
+        url: new URL(res.id.replace(/^[/]/, ""), root).href
       });
   }
 }
@@ -38,7 +38,7 @@ display(html`${d3.sort(results, d => -d.score).slice(0, 50).map(({
 
 
 ```js
-import MiniSearch from "minisearch"
+import MiniSearch from "minisearch";
 ```
 
 ```js
