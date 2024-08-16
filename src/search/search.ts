@@ -4,10 +4,18 @@ export async function printIndex(type: string, ref: string, root = ref) {
   f(ref).then((index) => process.stdout.write(JSON.stringify({root, index})));
 }
 
-// Gets the minisearch index from a framework project. The file
+// Gets the minisearch index from a framework project < 1.9. The file
+// minisearch.xxx.json is referenced in search.js
+async function Framework9(ref: string) {
+  const minisearch = await find("minisearch", "json", `${ref}_observablehq/search.js`);
+  return JSON.parse(await fetch(`${ref}_observablehq/${minisearch}`).then((resp) => resp.text()));
+}
+
+// Gets the minisearch index from a framework project >= 1.10. The file
 // minisearch.xxx.json is referenced in search.js
 async function Framework(ref: string) {
-  const minisearch = await find("minisearch", "json", `${ref}_observablehq/search.js`);
+  const search = await find("search", "js", ref);
+  const minisearch = await find("minisearch", "json", `${ref}_observablehq/${search}`);
   return JSON.parse(await fetch(`${ref}_observablehq/${minisearch}`).then((resp) => resp.text()));
 }
 
