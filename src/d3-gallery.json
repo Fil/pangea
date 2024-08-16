@@ -26,7 +26,9 @@
           "/d3/zoomable-icicle",
           "/d3/zoomable-sunburst",
           "/d3/bar-chart-transitions",
-          "/d3/icelandic-population-by-age-1841-2019"
+          "/d3/icelandic-population-by-age-1841-2019",
+          "/d3/pie-chart-update",
+          "/d3/arc-tween"
         ]
       }
     ],
@@ -106,8 +108,7 @@
           "/d3/arc-diagram",
           "/d3/sankey",
           "/d3/hierarchical-edge-bundling",
-          "/d3/hierarchical-edge-bundling",
-          "/d3/chord-diagram",
+          "/d3/hierarchical-edge-bundling-2",
           "/d3/chord-diagram",
           "/d3/directed-chord-diagram",
           "/d3/chord-dependency-diagram"
@@ -219,7 +220,10 @@
           "/d3/directly-labelling-lines",
           "/d3/line-with-tooltip",
           "/d3/voronoi-labels",
-          "/d3/occlusion"
+          "/d3/occlusion",
+          "/d3/graticule-labels-stereographic",
+          "/d3/styled-axes",
+          "/d3/color-legend"
         ]
       }
     ],
@@ -229,9 +233,6 @@
         "title": "Maps",
         "description": "D3 implements a dizzying array of [geographic projections](https://observablehq.com/collection/@d3/d3-geo-projection). It works great with [GeoJSON](https://en.wikipedia.org/wiki/GeoJSON), [TopoJSON](https://github.com/topojson), and even [shapefiles](/d3/streaming-shapefiles).",
         "pages": [
-          "/d3/graticule-labels-stereographic",
-          "/d3/styled-axes",
-          "/d3/color-legend",
           "/d3/choropleth",
           "/d3/bivariate-choropleth",
           "/d3/us-state-choropleth",

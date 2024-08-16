@@ -27,6 +27,6 @@
     "@types/node": ">=18",
     "fast-xml-parser": "^4.3.6",
     "playwright": "^1.45.1",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.5"
   }
 }
