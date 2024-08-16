@@ -24,7 +24,7 @@ p > code,
 li > code,
 td > code,
 th > code {
-  color: var(--syntax-keyword);
+  color: var(--syntax-string);
   background-color: var(--theme-background-alt);
   padding: 3px 5px;
   border-radius: 4px;
