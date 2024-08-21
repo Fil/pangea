@@ -5,7 +5,7 @@
     "thumbnail": "tsx ./generate-thumbnails.ts && yarn makeindex",
     "makeindex": "tsx ./generate-index.ts > src/thumbnail/index.md",
     "clean": "rm -rf src/.observablehq/cache",
-    "build": "yarn makeindex && rm -rf dist && yarn observable build",
+    "build": "rm -rf dist && yarn observable build",
     "dev": "(sleep 5 && yarn makeindex) & yarn observable preview --port 3033",
     "deploy": "yarn observable deploy",
     "observable": "tsx node_modules/@observablehq/framework/src/bin/observable.ts",

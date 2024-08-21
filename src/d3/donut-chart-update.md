@@ -3,9 +3,9 @@ index: true
 source: https://observablehq.com/@d3/pie-chart-update
 ---
 
-# Pie chart update
+# Donut chart update
 
-This variation of a [donut chart](./donut-chart) demonstrates how to update values with an animated transition. Clicking on the radio buttons changes the displayed metric.
+This variation of a [donut chart](./donut-chart) demonstrates how to update values with an animated transition. Clicking on the radio buttons changes the displayed metric. See [Donut chart update II](./donut-chart-update-2) for a more complete example. 
 
 ```js
 const radio = Inputs.radio(new Map([["Apples", "apples"], ["Oranges", "oranges"]]), {label: "dataset", value: "apples"});
