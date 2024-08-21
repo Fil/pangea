@@ -1,6 +1,17 @@
 ---
-index: true
+index: false
+draft: true
 ---
+
+```js echo
+import * as duckdb1 from "npm:@duckdb/duckdb-wasm@1.28.1-dev234.0";
+```
+
+```js echo
+const duckdb = await import("https://esm.sh/@duckdb/duckdb-wasm@1.28.1-dev234.0");
+
+display(await duckdb);
+```
 
 # DuckDB spatial
 
@@ -28,7 +39,24 @@ display(
 Start by creating an empty DuckDB database with its [spatial extension](https://duckdb.org/docs/extensions/spatial.html), and load the TopoJSON [US Atlas](https://github.com/topojson/us-atlas):
 
 ```js echo
+const db1 = await DuckDBClient.of();
+display(await db1.sql`SELECT extension_name, installed, description
+FROM duckdb_extensions();`);
+```
+
+```js echo
+const db2 = await DuckDBClient.of();
+display(await db2.sql`SHOW default_extension_repository;`)
+// await db2.sql`SET autoinstall_known_extensions=1;`;
+// await db2.sql`SET autoload_known_extensions=1;`;
+// display(await db2.sql`install json; load json; SELECT {duck: 42}::JSON;`);
+```
+
+```js echo
 const db = await DuckDBClient.of();
+//await db.sql`SET home_directory='./'`;
+//await db.sql`SET secret_directory='/tmp';`;
+//await db.sql`SET extension_directory='/';`;
 await db.sql`INSTALL spatial`;
 await db.sql`LOAD spatial`;
 await db.sql`CREATE TABLE us AS (
