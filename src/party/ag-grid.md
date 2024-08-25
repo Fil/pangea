@@ -6,7 +6,7 @@ toc: false
 
 # AG Grid
 
-Example of how to use [AG Grid](https://www.ag-grid.com) with the pengins dataset.
+Example of how to use [AG Grid](https://www.ag-grid.com) with the penguins dataset.
 
 ```js echo
 const gridOptions = {
