@@ -1,23 +1,14 @@
 ---
 title: AG Grid
-theme: "dashboard"
+index: true
 toc: false
 ---
 
-# AG Grid example
+# AG Grid
 
-Example of how to use AG Grid (https://www.ag-grid.com) with the pengins dataset.
+Example of how to use [AG Grid](https://www.ag-grid.com) with the pengins dataset.
 
-```js
-import * as AgGrid from "npm:ag-grid-community";
-```
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-quartz.min.css">
-
-```js
-
+```js echo
 const gridOptions = {
   columnDefs: [
     { headerName: "Species", field: "species"},
@@ -63,6 +54,19 @@ const gridOptions = {
 
 const container = display(document.createElement("div"));
 container.setAttribute("style", "height: 500px; width: 100%;");
-container.setAttribute("class", "ag-theme-quartz-auto-dark");
+container.setAttribute("class", `ag-theme-quartz${dark ? "-dark" : ""}`);
 AgGrid.createGrid(container, gridOptions);
 ```
+
+
+```js echo
+import * as AgGrid from "npm:ag-grid-community";
+```
+
+```html run=false
+<link rel="stylesheet" href="npm:ag-grid-community/styles/ag-grid.min.css">
+<link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-quartz.min.css">
+```
+
+<link rel="stylesheet" href="npm:ag-grid-community/styles/ag-grid.min.css">
+<link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-quartz.min.css">
