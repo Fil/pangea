@@ -1,6 +1,7 @@
 ---
 title: AG Grid
 index: true
+theme: dashboard
 toc: false
 ---
 
