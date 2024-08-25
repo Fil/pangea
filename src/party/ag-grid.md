@@ -7,61 +7,66 @@ toc: false
 
 # AG Grid
 
-Example of how to use [AG Grid](https://www.ag-grid.com) with the penguins dataset.
+Example of how to use [AG Grid](https://www.ag-grid.com) with the olympians dataset.
 
 ```js
-const theme = view(Inputs.select(["ag-theme-quartz", "ag-theme-balham", "ag-theme-material"], {label: "Theme"}));
+const theme = view(Inputs.select(["ag-theme-balham", "ag-theme-quartz", "ag-theme-material"], {label: "Theme"}));
 ```
 
 ```js echo
 const gridOptions = {
   columnDefs: [
-    { headerName: "Species", field: "species"},
-    { headerName: "Island", field: "island" },
     {
-      headerName: "Culmen length (mm)",
-      field: "culmen_length_mm",
-      cellDataType: "number",
-      type: "rightAligned",
-      valueFormatter: (d) => d3.format(".2f")(d.value)
+        headerName: 'Athlete',
+        children: [
+            { headerName: "Name", field: "name", cellStyle: { fontWeight: 'bold' }},
+            { headerName: "Sport", field: "sport" },
+            { headerName: "Nationality", field: "nationality" },
+        ]
     },
     {
-      headerName: "Culmen depth (mm)",
-      field: "culmen_depth_mm",
-      cellDataType: "number",
-      type: "rightAligned",
-      valueFormatter: (d) => d3.format(".2f")(d.value)
+        headerName: 'Bio',
+        children: [
+            { headerName: "Sex", field: "sex" },
+            { headerName: "Height", field: "height", cellDataType: "number" },
+            { headerName: "Weight", field: "weight", cellDataType: "number" },
+            { headerName: "DOB", field: "date_of_birth", cellDataType: "date" },
+        ]
     },
     {
-      headerName: "Flipper length (mm)",
-      field: "flipper_length_mm",
-      cellDataType: "number",
-      type: "rightAligned",
-      valueFormatter: (d) => d3.format(".2f")(d.value)
-    },
-    {
-      headerName: "Body mass (g)",
-      field: "body_mass_g",
-      cellDataType: "number",
-      type: "rightAligned",
-      valueFormatter: (d) => d3.format(",")(d.value)
-    },
-    { headerName: "Sex", field: "sex" },
+        headerName: "Medals",
+        children: [
+            { columnGroupShow: 'open', headerName: "Gold", field: "gold", cellDataType: "number", width: 100 },
+            { columnGroupShow: 'open', headerName: "Silver", field: "silver", cellDataType: "number", width: 100  },
+            { columnGroupShow: 'open', headerName: "Bronze", field: "bronze", cellDataType: "number", width: 100  },
+            { columnGroupShow: 'closed', headerName: "Total", field: "total", cellDataType: "number", width: 100, valueGetter: params => params.data.gold + params.data.silver + params.data.bronze },
+        ]
+    }
   ],
-  rowData: penguins,
+  rowData: olympians,
   rowSelection: "single",
   defaultColDef: {
     filter: true,
     cellDataType: "text",
+    wrapHeaderText: true,
+    autoHeaderHeight: true,
   },
+  autoSizeStrategy: {
+    type: "fitCellContents",
+    columnLimits: [
+        {
+            colId: 'name',
+            minWidth: 150
+        }
+    ]
+    },
 };
 
 const container = display(document.createElement("div"));
 container.setAttribute("style", "height: 500px; width: 100%;");
-container.setAttribute("class", `${theme}-auto-dark`);
+container.setAttribute("class", `${theme}${dark ? "-dark" : ""}`);
 AgGrid.createGrid(container, gridOptions);
 ```
-
 
 ```js echo
 import * as AgGrid from "npm:ag-grid-community";
@@ -76,4 +81,5 @@ import * as AgGrid from "npm:ag-grid-community";
 
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-grid.min.css">
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-quartz.min.css">
+<link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-balham.min.css">
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-material.min.css">
