@@ -11,7 +11,7 @@ source: https://github.com/observablehq/framework/discussions/1061
 const app = display(document.createElement("div"));
 app.setAttribute("style", "position: relative; width: 800px; height: 600px;");
 
-window.molstar.Viewer.create(app, {
+molstar.Viewer.create(app, {
   layoutIsExpanded: false,
   layoutShowControls: false,
   layoutShowRemoteState: false,
