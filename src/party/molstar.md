@@ -25,7 +25,7 @@ molstar.Viewer.create(app, {
   emdbProvider: "rcsb"
 }).then((viewer) => {
   // load the structure file (copied locally)
-  viewer.loadStructureFromUrl(FileAttachment("molstar/7bv2.pdb").href);
+  viewer.loadStructureFromUrl(FileAttachment("./molstar/7bv2.pdb").href);
   // load meta data from EMDB
   // e.g. https://maps.rcsb.org/em/emd-30210/cell?detail=6
   // and https://files.wwpdb.org/pub/emdb/structures/EMD-30210/header/emd-30210.xml
@@ -34,7 +34,9 @@ molstar.Viewer.create(app, {
 });
 ```
 
-```html echo
+<link rel="stylesheet" type="text/css" href="npm:molstar/build/viewer/molstar.css">
+
+```html echo run=false
 <link rel="stylesheet" type="text/css" href="npm:molstar/build/viewer/molstar.css">
 ```
 
