@@ -9,6 +9,10 @@ toc: false
 
 Example of how to use [AG Grid](https://www.ag-grid.com) with the penguins dataset.
 
+```js
+const theme = view(Inputs.select(["ag-theme-quartz", "ag-theme-balham", "ag-theme-material"], {label: "Theme"}));
+```
+
 ```js echo
 const gridOptions = {
   columnDefs: [
@@ -47,7 +51,6 @@ const gridOptions = {
   rowData: penguins,
   rowSelection: "single",
   defaultColDef: {
-    flex: 1,
     filter: true,
     cellDataType: "text",
   },
@@ -55,7 +58,7 @@ const gridOptions = {
 
 const container = display(document.createElement("div"));
 container.setAttribute("style", "height: 500px; width: 100%;");
-container.setAttribute("class", `ag-theme-quartz${dark ? "-dark" : ""}`);
+container.setAttribute("class", `${theme}-auto-dark`);
 AgGrid.createGrid(container, gridOptions);
 ```
 
@@ -67,7 +70,10 @@ import * as AgGrid from "npm:ag-grid-community";
 ```html run=false
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-grid.min.css">
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-quartz.min.css">
+<link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-balham.min.css">
+<link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-material.min.css">
 ```
 
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-grid.min.css">
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-quartz.min.css">
+<link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-material.min.css">
