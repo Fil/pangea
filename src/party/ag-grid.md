@@ -3,6 +3,7 @@ title: AG Grid
 index: true
 theme: dashboard
 toc: false
+source: https://talk.observablehq.com/t/observable-framework/9693
 ---
 
 # AG Grid
