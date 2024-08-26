@@ -64,13 +64,23 @@ const gridOptions = {
 
 const container = display(document.createElement("div"));
 container.setAttribute("style", "height: 500px; width: 100%;");
-container.setAttribute("class", `${theme}${dark ? "-dark" : ""}`);
 AgGrid.createGrid(container, gridOptions);
 ```
+
+The next line sets the grid’s class name, based on the selected **theme** and the current **dark** (or light) mode. It is in a separate code block, ensuring that the grid state (filtered and sorted) is left intact when these values change.
+
+```js echo
+container.setAttribute("class", `${theme}${dark ? "-dark" : ""}`);
+```
+
+The code below imports a self-hosted copy of the AG-grid JavaScript and stylesheets ([community edition](https://www.ag-grid.com/angular-data-grid/licensing/)).
 
 ```js echo
 import * as AgGrid from "npm:ag-grid-community";
 ```
+
+For this demo page, we preload three themes (in actual use you would only select your preferred theme):
+
 
 ```html run=false
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-grid.min.css">
@@ -83,3 +93,4 @@ import * as AgGrid from "npm:ag-grid-community";
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-quartz.min.css">
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-balham.min.css">
 <link rel="stylesheet" href="npm:ag-grid-community/styles/ag-theme-material.min.css">
+
