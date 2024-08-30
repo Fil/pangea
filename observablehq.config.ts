@@ -61,6 +61,7 @@ export default {
     // },
     */
   ],
+  dynamicPaths: ["/d3/", "/thumbnail/"],
   toc: false, // whether to show the table of contents
   pager: false, // whether to show previous & next links in the footer
   sidebar: true,
