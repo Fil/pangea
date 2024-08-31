@@ -1,52 +1,12 @@
 ---
 source: https://blocks.roadtolarissa.com/mbostock/1093130
 author: Mike Bostock
-draft: true
+index: true
 ---
 
-<style>
+# Collapsible force layout
 
-.node {
-  cursor: pointer;
-}
-
-.node circle {
-  stroke: #3182bd;
-  stroke-width: 1.5px;
-}
-
-.node text {
-  font: 10px sans-serif;
-  user-select:none;
-  text-anchor: middle;
-  fill: var(--theme-foreground);
-  stroke: var(--theme-background);
-  stroke-width: 4px;
-  paint-order: stroke;
-}
-
-line.link {
-  fill: none;
-  stroke: #9ecae1;
-  stroke-width: 1.5px;
-}
-
-</style>
-
-```js echo
-const {nodes, links} = await FileAttachment("/data/flare.json")
-  .json()
-  .then((root) => {
-    root.children.splice(1, 10); // remove all branches but one
-    root = d3.hierarchy(root).sum((d) => d.value);
-    return {nodes: root.descendants(), links: root.links()};
-  });
-```
-
-```js echo
-display(nodes);
-display(links);
-```
+This chart displays a hierarchical dataset where nodes can be expanded or collapsed by clicking, revealing or hiding their child nodes. The graph is interactive, allowing users to drag nodes and observe the force-directed layout adjusting in real-time.
 
 ```js echo
 const width = 960;
@@ -163,4 +123,54 @@ function dragended(event) {
 // really matter since the target alpha is zero and the simulation will
 // stop naturally, but it’s a good practice.)
 invalidation.then(() => simulation.stop());
+```
+
+
+```html echo
+<style>
+
+.node {
+  cursor: pointer;
+}
+
+.node circle {
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+  user-select:none;
+  text-anchor: middle;
+  fill: var(--theme-foreground);
+  stroke: var(--theme-background);
+  stroke-width: 4px;
+  paint-order: stroke;
+}
+
+line.link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+</style>
+```
+
+## The data
+
+Note that the visualization mutates the nodes by adding _e.g._ position and speed information.
+
+```js
+display({nodes, links});
+```
+
+```js echo
+const {nodes, links} = await FileAttachment("/data/flare.json")
+  .json()
+  .then((root) => {
+    root.children.splice(1, 10); // remove all branches but one
+    root = d3.hierarchy(root).sum((d) => d.value);
+    return {nodes: root.descendants(), links: root.links()};
+  });
 ```
