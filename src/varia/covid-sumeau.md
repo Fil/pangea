@@ -9,8 +9,9 @@ This tracks the relative concentration of the coronavirus **gene E** over ammoni
 ```js
 const url = "https://www.data.gouv.fr/fr/datasets/r/2963ccb5-344d-4978-bdd3-08aaf9efe514";
 const data = d3.text(url)
-  .catch(() => d3.text("https://corsproxy.io/?" + url))
-  .then((t) => d3.dsvFormat(";").parse(t.replaceAll(",", "."), d3.autoType));
+  .catch(() => d3.text("https://corsproxy.io/?" + url)
+    .catch(() => d3.text(FileAttachment("./covid-sumeau-copy.csv").href))
+  ).then((t) => d3.dsvFormat(";").parse(t.replaceAll(",", "."), d3.autoType));
 ```
 
 ```js
