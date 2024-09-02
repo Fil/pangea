@@ -1,3 +1,5 @@
+import Parser from "rss-parser";
+
 const EMOJI_FAVICON = "🌍";
 const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a><span></span>.</p>`;
 
@@ -31,6 +33,17 @@ a.setAttribute("href", a.getAttribute("href") + (
 </script>
 `;
 
+const dynamicPaths: string[] = [];
+
+const parser = new Parser({customFields: {item: ["link"]}});
+const url = "https://observablehq.com/blog/feed.rss";
+
+for (const item of (await parser.parseURL(url)).items) {
+  const a = item.link.match(/blog\/(.*)$/)?.[1];
+  if (a) dynamicPaths.push(`/blog/${a}`);
+  if (a === "observable-2-0") break; // ignore older posts
+}
+
 export default {
   title: "Pangea Proxima",
   root: "src",
@@ -61,7 +74,7 @@ export default {
     // },
     */
   ],
-  dynamicPaths: ["/d3/", "/thumbnail/"],
+  dynamicPaths,
   toc: false, // whether to show the table of contents
   pager: false, // whether to show previous & next links in the footer
   sidebar: true,

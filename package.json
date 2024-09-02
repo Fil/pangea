@@ -18,6 +18,7 @@
     "d3-dsv": "^3.0.1",
     "d3-time-format": "^4.1.0",
     "linkedom": "^0.16.8",
+    "rss-parser": "^3.13.0",
     "topojson-client": "^3.1.0",
     "topojson-server": "^3.0.1"
   },
