@@ -3,7 +3,7 @@ import {sections} from "../index.json" assert {type: "json"};
 
 const intro = `# Pangea Proxima
 
-## Examples, techniques, algorithms: a collection edited by Fil
+## Examples, techniques, algorithms: a collection
 
 _What?_ These pages demonstrate some modern data visualization techniques that you
 can use on the Web. They are built with [Observable Framework](https://observablehq.com/framework/),
@@ -15,7 +15,7 @@ _How?_ To access the code of any page, just click on the view source icon <span>
 you’d like to contribute examples, please open a pull-request on the project’s GitHub [repo](https://github.com/fil/pangea). If you want something that you
 don’t find here, please open a [feature request](https://github.com/Fil/pangea/issues/new).
 
-_Who?_ I’m Fil Rivière, I work at [Observable](https://observablehq.com/) with the aim of building a strong foundation
+_Who?_ This collection is maintained by Fil Rivière. I work at [Observable](https://observablehq.com/) with the aim of building a strong foundation
 for data visualization on the Web. This is a place where I collect, experiment, showcase, and share some
 of the goodies. Most of these pages were initially authored by other people: Mike Bostock, Volodymyr Agafonkin,
 Tom McWright, Jason Davies, Allison Horst, Franck Lebeau, Ian Johnson, Shirley Wu, Nadieh Bremer, Jeffrey Heer,

@@ -12,14 +12,21 @@ const contents = await fetch(url, {headers: {cookie: "ab.storage.sessionId=1;"}}
 
 const title = contents.match(/<meta property="og:title" content="(.*?)"\s*\/?>/m)?.[1];
 const description = contents.match(/<meta property="og:description" content="([^>]*)"\s*\/?>/m)?.[1] ?? "";
+const thumbnail = contents.match(/<meta property="og:image" content="([^>]*)"\s*\/?>/m)?.[1] ?? "";
+const link = `https://observablehq.com/blog/${post}`;
 
 process.stdout.write(`---
 index: true
+title: ${JSON.stringify(`Blog: ${title}`)}
+ignore_head: '<meta http-equiv="refresh" content="0; url=${link}">'
 ---
 
-# Blog: ${title}
+# ${title}
+## From the Observable blog
 
-<meta http-equiv="refresh" content="0; url=https://observablehq.com/blog/${post}">
+${link}
+
+<img class=thumbnail src=${JSON.stringify(thumbnail)} style="width: 640px; max-width: 100%;">
 
 ${description}
 

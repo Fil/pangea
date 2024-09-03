@@ -5,12 +5,12 @@ import {existsSync, mkdirSync} from "node:fs";
 import {dirname} from "node:path/posix";
 
 async function generate_thumbnails(page: Page, id: string, ref: string) {
-  const selector = ".observablehq--block figure, .observablehq--block svg, .observablehq--block canvas";
+  const selector = ".thumbnail, .observablehq--block figure, .observablehq--block svg, .observablehq--block canvas";
 
   await page.emulateMedia({colorScheme: "light"});
   try {
     await page.goto(`${HTTP_ROOT}${id}`);
-    await delay(30000);
+    await delay(500);
   } catch (e) {
     console.warn(e);
     return;
