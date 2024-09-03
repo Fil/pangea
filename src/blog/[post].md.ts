@@ -18,7 +18,7 @@ const link = `https://observablehq.com/blog/${post}`;
 process.stdout.write(`---
 index: true
 title: ${JSON.stringify(`Blog: ${title}`)}
-ignore_head: '<meta http-equiv="refresh" content="0; url=${link}">'
+head: '<meta http-equiv="refresh" content="0; url=${link}">'
 ---
 
 # ${title}
