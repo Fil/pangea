@@ -22,14 +22,14 @@ const stations = [
 ```js echo
 const config = view(
   Object.assign(Inputs.form({
-    station: Inputs.select(stations, {label: "Store"}),
+    station: Inputs.select(stations, {label: "Station"}),
     start_date: Inputs.date({label: "Start", min: "2023-01-01", max: "2023-12-31", value: "2023-10-01"}),
     end_date: Inputs.date({label: "End", min: "2023-01-01", max: "2023-12-31", value: "2023-12-31"})
   }), {className: "inline"})
 );
 ```
 
-```js
+```js echo
 config
 ```
 
