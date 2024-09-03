@@ -1,86 +1,116 @@
 ---
-index: false
-draft: true
+index: true
 ---
-
-```js echo
-import * as duckdb1 from "npm:@duckdb/duckdb-wasm@1.28.1-dev234.0";
-```
-
-```js echo
-const duckdb = await import("https://esm.sh/@duckdb/duckdb-wasm@1.28.1-dev234.0");
-
-display(await duckdb);
-```
 
 # DuckDB spatial
+## DRAFT!
+
+<p class=warning>This page only works because it imports a custom version of DuckDBClient that uses an alpha release of duckdb-wasm (version @1.28.1). See issues <a href=https://github.com/duckdb/duckdb-wasm/issues/1561>duckdb-wasm#1561</a>; <a href=https://github.com/observablehq/framework/issues/750>framework#750</a> and <a href=https://github.com/observablehq/framework/issues/733>framework#733</a>.</p>
 
 ```js echo
-display(
-  Plot.plot({
-    projection: "identity",
-    width: 975,
-    height: 610,
-    marks: [
-      Plot.geo(counties, {
-        stroke: "var(--theme-background-alt)",
-        strokeWidth: 0.25,
-        fill: (d) => d.properties.area
-      })
-    ]
-  })
-);
+import {DuckDBClient} from "/components/duckdb.js"
 ```
 
-<p class=warning>This page only works if we upgrade DuckDBClient to import duckdb-wasm@1.28.1-dev106.0 or later, coupled with apache-arrow@14 or later. See issues <a href=https://github.com/duckdb/duckdb-wasm/issues/1561>duckdb-wasm#1561</a>; <a href=https://github.com/observablehq/framework/issues/750>framework#750</a> and <a href=https://github.com/observablehq/framework/issues/733>framework#733</a>.</p>
 
----
-
-Start by creating an empty DuckDB database with its [spatial extension](https://duckdb.org/docs/extensions/spatial.html), and load the TopoJSON [US Atlas](https://github.com/topojson/us-atlas):
-
-```js echo
-const db1 = await DuckDBClient.of();
-display(await db1.sql`SELECT extension_name, installed, description
-FROM duckdb_extensions();`);
-```
-
-```js echo
-const db2 = await DuckDBClient.of();
-display(await db2.sql`SHOW default_extension_repository;`)
-// await db2.sql`SET autoinstall_known_extensions=1;`;
-// await db2.sql`SET autoload_known_extensions=1;`;
-// display(await db2.sql`install json; load json; SELECT {duck: 42}::JSON;`);
-```
+After loading the [spatial extension](https://duckdb.org/docs/extensions/spatial.html), we populate our DuckDB database with two files:
+* **annarbor**, a [GeoParquet](https://geoparquet.org/) file (that I made by converting an old GeoJSON file from a Waldo Tobler project); we can load it directly from the file attachment.
+* **us/10m**, TopoJSON’s [US Atlas](https://github.com/topojson/us-atlas) file, that we import with `ST_Read()`.
 
 ```js echo
 const db = await DuckDBClient.of();
-//await db.sql`SET home_directory='./'`;
-//await db.sql`SET secret_directory='/tmp';`;
-//await db.sql`SET extension_directory='/';`;
-await db.sql`INSTALL spatial`;
-await db.sql`LOAD spatial`;
-await db.sql`CREATE TABLE us AS (
-  SELECT * FROM ST_Read('https://cdn.jsdelivr.net/npm/us-atlas/us/10m.json')
-)`;
+
+await db.sql`INSTALL spatial; LOAD spatial;`
+
+await db.sql([`CREATE OR REPLACE TABLE annarbor
+  AS FROM '${FileAttachment("/data/annarbor.parquet").href}';`]);
+
+await db.sql([`CREATE OR REPLACE TABLE us
+  AS (FROM ST_Read('${import.meta.resolve("npm:us-atlas@3/counties-10m.json")}'))`]);
 ```
 
-Now we can work on this file as a database:
+---
+
+The map below shows the shape of Ann Arbor. Note that to extract the geometry information from GeoParquet, we have to convert the `geometry` field from a `BLOB` (or “[well-known binary](https://libgeos.org/specifications/wkb/)”) with `ST_GeomFromWKB` to `ST_GEOMETRY`, then to GeoJSON (with `ST_AsGeoJSON`), then parse the GeoJSON text to an actual JavaScript Object. This is most certainly not the most efficient technique!
 
 ```js echo
-const features = await db.sql`SELECT * FROM us`;
+Plot.plot({
+  projection: {
+    type: "mercator",
+    domain: {
+      type: "GeometryCollection",
+      geometries: Array.from(annarbor, (d) => d.geometry)
+    }
+  },
+  color: {scheme: "blues", range: [0.2, 1]},
+  marks: [
+    Plot.geo(annarbor, {
+      geometry: "geometry",
+      stroke: "var(--theme-background-alt)",
+      strokeWidth: 0.25,
+      fill: (d, i) => i
+    })
+  ]
+})
 ```
 
-${Inputs.table(features)}
-
-The **geom** field is a ST_GEOMETRY, the internal format that DuckDB spatial uses to represent geometries. We can convert it to GeoJSON:
+```js
+display(annarbor);
+```
 
 ```js echo
-const counties = Array.from(
-  await db.sql`SELECT ST_AsGeoJSON(geom) AS county, ST_Area(geom) as area FROM us`,
-  ({county, area}) => Object.assign(JSON.parse(county), {properties: {area}})
+const annarbor = Array.from(
+  await db.sql`SELECT * EXCLUDE(geometry), ST_AsGeoJSON(ST_GeomFromWKB(geometry)) AS geometry FROM annarbor;`,
+  (d) => ({...d, geometry: JSON.parse(d.geometry)})
 );
 ```
 
-This is just the beginning.
+---
 
-(Note: this exploration is all happening client-side.)
+The **geom** field in the US file is simpler to handle, as it is not encoded as a `BLOB` but as a `ST_GEOMETRY`, the internal format used by DuckDB spatial. However we still have a double decoding to do, with `ST_AsGeoJSON` to get a GeoJSON text, then to JavaScript.
+
+DuckDB spatial allows us to do geometric computations, let’s measure the area of each county:
+
+```js
+display(counties);
+```
+
+```js echo
+const counties = Array.from(
+  await db.sql`SELECT *, ST_AsGeoJSON(geom) AS county, ST_Area(geom) as area FROM us`,
+  ({county, area, geom, ...rest}) => Object.assign(JSON.parse(county), {properties: {area, ...rest}})
+);
+```
+
+```js echo
+Plot.plot({
+  projection: "albers-usa",
+  color: {type: "log", scheme: "sinebow", legend: true, ticks: 5, label: "County area"},
+  marks: [
+    Plot.geo(counties, {
+      stroke: "var(--theme-background-alt)",
+      strokeWidth: 0.25,
+      fill: (d) => d.properties.area,
+      tip: {
+        channels: {
+          id: (d) => d.properties.id,
+          name: (d) => d.properties.name,
+        }
+      }
+    })
+  ]
+})
+```
+
+OK, that is a nice map… but I don't understand in what unit these areas are computed, or even if they are (spherically) correct. 🌶
+
+---
+
+<div class=note>
+
+The same DuckDBClient can be used to load other extensions, such as JSON:
+
+```js echo
+display(Array.from(await db.sql`INSTALL json; LOAD json; SELECT {duck: 42}::JSON as kwak;`, (d) => ({...d})));
+```
+
+</div>

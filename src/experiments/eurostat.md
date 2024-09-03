@@ -44,7 +44,7 @@ Don't hesitate to play with the parameters in the query to try and optimize the 
 - `WHERE geo='TOTAL'` (or some other filter) when you don’t need all the modalities in all the dimensions;
 - `ORDER BY 2, 3, 4, 5…` where the ranks correspond to the columns that have the smallest number of distinct values. (You can evaluate these with queries such as `SELECT COUNT(DISTINCT "geo") FROM table`.)
 
-We have seen some files with 6+ million rows compressed to just 1MB—less than 2 bits per row!
+Using this approach we have seen some files with 6+ million rows compressed to just 1MB—less than 2 bits per row!
 
 </div>
 
