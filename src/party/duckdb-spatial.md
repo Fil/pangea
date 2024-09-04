@@ -86,7 +86,7 @@ SELECT *
 );
 ```
 
-Wow! What is that formula? 🤯 We want the counties’ areas in m² or km², so we have to project the shapes to an adequate CRS ([coordinate reference system](https://en.wikipedia.org/wiki/Spatial_reference_system)). As an equal area projection with units in meters, [ESRI:54034](https://epsg.io/54034) fits the bill. Our original data comes with [*longitude*, *latitude*] coordinates, which is almost like [WGS84](https://fr.wikipedia.org/wiki/WGS_84), except the coordinates are flipped (in WGS84 _lat_ comes first, then _lon_). Using 'NULL' as the source CRS defaults to the default GeoJSON order [*lon*, *lat*].
+Wow! What is that formula? 🤯 We want the counties’ areas in m² or km², so we have to project the shapes to an adequate [CRS](https://en.wikipedia.org/wiki/Spatial_reference_system). As an equal area projection with units in meters, [ESRI:54034](https://epsg.io/54034) fits the bill. Our original data comes with [*longitude*, *latitude*] coordinates, which is almost like [WGS84](https://fr.wikipedia.org/wiki/WGS_84), except the coordinates are flipped (in WGS84 _lat_ comes first, then _lon_). Using 'NULL' as the source CRS defaults to the default GeoJSON order [*lon*, *lat*].
 
 ```js echo
 Plot.plot({
