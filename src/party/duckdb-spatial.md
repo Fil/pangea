@@ -23,7 +23,7 @@ await db.sql`INSTALL spatial; LOAD spatial;`
 await db.sql([`CREATE OR REPLACE TABLE annarbor
   AS FROM '${FileAttachment("/data/annarbor.parquet").href}';`]);
 
-await db.sql([`CREATE OR REPLACE TABLE us AS (
+await db.sql([`CREATE OR REPLACE TABLE counties AS (
   FROM ST_Read('${import.meta.resolve("npm:us-atlas@3/counties-10m.json")}')
 )`]);
 ```
@@ -59,7 +59,10 @@ display(annarbor);
 
 ```js echo
 const annarbor = Array.from(
-  await db.sql`SELECT * EXCLUDE(geometry), ST_AsGeoJSON(ST_GeomFromWKB(geometry)) AS geometry FROM annarbor;`,
+  await db.sql`
+SELECT *
+       REPLACE(ST_AsGeoJSON(ST_GeomFromWKB(geometry)) AS geometry)
+  FROM annarbor;`,
   (d) => ({...d, geometry: JSON.parse(d.geometry)})
 );
 ```
@@ -78,11 +81,11 @@ display(counties);
 const counties = Array.from(
   await db.sql`
 SELECT *
-     , ST_AsGeoJSON(geom) AS county
+       REPLACE (ST_AsGeoJSON(geom) AS geom)
      , ST_Area(ST_Transform(geom, 'NULL', 'ESRI:54034')) as area
-  FROM us
+  FROM counties
 `,
-  ({county, area, geom, ...rest}) => Object.assign(JSON.parse(county), {properties: {area, d3area: d3.geoArea(JSON.parse(county)), ...rest}})
+  ({geom, ...properties}) => Object.assign(JSON.parse(geom), {properties})
 );
 ```
 
@@ -108,16 +111,63 @@ Plot.plot({
 })
 ```
 
-For more on the SPATIAL extension, read [Introducing The DuckDB Spatial Extension](https://duckdb.org/2023/04/28/spatial.html), by Max Gabrielsson. And this [interesting notebook](https://observablehq.com/@chrispahm/prototyping-geoparquet-geos-in-webassembly) by Christoph Pahmeyer exploring a faster pipeline.
+A more useful example —suggested by [Éric Mauvière](https://observablehq.com/user/@ericmauviere)— is to use DuckDB to join the geo shapes and an unemployment dataset. For example to make a [choropleth](/plot/choropleth) map:
+
+```js echo
+Plot.plot({
+  projection: "albers-usa",
+  color: {
+    type: "quantize",
+    n: 9,
+    domain: [1, 10],
+    scheme: "blues",
+    label: "Unemployment rate (%)",
+    legend: true
+  },
+  marks: [
+    Plot.geo(unemployment, {
+      fill: d => d.properties.rate, tip: {
+        channels: {
+          id: d => d.properties.id,
+          state: d => d.properties.state,
+          county: d => d.properties.county
+        }
+      }
+    })
+  ]
+})
+```
+
+```js
+display(unemployment)
+```
+
+```js echo
+const unemployment = Array.from(
+  await db.sql([`
+SELECT ST_AsGeoJSON(geom) AS geometry, values.*
+  FROM counties
+  JOIN (SELECT * FROM '${FileAttachment("/data/unemployment-by-county.csv").href}') AS values
+    ON counties.id = values.id
+` ]),
+  ({geometry, ...properties}) => Object.assign(JSON.parse(geometry), {properties})
+);
+```
 
 ---
 
+For more on the SPATIAL extension, read [Introducing The DuckDB Spatial Extension](https://duckdb.org/2023/04/28/spatial.html), by Max Gabrielsson. And this [interesting notebook](https://observablehq.com/@chrispahm/prototyping-geoparquet-geos-in-webassembly) by Christoph Pahmeyer exploring fast GeoParquet visualizations in Observable notebooks. For a complete pipeline, see also [lonboard](https://developmentseed.org/blog/2023-10-23-lonboard), by Kyle Barron.
+
 <div class=note>
 
-The same DuckDBClient can be used to load other extensions, such as JSON:
+The same DuckDBClient can be used to load other extensions, such as [JSON](https://duckdb.org/docs/extensions/json.html):
 
 ```js echo
-display(Array.from(await db.sql`INSTALL json; LOAD json; SELECT {duck: 42}::JSON as kwak;`, (d) => ({...d})));
+JSON.parse((await db.sql`
+  INSTALL json;
+  LOAD json;
+  SELECT {duck: 42}::JSON as quack;
+`).get(0).quack)
 ```
 
 </div>

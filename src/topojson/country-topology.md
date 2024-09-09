@@ -6,8 +6,7 @@ author: Mike Bostock
 
 # Country Topology
 
-In this map, countries that share a land border are connected by an arc between their centroids. The arcs might be different than you expect because some countries have distant territories, such as [France](https://en.wikipedia.org/wiki/France) and [French Guiana](https://en.wikipedia.org/wiki/French_Guiana).
-
+In this map, countries that share a land border are connected by an arc joining their centroids. The arcs might be different than you expect because some countries have distant territories, such as [France](https://en.wikipedia.org/wiki/France) and [French Guiana](https://en.wikipedia.org/wiki/French_Guiana).
 
 ```js
   const svg = d3.create("svg")
@@ -82,4 +81,3 @@ const neighbors = topojson.neighbors(world.objects.countries.geometries);
 const centroids = features.map(d => d3.geoCentroid(d));
 const borders = topojson.mesh(world, world.objects.countries, (a, b) => a !== b);
 ```
-
