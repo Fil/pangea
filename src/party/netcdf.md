@@ -16,7 +16,7 @@ import {NetCDFReader} from "npm:netcdfjs";
 Then let’s declare a `FileAttachment` for the NetCDF file and load it as an `ArrayBuffer` (since it’s binary). `FileAttachment.arrayBuffer` returns a `Promise`, which we chain with the `NetCDFReader` constructor.
 
 ```js echo
-const winds = FileAttachment("navy_winds_2.nc").arrayBuffer().then((data) => new NetCDFReader(data));
+const winds = FileAttachment("/data/navy_winds_2.nc").arrayBuffer().then((data) => new NetCDFReader(data));
 ```
 
 Now `winds` is a promise to a `NetCDFReader`. (Promises are implicitly awaited across code blocks, so we don’t need to explicitly `await` below.)
