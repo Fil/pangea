@@ -32,7 +32,7 @@ const chart = Plot.plot({
         }
       })
     ),
-    Plot.geo(states, {stroke: "var(--plot-background)"})
+    Plot.geo(statemesh, {stroke: "var(--plot-background)"})
   ]
 });
 
@@ -43,7 +43,7 @@ In the _unemployment_ dataset, we don’t use automatic type inference for CSV (
 
 ```js echo
 const unemployment = new Map(
-  (await FileAttachment("../data/unemployment-by-county.csv").csv()).map((d) => [d.id, +d.rate])
+  (await FileAttachment("/data/unemployment-by-county.csv").csv()).map((d) => [d.id, +d.rate])
 );
 ```
 
