@@ -1,6 +1,7 @@
 ---
 index: false
 source: https://lynx.invisible-island.net/lynx_doc/test/utf-8-demo.html
+head: '<meta name="google" content="notranslate">'
 ---
 
 # UTF-8 encoded sample plain-text file
