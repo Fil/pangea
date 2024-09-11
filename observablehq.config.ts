@@ -1,3 +1,5 @@
+import {existsSync} from "node:fs";
+import {join} from "node:path/posix";
 import Parser from "rss-parser";
 
 const parser = new Parser({customFields: {item: ["link"]}});
@@ -87,7 +89,22 @@ export default {
   pager: false, // whether to show previous & next links in the footer
   sidebar: true,
   search: true,
-  head: `<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${EMOJI_FAVICON}</text></svg>">`,
+  head,
   header: `${VIEW_SOURCE}`,
   footer: FOOTER_OBSERVABLE
 };
+
+function head({path, title}) {
+  const root = "src";
+  const image = existsSync(join(root, `thumbnail${path}.png`))
+    ? `<meta property="og:image" content=${JSON.stringify(
+        `https://cdn.jsdelivr.net/gh/fil/pangea@main/src/thumbnail${path}.png`
+      )}>\n<meta property="twitter:image" content=${JSON.stringify(
+        `https://cdn.jsdelivr.net/gh/fil/pangea@main/src/thumbnail${path}.png`
+      )}>\n`
+    : "";
+  return `<meta property="og:title" content=${JSON.stringify(
+    title
+  )}>\n${image}<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${EMOJI_FAVICON}</text></svg>">
+  `;
+}
