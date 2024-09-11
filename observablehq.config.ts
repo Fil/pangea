@@ -49,6 +49,7 @@ for (const item of (
   const a = item.link.match(/watch\?v=(.*)$/)?.[1];
   if (a) dynamicPaths.push(`/video/${a}`);
 }
+dynamicPaths.push("/video/blYQhiOMhwA"); // A duck for your dashboard
 
 export default {
   title: "Pangea Proxima",
