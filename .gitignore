@@ -1,8 +1,6 @@
 .DS_Store
 dist/
-docs/.observablehq/cache/
-docs/data-unsorted/
-docs/stash/
+.env
 src/.observablehq/cache/
 src/data-unsorted/
 src/stash/
