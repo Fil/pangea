@@ -1,5 +1,24 @@
 import Parser from "rss-parser";
 
+const parser = new Parser({customFields: {item: ["link"]}});
+const feeds = {
+  blog: parser.parseURL("https://observablehq.com/blog/feed.rss"),
+  videos: parser.parseURL("https://www.youtube.com/feeds/videos.xml?channel_id=UCCD2tAKN32ya7V639gkbWhg")
+};
+
+async function* dynamicPaths() {
+  for (const item of (await feeds.blog).items) {
+    const a = item.link.match(/blog\/(.*)$/)?.[1];
+    if (a) yield `/blog/${a}`;
+    if (a === "observable-2-0") break; // ignore older posts
+  }
+  for (const item of (await feeds.videos).items) {
+    const a = item.link.match(/watch\?v=(.*)$/)?.[1];
+    if (a) yield `/video/${a}`;
+  }
+  yield "/video/blYQhiOMhwA"; // A duck for your dashboard
+}
+
 const EMOJI_FAVICON = "🌍";
 const FOOTER_OBSERVABLE = `<p>Built with <a href="https://observablehq.com/" target="_blank">Observable</a><span></span>.</p>`;
 
@@ -32,24 +51,6 @@ a.setAttribute("href", a.getAttribute("href") + (
 );
 </script>
 `;
-
-const dynamicPaths: string[] = [];
-
-const parser = new Parser({customFields: {item: ["link"]}});
-
-for (const item of (await parser.parseURL("https://observablehq.com/blog/feed.rss")).items) {
-  const a = item.link.match(/blog\/(.*)$/)?.[1];
-  if (a) dynamicPaths.push(`/blog/${a}`);
-  if (a === "observable-2-0") break; // ignore older posts
-}
-
-for (const item of (
-  await parser.parseURL("https://www.youtube.com/feeds/videos.xml?channel_id=UCCD2tAKN32ya7V639gkbWhg")
-).items) {
-  const a = item.link.match(/watch\?v=(.*)$/)?.[1];
-  if (a) dynamicPaths.push(`/video/${a}`);
-}
-dynamicPaths.push("/video/blYQhiOMhwA"); // A duck for your dashboard
 
 export default {
   title: "Pangea Proxima",
