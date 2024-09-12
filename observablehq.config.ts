@@ -99,11 +99,7 @@ export default {
 };
 
 function head({path, title}) {
-  const verification =
-    path === "/index"
-      ? '<meta name="google-site-verification" content="iWyKAa-v6tF3VF9SMInpGS-PVBcJsy4v5p08VyKAkI4" />\n'
-      : "";
-  return `${verification}<link rel="sitemap" type="text/plain" title="Sitemap" href="${HTTP_ROOT}sitemap.txt">
+  return `<link rel="sitemap" type="text/plain" title="Sitemap" href="${HTTP_ROOT}sitemap.txt">
 <meta property="og:title" content=${JSON.stringify(title ?? SITE_NAME)}>
 ${og_image(
   path
