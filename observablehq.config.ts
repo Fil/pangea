@@ -100,7 +100,7 @@ export default {
 
 function head({path, title}) {
   const verification =
-    path === "/"
+    path === "/index"
       ? '<meta name="google-site-verification" content="iWyKAa-v6tF3VF9SMInpGS-PVBcJsy4v5p08VyKAkI4" />\n'
       : "";
   return `${verification}<link rel="sitemap" type="text/plain" title="Sitemap" href="${HTTP_ROOT}sitemap.txt">
