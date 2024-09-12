@@ -5,7 +5,7 @@
     "thumbnail": "tsx ./generate-thumbnails.ts",
     "clean": "rm -rf src/.observablehq/cache",
     "build": "rm -rf dist && yarn observable build --debug && yarn sitemap",
-    "sitemap": "cat dist/_observablehq/minisearch.*.json | jq -r '\"https://observablehq.observablehq.cloud/pangea\" + .documentIds[]' > dist/sitemap.txt && cp ./google*.html dist/ && echo '//' ",
+    "sitemap": "cat dist/_observablehq/minisearch.*.json | jq -r '\"https://observablehq.observablehq.cloud/pangea\" + .documentIds[]' > dist/sitemap.txt && cp src/google*.html dist/ && echo '//' ",
     "dev": "yarn observable preview --port 3033",
     "deploy": "yarn observable deploy",
     "observable": "tsx node_modules/@observablehq/framework/src/bin/observable.ts",
