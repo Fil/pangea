@@ -4,5 +4,6 @@ dist/
 src/.observablehq/cache/
 src/data-unsorted/
 src/stash/
+src/public/sitemap.txt
 node_modules/
 yarn-error.log
