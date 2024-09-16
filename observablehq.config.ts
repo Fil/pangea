@@ -99,8 +99,7 @@ export default {
 };
 
 function head({path, title}) {
-  return `<link rel="sitemap" type="text/plain" title="Sitemap" href="${HTTP_ROOT}sitemap.txt">
-<meta property="og:title" content=${JSON.stringify(title ?? SITE_NAME)}>
+  return `<meta property="og:title" content=${JSON.stringify(title ?? SITE_NAME)}>
 ${og_image(
   path
 )}<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${EMOJI_FAVICON}</text></svg>">
