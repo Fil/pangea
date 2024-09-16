@@ -179,7 +179,7 @@ const stocks = (
 ).flatMap(([Symbol, values]) => values.map((d) => ({Symbol, ...d})));
 ```
 
-This representation can alternatively be produced using [Observable Plot](/plot/)’s concise API and built-in [normalize transform](/plot/transforms/normalize) (see an [interactive example](../plot/index-chart)):
+This representation can alternatively be produced using [Observable Plot](https://observablehq.com/plot/)’s concise API and built-in [normalize transform](https://observablehq.com/plot/transforms/normalize) (see an [interactive example](../plot/index-chart)):
 
 ```js echo
 const chart2 = Plot.plot({

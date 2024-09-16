@@ -7,7 +7,7 @@ index: true
 
 Ridgeline plots are an alternative to [horizon charts](./horizon-chart) and small-multiple area charts that allow greater precision for a given vertical space at the expense of occlusion (overlapping areas).
 
-This form is also known as a *joy plot* for its notable use on [the cover](/@mbostock/psr-b1919-21) of Joy Division’s [*Unknown Pleasures* album](https://en.wikipedia.org/wiki/Unknown_Pleasures). This name is controversial as it references the [sexual slavery practices](https://en.wikipedia.org/wiki/German_military_brothels_in_World_War_II) of the Nazis during World War II. However, Joy Division sought to [draw attention to](http://aviewfromtheannex.blogspot.com/2010/04/no-joy-division-was-not-into-fascism.html) the danger of fascism to society, not to celebrate it.
+This form is also known as a *joy plot* for its notable use on [the cover](./psr-b1919-21) of Joy Division’s [*Unknown Pleasures* album](https://en.wikipedia.org/wiki/Unknown_Pleasures). This name is controversial as it references the [sexual slavery practices](https://en.wikipedia.org/wiki/German_military_brothels_in_World_War_II) of the Nazis during World War II. However, Joy Division sought to [draw attention to](http://aviewfromtheannex.blogspot.com/2010/04/no-joy-division-was-not-into-fascism.html) the danger of fascism to society, not to celebrate it.
 
 Data: [Christopher Möller](https://gist.github.com/chrtze/c74efb46cadb6a908bbbf5227934bfea).
 

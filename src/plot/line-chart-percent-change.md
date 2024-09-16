@@ -9,7 +9,7 @@ The variant of a [line chart](./simple-line-chart) shows the change in price of 
   year: "numeric",
   month: "long",
   day: "numeric",
-})}`: "the"} price of $${basis.toFixed(2)}. <br>The vertical [log scale](https://observablehq.com/plot/features/scales#continuous-scales) allows [accurate comparison](/@mbostock/methods-of-comparison-compared); the [normalize transform](/plot/transforms/normalize) uses a custom basis, for interaction. Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
+})}`: "the"} price of $${basis.toFixed(2)}. <br>The vertical [log scale](https://observablehq.com/plot/features/scales#continuous-scales) allows [accurate comparison](../d3/methods-of-comparison-compared); the [normalize transform](https://observablehq.com/plot/transforms/normalize) uses a custom basis, for interaction. Data: [Yahoo Finance](https://finance.yahoo.com/lookup)
 
 ```js
 const basis = view(
