@@ -20,19 +20,23 @@ display(ConnectedScatterplot(driving));
 ConnectedScatterplot(driving)
 ```
 
-## Data
+The function works with tabular data, one row for each data point. The **side** column indicates where we want the year label to be displayed next to the point in the scatterplot — these values have been hand-picked to limit occlusion. The other columns are the **year**, the average **miles** per person and the cost of **gas** that year. Click on the `Array` inspector below to see the data’s structure:
 
-We load the `driving` data from a CSV file. The “side” column indicates where we want the label to be displayed next to the data point — these values have been hand-picked to limit occlusion.
-
-<p>${Inputs.table(driving, {select: false, format: {year: (d) => d}})}</p>
-
-```js echo
-const driving = await d3.csv("/data/driving.csv", d3.autoType);
+```js
+driving
 ```
 
-## Code
+```js echo
+const driving = FileAttachment("/data/driving.csv").csv({typed: true});
+```
 
-The function below creates the chart as a SVG node to be displayed on the page.
+<div style="font-size: small; padding-left: 1em; border-left: solid 2px var(--theme-foreground-fainter);">
+
+Note: the code snippet above loads an Observable Framework’s [FileAttachment](https://observablehq.com/framework/files) CSV file; in your own project you could use [d3.csv](https://d3js.org/d3-dsv) or any other approach to generate the data.
+
+</div>
+
+We create the chart with the `ConnectedScatterplot` function below. It returns a SVG node, ready to be displayed on the page.
 
 ```js echo
 function ConnectedScatterplot(driving) {
@@ -163,14 +167,3 @@ function length(path) {
 For a simpler approach using Observable Plot’s concise API, see [Plot: Connected scatterplot](/plot/connected-scatterplot).
 
 </div>
-
-```js
-/*
- * Pre-register files for d3.csv and other methods.
- * This allows us to write d3.csv("driving.js") in this documentation,
- * where the usual method with Framework would be to call:
- *   d3.csv(FileAttachment("/data/driving.csv").href)
- */
-import {registerD3} from "/components/d3.js";
-const d3 = registerD3([FileAttachment("/data/driving.csv")]);
-```
