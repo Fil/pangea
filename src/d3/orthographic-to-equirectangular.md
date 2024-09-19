@@ -5,7 +5,7 @@ index: true
 
 # Orthographic to equirectangular
 
-This notebook demonstrates how to interpolate smoothly between two projections ([orthographic](/@d3/orthographic) and [equirectangular](/@d3/equirectangular)) by blending their raw projection functions.
+This notebook demonstrates how to interpolate smoothly between two projections ([orthographic](https://observablehq.com/@d3/orthographic) and [equirectangular](https://observablehq.com/@d3/equirectangular)) by blending their raw projection functions.
 
 ```js echo
 const context = context2d(width, height);
