@@ -20,7 +20,7 @@ display(ConnectedScatterplot(driving));
 ConnectedScatterplot(driving)
 ```
 
-The function works with tabular data, one row for each data point. The **side** column indicates where we want the year label to be displayed next to the point in the scatterplot — these values have been hand-picked to limit occlusion. The other columns are the **year**, the average **miles** per person and the cost of **gas** that year. Click on the `Array` inspector below to see the data’s structure:
+We create the chart with the `ConnectedScatterplot` function shown below. It takes tabular data as input — one row for each data point. The **side** column indicates where we want the year label to be displayed next to the point in the scatterplot (these values have been hand-picked to limit occlusion). The other columns are the **year**, the average **miles** per person and the cost of **gas** that year. Click on the `Array` symbol below to inspect the data:
 
 ```js
 driving
@@ -30,13 +30,11 @@ driving
 const driving = FileAttachment("/data/driving.csv").csv({typed: true});
 ```
 
-<div style="font-size: small; padding-left: 1em; border-left: solid 2px var(--theme-foreground-fainter);">
+<div style="font-size: 0.8em; padding-left: 1em; border-left: solid 2px var(--theme-foreground-fainter);">
 
-Note: the code snippet above loads an Observable Framework’s [FileAttachment](https://observablehq.com/framework/files) CSV file; in your own project you could use [d3.csv](https://d3js.org/d3-dsv) or any other approach to generate the data.
+👆 This code snippet loads a static Observable Framework CSV [`FileAttachment`](https://observablehq.com/framework/files), parsing typed values such as numbers. For your own chart you’ll want to create a similar data structure—maybe by reading from an API with [`d3.csv`](https://d3js.org/d3-dsv), or by running a [`sql`](https://observablehq.com/framework/sql) query on a database.
 
 </div>
-
-We create the chart with the `ConnectedScatterplot` function below. It returns a SVG node, ready to be displayed on the page.
 
 ```js echo
 function ConnectedScatterplot(driving) {
