@@ -44,8 +44,10 @@ const reveal = new Reveal({
 reveal.initialize();
 ```
 
-<link rel=stylesheet href='npm:reveal.js/dist/reveal.css'>
-<link rel=stylesheet href='npm:reveal.js/dist/theme/simple.css'>
+<link rel="stylesheet" href="npm:reveal.js/dist/reveal.css">
+<link rel="stylesheet" media="(prefers-color-scheme: dark)" href="npm:reveal.js/dist/theme/black.css">
+<link rel="stylesheet" media="(prefers-color-scheme: light)" href="npm:reveal.js/dist/theme/white.css">
+
 <style>
 .reveal {
   width: 90%;
