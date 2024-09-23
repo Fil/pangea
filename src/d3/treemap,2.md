@@ -1,9 +1,10 @@
 source: https://observablehq.com/@d3/treemap/2
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Treemap</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Treemap
 
-Introduced by [Ben Shneiderman](http://www.cs.umd.edu/hcil/treemap-history/), treemaps recursively partition space into rectangles according to each node’s associated value. D3 supports several treemap [tiling methods](https://d3js.org/d3-hierarchy/treemap#treemap-tiling). See also [nested](/@d3/nested-treemap), [zoomable](/@d3/zoomable-treemap) and [animated](/@d3/animated-treemap) treemaps, and the [bubble chart](/@d3/bubble-chart/2?intent=fork). If your data is flat, see the [treemap, CSV](https://observablehq.com/@d3/treemap-stratify?intent=fork) variant.
+Introduced by [Ben Shneiderman](http://www.cs.umd.edu/hcil/treemap-history/), treemaps recursively partition space into rectangles according to each node’s associated value. D3 supports several treemap [tiling methods](https://d3js.org/d3-hierarchy/treemap#treemap-tiling). See also [nested](/@d3/nested-treemap), [zoomable](/@d3/zoomable-treemap) and [animated](/@d3/animated-treemap) treemaps, and the [bubble chart](/@d3/bubble-chart/2). If your data is flat, see the [treemap, CSV](https://observablehq.com/@d3/treemap-stratify) variant.
 
 ```js
 viewof tile = Inputs.select(
@@ -59,7 +60,7 @@ chart = {
   leaf.append("title")
       .text(d => `${d.ancestors().reverse().map(d => d.data.name).join(".")}\n${format(d.value)}`);
 
-  // Append a color rectangle. 
+  // Append a color rectangle.
   leaf.append("rect")
       .attr("id", d => (d.leafUid = DOM.uid("leaf")).id)
       .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })

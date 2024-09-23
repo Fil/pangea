@@ -99,7 +99,7 @@ const data = FileAttachment("/data/us-population-state-age.csv").csv({typed: tru
 import {Legend} from "/components/color-legend.js";
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [bar mark](https://observablehq.com/plot/marks/bar). See the [Plot: Grouped bar chart](https://observablehq.com/@observablehq/plot-grouped-bar-chart?intent=fork) example notebook.
+Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [bar mark](https://observablehq.com/plot/marks/bar). See the [Plot: Grouped bar chart](https://observablehq.com/@observablehq/plot-grouped-bar-chart) example notebook.
 
 ```js echo
 Plot.plot({

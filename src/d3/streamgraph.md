@@ -97,7 +97,7 @@ const data = FileAttachment("/data/unemployment.csv").csv({typed: true});
 import {Swatches} from "/components/color-legend.js";
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with an [area mark](https://observablehq.com/plot/marks/area). See the [Plot: Wiggle streamgraph](https://observablehq.com/@observablehq/plot-stack-offset?intent=fork) example notebook.
+Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with an [area mark](https://observablehq.com/plot/marks/area). See the [Plot: Wiggle streamgraph](https://observablehq.com/@observablehq/plot-stack-offset) example notebook.
 
 ```js echo
 Plot.plot({

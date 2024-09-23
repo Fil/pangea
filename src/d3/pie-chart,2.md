@@ -8,7 +8,7 @@ draft: true
 
 # Pie chart
 
-This chart shows the estimated population by age in the United States as of 2015. The total estimated population is ${d3.sum(data, d => d.value).toLocaleString("en-US")}. Compare to a [donut chart](/@d3/donut-chart/2?intent=fork). Data: [U.S. Census](https://www.census.gov/data.html)
+This chart shows the estimated population by age in the United States as of 2015. The total estimated population is ${d3.sum(data, d => d.value).toLocaleString("en-US")}. Compare to a [donut chart](/@d3/donut-chart/2). Data: [U.S. Census](https://www.census.gov/data.html)
 
 ```js echo
 const chart = {

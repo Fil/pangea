@@ -103,7 +103,7 @@ const states = FileAttachment("/data/state-population-2010-2019.tsv").tsv({
 });
 ```
 
-Using [Observable Plot](/plot/)’s concise API, a [bar mark](/plot/marks/bar) and the [sort mark option](/plot/features/scales#sort-mark-option) create a similar chart; see the [complete example](/@observablehq/plot-state-population-change?intent=fork) for more.
+Using [Observable Plot](/plot/)’s concise API, a [bar mark](/plot/marks/bar) and the [sort mark option](/plot/features/scales#sort-mark-option) create a similar chart; see the [complete example](/@observablehq/plot-state-population-change) for more.
 
 ```js echo
 Plot.plot({

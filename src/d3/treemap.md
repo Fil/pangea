@@ -5,7 +5,7 @@ source: https://observablehq.com/@d3/treemap-component
 
 # Treemap
 
-Introduced by [Ben Shneiderman](http://www.cs.umd.edu/hcil/treemap-history/), treemaps recursively partition space into rectangles according to each node’s associated value. D3 supports several treemap [tiling methods](https://d3js.org/d3-hierarchy/treemap#treemap-tiling). See also [nested](./nested-treemap), [zoomable](./zoomable-treemap) and [animated](./animated-treemap) treemaps, and the [bubble chart](./bubble-chart). If your data is flat, see the [treemap, CSV](https://observablehq.com/@d3/treemap-stratify?intent=fork) variant.
+Introduced by [Ben Shneiderman](http://www.cs.umd.edu/hcil/treemap-history/), treemaps recursively partition space into rectangles according to each node’s associated value. D3 supports several treemap [tiling methods](https://d3js.org/d3-hierarchy/treemap#treemap-tiling). See also [nested](./nested-treemap), [zoomable](./zoomable-treemap) and [animated](./animated-treemap) treemaps, and the [bubble chart](./bubble-chart). If your data is flat, see the [treemap, CSV](https://observablehq.com/@d3/treemap-stratify) variant.
 
 ```js
 const tile = view(

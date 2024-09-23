@@ -1,9 +1,10 @@
 source: https://observablehq.com/@d3/connected-scatterplot/2
+
 <div style="color: grey; font: 13px/25.5px var(--sans-serif); text-transform: uppercase;"><h1 style="display: none;">Connected scatterplot</h1><a href="https://d3js.org/">D3</a> › <a href="/@d3/gallery">Gallery</a></div>
 
 # Connected scatterplot
 
-This is a recreation of Hannah Fairfield’s [*Driving Shifts Into Reverse*](http://www.nytimes.com/imagepages/2010/05/02/business/02metrics.html), sans annotations. See also Fairfield’s [*Driving Safety, in Fits and Starts*](http://www.nytimes.com/interactive/2012/09/17/science/driving-safety-in-fits-and-starts.html), [Noah Veltman’s variation](https://bl.ocks.org/veltman/87596f5a256079b95eb9) of this graphic, and [a paper on connected scatterplots](http://steveharoz.com/research/connected_scatterplot/) by Haroz *et al.*
+This is a recreation of Hannah Fairfield’s [_Driving Shifts Into Reverse_](http://www.nytimes.com/imagepages/2010/05/02/business/02metrics.html), sans annotations. See also Fairfield’s [_Driving Safety, in Fits and Starts_](http://www.nytimes.com/interactive/2012/09/17/science/driving-safety-in-fits-and-starts.html), [Noah Veltman’s variation](https://bl.ocks.org/veltman/87596f5a256079b95eb9) of this graphic, and [a paper on connected scatterplots](http://steveharoz.com/research/connected_scatterplot/) by Haroz _et al._
 
 ```js
 viewof replay = Inputs.button("Replay")
@@ -57,7 +58,7 @@ chart = {
           .attr("text-anchor", "end")
           .attr("fill", "currentColor")
           .text("Miles per person per year"));
-  
+
   svg.append("g")
     .attr("transform", `translate(${marginLeft},0)`)
     .call(d3.axisLeft(y).ticks(null, "$.2f"))
@@ -130,13 +131,13 @@ chart = {
 driving = FileAttachment("driving.csv").csv({typed: true})
 ```
 
-The *length* helper method computes the total length of the given SVG *path* string; this is needed to apply the stroke-dasharray transition across the length of the stroke.
+The _length_ helper method computes the total length of the given SVG _path_ string; this is needed to apply the stroke-dasharray transition across the length of the stroke.
 
 ```js echo
 length = (path) => d3.create("svg:path").attr("d", path).node().getTotalLength()
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [line mark](https://observablehq.com/plot/marks/line) and [markers](https://observablehq.com/plot/features/markers). See [Plot: Connected scatterplot](https://observablehq.com/@observablehq/plot-connected-scatterplot?intent=fork) for a detailed example.
+Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with a [line mark](https://observablehq.com/plot/marks/line) and [markers](https://observablehq.com/plot/features/markers). See [Plot: Connected scatterplot](https://observablehq.com/@observablehq/plot-connected-scatterplot) for a detailed example.
 
 ```js echo
 Plot.line(driving, {x: "miles", y: "gas", marker: true, curve: "natural"}).plot({grid: true})
