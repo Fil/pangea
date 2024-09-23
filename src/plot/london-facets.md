@@ -5,6 +5,8 @@ source: https://github.com/observablehq/plot/pull/2088
 
 # London facets
 
+A faceted choropleth of London, showing how car access evolved, borough by borough, over the years. Data derived by Jo Wood from UK Census data, [giCentre](https://github.com/gicentre/data), City University of London
+
 ```js echo
 Plot.plot({
   width: 900,
