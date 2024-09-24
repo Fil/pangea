@@ -24,6 +24,8 @@ while (!penrose.compile) await new Promise(resolve => setTimeout(() => resolve()
 }
 ```
 
+Here’s an example taken from the [penrose gallery of examples](https://penrose.cs.cmu.edu/examples):
+
 ```js echo
 const trio = {
     substance: `
