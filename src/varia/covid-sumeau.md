@@ -4,7 +4,7 @@ index: true
 
 # Sum’eau (Covid tracker)
 
-This tracks the relative concentration of the coronavirus **gene E** over ammoniacal nitrogen in the sewers of 12 French cities, loading live data from data.gouv.fr. For methodological details, see [the dataset description](https://www.data.gouv.fr/fr/datasets/surveillance-du-sars-cov-2-dans-les-eaux-usees-sumeau/#/information). For California, see [Zan Armstrong’s work on SCAN](https://observablehq.com/@zanarmstrong/sewer-coronavirus-alert-network). See [this publication](https://wastewatersca1.wpenginepowered.com/wp-content/uploads/2024/03/WWSCAN_RSV_Correlation-Study_Summary.pdf) to learn how wastewater concentrations correlate with incidence (in the case of RSV).
+This tracks the relative concentration of the coronavirus **gene E** over ammoniacal nitrogen in the sewers of ${cities.length} French cities, loading live data from data.gouv.fr. For methodological details, see [the dataset description](https://www.data.gouv.fr/fr/datasets/surveillance-du-sars-cov-2-dans-les-eaux-usees-sumeau/#/information). For California, see [Zan Armstrong’s work on SCAN](https://observablehq.com/@zanarmstrong/sewer-coronavirus-alert-network). See [this publication](https://wastewatersca1.wpenginepowered.com/wp-content/uploads/2024/03/WWSCAN_RSV_Correlation-Study_Summary.pdf) to learn how wastewater concentrations correlate with incidence (in the case of RSV).
 
 ```js
 const url = "https://www.data.gouv.fr/fr/datasets/r/2963ccb5-344d-4978-bdd3-08aaf9efe514";
