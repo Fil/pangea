@@ -33,19 +33,6 @@ const SOURCE_REPO = "https://github.com/Fil/pangea/blob/main/src";
 const VIEW_SOURCE = !SOURCE_REPO
   ? ""
   : `
-<style>
-a.view-source {
-  position: absolute;
-  top: 0;
-  right: 0;
-  font: 700 18px var(--sans-serif);
-  text-decoration: none !important;
-  padding: 0 4px;
-}
-a.view-source:not(:hover,:focus) {
-  color: inherit;
-}
-</style>
 <a class="view-source" target="_blank" aria-label="view source" title="view source" href="${SOURCE_REPO}">⚉</a>
 <script type="module">
 const a = document.querySelector(".view-source");

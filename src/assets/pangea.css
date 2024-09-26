@@ -2,6 +2,30 @@
 @import url("observablehq:theme-air.css") (prefers-color-scheme: light);
 @import url("observablehq:theme-near-midnight.css") (prefers-color-scheme: dark);
 
+#observablehq-header {
+  border-bottom: none;
+  background: linear-gradient(var(--theme-background), transparent);
+  margin: 0 -3rem 0 -3rem;
+  padding: 0;
+  height: 1.7rem;
+}
+
+#observablehq-main {
+  margin-top: -2.1rem;
+}
+
+a.view-source {
+  position: absolute;
+  top: 0;
+  right: 2rem;
+  font: 700 18px var(--sans-serif);
+  text-decoration: none !important;
+  padding: 0 4px;
+}
+a.view-source:not(:hover,:focus) {
+  color: inherit;
+}
+
 p.author {
   text-align: right;
   font-style: italic;
