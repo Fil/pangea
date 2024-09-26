@@ -30,7 +30,7 @@ await db.sql([`CREATE OR REPLACE TABLE counties AS (
 
 ---
 
-The map below shows the shape of Ann Arbor. Note that to extract the geometry information from GeoParquet, we have to convert the `geometry` field from a `BLOB` (or “[well-known binary](https://libgeos.org/specifications/wkb/)”) with `ST_GeomFromWKB` to `ST_GEOMETRY`, then to GeoJSON (with `ST_AsGeoJSON`), then parse the GeoJSON text to an actual JavaScript Object. This is most certainly not the most efficient technique!
+The map below shows the shape of Ann Arbor. The geometry information is decoded from GeoParquet, then converted to GeoJSON text (with `ST_AsGeoJSON`), then parsed into an actual JavaScript Object.
 
 ```js echo
 Plot.plot({
@@ -60,9 +60,7 @@ display(annarbor);
 ```js echo
 const annarbor = Array.from(
   await db.sql`
-SELECT *
-       REPLACE(ST_AsGeoJSON(ST_GeomFromWKB(geometry)) AS geometry)
-  FROM annarbor;`,
+SELECT * REPLACE(ST_AsGeoJSON(geometry) AS geometry) FROM annarbor;`,
   (d) => ({...d, geometry: JSON.parse(d.geometry)})
 );
 ```

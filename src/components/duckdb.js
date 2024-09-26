@@ -27,16 +27,16 @@
 // ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 // POSSIBILITY OF SUCH DAMAGE.
 
-import * as duckdb from "https://esm.sh/@duckdb/duckdb-wasm@1.28.1-dev258.0";
+import * as duckdb from "https://esm.sh/@duckdb/duckdb-wasm@1.28.1-dev287.0";
 
 const bundle = await duckdb.selectBundle({
   mvp: {
-    mainModule: import.meta.resolve("npm:@duckdb/duckdb-wasm@1.28.1-dev258.0/dist/duckdb-mvp.wasm"),
-    mainWorker: import.meta.resolve("npm:@duckdb/duckdb-wasm@1.28.1-dev258.0/dist/duckdb-browser-mvp.worker.js")
+    mainModule: import.meta.resolve("npm:@duckdb/duckdb-wasm@1.28.1-dev287.0/dist/duckdb-mvp.wasm"),
+    mainWorker: import.meta.resolve("npm:@duckdb/duckdb-wasm@1.28.1-dev287.0/dist/duckdb-browser-mvp.worker.js")
   },
   eh: {
-    mainModule: import.meta.resolve("npm:@duckdb/duckdb-wasm@1.28.1-dev258.0/dist/duckdb-eh.wasm"),
-    mainWorker: import.meta.resolve("npm:@duckdb/duckdb-wasm@1.28.1-dev258.0/dist/duckdb-browser-eh.worker.js")
+    mainModule: import.meta.resolve("npm:@duckdb/duckdb-wasm@1.28.1-dev287.0/dist/duckdb-eh.wasm"),
+    mainWorker: import.meta.resolve("npm:@duckdb/duckdb-wasm@1.28.1-dev287.0/dist/duckdb-browser-eh.worker.js")
   }
 });
 
