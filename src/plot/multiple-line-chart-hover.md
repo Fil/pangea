@@ -28,7 +28,6 @@ Plot.plot({
           // Filter and highlight the paths with the same *z* as the hovered point.
           const path = d3.select(context.ownerSVGElement).selectAll("[aria-label=line] path");
           if (index.length) {
-            console.warn(index[0])
             const z = values.z[index[0]];
             path.style("stroke", "var(--theme-foreground-faintest)")
               .filter(([i]) => values.z[i] === z)
