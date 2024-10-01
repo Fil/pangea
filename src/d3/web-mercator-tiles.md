@@ -129,7 +129,7 @@ const tile = Tile()
   <path fill="none" stroke="red" d="${path(detroit)}"/>
 </svg>
 
-For crisp tiles, clamp the _projection_.scale to an exact power of two as shown in [Raster & Vector II](https://observablehq.com/@d3/raster-vector-ii). See also [Raster & Vector](splom.md/raster-vector) for how to computes the map’s aspect ratio to fit the displayed features automatically.
+For crisp tiles, clamp the _projection_.scale to an exact power of two as shown in [Raster & Vector II](https://observablehq.com/@d3/raster-vector-ii). See also [Raster & Vector](./raster-vector) for how to computes the map’s aspect ratio to fit the displayed features automatically.
 
 Thanks for reading! 🙏
 
