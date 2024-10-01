@@ -70,7 +70,7 @@ const land = topojson.feature(world, world.objects.land);
 const world = fetch(import.meta.resolve("npm:visionscarto-world-atlas/world/50m.json")).then((d) => d.json());
 ```
 
-Or, using [Observable Plot](/plot/)’s concise API:
+Or, using [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js echo
 display(Plot.plot({

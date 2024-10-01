@@ -120,7 +120,7 @@ const data = d3.tsvParse(await FileAttachment("/data/weather.tsv").text(), d => 
 }));
 ```
 
-For a concise way of building a difference chart, see [Observable Plot](/plot/)’s **difference** mark:
+For a concise way of building a difference chart, see [Observable Plot](https://observablehq.com/plot/)’s **difference** mark:
 
 ```js echo
 Plot.differenceY(data, {

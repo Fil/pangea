@@ -101,7 +101,7 @@ function bollinger(values, N, K) {
 }
 ```
 
-With [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with the [bollinger](/plot/marks/bollinger) mark.
+With [Observable Plot](https://observablehq.com/plot)’s concise API, you can create a similar chart with the [bollinger](https://observablehq.com/plot/marks/bollinger) mark.
 
 ```js echo
 Plot.bollingerY(aapl, {x: "Date", y: "Close"}).plot()

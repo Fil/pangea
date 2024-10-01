@@ -132,32 +132,3 @@ const height = 600;
 ```js echo
 import {Legend} from "/components/color-legend.js";
 ```
-
----
-
-Using [Observable Plot](/plot/)’s built-in [contour mark](/plot/marks/contour), we can create the same chart in a few lines—or see the [complete example with custom axes](/@observablehq/plot-goldstein-price-contours). Explicit thresholds are necessary due to the skewed distribution of the value.
-
-```js echo
-Plot.plot({
-  color: {
-    scheme: "Magma",
-    type: "log",
-    legend: true,
-    width: 300,
-    label: "Value",
-    tickFormat: ","
-  },
-  marks: [
-    Plot.contour({
-      x1: -2,
-      x2: 2,
-      y1: -2,
-      y2: 1,
-      fill: value,
-      stroke: "#fff",
-      strokeOpacity: 0.5,
-      thresholds: d3.range(1, 20).map((n) => 2 ** n)
-    })
-  ]
-});
-```

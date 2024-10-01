@@ -35,7 +35,7 @@ For a reference, see Naomi B. Robbins and Richard M. Heiberger, “Plotting Like
 and Other Rating Scales”, 2011
 ([PDF](http://www.asasrms.org/Proceedings/y2011/Files/300784_64164.pdf)).
 
-_Thanks to [Eitan Lees](/@eitanlees) for asking the
+_Thanks to [Eitan Lees](https://observablehq.com/@eitanlees) for asking the
 [question](https://talk.observablehq.com/t/diverging-stacked-bar-chart-in-plot/6028)
 that prompted this notebook. The write-up below details how we built the chart
 (click on the cell definitions to see the code at each stage)._

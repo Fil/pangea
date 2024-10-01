@@ -139,4 +139,4 @@ const series = d3
 import {Swatches} from "/components/color-legend.js";
 ```
 
-For a similar chart using [Observable Plot](/plot)’s concise API, see [this notebook](https://observablehq.com/@observablehq/plot-stacking-order), that emphasizes the various ways data can be stacked.
+For a similar chart using [Observable Plot](https://observablehq.com/plot/)’s concise API, see [this notebook](https://observablehq.com/@observablehq/plot-stacking-order), that emphasizes the various ways data can be stacked.

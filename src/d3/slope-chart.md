@@ -111,4 +111,4 @@ function dodge(positions, separation = 10, maxiter = 10, maxerror = 1e-1) {
 }
 ```
 
-See the [Plot: Slope chart](https://observablehq.com/@observablehq/plot-slope-chart) notebook for a similar chart made with [Observable Plot](/plot/)’s concise API.
+See the [Plot: Slope chart](https://observablehq.com/@observablehq/plot-slope-chart) notebook for a similar chart made with [Observable Plot](https://observablehq.com/plot/)’s concise API.

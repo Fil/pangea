@@ -5,7 +5,7 @@ index: true
 
 # Threshold encoding
 
-This variation of a [line chart](/d3/line-chart) demonstrates how to use a gradient to change the color of a line based on a _y_-threshold. When the line is above the median value, it is <span style="border-bottom: solid red 2px">red</span>; when the line is below the median value, it is <span style="border-bottom: solid currentColor 2px">${dark ? "white" : "black"}</span>.
+This variation of a [line chart](./line-chart) demonstrates how to use a gradient to change the color of a line based on a _y_-threshold. When the line is above the median value, it is <span style="border-bottom: solid red 2px">red</span>; when the line is below the median value, it is <span style="border-bottom: solid currentColor 2px">${dark ? "white" : "black"}</span>.
 
 ```js echo
 const width = 928;
@@ -86,7 +86,7 @@ display(svg.node());
 const temperatures = FileAttachment("/data/temperature.csv").csv({typed: true});
 ```
 
-Or, with [Observable Plot](/plot/) and the [mixBlendMode](/plot/features/marks#mark-options) option:
+Or, with [Observable Plot](https://observablehq.com/plot/) and the [mixBlendMode](https://observablehq.com/plot/features/marks#mark-options) option:
 
 ```js echo
 display(Plot.plot({

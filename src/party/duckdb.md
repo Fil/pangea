@@ -16,7 +16,7 @@ For convenience, we provide a [`DatabaseClient`](https://observablehq.com/@obser
 import {DuckDBClient} from "npm:@observablehq/duckdb";
 ```
 
-To get a DuckDB client, pass zero or more named tables to `DuckDBClient.of`. Each table can be expressed as a [`FileAttachment`](../javascript/files), [Arquero table](./arquero), [Arrow table](./arrow), an array of objects, or a promise to the same. For example, below we load a sample of 250,000 stars from the [Gaia Star Catalog](https://observablehq.com/@cmudig/peeking-into-the-gaia-star-catalog) as a [Apache Parquet](https://parquet.apache.org/) file:
+To get a DuckDB client, pass zero or more named tables to `DuckDBClient.of`. Each table can be expressed as a [`FileAttachment`](https://observablehq.com/framework/files), [Arquero table](https://observablehq.com/framework/lib/arquero), [Arrow table](https://observablehq.com/framework/lib/arrow), an array of objects, or a promise to the same. For example, below we load a sample of 250,000 stars from the [Gaia Star Catalog](https://observablehq.com/@cmudig/peeking-into-the-gaia-star-catalog) as a [Apache Parquet](https://parquet.apache.org/) file:
 
 ```js echo
 const db = DuckDBClient.of({gaia: FileAttachment("../data/gaia-sample.parquet")});

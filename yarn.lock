@@ -401,8 +401,8 @@
   integrity sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==
 
 "@observablehq/framework@https://github.com/observablehq/framework#fil/save-search-query":
-  version "1.12.0-alpha.4"
-  resolved "https://github.com/observablehq/framework#fbf2e2bc13d626365f95827fe02c1e0eb2abf62f"
+  version "1.12.0"
+  resolved "https://github.com/observablehq/framework#9280b3538cf6c76194b5cd25090dd9a65617de8e"
   dependencies:
     "@clack/prompts" "^0.7.0"
     "@observablehq/inputs" "^0.12.0"
@@ -439,7 +439,7 @@
     rollup "^4.6.0"
     rollup-plugin-esbuild "^6.1.0"
     semver "^7.5.4"
-    send "^0.18.0"
+    send "^0.19.0"
     tar "^6.2.0"
     tar-stream "^3.1.6"
     tsx "^4.7.1"
@@ -2233,10 +2233,10 @@ semver@^7.5.4, semver@^7.6.3:
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.3.tgz#980f7b5550bc175fb4dc09403085627f9eb33143"
   integrity sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==
 
-send@^0.18.0:
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/send/-/send-0.18.0.tgz#670167cc654b05f5aa4a767f9113bb371bc706be"
-  integrity sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==
+send@^0.19.0:
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/send/-/send-0.19.0.tgz#bbc5a388c8ea6c048967049dbeac0e4a3f09d7f8"
+  integrity sha512-dW41u5VfLXu8SJh5bwRmyYUbAoSB3c9uQh6L8h/KtsFREPWpbX1lrljJo186Jc4nmci/sGUZ9a0a0J2zgfq2hw==
   dependencies:
     debug "2.6.9"
     depd "2.0.0"

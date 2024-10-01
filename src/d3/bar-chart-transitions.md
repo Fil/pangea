@@ -5,7 +5,7 @@ index: true
 
 # Bar chart transitions
 
-This [bar chart](/@d3/bar-chart/2) supports animated transitions. For [object constancy](https://bost.ocks.org/mike/constancy/), bars are keyed by name, making it possible to follow changes in value and order across transitions. Use the dropdown menu to change the sort order.
+This [bar chart](/d3/bar-chart) supports animated transitions. For [object constancy](https://bost.ocks.org/mike/constancy/), bars are keyed by name, making it possible to follow changes in value and order across transitions. Use the dropdown menu to change the sort order.
 
 ```js
 const select = Inputs.select(

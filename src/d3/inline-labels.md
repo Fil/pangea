@@ -103,7 +103,7 @@ const data = await FileAttachment("../data/fruit.csv").csv({typed: true});
 const fruit = data.flatMap((d) => data.columns.slice(1).map((fruit) => ({date: d.date, fruit, value: d[fruit]})));
 ```
 
-Create this chart with [Observable Plot](https://observablehq.com/plot)’s concise API by adding a [line mark](/plot/marks/line) and a [text mark](/plot/marks/text):
+Create this chart with [Observable Plot](https://observablehq.com/plot)’s concise API by adding a [line mark](https://observablehq.com/plot/marks/line) and a [text mark](https://observablehq.com/plot/marks/text):
 
 ```js echo
 const chart2 = Plot.plot({

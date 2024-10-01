@@ -120,4 +120,4 @@ function dodge(positions, separation = 10, maxiter = 10, maxerror = 1e-1) {
 }
 ```
 
-See the [Plot: Cancer survival rates](/@observablehq/plot-cancer-survival-rates) notebook for a similar chart made with [Observable Plot](/plot/)’s concise API.
+See the [Plot: Cancer survival rates](/plot/cancer-survival-rates) notebook for a similar chart made with [Observable Plot](https://observablehq.com/plot/)’s concise API.

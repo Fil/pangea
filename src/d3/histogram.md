@@ -91,7 +91,7 @@ Plot.plot({
 })
 ```
 
-Or, as a single line of code with [Observable Plot](/plot/):
+Or, as a single line of code with [Observable Plot](https://observablehq.com/plot/):
 
 ```js echo
 Plot.rectY(unemployment, Plot.binX({y: "count"}, {x: "rate"})).plot()

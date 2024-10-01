@@ -125,7 +125,7 @@ chart.update(year);
 const delay = 250; // controls both the speed of the scrubber and the transition’s duration
 ```
 
-Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create this bar chart with the [rect mark](https://observablehq.com/plot/marks/rect) and the [interval transform](https://observablehq.com/plot/transforms/interval). See [this variant](/@observablehq/plot-icelandic-population-by-age) for more details.
+Using [Observable Plot](https://observablehq.com/plot)’s concise API, you can create this bar chart with the [rect mark](https://observablehq.com/plot/marks/rect) and the [interval transform](https://observablehq.com/plot/transforms/interval). See [this variant](https://observablehq.com/@observablehq/plot-icelandic-population-by-age) for more details.
 
 ```js echo
 Plot.plot({

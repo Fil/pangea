@@ -141,7 +141,7 @@ function size(text, path) {
 display(svg.node());
 ```
 
-Using [Observable Plot](/plot/)’s concise API, this chart typically needs a single line of code:
+Using [Observable Plot](https://observablehq.com/plot/)’s concise API, this chart typically needs a single line of code:
 
 ```js echo
 const chart = Plot.lineY(aapl, {

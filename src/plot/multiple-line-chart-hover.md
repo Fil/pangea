@@ -5,7 +5,7 @@ index: true
 
 # Multiple line chart with hover
 
-The [multiple line chart](./multiple-line-chart.md) with an interactive tip and line selection. We use a render transform on the tip option that updates the lines’ appearance based on whether they correspond to the same series as the point under the mouse. 
+The [multiple line chart](./multiple-line-chart) with an interactive tip and line selection. We use a render transform on the tip option that updates the lines’ appearance based on whether they correspond to the same series as the point under the mouse. 
 
 The render function takes advantage of the current implementation of Plot: since the line mark [binds](https://d3js.org/d3-selection/joining#selection_data) the data indices with the SVG elements, we can [filter](https://d3js.org/d3-selection/selecting#selection_filter) the paths we want to highlight.
 

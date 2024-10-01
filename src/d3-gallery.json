@@ -166,7 +166,7 @@
       "areas",
       {
         "title": "Areas",
-        "description": "Go beyond basic area charts with [difference charts](/d3/difference-chart) or [streamgraphs](/d3/streamgraph). [Ridgeline plots](/d3/ridgeline-plots) and [horizon charts](/d3/horizon-charts) are great for comparing many simultaneous time series.",
+        "description": "Go beyond basic area charts with [difference charts](/d3/difference-chart) or [streamgraphs](/d3/streamgraph). [Ridgeline plots](/d3/ridgeline-plot) and [horizon charts](/d3/horizon-chart) are great for comparing many simultaneous time series.",
         "pages": [
           "/d3/area-chart",
           "/d3/area-chart-missing-data",

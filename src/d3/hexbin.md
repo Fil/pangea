@@ -94,7 +94,7 @@ const data = FileAttachment("/data/diamonds.csv").csv({typed: true});
 import {hexbin as Hexbin} from "npm:d3-hexbin@0.2";
 ```
 
-Or, using [Observable Plot](/plot/)’s concise API:
+Or, using [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js echo
 Plot.plot({

@@ -5,7 +5,7 @@ index: true
 
 # Grouped bar chart
 
-Compare to a [stacked bar chart](./stacked-bar-chart/2). Data: [American Community Survey](https://observablehq.com/@mbostock/working-with-the-census-api)
+Compare to a [stacked bar chart](./stacked-bar-chart). Data: [American Community Survey](https://observablehq.com/@mbostock/working-with-the-census-api)
 
 ```js
 Legend(chart.scales.color, {title: "Age (years)"})

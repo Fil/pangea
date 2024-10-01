@@ -5,7 +5,7 @@ index: true
 
 # Bubble map
 
-Estimated population by county, 2016. See also the [spike map](/@d3/spike-map) as an alternative presentation of this data. Data: [American Community Survey](https://api.census.gov/data/2016/acs/acs5/cprofile/examples.html)
+Estimated population by county, 2016. See also the [spike map](./spike-map) as an alternative presentation of this data. Data: [American Community Survey](https://api.census.gov/data/2016/acs/acs5/cprofile/examples.html)
 
 ```js echo
 // Join the geographic shapes and the population data.
@@ -131,7 +131,7 @@ The _statemesh_ is just the internal borders between states, _i.e._, everything 
 const statemesh = topojson.mesh(us, us.objects.states, (a, b) => a !== b);
 ```
 
-Using [Observable Plot](/plot/)’s concise API, a similar map can be produced with a few lines of code (see also the complete [Plot: U.S. bubble map example](/@observablehq/plot-us-bubble-map)).
+Using [Observable Plot](https://observablehq.com/plot/)’s concise API, a similar map can be produced with a few lines of code (see also the complete [Plot: U.S. bubble map example](/plot/us-bubble-map)).
 
 ```js echo
 Plot.plot({

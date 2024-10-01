@@ -147,7 +147,7 @@ const conditions = new Map([
 ]);
 ```
 
-Or, using [Observable Plot](/plot/)’s concise API:
+Or, using [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js
 display(Plot.plot({

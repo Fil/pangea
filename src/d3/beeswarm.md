@@ -91,7 +91,7 @@ function dodge(data, {radius = 1, x = (d) => d} = {}) {
 }
 ```
 
-The [dodge transform](/plot/transforms/dodge) is natively available in the [Observable Plot](/plot/) API, allowing you to create a similar chart with a few lines of code:
+The [dodge transform](https://observablehq.com/plot/transforms/dodge) is natively available in the [Observable Plot](https://observablehq.com/plot/) API, allowing you to create a similar chart with a few lines of code:
 
 ```js echo
 Plot.plot({

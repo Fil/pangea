@@ -101,7 +101,7 @@ const dates = FileAttachment("../data/chicago-homicide-dates.csv")
   .then((data) => data.map(({date}) => parseDate(date)));
 ```
 
-Or, create this chart with [Observable Plot](/plot/)’s concise API:
+Or, create this chart with [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js echo
 const chart1 = Plot.areaY(dates, Plot.windowY(N, Plot.binX({y: "count"}, {x: Plot.identity, interval: "day"}))).plot({

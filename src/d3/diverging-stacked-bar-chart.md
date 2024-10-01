@@ -140,4 +140,4 @@ Object.assign(data, {
 import {Swatches} from "/components/color-legend.js";
 ```
 
-See [Plot: Diverging stacked bars](https://observablehq.com/@observablehq/plot-diverging-stacked-bar) for a similar chart made with [Observable Plot](/plot/)’s concise API.
+See [Plot: Diverging stacked bars](https://observablehq.com/@observablehq/plot-diverging-stacked-bar) for a similar chart made with [Observable Plot](https://observablehq.com/plot/)’s concise API.

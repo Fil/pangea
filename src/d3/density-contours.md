@@ -90,4 +90,4 @@ display(svg.node());
 const faithful = FileAttachment("/data/faithful.tsv").tsv({typed: true});
 ```
 
-Or you could use [Observable Plot](https://observablehq.com/plot)’s [density mark](/plot/marks/density). See the complete [Plot density contours example](/plot/point-cloud-density).
+Or you could use [Observable Plot](https://observablehq.com/plot)’s [density mark](https://observablehq.com/plot/marks/density). See the complete [Plot density contours example](/plot/point-cloud-density).

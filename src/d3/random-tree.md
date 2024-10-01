@@ -5,7 +5,7 @@ source: https://observablehq.com/@d3/random-tree
 
 # Random Tree
 
-This [tidy tree](./tidy-tree) periodically adds a child to a random node.
+This [tidy tree](./tree) periodically adds a child to a random node.
 
 ```js echo
 const svg = d3.create("svg").attr("viewBox", [-10, -10, width, height]);

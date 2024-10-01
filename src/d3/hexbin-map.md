@@ -86,7 +86,7 @@ import {hexbin as Hexbin} from "npm:d3-hexbin@0.2";
 import {Legend} from "/components/color-legend.js";
 ```
 
-Using [Observable Plot](/plot/):
+Using [Observable Plot](https://observablehq.com/plot/):
 
 ```js echo
 Plot.plot({

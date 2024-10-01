@@ -157,7 +157,7 @@ ${format(deaths.get(id)[1])} per 100,000 in 2014`,
 ```
 
 ```js
-display(d3.select(legend(color4, "Relative likelihood of death", formatRatio)).node());
+legend(color4, "Relative likelihood of death", formatRatio)
 ```
 
 This map is much closer to the previous relative change map than the first absolute difference map, but with an important difference: we can now make it symmetric for both positive and negative change by taking the logarithm of the ratio.
@@ -166,7 +166,7 @@ ${tex.block`\text{log ratio}(a, b) = \log\frac{\text{b}}{\text{a}}`}
 
 Let’s return to Apache County, Arizona. The 2014 mortality rate is ${tex`\tfrac{31.5}{18.6} = 1.7\times`} its 1980 mortality rate, so the log ratio is ${tex`+0.53`} ${html`<div style="display:inline-block;width:16px;height:16px;background:${color4(1.7)}"> </div>`}. The log scale is symmetric, so it treats this increase from ${tex`18.6`} to ${tex`31.5`} as significant as a decrease from ${tex`31.5`} to ${tex`18.6`}, which is a log ratio of ${tex`\log(\tfrac{18.6}{31.5} = 0.59\times) = -0.53`} ${html`<div style="display:inline-block;width:16px;height:16px;background:${color4(0.59)}"> </div>`}. For example, that’s about the same as Talbot County, Georgia’s decline from ${tex`7.3`} to ${tex`4.2`} deaths per 100,000.
 
-Log ratios are often used when considering growth, as with investment returns. For example, if a stock doubles and then halves, you’re back where you started: ${tex`\log(\tfrac{2}{1}) + \log(\tfrac{1}{2}) = 0`}. On the other hand if a stock goes up by fifty percent then down by fifty percent, you’ve lost twenty-five percent of your investment: ${tex`(1 \times 0.5) - (1.5 \times 0.5) = -0.25`}. This is why log scales are commonly used in stock price charts, such as this [change line chart](/@mbostock/d3-change-line-chart) and [index chart](/@mbostock/d3-index-chart).
+Log ratios are often used when considering growth, as with investment returns. For example, if a stock doubles and then halves, you’re back where you started: ${tex`\log(\tfrac{2}{1}) + \log(\tfrac{1}{2}) = 0`}. On the other hand if a stock goes up by fifty percent then down by fifty percent, you’ve lost twenty-five percent of your investment: ${tex`(1 \times 0.5) - (1.5 \times 0.5) = -0.25`}. This is why log scales are commonly used in stock price charts, such as this [change line chart](/d3/change-line-chart) and [index chart](/d3/index-chart).
 
 ## Which is Best?
 

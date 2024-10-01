@@ -77,7 +77,7 @@ Here’s the nimblest calendar, with a handful of dates:
 Calendar(["2022-03-01", "2022-05-02", "2022-12-03"]);
 ```
 
-And here’s a hero calendar, with a color representing the daily number of views since 2015 on Wikipedia’s “[Pumpkin Spice Latte](https://en.wikipedia.org/wiki/Pumpkin_Spice_Latte)” page (yes, it’s that time of the year again!—thank you [Yuri Vishnevsky](/@yurivish/wikipedia-pageviews-calendar) for the data):
+And here’s a hero calendar, with a color representing the daily number of views since 2015 on Wikipedia’s “[Pumpkin Spice Latte](https://en.wikipedia.org/wiki/Pumpkin_Spice_Latte)” page (yes, it’s that time of the year again!—thank you [Yuri Vishnevsky](https://observablehq.com/@yurivish/wikipedia-pageviews-calendar) for the data):
 
 ```js
 const data = fetch(

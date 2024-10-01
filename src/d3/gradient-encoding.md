@@ -93,7 +93,7 @@ import {Legend} from "/components/color-legend.js";
 import {uid} from "/components/DOM.js";
 ```
 
-Using [Observable Plot](/plot/)’s concise API, you can get a quick approximation of that chart (below). For a more elaborate solution with a gradient encoding, see [this notebook](https://observablehq.com/@observablehq/plot-gradient-encoding).
+Using [Observable Plot](https://observablehq.com/plot/)’s concise API, you can get a quick approximation of that chart (below). For a more elaborate solution with a gradient encoding, see [this notebook](https://observablehq.com/@observablehq/plot-gradient-encoding).
 
 ```js echo
 display(Plot.line(data, {

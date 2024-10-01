@@ -44,7 +44,7 @@ Plot.plot({
 })
 ```
 
-The data used was provided by [Jack Ketcham](/@jketcham), from Tempe Bicycle Action Group’s 2024 “[Bike Count](https://www.biketempe.org/bike-count-data/).” Volunteers were assigned intersections around Tempe, AZ to count bicycles at in two different shifts: one in the morning (7am-9am) and one in the evening (4pm-6pm). Counts were conducted during the last week of March on Tuesday, Wednesday and Thursday. Each cyclist observed was tallied by the volunteers into 15 minute bins, with additional attributes to indicate wrong way cycling, sidewalk riding, helmet usage, etc also tallied in the 15 minute bins. Another notebook with the complete dataset is here: https://observablehq.com/@jketcham/tempe-bike-count-2024
+The data used was provided by [Jack Ketcham](https://observablehq.com/@jketcham), from Tempe Bicycle Action Group’s 2024 “[Bike Count](https://www.biketempe.org/bike-count-data/).” Volunteers were assigned intersections around Tempe, AZ to count bicycles at in two different shifts: one in the morning (7am-9am) and one in the evening (4pm-6pm). Counts were conducted during the last week of March on Tuesday, Wednesday and Thursday. Each cyclist observed was tallied by the volunteers into 15 minute bins, with additional attributes to indicate wrong way cycling, sidewalk riding, helmet usage, etc also tallied in the 15 minute bins. Another notebook with the complete dataset is here: https://observablehq.com/@jketcham/tempe-bike-count-2024
 
 ```js echo
 const bikes = FileAttachment("/data/bikes.csv").csv({ typed: true });

@@ -127,7 +127,7 @@ const chart = display(Object.assign(svg.node(), {scales: {color, shape}}));
 const data = FileAttachment("/data/iris.csv").csv({typed: true});
 ```
 
-Or, using [Observable Plot](/plot/)’s concise API:
+Or, using [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js echo
 Plot.dot(data, {

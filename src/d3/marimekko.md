@@ -104,4 +104,4 @@ display(svg.node());
 const sales = FileAttachment("/data/sales.csv").csv({typed: true});
 ```
 
-For the [Observable Plot](/plot/) version, see [the Plot: Marimekko](../plot/marimekko) page.
+For the [Observable Plot](https://observablehq.com/plot/) version, see [the Plot: Marimekko](../plot/marimekko) page.

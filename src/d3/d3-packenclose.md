@@ -33,7 +33,7 @@ svg`<svg style="width:${width}px;height:auto;display:block;overflow:visible;" vi
 </svg>`
 ```
 
-d3.packEnclose is used in conjunction with [d3.packSiblings](https://d3js.org/d3-hierarchy/pack#packSiblings) by [d3.pack](/@d3/circle-packing) to compute the bounding circle for each internal node in a circle-packing diagram.
+d3.packEnclose is used in conjunction with [d3.packSiblings](https://d3js.org/d3-hierarchy/pack#packSiblings) by [d3.pack](./pack) to compute the bounding circle for each internal node in a circle-packing diagram.
 
 But how does d3.packEnclose work? Let’s watch!
 

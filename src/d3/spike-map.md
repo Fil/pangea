@@ -132,7 +132,7 @@ The spike function creates a triangular path of the given length (height) with a
 const spike = (length, width = 7) => `M${-width / 2},0L0,${-length}L${width / 2},0`;
 ```
 
-Using [Observable Plot](https://observableh.com/plot/)’s concise API, a similar map can be produced with a few lines of code (see also the complete [Plot: U.S. spike map example](/@observablehq/plot-spike-map)).
+Using [Observable Plot](https://observableh.com/plot/)’s concise API, a similar map can be produced with a few lines of code (see also the complete [Plot: U.S. spike map example](https://observablehq.com/@observablehq/plot-spike-map)).
 
 ```js echo
 Plot.plot({

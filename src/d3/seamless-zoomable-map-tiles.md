@@ -5,7 +5,7 @@ index: true
 
 # Seamless zoomable map tiles
 
-This notebook avoids the flickering in [Zoomable map tiles](https://observablehq.com/@d3/zoomable-map-tiles) by adding [low-resolution](/@d3/tile-zoomdelta) tiles under the main tiles. During zoom, these larger tiles may be visible while the new tiles load in lieu of the white background. This technique also mostly fixes the [subpixel gap issue](https://observablehq.com/d/32027f96a5d4aa89).
+This notebook avoids the flickering in [Zoomable map tiles](https://observablehq.com/@d3/zoomable-map-tiles) by adding [low-resolution](https://observablehq.com/@d3/tile-zoomdelta) tiles under the main tiles. During zoom, these larger tiles may be visible while the new tiles load in lieu of the white background. This technique also mostly fixes the [subpixel gap issue](https://observablehq.com/@fil/zoomable-map-tiles-svg-filter-for-the-subpixel-gap-issue).
 
 The marginal cost of the low-resolution tiles is negligible for a zoom delta less than -2; for -1 it is about a quarter the cost of 0. The deltas are defined below; -100 forces the use of the _z_=0 “world” tile.
 

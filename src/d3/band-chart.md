@@ -73,7 +73,7 @@ display(svg.node());
 const sftemp = FileAttachment("/data/sf-temperatures.csv").csv({typed: true});
 ```
 
-Or, using [Observable Plot](/plot/)’s concise API:
+Or, using [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js echo
 Plot.plot({

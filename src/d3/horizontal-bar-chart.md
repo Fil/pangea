@@ -82,7 +82,7 @@ display(svg.node());
 const alphabet = FileAttachment("/data/alphabet.csv").csv({typed: true});
 ```
 
-Or, using [Observable Plot](/plot/)’s concise API:
+Or, using [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js echo
 Plot.plot({

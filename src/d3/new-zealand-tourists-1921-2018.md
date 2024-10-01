@@ -139,7 +139,7 @@ chart.update(yType); // Update the chart when the radio input changes.
 const data = FileAttachment("../data/nz-tourists.csv").csv({typed: true});
 ```
 
-Or, using [Observable Plot](/plot/)’s concise API:
+Or, using [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js echo
 const chart2 = Plot.plot({

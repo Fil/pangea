@@ -120,7 +120,7 @@ display(svg.node());
 const diamonds = FileAttachment("/data/diamonds.csv").csv({typed: true});
 ```
 
-Box plots are a native mark in [Observable Plot](/plot/):
+Box plots are a native mark in [Observable Plot](https://observablehq.com/plot/):
 
 ```js echo
 Plot.plot({

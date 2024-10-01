@@ -5,7 +5,7 @@ index: true
 
 # Cancer survival rates
 
-A [slope chart](./plot-slope-chart) with intermediate values. The values here are survival rate (in percents) for various cancers. Based on [Tufte](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0003nk).
+A [slope chart](./slope-chart) with intermediate values. The values here are survival rate (in percents) for various cancers. Based on [Tufte](https://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0003nk).
 
 ```js echo
 const chart = Plot.plot({

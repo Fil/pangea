@@ -106,7 +106,7 @@ const chart = display(svg.node());
 const cars = FileAttachment("/data/mtcars.csv").csv({typed: true});
 ```
 
-Or, using [Observable Plot](/plot/)’s concise API:
+Or, using [Observable Plot](https://observablehq.com/plot/)’s concise API:
 
 ```js echo
 Plot.plot({

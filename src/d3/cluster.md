@@ -87,7 +87,7 @@ node
 display(svg.node());
 ```
 
-Using [Observable Plot](/plot/)’s concise API, this chart can simply be written as:
+Using [Observable Plot](https://observablehq.com/plot/)’s concise API, this chart can simply be written as:
 
 ```js echo
 display(
