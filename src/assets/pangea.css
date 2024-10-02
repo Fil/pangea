@@ -6,17 +6,16 @@
   border-bottom: none;
   background: linear-gradient(var(--theme-background), transparent);
   margin: 0 -3rem 0 -3rem;
-  padding: 0;
-  height: 1.7rem;
+  height: 1.4rem;
 }
 
-#observablehq-main {
-  margin-top: -2.1rem;
+#observablehq-header + #observablehq-main {
+  margin-top: 0;
 }
 
 a.view-source {
   position: absolute;
-  top: 0;
+  top: 0.5rem;
   right: 2rem;
   font: 700 18px var(--sans-serif);
   text-decoration: none !important;
