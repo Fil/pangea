@@ -4,7 +4,7 @@ index: true
 
 # DuckDB spatial
 
-<p class=warning>This page only works because it imports a custom version of DuckDBClient that uses an alpha release of duckdb-wasm (version @1.28.1). See issues <a href=https://github.com/duckdb/duckdb-wasm/issues/1561>duckdb-wasm#1561</a>; <a href=https://github.com/observablehq/framework/issues/750>framework#750</a> and <a href=https://github.com/observablehq/framework/issues/733>framework#733</a>.</p>
+<p class=warning>This page loads duckdb-wasm (@1.29.0) the hard way. See PR [#1734](https://github.com/observablehq/framework/pull/1734) to self-host the extensions and enjoy a seamless experience.</p>
 
 ```js echo
 import {DuckDBClient} from "/components/duckdb.js"

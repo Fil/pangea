@@ -16,6 +16,8 @@
  * ```
  * const r = await sql1`SELECT * FROM table;`
  * ```
+ *
+ * Note: this is enabled by default for sql in https://github.com/observablehq/framework/pull/1728
  */
 export function queue(f) {
   let current;
