@@ -4,7 +4,11 @@ index: true
 
 # DuckDB spatial
 
-<p class=warning>This page loads duckdb-wasm (@1.29.0) the hard way. See PR [#1734](https://github.com/observablehq/framework/pull/1734) to self-host the extensions and enjoy a seamless experience.</p>
+<div class="warning">
+
+This page loads duckdb-wasm (@1.29.0) the hard way. See PR [#1734](https://github.com/observablehq/framework/pull/1734) to self-host the extensions and enjoy a seamless experience.
+
+</div>
 
 ```js echo
 import {DuckDBClient} from "/components/duckdb.js"
