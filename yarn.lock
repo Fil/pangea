@@ -400,9 +400,9 @@
   resolved "https://registry.yarnpkg.com/@jridgewell/sourcemap-codec/-/sourcemap-codec-1.5.0.tgz#3188bcb273a414b0d215fd22a58540b989b9409a"
   integrity sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==
 
-"@observablehq/framework@https://github.com/observablehq/framework#fil/save-search-query":
+"@observablehq/framework@https://github.com/observablehq/framework#mbostock/picocolors":
   version "1.12.0"
-  resolved "https://github.com/observablehq/framework#9280b3538cf6c76194b5cd25090dd9a65617de8e"
+  resolved "https://github.com/observablehq/framework#4c432cc413b406da1f9086e6316804e826c7c9d2"
   dependencies:
     "@clack/prompts" "^0.7.0"
     "@observablehq/inputs" "^0.12.0"
@@ -434,6 +434,7 @@
     mime "^4.0.0"
     minisearch "^6.3.0"
     open "^10.1.0"
+    picocolors "^1.1.1"
     pkg-dir "^8.0.0"
     resolve.exports "^2.0.2"
     rollup "^4.6.0"
@@ -2031,6 +2032,11 @@ picocolors@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.0.1.tgz#a8ad579b571952f0e5d25892de5445bcfe25aaa1"
   integrity sha512-anP1Z8qwhkbmu7MFP5iTt+wQKXgwzf7zTyGlcdzabySa9vd0Xt392U0rVmz9poOaBj0uHJKyyo9/upk0HrEQew==
+
+picocolors@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/picocolors/-/picocolors-1.1.1.tgz#3d321af3eab939b083c8f929a1d12cda81c26b6b"
+  integrity sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==
 
 picomatch@^2.3.1:
   version "2.3.1"
