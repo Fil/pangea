@@ -5,13 +5,14 @@ index: true
 # MapLibre-GL
 
 <div id="map" style="width: 100%; height: 450px;"></div>
+<link rel="stylesheet" href="npm:maplibre-gl/dist/maplibre-gl.css">
 
 ```html echo run=false
 <div id="map" style="width: 100%; height: 450px;"></div>
 ```
 
-```html echo
-<link rel="stylesheet" href="${import.meta.resolve("npm:maplibre-gl/dist/maplibre-gl.css")}">
+```html echo run=false
+<link rel="stylesheet" href="npm:maplibre-gl/dist/maplibre-gl.css">
 ```
 
 ```js echo
