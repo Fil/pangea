@@ -1,3 +1,7 @@
+---
+index: true
+---
+
 # DeckGL, H3 and MapLibre
 
 ```js echo
