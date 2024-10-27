@@ -29,7 +29,7 @@ const tidy = data.flatMap((d) => {
 ```
 
 ```js
-const city = view(Inputs.select(new Set(["National", ...cities.sort()])));
+const city = view(Inputs.select(new Set([cities.find((n) => n.startsWith("National")), ...cities.sort()])));
 ```
 
 ```js
