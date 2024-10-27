@@ -2,9 +2,9 @@
 index: true
 ---
 
-# Hello, penrose
+# Hello, Penrose
 
-https://penrose.cs.cmu.edu/
+[Penrose](https://penrose.cs.cmu.edu/) creates “beautiful diagrams just by typing notation in plain text.” See also [Bloom](./bloom), an extension of Penrose for optimization-driven interactive diagrams.
 
 
 ```js echo
