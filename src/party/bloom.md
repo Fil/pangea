@@ -23,6 +23,7 @@ const {DiagramBuilder, canvas, constraints} = await import(FileAttachment("bloom
 const height = 300;
 const containerRadius = height / 2 - 2;
 const containerBorder = 2;
+const strokeColor = dark ? [1, 1, 1, 1] : [0, 0, 0, 1]; // black (white in dark mode)
 
 // A new Diagram.
 const {build, circle, ensure, forall, type} = new DiagramBuilder(canvas(width, height), "", 1e3);
@@ -52,7 +53,7 @@ enclosure.icon = circle({
   r: containerRadius,
   center: [0, 0],
   strokeWidth: containerBorder,
-  strokeColor: [0, 0, 0, 1], // black
+  strokeColor,
   fillColor: [0, 0, 0, 0] // transparent
 });
 
