@@ -57,8 +57,3 @@ map.addControl(
   })
 );
 ```
-
-For more inspiration, here are _real_ projects developed with Maplibre & protomaps (PMTiles):
-
-- https://mclare.blog/posts/building-oss-map-apps-with-observable-framework/
-- https://bdon.github.io/observable-framework-maps/example-map
