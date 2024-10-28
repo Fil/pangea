@@ -15,8 +15,8 @@ const r = view(Inputs.range([2, 50], {value: 16, step: 1, label: "radius"}));
 /**
  * Self-hosting bloom.js; ideally we'd have
  * > import bloom from "npm:@penrose/bloom";
- * but since this is not hosted on npm or jsr, we currently fetch
- * a bundle (bloom.min.js) from penrose.cs.cmu.edu with a data loader.
+ * but since this generates errors, we currently fetch a bundled version
+ * (bloom.min.js) from penrose.cs.cmu.edu with a data loader.
  */
 const {DiagramBuilder, canvas, constraints} = await import(FileAttachment("bloom.js").href);
 
