@@ -14,9 +14,9 @@ const r = view(Inputs.range([2, 50], {value: 16, step: 1, label: "radius"}));
 ```ts echo
 /**
  * Self-hosting bloom.js; ideally we'd have
- * > import bloom from "https://penrose.cs.cmu.edu/bloom.min.js";
+ * > import bloom from "npm:@penrose/bloom";
  * but since this is not hosted on npm or jsr, we currently fetch
- * it from penrose.cs.cmu.edu with a data loader.
+ * a bundle (bloom.min.js) from penrose.cs.cmu.edu with a data loader.
  */
 const {DiagramBuilder, canvas, constraints} = await import(FileAttachment("bloom.js").href);
 
@@ -69,5 +69,3 @@ forall({d1: Dot, d2: Dot}, ({d1, d2}) => {
 
 display((await build()).getInteractiveElement());
 ```
-
-
