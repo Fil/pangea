@@ -51,7 +51,7 @@ const Enclosure = type();
 const enclosure = Enclosure();
 enclosure.icon = circle({
   r: containerRadius,
-  center: [0, 0],
+  center: [0, 0], // immutable position
   strokeWidth: containerBorder,
   strokeColor,
   fillColor: [0, 0, 0, 0] // transparent
