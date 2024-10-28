@@ -15,7 +15,7 @@ const datasetname = "penguins";
 import * as XLSX from "npm:xlsx";
 display(
   Inputs.button(`Download ${datasetname}.xlsx`, {
-    reduce: () => {
+    reduce() {
       const worksheet = XLSX.utils.json_to_sheet(data);
       const workbook = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(workbook, worksheet);
