@@ -7,8 +7,7 @@ index: true
 “[Bluefish](https://bluefishjs.org/learn/what-is-bluefish.html) is a diagramming framework for the web. The main primitive of Bluefish is the relation. Just as components are the building blocks of user interfaces, relations are the building blocks of diagrams. Unlike components, relations can share children with other relations, and they don’t need to fully specify their childrens’ layouts.”
 
 ```js echo
-// prettier-ignore
-import { Group, StackH, StackV, Circle, Text, Ref, Background, Arrow, Align, Distribute, Rect, render } from "npm:bluefish-js";
+import {StackH, StackV, Circle, Text, Ref, Background, render} from "npm:bluefish-js";
 
 function Diagram() {
   return [
