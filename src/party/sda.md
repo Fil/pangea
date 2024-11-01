@@ -4,10 +4,7 @@ index: true
 
 # Simple data analysis
 
-[Simple data analysis](https://github.com/nshiab/simple-data-analysis), a
-library maintained by computational journalist Nael Shiab, purports to be “a
-high-performance and convenient solution in JavaScript for data analysis. It's
-based on DuckDB and inspired by Pandas (Python) and the Tidyverse (R).”
+[Simple data analysis](https://github.com/nshiab/simple-data-analysis), a library maintained by computational journalist Nael Shiab, purports to be “a high-performance and convenient solution in JavaScript for data analysis. It’s based on DuckDB and inspired by Pandas (Python) and the Tidyverse (R).”
 
 ```js echo
 import { SimpleWebDB } from "https://esm.sh/jsr/@nshiab/simple-data-analysis@3.15.3/web";
