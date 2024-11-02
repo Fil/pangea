@@ -4,17 +4,7 @@ index: true
 
 # DuckDB spatial
 
-<div class="warning">
-
-This page loads duckdb-wasm (@1.29.0) the hard way. See PR [#1734](https://github.com/observablehq/framework/pull/1734) to self-host the extensions and enjoy a seamless experience.
-
-</div>
-
-```js echo
-import {DuckDBClient} from "/components/duckdb.js"
-```
-
-After loading the [spatial extension](https://duckdb.org/docs/extensions/spatial.html), we populate our DuckDB database with two files:
+After configuring DuckDB’s [spatial](https://duckdb.org/docs/extensions/spatial/overview.html) [extension](https://observablehq.com/framework/lib/duckdb#extensions), we populate our database with two files:
 
 - **annarbor**, a [GeoParquet](https://geoparquet.org/) file (that I made by converting an old GeoJSON file from a Waldo Tobler project); we can load it directly from the file attachment.
 - **us/10m**, TopoJSON’s [US Atlas](https://github.com/topojson/us-atlas) file, that we import with `ST_Read()`.
@@ -22,14 +12,11 @@ After loading the [spatial extension](https://duckdb.org/docs/extensions/spatial
 ```js echo
 const db = await DuckDBClient.of();
 
-await db.sql`INSTALL spatial; LOAD spatial;`
+await db.sql([`CREATE OR REPLACE TABLE annarbor AS
+  FROM '${FileAttachment("/data/annarbor.parquet").href}';`]);
 
-await db.sql([`CREATE OR REPLACE TABLE annarbor
-  AS FROM '${FileAttachment("/data/annarbor.parquet").href}';`]);
-
-await db.sql([`CREATE OR REPLACE TABLE counties AS (
-  FROM ST_Read('${import.meta.resolve("npm:us-atlas@3/counties-10m.json")}')
-)`]);
+await db.sql([`CREATE OR REPLACE TABLE counties AS
+  FROM ST_Read('${import.meta.resolve("npm:us-atlas@3/counties-10m.json")}')`]);
 ```
 
 ---
@@ -147,9 +134,12 @@ display(unemployment)
 ```js echo
 const unemployment = Array.from(
   await db.sql([`
-SELECT ST_AsGeoJSON(geom) AS geometry, values.*
+WITH values AS (FROM '${FileAttachment("/data/unemployment-by-county.csv").href}')
+
+SELECT ST_AsGeoJSON(geom) AS geometry
+     , values.*
   FROM counties
-  JOIN (SELECT * FROM '${FileAttachment("/data/unemployment-by-county.csv").href}') AS values
+  JOIN values
     ON counties.id = values.id
 ` ]),
   ({geometry, ...properties}) => Object.assign(JSON.parse(geometry), {properties})
@@ -159,17 +149,3 @@ SELECT ST_AsGeoJSON(geom) AS geometry, values.*
 ---
 
 For more on the SPATIAL extension, read [Introducing The DuckDB Spatial Extension](https://duckdb.org/2023/04/28/spatial.html), by Max Gabrielsson. And this [interesting notebook](https://observablehq.com/@chrispahm/prototyping-geoparquet-geos-in-webassembly) by Christoph Pahmeyer exploring fast GeoParquet visualizations in Observable notebooks. For a complete pipeline, see also [lonboard](https://developmentseed.org/blog/2023-10-23-lonboard), by Kyle Barron.
-
-<div class=note>
-
-The same DuckDBClient can be used to load other extensions, such as [JSON](https://duckdb.org/docs/extensions/json.html):
-
-```js echo
-JSON.parse((await db.sql`
-  INSTALL json;
-  LOAD json;
-  SELECT {duck: 42}::JSON as quack;
-`).get(0).quack)
-```
-
-</div>
