@@ -82,7 +82,8 @@ export default {
   search: true,
   head,
   header: `${VIEW_SOURCE}`,
-  footer: FOOTER_OBSERVABLE
+  footer: FOOTER_OBSERVABLE,
+  duckdb: {extensions: ["spatial", "h3"]}
 };
 
 function head({path, title}) {

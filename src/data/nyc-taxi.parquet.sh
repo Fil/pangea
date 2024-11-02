@@ -1,5 +1,3 @@
-export TMPDIR="src/.observablehq/cache"
-export PATH=$TMPDIR:$PATH
 duckdb :memory: << EOF
 -- Load spatial extension
 INSTALL spatial; LOAD spatial;
@@ -20,8 +18,5 @@ COPY (SELECT
   ST_Y(drop)::INTEGER AS dy  -- extract dropff y-coord
 FROM rides
 ORDER BY 2,3,4,5,1 -- optimize output size by sorting
-) TO '$TMPDIR/trips.parquet' (COMPRESSION 'ZSTD', row_group_size 10000000);
+) TO STDOUT (FORMAT 'parquet', COMPRESSION 'ZSTD', row_group_size 10000000);
 EOF
-
-cat $TMPDIR/trips.parquet >&1  # Write output to stdout
-rm $TMPDIR/trips.parquet       # Clean up
