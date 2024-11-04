@@ -1,5 +1,6 @@
 import {createIndex} from "../ssr/category.ts";
-import {sections} from "../index.json" assert {type: "json"};
+import INDEX from "../index.json" with {type: "json"};
+const {sections} = INDEX;
 
 const intro = `# Pangea Proxima
 
