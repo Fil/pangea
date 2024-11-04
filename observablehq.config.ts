@@ -83,7 +83,7 @@ export default {
   head,
   header: `${VIEW_SOURCE}`,
   footer: FOOTER_OBSERVABLE,
-  duckdb: {extensions: ["spatial", "h3"]}
+  duckdb: {extensions: ["spatial", "h3", "pivot_table"]}
 };
 
 function head({path, title}) {
