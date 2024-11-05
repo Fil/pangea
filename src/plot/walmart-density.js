@@ -33,7 +33,7 @@ export async function WalmartDensity({dark = false, slider = true} = {}) {
     plot.replaceWith(plot = chart(walmarts.filter((d) => !input.value || d.date.getUTCFullYear() <= input.value), nation, statemesh, width, dark));
   }
   input.addEventListener("input", update);
-  const wrapper = html`<div>${input}${plot}`;
+  const wrapper = html`<div>${plot}${input}`;
   return resize((w) => (width = w, update(), wrapper));
 }
 
