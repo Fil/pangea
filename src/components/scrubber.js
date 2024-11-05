@@ -1,5 +1,5 @@
-import { html } from "npm:htl";
-import * as Inputs from "npm:@observablehq/inputs";
+import {html} from "npm:htl";
+import {disposal} from "npm:@observablehq/inputs";
 
 // https://observablehq.com/@mbostock/scrubber
 export function Scrubber(
@@ -92,6 +92,6 @@ export function Scrubber(
   form.i.oninput();
   if (autoplay) start();
   else stop();
-  Inputs.disposal(form).then(stop);
+  disposal(form).then(stop);
   return form;
 }
