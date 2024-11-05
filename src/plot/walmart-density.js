@@ -21,7 +21,10 @@ function chart(walmarts, nation, statemesh, width, dark) {
 }
 
 export async function WalmartDensity({dark = false, slider = true} = {}) {
-  const [us, walmarts] = await Promise.all([FileAttachment("../data/us-counties-10m.json").json(), FileAttachment("../data/walmarts.tsv").tsv({typed: true})]);
+  const [us, walmarts] = await Promise.all([
+    FileAttachment("../data/us-counties-10m.json").json(),
+    FileAttachment("../data/walmarts.tsv").tsv({typed: true})
+  ]);
   const nation = feature(us, us.objects.nation);
   const statemesh = mesh(us, us.objects.states);
   const input = slider
@@ -38,13 +41,13 @@ export async function WalmartDensity({dark = false, slider = true} = {}) {
 }
 
 // Web Component <div is="{component-name}">
-export function component(name) {
-  customElements.define(name, class extends HTMLDivElement {
-    connectedCallback() {
-      WalmartDensity({
-        dark: getComputedStyle(this)["color-scheme"] === "dark"
-      })
-        .then((e) => this.attachShadow({mode: "open"}).appendChild(e));
-    }
-  }, {extends: "div"});
+export function components() {
+  for (const [name, chart] of [["walmart-density", WalmartDensity]]) {
+    customElements.define(name, class extends HTMLDivElement {
+      connectedCallback() {
+        chart({dark: getComputedStyle(this)["color-scheme"] === "dark"})
+          .then((e) => this.attachShadow({mode: "open"}).appendChild(e));
+      }
+    }, {extends: "div"});
+  }
 };

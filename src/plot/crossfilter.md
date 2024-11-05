@@ -1,9 +1,11 @@
 ---
 index: true
+source: https://crossfilter.github.io/crossfilter/
 ---
 
 # Crossfilter
 
+https://crossfilter.github.io/crossfilter/
 
 ${resize(width => Histogram("date", {width}))}
 ${Histogram("delay", {label: "Arrival delay (min.)"})} 
@@ -20,6 +22,7 @@ _TODO:_
 - stronger init
 - add "reset" buttons
 - documentation
+- get the colors “right” in the hovered chart
 
 
 
