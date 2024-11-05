@@ -25,7 +25,7 @@ export async function WalmartDensity({dark = false, slider = true} = {}) {
   const nation = feature(us, us.objects.nation);
   const statemesh = mesh(us, us.objects.states);
   const input = slider
-    ? Scrubber(range(1963, 2001), {initial: 0, delay: 100, autoplay: true, loop: false})
+    ? Scrubber(range(1962, 2007), {initial: 0, delay: 100, autoplay: true, loop: false})
     : html`<span>`;
   let width;
   let plot = html`<svg>`;

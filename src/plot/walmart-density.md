@@ -5,7 +5,7 @@ index: true
 
 # Walmart density
 
-The interactive chart below shows the relative density of Walmart stores open in the U.S. from 1963 to 2000.
+The interactive chart below shows the relative density of Walmart stores open in the U.S. between 1962 and 2006.
 
 <div is="walmart-chart"></div>
 
