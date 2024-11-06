@@ -1,38 +1,47 @@
 ---
 index: true
-source: https://crossfilter.github.io/crossfilter/
+source: https://github.com/square/crossfilter
 ---
 
 # Crossfilter
 
-https://crossfilter.github.io/crossfilter/
+<div style="max-width: 880px;">
+<div class="grid grid-cols-3">
+  <div>${Histogram("hour", {label: "Time of day"})}</div>
+  <div>${Histogram("delay", {label: "Arrival delay (min.)"})}</div>
+  <div>${Histogram("distance", {label: "Distance (mi.)", zero: true})}</div>
+  <div class="grid-colspan-3">${resize(width => Histogram("date", {width, label: "Date", selection: [new Date("2001-02-01"), new Date("2001-03-01")]}))}</div>
+  <div class="grid-colspan-3"><small>${Counter()}</small></div>
+</div>
+</div>
 
-${resize(width => Histogram("date", {width}))}
-${Histogram("delay", {label: "Arrival delay (min.)"})} 
-${Histogram("hour", {label: "Time of day"})}
-${Histogram("distance", {label: "Distance (mi.)"})}
-${Counter()}
-
+<style>
+  rect.selection {fill: steelblue; fill-opacity: 0.15;}
+  figure h2 {font-weight: normal; font-size: 1rem;}
+</style>
 
 ---
 
 _TODO:_
-- layout
 - add a table
 - stronger init
 - add "reset" buttons
 - documentation
-- get the colors “right” in the hovered chart
+- mention [falcon-vis](https://github.com/vega/falcon) as an alternative
 
+
+https://github.com/square/crossfilter
+
+note: use crossfilter2 if you prefer to use the community version https://crossfilter.github.io/crossfilter/
 
 
 ```js echo
-import crossfilter from "npm:crossfilter2";
+import crossfilter from "npm:crossfilter";
 ```
 
 ```js echo
-function renderHistogram(dimension, group) {
-  return (index, scales, values, dimensions, context, next) => {
+function renderHistogram(name, dimension, group, selection) {
+  return function(index, scales, values, dimensions, context, next) {
     const {
       marginLeft,
       marginTop,
@@ -42,33 +51,53 @@ function renderHistogram(dimension, group) {
       height
     } = dimensions;
 
-   function updateAll({selection}) {
-      if (selection) dimension.filterRange(selection.map(scales.scales.x.invert));
-      else dimension.filterAll();
+    function updateAll({selection}) {
+      if (selection) {
+        dimension.filterRange(selection.map(scales.scales.x.invert));
+        clipRect.setAttribute("x", selection[0]);
+        clipRect.setAttribute("width", selection[1] - selection[0]);
+      }
+      else {
+        dimension.filterAll();
+        clipRect.setAttribute("x", 0);
+        clipRect.setAttribute("width", width);
+      }
       update();
-   }
+    }
 
-    const g = svg`<g class="update">`;
+    const clipRect = svg`<rect height=${dimensions.height} x=0 width=${width}>`;
+    const id = `histogram-${name}`;
     const r = next(index, scales, values, dimensions, context);
+    r.setAttribute("id", id);
+    const fill = r.getAttribute("fill");
+    r.setAttribute("fill", null); // we want to <use> this shape and change its fill
+    const g = svg`<g class="update">
+      ${r}
+      <use href="#${id}" fill="currentColor" fill-opacity="0.3"></use>
+      <use href="#${id}" fill="${fill}" clip-path="url(#clip-${name})"></use>
+      <clipPath id="clip-${name}">${clipRect}</clipPath>
+    `;
     const rects = [...r.querySelectorAll("rect")];
-    g.append(r);
 
     const y0 = scales.y(0);
     g.update = () => {
-      const values = group.all();
+      const values = Plot.valueof(group.all(), "value");
+      const max = d3.max(values);
       for (const rect of rects) {
-        const v = values[rect.__data__].value;
-        const h = scales.y(v);
+        const h = scales.y(values[rect.__data__] / max);
         rect.setAttribute("y", h)
         rect.setAttribute("height", y0 - h)
       }
     }
 
-    d3.select(g).call(d3.brushX()
+    const brush = d3.brushX()
       .extent([[marginLeft, marginTop], [width - marginRight, height - marginBottom]])
       .on("brush", updateAll)
-      .on("end", updateAll)
-    );
+      .on("end", updateAll);
+
+    d3.select(g)
+      .call(brush)
+      .call(brush.move, selection?.map(scales.x))
 
     return g;
   }
@@ -76,20 +105,30 @@ function renderHistogram(dimension, group) {
 
 function Histogram(name, {
   thresholds,
+  zero,
   label = name === "date" ? null : name,
-  width = 350
+  width = 310,
+  selection
 } = {}) {
   const {allGroups, dimension, groups} = axes[name];
   if (thresholds === undefined) thresholds = allGroups.length;
   return Plot.plot({
     width,
     height: 150,
-    marginLeft: 50,
-    x: {label},
-    y: {insetTop: 5, grid: true, label: null},
+    marginLeft: 5,
+    marginRight: 10,
+    x: {label: null, zero, round: true, nice: true},
+    title: label,
+    y: {insetTop: 5, axis: null},
     marks: [
-      Plot.rectY(allGroups, Plot.binX({y: "sum", thresholds}, {x: "key", y: "value", fillOpacity: 0.2})),
-      Plot.rectY(allGroups, Plot.binX({y: "sum", thresholds}, {x: "key", y: "value", fill: "steelblue", render: renderHistogram(dimension, groups)})),
+      Plot.rectY(allGroups, Plot.normalizeY("max",
+        Plot.binX({y: "sum", thresholds}, {
+          x: "key",
+          y: "value",
+          fill: "steelblue",
+          render: renderHistogram(name, dimension, groups, selection)
+        })
+      )),
       Plot.ruleY([0]),
     ]
   });
