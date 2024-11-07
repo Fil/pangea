@@ -1,6 +1,0 @@
-{
-  "buildCommand": "yarn install:duckdb && rm -rf dist && export TMPDIR='src/.observablehq/cache' && mkdir -p $TMPDIR && export PATH=$TMPDIR:$PATH && yarn build",
-  "outputDirectory": "dist",
-  "cleanUrls": true,
-  "framework": null
-}
