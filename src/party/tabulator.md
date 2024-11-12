@@ -6,8 +6,6 @@ index: true
 
 https://tabulator.info/
 
-<link rel="stylesheet" href="npm:tabulator-tables/dist/css/tabulator.min.css">
-
 ```js
 row
 ```
@@ -30,6 +28,12 @@ const row = view(tabulator(data, {
     {title: "Date Of Birth", field: "dob", sorter: "date", hozAlign: "center"},
   ]
 }));
+```
+
+<link rel="stylesheet" href="npm:tabulator-tables/dist/css/tabulator.min.css">
+
+```html run=false
+<link rel="stylesheet" href="npm:tabulator-tables/dist/css/tabulator.min.css">
 ```
 
 ```js echo
