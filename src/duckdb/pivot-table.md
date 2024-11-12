@@ -1,6 +1,6 @@
 ---
 sql:
-  penguins: ../data/penguins.csv
+  penguins: /data/penguins.csv
 index: true
 ---
 

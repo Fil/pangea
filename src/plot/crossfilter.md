@@ -23,17 +23,16 @@ source: https://github.com/square/crossfilter
 ---
 
 _TODO:_
+
 - add a table
 - stronger init
 - add "reset" buttons
 - documentation
 - mention [falcon-vis](https://github.com/vega/falcon) as an alternative
 
-
 https://github.com/square/crossfilter
 
 note: use crossfilter2 if you prefer to use the community version https://crossfilter.github.io/crossfilter/
-
 
 ```js echo
 import crossfilter from "npm:crossfilter";
