@@ -5,7 +5,7 @@ mkdir -p $TMPDIR
 export PATH=$TMPDIR:$PATH
 command -v duckdb > /dev/null || $(
   curl --location --output duckdb.zip \
-    https://github.com/duckdb/duckdb/releases/download/v0.10.0/duckdb_cli-linux-amd64.zip && \
+    https://github.com/duckdb/duckdb/releases/download/v1.1.2/duckdb_cli-linux-amd64.zip && \
     unzip -qq duckdb.zip && chmod +x duckdb && mv duckdb $TMPDIR/
 )
 

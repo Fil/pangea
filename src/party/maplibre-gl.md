@@ -23,7 +23,7 @@ import maplibregl from "npm:maplibre-gl";
 const map = new maplibregl.Map({
   container: "map",
   zoom: 12,
-  center: [11.39085, 47.27574],
+  center: [11.39, 47.29],
   pitch: 52,
   hash: true,
   style: {
@@ -56,4 +56,8 @@ map.addControl(
     showCompass: true
   })
 );
+
+new maplibregl.Marker()
+  .setLngLat([11.39, 47.29])
+  .addTo(map);
 ```

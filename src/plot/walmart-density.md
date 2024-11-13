@@ -5,31 +5,35 @@ index: true
 
 # Walmart density
 
-The [density](https://observablehq.com/plot/marks/density) mark supports projected data. For more accurate results, prefer an equal-area [projection](https://observablehq.com/plot/features/projections).
+This interactive chart shows the relative density of Walmart stores open in the U.S. between 1962 and 2006.
 
-```js echo
-const chart = Plot.plot({
-  projection: "albers",
-  color: {scheme: dark ? "turbo" : "YlGnBu"},
-  style: "overflow: visible;",
-  marks: [
-    Plot.density(walmarts, {x: "longitude", y: "latitude", bandwidth: 10, fill: "density"}),
-    Plot.geo(statemesh, {strokeOpacity: 0.3}),
-    Plot.geo(nation),
-    Plot.dot(walmarts, {x: "longitude", y: "latitude", r: 1, fill: "currentColor"})
-  ]
-});
+<div is="walmart-density"></div>
 
-display(chart);
+```js
+import {components} from "./walmart-density.js";
+components();
 ```
 
-```js echo
-const us = FileAttachment("../data/us-counties-10m.json").json();
-const walmarts = FileAttachment("../data/walmarts.tsv").tsv({typed: true});
+---
+
+The chart, together with its interactive slider, is implemented as a [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components), and [exported](https://observablehq.com/framework/embeds#exported-modules) from the pangea data app. On the host site, add a `div` where you want to anchor the visualization, and import the component:
+
+```html run=false
+<div is="walmart-density"></div>
 ```
 
-```js echo
-const nation = topojson.feature(us, us.objects.nation);
-const statemesh = topojson.mesh(us, us.objects.states);
+```js run=false
+import {components} from "https://observablehq.observablehq.cloud/pangea/plot/walmart-density.js";
+components();
 ```
+
+Alternatively, import the chart function and insert its output into the DOM:
+
+```js run=false
+import {WalmartDensity} from "https://observablehq.observablehq.cloud/pangea/plot/walmart-density.js";
+WalmartDensity().then((e) => document.querySelector("#walmart-density")?.append(e));
+```
+
+(For React, see the template in [Framework’s documentation](https://observablehq.com/framework/embeds#exported-modules).)
+
 

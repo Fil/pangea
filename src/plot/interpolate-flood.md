@@ -4,7 +4,7 @@ index: true
 
 # Flood spatial interpolator
 
-Reproject a JPEG image as a raster. After an initial projection of the sample values, the _flood_ spatial interpolator fills each gap with the mean value of its active neighbors (top, down, left, right), if any. The procedure can be repeated a few times if the image contains large gaps (however, if you need a large _step_ count, consider the barycentric interpolator instead).
+Reproject a JPEG image as a raster ([#1431](https://github.com/observablehq/plot/issues/1431)). After an initial projection of the sample values, the _flood_ spatial interpolator fills each gap with the mean value of its active neighbors (top, down, left, right), if any. The procedure can be repeated a few times if the image contains large gaps (however, if you need a large _step_ count, consider the barycentric interpolator instead).
 
 ```js
 const flood = view(Inputs.toggle({value: true, label: "Flood interpolation"}));
@@ -48,7 +48,6 @@ Plot.plot({
   ]
 })
 ```
-
 
 ```js echo
 function interpolateFlood({steps = 1, random = d3.randomLcg(42)} = {}) {

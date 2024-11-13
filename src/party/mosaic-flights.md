@@ -18,13 +18,12 @@ _Try selecting delayed flights. How much more likely are they to leave later in 
 
 ```js echo
 // load flights data from external parquet file
-const datasource = new URL(await FileAttachment("../data/flights-10m.parquet").url(), document.location).href;
 await vg.coordinator().exec(`CREATE TABLE IF NOT EXISTS flights10m AS
     SELECT
       GREATEST(-60, LEAST(ARR_DELAY, 180))::DOUBLE AS delay,
       DISTANCE AS distance,
       DEP_TIME AS time
-    FROM '${datasource}'`);
+    FROM '${FileAttachment("../data/flights-10m.parquet").href}'`);
 
 // create a selection with crossfilter resolution
 const brush = vg.Selection.crossfilter();
@@ -46,7 +45,7 @@ const makePlot = (column) =>
   );
 
 // generate dashboard with three linked histograms
-//  display(vg.vconcat(makePlot("delay"), makePlot("time"), makePlot("distance")));
+// display(vg.vconcat(makePlot("delay"), makePlot("time"), makePlot("distance")));
 ```
 
 ```js echo

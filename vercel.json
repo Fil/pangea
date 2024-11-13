@@ -1,6 +1,0 @@
-{
-  "buildCommand": "yarn install:duckdb && rm -rf dist && tsx node_modules/@observablehq/framework/src/bin/observable.ts build",
-  "outputDirectory": "dist",
-  "cleanUrls": true,
-  "framework": null
-}

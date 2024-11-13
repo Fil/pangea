@@ -23,7 +23,8 @@ async function* dynamicPaths() {
     const a = item.link.match(/watch\?v=(.*)$/)?.[1];
     if (a) yield `/video/${a}`;
   }
-  yield "/video/blYQhiOMhwA"; // A duck for your dashboard
+  yield "/video/blYQhiOMhwA"; // A duck for your dashboard, by Robert Kosara
+  yield "/plot/walmart-density.js"; // Demonstrating an exported module
 }
 
 const EMOJI_FAVICON = "🌍";
@@ -82,7 +83,8 @@ export default {
   search: true,
   head,
   header: `${VIEW_SOURCE}`,
-  footer: FOOTER_OBSERVABLE
+  footer: FOOTER_OBSERVABLE,
+  duckdb: {extensions: ["spatial", "h3", "pivot_table"]}
 };
 
 function head({path, title}) {
