@@ -4,7 +4,7 @@ index: true
 
 # Circular line chart
 
-Inspired by [Matthias Stahl](https://bsky.app/profile/higsch.com/post/3lap5k6rvxm2f). Data: Daily Sea Surface Temperature, Subpolar North Atlantic, [climatereanalyzer](https://climatereanalyzer.org/clim/sst_daily/?dm_id=natlsp)
+Data: Daily Sea Surface Temperature, Subpolar North Atlantic, [climatereanalyzer](https://climatereanalyzer.org/clim/sst_daily/?dm_id=natlsp)
 
 ```js echo
 Plot.plot({
@@ -50,10 +50,13 @@ Plot.plot({
 })
 ```
 
-The radius as a function of the value:
+Inspired by [Matthias Stahl](https://bsky.app/profile/higsch.com/post/3lap5k6rvxm2f) and [Sean Lynch](https://bsky.app/profile/techniq.dev/post/3lat66qk4es2v).
+
+The radius as a function of the value; the values MUST be greater than 0 (or even 2) to ensure we don’t have an inversion:
 
 ```js echo
-const radius = (d) => d.temperature - 5;
+const min = Math.floor(d3.min(data, d => d.temperature));
+const radius = (d) => d.temperature - min + 2;
 ```
 
 This helper seems complicated, but actually makes things simpler since you only have to specify angle, period, and radius.
@@ -77,7 +80,7 @@ function radial({ x, y, period = 1, ...options } = {}) {
 }
 ```
 
-Circular axes look like a target 🎯. Easiest way to create them is with a geo mark. (TODO: add month names)
+Circular axes look like a target 🎯. Easiest way to create them is with a geo mark.
 
 ```js echo
 const axes = [
