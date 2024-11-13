@@ -4,7 +4,7 @@ index: true
 
 # Circular line chart
 
-Inspired by https://bsky.app/profile/higsch.com/post/3lap5k6rvxm2f
+Inspired by [Matthias Stahl](https://bsky.app/profile/higsch.com/post/3lap5k6rvxm2f). Data: Daily Sea Surface Temperature, Subpolar North Atlantic, [climatereanalyzer](https://climatereanalyzer.org/clim/sst_daily/?dm_id=natlsp)
 
 ```js echo
 Plot.plot({
@@ -12,45 +12,60 @@ Plot.plot({
   aspectRatio: 1,
   inset: 20,
   axis: null,
-  style: { background: "black", color: "white" },
+  style: {background: "black", color: "white"},
   color: {
     type: "linear",
-    domain: [1940, 2022, 2023, 2024],
-    range: ["white", "white", "pink", "lightblue"]
+    domain: [1982, 2022, 2023, 2024, 2032],
+    range: ["white", "white", "pink", "lightblue", "lightblue"]
   },
   marks: [
     axes,
     Plot.line(
       data,
       radial({
-        filter: (d) => !isNaN(d.value), // note: lots of Feb. 29 are NA
-        angle: "day_of_year",
-        radius: (d) => d.value - 9,
+        filter: (d) => !isNaN(d.temperature), // note: lots of Feb. 29 are NA
+        x: "day_of_year",
+        y: radius,
         period,
         stroke: "year",
         strokeWidth: (d) => (d.year < 1980 ? 0.07 : d.year < 2023 ? 0.15 : 2.5),
-        z: null
+        z: null,
+        tip: {
+          fill: "#333",
+          channels: {
+            temperature: "temperature",
+          },
+          format: {
+            temperature: d => `${d}°C`,
+            stroke: String, // year
+            strokeWidth: null,
+            x: null,
+            y: null
+          }
+        }
       })
     ),
-    months
+    labels
   ]
 })
 ```
 
+The radius as a function of the value:
+
 ```js echo
-const data = d3.csv("https://raw.githubusercontent.com/higsch/data/main/daily_surface_temperatures/daily_surface_temperatures.csv", d3.autoType);
+const radius = (d) => d.temperature - 5;
 ```
 
 This helper seems complicated, but actually makes things simpler since you only have to specify angle, period, and radius.
 
 ```js echo
-function radial({ angle, radius, period = 1, ...options } = {}) {
-  const [X, setX] = Plot.column(angle);
-  const [Y, setY] = Plot.column(angle);
+function radial({ x, y, period = 1, ...options } = {}) {
+  const [X, setX] = Plot.column(x);
+  const [Y, setY] = Plot.column(x);
   return {
-    ...Plot.transform({ x: angle, y: radius, ...options }, (data, facets) => {
-      const A = Plot.valueof(data, angle);
-      const R = Plot.valueof(data, radius);
+    ...Plot.transform({ x, y, ...options }, (data, facets) => {
+      const A = Plot.valueof(data, x);
+      const R = Plot.valueof(data, y);
       const P = Plot.valueof(data, period);
       setX(A.map((a, i) => R[i] * Math.sin((2 * Math.PI * a) / P[i])));
       setY(A.map((a, i) => R[i] * Math.cos((2 * Math.PI * a) / P[i])));
@@ -70,21 +85,21 @@ const axes = [
     {
       type: "MultiLineString",
       coordinates: [
-        [[-8, 0], [-2, 0]], [[8, 0], [2, 0]],
-        [[0, -8], [0, -2]], [[0, 2], [0, 8]]
+        [[-8, 0], [-3, 0]], [[8, 0], [3, 0]],
+        [[0, -8], [0, -3]], [[0, 3], [0, 8]]
       ]
     },
     {strokeOpacity: 0.2}
   ),
-  d3.range(2, 9).map((r) => Plot.geo(
-    d3.geoCircle().radius(r)(), {strokeOpacity: 0.2}
+  d3.range(9).map((r) => Plot.geo(
+    d3.geoCircle().radius(2 + r)(), {strokeOpacity: r ? 0.2 : 0.5}
   ))
 ];
 
-const months = [
+const labels = [
   Plot.dot(d3.range(12), radial({
-    radius: 7.5,
-    angle: (d) => d,
+    x: (d) => d,
+    y: 7.5,
     period: 12,
     fill: "black",
     stroke: "white",
@@ -92,12 +107,20 @@ const months = [
     strokeWidth: 0.75
   })),
   Plot.text(d3.range(12), radial({
-    radius: 7.5,
-    angle: (d) => d,
+    x: (d) => d,
+    y: 7.5,
     period: 12,
     fill: "white",
     text: (d) => new Date(1, d, 2).toLocaleString('en-US', { month: 'short' })
-  }))
+  })),
+  Plot.text(d3.range(8, 12).concat(14), {
+    x: 0,
+    y: (d) => -radius({temperature: d}),
+    fill: "#ccc",
+    stroke: "black",
+    strokeWidth: 10,
+    text: (d) => `${d}°C`
+  })
 ];
 ```
 
@@ -106,4 +129,18 @@ This period ensures that all years (365 and bissextile 366 days) cover one circl
 ```js echo
 const period = (d) =>
   d3.utcDay.count(new Date(d.year, 1, 1), new Date(1 + d.year, 1, 1));
+```
+
+```js echo
+const data = fetch("https://climatereanalyzer.org/clim/sst_daily/json_2clim/oisst2.1_natlsp_sst_day.json")
+  .then(d => d.json())
+  .then((v) => v.flatMap(
+    ({name, data}) => Array.from(data,
+      (value, day_of_year) => ({
+        temperature: value === null ? NaN : value,
+        year: +name,
+        day_of_year
+      })
+    ))
+  );
 ```
