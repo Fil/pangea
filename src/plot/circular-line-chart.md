@@ -25,13 +25,14 @@ Plot.plot({
       radial({
         filter: (d) => !isNaN(d.value), // note: lots of Feb. 29 are NA
         angle: "day_of_year",
-        radius: (d) => d.value - 10,
+        radius: (d) => d.value - 9,
         period,
         stroke: "year",
         strokeWidth: (d) => (d.year < 1980 ? 0.07 : d.year < 2023 ? 0.15 : 2.5),
         z: null
       })
-    )
+    ),
+    months
   ]
 })
 ```
@@ -69,15 +70,18 @@ const axes = [
     {
       type: "MultiLineString",
       coordinates: [
-        [[-8, 0], [8, 0]],
-        [[0, -8], [0, 8]]
+        [[-8, 0], [-2, 0]], [[8, 0], [2, 0]],
+        [[0, -8], [0, -2]], [[0, 2], [0, 8]]
       ]
     },
     {strokeOpacity: 0.2}
   ),
-  d3.range(1, 9).map((r) => Plot.geo(
+  d3.range(2, 9).map((r) => Plot.geo(
     d3.geoCircle().radius(r)(), {strokeOpacity: 0.2}
-  )),
+  ))
+];
+
+const months = [
   Plot.dot(d3.range(12), radial({
     radius: 7.5,
     angle: (d) => d,
