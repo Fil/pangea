@@ -6,7 +6,9 @@ sql:
 
 # DuckDB 🐤 Spatial 🌎
 
-${chart}
+```js
+chart
+```
 
 To make this [choropleth](/plot/choropleth), let’s start by adding the unemployment dataset in the front-matter:
 
@@ -17,9 +19,9 @@ sql:
 ---
 ```
 
-We have configured DuckDB’s [spatial](https://duckdb.org/docs/extensions/spatial/overview.html) [extension](https://observablehq.com/framework/lib/duckdb#extensions), so it’s available directly in `sql`.
+We have configured DuckDB’s [SPATIAL](https://duckdb.org/docs/extensions/spatial/overview.html) [extension](https://observablehq.com/framework/lib/duckdb#extensions), so it’s available directly in `sql`.
 
-We can load geospatial shapes (in **TopoJSON** format), with the `ST_read` command. This is defined in DuckDB’s [SPATIAL](https://duckdb.org/docs/extensions/spatial/overview.html) extension, that integrates the classic [GDAL](https://duckdb.org/docs/extensions/spatial/gdal.html) library.
+We can load geospatial shapes (in **TopoJSON** format), with the `ST_read` command defined in SPATIAL (it integrates the classic [GDAL](https://duckdb.org/docs/extensions/spatial/gdal.html) library).
 
 First, use a local copy of the [US Atlas](https://github.com/topojson/us-atlas):
 
