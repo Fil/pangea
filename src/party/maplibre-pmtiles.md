@@ -43,7 +43,7 @@ const BASEMAP = "https://data.source.coop/protomaps/openstreetmap/v4.pmtiles";
 const style = {
   version: 8,
   glyphs: "https://protomaps.github.io/basemaps-assets/fonts/{fontstack}/{range}.pbf",
-  sprite: "https://protomaps.github.io/basemaps-assets/sprites/v4/light",
+  sprite: `https://protomaps.github.io/basemaps-assets/sprites/v4/${dark?"dark":"light"}`,
   sources: {
     "protomaps": {
       type: "vector",
