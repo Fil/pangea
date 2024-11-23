@@ -128,6 +128,7 @@ const map = (width) => {
           format: {
             x: false,
             y: false,
+            strokeWidth: false,
             fill: d => d3.format(",d")(10 ** d)
           }
         }
