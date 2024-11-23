@@ -28,7 +28,7 @@ _TODO:_
 - stronger init
 - add "reset" buttons
 - documentation
-- mention [falcon-vis](https://github.com/vega/falcon) as an alternative
+- mention [falcon-vis](https://github.com/vega/falcon) and mosaic as alternatives
 
 https://github.com/square/crossfilter
 
@@ -135,12 +135,12 @@ function Histogram(name, {
 
 function Counter({format = d3.format(",")} = {}) {
   const total = axes.all.value();
-  const c = Object.assign(html`<p class="update">`, {
+  const c = Object.assign(html`<div class="update" style="text-align: end;">`, {
     update() {
       const selected = axes.all.value();
       c.innerHTML = selected === total
         ? `<strong>${format(total)}</strong> flights`
-        : `${format(selected)} of <strong>${format(total)}</strong> flights selected`
+        : `${format(selected)} of <strong>${format(total)}</strong> flights`
     }
   });
   c.update();
