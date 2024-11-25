@@ -56,6 +56,7 @@ Plot.plot({
 ```js echo
 Plot.plot({
   projection: "albers",
+  color: {scheme: "blues"},
   marks: [
     Plot.density(walmarts, {
       x: "longitude",
@@ -103,7 +104,7 @@ Plot.dot(walmarts, {
   y: (d) => d3.geoDistance(coords(d), coords(first)),
   r: 1,
   fill: d => d.longitude
-}).plot()
+}).plot({color: {scheme: "magma"}})
 ```
 
 ```js echo
