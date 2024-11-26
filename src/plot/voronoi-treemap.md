@@ -70,6 +70,9 @@ const data = d3.hierarchy(flare).sum((d) => d.value);
 voronoiTreemap()
     .clip(outline)
     .prng(d3.randomLcg(42))
+    // .minWeightRatio(0.00001) // useful option if a node is much smaller
+    // .convergenceRatio(0.00001)
+    // .maxIterationCount(200)
   (data);
 
 for (const shape of data.descendants()) {
