@@ -12,7 +12,7 @@ const sides = view(Inputs.select(new Map([
   ["square", 4],
   ["pentagon", 5],
   ["hexagon", 6],
-  ["octogon", 8]
+  ["octagon", 8]
 ]), {label: "polygon"}));
 const stainedGlass = view(Inputs.toggle({label: "stained glass", value: true}));
 ```
