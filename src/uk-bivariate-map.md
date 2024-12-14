@@ -4,13 +4,13 @@ index: true
 
 # UK Bivariate Map
 
-Inspired by Muhammad Mohsin Raza’s [Creating Professional Bivariate Maps in R](https://www.datawim.com/post/creating-professional-bivariate-maps-in-r/) article, let’s see how to reproduce it with Observable Plot.
+Inspired by Muhammad Mohsin Raza’s [Creating Professional Bivariate Maps in R](https://www.datawim.com/post/creating-professional-bivariate-maps-in-r/) article, let’s see how we can create a similar map with Observable Plot.
 
 ```js
 display(map);
 ```
 
-First, we need some data. We follow the [guide](https://climate.northwestknowledge.net/TERRACLIMATE/TERRACLIMATE_GRIDMET_guidance.php) to find the proper way to download [NetCDF](https://en.wikipedia.org/wiki/NetCDF) files from the University of Idaho’s TerraClimate repository. This happens in a [parameterized data loader](https://observablehq.com/framework/params), which retrieves one file for each dimension (ppt — precipitation; tmin, tmax — minimum and maximum temperatures).
+First, we need the data for mean **temperature** and **precipitation**. We follow the [guide](https://climate.northwestknowledge.net/TERRACLIMATE/TERRACLIMATE_GRIDMET_guidance.php) to find the proper way to download [NetCDF](https://en.wikipedia.org/wiki/NetCDF) files from the University of Idaho’s TerraClimate repository. This happens in a [parameterized data loader](https://observablehq.com/framework/params), which retrieves one file for each dimension (`ppt` — precipitation; and `tmin`, `tmax` — the minimum and maximum temperatures [we’ll take the midpoint of these two values]).
 
 ```sh
 var=${1#--variable=}
@@ -22,7 +22,7 @@ LON_MAX=2.0919117
 curl -f "http://thredds.northwestknowledge.net:8080/thredds/ncss/agg_terraclimate_${var}_1958_CurrentYear_GLOBE.nc?var=${var}&south=${LAT_MIN}&north=${LAT_MAX}&west=${LON_MIN}&east=${LON_MAX}&disableProjSubset=on&addLatLon=true&horizStride=1&accept=netcdf"
 ```
 
-Loading these files, we parse them as NetCDF and extract their values into two arrays (`temp`, the mean of `tmin` and `tmax`; and `ppt`). The longitude and latitude of each data point is also derived from these files.
+Loading these files, we parse them as NetCDF and extract their values into two arrays (`temp`, the midpoint of `tmin` and `tmax`; and `ppt`). The geographic coordinates of each data point are taken from the `tmax` file (it could be any of the three files, since they are all sharing the same coordinates).
 
 ```js echo
 import {NetCDFReader} from "npm:netcdfjs";
@@ -50,7 +50,7 @@ const lon = (d, i) => lx[i % l];
 const lat = (d, i) => ly[i/ l | 0];
 ```
 
-We also need an outline of the land, and a (not yet released) version of Plot that can to clip marks based on that outline:
+We need an outline of the land, and a (not yet released) version of Plot that can to clip marks based on that outline:
 
 ```js echo
 const land = fetch(
@@ -99,7 +99,7 @@ function mixblend([a, b]) {
 }
 ```
 
-For example, if a data point belongs to the third quantile (2) of variable A and the second quantile (1) of variable B, its color index is 2 &times; n + 1.
+For example, if a data point belongs to the third quantile (2) of variable A and the second quantile (1) of variable B, its color index is 2 &times; n + 1 = ${n + n + 1}.
 
 The combined color matrix is shown below—in a mini-chart that will be used as a legend.
 
