@@ -73,9 +73,22 @@ The bivariate color scale takes _n_ quantiles of temperature and _n_ quantiles o
 const n = 5;
 ```
 
+The colors are a mix of oranges and blues. To mix the colors, we use a formula similar to the `multiply` mix-blend mode, but tweak it a little to make the colors a bit more lively.
+
+```js
+display(Plot.cellX([...oranges, null, ...blues], {rx: 4}).plot({width: (2 * n + 1) * 20, height: 18, axis: null}))
+```
+
 ```js echo
-// like mix-blend-mode: multiply, but tweaked a bit
-function mixblend(a, b) {
+const oranges = d3.schemeOranges[n + 1].slice(0, -1);
+const blues = d3.schemeBlues[n + 1].slice(0, -1);
+
+const color = {
+  domain: d3.range(n * n),
+  range: d3.cross(oranges, blues).map(mixblend)
+};
+
+function mixblend([a, b]) {
   a = d3.rgb(a);
   b = d3.rgb(b);
   const l = Math.min(250, b.r + b.g + b.b);
@@ -84,21 +97,11 @@ function mixblend(a, b) {
   a.b *= b.b / l;
   return a.hex();
 }
-
-const color = {
-  domain: d3.range(n * n),
-  range: d3.range(n * n)
-    .map((i) => mixblend(
-      d3.schemeOranges[n + 1][i % n],
-      d3.schemeBlues[n + 1][i / n | 0],
-    )
-  )
-};
 ```
 
 For example, if a data point belongs to the third quantile (2) of variable A and the second quantile (1) of variable B, its color index is 2 &times; n + 1.
 
-The color matrix is shown below—in a mini-chart that will be used as a legend.
+The combined color matrix is shown below—in a mini-chart that will be used as a legend.
 
 ```js echo
 const legend = () =>
