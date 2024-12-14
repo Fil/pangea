@@ -6,6 +6,8 @@ index: true
 
 This adds tips to a mark; we render then immediately hide all the tips, revealing them later when hovering, based on their index. Useful when joining several charts, _assuming they use the same index._
 
+(See also https://observablehq.com/d/5a386abaa1549df2)
+
 <div class="grid grid-cols-2">
   <div class="card">${resize(width => Plot.plot({
     width,
