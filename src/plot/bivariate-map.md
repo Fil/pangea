@@ -31,9 +31,9 @@ function cdf(buffer) {
   return new NetCDFReader(buffer);
 }
 
-const _tmax = FileAttachment("/climate/tmax.nc").arrayBuffer().then(cdf);
-const _tmin = FileAttachment("/climate/tmin.nc").arrayBuffer().then(cdf);
-const _ppt = FileAttachment("/climate/ppt.nc").arrayBuffer().then(cdf);
+const _tmax = FileAttachment("/data/climate/tmax.nc").arrayBuffer().then(cdf);
+const _tmin = FileAttachment("/data/climate/tmin.nc").arrayBuffer().then(cdf);
+const _ppt = FileAttachment("/data/climate/ppt.nc").arrayBuffer().then(cdf);
 ```
 
 ```js echo
@@ -64,7 +64,7 @@ const land = fetch(
       .filter(({properties: {name}}) => name !== "Maldives")
   }));
 
-import * as Plot from "./plot.js"
+import * as Plot from "/plot.js";
 ```
 
 The bivariate color scale takes _n_ quantiles of temperature and _n_ quantiles of precipitation; it maps _n_ &times; _n_ numbers to the same number of blended colors, organized in a matrix:
