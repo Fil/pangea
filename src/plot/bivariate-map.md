@@ -10,7 +10,7 @@ Inspired by Muhammad Mohsin Raza’s [Creating Professional Bivariate Maps in R]
 display(map);
 ```
 
-To create this map, we need to fetch some **temperature** and **precipitation** data. This [guide](https://climate.northwestknowledge.net/TERRACLIMATE/TERRACLIMATE_GRIDMET_guidance.php) indicates the proper way to download [NetCDF](https://en.wikipedia.org/wiki/NetCDF) files from the University of Idaho’s TerraClimate repository. We make this query in a [parameterized data loader](https://observablehq.com/framework/params), which retrieves one file for each dimension: `ppt` — precipitation; and `tmin`, `tmax` — the minimum and maximum temperatures (we’ll take the midpoint of these two values).
+To create this map, we need to fetch some **temperature** and **precipitation** data. This [guide](https://climate.northwestknowledge.net/TERRACLIMATE/TERRACLIMATE_GRIDMET_guidance.php) indicates the proper way to download [NetCDF](https://en.wikipedia.org/wiki/NetCDF) files from the University of Idaho’s TerraClimate repository. We make this query in a [parameterized data loader](https://observablehq.com/framework/params), which retrieves one file for each dimension: `ppt` — precipitation; and `tmin`, `tmax` — the minimum and maximum temperatures (we’ll derive `temp` as the midpoint of these two values).
 
 ```sh
 var=${1#--variable=}
