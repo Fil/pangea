@@ -73,7 +73,7 @@ The bivariate color scale takes _n_ quantiles of temperature and _n_ quantiles o
 const n = 5;
 ```
 
-The colors are a mix of oranges and blues. To mix the colors, we use a formula similar to the `multiply` mix-blend mode, but tweak it a little to make the colors a bit more lively.
+The colors are a mix of oranges (for temperatures) and blues (for precipitation). To mix the colors, we use a formula similar to the `multiply` mix-blend mode, but tweak it a little to make the colors a bit more lively.
 
 ```js
 display(Plot.cellX([...oranges, null, ...blues], {rx: 4, stroke: "currentColor"}).plot({width: (2 * n + 1) * 20, height: 18, axis: null}))
@@ -85,7 +85,7 @@ const blues = d3.schemeBlues[n + 1].slice(0, -1);
 
 const color = {
   domain: d3.range(n * n),
-  range: d3.cross(oranges, blues).map(mixblend)
+  range: d3.cross(blues, oranges).map(mixblend)
 };
 
 function mixblend([a, b]) {
