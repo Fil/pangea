@@ -59,7 +59,7 @@ ${toggled1 ? "yea" : "nay"}
 
 ---
 
-To this we need to add the custom styles we want — for example from [https://uiverse.io/gharsh11032000/green-liger-89](https://uiverse.io/gharsh11032000/green-liger-89):
+To this we need to add custom styles — for example from [https://uiverse.io/gharsh11032000/green-liger-89](https://uiverse.io/gharsh11032000/green-liger-89) [note: this does not account for dark mode — please send a pull-request if you fix this!]:
 
 ```html echo
 <style>
