@@ -9,8 +9,8 @@ const SRC_ROOT = "src";
 
 const parser = new Parser({customFields: {item: ["link"]}});
 const feeds = {
-  blog: parser.parseURL("https://observablehq.com/blog/feed.rss"),
-  videos: parser.parseURL("https://www.youtube.com/feeds/videos.xml?channel_id=UCCD2tAKN32ya7V639gkbWhg")
+  // blog: parser.parseURL("https://observablehq.com/blog/feed.rss"),
+  // videos: parser.parseURL("https://www.youtube.com/feeds/videos.xml?channel_id=UCCD2tAKN32ya7V639gkbWhg")
 };
 
 async function* dynamicPaths() {
