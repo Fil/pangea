@@ -23,7 +23,7 @@ async function* dynamicPaths() {
     const a = item.link.match(/watch\?v=(.*)$/)?.[1];
     if (a) yield `/video/${a}`;
   }
-  yield "/video/blYQhiOMhwA"; // A duck for your dashboard, by Robert Kosara
+  // yield "/video/blYQhiOMhwA"; // A duck for your dashboard, by Robert Kosara
   // yield* ["/experiments/coordinated-inputs.js"]; // a component with two elements
   yield "/data/uk-accidents.csv"; // test an exported file
   yield "/plot/walmart-density.js"; // Demonstrating an exported module
