@@ -14,16 +14,18 @@ const feeds = {
 };
 
 async function* dynamicPaths() {
-  for (const item of (await feeds.blog)?.items ?? []) {
-    const a = item.link.match(/blog\/(.*)$/)?.[1];
-    if (a && a !== "announcing-embedded-analytics") yield `/blog/${a}`;
-    if (a === "observable-2-0") break; // ignore older posts
-  }
+  // for (const item of (await feeds.blog)?.items ?? []) {
+  //   const a = item.link.match(/blog\/(.*)$/)?.[1];
+  //   if (a && a !== "announcing-embedded-analytics") yield `/blog/${a}`;
+  //   if (a === "observable-2-0") break; // ignore older posts
+  // }
   for (const item of (await feeds.videos)?.items ?? []) {
     const a = item.link.match(/watch\?v=(.*)$/)?.[1];
     if (a) yield `/video/${a}`;
   }
   yield "/video/blYQhiOMhwA"; // A duck for your dashboard, by Robert Kosara
+  // yield* ["/experiments/coordinated-inputs.js"]; // a component with two elements
+  yield "/data/uk-accidents.csv"; // test an exported file
   yield "/plot/walmart-density.js"; // Demonstrating an exported module
 }
 
@@ -84,6 +86,7 @@ export default {
   head,
   header: `${VIEW_SOURCE}`,
   footer: FOOTER_OBSERVABLE,
+  //  interpreters: {".ts": ["deno", "--allow-net", "--allow-read", "--allow-ffi", "--allow-env"]},
   duckdb: {extensions: ["spatial", "h3", "pivot_table"]}
 };
 
