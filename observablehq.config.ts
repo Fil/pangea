@@ -14,12 +14,12 @@ const feeds = {
 };
 
 async function* dynamicPaths() {
-  for (const item of (await feeds.blog).items) {
+  for (const item of (await feeds.blog)?.items ?? []) {
     const a = item.link.match(/blog\/(.*)$/)?.[1];
     if (a && a !== "announcing-embedded-analytics") yield `/blog/${a}`;
     if (a === "observable-2-0") break; // ignore older posts
   }
-  for (const item of (await feeds.videos).items) {
+  for (const item of (await feeds.videos)?.items ?? []) {
     const a = item.link.match(/watch\?v=(.*)$/)?.[1];
     if (a) yield `/video/${a}`;
   }
