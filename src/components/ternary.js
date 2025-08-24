@@ -1,4 +1,5 @@
 import * as Plot from "npm:@observablehq/plot";
+import * as Inputs from "npm:@observablehq/inputs";
 import * as d3 from "npm:d3";
 
 export const projection = ({width, height, angle = 0}) => {
@@ -111,10 +112,105 @@ export const tickLabels = (data = d3.range(0.1, 1, 0.1), {tickFormat = ".0%", ..
 
 export const labels = (data, options) =>
   Plot.text(data, {
-    x: (_, i) => [1.075, -0.025, -0.025][i],
-    y: (_, i) => [-0.05, 1.05, -0.05][i],
+    x: [1.075, -0.025, -0.025],
+    y: [-0.05, 1.05, -0.05],
     text: Plot.identity,
     ...options
   });
 
 export const sphere = Plot.sphere;
+
+export function slider({r = 5, fill = "red", constrain = true, value = [1 / 3, 1 / 3, 1 / 3], ...options} = {}) {
+  const n = d3.sum(value);
+  for (let i = 0; i < 3; i++) value[i] = (value[i] ?? 0) / n;
+  return Plot.dot([value, [1, 0], [0, 1], [0, 0]], {
+    r,
+    fill,
+    pointerEvents: "all",
+    ...options, // options to be passed
+    filter: [true],
+    x: "0",
+    y: "1",
+    render(index, scales, values, dimensions, context, next) {
+      const plot = context.ownerSVGElement;
+      const g = next(index, scales, values, dimensions, context);
+      d3.select(g).style("cursor", "grab");
+      const dot = g.querySelector("circle");
+      const path = g.querySelector("path");
+      const X = values.x;
+      const Y = values.y;
+      // barycentric coordinates & denominator
+      const D = (X[2] - X[1]) * (Y[3] - Y[1]) - (Y[2] - Y[1]) * (X[3] - X[1]);
+      let a = values.channels.x.value[0],
+        b = values.channels.y.value[0],
+        c = 1 - a - b;
+      const z = {a, b, c};
+
+      // value accessors
+      function set({a, b, c}) {
+        if (constrain) {
+          while (a < 0 || b < 0 || c < 0) {
+            if (a < 0) ((b += a / 2), (c += a / 2), (a = 0));
+            if (b < 0) ((a += b / 2), (c += b / 2), (b = 0));
+            if (c < 0) ((b += c / 2), (a += c / 2), (c = 0));
+          }
+        }
+        const x = a * X[1] + b * X[2] + c * X[3];
+        const y = a * Y[1] + b * Y[2] + c * Y[3];
+        if (dot) {
+          dot.setAttribute("cx", x);
+          dot.setAttribute("cy", y);
+        } else path.setAttribute("transform", `translate(${x},${y})`);
+        Object.assign(z, {a, b, c});
+      }
+      function get() {
+        return z;
+      }
+      Object.defineProperty(plot, "value", {set, get});
+      plot.dispatchEvent(new Event("input"));
+
+      const drag = d3
+        .drag()
+        .on("start", () => d3.select(g).style("cursor", "grabbing"))
+        .on("end", () => d3.select(g).style("cursor", "grab"))
+        .on("drag", ({x, y}) => {
+          // project
+          c = ((X[2] - X[1]) * (y - Y[1]) - (Y[2] - Y[1]) * (x - X[1])) / D;
+          b = ((x - X[1]) * (Y[3] - Y[1]) - (y - Y[1]) * (X[3] - X[1])) / D;
+          a = 1 - b - c;
+          set({a, b, c});
+          plot.dispatchEvent(new Event("input"));
+        });
+      d3.select(g).call(drag);
+      return g;
+    }
+  });
+}
+
+export function combo({labels = ["a", "b", "c"], value = [1 / 3, 1 / 3], step = 0.001} = {}) {
+  const n = d3.sum(value);
+  for (let i = 0; i < 3; i++) value[i] = (value[i] ?? 0) / n;
+  const a = Inputs.range([0, 1], {label: labels[0], value: value[0], step});
+  const b = Inputs.range([0, 1], {label: labels[1], value: value[1], step});
+  const c = Inputs.range([0, 1], {label: labels[2], value: value[2], step});
+  ternarySync(a, b, c);
+  ternarySync(b, a, c);
+  ternarySync(c, a, b);
+  return Inputs.form({a, b, c});
+}
+
+function ternarySync(a, b, c) {
+  a.addEventListener("input", (event) => {
+    if (!event.isTrusted) return;
+    const bc1 = 1 - a.value;
+    const bc2 = b.value + c.value;
+    if (bc2) {
+      b.value = (b.value / bc2) * bc1;
+      c.value = (c.value / bc2) * bc1;
+    } else {
+      b.value = c.value = bc1 / 2;
+    }
+    b.dispatchEvent(new InputEvent("input"));
+    c.dispatchEvent(new InputEvent("input"));
+  });
+}
