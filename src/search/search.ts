@@ -27,6 +27,6 @@ async function find(needle: string, ext: string, ref: string): Promise<string> {
   const re = new RegExp(`\\b${needle}\\.[a-z0-9_-]+\\.${ext}\\b`, "i");
   const haystack = await fetch(ref).then((resp) => resp.text());
   const m = re.exec(haystack);
-  if (!m) throw new Error(`can't find ${needle} in ${ref}`);
+  if (!m) throw new Error(`can't find ${needle} in ${ref}\n\n${haystack}`);
   return m[0];
 }
