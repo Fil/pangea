@@ -43,11 +43,11 @@ import MiniSearch from "minisearch";
 
 ```js
 const corpora = new Map([
-  ["D3", FileAttachment("search/d3.json")],
-  ["D3 docs", FileAttachment("search/d3docs.json")],
+  // ["D3", FileAttachment("search/d3.json")],
+  // ["D3 docs", FileAttachment("search/d3docs.json")],
   // ["Framework", FileAttachment("search/framework.json")],
   // ["Observable", FileAttachment("search/observable.json")],
-  ["Pangea", FileAttachment("search/pangea.json")],
+  // ["Pangea", FileAttachment("search/pangea.json")],
   // ["Plot docs", FileAttachment("search/plotdocs.json")],
   // ["Framework examples", FileAttachment("search/framework-examples.json")],
 ])
