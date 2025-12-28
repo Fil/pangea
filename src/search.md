@@ -45,11 +45,11 @@ import MiniSearch from "minisearch";
 const corpora = new Map([
   ["D3", FileAttachment("search/d3.json")],
   ["D3 docs", FileAttachment("search/d3docs.json")],
-  ["Framework", FileAttachment("search/framework.json")],
-  ["Observable", FileAttachment("search/observable.json")],
+  // ["Framework", FileAttachment("search/framework.json")],
+  // ["Observable", FileAttachment("search/observable.json")],
   ["Pangea", FileAttachment("search/pangea.json")],
-  ["Plot docs", FileAttachment("search/plotdocs.json")],
-  ["Framework examples", FileAttachment("search/framework-examples.json")],
+  // ["Plot docs", FileAttachment("search/plotdocs.json")],
+  // ["Framework examples", FileAttachment("search/framework-examples.json")],
 ])
 
 const color = d3.scaleOrdinal(corpora.keys(), d3.schemeObservable10);
