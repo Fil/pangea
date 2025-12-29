@@ -47,7 +47,7 @@ const corpora = new Map([
   // ["D3 docs", FileAttachment("search/d3docs.json")],
   // ["Framework", FileAttachment("search/framework.json")],
   // ["Observable", FileAttachment("search/observable.json")],
-  // ["Pangea", FileAttachment("search/pangea.json")],
+  ["Pangea", {json(){return fetch(import.meta.resolve("observablehq:minisearch.json")).then(res => res.json()).then(index => ({root: "https://fil.github.io/pangea/", index}))}}],
   // ["Plot docs", FileAttachment("search/plotdocs.json")],
   // ["Framework examples", FileAttachment("search/framework-examples.json")],
 ])
