@@ -31,7 +31,7 @@ follow this great [tutorial by Mark McClure](https://mcmcclur.observablehq.cloud
 </div>
 
 ```js
-import Reveal from 'npm:reveal.js/dist/reveal.esm.js';
+import Reveal from 'npm:reveal.js/dist/reveal.mjs';
 const reveal = new Reveal({
   embedded: true,
   progress: false,
