@@ -2,7 +2,7 @@
 import {XMLParser} from "fast-xml-parser";
 import * as d3 from "d3";
 
-const catalogue = new XMLParser({processEntities: {maxTotalExpansions: 10000}}).parse(
+const catalogue = new XMLParser({processEntities: false}).parse(
   await fetch("https://ec.europa.eu/eurostat/api/dissemination/catalogue/toc/xml").then((d) => d.text())
 );
 
