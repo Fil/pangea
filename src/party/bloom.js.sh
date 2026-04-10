@@ -1,1 +1,1 @@
-curl "https://penrose.cs.cmu.edu/bloom.min.js"
+curl "https://cdn.jsdelivr.net/npm/@penrose/bloom@3.3.0/dist/bloom.min.js"

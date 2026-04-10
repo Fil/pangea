@@ -13,10 +13,9 @@ const r = view(Inputs.range([2, 50], {value: 16, step: 1, label: "radius"}));
 
 ```ts echo
 /**
- * Self-hosting bloom.js; ideally we'd have
- * > import bloom from "npm:@penrose/bloom";
- * but since this generates errors, we currently fetch a bundled version
- * (bloom.min.js) from penrose.cs.cmu.edu with a data loader.
+ * Importing from "npm:@penrose/bloom" doesn't work because the underlying
+ * @rose-lang/wasm module fails to load WebAssembly through the CDN bundler.
+ * Instead we fetch the self-contained bloom.min.js bundle via a data loader.
  */
 const {DiagramBuilder, canvas, constraints} = await import(FileAttachment("bloom.js").href);
 
