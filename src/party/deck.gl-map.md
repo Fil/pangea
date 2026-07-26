@@ -8,7 +8,9 @@ theme: dashboard
 [deck.gl](https://deck.gl/) is a GPU-powered framework for visual exploratory data analysis of large datasets. You can import it as a module, then consume its methods like so:
 
 ```js echo
-import deck from "npm:deck.gl";
+// jsDelivr guesses deck.gl's entry point as dist.min.js, which it can't bundle as
+// ESM; point at the real ESM entry instead.
+import deck from "npm:deck.gl/dist/index.js";
 const {DeckGL, AmbientLight, GeoJsonLayer, HexagonLayer, LightingEffect, PointLight} = deck;
 ```
 

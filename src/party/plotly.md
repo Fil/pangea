@@ -20,5 +20,6 @@ const elevation = FileAttachment("/data/mt_bruno.csv").csv({array: true, typed: 
 ```
 
 ```js echo
-import Plotly from "npm:plotly.js-dist-min@2.35.2";
+// pinned to 3.x: jsDelivr's ESM bundle of 2.35.x is syntactically invalid
+import Plotly from "npm:plotly.js-dist-min@3";
 ```

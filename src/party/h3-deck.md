@@ -53,7 +53,7 @@ Object.assign(window, {h3, maplibregl});
 
 ```js echo
 h3; maplibregl;
-import deckgl from "npm:deck.gl";
+import deckgl from "npm:deck.gl/dist/index.js";
 const {Deck, DeckGL, H3HexagonLayer, HexagonLayer} = deckgl;
 ```
 
