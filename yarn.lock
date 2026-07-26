@@ -503,9 +503,9 @@
   dependencies:
     isoformat "^0.2.0"
 
-"@observablehq/plot@https://github.com/observablehq/plot#fil/colorSpace-hack":
-  version "0.6.16"
-  resolved "https://github.com/observablehq/plot#0e0ea85ee737f84f253f2820901a7366ffd6de83"
+"@observablehq/plot@https://github.com/observablehq/plot#main":
+  version "0.6.17"
+  resolved "https://github.com/observablehq/plot#356f579b1d947ee05a914420eddff0f29cee300a"
   dependencies:
     d3 "^7.9.0"
     interval-tree-1d "^1.0.0"

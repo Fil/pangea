@@ -34,11 +34,11 @@ Plot.barY(penguins, Plot.groupX({y: "count"}, {
 })
 ```
 
-The **raster** mark needs [PR #2145](https://github.com/observablehq/plot/pull/2145).
+The **raster** mark needs [PR #2145](https://github.com/observablehq/plot/pull/2145), merged but not yet released.
 
 ```js echo
 // locally installed by adding to package.json:
-// "@observablehq/plot": "https://github.com/observablehq/plot#fil/colorSpace-hack",
+// "@observablehq/plot": "https://github.com/observablehq/plot#main",
 import * as Plot from "@observablehq/plot";
 ```
 
