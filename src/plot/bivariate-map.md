@@ -19,7 +19,8 @@ LON_MIN=-14.015517
 LAT_MAX=61.061
 LON_MAX=2.0919117
 
-curl -f "http://thredds.northwestknowledge.net:8080/thredds/ncss/agg_terraclimate_${var}_1958_CurrentYear_GLOBE.nc?var=${var}&south=${LAT_MIN}&north=${LAT_MAX}&west=${LON_MIN}&east=${LON_MAX}&disableProjSubset=on&addLatLon=true&horizStride=1&accept=netcdf"
+curl -f -sS --retry 3 --retry-connrefused --retry-delay 5 --connect-timeout 30 --max-time 300 \
+  "https://thredds.northwestknowledge.net/thredds/ncss/agg_terraclimate_${var}_1950_CurrentYear_GLOBE.nc?var=${var}&south=${LAT_MIN}&north=${LAT_MAX}&west=${LON_MIN}&east=${LON_MAX}&disableProjSubset=on&addLatLon=true&horizStride=1&accept=netcdf"
 ```
 
 We parse these files as NetCDF and extract their values into two arrays (`temp`, the midpoint of `tmin` and `tmax`; and `ppt`). The geographic coordinates of each data point are taken from the `tmax` file (it could be any of the three files, since they are all sharing the same coordinates).

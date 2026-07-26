@@ -37,4 +37,7 @@ LON_MIN=-14.015517
 LAT_MAX=61.061
 LON_MAX=2.0919117
 
-curl -f "http://thredds.northwestknowledge.net:8080/thredds/ncss/agg_terraclimate_${var}_1958_CurrentYear_GLOBE.nc?var=${var}&south=${LAT_MIN}&north=${LAT_MAX}&west=${LON_MIN}&east=${LON_MAX}&disableProjSubset=on&addLatLon=true&horizStride=1&accept=netcdf" 
+# the aggregated datasets are named 1950_CurrentYear (they used to be 1958); the
+# server also listens on 8080, but that port is unreachable from GitHub Actions
+curl -f -sS --retry 3 --retry-connrefused --retry-delay 5 --connect-timeout 30 --max-time 300 \
+  "https://thredds.northwestknowledge.net/thredds/ncss/agg_terraclimate_${var}_1950_CurrentYear_GLOBE.nc?var=${var}&south=${LAT_MIN}&north=${LAT_MAX}&west=${LON_MIN}&east=${LON_MAX}&disableProjSubset=on&addLatLon=true&horizStride=1&accept=netcdf"
